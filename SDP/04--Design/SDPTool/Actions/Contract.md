@@ -1,6 +1,6 @@
 # Discoverable actions and JSON invocation — proposed contract
 
-Status: Session0011 T007 design proposal for the discoverable-actions KB-SDP-051.
+Status: Session0011 T007 design proposal for the discoverable-actions KB-SDP-053.
 No commands or schemas below are implemented yet. Product integration remains
 behind the [concurrency gate](../../../Sessions/evidence/0011-concurrent-work/refresh-T007.md).
 [ImplementationPlan](../../../05--Implementation/SDPTool/Actions/Plan.md) owns delivery.

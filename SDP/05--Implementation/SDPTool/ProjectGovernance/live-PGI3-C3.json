@@ -1,0 +1,693 @@
+{
+  "schemaVersion": "1.0",
+  "milestone": "PGI3-M1-C3",
+  "localDate": "2026-10-08",
+  "baseCommit": "37a09a6bcc5bacc9cb1ba1daa39221c07e091a95",
+  "files": [
+    {
+      "path": "SDPTool/cmd/sdp-controller/session.go",
+      "sha256": "31b4a862a012be91088c3c0443f4ee2ef835a1df1901e25b8b444a78278a432b"
+    },
+    {
+      "path": "SDPTool/governance/README.md",
+      "sha256": "2ea580374b72054d7a0f3037ffda41b45515cb0837deb91e822452ce4a0b541f"
+    },
+    {
+      "path": "SDPTool/governance/approval.go",
+      "sha256": "1bb0615dea1131fab248427310ddc35058a803728c461816c61b2f1f4b57d0ba"
+    },
+    {
+      "path": "SDPTool/governance/dispatch.go",
+      "sha256": "69a9eabc63112c1c4c1e84c2d2b4027f79fe9e086fcdf51f48050e9e3ce24fa6"
+    },
+    {
+      "path": "SDPTool/governance/host.go",
+      "sha256": "f97bffb507b404f94c86a55b017c19359caa9bac2d42207e6bf72d4f76b8f486"
+    },
+    {
+      "path": "SDPTool/governance/run.go",
+      "sha256": "c170338206bd60eb87ade1dc0c546c5d9980241034b5a73af1a0b6d680728557"
+    },
+    {
+      "path": "SDPTool/governance/schema.json",
+      "sha256": "474dc0d5d5bb6d2486e7646300706e89c4c53648637fb032d8f939be4516f147"
+    },
+    {
+      "path": "SDPTool/governancecontroller/README.md",
+      "sha256": "56c8b0f7bbf469751cfa16f45f230117b7ec723ef646c1edd9cc469144578737"
+    },
+    {
+      "path": "SDPTool/governancecontroller/approval.go",
+      "sha256": "25a7599d3f396b26222e2724db9b0433ca27593600d17b8c15bafb3c6ef97840"
+    },
+    {
+      "path": "SDPTool/governancecontroller/approval_race_linux_test.go",
+      "sha256": "56bccbf7fd91391de59083a72a9aa13e6811d55339dc88396ea37827d24b5028"
+    },
+    {
+      "path": "SDPTool/governancecontroller/approval_test.go",
+      "sha256": "ebb813d345c883575c7edc3e21199ea0c1b90511dac98c3fe5fd0f4e3ca6941a"
+    },
+    {
+      "path": "SDPTool/governancecontroller/cli_test.go",
+      "sha256": "5fb1def5ae627dac47be622bf015a718f35396f35912a4f12a333c2411880554"
+    },
+    {
+      "path": "SDPTool/governancecontroller/controller.go",
+      "sha256": "34a2063ba0d77f84bb05307d53b8c51e8b1747aecc5c378d384a22c92bb2d254"
+    },
+    {
+      "path": "SDPTool/governancecontroller/controller_test.go",
+      "sha256": "8043b330ad1508ffe592a1ebb9c683e744bfdad71731893620b3ba4419b37483"
+    },
+    {
+      "path": "SDPTool/governancehost/README.md",
+      "sha256": "46603be95b65b7e482f03b0b4ddbda71fdad9819eaf2b4df867dba712b7c9d6e"
+    },
+    {
+      "path": "SDPTool/governancehost/approval.go",
+      "sha256": "b7f0404194e56e7bdc04afc7a880d5af27f588d26d4328bd12bdc31e02767bd2"
+    },
+    {
+      "path": "SDPTool/governancehost/approval_test.go",
+      "sha256": "0be828804cad2b43f70e5728b972f72d3ea3b7cf6353c7350ab439108bc9854b"
+    },
+    {
+      "path": "SDPTool/governancehost/client.go",
+      "sha256": "1041f2722daa33139d0f528ac3c386c06092181be5bd393a8adef71f1c686280"
+    },
+    {
+      "path": "SDPTool/governancehost/work.go",
+      "sha256": "e0b9da9c2bab867171345ec7489f2e47f15ce1981c61c75eda79e85fdf8dbf2c"
+    },
+    {
+      "path": "SDPTool/governancehost/work_test.go",
+      "sha256": "d3eb6c7603905594a9534cd260863b8b09f4d6d55d0bf686adc6d9617b7ec584"
+    },
+    {
+      "path": "SDPTool/governancemcp/README.md",
+      "sha256": "65722f8853c98c551d555f7f34ba5e002a3c8b2d79d47f9c7daf04249c29c9fe"
+    },
+    {
+      "path": "SDPTool/governancemcp/contention_linux_test.go",
+      "sha256": "c8e0264a9cc25704324e16fc9775e12a68ac7b1402f32c1450f8be953f2571c6"
+    },
+    {
+      "path": "SDPTool/governancemcp/server.go",
+      "sha256": "f623a77149e56ae4a2e653378839565c0fc8ce912ceeff53e874c1e3e0230504"
+    }
+  ],
+  "fileSetDigest": "64811249fdb88a765af15211b14369345356d62b9debbb541d3675b3f77c99a3",
+  "hostVersion": "0.161.0",
+  "toolchain": "go version go1.27.1 linux/amd64",
+  "approvalsDefault": "never",
+  "explicitAskPolicy": "on-request",
+  "approvalsReviewer": "user",
+  "experimentalApi": false,
+  "independentReview": false,
+  "nativeChildrenObserved": false,
+  "officialSource": "https://learn.chatgpt.com/docs/app-server",
+  "driverAttribution": "Owner continuation selected PGI3-C3 implementation and disposable workflow verification. The accept input is a test-driver scenario, not attributed as a verbatim owner response or acceptance of completed work.",
+  "binaries": [
+    {
+      "path": "/tmp/sdp-pgi3-c3/bin/sdp-controller",
+      "sha256": "d8d3ae3a1234030e8354f4e88014a3cb4ef7bbd973494f7119221505c97aeaa4"
+    },
+    {
+      "path": "/tmp/sdp-pgi3-c3/bin/sdp-mcp",
+      "sha256": "ef23bcfe3a798eeb1de3b4ee7b053db71b003b5541567473dc7fe289f26bbb3c"
+    },
+    {
+      "path": "/tmp/sdp-pgi3-c3/bin/sdptool",
+      "sha256": "cd926a1137991343d86c52e2d04388f03b217fd64b6a8b80a78a1cc07e504d2f"
+    }
+  ],
+  "drivers": [
+    {
+      "name": "setup3.py",
+      "sha256": "6a8ed96063b042dfdbb2282ee1eca22ff9d2287a38212c3d5b6c3b1b451def8e",
+      "source": "import json,subprocess,uuid,hashlib\nfrom pathlib import Path\nbase=Path('/tmp/sdp-pgi3-c3/trial3');root=base/'project';root.mkdir(parents=True,exist_ok=True)\nfiles={\n'AGENTS.md':'# Pilot assignment\\nRead SDP/authority.md and selected work. No delegation. Only normalize.go and normalize_test.go may change. Never edit SDP records, go.mod or unrelated.txt. This is a disposable live workflow test authorized by PLAN-SDP-0018 PGI3. Use the available Go toolchain.\\n',\n'SDP/SDP-project.manifest.yaml':\"schemaVersion: '1.0'\\nproject:\\n  name: pgi3-live\\n\",\n'SDP/KanBan/active/card.md':'| Field | Value |\\n| --- | --- |\\n| id | KB-PILOT-001 |\\n| PlanId | MAINT-PILOT-0001 |\\n| CardState | in-progress |\\n',\n'SDP/Maintenance/Plan.md':'# Bounded label-normalization fix\\n\\n| Field | Value |\\n| --- | --- |\\n| id | MAINT-PILOT-0001 |\\n| PlanType | MaintenancePlan |\\n| state | active |\\n\\nM1: NormalizeLabel must trim surrounding Unicode whitespace while preserving interior whitespace and case. Fix only normalize.go and normalize_test.go. Verify go test ./...; retain the unrelated file. No delegation, publication or records editing.\\n',\n'SDP/Sessions/session.md':'# Live pilot goal\\n\\n| State | Step | Work |\\n| --- | --- | --- |\\n| active | S1 | Fix normalization and verify preservation |\\n\\n| Field | Value |\\n| --- | --- |\\n| Session reference | SESSION-PILOT-0001 |\\n| Status | active |\\n',\n'SDP/authority.md':'Owner continuation on 2026-10-08 authorizes PLAN-SDP-0018 PGI3-C3 live approval and bounded Maintenance verification. This disposable fixture exercises that selected scope. Fix Unicode boundary whitespace normalization; do not expand scope or invoke child agents. Canonical SDP documents must remain byte-identical.\\n',\n'SDP/ProjectManagement/Ledger.ndjson':json.dumps({'schemaVersion':'1.0','eventId':'EVT-KB-PILOT-000001','eventType':'x-kanban:created','subjectId':'KB-PILOT-001','payload':{'schemaVersion':'0.2','previousEventId':None,'to':'active','toPath':'active/card.md'}})+'\\n'+json.dumps({'schemaVersion':'1.0','eventId':'EVT-PM-PILOT-000001','eventType':'x-management:started','subjectId':'MAINT-PILOT-0001','payload':{'schemaVersion':'0.2','previousEventId':None,'to':'active','toPath':'Maintenance/Plan.md'}})+'\\n',\n'go.mod':'module pgi3pilot\\n\\ngo 1.26.0\\n',\n'normalize.go':'package pgi3pilot\\n\\nimport \"strings\"\\n\\nfunc NormalizeLabel(s string) string { return strings.Trim(s, \" \") }\\n',\n'normalize_test.go':'package pgi3pilot\\n\\nimport \"testing\"\\n\\nfunc TestNormalizeLabel(t *testing.T) { if got := NormalizeLabel(\"  Keep  Case  \"); got != \"Keep  Case\" { t.Fatal(got) } }\\n',\n'unrelated.txt':'User-owned dirty fixture; preserve these exact bytes.\\n'\n}\nfor name,content in files.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(content)\nsel={'card':'SDP/KanBan/active/card.md','plan':'SDP/Maintenance/Plan.md','session':'SDP/Sessions/session.md','authority':'SDP/authority.md','step':'S1'}\nstate=base/'state';binary='/tmp/sdp-pgi3-c3/bin/sdptool'\ndef call(op,q=None):\n args=[binary,str(root),'governance',op,'--state',str(state),'--json']\n if q is not None:\n  f=base/(op+'.json');f.write_text(json.dumps(q));args+=['--input',str(f)]\n return json.loads(subprocess.check_output(args))\nc=call('context',sel);assert c['conditions']==[],c\nr=call('route',{'schema':'sdp-project-governance/0.1','categories':['maintenance'],'selection':sel,'routineId':'maintenance','routineVersion':'0.1'});assert r['disposition']=='matched',r\nb=call('bind')\nrun=call('start',{'schema':'sdp-project-governance/0.1','projectRef':b['projectRef'],'checkoutId':b['checkoutId'],'operationId':str(uuid.uuid4()),'requestId':str(uuid.uuid4()),'inputRevision':c['revision'],'routineDigest':r['routineDigest'],'selection':sel,'assignment':{'outcome':'Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests','writablePaths':['normalize.go','normalize_test.go'],'excludedPaths':['SDP','AGENTS.md','go.mod','unrelated.txt']}})\n(base/'run.json').write_text(json.dumps(run,indent=2)+'\\n')\n(base/'preimages.json').write_text(json.dumps({name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in files},indent=2)+'\\n')\n(base/'owner.txt').write_text('Fix the covered NormalizeLabel defect and its tests. Preserve interior whitespace and case. First read the governing records and inspect the current code. Use assignment-bound MCP run_read to inspect your run. Work only within the stored assignment. Run go test ./... and return exact observed results and any gaps. Do not spawn agents, publish records, commit or mark the work completed.\\n')\nprint('Prepared authorized disposable fixture; run',run['run']['id'])\n"
+    },
+    {
+      "name": "live.py",
+      "sha256": "975c37c9ad713c72db294e00f192ba5fc70c16b681580616a92f3e0fd40b8984",
+      "source": "import json,subprocess,uuid,hashlib,os\nfrom pathlib import Path\nbase=Path('/tmp/sdp-pgi3-c3');trial=base/os.environ.get('PGI_TRIAL','trial');root=trial/'project';state=trial/'state';binary=base/'bin/sdp-controller'\nrun=json.loads((trial/'run.json').read_text());rid=run['run']['id'];op=str(uuid.uuid4())\nwith (trial/'owner.txt').open('a') as f:f.write('\\nAfter testing, call run_read immediately before one run_transition action report. Use the exact current checkoutId, projectRef, inputRevision, runId and expectedRevision from run_read. The operationId for this test report is '+op+'. Reason: Unicode normalization verified in PGI3-C3 approval trial. Wait for the actual tool outcome, do not bypass any refusal, and do not retry a rejected report. This is a test-driver scenario under the authorized PGI3 verification, not owner acceptance of the completed work.\\n')\nargs=[str(binary),'run','--project',str(root),'--state',str(state),'--run',rid,'--codex','/usr/local/bin/codex','--mcp-binary',str(base/'bin/sdp-mcp'),'--message',str(trial/'owner.txt'),'--sandbox','workspace-write','--approvals','ask','--timeout','5m']\nerr=(trial/'live.err').open('w');p=subprocess.Popen(args,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=err,text=True,bufsize=1)\nprompts=[]\nwith (trial/'events.ndjson').open('w') as events:\n for line in p.stdout:\n  events.write(line);events.flush();v=json.loads(line)\n  if 'approval' in v:\n   prompt=v['approval'];q=prompt['request'];assert q['runId']==rid and q['operationId']==op and q['action']=='report',prompt\n   status=subprocess.check_output([str(binary),'status','--project',str(root),'--state',str(state),'--run',rid],text=True)\n   (trial/'pending-status.ndjson').write_text(status);assert 'pendingApprovals' in status\n   # Explicit per-request scenario decision. Never sends persistence metadata.\n   reply={k:prompt[k] for k in ['requestId','threadId','turnId','epoch']};reply['decision']='accept'\n   command={'action':'approval','approval':reply};(trial/'driver-decision.json').write_text(json.dumps(command,indent=2)+'\\n')\n   p.stdin.write(json.dumps(command)+'\\n');p.stdin.flush();prompts.append(prompt);print('Observed and answered exact fixture report prompt',flush=True)\np.stdin.close();code=p.wait();err.close()\nstatus=json.loads(subprocess.check_output([str(binary),'status','--project',str(root),'--state',str(state),'--run',rid],text=True));(trial/'final-status.json').write_text(json.dumps(status,indent=2)+'\\n')\nassert code==0, (code,(trial/'live.err').read_text())\nassert len(prompts)==1,prompts\nassert status['run']['state']=='verifying',status['run']['state']\nassert status['run']['attempts'][0]['status']=='completed',status\nassert status['run']['inputs'][-1]['kind']=='approval' and status['run']['inputs'][-1]['state']=='acknowledged',status\npre=json.loads((trial/'preimages.json').read_text());changed=[]\nfor name,digest in pre.items():\n if hashlib.sha256((root/name).read_bytes()).hexdigest()!=digest:changed.append(name)\nassert changed==['normalize.go','normalize_test.go'],changed\nverification=subprocess.run(['/home/warloc/.local/bin/go','test','./...'],cwd=root,capture_output=True,text=True)\n(trial/'verify.txt').write_text(verification.stdout+verification.stderr);assert verification.returncode==0\nprint('PASS: actual prompt, explicit one-time response, host closure and MCP report to verifying; fixture tests and exclusions preserved',flush=True)\n"
+    },
+    {
+      "name": "inspect_prompt.py",
+      "sha256": "9bb19b5f53c99bb69509ee57dad1fb13774f7d9ac70177c70fe77bb0306e5488",
+      "source": "import json,subprocess,time,uuid,select\nfrom pathlib import Path\nout=Path('/tmp/sdp-pgi3-c3'); old=Path('/tmp/sdp-pgi3-live/trial');run=json.loads((old/'run.json').read_text())['run']['id']\np=subprocess.Popen(['/usr/local/bin/codex','app-server','--listen','stdio://'],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,text=True,bufsize=1,cwd=str(old/'project'))\ndef send(x):p.stdin.write(json.dumps(x)+'\\n');p.stdin.flush()\ndef call(i,m,a):\n send({'id':i,'method':m,'params':a})\n while True:\n  x=json.loads(p.stdout.readline())\n  if x.get('id')==i and 'method' not in x:return x\ntry:\n assert 'result' in call(1,'initialize',{'clientInfo':{'name':'sdp_governance','version':'PGI3-C3-inspection'},'capabilities':{'experimentalApi':False}})\n send({'method':'initialized','params':{}})\n c={'sdp_governance':{'command':'/tmp/sdp-pgi3-live/final-bin/sdp-mcp','args':['--project',str(old/'project'),'--state',str(old/'state'),'--run',run,'--attempt',str(uuid.uuid4()),'--epoch',str(uuid.uuid4())]}}\n x=call(2,'thread/start',{'cwd':str(old/'project'),'sandbox':'read-only','approvalPolicy':'on-request','approvalsReviewer':'user','ephemeral':True,'config':{'mcp_servers':c},'developerInstructions':'This is an authorized PGI3 protocol inspection. Do not spawn any agents, use shell tools, change files, or run tests. Use only sdp_governance MCP tools. Read run_read, then request run_transition with action report using its exact schema and the observed fields; reason protocol inspection. Do not retry any refusal. End afterward. This is a disposable protocol inspection, not owner acceptance.'})\n tid=x['result']['thread']['id'];x=call(3,'turn/start',{'threadId':tid,'input':[{'type':'text','text':'Inspect the approval request as described. No file writes or children.'}]});deadline=time.time()+150\n while time.time()<deadline:\n  x=json.loads(p.stdout.readline())\n  if 'id' in x and 'method' in x:\n   (out/'observed-request.json').write_text(json.dumps(x,indent=2)+'\\n')\n   print(json.dumps(x))\n   send({'id':x['id'],'result':{'answers':{}}})\n   break\n  if x.get('method')=='turn/completed':print('No request; turn ended');break\nfinally:\n p.terminate();p.wait(timeout=10)\n"
+    },
+    {
+      "name": "check_policy.py",
+      "sha256": "929a2c85b66ec80ae585bfc27237b79626bf896eb0b9a36088ff130dc86ea229",
+      "source": "import json,subprocess\np=subprocess.Popen(['/usr/local/bin/codex','app-server','--listen','stdio://'],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,text=True)\ndef send(v):p.stdin.write(json.dumps(v)+'\\n');p.stdin.flush()\ndef call(i,m,a):\n send({'id':i,'method':m,'params':a})\n while True:\n  v=json.loads(p.stdout.readline())\n  if v.get('id')==i and 'method' not in v:return v\ntry:\n call(1,'initialize',{'clientInfo':{'name':'sdp_governance','version':'PGI3-C3-policy-check'},'capabilities':{'experimentalApi':False}});send({'method':'initialized','params':{}})\n v=call(2,'thread/start',{'cwd':'/tmp/sdp-pgi3-c3/trial/project','ephemeral':True,'sandbox':'read-only','approvalsReviewer':'user','approvalPolicy':{'granular':{'mcp_elicitations':True,'rules':False,'sandbox_approval':False,'request_permissions':False,'skill_approval':False}}})\n print(json.dumps({'error':v.get('error'),'threadCreated':'result' in v}))\nfinally:p.terminate();p.wait()\n"
+    }
+  ],
+  "protocolCaptures": {
+    "approval-rpc-cases.json": [
+      {
+        "definition": "McpServerElicitationRequestParams",
+        "value": {
+          "_meta": {
+            "codex_approval_kind": "mcp_tool_call",
+            "persist": [
+              "session",
+              "always"
+            ],
+            "tool_params": {
+              "schema": "",
+              "projectRef": "",
+              "checkoutId": "",
+              "operationId": "29a1cac0-c817-4a49-9935-ffa847150846",
+              "runId": "",
+              "expectedRevision": 0,
+              "inputRevision": "",
+              "action": "report",
+              "reason": ""
+            }
+          },
+          "message": "Allow the sdp_governance MCP server to run tool \"run_transition\"?",
+          "mode": "form",
+          "requestedSchema": {
+            "properties": {},
+            "type": "object"
+          },
+          "serverName": "sdp_governance",
+          "threadId": "thread",
+          "turnId": "turn"
+        }
+      },
+      {
+        "definition": "McpServerElicitationRequestResponse",
+        "value": {
+          "action": "accept",
+          "content": {}
+        }
+      },
+      {
+        "definition": "McpServerElicitationRequestParams",
+        "value": {
+          "_meta": {
+            "codex_approval_kind": "mcp_tool_call",
+            "persist": [
+              "session",
+              "always"
+            ],
+            "tool_params": {
+              "schema": "",
+              "projectRef": "",
+              "checkoutId": "",
+              "operationId": "7563013c-333a-4c02-9bd8-e722d9ef38ae",
+              "runId": "",
+              "expectedRevision": 0,
+              "inputRevision": "",
+              "action": "report",
+              "reason": ""
+            }
+          },
+          "message": "Allow the sdp_governance MCP server to run tool \"run_transition\"?",
+          "mode": "form",
+          "requestedSchema": {
+            "properties": {},
+            "type": "object"
+          },
+          "serverName": "sdp_governance",
+          "threadId": "thread",
+          "turnId": "turn"
+        }
+      },
+      {
+        "definition": "McpServerElicitationRequestResponse",
+        "value": {
+          "action": "decline",
+          "content": null
+        }
+      },
+      {
+        "definition": "McpServerElicitationRequestParams",
+        "value": {
+          "_meta": {
+            "codex_approval_kind": "mcp_tool_call",
+            "persist": [
+              "session",
+              "always"
+            ],
+            "tool_params": {
+              "schema": "",
+              "projectRef": "",
+              "checkoutId": "",
+              "operationId": "f3bb5bb7-39d3-4e22-81f1-2cd9fcb1e8e3",
+              "runId": "",
+              "expectedRevision": 0,
+              "inputRevision": "",
+              "action": "report",
+              "reason": ""
+            }
+          },
+          "message": "Allow the sdp_governance MCP server to run tool \"run_transition\"?",
+          "mode": "form",
+          "requestedSchema": {
+            "properties": {},
+            "type": "object"
+          },
+          "serverName": "sdp_governance",
+          "threadId": "thread",
+          "turnId": "turn"
+        }
+      },
+      {
+        "definition": "McpServerElicitationRequestResponse",
+        "value": {
+          "action": "cancel",
+          "content": null
+        }
+      }
+    ],
+    "work-rpc-cases.json": [
+      {
+        "definition": "ThreadStartParams",
+        "value": {
+          "approvalPolicy": "never",
+          "approvalsReviewer": "user",
+          "config": {
+            "mcp_servers": {}
+          },
+          "cwd": "/fixture",
+          "developerInstructions": "bounded Master",
+          "ephemeral": false,
+          "sandbox": "read-only"
+        }
+      },
+      {
+        "definition": "TurnStartParams",
+        "value": {
+          "clientUserMessageId": "f139a88c-93e1-498a-a51d-e7a3339ed466",
+          "input": [
+            {
+              "text": "exact input",
+              "type": "text"
+            }
+          ],
+          "threadId": "thread"
+        }
+      },
+      {
+        "definition": "TurnSteerParams",
+        "value": {
+          "clientUserMessageId": "0ed4eb24-3e5b-40b7-a7c4-0ee27841f005",
+          "expectedTurnId": "turn",
+          "input": [
+            {
+              "text": "steering",
+              "type": "text"
+            }
+          ],
+          "threadId": "thread"
+        }
+      },
+      {
+        "definition": "TurnInterruptParams",
+        "value": {
+          "threadId": "thread",
+          "turnId": "turn"
+        }
+      }
+    ],
+    "approval-start-cases.json": [
+      {
+        "definition": "ThreadStartParams",
+        "value": {
+          "approvalPolicy": "on-request",
+          "approvalsReviewer": "user",
+          "config": {
+            "mcp_servers": {}
+          },
+          "cwd": "/fixture",
+          "developerInstructions": "bounded",
+          "ephemeral": false,
+          "sandbox": "read-only"
+        }
+      }
+    ]
+  },
+  "failedTrials": [
+    {
+      "trial": "trial",
+      "outcome": "thread start refused before model submission",
+      "error": "askForApproval.granular requires experimentalApi capability",
+      "binarySha256": "b3a82c212b7e3714be5c9b388a46ec3876f948bcbaadc5dac87f220dea11ae0c"
+    },
+    {
+      "trial": "trial2",
+      "outcome": "journey failed on core contention after approval; not a passing controller trial",
+      "error": "busy: another process owns the checkout state",
+      "finalRun": {
+        "inputs": [
+          {
+            "contentOmitted": true,
+            "id": "67ef81ca-79ed-429a-a304-303584e5bcf5",
+            "kind": "launch",
+            "text": "",
+            "payload": "",
+            "attemptId": "6d431137-5d74-4324-aaab-5bb64e1846ea",
+            "epoch": "016e8680-ff41-4b2e-bc33-45738b2404fe",
+            "threadId": "01a11897-0e15-75a3-bce8-80889652f17e",
+            "turnId": "01a11897-16e8-7110-aab4-438bd2e32716",
+            "state": "acknowledged",
+            "receivedAt": "2026-10-07T22:58:34.965550341Z"
+          },
+          {
+            "contentOmitted": true,
+            "id": "a23cd33a-4a54-476b-b9ca-c15a0aa3149e",
+            "kind": "approval",
+            "text": "",
+            "payload": "",
+            "attemptId": "6d431137-5d74-4324-aaab-5bb64e1846ea",
+            "epoch": "016e8680-ff41-4b2e-bc33-45738b2404fe",
+            "threadId": "01a11897-0e15-75a3-bce8-80889652f17e",
+            "turnId": "01a11897-16e8-7110-aab4-438bd2e32716",
+            "state": "sending",
+            "receivedAt": "2026-10-07T22:59:54.232992264Z"
+          }
+        ],
+        "attempts": [
+          {
+            "lastObservedAt": "2026-10-07T22:59:53.760811092Z",
+            "eventCount": 16,
+            "id": "6d431137-5d74-4324-aaab-5bb64e1846ea",
+            "hostVersion": "0.161.0",
+            "threadId": "01a11897-0e15-75a3-bce8-80889652f17e",
+            "turnId": "01a11897-16e8-7110-aab4-438bd2e32716",
+            "inputRevision": "a882ea09562c71bea2e25c9f5f24d720e99192183cdcdaa88fdeed6b841c70c7",
+            "epoch": "016e8680-ff41-4b2e-bc33-45738b2404fe",
+            "status": "running",
+            "gap": false,
+            "events": []
+          }
+        ],
+        "id": "21da1594-26bc-44aa-9078-8d5f1f07fb34",
+        "revision": 25,
+        "requestId": "2ea93b96-0c57-4658-b1bc-a4f1da012899",
+        "state": "verifying",
+        "step": "implement",
+        "inputRevision": "a882ea09562c71bea2e25c9f5f24d720e99192183cdcdaa88fdeed6b841c70c7",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests",
+          "writablePaths": [
+            "normalize.go",
+            "normalize_test.go"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "AGENTS.md",
+            "go.mod",
+            "unrelated.txt"
+          ]
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "reason": "Unicode normalization verified in PGI3-C3 approval trial."
+      },
+      "intermediateBinaryIdentity": "Not retained separately; this failed journey is not final-candidate verification."
+    }
+  ],
+  "liveTrial": {
+    "outcome": "passed",
+    "finalStatus": {
+      "schema": "sdp-project-governance/0.1",
+      "operation": "read",
+      "projectRef": "pgi3-live",
+      "checkoutId": "3ccbf901-4668-4501-8358-73dab99fd221",
+      "operationId": "",
+      "run": {
+        "inputs": [
+          {
+            "contentOmitted": true,
+            "id": "5c5aba9c-de63-498a-a0ae-efc406d33e8a",
+            "kind": "launch",
+            "text": "",
+            "payload": "",
+            "attemptId": "50024be0-8bb5-41c1-b8f1-9835bdb4ad0b",
+            "epoch": "a430399b-2243-4b6b-92ed-912774189837",
+            "threadId": "01a1189a-6eec-7953-9601-8733f794d2f4",
+            "turnId": "01a1189a-71e2-72d0-a1ea-661196a69218",
+            "state": "acknowledged",
+            "receivedAt": "2026-10-07T23:02:16.485376769Z"
+          },
+          {
+            "contentOmitted": true,
+            "id": "7ef31ffb-d0e0-4867-8179-f4db4f00d589",
+            "kind": "approval",
+            "text": "",
+            "payload": "",
+            "attemptId": "50024be0-8bb5-41c1-b8f1-9835bdb4ad0b",
+            "epoch": "a430399b-2243-4b6b-92ed-912774189837",
+            "threadId": "01a1189a-6eec-7953-9601-8733f794d2f4",
+            "turnId": "01a1189a-71e2-72d0-a1ea-661196a69218",
+            "state": "acknowledged",
+            "receivedAt": "2026-10-07T23:04:27.579254565Z"
+          }
+        ],
+        "attempts": [
+          {
+            "lastObservedAt": "2026-10-07T23:04:31.535284075Z",
+            "eventCount": 22,
+            "id": "50024be0-8bb5-41c1-b8f1-9835bdb4ad0b",
+            "hostVersion": "0.161.0",
+            "threadId": "01a1189a-6eec-7953-9601-8733f794d2f4",
+            "turnId": "01a1189a-71e2-72d0-a1ea-661196a69218",
+            "inputRevision": "51628d5b0370e0ec2e8a35ff46b6f984a14c8d6ec38742bd215ff5b70dfa65c9",
+            "epoch": "a430399b-2243-4b6b-92ed-912774189837",
+            "status": "completed",
+            "gap": false,
+            "events": []
+          }
+        ],
+        "id": "e34b852e-1609-4636-a1e9-54317ad10254",
+        "revision": 33,
+        "requestId": "58c02a5e-4504-4cfe-b510-9403c63ce922",
+        "state": "verifying",
+        "step": "implement",
+        "inputRevision": "51628d5b0370e0ec2e8a35ff46b6f984a14c8d6ec38742bd215ff5b70dfa65c9",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests",
+          "writablePaths": [
+            "normalize.go",
+            "normalize_test.go"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "AGENTS.md",
+            "go.mod",
+            "unrelated.txt"
+          ]
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "reason": "Unicode normalization verified in PGI3-C3 approval trial."
+      },
+      "coverage": "known"
+    },
+    "decision": {
+      "action": "approval",
+      "approval": {
+        "requestId": "0",
+        "threadId": "01a1189a-6eec-7953-9601-8733f794d2f4",
+        "turnId": "01a1189a-71e2-72d0-a1ea-661196a69218",
+        "epoch": "a430399b-2243-4b6b-92ed-912774189837",
+        "decision": "accept"
+      }
+    },
+    "approvalAndCompletionEvents": [
+      {
+        "threadId": "01a1189a-6eec-7953-9601-8733f794d2f4",
+        "observation": {
+          "kind": "approval.requested",
+          "turnId": "01a1189a-71e2-72d0-a1ea-661196a69218",
+          "itemId": "0",
+          "phase": "",
+          "text": "{\"requestId\":\"0\",\"epoch\":\"a430399b-2243-4b6b-92ed-912774189837\",\"threadId\":\"01a1189a-6eec-7953-9601-8733f794d2f4\",\"turnId\":\"01a1189a-71e2-72d0-a1ea-661196a69218\",\"message\":\"Allow the sdp_governance MCP server to run tool \\\"run_transition\\\"?\",\"request\":{\"schema\":\"sdp-project-governance/0.1\",\"projectRef\":\"pgi3-live\",\"checkoutId\":\"3ccbf901-4668-4501-8358-73dab99fd221\",\"operationId\":\"430869dd-1418-42f2-90aa-af4affd9269e\",\"runId\":\"e34b852e-1609-4636-a1e9-54317ad10254\",\"expectedRevision\":22,\"inputRevision\":\"51628d5b0370e0ec2e8a35ff46b6f984a14c8d6ec38742bd215ff5b70dfa65c9\",\"action\":\"report\",\"reason\":\"Unicode normalization verified in PGI3-C3 approval trial.\"}}",
+          "status": "",
+          "epoch": "a430399b-2243-4b6b-92ed-912774189837",
+          "receivedAt": "2026-10-07T23:04:27.300227565Z"
+        }
+      },
+      {
+        "threadId": "01a1189a-6eec-7953-9601-8733f794d2f4",
+        "observation": {
+          "kind": "approval.resolved",
+          "turnId": "01a1189a-71e2-72d0-a1ea-661196a69218",
+          "itemId": "0",
+          "phase": "",
+          "text": "",
+          "status": "",
+          "epoch": "a430399b-2243-4b6b-92ed-912774189837",
+          "receivedAt": "2026-10-07T23:04:27.782748702Z"
+        }
+      },
+      {
+        "threadId": "01a1189a-6eec-7953-9601-8733f794d2f4",
+        "observation": {
+          "kind": "turn.completed",
+          "turnId": "01a1189a-71e2-72d0-a1ea-661196a69218",
+          "itemId": "",
+          "phase": "",
+          "text": "",
+          "status": "completed",
+          "epoch": "a430399b-2243-4b6b-92ed-912774189837",
+          "receivedAt": "2026-10-07T23:04:31.535284075Z"
+        }
+      }
+    ],
+    "preimages": {
+      "AGENTS.md": "08215fd6800033dc25c64adfc98a15513934a606620a6bf131df0419b30924db",
+      "SDP/SDP-project.manifest.yaml": "79bc6ab712a7ebce35a8bc92cb9517a1ec7e7df1c94bde0557e80449add64023",
+      "SDP/KanBan/active/card.md": "68dfb40e92a4562d8797727ca8398cf2132cce31cf7ee395ab0ebb844caf8072",
+      "SDP/Maintenance/Plan.md": "ece9873bd0c32d327954ba4c7d82cd5c00d6c6e5c53130d48d0ca61b88bf0b51",
+      "SDP/Sessions/session.md": "7831e5b1a79e20fe5acec68fa28349ebfa874cfb597c2b8498dee07eb93a00b6",
+      "SDP/authority.md": "25bf1a7df4a539ff85fee1712c5ceda65b835dbcf8882e7b56d14f4d6bd93515",
+      "SDP/ProjectManagement/Ledger.ndjson": "23273b4c57db04b637df7162d6706281d3d62a02a401ffe748f472c5e9f67541",
+      "go.mod": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+      "normalize.go": "25a6c8c3d87a3054604a3b52561a0e6b266f9e0b7a3e85ea53405fdfc88e2827",
+      "normalize_test.go": "2c68aa7113a6d4bc83e932b1c0e94619b36c919bb42f40b2ef85af3fcd8a68e3",
+      "unrelated.txt": "543a1a908a7869f50819ce1c9b46282fc182ccb862cf6ae41e97b7bc99939a53"
+    },
+    "postimages": {
+      "AGENTS.md": "08215fd6800033dc25c64adfc98a15513934a606620a6bf131df0419b30924db",
+      "SDP/SDP-project.manifest.yaml": "79bc6ab712a7ebce35a8bc92cb9517a1ec7e7df1c94bde0557e80449add64023",
+      "SDP/KanBan/active/card.md": "68dfb40e92a4562d8797727ca8398cf2132cce31cf7ee395ab0ebb844caf8072",
+      "SDP/Maintenance/Plan.md": "ece9873bd0c32d327954ba4c7d82cd5c00d6c6e5c53130d48d0ca61b88bf0b51",
+      "SDP/Sessions/session.md": "7831e5b1a79e20fe5acec68fa28349ebfa874cfb597c2b8498dee07eb93a00b6",
+      "SDP/authority.md": "25bf1a7df4a539ff85fee1712c5ceda65b835dbcf8882e7b56d14f4d6bd93515",
+      "SDP/ProjectManagement/Ledger.ndjson": "23273b4c57db04b637df7162d6706281d3d62a02a401ffe748f472c5e9f67541",
+      "go.mod": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+      "normalize.go": "6cd9379fdc90e80e1d45f871ca0cb7a4612fc7172fee86a4ebfb38b245b5b1a0",
+      "normalize_test.go": "284a3dd3e89036254f2000d04fd128b2a9cb2e1b81fa6b562f70692377db51cc",
+      "unrelated.txt": "543a1a908a7869f50819ce1c9b46282fc182ccb862cf6ae41e97b7bc99939a53"
+    },
+    "finalSource": {
+      "normalize.go": "package pgi3pilot\n\nimport \"strings\"\n\nfunc NormalizeLabel(s string) string { return strings.TrimSpace(s) }\n",
+      "normalize_test.go": "package pgi3pilot\n\nimport \"testing\"\n\nfunc TestNormalizeLabel(t *testing.T) {\n\ttests := []struct {\n\t\tname  string\n\t\tinput string\n\t\twant  string\n\t}{\n\t\t{\"empty\", \"\", \"\"},\n\t\t{\"unchanged\", \"KeepCase\", \"KeepCase\"},\n\t\t{\"ascii spaces\", \"  Keep  Case  \", \"Keep  Case\"},\n\t\t{\"ascii whitespace\", \"\\t\\n\\r\\v\\f KeepCase \\t\\n\\r\\v\\f\", \"KeepCase\"},\n\t\t{\"unicode boundaries\", \"\\u00a0\\u2003\\u202f\\u3000KeepCase\\u3000\\u202f\\u2003\\u00a0\", \"KeepCase\"},\n\t\t{\"leading only\", \"\\u0085\\u2028KeepCase\", \"KeepCase\"},\n\t\t{\"trailing only\", \"KeepCase\\u2029\\u205f\", \"KeepCase\"},\n\t\t{\"whitespace only\", \" \\t\\n\\u00a0\\u2003\\u202f\\u3000\", \"\"},\n\t\t{\"interior preserved\", \"\\u00a0 MiXeD  \\t\\n\\u2003\\u00a0Caf\u00e9 \u4e16\u754c \\u3000\", \"MiXeD  \\t\\n\\u2003\\u00a0Caf\u00e9 \u4e16\u754c\"},\n\t\t{\"non whitespace boundaries\", \"\\u200bKeepCase\\ufeff\", \"\\u200bKeepCase\\ufeff\"},\n\t}\n\tfor _, tt := range tests {\n\t\tt.Run(tt.name, func(t *testing.T) {\n\t\t\tif got := NormalizeLabel(tt.input); got != tt.want {\n\t\t\t\tt.Errorf(\"NormalizeLabel(%q) = %q, want %q\", tt.input, got, tt.want)\n\t\t\t}\n\t\t})\n\t}\n}\n"
+    },
+    "sameContextGoVerification": "ok  \tpgi3pilot\t0.004s\n",
+    "mcpResults": [
+      {
+        "Type": "mcpToolCall",
+        "Server": "sdp_governance",
+        "Tool": "run_read",
+        "Status": "completed",
+        "Error": null
+      },
+      {
+        "Type": "mcpToolCall",
+        "Server": "sdp_governance",
+        "Tool": "run_read",
+        "Status": "completed",
+        "Error": null
+      },
+      {
+        "Type": "mcpToolCall",
+        "Server": "sdp_governance",
+        "Tool": "run_transition",
+        "Status": "completed",
+        "Error": null
+      }
+    ]
+  },
+  "verification": {
+    "affectedRace": {
+      "command": "go -C SDPTool test -race -count=1 ./governance ./governancehost ./governancecontroller ./governancemcp",
+      "exitCode": 0,
+      "sha256": "16632369bef7470477c488020cb7752e17ed2a5cb7c4d811460ed09f602e60b2",
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t18.222s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancehost\t1.434s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t113.819s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t33.707s\n"
+    },
+    "compiledCLI": {
+      "command": "go -C SDPTool test -race -count=1 -run ^TestCompiledGovernanceJourney$ .",
+      "exitCode": 0,
+      "sha256": "d035010534c91b499d533116bb3e005a0cf14d7ee8528e6b56a6f5616500cb4b",
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool\t10.409s\n"
+    },
+    "vet": {
+      "command": "go -C SDPTool vet ./...",
+      "exitCode": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": ""
+    },
+    "schemas": {
+      "command": "Validate 28 captured application cases, 11 installed-host protocol cases, and 24 actual live Result/Observation records",
+      "exitCode": 0,
+      "sha256": "1c416bd81ad6096610a4b8fa5f085dfb8b6cffa28a76247cdee1cedc3c4ed829",
+      "output": "PASS: 21 observed requests/results conform to the governance schema\nPASS: 4 observed requests/results conform to the governance schema\nPASS: 3 observed requests/results conform to the governance schema\nPASS: 4 actual-version protocol cases from work-rpc-cases.json\nPASS: 1 actual-version protocol cases from approval-start-cases.json\nPASS: 6 actual-version protocol cases from approval-rpc-cases.json\nPASS: 24 actual live Result/Observation records conform to application schema\n"
+    },
+    "broadRegressionBeforeFinalCorrections": {
+      "command": "go -C SDPTool test -race -count=1 -p 2 ./...; started before final stable-policy/contention changes",
+      "exitCode": 0,
+      "sha256": "f96da0e3dc878aad78b319b1637913d9686791e5697369372a18c192281b012b",
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool\t322.062s\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t[no test files]\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp\t[no test files]\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdptool\t[no test files]\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t14.844s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t119.431s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancehost\t1.493s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t31.323s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/install\t286.520s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/model\t124.729s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/presentation\t1.031s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/tools/profile\t71.233s\n"
+    },
+    "management": {
+      "command": "python3 SDP/ProjectManagement/validate.py",
+      "exitCode": 0,
+      "sha256": "b81461587437b8a638501045dae56d4910b6654fa382a39bfba00fddebdff2f1",
+      "output": "PASS: 61 cards, 38 management records, 4 lineage operations, 513 events; schema/history/metadata/placement/grouping\n"
+    },
+    "toolkit": {
+      "command": "python3 Toolkit/scripts/validate_sdp.py",
+      "exitCode": 0,
+      "sha256": "5e9d1353c22f090c8b066ba39da56ff229fbc1b07a7e12e21bb8ac9ffbb9e3ad",
+      "output": "SDP Toolkit validation passed\n"
+    },
+    "integrity": {
+      "outcome": "pass",
+      "checks": [
+        "Final product file hashes match",
+        "Original management/traceability ledger byte prefixes preserved",
+        "Changed Markdown local links resolve",
+        "git diff --check",
+        "One actual mapped completed run_transition item; no host tool error"
+      ]
+    }
+  },
+  "limits": [
+    "PGI3 executing-turn reattachment remains open",
+    "Applicable native provenance and independent integrated review remain unverified",
+    "Transport-lost approval closure cannot be inferred or resent",
+    "Only measured SDP run_transition approval form is supported",
+    "Private historical management event-ID collisions require reconciliation before shared-history integration"
+  ]
+}

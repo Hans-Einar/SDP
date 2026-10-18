@@ -52,7 +52,7 @@ designs:
     path: 04--Design/SDPTool/ProjectGovernance/Design.md
     implementationPlan: 05--Implementation/SDPTool/ProjectGovernance/Plan.md
     kanban: KB-SDP-038
-    note: PGD1 shared routine, Session and client contract; implementation and runtime verification remain planned.
+    note: PGD1 shared routine, Session and client contract; PGI1/PGI2 delivered; PGI3 controller candidate implemented with live evidence open; PGI4/PGI5 planned.
   DES-SDPTOOL-001:
     status: initial-design
     path: 03--Architecture/SDPTool.design
@@ -243,6 +243,83 @@ verification:
     path: 05--Implementation/SDPTool/Programs/Evidence.md
     design: SDPTOOL-DES-RSP1
     requirement: SDPTOOL-REQ-RSP1
+  SDPTOOL-VER-PGL2-C1:
+    status: passed-preparation-subset
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C1.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-052
+    design: SDPTOOL-DES-0001
+    note: Durable preparation/retry/scope/source checks verified with real CLI fixture commands; provider resolution, design disposition and actual dispatch remain pending.
+  SDPTOOL-VER-PGL1:
+    status: passed-bounded-read-only-inspection
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-052
+    design: SDPTOOL-DES-0001
+    note: Registered-work human/JSON overview verified on existing owner lab without mutation; multi-agent orchestration and independent review remain open.
+  SDPTOOL-VER-PGI3-U1:
+    status: passed-preparation-owner-trial-pending
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-U1.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-038
+    design: SDPTOOL-DES-0001
+    note: Source-identified local engine and readable owner lab prepared; offline/function checks pass. Actual owner interaction and feedback remain pending.
+  SDPTOOL-VER-PGI3-C6:
+    status: passed-live-skill-input-correlation-subset
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C6.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-038
+    design: SDPTOOL-DES-0001
+    note: Final-binary Maintenance and skill-input response-loss recovery pass; native mapping, procedural compliance, publication and independent review remain unverified.
+  SDPTOOL-VER-PGI3-C5:
+    status: passed-live-context-provenance-subset
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C5.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-038
+    design: SDPTOOL-DES-0001
+    note: Actual context and skill availability snapshot passes; explicit invocation, native hierarchy, publication and independent review remain open. Post-live schema correction is separately verified.
+  SDPTOOL-VER-PGI3-C4:
+    status: passed-live-reattachment-subset
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C4.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-038
+    design: SDPTOOL-DES-0001
+    note: Graceful and abrupt controller-loss workflows pass with the same attempt and turn; applicable provenance, evidence publication and independent review remain open.
+  SDPTOOL-VER-PGI3-C3:
+    status: passed-live-approval-subset
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C3.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-038
+    design: SDPTOOL-DES-0001
+    note: Actual per-request approval/report and final affected-code checks pass; executing-turn reattachment, applicable provenance and independent review remain open.
+  SDPTOOL-VER-PGI3-C2:
+    status: passed-live-subset
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C2.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-038
+    design: SDPTOOL-DES-0001
+    note: Actual workflow and mapped response-loss recovery pass; MCP approval interaction and remaining recovery/provenance obligations stay open. No independent review or full PGI3 delivery.
+  SDPTOOL-VER-PGI3-C1:
+    status: passed-fixtures-live-unverified
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C1.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-038
+    design: SDPTOOL-DES-0001
+    note: Compiled fake-host workflow and regression checks pass; actual host exits before initialization. PGI3 is not delivered.
+  SDPTOOL-VER-PGI2:
+    status: passed-bounded-adapters
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI2.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-038
+    design: SDPTOOL-DES-0001
+    note: Actual idle protocol probe plus fixture recovery; live workflow and independent review remain unverified.
+  SDPTOOL-VER-PGI1:
+    status: passed-core-cli
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI1.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-038
+    design: SDPTOOL-DES-0001
+    note: Bounded PGI1 only; full host workflow and independent review remain unverified.
   SDPTOOL-VER-SR1:
     status: passed
     path: Maintenance/SR1/Evidence.md

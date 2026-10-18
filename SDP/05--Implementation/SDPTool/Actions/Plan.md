@@ -9,7 +9,7 @@
 | BranchPolicy | current |
 | CommitPolicy | milestone |
 | Systems | SDPTOOL |
-| source | Session0011; discoverable-actions KB-SDP-051 |
+| source | Session0011; discoverable-actions KB-SDP-053 |
 
 ## Outcome, authority and baseline
 
@@ -22,7 +22,7 @@ permitted; product execution remains blocked by the refreshed RED finding.
 This plan starts from e2caa22 on sdp/blueprint-implementation. It is not a release
 or a selected combined code baseline. Preserve the separate runnable-program and
 ProjectGovernance deliveries. KB051 here means the discoverable-actions card at
-backlog/#051--Proposal--Discoverable-SDPTool-actions.md on this branch, not the
+backlog/#053--Proposal--Discoverable-SDPTool-actions.md on this branch, not the
 runnable-program card with the same ID. Resolve that collision before execution.
 PG owns KB052 and multi-agent orchestration. Native XFMD work is external KB-XFMD-030.
 

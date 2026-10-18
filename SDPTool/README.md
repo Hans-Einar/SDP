@@ -177,9 +177,6 @@ See [output contract](Contract.md#output-presentation) and
 `sdptool [MODEL-AREA] model help` exposes local WORK, commit/restore, integration,
 proposal/candidate/release and preliminary snapshots. No Git repository or SDP
 installation is required. Read the [model workflow and limits](model/README.md).
-Model releases are distinct from SDP tool releases; this does not generate semantic
-blueprints or authenticate implementation acceptance.
-
 ## Discover and run an application
 
 `sdptool PROJECT discover` lists explicitly declared SDUI applications as well as
@@ -194,10 +191,21 @@ Blueprint diagnostic generation is available through model create blueprint
 with from/to refs, --entry, --task TASK.json and either --output DIR for a preview
 or --catalogue SDP/Blueprints for immutable retention. Discover/tree automatically
 expose the retained catalogue and its generated document targets.
-See [producer contract](blueprints/README.md). Assignment lifecycle remains BPI3;
-catalogue entries report workState=unknown.
+See [producer contract](blueprints/README.md). Retained revision entries report
+workState=unknown; revision-bound assignments expose their own lifecycle states.
 
 ## Blueprint consumer handoff
 
 See [XFMD blueprint integration](XFMD-Blueprint-Integration.md) for current CLI/API
 boundaries, lifecycle documentation and development-version testing.
+## ProjectGovernance pilot
+
+`sdptool governance` provides read-only context/routing and a guarded local
+Maintenance run through the [shared core](governance/README.md). Its explicit
+binding, durable receipts and revision checks support interruption/retry without
+changing canonical project records. PGI2 adds a local
+[MCP adapter](governancemcp/README.md) and [app-server protocol adapter](governancehost/README.md),
+with separately built sdp-mcp and sdp-controller probe commands. The [owner controller candidate](governancecontroller/README.md) adds explicit
+run/status/recover commands, durable input and bounded steering. PGI3 live execution
+remains unverified; candidate-evidence publication remains later work in
+PLAN-SDP-0018. These commands are not yet part of a published installer.

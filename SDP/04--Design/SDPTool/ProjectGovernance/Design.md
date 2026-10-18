@@ -1,9 +1,24 @@
 # ProjectGovernance — first workflow contract
 
 Design candidate PGD1, owned by [PLAN-SDP-0017](Plan.md). This specifies the bounded
-implementation handoff; no new runtime or installed process schema exists yet.
+implementation handoff. PGI1/PGI2 implement the bounded core/CLI and protocol adapters; the
+PGI3 controller candidate adds explicit covered-run submission and steering, while
+its live workflow verification and installed process integration remain open.
 Owner-selected scope and role responsibilities are retained. Storage locations,
 operation names and implementation choices below are the recommended pilot design.
+
+Current implementation details and limits are in the
+[core contract](../../../../SDPTool/governance/README.md) and
+[PGI plan](../../../05--Implementation/SDPTool/ProjectGovernance/Plan.md).
+The application wire schema is local to the PGI pilot; it is not a published Toolkit profile.
+PGD1's original evidence remains historical design/schema-inspection evidence.
+
+## Current owner-facing role refinement
+
+Owner Session0007 T014 selects [KB052 orchestration](Orchestration.md).
+Project Leader replaces the earlier combined Steering/PM label for normal owner
+dialogue; Steering remains strategic. The original single-Maintenance journey below
+is retained as a foundation, not the complete new operating model.
 
 ## 1. Outcome and first user journey
 
@@ -19,7 +34,7 @@ The sixteen-family [catalog](../../../02--Requirements/RoutineGovernance/Routine
 remains a coverage map; this pilot does not claim to implement all families.
 
 1. Select a physical project/checkout and recover current records and Session.
-2. Submit a request to the project-facing Steering/PM conversation. Record the
+2. Submit a request to the project-facing Project Leader conversation. Record the
    actual owner input and a pending routing result; an agent proposes its category
    and basis. Context reads are allowed while selection remains unresolved.
 3. Resolve existing card, plan, milestone and authorization. The core checks the
@@ -262,8 +277,11 @@ record set using current management/traceability rules before reporting success.
 
 Use one controller-owned app-server process over local stdio, explicit selected cwd,
 and version-specific generated protocol bindings. The inspected baseline is
-codex-cli 0.160.0, default schema surface; [Evidence.md](Evidence.md) records its
-limits. Earlier 0.158.0 evidence remains historical. Unsupported versions fail with
+codex-cli 0.160.1 for PGI2, default schema surface, with MCP Go SDK v1.8.0
+and MCP 2025-11-25. [PGI2 evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI2.md)
+records actual initialization/account-mode inspection and ephemeral-thread MCP
+discovery, plus fixture capture/recovery limits. PGD1 [Evidence.md](Evidence.md)
+for 0.160.0 and earlier 0.158.0 evidence remain historical. Unsupported versions fail with
 a compatibility diagnostic until tested. Do not require undocumented experimental
 fields or interpret the documentation's newest example as the installed contract.
 
@@ -322,3 +340,215 @@ the implementation handoff sequences the checks before wider execution.
 This design does not introduce a workflow editor, distributed scheduler, all routines,
 model-store backend, semantic blueprint engine, full timeline UI, remote controller,
 Codex fork, release automation or repository-wide write interception.
+
+
+## PGI3 implementation refinement — 2026-10-07
+
+The first controller surface operates an existing covered Maintenance run; it does
+not claim the complete Steering/PM conversation or automatic classification. Durable
+owner input records exact text and the bounded assignment payload before sending,
+using prepared/sending/acknowledged/uncertain states. Unresolved sends block new
+launch/steer requests. A prior nonterminal host attempt requires reconciliation.
+This is the no-blind-resend obligation above, not a server exactly-once claim.
+
+The current host prohibits agent delegation and restricts network/filesystem access.
+The candidate launches a fresh Master assignment without granting native delegation;
+child/reviewer attribution remains unavailable and no independent review is claimed.
+The live probe currently ends with EOF before initialization, so fixture success
+does not deliver PGI3. History recovery records observed state only and cannot infer
+or retry an unmapped ambiguous turn. See the [controller contract](../../../../SDPTool/governancecontroller/README.md).
+
+
+## PGI3 measured refinement — 2026-10-07
+
+The installed 0.161.0 host successfully executes the scoped Maintenance fixture
+and receives steering. History includes a userMessage.clientId correlation value.
+For a lost outbound acknowledgment, the selected recovery refinement is to bind
+only a unique recorded user message whose clientId and exact payload match the
+persisted input, within the already mapped thread/attempt. Persist that observed
+message before resolving the input. Missing, conflicting or unmapped history stays
+uncertain; never infer acceptance from text similarity or resubmit to discover it.
+This derives from PG-A08/11/12 and the existing no-duplicate-dispatch contract.
+
+Host approval refusals remain refusals. The live fixture's MCP report required
+approval under the selected never policy. Do not change that policy or claim
+routine acceptance from a host-completed turn. PGI3 must surface the limitation;
+a future explicit owner-interaction path can handle requested approvals, while
+PGI4 continues to own evidence and publication. No automatic approval is selected.
+
+## PGI3-C3 refinement — explicit MCP approval, 2026-10-08
+
+Owner continuation after C2's recommendation selects implementation of the explicit
+request/response interaction. This authorizes building and testing that flow, not
+blanket acceptance of future tool calls. Keep the default refusal mode; an explicit
+`--approvals ask` opts a new client launch into owner-reviewed MCP requests.
+
+The installed 0.161.0 host was measured before implementation: run_transition uses
+mcpServer/elicitation/request, mode form, an empty object form, and metadata
+codex_approval_kind=mcp_tool_call with exact tool_params. Support only that bounded
+SDP server/tool shape, with exact thread, turn, transport epoch and typed request ID.
+Present its message and full transition arguments as data; never execute display
+text. Accept, decline and cancel are per request; omit persistent/session grants.
+Unrelated permission, URL and secret-input requests remain unsupported. No account
+or global configuration changes, native delegation or automatic approval review.
+
+Persist observed requests and exact owner decisions before sending. Duplicate,
+resolved, cross-attempt and old-epoch replies refuse. A written response alone is
+not host acceptance: keep its outcome uncertain until serverRequest/resolved is
+observed; that notification proves closure only, not successful tool execution or
+SDP acceptance. Loss of transport never resends a response automatically.
+
+Approval capture itself advances the run observation revision. A queued MCP call
+therefore needs a narrow revision rule: only the exact observed and explicitly
+accepted agent transition may cross revisions consisting exclusively of host
+observations and this approval's input bookkeeping, with the same live attempt,
+coverage and routine decision state. Any intervening steering, lifecycle mutation,
+changed arguments or external coverage change refuses. Controller calls retain
+strict revision matching. This is required to avoid invalidating every approved
+call merely by recording its approval; it does not grant new agent actions.
+
+Verification: reject unsupported shapes and stale/mismatched/duplicate answers;
+exercise accept/decline and transport loss through the compiled controller; measure
+an actual managed-account MCP report through the final binary. Driver approvals in
+disposable tests are scenarios, not attributed owner conversation. PGI3's other
+reconnection/provenance obligations and PGI4/PGI5 remain separate.
+
+Compatibility refinement: actual initialization rejects the exported granular
+approval shape without experimentalApi. Use the measured stable on-request policy
+with approvalsReviewer=user for explicit ask mode; the adapter rejects all request
+types outside the bounded SDP MCP form. Do not enable experimental API or silently
+fall back. Default never remains unchanged; sandbox selection is independent.
+
+The first actual response also exposed concurrent core lock contention between
+MCP execution and approval observation. Retry only busy/stale local bookkeeping
+that refused before mutation, bounded to 100 attempts with 20 ms delays. The MCP
+adapter retries busy only, retaining exact arguments and operation ID. It does not
+retry stale semantic operations or host sends. Persistent contention stays explicit.
+
+## PGI3-C4 refinement — executing-turn reattachment, 2026-10-08
+
+PG-A11 requires rejoining execution, not merely reading its eventual history. The
+installed 0.161.0 host was measured with an isolated Unix WebSocket listener:
+a command continued after client closure, and thread/resume subscribed a fresh
+connection to the same in-progress turn and its eventual completion. The raw
+app-server proxy does not translate JSONL into WebSocket frames. An idle thread
+without a persisted turn could not be resumed; do not infer recoverability from
+thread/start alone. Official transport reference:
+https://learn.chatgpt.com/docs/app-server
+
+Select an opt-in private local Unix socket, with an explicitly separate foreground
+Codex server. Keep owned stdio as the default. Use coder/websocket v1.8.15 for
+framing rather than adding a custom execution supervisor. No shared daemon, TCP
+listener, global configuration, experimental API or automatic server restart is
+selected. Losing this client closes only its connection. Server shutdown remains
+an explicit execution boundary.
+
+Bind new socket attempts to the local socket/peer process identity and measured
+host version. Reject another endpoint, replacement server, mismatched thread/turn,
+source drift or unresolved outbound input before reattachment. Subscribe using
+thread/resume with only the mapped thread ID; never send turn/start or overrides.
+A running snapshot establishes status only: incomplete historical items are not
+completed messages. Retain the observation gap and replay completed history when
+available; do not claim uninterrupted coverage.
+
+Separate connection epoch from agent capability epoch for this measured path.
+Only explicit same-host reattachment preserves the launch capability; ordinary
+history recovery retains its existing revocation semantics. Existing attempts
+without a host identity cannot use reattachment. The original agent remains scoped
+to the same latest attempt, assignment and source revision. Old client observations
+and approval replies remain fenced. Unresolved decisions require reconciliation;
+never resend them on reconnect. New approval requests need fresh explicit replies.
+
+Verify a real disposable Maintenance task through final binaries, disconnect while
+executing, attach with a new process, exercise owner steering and a subsequent MCP
+report, and establish one run/attempt/thread/turn with preserved excluded files.
+Negative service/transport tests cover identity substitution and capability fencing.
+This checkpoint does not establish child provenance or independent review.
+
+Actual controller trials revealed that this host creates an absolute socket alias
+in the requested directory, pointing into a private per-user runtime directory.
+Both initial trials refused before any thread submission. The selected refinement
+permits that direct canonical alias only when both parent directories and the
+socket are private and user-owned; indirect aliases and symlink parents refuse.
+Peer process lifetime and socket identity remain bound. No default daemon is used.
+
+
+## PGI3-C5 refinement — bounded launch provenance, 2026-10-09
+
+Owner continuation selects applicable role/skill/context evidence under PG-A04,
+PG-A10/12/15. The installed 0.161.0 protocol exposes thread identity/source/native
+role fields, thread/start instructionSources, and skills/list availability. These
+are different evidence levels: controller-assigned Master is not a host-native
+role, a host-reported instruction path is not a digest of bytes demonstrably used,
+and a discovered enabled skill is not evidence of invocation or compliance.
+
+Select a durable controller-owned context observation and a read-only provenance
+projection. Capture the fresh thread's reported identity and instruction paths,
+current governing source references and digests, and bounded project-local skill
+availability from skills/list with forceReload. Hash readable project-local skill
+files as a local snapshot; do not read external skill contents or infer activation.
+Keep unavailable metadata, host discovery errors, external inventory counts and
+unobserved skill use explicit. Observations confer no authority or review rights.
+
+Preserve existing launch text, input correlation, retry and recovery semantics.
+This increment does not add skill inputs, automatic skill selection, new MCP tools,
+role switching, child dispatch or review acceptance. A snapshot remains as-of its
+capture epoch after reconnection; do not relabel it as current runtime context.
+Use actual project skills in the disposable trial and retain returned claims as
+agent statements. Full skill invocation/activation telemetry remains unknown when
+not exposed by the measured adapter. Native child execution remains unavailable
+under the current no-delegation assignment; it must not be simulated as proof.
+
+The alternative of parsing shell commands or model prose as proof of skill loading
+is rejected: neither establishes exact consumed context or compliance. The explicit
+skill-input protocol is available for a later selected invocation workflow, which
+must also preserve lost-response correlation for non-text inputs. C5 does not
+silently change the existing text-only dispatch contract to get stronger claims.
+
+Verification: actual fresh managed-account Maintenance execution with installed SDP
+skills, observed instruction sources and project-local inventory, bound context
+receipt and unchanged exclusions. Negative tests cover forged roles/agent writes,
+oversized records, unknown/missing metadata, invalid paths and inventory limits.
+Read-only provenance must work without connecting to Codex. No independent review
+or full role hierarchy is claimed.
+
+## PGI3-C6 refinement — explicit skill input and correlation, 2026-10-09
+
+Owner continuation selects the next C5 obligation under PG-A04/10/11/12/15/18.
+An actual read-only Codex 0.161.0 probe returned the same ordered text and skill
+name/path content with clientId in both completed notifications and full history.
+The host adds empty text_elements to text. No loading/compliance telemetry was
+observed; this is accepted input evidence, not consumed-byte attestation.
+
+Select repeatable `run --skill PROJECT_RELATIVE_SKILL_MD` for an explicit bounded
+list (at most eight) of enabled, uniquely named project skills. Resolve through
+fresh skills/list, require a readable local digest and refuse missing, disabled,
+ambiguous, duplicate or external selections before creating an intent/thread.
+Default launches stay text-only; do not infer selected skills from prose, role
+names or all enabled skills. The controller adds explicit name markers to the
+outbound text while preserving the owner's exact text separately, and persists
+selected name, canonical absolute path and local digest before host dispatch.
+Recheck local bytes before claiming and immediately before turn/start. There is
+no atomic host-consumed digest guarantee; later changes cannot invalidate history
+of a previously accepted input or retroactively establish compliance.
+
+Persist a fingerprint of the exact ordered input content on observed user messages.
+Canonicalization supports one text followed by selected skills; absent or empty
+text_elements are equivalent, nonempty/unknown content is not silently dropped.
+Resolve an uncertain skill send only with unique clientId, exact ordered content
+fingerprint and mapped/full history. Do not accept matching text with changed,
+missing, reordered or additional skills. Preserve legacy text-only observations
+and refuse uncertain resends. Skill content is immutable across input transitions;
+read-only provenance projects selection and response acknowledgment/observed host
+message separately from the availability snapshot. No agent claim establishes use.
+
+A text-only marker was rejected as insufficient explicit skill identity. Parsing
+model statements or shell reads as compliance remains rejected. Arbitrary external
+skill loading and skill steering are outside this bounded increment. Existing
+sandbox, permissions, scoped MCP tools, recovery gaps and no-delegation instructions
+stay intact; native hierarchy and independent review remain unverified.
+
+Verify malformed/missing selections, drift, duplicate/changed content and exact
+lost-response recovery; test real skill-equipped Maintenance with explicit report
+approval and preserved fixture files. Retain actual protocol and workflow evidence,
+including a deliberate response-loss trial without resubmission.

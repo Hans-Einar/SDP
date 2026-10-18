@@ -1,0 +1,1181 @@
+{
+  "schemaVersion": "1.0",
+  "milestone": "PGI3-M1-C5",
+  "localDate": "2026-10-09",
+  "recordedAt": "2026-10-09T02:32:53.879846+00:00",
+  "baseCommit": "4044f37f7c416f5fe3e79f793d938f1bfed355d8",
+  "files": [
+    {
+      "path": "SDPTool/cmd/sdp-controller/main.go",
+      "sha256": "c08889b23a4092f4f60f85c0cd5a88aa889c92c87b9c3adcc900d3d29571879f"
+    },
+    {
+      "path": "SDPTool/cmd/sdp-controller/session.go",
+      "sha256": "fdf567e2644de149614685afe7263b8ddfe4bc31ac23e07008a63a776c870517"
+    },
+    {
+      "path": "SDPTool/governance/README.md",
+      "sha256": "fd51a921d7a071e0b2b421eced6cd9d43cdf094c2a99d0b9237d3371a12e777e"
+    },
+    {
+      "path": "SDPTool/governance/check_schema.py",
+      "sha256": "3c21a96236a08b0b734d89b04f373e8de85f92d0a714b4706b560dee38a84aef"
+    },
+    {
+      "path": "SDPTool/governance/host.go",
+      "sha256": "f381e3a4b3fa6f22805ca036be4c3280331068941eec7061deee2b90fee21789"
+    },
+    {
+      "path": "SDPTool/governance/provenance.go",
+      "sha256": "5672cb229ff6596a95aaca26773bce654460fe70216d62e4d268144a94731dfe"
+    },
+    {
+      "path": "SDPTool/governance/provenance_test.go",
+      "sha256": "c5a48f987c0c67118e4a973238678ca9a02d3f26f0433f46a42dcee4e7be1864"
+    },
+    {
+      "path": "SDPTool/governance/schema.json",
+      "sha256": "8b1f493b8c1813250bd1ceec8446e7180076b4d82ef20525a804ed70bdd08753"
+    },
+    {
+      "path": "SDPTool/governancecontroller/README.md",
+      "sha256": "0632746880fa4b7b21df36d6c63a23e293abe16338b922e269311d4739d02836"
+    },
+    {
+      "path": "SDPTool/governancecontroller/cli_test.go",
+      "sha256": "f19b1cfccc3dc95c87fd8452116513af92d9658d190c1761ebfda3fe809902df"
+    },
+    {
+      "path": "SDPTool/governancecontroller/controller.go",
+      "sha256": "ea44e20032940a953691b01deaaec703b040b0fd23d3424702c23186a67007d2"
+    },
+    {
+      "path": "SDPTool/governancehost/README.md",
+      "sha256": "698722cdf1ad5d1c3aed3061f5daaed85fdbd46b848bb3172e861cf6b9f54688"
+    },
+    {
+      "path": "SDPTool/governancehost/client.go",
+      "sha256": "a944b40bf9ff99f04aa78ebad102a9759f70978800bb0c4bf2bc25f32433193b"
+    },
+    {
+      "path": "SDPTool/governancehost/skills.go",
+      "sha256": "8c00a224c93f24a0a244d6b781a649cedff409fa38dd7f9bc979bf5147dfb05c"
+    },
+    {
+      "path": "SDPTool/governancehost/skills_test.go",
+      "sha256": "b5440c237f6b192a7bac950a58cf1b2c6409b684d6f8e9f3d4ff95c85214cc57"
+    },
+    {
+      "path": "SDPTool/governancehost/work.go",
+      "sha256": "e049156288719f1ba918f0ebaff0dc3c9bec799c505a0dec075fe9dc9c20d987"
+    },
+    {
+      "path": "SDPTool/governancehost/work_test.go",
+      "sha256": "aa9c7f88442cc08707d1c46d90701ed66e30d90cb7ef2607d452f9a1f03e1d09"
+    }
+  ],
+  "fileSetDigest": "fbb1c76d25495d2ae6ed86f1f5a67362cbb27dc85e3573599d6acb04e248c377",
+  "fileSetDigestFormat": "SHA-256 of compact sorted-key JSON files array",
+  "environment": {
+    "go": "go1.27.1 linux/amd64",
+    "host": "codex-cli 0.161.0",
+    "authentication": "existing managed ChatGPT account",
+    "nativeDelegation": false,
+    "independentReview": false
+  },
+  "liveBinaryHashes": "b39f779184268c9c7ce2ae1fe2ac0130980ed8ba2633952f86f7e19c9b0c3247  /tmp/sdp-pgi3-c5/bin/sdp-controller\n7df234bfaefdf3fe9d932e0827f519038ce33983e1d608c049062ae89e197ebd  /tmp/sdp-pgi3-c5/bin/sdp-mcp\n9fcabe495230ba89036b97525e31e8e95e0741ef6ada5ee5449a1bed8c5b3f07  /tmp/sdp-pgi3-c5/bin/sdptool\n",
+  "finalBinaryHashes": {
+    "sdp-controller": "17f46be6229063175f241ddd8f2f8ea06a453e53ae12d52c21cd0bbaaf5e7f12",
+    "sdp-mcp": "048cdbd643b66458e8cd054a3f867b703593079634dee0456da2975f6e5a5eaa",
+    "sdptool": "3f1cf35c2cfa747e5db6958a6ecdf49fba2408f97e156a4eca59db729b7f929b"
+  },
+  "candidateBoundary": "Trial4 used final runtime Go sources before a schema-only reference correction. The embedded schema changes binary identity. Captured data passes the corrected schema; the rebuilt offline provenance view equals the live view and affected race/compiled CLI tests pass. No actual model run of the final rebuilt binary is claimed.",
+  "initialFailures": [
+    {
+      "trial": "trial1",
+      "modelSubmitted": false,
+      "cause": "Fixture requested dot-prefixed .agents exclusion, refused by existing assignment path contract; no run was created. Later fixtures preserve discovery symlinks explicitly and retain a two-Go-file writable boundary. Product assignment path contract unchanged.",
+      "driverFailure": "Traceback (most recent call last):\n  File \"/tmp/sdp-pgi3-c5/live.py\", line 4, in <module>\n    run=json.loads((trial/'run.json').read_text());rid=run['run']['id'];op=str(uuid.uuid4())\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib64/python3.12/pathlib.py\", line 1027, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib64/python3.12/pathlib.py\", line 1013, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/tmp/sdp-pgi3-c5/trial1/run.json'\n"
+    }
+  ],
+  "trials": [
+    {
+      "trial": "trial4",
+      "finalStatus": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "read",
+        "projectRef": "pgi3-live",
+        "checkoutId": "67b31fc3-0b00-42d8-a85d-715721cd9fb6",
+        "operationId": "",
+        "run": {
+          "inputs": [
+            {
+              "contentOmitted": true,
+              "id": "f274dc5b-12f6-49ff-b6b0-96c4dbd9908f",
+              "kind": "launch",
+              "text": "",
+              "payload": "",
+              "attemptId": "dfa7f6d0-6bab-4222-ab06-1ad0e8b5013f",
+              "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+              "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+              "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+              "state": "acknowledged",
+              "receivedAt": "2026-10-09T02:25:23.247087396Z"
+            },
+            {
+              "contentOmitted": true,
+              "id": "be9325fa-6ced-44b5-b4b5-8c7f6a731a84",
+              "kind": "approval",
+              "text": "",
+              "payload": "",
+              "attemptId": "dfa7f6d0-6bab-4222-ab06-1ad0e8b5013f",
+              "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+              "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+              "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+              "state": "acknowledged",
+              "receivedAt": "2026-10-09T02:26:25.402692736Z"
+            }
+          ],
+          "attempts": [
+            {
+              "agentEpoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+              "lastObservedAt": "2026-10-09T02:26:42.817670414Z",
+              "eventCount": 20,
+              "id": "dfa7f6d0-6bab-4222-ab06-1ad0e8b5013f",
+              "hostVersion": "0.161.0",
+              "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+              "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+              "inputRevision": "6ab670ed1619bf3c4b1d3c49046a6552790f8b536e73cecaa8586238d82b0d37",
+              "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+              "status": "completed",
+              "gap": false,
+              "events": []
+            }
+          ],
+          "id": "3c87d19c-fc5e-426b-a4b3-ff8aa19c7667",
+          "revision": 31,
+          "requestId": "298ff958-6a9a-4e33-b7da-b95ddaa241a7",
+          "state": "verifying",
+          "step": "implement",
+          "inputRevision": "6ab670ed1619bf3c4b1d3c49046a6552790f8b536e73cecaa8586238d82b0d37",
+          "selection": {
+            "card": "SDP/KanBan/active/card.md",
+            "plan": "SDP/Maintenance/Plan.md",
+            "session": "SDP/Sessions/session.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests",
+            "writablePaths": [
+              "normalize.go",
+              "normalize_test.go"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "Skills",
+              "AGENTS.md",
+              "go.mod",
+              "unrelated.txt"
+            ]
+          },
+          "routine": {
+            "id": "maintenance",
+            "version": "0.1",
+            "steps": [
+              "implement",
+              "verify",
+              "review",
+              "record"
+            ],
+            "completion": "candidate evidence, applicable independent review and checked publication required"
+          },
+          "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+          "reason": "Unicode normalization verified in PGI3-C5 approval trial."
+        },
+        "coverage": "known"
+      },
+      "provenance": {
+        "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+        "hostVersion": "0.161.0",
+        "schema": "sdp-project-governance/0.1",
+        "operation": "provenance",
+        "runId": "3c87d19c-fc5e-426b-a4b3-ff8aa19c7667",
+        "attemptId": "dfa7f6d0-6bab-4222-ab06-1ad0e8b5013f",
+        "captureEpoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+        "currentEpoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+        "receivedAt": "2026-10-09T02:25:24.220656628Z",
+        "status": "observed",
+        "context": {
+          "assignedRole": "Master",
+          "roleBasis": "controller-launch",
+          "inputRevision": "6ab670ed1619bf3c4b1d3c49046a6552790f8b536e73cecaa8586238d82b0d37",
+          "sources": [
+            {
+              "path": "AGENTS.md",
+              "sha256": "08215fd6800033dc25c64adfc98a15513934a606620a6bf131df0419b30924db"
+            },
+            {
+              "path": "SDP/KanBan/active/card.md",
+              "sha256": "68dfb40e92a4562d8797727ca8398cf2132cce31cf7ee395ab0ebb844caf8072"
+            },
+            {
+              "path": "SDP/Maintenance/Plan.md",
+              "sha256": "ece9873bd0c32d327954ba4c7d82cd5c00d6c6e5c53130d48d0ca61b88bf0b51"
+            },
+            {
+              "path": "SDP/ProjectManagement/Ledger.ndjson",
+              "sha256": "23273b4c57db04b637df7162d6706281d3d62a02a401ffe748f472c5e9f67541"
+            },
+            {
+              "path": "SDP/SDP-project.manifest.yaml",
+              "sha256": "79bc6ab712a7ebce35a8bc92cb9517a1ec7e7df1c94bde0557e80449add64023"
+            },
+            {
+              "path": "SDP/Sessions/session.md",
+              "sha256": "7831e5b1a79e20fe5acec68fa28349ebfa874cfb597c2b8498dee07eb93a00b6"
+            },
+            {
+              "path": "SDP/authority.md",
+              "sha256": "6084b2c04c0d01de5dfb058ddf8e3db74c6f8f2ae8e8ebc56bde594b6a8f3503"
+            }
+          ],
+          "host": {
+            "status": "observed",
+            "sessionId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+            "parentThreadId": "",
+            "nativeRole": "",
+            "source": "\"vscode\"",
+            "instructionStatus": "observed",
+            "instructionSources": [
+              "/home/warloc/.codex/AGENTS.md",
+              "/tmp/sdp-pgi3-c5/trial4/project/AGENTS.md"
+            ]
+          },
+          "skills": {
+            "status": "observed",
+            "useEvidence": "not-observed",
+            "externalCount": 60,
+            "errorCount": 0,
+            "project": [
+              {
+                "name": "sdp-architect",
+                "path": "Skills/sdp-architect/SKILL.md",
+                "enabled": true,
+                "digest": "f6934bc63ccf9380f284c2377a835b7b14b175a9098e374a27541aed031909a1"
+              },
+              {
+                "name": "sdp-auditor",
+                "path": "Skills/sdp-auditor/SKILL.md",
+                "enabled": true,
+                "digest": "5e860229491391777987db3a1704d19c7c6fcb510a7e11a13187b76a1d8ed88c"
+              },
+              {
+                "name": "sdp-change-analysis",
+                "path": "Skills/sdp-change-analysis/SKILL.md",
+                "enabled": true,
+                "digest": "38c28a72835868399090d2581555fdb07114b07afade1666f1b55744a165d26a"
+              },
+              {
+                "name": "sdp-master",
+                "path": "Skills/sdp-master/SKILL.md",
+                "enabled": true,
+                "digest": "d0426f50b1d618b34f737cbefefd0bdeb91c60862cbce78cfaf982aaedfc48d7"
+              },
+              {
+                "name": "sdp-planning",
+                "path": "Skills/sdp-planning/SKILL.md",
+                "enabled": true,
+                "digest": "c2c9d91876ccdbf7f17694b23a301023c40a82b67e3fb80d4392acd683d9de9f"
+              },
+              {
+                "name": "sdp-release",
+                "path": "Skills/sdp-release/SKILL.md",
+                "enabled": true,
+                "digest": "32d5fdf28b6e12bf37d09732dc55e97447b7c5a3baf0a93a09846893e7bce6dc"
+              },
+              {
+                "name": "sdp-reviewer",
+                "path": "Skills/sdp-reviewer/SKILL.md",
+                "enabled": true,
+                "digest": "9a8535fe9bfd874c0cbd9f37d38ec0eb79e13f73a49a68898b28ad87773dd33d"
+              },
+              {
+                "name": "sdp-steering",
+                "path": "Skills/sdp-steering/SKILL.md",
+                "enabled": true,
+                "digest": "75e99700b596a40bc0062c6ba825e1e4848616404104dcd03d4dd21c16e9d759"
+              },
+              {
+                "name": "sdp-traceability",
+                "path": "Skills/sdp-traceability/SKILL.md",
+                "enabled": true,
+                "digest": "df43145056ae2880e957027f7a96d02634b10d15db408510e5f666052b9a8d7d"
+              },
+              {
+                "name": "sdp-verifier",
+                "path": "Skills/sdp-verifier/SKILL.md",
+                "enabled": true,
+                "digest": "48467899b466f2b795a8a2f5b5b935eb2cb1570ed39b4f2e6438997e85149cb8"
+              },
+              {
+                "name": "sdp-versioning",
+                "path": "Skills/sdp-versioning/SKILL.md",
+                "enabled": true,
+                "digest": "c70edeed949d54a630fbe5d8b6a2a8bb7f4e2724a21ff328f60399d44c146f05"
+              },
+              {
+                "name": "sdp-vertical-refactor",
+                "path": "Skills/sdp-vertical-refactor/SKILL.md",
+                "enabled": true,
+                "digest": "fd451120ce16b697eacdd241c14acf5cfe5c238f45e4255debc69a62a221d121"
+              },
+              {
+                "name": "sdp-worker",
+                "path": "Skills/sdp-worker/SKILL.md",
+                "enabled": true,
+                "digest": "fb7d83cfc7d4f26133eb0c2370dd6f8b30abfe32ce23e10107069b235ba70681"
+              },
+              {
+                "name": "sdp",
+                "path": "Skills/sdp/SKILL.md",
+                "enabled": true,
+                "digest": "8ccccd2f3993be6d9cd504194d3fe225ee3b8a7bf44c6b235d2189e3d00e8adb"
+              }
+            ]
+          }
+        }
+      },
+      "rebuiltOfflineProvenance": {
+        "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+        "hostVersion": "0.161.0",
+        "schema": "sdp-project-governance/0.1",
+        "operation": "provenance",
+        "runId": "3c87d19c-fc5e-426b-a4b3-ff8aa19c7667",
+        "attemptId": "dfa7f6d0-6bab-4222-ab06-1ad0e8b5013f",
+        "captureEpoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+        "currentEpoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+        "receivedAt": "2026-10-09T02:25:24.220656628Z",
+        "status": "observed",
+        "context": {
+          "assignedRole": "Master",
+          "roleBasis": "controller-launch",
+          "inputRevision": "6ab670ed1619bf3c4b1d3c49046a6552790f8b536e73cecaa8586238d82b0d37",
+          "sources": [
+            {
+              "path": "AGENTS.md",
+              "sha256": "08215fd6800033dc25c64adfc98a15513934a606620a6bf131df0419b30924db"
+            },
+            {
+              "path": "SDP/KanBan/active/card.md",
+              "sha256": "68dfb40e92a4562d8797727ca8398cf2132cce31cf7ee395ab0ebb844caf8072"
+            },
+            {
+              "path": "SDP/Maintenance/Plan.md",
+              "sha256": "ece9873bd0c32d327954ba4c7d82cd5c00d6c6e5c53130d48d0ca61b88bf0b51"
+            },
+            {
+              "path": "SDP/ProjectManagement/Ledger.ndjson",
+              "sha256": "23273b4c57db04b637df7162d6706281d3d62a02a401ffe748f472c5e9f67541"
+            },
+            {
+              "path": "SDP/SDP-project.manifest.yaml",
+              "sha256": "79bc6ab712a7ebce35a8bc92cb9517a1ec7e7df1c94bde0557e80449add64023"
+            },
+            {
+              "path": "SDP/Sessions/session.md",
+              "sha256": "7831e5b1a79e20fe5acec68fa28349ebfa874cfb597c2b8498dee07eb93a00b6"
+            },
+            {
+              "path": "SDP/authority.md",
+              "sha256": "6084b2c04c0d01de5dfb058ddf8e3db74c6f8f2ae8e8ebc56bde594b6a8f3503"
+            }
+          ],
+          "host": {
+            "status": "observed",
+            "sessionId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+            "parentThreadId": "",
+            "nativeRole": "",
+            "source": "\"vscode\"",
+            "instructionStatus": "observed",
+            "instructionSources": [
+              "/home/warloc/.codex/AGENTS.md",
+              "/tmp/sdp-pgi3-c5/trial4/project/AGENTS.md"
+            ]
+          },
+          "skills": {
+            "status": "observed",
+            "useEvidence": "not-observed",
+            "externalCount": 60,
+            "errorCount": 0,
+            "project": [
+              {
+                "name": "sdp-architect",
+                "path": "Skills/sdp-architect/SKILL.md",
+                "enabled": true,
+                "digest": "f6934bc63ccf9380f284c2377a835b7b14b175a9098e374a27541aed031909a1"
+              },
+              {
+                "name": "sdp-auditor",
+                "path": "Skills/sdp-auditor/SKILL.md",
+                "enabled": true,
+                "digest": "5e860229491391777987db3a1704d19c7c6fcb510a7e11a13187b76a1d8ed88c"
+              },
+              {
+                "name": "sdp-change-analysis",
+                "path": "Skills/sdp-change-analysis/SKILL.md",
+                "enabled": true,
+                "digest": "38c28a72835868399090d2581555fdb07114b07afade1666f1b55744a165d26a"
+              },
+              {
+                "name": "sdp-master",
+                "path": "Skills/sdp-master/SKILL.md",
+                "enabled": true,
+                "digest": "d0426f50b1d618b34f737cbefefd0bdeb91c60862cbce78cfaf982aaedfc48d7"
+              },
+              {
+                "name": "sdp-planning",
+                "path": "Skills/sdp-planning/SKILL.md",
+                "enabled": true,
+                "digest": "c2c9d91876ccdbf7f17694b23a301023c40a82b67e3fb80d4392acd683d9de9f"
+              },
+              {
+                "name": "sdp-release",
+                "path": "Skills/sdp-release/SKILL.md",
+                "enabled": true,
+                "digest": "32d5fdf28b6e12bf37d09732dc55e97447b7c5a3baf0a93a09846893e7bce6dc"
+              },
+              {
+                "name": "sdp-reviewer",
+                "path": "Skills/sdp-reviewer/SKILL.md",
+                "enabled": true,
+                "digest": "9a8535fe9bfd874c0cbd9f37d38ec0eb79e13f73a49a68898b28ad87773dd33d"
+              },
+              {
+                "name": "sdp-steering",
+                "path": "Skills/sdp-steering/SKILL.md",
+                "enabled": true,
+                "digest": "75e99700b596a40bc0062c6ba825e1e4848616404104dcd03d4dd21c16e9d759"
+              },
+              {
+                "name": "sdp-traceability",
+                "path": "Skills/sdp-traceability/SKILL.md",
+                "enabled": true,
+                "digest": "df43145056ae2880e957027f7a96d02634b10d15db408510e5f666052b9a8d7d"
+              },
+              {
+                "name": "sdp-verifier",
+                "path": "Skills/sdp-verifier/SKILL.md",
+                "enabled": true,
+                "digest": "48467899b466f2b795a8a2f5b5b935eb2cb1570ed39b4f2e6438997e85149cb8"
+              },
+              {
+                "name": "sdp-versioning",
+                "path": "Skills/sdp-versioning/SKILL.md",
+                "enabled": true,
+                "digest": "c70edeed949d54a630fbe5d8b6a2a8bb7f4e2724a21ff328f60399d44c146f05"
+              },
+              {
+                "name": "sdp-vertical-refactor",
+                "path": "Skills/sdp-vertical-refactor/SKILL.md",
+                "enabled": true,
+                "digest": "fd451120ce16b697eacdd241c14acf5cfe5c238f45e4255debc69a62a221d121"
+              },
+              {
+                "name": "sdp-worker",
+                "path": "Skills/sdp-worker/SKILL.md",
+                "enabled": true,
+                "digest": "fb7d83cfc7d4f26133eb0c2370dd6f8b30abfe32ce23e10107069b235ba70681"
+              },
+              {
+                "name": "sdp",
+                "path": "Skills/sdp/SKILL.md",
+                "enabled": true,
+                "digest": "8ccccd2f3993be6d9cd504194d3fe225ee3b8a7bf44c6b235d2189e3d00e8adb"
+              }
+            ]
+          }
+        }
+      },
+      "driverDecision": {
+        "action": "approval",
+        "approval": {
+          "requestId": "0",
+          "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+          "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+          "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+          "decision": "accept"
+        }
+      },
+      "events": [
+        {
+          "schema": "sdp-project-governance/0.1",
+          "operation": "input.ack",
+          "projectRef": "pgi3-live",
+          "checkoutId": "67b31fc3-0b00-42d8-a85d-715721cd9fb6",
+          "operationId": "875a7cac-c4c6-4943-8560-b8528526756b",
+          "run": {
+            "inputs": [
+              {
+                "contentOmitted": true,
+                "id": "f274dc5b-12f6-49ff-b6b0-96c4dbd9908f",
+                "kind": "launch",
+                "text": "",
+                "payload": "",
+                "attemptId": "dfa7f6d0-6bab-4222-ab06-1ad0e8b5013f",
+                "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+                "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+                "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+                "state": "acknowledged",
+                "receivedAt": "2026-10-09T02:25:23.247087396Z"
+              }
+            ],
+            "attempts": [
+              {
+                "agentEpoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+                "lastObservedAt": "2026-10-09T02:25:24.363506338Z",
+                "eventCount": 3,
+                "id": "dfa7f6d0-6bab-4222-ab06-1ad0e8b5013f",
+                "hostVersion": "0.161.0",
+                "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+                "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+                "inputRevision": "6ab670ed1619bf3c4b1d3c49046a6552790f8b536e73cecaa8586238d82b0d37",
+                "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+                "status": "running",
+                "gap": false,
+                "events": []
+              }
+            ],
+            "id": "3c87d19c-fc5e-426b-a4b3-ff8aa19c7667",
+            "revision": 8,
+            "requestId": "298ff958-6a9a-4e33-b7da-b95ddaa241a7",
+            "state": "running",
+            "step": "implement",
+            "inputRevision": "6ab670ed1619bf3c4b1d3c49046a6552790f8b536e73cecaa8586238d82b0d37",
+            "selection": {
+              "card": "SDP/KanBan/active/card.md",
+              "plan": "SDP/Maintenance/Plan.md",
+              "session": "SDP/Sessions/session.md",
+              "authority": "SDP/authority.md",
+              "step": "S1"
+            },
+            "assignment": {
+              "outcome": "Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests",
+              "writablePaths": [
+                "normalize.go",
+                "normalize_test.go"
+              ],
+              "excludedPaths": [
+                "SDP",
+                "Skills",
+                "AGENTS.md",
+                "go.mod",
+                "unrelated.txt"
+              ]
+            },
+            "routine": {
+              "id": "maintenance",
+              "version": "0.1",
+              "steps": [
+                "implement",
+                "verify",
+                "review",
+                "record"
+              ],
+              "completion": "candidate evidence, applicable independent review and checked publication required"
+            },
+            "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+            "reason": "owner selected fresh bounded Master attempt"
+          },
+          "coverage": "known"
+        },
+        {
+          "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+          "observation": {
+            "kind": "turn.started",
+            "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+            "itemId": "",
+            "phase": "",
+            "text": "",
+            "status": "running",
+            "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+            "receivedAt": "2026-10-09T02:25:24.842801289Z"
+          }
+        },
+        {
+          "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+          "observation": {
+            "clientId": "f274dc5b-12f6-49ff-b6b0-96c4dbd9908f",
+            "kind": "userMessage",
+            "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+            "itemId": "01a11e7a-d349-78b1-b538-a7584c20e5a5",
+            "phase": "",
+            "text": "{\"approvalMode\":\"ask\",\"assignment\":{\"outcome\":\"Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests\",\"writablePaths\":[\"normalize.go\",\"normalize_test.go\"],\"excludedPaths\":[\"SDP\",\"Skills\",\"AGENTS.md\",\"go.mod\",\"unrelated.txt\"]},\"context\":{\"schema\":\"sdp-project-governance/0.1\",\"operation\":\"context\",\"projectRef\":\"pgi3-live\",\"root\":\"/tmp/sdp-pgi3-c5/trial4/project\",\"checkoutId\":\"67b31fc3-0b00-42d8-a85d-715721cd9fb6\",\"revision\":\"6ab670ed1619bf3c4b1d3c49046a6552790f8b536e73cecaa8586238d82b0d37\",\"selection\":{\"card\":\"SDP/KanBan/active/card.md\",\"plan\":\"SDP/Maintenance/Plan.md\",\"session\":\"SDP/Sessions/session.md\",\"authority\":\"SDP/authority.md\",\"step\":\"S1\"},\"sources\":[{\"path\":\"AGENTS.md\",\"sha256\":\"08215fd6800033dc25c64adfc98a15513934a606620a6bf131df0419b30924db\"},{\"path\":\"SDP/KanBan/active/card.md\",\"sha256\":\"68dfb40e92a4562d8797727ca8398cf2132cce31cf7ee395ab0ebb844caf8072\"},{\"path\":\"SDP/Maintenance/Plan.md\",\"sha256\":\"ece9873bd0c32d327954ba4c7d82cd5c00d6c6e5c53130d48d0ca61b88bf0b51\"},{\"path\":\"SDP/ProjectManagement/Ledger.ndjson\",\"sha256\":\"23273b4c57db04b637df7162d6706281d3d62a02a401ffe748f472c5e9f67541\"},{\"path\":\"SDP/SDP-project.manifest.yaml\",\"sha256\":\"79bc6ab712a7ebce35a8bc92cb9517a1ec7e7df1c94bde0557e80449add64023\"},{\"path\":\"SDP/Sessions/session.md\",\"sha256\":\"7831e5b1a79e20fe5acec68fa28349ebfa874cfb597c2b8498dee07eb93a00b6\"},{\"path\":\"SDP/authority.md\",\"sha256\":\"6084b2c04c0d01de5dfb058ddf8e3db74c6f8f2ae8e8ebc56bde594b6a8f3503\"}],\"coverage\":\"known\",\"conditions\":[],\"cardId\":\"KB-PILOT-001\",\"planId\":\"MAINT-PILOT-0001\",\"sessionId\":\"SESSION-PILOT-0001\"},\"instructions\":\"You are the fresh Master for one explicitly authorized SDP Maintenance assignment. Read the selected Session, authority, plan, card, AGENTS and relevant SDP skills before acting. Preserve writable/excluded boundaries and unrelated work. Native delegation is not granted by this launch; do not spawn children. Report candidate, tests, remaining gaps and observed outcome. Agent claims do not grant owner approval or independent review. Do not publish canonical management/Session records or mark the work complete; evidence publication is a later controller capability. Use assignment-bound MCP reads and report/fail/scope-change only.\",\"ownerInput\":\"Fix the covered NormalizeLabel defect and its tests. Preserve interior whitespace and case. First read Skills/sdp/SKILL.md and Skills/sdp-master/SKILL.md, follow applicable routing without delegation, read governing records and inspect the current code. In your return, name the skill files you actually read as your own reported use; do not claim independent proof of activation or compliance. Use assignment-bound MCP run_read to inspect your run. Work only within the stored assignment. Run go test ./... and return exact observed results and any gaps. Do not spawn agents, publish records, commit or mark the work completed.\\n\\nAfter testing, call run_read immediately before one run_transition action report. Use the exact current checkoutId, projectRef, inputRevision, runId and expectedRevision from run_read. The operationId for this test report is 9f543ca7-a967-46e4-8d06-282b71d4a800. Reason: Unicode normalization verified in PGI3-C5 approval trial. Wait for the actual tool outcome, do not bypass any refusal, and do not retry a rejected report. This is a test-driver scenario under the authorized PGI3 verification, not owner acceptance of the completed work.\\n\",\"runId\":\"3c87d19c-fc5e-426b-a4b3-ff8aa19c7667\",\"sandbox\":\"workspace-write\"}",
+            "status": "",
+            "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+            "receivedAt": "2026-10-09T02:25:28.414466131Z"
+          }
+        },
+        {
+          "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+          "observation": {
+            "kind": "agentMessage",
+            "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+            "itemId": "msg_0003b635c9680d4e016ac8509a0af48191a0d4af77a738c20b",
+            "phase": "commentary",
+            "text": "I\u2019ll read the SDP and Master skills, governing records, and assignment-bound run state, then fix the whitespace handling and run the Go tests within the two-file scope.\n\n",
+            "status": "",
+            "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+            "receivedAt": "2026-10-09T02:25:31.445231749Z"
+          }
+        },
+        {
+          "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+          "observation": {
+            "kind": "tool.completed",
+            "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+            "itemId": "exec-9f551f9a-6881-4864-a507-930f452a28b1",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+            "receivedAt": "2026-10-09T02:25:33.048786922Z"
+          }
+        },
+        {
+          "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+          "observation": {
+            "kind": "tool.completed",
+            "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+            "itemId": "exec-6261c1f3-59d8-4734-9a00-ac6fbdcd5ed1",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+            "receivedAt": "2026-10-09T02:25:41.73762174Z"
+          }
+        },
+        {
+          "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+          "observation": {
+            "kind": "tool.completed",
+            "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+            "itemId": "exec-42dba39b-60bb-44f4-88a6-0a60afd252f4",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+            "receivedAt": "2026-10-09T02:25:41.901154638Z"
+          }
+        },
+        {
+          "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+          "observation": {
+            "kind": "tool.completed",
+            "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+            "itemId": "exec-a6bd84e8-efa2-4114-962a-bb5d8774318c",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+            "receivedAt": "2026-10-09T02:25:41.962800405Z"
+          }
+        },
+        {
+          "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+          "observation": {
+            "kind": "agentMessage",
+            "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+            "itemId": "msg_0003b635c9680d4e016ac850a867808191807fe72902a119ee",
+            "phase": "commentary",
+            "text": "The plan requires trimming Unicode whitespace at the boundaries while preserving interior whitespace and case. The current code trims only ASCII spaces. I\u2019m using the Worker and Verifier skills for the direct implementation and testing; this remains same-context verification. There is no Git repository here, so I\u2019ll identify the candidate with file hashes.\n\n",
+            "status": "",
+            "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+            "receivedAt": "2026-10-09T02:25:45.764560479Z"
+          }
+        },
+        {
+          "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+          "observation": {
+            "kind": "tool.completed",
+            "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+            "itemId": "exec-be672ccd-3f3d-4dc0-b05f-99451befb06e",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+            "receivedAt": "2026-10-09T02:25:49.022597134Z"
+          }
+        },
+        {
+          "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+          "observation": {
+            "kind": "tool.completed",
+            "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+            "itemId": "exec-c7d94ff2-f895-47fb-895d-fad239bb3d1e",
+            "phase": "",
+            "text": "",
+            "status": "failed",
+            "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+            "receivedAt": "2026-10-09T02:26:01.396792972Z"
+          }
+        },
+        {
+          "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+          "observation": {
+            "kind": "tool.completed",
+            "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+            "itemId": "exec-5f5688e7-c454-436f-9b9a-deef852d8be1",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+            "receivedAt": "2026-10-09T02:26:11.384731047Z"
+          }
+        },
+        {
+          "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+          "observation": {
+            "kind": "agentMessage",
+            "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+            "itemId": "msg_0003b635c9680d4e016ac850c574a88191af637f2dcf4eaead",
+            "phase": "commentary",
+            "text": "The new tests reproduced six failures before the fix. With `strings.TrimSpace`, `go test ./...` now passes: `ok pgi3pilot 0.013s`. Only the two authorized files changed; all other files remain byte-identical. I\u2019ll refresh the run state and make the single requested report attempt.\n\n",
+            "status": "",
+            "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+            "receivedAt": "2026-10-09T02:26:15.392583236Z"
+          }
+        },
+        {
+          "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+          "observation": {
+            "kind": "tool.completed",
+            "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+            "itemId": "exec-8c17625a-c1d3-45e5-8848-27e89f0604d8",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+            "receivedAt": "2026-10-09T02:26:16.451304052Z"
+          }
+        },
+        {
+          "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+          "observation": {
+            "kind": "approval.requested",
+            "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+            "itemId": "0",
+            "phase": "",
+            "text": "{\"requestId\":\"0\",\"epoch\":\"1e5f7620-84d0-4595-bc9f-fd0b1efde193\",\"threadId\":\"01a11e7a-bf72-77a0-8f28-418540be2079\",\"turnId\":\"01a11e7a-c35f-76a3-ab40-73c30ded53bf\",\"message\":\"Allow the sdp_governance MCP server to run tool \\\"run_transition\\\"?\",\"request\":{\"schema\":\"sdp-project-governance/0.1\",\"projectRef\":\"pgi3-live\",\"checkoutId\":\"67b31fc3-0b00-42d8-a85d-715721cd9fb6\",\"operationId\":\"9f543ca7-a967-46e4-8d06-282b71d4a800\",\"runId\":\"3c87d19c-fc5e-426b-a4b3-ff8aa19c7667\",\"expectedRevision\":20,\"inputRevision\":\"6ab670ed1619bf3c4b1d3c49046a6552790f8b536e73cecaa8586238d82b0d37\",\"action\":\"report\",\"reason\":\"Unicode normalization verified in PGI3-C5 approval trial.\"}}",
+            "status": "",
+            "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+            "receivedAt": "2026-10-09T02:26:25.256366007Z"
+          }
+        },
+        {
+          "approval": {
+            "requestId": "0",
+            "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+            "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+            "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+            "message": "Allow the sdp_governance MCP server to run tool \"run_transition\"?",
+            "request": {
+              "schema": "sdp-project-governance/0.1",
+              "projectRef": "pgi3-live",
+              "checkoutId": "67b31fc3-0b00-42d8-a85d-715721cd9fb6",
+              "operationId": "9f543ca7-a967-46e4-8d06-282b71d4a800",
+              "runId": "3c87d19c-fc5e-426b-a4b3-ff8aa19c7667",
+              "expectedRevision": 20,
+              "inputRevision": "6ab670ed1619bf3c4b1d3c49046a6552790f8b536e73cecaa8586238d82b0d37",
+              "action": "report",
+              "reason": "Unicode normalization verified in PGI3-C5 approval trial."
+            }
+          }
+        },
+        {
+          "schema": "sdp-project-governance/0.1",
+          "operation": "input.uncertain",
+          "projectRef": "pgi3-live",
+          "checkoutId": "67b31fc3-0b00-42d8-a85d-715721cd9fb6",
+          "operationId": "685e09ed-9ca7-40a2-be6e-fd0552587d1c",
+          "run": {
+            "inputs": [
+              {
+                "contentOmitted": true,
+                "id": "f274dc5b-12f6-49ff-b6b0-96c4dbd9908f",
+                "kind": "launch",
+                "text": "",
+                "payload": "",
+                "attemptId": "dfa7f6d0-6bab-4222-ab06-1ad0e8b5013f",
+                "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+                "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+                "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+                "state": "acknowledged",
+                "receivedAt": "2026-10-09T02:25:23.247087396Z"
+              },
+              {
+                "contentOmitted": true,
+                "id": "be9325fa-6ced-44b5-b4b5-8c7f6a731a84",
+                "kind": "approval",
+                "text": "",
+                "payload": "",
+                "attemptId": "dfa7f6d0-6bab-4222-ab06-1ad0e8b5013f",
+                "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+                "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+                "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+                "state": "uncertain",
+                "receivedAt": "2026-10-09T02:26:25.402692736Z"
+              }
+            ],
+            "attempts": [
+              {
+                "agentEpoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+                "lastObservedAt": "2026-10-09T02:26:25.256366007Z",
+                "eventCount": 16,
+                "id": "dfa7f6d0-6bab-4222-ab06-1ad0e8b5013f",
+                "hostVersion": "0.161.0",
+                "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+                "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+                "inputRevision": "6ab670ed1619bf3c4b1d3c49046a6552790f8b536e73cecaa8586238d82b0d37",
+                "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+                "status": "running",
+                "gap": false,
+                "events": []
+              }
+            ],
+            "id": "3c87d19c-fc5e-426b-a4b3-ff8aa19c7667",
+            "revision": 26,
+            "requestId": "298ff958-6a9a-4e33-b7da-b95ddaa241a7",
+            "state": "verifying",
+            "step": "implement",
+            "inputRevision": "6ab670ed1619bf3c4b1d3c49046a6552790f8b536e73cecaa8586238d82b0d37",
+            "selection": {
+              "card": "SDP/KanBan/active/card.md",
+              "plan": "SDP/Maintenance/Plan.md",
+              "session": "SDP/Sessions/session.md",
+              "authority": "SDP/authority.md",
+              "step": "S1"
+            },
+            "assignment": {
+              "outcome": "Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests",
+              "writablePaths": [
+                "normalize.go",
+                "normalize_test.go"
+              ],
+              "excludedPaths": [
+                "SDP",
+                "Skills",
+                "AGENTS.md",
+                "go.mod",
+                "unrelated.txt"
+              ]
+            },
+            "routine": {
+              "id": "maintenance",
+              "version": "0.1",
+              "steps": [
+                "implement",
+                "verify",
+                "review",
+                "record"
+              ],
+              "completion": "candidate evidence, applicable independent review and checked publication required"
+            },
+            "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+            "reason": "Unicode normalization verified in PGI3-C5 approval trial."
+          },
+          "coverage": "known"
+        },
+        {
+          "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+          "observation": {
+            "kind": "approval.resolved",
+            "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+            "itemId": "0",
+            "phase": "",
+            "text": "",
+            "status": "",
+            "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+            "receivedAt": "2026-10-09T02:26:25.524551889Z"
+          }
+        },
+        {
+          "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+          "observation": {
+            "kind": "tool.completed",
+            "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+            "itemId": "exec-03d41c9a-99fa-4836-b6b6-dd00a5a0243f",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+            "receivedAt": "2026-10-09T02:26:25.629983478Z"
+          }
+        },
+        {
+          "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+          "observation": {
+            "kind": "agentMessage",
+            "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+            "itemId": "msg_0003b635c9680d4e016ac850da62e481919c2bed5b203b9b92",
+            "phase": "final_answer",
+            "text": "Implemented `strings.TrimSpace` with 10 test cases covering Unicode boundaries, preserved interior whitespace and case, empty input, and non-whitespace characters.\n\nOn Go 1.27.1 linux/amd64, six regression cases failed before the fix. Final `go test ./...` passed:\n\n```text\nok  \tpgi3pilot\t0.013s\n```\n\nCandidate SHA-256 identities (no Git repository available):\n\n- [normalize.go](/tmp/sdp-pgi3-c5/trial4/project/normalize.go): `6cd9379fdc90e80e1d45f871ca0cb7a4612fc7172fee86a4ebfb38b245b5b1a0`\n- [normalize_test.go](/tmp/sdp-pgi3-c5/trial4/project/normalize_test.go): `845c6345a0540a0a68f2d1c14dd988ef9ce7ff1c9a8667c4fb030815f842f204`\n\nAll other project files remained byte-identical.\n\nMy reported skill use: I read [SDP](/tmp/sdp-pgi3-c5/trial4/project/Skills/sdp/SKILL.md), [Master](/tmp/sdp-pgi3-c5/trial4/project/Skills/sdp-master/SKILL.md), [Worker](/tmp/sdp-pgi3-c5/trial4/project/Skills/sdp-worker/SKILL.md), [Verifier](/tmp/sdp-pgi3-c5/trial4/project/Skills/sdp-verifier/SKILL.md), and the shared document workflow. This is self-reported use, not independent compliance evidence.\n\nThe single report transition succeeded after the immediate run refresh: state `verifying`, revision `25`. Independent review, owner acceptance, and controller evidence publication remain outstanding. No delegation, commit, canonical record publication, or completion marking occurred.",
+            "status": "",
+            "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+            "receivedAt": "2026-10-09T02:26:42.716026893Z"
+          }
+        },
+        {
+          "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+          "observation": {
+            "kind": "turn.completed",
+            "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+            "itemId": "",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+            "receivedAt": "2026-10-09T02:26:42.817670414Z"
+          }
+        },
+        {
+          "schema": "sdp-project-governance/0.1",
+          "operation": "host.observe",
+          "projectRef": "pgi3-live",
+          "checkoutId": "67b31fc3-0b00-42d8-a85d-715721cd9fb6",
+          "operationId": "153299b9-c41c-4773-bd02-a3190f49b87a",
+          "run": {
+            "inputs": [
+              {
+                "contentOmitted": true,
+                "id": "f274dc5b-12f6-49ff-b6b0-96c4dbd9908f",
+                "kind": "launch",
+                "text": "",
+                "payload": "",
+                "attemptId": "dfa7f6d0-6bab-4222-ab06-1ad0e8b5013f",
+                "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+                "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+                "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+                "state": "acknowledged",
+                "receivedAt": "2026-10-09T02:25:23.247087396Z"
+              },
+              {
+                "contentOmitted": true,
+                "id": "be9325fa-6ced-44b5-b4b5-8c7f6a731a84",
+                "kind": "approval",
+                "text": "",
+                "payload": "",
+                "attemptId": "dfa7f6d0-6bab-4222-ab06-1ad0e8b5013f",
+                "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+                "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+                "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+                "state": "acknowledged",
+                "receivedAt": "2026-10-09T02:26:25.402692736Z"
+              }
+            ],
+            "attempts": [
+              {
+                "agentEpoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+                "lastObservedAt": "2026-10-09T02:26:42.817670414Z",
+                "eventCount": 20,
+                "id": "dfa7f6d0-6bab-4222-ab06-1ad0e8b5013f",
+                "hostVersion": "0.161.0",
+                "threadId": "01a11e7a-bf72-77a0-8f28-418540be2079",
+                "turnId": "01a11e7a-c35f-76a3-ab40-73c30ded53bf",
+                "inputRevision": "6ab670ed1619bf3c4b1d3c49046a6552790f8b536e73cecaa8586238d82b0d37",
+                "epoch": "1e5f7620-84d0-4595-bc9f-fd0b1efde193",
+                "status": "completed",
+                "gap": false,
+                "events": []
+              }
+            ],
+            "id": "3c87d19c-fc5e-426b-a4b3-ff8aa19c7667",
+            "revision": 31,
+            "requestId": "298ff958-6a9a-4e33-b7da-b95ddaa241a7",
+            "state": "verifying",
+            "step": "implement",
+            "inputRevision": "6ab670ed1619bf3c4b1d3c49046a6552790f8b536e73cecaa8586238d82b0d37",
+            "selection": {
+              "card": "SDP/KanBan/active/card.md",
+              "plan": "SDP/Maintenance/Plan.md",
+              "session": "SDP/Sessions/session.md",
+              "authority": "SDP/authority.md",
+              "step": "S1"
+            },
+            "assignment": {
+              "outcome": "Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests",
+              "writablePaths": [
+                "normalize.go",
+                "normalize_test.go"
+              ],
+              "excludedPaths": [
+                "SDP",
+                "Skills",
+                "AGENTS.md",
+                "go.mod",
+                "unrelated.txt"
+              ]
+            },
+            "routine": {
+              "id": "maintenance",
+              "version": "0.1",
+              "steps": [
+                "implement",
+                "verify",
+                "review",
+                "record"
+              ],
+              "completion": "candidate evidence, applicable independent review and checked publication required"
+            },
+            "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+            "reason": "Unicode normalization verified in PGI3-C5 approval trial."
+          },
+          "coverage": "known"
+        }
+      ],
+      "preimages": {
+        "AGENTS.md": "08215fd6800033dc25c64adfc98a15513934a606620a6bf131df0419b30924db",
+        "SDP/SDP-project.manifest.yaml": "79bc6ab712a7ebce35a8bc92cb9517a1ec7e7df1c94bde0557e80449add64023",
+        "SDP/KanBan/active/card.md": "68dfb40e92a4562d8797727ca8398cf2132cce31cf7ee395ab0ebb844caf8072",
+        "SDP/Maintenance/Plan.md": "ece9873bd0c32d327954ba4c7d82cd5c00d6c6e5c53130d48d0ca61b88bf0b51",
+        "SDP/Sessions/session.md": "7831e5b1a79e20fe5acec68fa28349ebfa874cfb597c2b8498dee07eb93a00b6",
+        "SDP/authority.md": "6084b2c04c0d01de5dfb058ddf8e3db74c6f8f2ae8e8ebc56bde594b6a8f3503",
+        "SDP/ProjectManagement/Ledger.ndjson": "23273b4c57db04b637df7162d6706281d3d62a02a401ffe748f472c5e9f67541",
+        "go.mod": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+        "normalize.go": "25a6c8c3d87a3054604a3b52561a0e6b266f9e0b7a3e85ea53405fdfc88e2827",
+        "normalize_test.go": "2c68aa7113a6d4bc83e932b1c0e94619b36c919bb42f40b2ef85af3fcd8a68e3",
+        "unrelated.txt": "543a1a908a7869f50819ce1c9b46282fc182ccb862cf6ae41e97b7bc99939a53",
+        "Skills/README.md": "701258cffc9cd6132b130cb6f1a14f955efd1e9cd58d69a79fe9aa0c853cb7e7",
+        "Skills/sdp-architect/SKILL.md": "f6934bc63ccf9380f284c2377a835b7b14b175a9098e374a27541aed031909a1",
+        "Skills/sdp-auditor/SKILL.md": "5e860229491391777987db3a1704d19c7c6fcb510a7e11a13187b76a1d8ed88c",
+        "Skills/sdp-change-analysis/SKILL.md": "38c28a72835868399090d2581555fdb07114b07afade1666f1b55744a165d26a",
+        "Skills/sdp-master/SKILL.md": "d0426f50b1d618b34f737cbefefd0bdeb91c60862cbce78cfaf982aaedfc48d7",
+        "Skills/sdp-planning/SKILL.md": "c2c9d91876ccdbf7f17694b23a301023c40a82b67e3fb80d4392acd683d9de9f",
+        "Skills/sdp-release/SKILL.md": "32d5fdf28b6e12bf37d09732dc55e97447b7c5a3baf0a93a09846893e7bce6dc",
+        "Skills/sdp-reviewer/SKILL.md": "9a8535fe9bfd874c0cbd9f37d38ec0eb79e13f73a49a68898b28ad87773dd33d",
+        "Skills/sdp-steering/SKILL.md": "75e99700b596a40bc0062c6ba825e1e4848616404104dcd03d4dd21c16e9d759",
+        "Skills/sdp-traceability/SKILL.md": "df43145056ae2880e957027f7a96d02634b10d15db408510e5f666052b9a8d7d",
+        "Skills/sdp-verifier/SKILL.md": "48467899b466f2b795a8a2f5b5b935eb2cb1570ed39b4f2e6438997e85149cb8",
+        "Skills/sdp-versioning/SKILL.md": "c70edeed949d54a630fbe5d8b6a2a8bb7f4e2724a21ff328f60399d44c146f05",
+        "Skills/sdp-vertical-refactor/SKILL.md": "fd451120ce16b697eacdd241c14acf5cfe5c238f45e4255debc69a62a221d121",
+        "Skills/sdp-worker/SKILL.md": "fb7d83cfc7d4f26133eb0c2370dd6f8b30abfe32ce23e10107069b235ba70681",
+        "Skills/sdp/SKILL.md": "8ccccd2f3993be6d9cd504194d3fe225ee3b8a7bf44c6b235d2189e3d00e8adb",
+        "Skills/sdp-planning/references/plan-template.md": "f945a53558af8766b3cade6d2929b5115117e594dd914bdab13f01d7473c1b56",
+        "Skills/sdp-planning/references/plans.md": "eea65cd7b2b5fceb123a41fef257d4670850112d31356bb3a61b0ce198b2ca73",
+        "Skills/sdp/references/document-workflow.md": "da391f3c3b11cf39c0e3f3626828298f3c2f18fbf8bc6ed32fbb8c5fe36edee3",
+        "Skills/sdp/references/source-map.md": "4e0ba5162dc636c259fbad99c3ddba64cee3ca9ae8c4aed3af4c232b8308201b"
+      },
+      "postimages": {
+        "AGENTS.md": "08215fd6800033dc25c64adfc98a15513934a606620a6bf131df0419b30924db",
+        "SDP/SDP-project.manifest.yaml": "79bc6ab712a7ebce35a8bc92cb9517a1ec7e7df1c94bde0557e80449add64023",
+        "SDP/KanBan/active/card.md": "68dfb40e92a4562d8797727ca8398cf2132cce31cf7ee395ab0ebb844caf8072",
+        "SDP/Maintenance/Plan.md": "ece9873bd0c32d327954ba4c7d82cd5c00d6c6e5c53130d48d0ca61b88bf0b51",
+        "SDP/Sessions/session.md": "7831e5b1a79e20fe5acec68fa28349ebfa874cfb597c2b8498dee07eb93a00b6",
+        "SDP/authority.md": "6084b2c04c0d01de5dfb058ddf8e3db74c6f8f2ae8e8ebc56bde594b6a8f3503",
+        "SDP/ProjectManagement/Ledger.ndjson": "23273b4c57db04b637df7162d6706281d3d62a02a401ffe748f472c5e9f67541",
+        "go.mod": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+        "normalize.go": "6cd9379fdc90e80e1d45f871ca0cb7a4612fc7172fee86a4ebfb38b245b5b1a0",
+        "normalize_test.go": "845c6345a0540a0a68f2d1c14dd988ef9ce7ff1c9a8667c4fb030815f842f204",
+        "unrelated.txt": "543a1a908a7869f50819ce1c9b46282fc182ccb862cf6ae41e97b7bc99939a53",
+        "Skills/README.md": "701258cffc9cd6132b130cb6f1a14f955efd1e9cd58d69a79fe9aa0c853cb7e7",
+        "Skills/sdp-architect/SKILL.md": "f6934bc63ccf9380f284c2377a835b7b14b175a9098e374a27541aed031909a1",
+        "Skills/sdp-auditor/SKILL.md": "5e860229491391777987db3a1704d19c7c6fcb510a7e11a13187b76a1d8ed88c",
+        "Skills/sdp-change-analysis/SKILL.md": "38c28a72835868399090d2581555fdb07114b07afade1666f1b55744a165d26a",
+        "Skills/sdp-master/SKILL.md": "d0426f50b1d618b34f737cbefefd0bdeb91c60862cbce78cfaf982aaedfc48d7",
+        "Skills/sdp-planning/SKILL.md": "c2c9d91876ccdbf7f17694b23a301023c40a82b67e3fb80d4392acd683d9de9f",
+        "Skills/sdp-release/SKILL.md": "32d5fdf28b6e12bf37d09732dc55e97447b7c5a3baf0a93a09846893e7bce6dc",
+        "Skills/sdp-reviewer/SKILL.md": "9a8535fe9bfd874c0cbd9f37d38ec0eb79e13f73a49a68898b28ad87773dd33d",
+        "Skills/sdp-steering/SKILL.md": "75e99700b596a40bc0062c6ba825e1e4848616404104dcd03d4dd21c16e9d759",
+        "Skills/sdp-traceability/SKILL.md": "df43145056ae2880e957027f7a96d02634b10d15db408510e5f666052b9a8d7d",
+        "Skills/sdp-verifier/SKILL.md": "48467899b466f2b795a8a2f5b5b935eb2cb1570ed39b4f2e6438997e85149cb8",
+        "Skills/sdp-versioning/SKILL.md": "c70edeed949d54a630fbe5d8b6a2a8bb7f4e2724a21ff328f60399d44c146f05",
+        "Skills/sdp-vertical-refactor/SKILL.md": "fd451120ce16b697eacdd241c14acf5cfe5c238f45e4255debc69a62a221d121",
+        "Skills/sdp-worker/SKILL.md": "fb7d83cfc7d4f26133eb0c2370dd6f8b30abfe32ce23e10107069b235ba70681",
+        "Skills/sdp/SKILL.md": "8ccccd2f3993be6d9cd504194d3fe225ee3b8a7bf44c6b235d2189e3d00e8adb",
+        "Skills/sdp-planning/references/plan-template.md": "f945a53558af8766b3cade6d2929b5115117e594dd914bdab13f01d7473c1b56",
+        "Skills/sdp-planning/references/plans.md": "eea65cd7b2b5fceb123a41fef257d4670850112d31356bb3a61b0ce198b2ca73",
+        "Skills/sdp/references/document-workflow.md": "da391f3c3b11cf39c0e3f3626828298f3c2f18fbf8bc6ed32fbb8c5fe36edee3",
+        "Skills/sdp/references/source-map.md": "4e0ba5162dc636c259fbad99c3ddba64cee3ca9ae8c4aed3af4c232b8308201b"
+      },
+      "discoverySymlinks": {
+        ".agents/skills/sdp-architect": "../../Skills/sdp-architect",
+        ".agents/skills/sdp-auditor": "../../Skills/sdp-auditor",
+        ".agents/skills/sdp-change-analysis": "../../Skills/sdp-change-analysis",
+        ".agents/skills/sdp-master": "../../Skills/sdp-master",
+        ".agents/skills/sdp-planning": "../../Skills/sdp-planning",
+        ".agents/skills/sdp-release": "../../Skills/sdp-release",
+        ".agents/skills/sdp-reviewer": "../../Skills/sdp-reviewer",
+        ".agents/skills/sdp-steering": "../../Skills/sdp-steering",
+        ".agents/skills/sdp-traceability": "../../Skills/sdp-traceability",
+        ".agents/skills/sdp-verifier": "../../Skills/sdp-verifier",
+        ".agents/skills/sdp-versioning": "../../Skills/sdp-versioning",
+        ".agents/skills/sdp-vertical-refactor": "../../Skills/sdp-vertical-refactor",
+        ".agents/skills/sdp-worker": "../../Skills/sdp-worker",
+        ".agents/skills/sdp": "../../Skills/sdp"
+      },
+      "verification": "ok  \tpgi3pilot\t0.009s\n",
+      "finalSource": {
+        "normalize.go": "package pgi3pilot\n\nimport \"strings\"\n\nfunc NormalizeLabel(s string) string { return strings.TrimSpace(s) }\n",
+        "normalize_test.go": "package pgi3pilot\n\nimport \"testing\"\n\nfunc TestNormalizeLabel(t *testing.T) {\n\ttests := []struct {\n\t\tname string\n\t\tin   string\n\t\twant string\n\t}{\n\t\t{\"empty\", \"\", \"\"},\n\t\t{\"ascii spaces\", \"  Keep  Case  \", \"Keep  Case\"},\n\t\t{\"ascii whitespace\", \"\\t\\r\\nKeep  Case\\v\\f\", \"Keep  Case\"},\n\t\t{\"unicode boundaries\", \"\\u00a0\\u2003Keep  Case\\u202f\\u3000\", \"Keep  Case\"},\n\t\t{\"leading only\", \"\\u0085\u00c9tiquette\", \"\u00c9tiquette\"},\n\t\t{\"trailing only\", \"\u6807\u7b7e\\u2028\\u2029\", \"\u6807\u7b7e\"},\n\t\t{\"whitespace only\", \" \\t\\u0085\\u00a0\\u1680\\u2003\\u2028\\u2029\\u202f\\u205f\\u3000\\n\", \"\"},\n\t\t{\"interior preserved\", \"\\u2003Keep\\t \\n\\u00a0\\u2003Case\\u3000\", \"Keep\\t \\n\\u00a0\\u2003Case\"},\n\t\t{\"unchanged\", \"MiXeD\\t\\u00a0\u6807\u7b7e\", \"MiXeD\\t\\u00a0\u6807\u7b7e\"},\n\t\t{\"non whitespace boundaries\", \"\\u200bKeep Case\\ufeff\", \"\\u200bKeep Case\\ufeff\"},\n\t}\n\tfor _, tt := range tests {\n\t\tt.Run(tt.name, func(t *testing.T) {\n\t\t\tif got := NormalizeLabel(tt.in); got != tt.want {\n\t\t\t\tt.Errorf(\"NormalizeLabel(%q) = %q, want %q\", tt.in, got, tt.want)\n\t\t\t}\n\t\t})\n\t}\n}\n"
+      }
+    }
+  ],
+  "verification": {
+    "race": {
+      "command": "go test -race -count=1 ./governance ./governancehost ./governancecontroller ./governancemcp (SDPTool; includes compiled controller CLI)",
+      "exitCode": 0,
+      "sha256": "bb8e27e52fd357f5a2cbca2d99c86c005c2b414846ebcaef9334a21d32599b7e",
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t10.523s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancehost\t1.362s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t54.076s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t11.515s\n"
+    },
+    "vet": {
+      "command": "go vet ./governance ./governancehost ./governancecontroller ./governancemcp ./cmd/sdp-controller (final Go sources, before schema-only correction)",
+      "exitCode": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": ""
+    },
+    "schemas": {
+      "command": "Validate captured application, installed 0.161.0 protocol and actual live records; reject unused unresolved reference",
+      "exitCode": 0,
+      "sha256": "3ad36ff98aa06413c1809b226733e9845d34b17035bd3669e4d745a01a21351a",
+      "output": "PASS: 11 captured application cases including context and provenance views\nPASS: 13 installed 0.161.0 protocol cases including skills/list\nPASS: 21 actual live result/observations and final offline provenance view\nPASS: schema checker rejects an unresolved reference in an otherwise unused definition\n"
+    },
+    "live": {
+      "command": "Disposable actual Maintenance journey and offline provenance inspection",
+      "exitCode": 0,
+      "sha256": "e7c7608ecef80d41a6234d3f803d6ab1dfc6ae758f481b4d8418df6154b27557",
+      "output": "Observed and answered exact fixture report prompt\nPASS: actual prompt, explicit one-time response, host closure and MCP report to verifying; fixture tests and exclusions preserved\nPASS: host instruction paths, session metadata, project skill inventory/digests and offline provenance projection; skill use remains explicitly unobserved\n"
+    },
+    "management": {
+      "command": "python3 SDP/ProjectManagement/validate.py",
+      "exitCode": 0,
+      "sha256": "9fcdeccdf086e6fc34303924350a58951ab6d7dfaaa237a19afafe33c4be7125",
+      "output": "PASS: 61 cards, 38 management records, 4 lineage operations, 517 events; schema/history/metadata/placement/grouping\n"
+    },
+    "toolkit": {
+      "command": "python3 Toolkit/scripts/validate_sdp.py",
+      "exitCode": 0,
+      "sha256": "5e9d1353c22f090c8b066ba39da56ff229fbc1b07a7e12e21bb8ac9ffbb9e3ad",
+      "output": "SDP Toolkit validation passed\n"
+    },
+    "integrity": {
+      "exitCode": 0,
+      "output": "PASS: 17 exact candidate product/test files and file-set digest\nPASS: append-only prefix and unique private event IDs in SDP/ProjectManagement/Ledger.ndjson\nPASS: append-only prefix and unique private event IDs in SDP/Traceability/Ledger.ndjson\nPASS: 78 local Markdown targets in changed documents resolve\nPASS: git diff --check\n",
+      "boundary": "Private candidate only; preserved cross-branch C1 ID collisions still require integration reconciliation."
+    }
+  },
+  "reproduction": {
+    "artifactRoot": "/tmp/sdp-pgi3-c5",
+    "setup": "import json,subprocess,uuid,hashlib\nfrom pathlib import Path\nbase=Path('/tmp/sdp-pgi3-c5/trial4');root=base/'project';root.mkdir(parents=True,exist_ok=True)\nfiles={\n'AGENTS.md':'# Pilot assignment\\nRead SDP/authority.md and selected work. No delegation. Only normalize.go and normalize_test.go may change. Never edit SDP records, go.mod or unrelated.txt. This is a disposable live workflow test authorized by PLAN-SDP-0018 PGI3. Use the available Go toolchain.\\n',\n'SDP/SDP-project.manifest.yaml':\"schemaVersion: '1.0'\\nproject:\\n  name: pgi3-live\\n\",\n'SDP/KanBan/active/card.md':'| Field | Value |\\n| --- | --- |\\n| id | KB-PILOT-001 |\\n| PlanId | MAINT-PILOT-0001 |\\n| CardState | in-progress |\\n',\n'SDP/Maintenance/Plan.md':'# Bounded label-normalization fix\\n\\n| Field | Value |\\n| --- | --- |\\n| id | MAINT-PILOT-0001 |\\n| PlanType | MaintenancePlan |\\n| state | active |\\n\\nM1: NormalizeLabel must trim surrounding Unicode whitespace while preserving interior whitespace and case. Fix only normalize.go and normalize_test.go. Verify go test ./...; retain the unrelated file. No delegation, publication or records editing.\\n',\n'SDP/Sessions/session.md':'# Live pilot goal\\n\\n| State | Step | Work |\\n| --- | --- | --- |\\n| active | S1 | Fix normalization and verify preservation |\\n\\n| Field | Value |\\n| --- | --- |\\n| Session reference | SESSION-PILOT-0001 |\\n| Status | active |\\n',\n'SDP/authority.md':'Owner continuation on 2026-10-09 authorizes PLAN-SDP-0018 PGI3-C5 live role/context provenance and bounded Maintenance verification. This disposable fixture exercises that selected scope. Fix Unicode boundary whitespace normalization; do not expand scope or invoke child agents. Canonical SDP documents must remain byte-identical.\\n',\n'SDP/ProjectManagement/Ledger.ndjson':json.dumps({'schemaVersion':'1.0','eventId':'EVT-KB-PILOT-000001','eventType':'x-kanban:created','subjectId':'KB-PILOT-001','payload':{'schemaVersion':'0.2','previousEventId':None,'to':'active','toPath':'active/card.md'}})+'\\n'+json.dumps({'schemaVersion':'1.0','eventId':'EVT-PM-PILOT-000001','eventType':'x-management:started','subjectId':'MAINT-PILOT-0001','payload':{'schemaVersion':'0.2','previousEventId':None,'to':'active','toPath':'Maintenance/Plan.md'}})+'\\n',\n'go.mod':'module pgi3pilot\\n\\ngo 1.26.0\\n',\n'normalize.go':'package pgi3pilot\\n\\nimport \"strings\"\\n\\nfunc NormalizeLabel(s string) string { return strings.Trim(s, \" \") }\\n',\n'normalize_test.go':'package pgi3pilot\\n\\nimport \"testing\"\\n\\nfunc TestNormalizeLabel(t *testing.T) { if got := NormalizeLabel(\"  Keep  Case  \"); got != \"Keep  Case\" { t.Fatal(got) } }\\n',\n'unrelated.txt':'User-owned dirty fixture; preserve these exact bytes.\\n'\n}\nfor name,content in files.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(content)\n# Install the actual maintained skill sources into this disposable fixture only.\nimport shutil\nsource=Path('/home/warloc/git/SDP-project-governance/Skills')\nshutil.copytree(source,root/'Skills')\n(root/'.agents/skills').mkdir(parents=True)\nfor entry in source.iterdir():\n if entry.is_dir() and (entry/'SKILL.md').exists():\n  (root/'.agents/skills'/entry.name).symlink_to('../../Skills/'+entry.name)\nfor entry in (root/'Skills').rglob('*'):\n if entry.is_file():files[str(entry.relative_to(root))]=entry.read_text()\nsel={'card':'SDP/KanBan/active/card.md','plan':'SDP/Maintenance/Plan.md','session':'SDP/Sessions/session.md','authority':'SDP/authority.md','step':'S1'}\nstate=base/'state';binary='/tmp/sdp-pgi3-c5/bin/sdptool'\ndef call(op,q=None):\n args=[binary,str(root),'governance',op,'--state',str(state),'--json']\n if q is not None:\n  f=base/(op+'.json');f.write_text(json.dumps(q));args+=['--input',str(f)]\n return json.loads(subprocess.check_output(args))\nc=call('context',sel);assert c['conditions']==[],c\nr=call('route',{'schema':'sdp-project-governance/0.1','categories':['maintenance'],'selection':sel,'routineId':'maintenance','routineVersion':'0.1'});assert r['disposition']=='matched',r\nb=call('bind')\nrun=call('start',{'schema':'sdp-project-governance/0.1','projectRef':b['projectRef'],'checkoutId':b['checkoutId'],'operationId':str(uuid.uuid4()),'requestId':str(uuid.uuid4()),'inputRevision':c['revision'],'routineDigest':r['routineDigest'],'selection':sel,'assignment':{'outcome':'Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests','writablePaths':['normalize.go','normalize_test.go'],'excludedPaths':['SDP','Skills','AGENTS.md','go.mod','unrelated.txt']}})\n(base/'run.json').write_text(json.dumps(run,indent=2)+'\\n')\n(base/'discovery-links.json').write_text(json.dumps({str(p.relative_to(root)):str(p.readlink()) for p in (root/'.agents/skills').iterdir()},indent=2)+'\\n')\n(base/'preimages.json').write_text(json.dumps({name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in files},indent=2)+'\\n')\n(base/'owner.txt').write_text('Fix the covered NormalizeLabel defect and its tests. Preserve interior whitespace and case. First read Skills/sdp/SKILL.md and Skills/sdp-master/SKILL.md, follow applicable routing without delegation, read governing records and inspect the current code. In your return, name the skill files you actually read as your own reported use; do not claim independent proof of activation or compliance. Use assignment-bound MCP run_read to inspect your run. Work only within the stored assignment. Run go test ./... and return exact observed results and any gaps. Do not spawn agents, publish records, commit or mark the work completed.\\n')\nprint('Prepared authorized disposable fixture; run',run['run']['id'])\n",
+    "driver": "import json,subprocess,uuid,hashlib,os\nfrom pathlib import Path\nbase=Path('/tmp/sdp-pgi3-c5');trial=base/os.environ.get('PGI_TRIAL','trial4');root=trial/'project';state=trial/'state';binary=base/'bin/sdp-controller'\nrun=json.loads((trial/'run.json').read_text());rid=run['run']['id'];op=str(uuid.uuid4())\nwith (trial/'owner.txt').open('a') as f:f.write('\\nAfter testing, call run_read immediately before one run_transition action report. Use the exact current checkoutId, projectRef, inputRevision, runId and expectedRevision from run_read. The operationId for this test report is '+op+'. Reason: Unicode normalization verified in PGI3-C5 approval trial. Wait for the actual tool outcome, do not bypass any refusal, and do not retry a rejected report. This is a test-driver scenario under the authorized PGI3 verification, not owner acceptance of the completed work.\\n')\nargs=[str(binary),'run','--project',str(root),'--state',str(state),'--run',rid,'--codex','/usr/local/bin/codex','--mcp-binary',str(base/'bin/sdp-mcp'),'--message',str(trial/'owner.txt'),'--sandbox','workspace-write','--approvals','ask','--timeout','5m']\nerr=(trial/'live.err').open('w');p=subprocess.Popen(args,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=err,text=True,bufsize=1)\nprompts=[]\nwith (trial/'events.ndjson').open('w') as events:\n for line in p.stdout:\n  events.write(line);events.flush();v=json.loads(line)\n  if 'approval' in v:\n   prompt=v['approval'];q=prompt['request'];assert q['runId']==rid and q['operationId']==op and q['action']=='report',prompt\n   status=subprocess.check_output([str(binary),'status','--project',str(root),'--state',str(state),'--run',rid],text=True)\n   (trial/'pending-status.ndjson').write_text(status);assert 'pendingApprovals' in status\n   # Explicit per-request scenario decision. Never sends persistence metadata.\n   reply={k:prompt[k] for k in ['requestId','threadId','turnId','epoch']};reply['decision']='accept'\n   command={'action':'approval','approval':reply};(trial/'driver-decision.json').write_text(json.dumps(command,indent=2)+'\\n')\n   p.stdin.write(json.dumps(command)+'\\n');p.stdin.flush();prompts.append(prompt);print('Observed and answered exact fixture report prompt',flush=True)\np.stdin.close();code=p.wait();err.close()\nstatus=json.loads(subprocess.check_output([str(binary),'status','--project',str(root),'--state',str(state),'--run',rid],text=True));(trial/'final-status.json').write_text(json.dumps(status,indent=2)+'\\n')\nassert code==0, (code,(trial/'live.err').read_text())\nassert len(prompts)==1,prompts\nassert status['run']['state']=='verifying',status['run']['state']\nassert status['run']['attempts'][0]['status']=='completed',status\nassert status['run']['inputs'][-1]['kind']=='approval' and status['run']['inputs'][-1]['state']=='acknowledged',status\npre=json.loads((trial/'preimages.json').read_text());changed=[]\nfor name,digest in pre.items():\n if hashlib.sha256((root/name).read_bytes()).hexdigest()!=digest:changed.append(name)\nassert changed==['normalize.go','normalize_test.go'],changed\nverification=subprocess.run(['/home/warloc/.local/bin/go','test','./...'],cwd=root,capture_output=True,text=True)\n(trial/'verify.txt').write_text(verification.stdout+verification.stderr);assert verification.returncode==0\nprint('PASS: actual prompt, explicit one-time response, host closure and MCP report to verifying; fixture tests and exclusions preserved',flush=True)\n\nview=json.loads(subprocess.check_output([str(binary),'provenance','--project',str(root),'--state',str(state),'--run',rid,'--codex','/deliberately-unavailable-codex'],text=True))\n(trial/'provenance.json').write_text(json.dumps(view,indent=2)+'\\n')\nassert view['status']=='observed' and view['context']['assignedRole']=='Master',view\nhost=view['context']['host'];assert host['status']=='observed' and host['instructionStatus']=='observed',host\nassert str(root/'AGENTS.md') in host['instructionSources'],host\nassert host['sessionId'] and host['parentThreadId']=='',host\nskills=view['context']['skills'];assert skills['status']=='observed' and skills['useEvidence']=='not-observed',skills\nnames={s['name'] for s in skills['project'] if s['enabled']};assert {'sdp','sdp-master','sdp-worker','sdp-verifier'}<=names,names\nfor s in skills['project']:assert s['digest']==hashlib.sha256((root/s['path']).read_bytes()).hexdigest()\nprint('PASS: host instruction paths, session metadata, project skill inventory/digests and offline provenance projection; skill use remains explicitly unobserved',flush=True)\n\nfor path,target in json.loads((trial/'discovery-links.json').read_text()).items():assert (root/path).is_symlink() and str((root/path).readlink())==target\n",
+    "schemaChecks": "import json\nfrom pathlib import Path\nfrom jsonschema import Draft202012Validator,Draft7Validator\nroot=Path('/home/warloc/git/SDP-project-governance');base=Path('/tmp/sdp-pgi3-c5')\nschema=json.loads((root/'SDPTool/governance/schema.json').read_text());Draft202012Validator.check_schema(schema)\ncount=0\nfor p in (base/'wire').glob('*-wire-cases.json'):\n for c in json.loads(p.read_text()):Draft202012Validator({**schema,'$ref':'#/$defs/'+c['definition']}).validate(c['value']);count+=1\nprint('PASS:',count,'captured application cases including context and provenance views')\ncount=0\nfor p in list((base/'wire').glob('*-rpc-cases.json'))+list((base/'wire').glob('*-start-cases.json')):\n for c in json.loads(p.read_text()):\n  doc=json.loads(next(Path('/tmp/sdp-pgi3-live/schemas').rglob(c['definition']+'.json')).read_text());Draft7Validator(doc).validate(c['value']);count+=1\nprint('PASS:',count,'installed 0.161.0 protocol cases including skills/list')\ntrial=base/'trial4';count=0\nfor line in (trial/'events.ndjson').read_text().splitlines():\n v=json.loads(line)\n if 'run' in v:d='Result';value=v\n elif 'observation' in v:d='Observation';value=v['observation']\n else:continue\n Draft202012Validator({**schema,'$ref':'#/$defs/'+d}).validate(value);count+=1\nv=json.loads((trial/'provenance.json').read_text());Draft202012Validator({**schema,'$ref':'#/$defs/ProvenanceView'}).validate(v)\nprint('PASS:',count,'actual live result/observations and final offline provenance view')\n",
+    "note": "Disposable fixture copies maintained Skills and discovery links. Requires built binaries, existing managed authentication and fresh trial paths. Driver request acceptance is a scenario, not owner work acceptance."
+  },
+  "limits": [
+    "Availability and local file digests do not establish skill invocation, consumption or compliance",
+    "Instruction paths are reported by the host; native role/parent values were empty and cannot establish a native hierarchy",
+    "Source value vscode is an uninterpreted host report, not proof of a UI",
+    "No explicit skill injection or correlated skill input; text dispatch and existing lost-ack contract stay unchanged",
+    "No independent review, full PGI3 delivery, checked publication, release or installation claim",
+    "Known private C1 event-ID collisions require deliberate reconciliation before integration"
+  ]
+}

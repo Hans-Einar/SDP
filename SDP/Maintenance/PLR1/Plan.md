@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| id | MAINT-SDP-0015 |
+| id | MAINT-SDP-0016 |
 | project | SDP |
 | state | completed |
 | PlanType | MaintenancePlan |
@@ -74,3 +74,11 @@ No online host/plugin installation, main merge, release, runtime UI or privilege
 MCP dispatch is delivered. Next: ProjectGovernance owner reconciles the handoff into
 its active design/plan and verifies a real multi-assignment workflow. Our KB051 source
 integration/identity conflict remains unresolved.
+
+## Imported delivery record — 2026-10-10
+
+This completed record and its original events are imported from blueprint commit
+edfac185bb11b06ae9c6dd39a1809d166ad9541f for KB052 provenance. Its delivery is
+upstream commit 5141da7, not a claim that the changed skills/distribution are installed
+in the ProjectGovernance checkout. Selected adoption is part of the orchestration
+plan. No historical completion is reopened or replayed as a new delivery.

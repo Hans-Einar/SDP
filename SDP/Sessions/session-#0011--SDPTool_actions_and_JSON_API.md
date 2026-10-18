@@ -1,5 +1,9 @@
 # Session 0011 — SDPTool actions and JSON API
 
+Current identity reconciliation (2026-10-18): discoverable-actions KB051 is now
+KB-SDP-053; PLR1 MAINT-SDP-0015 is now MAINT-SDP-0016. Historical journal IDs
+remain as recorded; see ProjectManagement/History/Session0011/import.json.
+
 ## Session roadmap
 
 T009, 2026-10-18. Active Session; product integration remains unresolved.
@@ -34,7 +38,7 @@ gantt
 | --- | --- |
 | Session reference | SESSION-SDP-0011 |
 | Status | active |
-| Primary card | [KB-SDP-051](../KanBan/backlog/%23051--Proposal--Discoverable-SDPTool-actions.md) |
+| Primary card | [KB-SDP-051](../KanBan/backlog/%23053--Proposal--Discoverable-SDPTool-actions.md) |
 | Snapshot date | 2026-10-18 |
 | Current step | S0 refreshed red; S1 prose/plan ready, schemas/SDL waiting |
 | Proposed next step | Select integration ownership/order and reconcile KB051; fresh green baseline before ACT1 product/model changes |
@@ -58,9 +62,9 @@ outside this Session's product scope. A future adapter can reuse the same servic
 
 | Card | Role | Initial | Planned final | Current | Actual final |
 | --- | --- | --- | --- | --- | --- |
-| [KB051](../KanBan/backlog/%23051--Proposal--Discoverable-SDPTool-actions.md) | Primary | backlog | completed after scoped delivery/evidence | queued for S1 | pending |
+| [KB051](../KanBan/backlog/%23053--Proposal--Discoverable-SDPTool-actions.md) | Primary | backlog | completed after scoped delivery/evidence | queued for S1 | pending |
 | [KB050](../KanBan/active/%23050--Proposal--Semantic-blueprints.md) | Context only | gate-review | unchanged by this Session | gate-review; Session0008 paused | not disposed here |
-| [KB052](../KanBan/backlog/%23052--Change--Project-Leader-and-SAD-orchestration.md) | Handoff to ProjectGovernance | absent | backlog registration; owning Session0007 selects delivery | owning PG worktree active, observed T007; local copy remains historical backlog | registered T005; transferred to PG |
+| [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md) | Handoff to ProjectGovernance | absent | backlog registration; owning Session0007 selects delivery | owning PG worktree active, observed T007; local copy remains historical backlog | registered T005; transferred to PG |
 | external:KB-XFMD-030 | Consumer handoff | reported backlog at creation | XFMD agent selects native work | external, not locally authoritative | external |
 
 ## Plan register

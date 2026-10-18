@@ -1,14 +1,15 @@
 # Project Leader and SAD — handoff to ProjectGovernance
 
 Owner refinement, Session0011 T004, 2026-10-09. Role guidance is delivered under
-[MAINT-SDP-0015](../../../Maintenance/PLR1/Plan.md). Runtime changes below belong to
+[MAINT-SDP-0016](../../../Maintenance/PLR1/Plan.md). Runtime changes below belong to
 the existing ProjectGovernance workstream, Session0007 / KB-SDP-038. Its current
 Design.md and ImplementationPlan remain untouched in this branch; reconcile this
 handoff into them before implementation. No second controller implementation is
-selected here. [Shared role contract](../../../../Skills/sdp/references/roles.md).
+selected here. [Shared role contract](https://github.com/Hans-Einar/SDP/blob/edfac185bb11b06ae9c6dd39a1809d166ad9541f/Skills/sdp/references/roles.md).
 
-Tracked by [KB-SDP-052](../../../KanBan/backlog/%23052--Change--Project-Leader-and-SAD-orchestration.md),
-linked to the owning KB038 workstream. Registration does not activate runtime work.
+Tracked by [KB-SDP-052](../../../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md),
+linked to the owning KB038 workstream. Registration did not activate runtime work. Owner Session0007 T014, 2026-10-10,
+subsequently selects this work; see [current reconciliation](Orchestration.md).
 
 ## Owner-selected operating model
 
@@ -140,3 +141,10 @@ sharing skills with ChatGPT/Codex. Package canonical Steering guidance with its 
 references for the selected host, verify GitHub connector visibility and observed
 skill loading there. Do not create a separately maintained online role definition.
 No online plugin was installed or submitted by this maintenance.
+
+## Import provenance
+
+Imported from blueprint commit edfac185bb11b06ae9c6dd39a1809d166ad9541f on 2026-10-10.
+The original observations above describe that source handoff, not the current
+implementation. Role skills were delivered in that branch; importing this handoff
+does not install them into this checkout or any online host.

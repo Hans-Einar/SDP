@@ -10,7 +10,7 @@ import (
 // existing string options, even when those values happen to be "--json".
 func outputArguments(args []string) ([]string, bool, error) {
 	values := map[string]bool{}
-	for _, name := range []string{"program", "plan", "model", "output", "uri", "revision", "renderer", "entry", "viewer", "sdl-tool", "viewpoint", "artifact", "previous-artifact", "manifest", "plan-output", "apply", "resume", "release", "test-key", "notes", "task", "catalogue", "bundle", "evidence", "request", "as", "authority"} {
+	for _, name := range []string{"program", "plan", "model", "output", "uri", "revision", "renderer", "entry", "viewer", "sdl-tool", "viewpoint", "artifact", "previous-artifact", "manifest", "plan-output", "apply", "resume", "release", "test-key", "notes", "task", "catalogue", "bundle", "evidence", "request", "as", "authority", "input", "run", "state"} {
 		values[name] = true
 	}
 	cleaned := make([]string, 0, len(args))

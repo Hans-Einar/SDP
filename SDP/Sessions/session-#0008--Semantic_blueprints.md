@@ -1,5 +1,9 @@
 # Session 0008 — Semantic blueprints
 
+Current identity reconciliation (2026-10-18): discoverable-actions KB051 is now
+KB-SDP-053; PLR1 MAINT-SDP-0015 is now MAINT-SDP-0016. Historical journal IDs
+remain as recorded; see ProjectManagement/History/Session0011/import.json.
+
 ## Session roadmap
 
 T015, 2026-10-09. Session paused by owner; resume at S1 / BP2-A. Sequence only; dates are display slots, not duration estimates.
@@ -49,7 +53,7 @@ implemented; general code-conformance proof remains explicitly outside this scop
 | Card | Initial | Planned final | Current | Actual final |
 | --- | --- | --- | --- | --- |
 | [KB050](../KanBan/active/%23050--Proposal--Semantic-blueprints.md) | backlog | completed after implemented/verified blueprint feature | gate-review | pending |
-| [KB051](../KanBan/backlog/%23051--Proposal--Discoverable-SDPTool-actions.md) | absent | transfer to Session0011 for delivery | queued | transferred T015 |
+| [KB051](../KanBan/backlog/%23053--Proposal--Discoverable-SDPTool-actions.md) | absent | transfer to Session0011 for delivery | queued | transferred T015 |
 
 | Plan | Readiness | Lifecycle | Outcome |
 | --- | --- | --- | --- |

@@ -5,11 +5,12 @@
 | id | KB-SDP-052 |
 | project | SDP |
 | type | Change |
-| CardState | backlog |
+| CardState | in-progress |
 | created | 2026-10-09T12:08:50.581137+00:00 |
 | source | Owner Session0011 T004 role definition and T005 KanBan handoff request |
 | Systems | SDPTOOL |
-| next_review | ProjectGovernance / Session0007 planning reconciliation, before extending the owner lab |
+| next_review | PGL2-C2 disposition, provider and assignment revision gates |
+| PlanId | PLAN-SDP-0018 |
 | tags | project-leader, steering, SAD, master, MCP, app-server, coordination |
 
 ## Outcome and owning workstream
@@ -21,9 +22,9 @@ shared records and the leader without requiring manual chat-to-chat copying.
 
 This is a distinct runtime/UI increment related to
 [KB-SDP-038](%23038--Proposal--Codex-app-server-development-client.md).
-Its owning workstream is Session0007 / ProjectGovernance. This branch's KB038 copy
-is backlog, while the inspected owning worktree has it active: reconcile the handoff
-without resetting that workstream or duplicating its controller implementation.
+Its owning workstream is Session0007 / ProjectGovernance. The registration branch's KB038 copy was backlog, while the owning worktree has
+it active. This imported card now belongs to that active workstream; its original
+handoff does not reset KB038 or duplicate the controller implementation.
 
 ## Authoritative handoff and delivered foundation
 
@@ -32,8 +33,8 @@ for the full owner direction, source observations, required increments and accep
 scenarios. Keep runtime design details there and in the owning design/plan, rather
 than duplicating them in this card.
 
-[MAINT-SDP-0015](../../Maintenance/PLR1/Plan.md) delivered local skills and the shared
-[role contract](../../../Skills/sdp/references/roles.md): new Project Leader, strategic
+[MAINT-SDP-0016](../../Maintenance/PLR1/Plan.md) delivered local skills and the shared
+[role contract](https://github.com/Hans-Einar/SDP/blob/edfac185bb11b06ae9c6dd39a1809d166ad9541f/Skills/sdp/references/roles.md): new Project Leader, strategic
 Steering, Architect as SAD, and Master as the owner of a bounded implementation
 Session/ImplementationPlan. Metadata/distribution checks pass; this does not deliver
 runtime orchestration, online installation or automatic notification.
@@ -77,3 +78,23 @@ by this registration.
 KB-SDP-052 after inspecting IDs in all nine known local worktrees. Session0011
 records this transfer; its KB051 product implementation remains behind the red
 preflight. The existing duplicate KB051 is recorded separately and not renumbered.
+
+2026-10-10: Session0007 T014 owner explicitly selects KB052 after trying the lab.
+Imported from blueprint commit edfac185bb11b06ae9c6dd39a1809d166ad9541f; retain original registration history.
+[Orchestration design](../../04--Design/SDPTool/ProjectGovernance/Orchestration.md)
+and [PLAN-SDP-0018](../../05--Implementation/SDPTool/ProjectGovernance/Plan.md)
+now own the staged delivery. PGL1 is the first selected runtime increment.
+
+2026-10-10: PGL1 implementation starts within the scoped preflight boundary.
+
+2026-10-10: PGL1 delivers registered-work overview in readable and JSON forms,
+verified on existing owner lab state without mutation. See [evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md).
+PGL2 assignment preparation/revision guards are next. The card stays in-progress:
+Project Leader dialogue, multi-assignment execution, durable inbox, SAD integration,
+phase continuation, full dashboard and online Steering evidence remain outstanding.
+
+2026-10-10 / T015: Owner continues. PGL2-C1 delivers immutable SAD/Master preparation,
+exact source/generation checks, local scope refusal, retry recovery and stale
+inspection. [Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C1.md)
+is CLI/service-level with fixture artifacts. PGL2 remains in-progress for actual
+disposition/provider/revision/retirement gates; PGL3–5 and owner acceptance remain.

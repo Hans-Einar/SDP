@@ -1,0 +1,488 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Bounded assignment preparation wire contract",
+  "$comment": "Select a definition. Runtime additionally checks role-specific artifact kinds, source bytes, canonical coverage, authority, literal paths, shared receipt identity and generation CAS. Preparation grants no dispatch or design approval.",
+  "$defs": {
+    "Selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "card": {
+          "type": "string"
+        },
+        "plan": {
+          "type": "string"
+        },
+        "session": {
+          "type": "string"
+        },
+        "authority": {
+          "type": "string"
+        },
+        "step": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "card",
+        "plan",
+        "session",
+        "authority",
+        "step"
+      ]
+    },
+    "Assignment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "outcome": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 65536
+        },
+        "writablePaths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "maxItems": 64,
+          "uniqueItems": true
+        },
+        "excludedPaths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 63,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "outcome",
+        "writablePaths",
+        "excludedPaths"
+      ]
+    },
+    "Context": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-project-governance/0.1"
+        },
+        "operation": {
+          "const": "context"
+        },
+        "projectRef": {
+          "type": "string"
+        },
+        "root": {
+          "type": "string"
+        },
+        "checkoutId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+            },
+            {
+              "const": ""
+            }
+          ]
+        },
+        "revision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "selection": {
+          "$ref": "#/$defs/Selection"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "sha256": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  {
+                    "const": "absent"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ]
+          }
+        },
+        "coverage": {
+          "type": "string",
+          "enum": [
+            "known",
+            "unavailable",
+            "conflict"
+          ]
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cardId": {
+          "type": "string"
+        },
+        "planId": {
+          "type": "string"
+        },
+        "sessionId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema",
+        "operation",
+        "projectRef",
+        "root",
+        "checkoutId",
+        "revision",
+        "selection",
+        "sources",
+        "coverage",
+        "conditions",
+        "cardId",
+        "planId",
+        "sessionId"
+      ]
+    },
+    "ArtifactPin": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "now",
+            "target",
+            "task",
+            "blueprint",
+            "design-disposition"
+          ]
+        },
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "kind",
+        "path",
+        "sha256"
+      ]
+    },
+    "PreparationContextRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "role": {
+          "enum": [
+            "SAD",
+            "Master"
+          ]
+        },
+        "selection": {
+          "$ref": "#/$defs/Selection"
+        }
+      },
+      "required": [
+        "role",
+        "selection"
+      ]
+    },
+    "PreparationContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-assignment/1"
+        },
+        "generation": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "const": ""
+            }
+          ]
+        },
+        "role": {
+          "enum": [
+            "SAD",
+            "Master"
+          ]
+        },
+        "context": {
+          "$ref": "#/$defs/Context"
+        }
+      },
+      "required": [
+        "schema",
+        "generation",
+        "role",
+        "context"
+      ]
+    },
+    "PrepareRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-assignment/1"
+        },
+        "projectRef": {
+          "type": "string"
+        },
+        "checkoutId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "operationId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "expectedGeneration": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "role": {
+          "enum": [
+            "SAD",
+            "Master"
+          ]
+        },
+        "selection": {
+          "$ref": "#/$defs/Selection"
+        },
+        "assignment": {
+          "$ref": "#/$defs/Assignment"
+        },
+        "inputRevision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ArtifactPin"
+          },
+          "minItems": 1,
+          "maxItems": 5
+        },
+        "returnCriteria": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048
+          },
+          "minItems": 1,
+          "maxItems": 16
+        }
+      },
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "operationId",
+        "expectedGeneration",
+        "role",
+        "selection",
+        "assignment",
+        "inputRevision",
+        "artifacts",
+        "returnCriteria"
+      ]
+    },
+    "PreparedAssignment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "revision": {
+          "const": 1
+        },
+        "role": {
+          "enum": [
+            "SAD",
+            "Master"
+          ]
+        },
+        "selection": {
+          "$ref": "#/$defs/Selection"
+        },
+        "assignment": {
+          "$ref": "#/$defs/Assignment"
+        },
+        "inputRevision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ArtifactPin"
+          },
+          "minItems": 1,
+          "maxItems": 5
+        },
+        "returnCriteria": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048
+          },
+          "minItems": 1,
+          "maxItems": 16
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "role",
+        "selection",
+        "assignment",
+        "inputRevision",
+        "artifacts",
+        "returnCriteria"
+      ]
+    },
+    "PreparationResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-assignment/1"
+        },
+        "operationId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "assignment": {
+          "$ref": "#/$defs/PreparedAssignment"
+        },
+        "dispatch": {
+          "const": "unavailable"
+        },
+        "designAcceptance": {
+          "const": "not-assessed"
+        }
+      },
+      "required": [
+        "schema",
+        "operationId",
+        "assignment",
+        "dispatch",
+        "designAcceptance"
+      ]
+    },
+    "PreparationView": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "assignment": {
+          "$ref": "#/$defs/PreparedAssignment"
+        },
+        "readiness": {
+          "enum": [
+            "prepared",
+            "stale"
+          ]
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "dispatch": {
+          "const": "unavailable"
+        },
+        "designAcceptance": {
+          "const": "not-assessed"
+        }
+      },
+      "required": [
+        "assignment",
+        "readiness",
+        "conditions",
+        "dispatch",
+        "designAcceptance"
+      ]
+    },
+    "Preparations": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-assignment/1"
+        },
+        "generation": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "const": ""
+            }
+          ]
+        },
+        "checkoutId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+            },
+            {
+              "const": ""
+            }
+          ]
+        },
+        "scope": {
+          "const": "selected-checkout-only"
+        },
+        "assignments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PreparationView"
+          }
+        }
+      },
+      "required": [
+        "schema",
+        "generation",
+        "checkoutId",
+        "scope",
+        "assignments"
+      ]
+    }
+  }
+}

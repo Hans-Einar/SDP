@@ -1,0 +1,165 @@
+{
+  "schemaVersion": "1.0",
+  "milestone": "PGI2-M1",
+  "baseCommit": "d3e457b766f08722dd1a1b27a49b3059308f7e7f",
+  "scope": "Changed SDPTool sources, schema, dependencies, tests and package documentation; remaining implementation and local module replacements inherited from base. Shared concurrent work is not part of this full-regression candidate.",
+  "files": [
+    {
+      "path": "SDPTool/README.md",
+      "sha256": "f9af7df6e7ad5137fbf191007831648ca7b4cf54b6c75a5ad8d3b35816fe5489"
+    },
+    {
+      "path": "SDPTool/cmd/sdp-controller/main.go",
+      "sha256": "3d60aada23bb968904adf8ff1dff11a8731f7112d2c50c9ae8320e0d89b1a797"
+    },
+    {
+      "path": "SDPTool/cmd/sdp-mcp/main.go",
+      "sha256": "fe52b6436a0d1f25240b7d8b3e68772ff86ae6ad4e1948be81c9267f4dc8d445"
+    },
+    {
+      "path": "SDPTool/go.mod",
+      "sha256": "35a7d76164e477e24bd4f38cd502076574185ce29551cdd324e9b4cd6b32375a"
+    },
+    {
+      "path": "SDPTool/go.sum",
+      "sha256": "94a17904191abf9e5484301baa6a4d5eda301f68f09055ddb80378decfbb25cd"
+    },
+    {
+      "path": "SDPTool/governance/README.md",
+      "sha256": "f50b7ac804d07b4dbb0e317f1f6ff6f140bb703eca8e9f3fd1eb77464354f3a8"
+    },
+    {
+      "path": "SDPTool/governance/check_schema.py",
+      "sha256": "95cfc47bc7e6ddf7e16261d832e155b89213bebb0383f9484032c1643b756044"
+    },
+    {
+      "path": "SDPTool/governance/host.go",
+      "sha256": "51dc16232f929cd08799d24c6c8b2166433efa55ddfd4c9036897490dc9fe49e"
+    },
+    {
+      "path": "SDPTool/governance/host_test.go",
+      "sha256": "aae0fe6b8bb614a023ed5c0fa928b75b9c7d4ad58f1852628d522816ae02dd53"
+    },
+    {
+      "path": "SDPTool/governance/run.go",
+      "sha256": "180b2b74cc5531e35cdcfedf7b95a452374c5b735e002a393de6cc1724a3de5c"
+    },
+    {
+      "path": "SDPTool/governance/schema.json",
+      "sha256": "a8dd8fdb60ac283104bf8bd348371574c09cce245a328b7cb13f7c4660f75ad7"
+    },
+    {
+      "path": "SDPTool/governance/types.go",
+      "sha256": "3af9ffe8ddf4f89eb91141e22f0dfaaf43943cb8e0f8538949e2db2271f151ef"
+    },
+    {
+      "path": "SDPTool/governance/wire.go",
+      "sha256": "8aae6e0cb810d414b4d7eac05f2fad507cb99f27e05190c46a43b37ca1ff1dab"
+    },
+    {
+      "path": "SDPTool/governancehost/README.md",
+      "sha256": "1e4682fe29436af76b20004b35c749f8ce60c3feeff0fbc81fb31e2bf35d01dd"
+    },
+    {
+      "path": "SDPTool/governancehost/capture.go",
+      "sha256": "0e06c556ecf7e2a9e9ba2de16ede6864d77c94b290fb8f541559f2a08047d54e"
+    },
+    {
+      "path": "SDPTool/governancehost/capture_test.go",
+      "sha256": "8c4cfc28d5011f9b9a338c704479b01d772b08576178249274d485cbff9922c0"
+    },
+    {
+      "path": "SDPTool/governancehost/client.go",
+      "sha256": "6c8295be438edb6feb333e0d8fc5b6e0c3d6fb97bb8165e0d9f620e21d6fd695"
+    },
+    {
+      "path": "SDPTool/governancehost/reconcile.go",
+      "sha256": "948fec4ee95dfa537cbfe325f6927b12cc05d16b985f07fc523e1f74a25a1eb5"
+    },
+    {
+      "path": "SDPTool/governancemcp/README.md",
+      "sha256": "e1ffa6ecde6f337dc24b1f04479893551b44ab3c1bc466d3a843b0728a56a248"
+    },
+    {
+      "path": "SDPTool/governancemcp/fixture_test.go",
+      "sha256": "63fa52b49b52776ae393be796ba81eaed96ab0255f5170e713b00a0b689e6e65"
+    },
+    {
+      "path": "SDPTool/governancemcp/server.go",
+      "sha256": "33787f2bd55821eb14e4e70485ccfbd1d27caa6dcc6779766b169af15b07107c"
+    },
+    {
+      "path": "SDPTool/governancemcp/server_test.go",
+      "sha256": "bce3fd02d0b654b3059da04092261978416078ea564e12ae69cb966df8232474"
+    }
+  ],
+  "fileSetDigest": "52c0f3f233c84d92cb7a4b43a271927bbb3e4983b1cf8513d5063e259f97b03c",
+  "fileSetDigestEncoding": "SHA-256 of UTF-8 json.dumps(files,sort_keys=True,separators=(comma,colon))",
+  "goVersion": "go version go1.27.1 linux/amd64",
+  "checks": [
+    {
+      "name": "race",
+      "cwd": "SDPTool",
+      "command": "GOMAXPROCS=2 GOCACHE=/home/warloc/.cache/go-build XDG_RUNTIME_DIR=/tmp/sdp-pgi2-evidence/runtime XDG_CACHE_HOME=/tmp/sdp-pgi2-evidence/cache PGI_SCHEMA_EVIDENCE=/tmp/sdp-pgi2-evidence GOTOOLCHAIN=local GOPROXY=off go test -race -count=1 -p 2 ./...",
+      "exitCode": 0,
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool\t39.410s\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t[no test files]\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp\t[no test files]\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdptool\t[no test files]\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t3.019s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancehost\t1.064s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t4.829s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/install\t59.016s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/model\t24.956s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/presentation\t1.015s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/tools/profile\t35.261s\n",
+      "outputSha256": "ac6b679e667a47eddf0be21f06908337f37898d0cd257ce4fd823374656f5285"
+    },
+    {
+      "name": "vet",
+      "cwd": "SDPTool",
+      "command": "go vet ./...",
+      "exitCode": 0,
+      "output": "",
+      "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "live-probe",
+      "cwd": "SDPTool",
+      "command": "go build -o /tmp/sdp-pgi2-mcp ./cmd/sdp-mcp && go build -o /tmp/sdp-pgi2-controller ./cmd/sdp-controller && /tmp/sdp-pgi2-controller probe --project /tmp/sdp-pgi1-8SeezS/repo --mcp-binary /tmp/sdp-pgi2-mcp --state /tmp/sdp-pgi2-evidence/live-state",
+      "exitCode": 0,
+      "output": "{\"accountMode\":\"chatgpt\",\"ephemeralThread\":true,\"hostVersion\":\"0.160.1\",\"initialized\":true,\"managedAccount\":true,\"mcpAuthStatus\":\"unsupported\",\"mcpProtocol\":\"2025-11-25\",\"mcpSDK\":\"v1.8.0\",\"mcpTools\":[\"context_read\",\"route_evaluate\",\"run_read\"],\"modelSubmitted\":false,\"schema\":\"sdp-host-probe/1\",\"threadObserved\":true}\n",
+      "outputSha256": "2204cf65d5717209f61cb9ef93adb9c9d710333f65a511007a884909fd966052"
+    }
+  ],
+  "schemaChecks": [
+    {
+      "command": "python3 SDPTool/governance/check_schema.py cli-wire-cases.json",
+      "output": "PASS: 21 observed requests/results conform to the governance schema\n",
+      "captureSha256": "c5bdaee74a9df0185b98e0a8be55d34fd998a87b818fb9540d4c418e017134da"
+    },
+    {
+      "command": "python3 SDPTool/governance/check_schema.py host-wire-cases.json",
+      "output": "PASS: 3 observed requests/results conform to the governance schema\n",
+      "captureSha256": "cb4a8fee0d3df75c776c14d37a399b64d5454ca85195655ef7a0a2c566bb4bfd"
+    }
+  ],
+  "limitations": [
+    "No model turn, actual running-turn recovery or independent review.",
+    "Full SDPTool suite applies to isolated clone plus recorded candidate, not concurrent shared changes.",
+    "ProjectManagement/Toolkit validation is recorded separately after lifecycle updates."
+  ],
+  "returnedWorkspaceCheck": {
+    "root": "/home/warloc/git/SDP-vNow",
+    "baseCommit": "9841ad34e3b9e089fb5b26f287f7a153eed5a151",
+    "candidateFileHashesMatch": true,
+    "otherUncommittedChangesPresent": true,
+    "command": "GOTOOLCHAIN=local GOPROXY=off go test -race -count=1 ./governance ./governancemcp ./governancehost",
+    "cwd": "SDPTool",
+    "exitCode": 0,
+    "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t3.464s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t4.866s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancehost\t1.069s\n",
+    "outputSha256": "bf2c21011aefc3a4dcbb787d794561298032972b4b200f55c5e67d14c6d39668",
+    "scope": "Only the three adapter/core packages, including compiled MCP tests; not a full regression claim for concurrent shared changes."
+  },
+  "recordChecks": {
+    "isolatedManagement": "PASS: 61 cards, 38 management records, 4 lineage operations, 506 events",
+    "sharedManagement": "PASS: 63 cards, 39 management records, 4 lineage operations, 518 events",
+    "toolkit": "Passed in both checkouts",
+    "commands": [
+      "python3 SDP/ProjectManagement/validate.py",
+      "python3 Toolkit/scripts/validate_sdp.py",
+      "git diff --check"
+    ],
+    "newDocumentLinks": "All new local links resolve; one unchanged companion-repository link in SDPTool/README.md is absent from isolated clone."
+  }
+}

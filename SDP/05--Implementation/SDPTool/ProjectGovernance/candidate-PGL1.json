@@ -1,0 +1,30 @@
+{
+  "inspectedAt": "2026-10-10T01:43:24.781308+00:00",
+  "base": "0b0e82cc0f90a4b774c0e7b964fb08b8cbd29e9e",
+  "go": "go version go1.27.1 linux/amd64",
+  "binarySHA256": "e7fa0790496f2f5e3c52cc19e9ce16988f0842a7840ab9ff4b49921467cf8927",
+  "labRoot": "/home/warloc/git/pg_lab",
+  "readOnlyInventorySHA256": "f5c03bfda0f1a8da7127d2e7f5f54e018837ce2fab5facca0bf48eb82e36cec0",
+  "unchangedFileAndSymlinkCount": 176,
+  "runId": "06a3e736-bbc5-44bf-a10d-5e57c4235130",
+  "runRevision": 24,
+  "generation": "fcaf8213324f18d7f50f1a8aa05c248236f468b047da53bb7fb3fcbd017f2675",
+  "results": {
+    "compiledHumanAndJSON": "passed",
+    "actualAndEmptySchema": "passed",
+    "emptyStoreNoCreation": "passed",
+    "projectAndRuntimePreserved": "passed",
+    "newModelTask": "not-run",
+    "independentReview": "not-performed"
+  },
+  "files": {
+    "SDPTool/cmd/sdp-controller/main.go": "8a8d0404a79f7f958a785ab6f1fd7a051bcb378a2313f192842c6f8d3387e067",
+    "SDPTool/cmd/sdp-controller/overview.go": "690b5f2338d45da9429fcfbe2ec2e58b66144c8ff4206a215f087963af7cf819",
+    "SDPTool/cmd/sdp-controller/overview_test.go": "e77d4826e7978d2cae76680fa91a8d034d07819a62e16fc19b29584281aa9ebd",
+    "SDPTool/governance/overview.go": "a3d48327605066b7a1bd0007acadc225adc150a3689531d80cf30e6dd82b2a9c",
+    "SDPTool/governance/overview_test.go": "b8afba7ab34876ac28119596507bc9945464365b1914fedc9f1b341eae357c2f",
+    "SDPTool/governance/overview.schema.json": "6524fa8532d78436560d526cab25487c9d53c728bb2fd3b76aa8a5070a9c33e6",
+    "SDPTool/governance/provenance.go": "a015c49ac0a6fbc48e9f3a15ac21afeac65ff9b535ee260a698a3e3d4805106f"
+  },
+  "fileSetDigest": "859bd27f151c818917511c3d50bf3e7c8e5aac6cd5846a9d141c3d380f1d2491"
+}

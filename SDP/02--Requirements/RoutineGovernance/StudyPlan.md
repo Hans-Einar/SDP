@@ -35,7 +35,7 @@ and synthesis. It is the current study entry point for all three cards.
 | --- | --- |
 | [KB-SDP-036](../../KanBan/backlog/%23036--Proposal--Request-routines-and-process-control.md) | Request classification, routine selection, missing-procedure handling and entry/skill responsibilities |
 | [KB-SDP-037](../../KanBan/backlog/%23037--Proposal--Observable-routine-state-machine.md) | Durable routine state, evidence/gates, SDPTool MCP operations and read-only observation |
-| [KB-SDP-038](../../KanBan/backlog/%23038--Proposal--Codex-app-server-development-client.md) | Codex client, supervision/task handoff, app-server integration and presentation alternatives |
+| [KB-SDP-038](../../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) | Codex client, supervision/task handoff, app-server integration and presentation alternatives |
 
 Steering/Project Manager retains the project-facing dialogue and broader context.
 A fresh task Master coordinates each bounded assignment and permitted Worker,
@@ -56,8 +56,8 @@ empty report files or label preliminary observations completed studies.
 | Study area | Current result status | Available result / evidence | Result / follow-up |
 | --- | --- | --- | --- |
 | Request and routine governance | RGS1 delivered; RGS2-A-M2 role/routing reconciliation delivered | [Main study](Study.md), [routine catalog](Routine-Catalog.md), [scenario challenge](Scenarios.md), [evidence](Evidence.md), [source pins](Source-pins.json) | [RGS2-A-M2 findings](Study.md#10-rgs2-a-m2--operational-responsibility-and-procedure-reconciliation); same authoritative reports maintained |
-| SDPTool MCP connection | RGS2-B-M1 delivered; independently reviewed | [Existing study](Study.md), especially sections 3–6; [KB038 boundary](../../KanBan/backlog/%23038--Proposal--Codex-app-server-development-client.md) | [MCP study](MCP-Study.md) and [source pins](Evidence/RGS2-MCP-source-pins.json) |
-| Codex app-server/client | RGS2-C-M1 delivered; installed schemas inspected; runtime behavior untested | [Evidence E11](Evidence.md#e11--codex-panel-follow-up), [client proposal](../../KanBan/backlog/%23038--Proposal--Codex-app-server-development-client.md) | [App-server study](AppServer-Study.md), [probe evidence](Evidence/RGS2-AppServer-evidence.json) and [schema extract](Evidence/RGS2-AppServer-schema-extract.json) |
+| SDPTool MCP connection | RGS2-B-M1 delivered; independently reviewed | [Existing study](Study.md), especially sections 3–6; [KB038 boundary](../../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) | [MCP study](MCP-Study.md) and [source pins](Evidence/RGS2-MCP-source-pins.json) |
+| Codex app-server/client | RGS2-C-M1 delivered; installed schemas inspected; runtime behavior untested | [Evidence E11](Evidence.md#e11--codex-panel-follow-up), [client proposal](../../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) | [App-server study](AppServer-Study.md), [probe evidence](Evidence/RGS2-AppServer-evidence.json) and [schema extract](Evidence/RGS2-AppServer-schema-extract.json) |
 | Joint recommendation and next delivery | RGS2-D-M1 delivered; independently reviewed | Existing staged recommendation in [RGS1](Study.md), section 8 | [Synthesis](Synthesis.md) and [verification/closeout](RGS2-Verification.md) |
 
 RGS1 contains analytical scenarios, not executed routine-engine tests. Its role

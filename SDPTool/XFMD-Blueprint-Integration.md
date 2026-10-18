@@ -73,7 +73,7 @@ Linux; parsing or blueprint generation does not prove implementation conformance
 
 Content discovery is not a command catalogue. The current producer has no generic
 metadata contract sufficient to build arbitrary command menus/forms automatically.
-[KB-SDP-051](../SDP/KanBan/backlog/%23051--Proposal--Discoverable-SDPTool-actions.md)
+[KB-SDP-053](../SDP/KanBan/backlog/%23053--Proposal--Discoverable-SDPTool-actions.md)
 registers that producer work. External KB-XFMD-030 owns its consumer and preferences.
 
 Use stable action IDs, labels/groups, descriptions, icon keys, typed inputs/outputs,
@@ -89,7 +89,7 @@ commands by scraping help or execute catalogue-provided shell snippets.
 
 ## Proposed JSON request adapter — T014, not implemented
 
-The owner proposes JSON input as well as JSON output. KB-SDP-051 recommends
+The owner proposes JSON input as well as JSON output. KB-SDP-053 recommends
 `sdptool invoke --request -` with one request on stdin and one JSON result/error on
 stdout; `--request FILE` would support saved inputs. These are illustrative command
 names, not current CLI support. Human commands and the JSON adapter should dispatch

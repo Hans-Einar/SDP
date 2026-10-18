@@ -4,45 +4,47 @@
 
 | ID | Type | Status | Document |
 | --- | --- | --- | --- |
-| KB-SDP-051 | Change | completed | [Discover and run SDUI programs](completed/%23051--Change--Runnable-SDUI-programs.md) |
-| KB-SDUI-006 | Proposal | completed | [Runnable SDL and SDUI widget test project](completed/%23006--SDUI--Proposal--Runnable-widget-test-project.md) |
-| KB-SDP-052 | Change | backlog | [Project Leader and SAD orchestration](backlog/%23052--Change--Project-Leader-and-SAD-orchestration.md) |
-| KB-SDP-051 | Proposal | backlog | [Discoverable SDPTool actions](backlog/%23051--Proposal--Discoverable-SDPTool-actions.md) |
-| KB-SDP-050 | Proposal | active | [Semantic blueprints](active/%23050--Proposal--Semantic-blueprints.md) |
-| KB-SDP-049 | Change | completed | [ModelGovernance](completed/%23049--Change--Model-governance.md) |
-| KB-SDP-048 | Proposal | superseded | [Versioned design reviews and blueprint differences](superseded/%23048--Proposal--Versioned-design-reviews-and-blueprint-diffs.md) |
-| KB-SDP-047 | Change | completed | [Discover and browse Sessions](completed/%23047--Change--Discover-and-browse-Sessions.md) |
-| KB-SDP-046 | Change | completed | [Source discovery and systems navigation](completed/%23046--Change--Source-discovery-and-multiple-system-navigation.md) |
-| KB-SDP-045 | Change | completed | [Portable CLI presentation](completed/%23045--Change--Portable-SDPTool-presentation.md) |
-| KB-SDP-044 | Change | completed | [Sessions and release preparation](completed/%23044--Change--Sessions-and-repeatable-release-preparation.md) |
+| KB-SDP-010 | Proposal | active | [Consolidate documentation and separate active contracts from history](active/%23010--Proposal--Document-consolidation.md) |
+| KB-SDP-017 | Proposal | active | [sdptool and integrated project navigation](active/%23017--Proposal--sdptool-and-project-navigation.md) |
+| KB-SDP-038 | Proposal | active | [SDP development client using Codex app-server](active/%23038--Proposal--Codex-app-server-development-client.md) |
+| KB-SDP-050 | Proposal | active | [Semantic blueprints and assignment context](active/%23050--Proposal--Semantic-blueprints.md) |
+| KB-SDP-052 | Change | active | [Project Leader and SAD orchestration — ProjectGovernance handoff](active/%23052--Change--Project-Leader-and-SAD-orchestration.md) |
 | KB-SDL-001 | Proposal | backlog | [Stakeholders, actors, user stories and readable SDL](backlog/%23001--SDL--Proposal--Requirements-narrative.md) |
 | KB-SDL-002 | Proposal | backlog | [Weak links and visual paths through nodes](backlog/%23002--SDL--Proposal--Links-through.md) |
-| KB-SDL-003 | Ref | completed | [SDP tools as a consumer of SDL](completed/%23003--SDL--Ref--SDP--017--sdptool.md) |
-| KB-SDL-004 | Change | superseded | [KB-SDL-004 — Organize language development by process phase](superseded/%23004--SDL--Change--Language-source-organization.md) |
-| KB-SDL-005 | Change | backlog | [SDL System and explicit source-set contract](backlog/%23005--SDL--Change--System-and-source-sets.md) |
-| KB-SDL-006 | Study | backlog | [Executable Channel tests and real Unit bindings](backlog/%23006--SDL--Study--Executable-channel-tests-and-unit-bindings.md) |
-| KB-SDP-001 | Proposal | completed | [Project structure, Template and studies per phase](completed/%23001--Proposal--Project-structure.md) |
-| KB-SDP-002 | Proposal | superseded | [sdptool: project discovery, implementation plan and viewer](superseded/%23002--Proposal--sdptool.md) |
 | KB-SDP-003 | Idea | backlog | [KanBan graph with a time axis and progressive detail](backlog/%23003--Idea--KanBan-graph.md) |
 | KB-SDP-004 | Proposal | backlog | [Traceability between SDL design, slices, code and evidence](backlog/%23004--Proposal--Design-traceability.md) |
+| KB-SDUI-004 | Bug | backlog | [Text and Markdown fidelity across SDUI exports](backlog/%23004--SDUI--Bug--Text-and-Markdown-fidelity.md) |
+| KB-SDL-005 | Change | backlog | [SDL System and explicit source-set contract](backlog/%23005--SDL--Change--System-and-source-sets.md) |
+| KB-SDL-006 | Study | backlog | [Study executable SDL Channel tests and real Unit bindings](backlog/%23006--SDL--Study--Executable-channel-tests-and-unit-bindings.md) |
+| KB-SDP-014 | Proposal | backlog | [Define the KanBan version contract and reusable distribution](backlog/%23014--Proposal--KanBan-version-contract-and-distribution.md) |
+| KB-SDP-020 | Change | backlog | [Organize shared system design sources by phase](backlog/%23020--Change--Shared-design-source-organization.md) |
+| KB-SDP-032 | Study | backlog | [Evaluate SDL viewpoints through integrated XFMD navigation](backlog/%23032--Study--Viewpoint-navigation-feedback.md) |
+| KB-SDP-035 | Proposal | backlog | [Community feedback after an understood internal pilot](backlog/%23035--Proposal--Community-feedback-after-internal-pilot.md) |
+| KB-SDP-036 | Proposal | backlog | [Request classification and mandatory routine selection](backlog/%23036--Proposal--Request-routines-and-process-control.md) |
+| KB-SDP-037 | Proposal | backlog | [Observable routine execution and agent work-package progress](backlog/%23037--Proposal--Observable-routine-state-machine.md) |
+| KB-SDP-040 | Proposal | backlog | [KanBan terminal navigator](backlog/%23040--Proposal--KanBan-TUI.md) |
+| KB-SDP-042 | Proposal | backlog | [Goal-oriented Sessions, roadmaps and turn history](backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md) |
+| KB-SDP-043 | Proposal | backlog | [Event-derived Session roadmaps and turn timelines](backlog/%23043--Proposal--Event-derived-session-timelines.md) |
+| KB-SDP-053 | Proposal | backlog | [Discoverable SDPTool actions for native clients](backlog/%23053--Proposal--Discoverable-SDPTool-actions.md) |
+| KB-SDP-018 | Study | canceled | [Audit Toolkit responsibilities, organization and distribution](canceled/%23018--Study--Toolkit-audit-and-organization.md) |
+| KB-SDP-001 | Proposal | completed | [Project structure, Template and studies per phase](completed/%23001--Proposal--Project-structure.md) |
+| KB-SDUI-001 | Ref | completed | [SDUI as a subproject and library for SDP tools](completed/%23001--SDUI--Ref--SDP--017--sdptool.md) |
+| KB-SDUI-002 | Ref | completed | [KB-SDUI-002 — Split the shared design into phase-owned sources](completed/%23002--SDUI--Ref--SDL--004--Language-source-organization.md) |
+| KB-SDL-003 | Ref | completed | [SDP tools as a consumer of SDL](completed/%23003--SDL--Ref--SDP--017--sdptool.md) |
+| KB-SDUI-003 | Proposal | completed | [Capabilities and a bounded navigation pilot](completed/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | KB-SDP-005 | Ref | completed | [SDL: links through in SDP viewpoints](completed/%23005--Ref--SDL--002--Links-through.md) |
 | KB-SDP-006 | Ref | completed | [SDL: requirements models in the SDP process](completed/%23006--Ref--SDL--001--Requirements-narrative.md) |
+| KB-SDUI-006 | Proposal | completed | [Runnable SDL and SDUI widget test project](completed/%23006--SDUI--Proposal--Runnable-widget-test-project.md) |
 | KB-SDP-007 | Change | completed | [K1-M1: establish KanBan and preserve conversation proposals](completed/%23007--Change--KanBan-foundation.md) |
+| KB-SDL-007 | Proposal | completed | [Composable file ASTs and context-dependent semantic analysis](completed/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md) |
 | KB-SDP-008 | Change | completed | [K2-M1: visible metadata in KanBan cards](completed/%23008--Change--Visible-card-metadata.md) |
+| KB-SDL-008 | Study | completed | [SDL Go code familiarization and test baseline](completed/%23008--SDL--Study--Go-code-familiarization.md) |
 | KB-SDP-009 | Change | completed | [K3-M1: traceable card merging and splitting](completed/%23009--Change--Card-merge-and-split.md) |
-| KB-SDP-010 | Proposal | active | [Consolidate documentation and separate active contracts from history](active/%23010--Proposal--Document-consolidation.md) |
 | KB-SDP-011 | Bug | completed | [Resolve older Traceability IDs against the Toolkit contract](completed/%23011--Bug--Traceability-id-conformance.md) |
 | KB-SDP-012 | Change | completed | [K4-M1: living cards, revision logs and Git diff](completed/%23012--Change--Card-history.md) |
 | KB-SDP-013 | Change | completed | [English documentation throughout SDP, SDL and SDUI](completed/%23013--Change--English-documentation.md) |
-| KB-SDP-014 | Proposal | backlog | [Define the KanBan version contract and reusable distribution](backlog/%23014--Proposal--KanBan-version-contract-and-distribution.md) |
 | KB-SDP-015 | Change | completed | [CardState and scoped shell commands](completed/%23015--Change--CardState-and-shell-cli.md) |
-| KB-SDP-016 | Proposal | superseded | [Define SDP discovery, version and viewer capability metadata](superseded/%23016--Proposal--SDP-discovery-and-viewer-capabilities.md) |
-| KB-SDP-017 | Proposal | active | [sdptool and integrated project navigation](active/%23017--Proposal--sdptool-and-project-navigation.md) |
-| KB-SDP-018 | Study | canceled | [Audit Toolkit responsibilities, organization and distribution](canceled/%23018--Study--Toolkit-audit-and-organization.md) |
 | KB-SDP-019 | Ref | completed | [KB-SDP-019 — Shared process adoption for SDL and SDUI](completed/%23019--Ref--SDL--004--Language-source-organization.md) |
-| KB-SDP-020 | Change | backlog | [Organize shared system design sources by phase](backlog/%23020--Change--Shared-design-source-organization.md) |
-| KB-SDUI-001 | Ref | completed | [SDUI as a subproject and library for SDP tools](completed/%23001--SDUI--Ref--SDP--017--sdptool.md) |
-| KB-SDUI-002 | Ref | completed | [KB-SDUI-002 — Split the shared design into phase-owned sources](completed/%23002--SDUI--Ref--SDL--004--Language-source-organization.md) |
 | KB-SDP-021 | Change | completed | [Saved-file design preview](completed/%23021--Change--SDPTool-saved-design-preview.md) |
 | KB-SDP-022 | Change | completed | [Project recognition and delegation contract](completed/%23022--Change--SDPTool-discovery-contract.md) |
 | KB-SDP-023 | Change | completed | [Project resolver and configured viewer bridge](completed/%23023--Change--SDPTool-project-viewer-bridge.md) |
@@ -54,23 +56,21 @@
 | KB-SDP-029 | Proposal | completed | [Typed plans and a shared Planning skill](completed/%23029--Proposal--Typed-plans-and-planning-skill.md) |
 | KB-SDP-030 | Bug | completed | [Restore installation conformance in CI](completed/%23030--Bug--CI-installation-conformance-and-fixtures.md) |
 | KB-SDP-031 | Study | completed | [Study SDL-derived assignment bundles and blueprints](completed/%23031--Study--SDL-assignment-bundles-and-blueprints.md) |
-| KB-SDP-032 | Study | backlog | [Evaluate SDL viewpoints through integrated XFMD navigation](backlog/%23032--Study--Viewpoint-navigation-feedback.md) |
 | KB-SDP-033 | Study | completed | [Plan XFMD SDP adoption through gh-sdp and a practical SDL design pilot](completed/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md) |
-| KB-SDP-034 | Bug | completed | [External KanBan references](completed/%23034--Bug--External-KanBan-references.md) |
-| KB-SDP-035 | Proposal | backlog | [Community feedback after an understood internal pilot](backlog/%23035--Proposal--Community-feedback-after-internal-pilot.md) |
-| KB-SDP-036 | Proposal | backlog | [Request classification and mandatory routine selection](backlog/%23036--Proposal--Request-routines-and-process-control.md) |
-| KB-SDP-037 | Proposal | backlog | [Observable routine execution and agent work-package progress](backlog/%23037--Proposal--Observable-routine-state-machine.md) |
-| KB-SDP-038 | Proposal | backlog | [SDP development client using Codex app-server](backlog/%23038--Proposal--Codex-app-server-development-client.md) |
-| KB-SDP-039 | Change | completed | [Ecosystem and system models](completed/%23039--Change--Ecosystem-and-system-models.md) |
-| KB-SDP-040 | Proposal | backlog | [KanBan terminal navigator](backlog/%23040--Proposal--KanBan-TUI.md) |
-| KB-SDP-041 | Study | completed | [XFMD-driven SDL and SDUI gaps](completed/%23041--Study--XFMD-driven-SDL-and-SDUI-gaps.md) |
-| KB-SDUI-003 | Proposal | completed | [Capabilities and a bounded navigation pilot](completed/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
-| KB-SDUI-004 | Bug | backlog | [Text and Markdown fidelity across SDUI exports](backlog/%23004--SDUI--Bug--Text-and-Markdown-fidelity.md) |
-| KB-SDP-042 | Proposal | backlog | [Goal-oriented Sessions and roadmaps](backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md) |
-| KB-SDL-007 | Proposal | completed | [Composable file ASTs and contextual analysis](completed/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md) |
-| KB-SDP-043 | Proposal | backlog | [Event-derived Session timelines](backlog/%23043--Proposal--Event-derived-session-timelines.md) |
+| KB-SDP-034 | Bug | completed | [KB-SDP-034 — Keep valid boards available with external Ref cards](completed/%23034--Bug--External-KanBan-references.md) |
+| KB-SDP-039 | Change | completed | [Establish the SDP ecosystem and system models](completed/%23039--Change--Ecosystem-and-system-models.md) |
+| KB-SDP-041 | Study | completed | [Study XFMD-driven SDL and SDUI modeling gaps](completed/%23041--Study--XFMD-driven-SDL-and-SDUI-gaps.md) |
+| KB-SDP-044 | Change | completed | [Sessions distribution and repeatable release preparation](completed/%23044--Change--Sessions-and-repeatable-release-preparation.md) |
+| KB-SDP-045 | Change | completed | [Portable human-readable SDPTool output](completed/%23045--Change--Portable-SDPTool-presentation.md) |
+| KB-SDP-046 | Change | completed | [Source discovery and navigation across systems](completed/%23046--Change--Source-discovery-and-multiple-system-navigation.md) |
+| KB-SDP-047 | Change | completed | [Discover and browse Sessions](completed/%23047--Change--Discover-and-browse-Sessions.md) |
+| KB-SDP-049 | Change | completed | [ModelGovernance — local model lifecycle and recovery](completed/%23049--Change--Model-governance.md) |
+| KB-SDP-051 | Change | completed | [Discover and run connected SDUI programs](completed/%23051--Change--Runnable-SDUI-programs.md) |
+| KB-SDP-002 | Proposal | superseded | [sdptool: project discovery, implementation plan and viewer](superseded/%23002--Proposal--sdptool.md) |
+| KB-SDL-004 | Change | superseded | [KB-SDL-004 — Organize language development by process phase](superseded/%23004--SDL--Change--Language-source-organization.md) |
+| KB-SDP-016 | Proposal | superseded | [Define SDP discovery, version and viewer capability metadata](superseded/%23016--Proposal--SDP-discovery-and-viewer-capabilities.md) |
+| KB-SDP-048 | Proposal | superseded | [Versioned design reviews and semantic blueprint differences](superseded/%23048--Proposal--Versioned-design-reviews-and-blueprint-diffs.md) |
 
-| KB-SDL-008 | Study | completed | [SDL Go familiarization and test baseline](completed/%23008--SDL--Study--Go-code-familiarization.md) |
 
 ## Purpose and authority
 

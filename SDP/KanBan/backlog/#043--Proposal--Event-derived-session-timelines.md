@@ -21,7 +21,7 @@ what was added, how many turns a task consumed and what is happening now.
 [KB042](%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md) owns the Session
 format/adoption. This card owns timeline projection and its event requirements;
 [KB037](%23037--Proposal--Observable-routine-state-machine.md) owns routine execution
-observability, [KB038](%23038--Proposal--Codex-app-server-development-client.md)
+observability, [KB038](../active/%23038--Proposal--Codex-app-server-development-client.md)
 owns client capture, and SDPTool owns process operations. Avoid a second lifecycle
 engine or parallel authoritative history. [Session 0001](../../Sessions/session-%230001--SDL_expansion.md)
 is the originating pilot; timeline implementation is not part of its SDL delivery.

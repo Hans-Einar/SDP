@@ -201,7 +201,7 @@ records an observer option; it does not select a Codex fork or implementation.
 
 ## Related client proposal
 
-[KB-SDP-038](%23038--Proposal--Codex-app-server-development-client.md) now owns the
+[KB-SDP-038](../active/%23038--Proposal--Codex-app-server-development-client.md) now owns the
 requested app-server-based development client investigation. This card retains
 the shared routine/MCP/state/observer contract. The client should consume it,
 with explicit links between SDP work identities and Codex threads, rather than

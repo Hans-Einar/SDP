@@ -5,10 +5,10 @@
 | id | KB-SDP-038 |
 | project | SDP |
 | type | Proposal |
-| CardState | backlog |
+| CardState | in-progress |
 | created | 2026-09-28T15:10:13.034937+00:00 |
 | source | Owner conversation 2026-09-28: register app-server-based system development and assess SDPTool MCP |
-| next_review | Start the bounded PGI1-M1 core slice under planned PLAN-SDP-0018; design delivered in PGD1 |
+| next_review | PGI3-U1 owner trial prepared; obtain overview/interaction feedback and reconcile workflow before more features |
 | tags | codex, app-server, client, MCP, supervision, blueprints, observability |
 | Systems | SDPTOOL |
 | PlanId | PLAN-SDP-0018 |
@@ -18,8 +18,9 @@
 [PLAN-SDP-0007 — shared StudyPlan](../../02--Requirements/RoutineGovernance/StudyPlan.md)
 now coordinates governance, SDPTool MCP and Codex app-server research. It links
 the existing RGS1 results and owns the result register for subsequent studies.
-The selected studies are complete; this capability card is back in backlog. Read it before selecting further
-study work or a successor DesignPlan. Earlier RGS1 work remains delivered under
+The selected studies and PGD1 design are complete. PLAN-SDP-0018 now owns the
+delivered PGI1/PGI2 increments and remaining PGI3–PGI5; the full client capability remains open. Reuse the
+existing study results before selecting additional study work. Earlier RGS1 work remains delivered under
 PLAN-SDP-0006; this link does not reopen that completed plan.
 
 ## Owner intent
@@ -36,8 +37,9 @@ children. Carry forward the role clarification in the
 [RGS1 study](../../02--Requirements/RoutineGovernance/Study.md); do not make the
 project-facing conversation responsible for remembering every execution detail.
 
-This request authorizes backlog registration, not a Codex fork, client
-implementation, host configuration or automatic agent delegation.
+The initial request authorized backlog registration. The later PGD1 and PGI1
+selections are recorded below; they do not authorize a Codex fork, account
+configuration or automatic agent delegation.
 
 ## Proposed responsibility split
 
@@ -101,9 +103,9 @@ must not be described as existing functionality.
 
 ## Relationships and next action
 
-- [KB-SDP-036](%23036--Proposal--Request-routines-and-process-control.md) owns request
+- [KB-SDP-036](../backlog/%23036--Proposal--Request-routines-and-process-control.md) owns request
   routing, routine selection and entry guidance.
-- [KB-SDP-037](%23037--Proposal--Observable-routine-state-machine.md) owns durable
+- [KB-SDP-037](../backlog/%23037--Proposal--Observable-routine-state-machine.md) owns durable
   routine execution, MCP-facing process operations and observation contracts.
   This card owns the Codex client/integration experience and consumes those
   contracts; it does not create a second workflow engine or duplicate MCP project.
@@ -205,17 +207,149 @@ open. ModelGovernance continues independently.
 
 2026-10-03T21:14:27.153979+00:00: EVT-KB-SDP-000288 — PGD1 design delivered; return KB038 from in-progress to backlog for planned PGI implementation, preserving the completed design and unimplemented capability.
 
-## Session0011 T004 — Project Leader / SAD handoff
+2026-10-06T01:27:08.375276+00:00: EVT-KB-SDP-000304 — PGI1-M1 core implementation started; Session0007 T003 records scope.
 
-The owner refines normal dialogue ownership to Project Leader, with separate
-strategic Steering, SAD model design and implementation Masters. Read the
-[role and runtime handoff](../../04--Design/SDPTool/ProjectGovernance/Project-Leader-Handoff.md).
-It records current controller/MCP limits, multiple idle/resumable assignments,
-direct owner feedback, revision-bound design approval and durable leader notification.
-MAINT-SDP-0015 delivers local skills; runtime work remains owned by Session0007.
-This branch's backlog state is a historical projection: the governance worktree has
-KB038 active. Reconcile this additive handoff there without resetting its lifecycle.
+## PGI1 core and CLI delivery — 2026-10-06
 
-Session0011 T005: [KB-SDP-052](%23052--Change--Project-Leader-and-SAD-orchestration.md)
-now tracks this runtime/UI handoff explicitly. Review it during the owning
-ProjectGovernance planning reconciliation; no current phase or card state is reset.
+[PGI1 evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI1.md)
+records read-only context/routing, explicit checkout binding, pinned Maintenance
+runs, guarded transitions, durable receipts and restart tests through the compiled
+CLI. Full SDPTool race tests and vet pass; the application schema matches 21
+observed request/result captures. Project records and unrelated fixture edits are
+preserved. No live Codex/MCP client, automatic Session capture, evidence completion
+or independent product review is claimed.
+
+At the PGI1 handoff, active/ready referred to the next PGI2 adapter
+increment in the active plan. The complete capability card remains open. Related
+KB036/037/042/043 retain their broader backlog scope; no ModelGovernance work is
+absorbed. Session0007 T003/T004 records the interrupted/resumed implementation and
+the host's Git restriction.
+
+2026-10-06T01:55:03.342761+00:00: EVT-KB-SDP-000305 — in-progress -> ready at PGI1 delivery/handoff; PGI2 adapters are next, broader client scope remains open.
+
+2026-10-07T06:52:01.769803+00:00: EVT-KB-SDP-000310 — Owner resumes Session0007; PGI2-M1 adapters and protocol negotiation selected, ready -> in-progress. PGI3–PGI5 remain planned.
+
+
+## PGI2 adapter delivery — 2026-10-07
+
+[PGI2 evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI2.md)
+records thin MCP/controller adapters, launch-bound authority, durable observed
+attempts and bounded capture/reconciliation. Full isolated SDPTool race/vet and
+24 observed wire-schema cases pass. Real Codex 0.160.1 initializes with ChatGPT
+mode and discovers MCP tools through SDK v1.8.0 / protocol 2025-11-25 in an idle
+ephemeral thread. No model turn, automatic journal publication or independent
+integrated review is claimed. KB038 is ready for PGI3; the complete capability
+remains open. Session0007 T006 records owner input, outcome and remaining gaps.
+
+2026-10-07T07:24:37.995561+00:00: EVT-KB-SDP-000312 — PGI2-M1 delivered; in-progress -> ready for PGI3, broader client scope remains open.
+
+2026-10-07T20:52:13.773912+00:00: EVT-KB-SDP-000313 — PGI3 selected by owner continuation; in-progress in isolated clone. Shared-workspace publication is unavailable under current filesystem permissions.
+
+
+## PGI3 implementation checkpoint — 2026-10-07
+
+[PGI3-M1-C1](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C1.md)
+implements durable dispatch and terminal control for existing covered Maintenance.
+Final full race/vet, 28 application wire and four host RPC schema cases pass;
+compiled owner workflow and recovery use a recorded fake host. The real probe exits
+with EOF before initialization. Live task/steering/recovery and native role evidence
+remain unavailable; ambiguous unmapped input cannot be resubmitted. Keep in-progress
+for those remaining PGI3 obligations. All changes and T007 Session upkeep are in
+the isolated clone; the shared worktree has not been updated under current permissions.
+
+2026-10-07T21:09:17.833653+00:00: EVT-PM-SDP-000149 — PGI3 candidate checkpoint recorded; CardState stays in-progress. No delivery/acceptance transition.
+
+
+## PGI3-C2 live checkpoint — 2026-10-08
+
+[Live evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C2.md)
+records actual managed-account execution and steering, observer closure,
+interruption/recovery, a replacement attempt and exact lost-response correlation
+without resubmission. Full Go race/vet and schema checks pass. Actual MCP reporting
+requires approval under the unchanged never policy; the requested owner interaction
+choice is unanswered. PGI3 remains in-progress for that runtime gap and executing-turn
+reattachment/provenance obligations, with PGI4/PGI5 planned. Session0007 T008 and the
+persistent ProjectGovernance worktree contain this checkpoint. Shared-history
+integration must reconcile the recorded C1 event-ID collisions; no merge is claimed.
+Broader KB036/037/042/043 remain separate; no ModelGovernance prerequisite is added.
+
+2026-10-07T22:07:07.491506+00:00: EVT-KB-SDP-000315 — PGI3-C2 live checkpoint recorded; in-progress retained for actual approval interaction and remaining recovery/provenance work. PGI3 is not delivered; broader card remains open.
+
+
+## PGI3-C3 explicit interaction — 2026-10-08
+
+[Checkpoint evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C3.md)
+records the owner-selected explicit MCP approval flow. The actual final-binary
+trial presents one exact request, records its test-driver answer, observes closure
+and reports to verifying through MCP. Default never remains; ask is explicit and
+per request. Scope/CAS guards and lock contention regressions pass. PGI3 remains
+in-progress for executing-turn reattachment and applicable provenance; PGI4/PGI5
+are planned. Broader KB036/037/042/043 remain separate and unchanged. Session0007
+T009 records the continuation and preserves the separate ModelGovernance workstream.
+
+2026-10-07T23:07:29.127244+00:00: EVT-KB-SDP-000316 — PGI3-C3 actual approval/report checkpoint verified; in-progress retained for remaining PGI3 runtime obligations. No full milestone acceptance.
+
+### 2026-10-08 — PGI3-C4 executing-turn checkpoint
+
+EVT-KB-SDP-000318: PGI3-C4 checkpoint verified with original agent capability and same turn; next is applicable role/skill/context provenance. No full PGI3 acceptance.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C4.md)
+records graceful and abrupt loss, same-host/turn reattachment, steering, approved
+report and preserved exclusions. CardState remains in-progress. Skill/native role
+provenance, PGI4 publication and PGI5 independent verification remain unfinished.
+
+### 2026-10-09 — PGI3-C5 launch provenance checkpoint
+
+EVT-KB-SDP-000319: PGI3-C5 actual context and skill availability snapshot verified; use remains unobserved. Card stays in-progress for remaining PGI3 and PGI4/PGI5.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C5.md)
+records the actual skill-enabled fixture, host context, matching local digests and
+offline projection. Skill availability is not invocation or compliance. Native
+hierarchy and independent review remain unverified. An initial fixture exclusion
+refused dot-prefixed paths; the fixture preserves discovery links separately without
+changing the assignment contract. Any wider hidden-path contract change remains
+outside this increment. CardState remains in-progress; no full pilot acceptance.
+
+### 2026-10-09 — PGI3-C6 explicit skill checkpoint
+
+EVT-KB-SDP-000320: PGI3-C6 actual explicit skill Maintenance and response-loss recovery pass; procedural compliance is not inferred. PGI3 native mapping and PGI4/PGI5 remain open.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C6.md)
+retains final-binary Maintenance and deliberately lost response scenarios. Explicit
+project-local selection and host-message identity are verified, with local hashes
+and exact correlation. No native child/reviewer or procedural compliance is claimed.
+CardState remains in-progress. Next: resolve applicable native mapping under current
+host rules, then PGI4 candidate-bound evidence and checked publication; PGI5 still
+owns independent integrated verification.
+
+### 2026-10-09 — owner usability and development-trial correction
+
+The owner reports that documents and agent-run verification do not provide enough
+understanding of the emerging PG workflow to judge whether it fits their intent.
+Prioritize a locally runnable owner trial and feedback loop before further feature
+expansion. This is a concrete product-learning need, not a claim that the existing
+technical evidence is invalid or that the owner has accepted the current workflow.
+
+Prepare a release-independent candidate with explicit source/binary identity,
+isolated project/state, readable controls and retained raw results. A dedicated
+PG lab is recommended first; the existing sdui_widget_lab is a later real-consumer
+trial after selecting a bounded task with its current owner. Reuse current PG
+commands; do not introduce another governance core or assume a GUI exists.
+
+KB-SDP-053 in the separate blueprint workstream owns the proposed shared action
+catalogue/invoke contract and general consumer development testing. Coordinate by
+contract reference; this PG trial does not implement that proposal, modify XFMD or
+change installed gh-sdp/SDPTool. Owner observations must distinguish implementation
+bugs, unsuitable workflow choices and newly clarified requirements, and drive a
+plan/design correction before the next larger increment.
+
+Owner disposition: dedicated PG lab first; test both work overview and actual
+collaboration. Prepared at `/home/warloc/git/pg_lab` using pinned C6 engine sources
+and a separate readable trial adapter. [Procedure](../../05--Implementation/SDPTool/ProjectGovernance/Owner-Trials.md)
+and [evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-U1.md)
+distinguish preparation checks from the still-pending owner/model trial. CardState
+remains in-progress; this is a concrete feedback checkpoint, not completed PG scope.
+
+2026-10-09T10:02:29.063036+00:00: EVT-KB-SDP-000326 — Owner prioritizes local PG overview/interaction trial and feedback before feature expansion; dedicated lab prepared with pinned C6 engine. Owner experience remains pending.
+
+2026-10-10: Owner Session0007 T014 prioritizes [KB052](%23052--Change--Project-Leader-and-SAD-orchestration.md)
+after reported lab use. PLAN-SDP-0018 retains existing PGI evidence gaps and adds
+PGL increments. PGL1 registered-work inspection is delivered; new Project Leader/SAD
+orchestration owns the next route. No owner acceptance or full PGI closure is implied.
