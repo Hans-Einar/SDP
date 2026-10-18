@@ -2,9 +2,10 @@
 
 ## Session roadmap
 
-Latest recorded turn: T015 — owner continues KB052. PGL2-C1 delivers typed durable
-preparation/inspection and stale/conflicting input refusal. PGL2-C2 remains next;
-design acceptance and actual multi-agent dispatch are not delivered.
+Latest recorded turn: T016 — clarify Session ownership and the separate integration
+workstream. This implementation remains Session0007; Session0012 owns interim
+coordination. PGL2-C1 is delivered and PGL2-C2 remains next; design acceptance and
+actual multi-agent dispatch are not delivered.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
 
 ```mermaid
@@ -34,7 +35,7 @@ gantt
 | Session reference | SESSION-SDP-0007 |
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
-| Snapshot date | 2026-10-10 |
+| Snapshot date | 2026-10-18 |
 | Current step | S6 / KB052; PGL2-C1 delivered, C2 next |
 | Proposed next step | PGL2-C2 assignment revision/retirement, actual disposition and provider-aware dispatch prerequisites |
 | Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation |
@@ -710,3 +711,28 @@ boundary. PGL2-C1 is delivered; C2 remains next. No independent review, runtime
 Project Leader, authenticated design approval or provider integration is asserted.
 Management events PM178 and KB337 record this scoped delivery; no historical
 cross-worktree identity is rewritten. No push/merge/release is selected.
+
+## T016 — Clarify Session ownership and integration boundary
+
+Date: 2026-10-18. Manual work summary; exact host IDs and turn timestamps are
+unavailable. The owner asks whether this agent works in Session0012 and reports
+that another agent is resolving merge conflicts to integrate previous work into main.
+
+Recovered this Session and the separate Session0012 record in the coordination
+worktree at 684b1f8. Session0012 explicitly owns interim cross-workstream coordination,
+not PG implementation. This conversation remains Session0007, responsible for
+KB038/KB052 and PLAN-SDP-0018. The owner's report establishes a separate active
+integration workstream; this turn does not claim its conflicts are resolved or
+its result merged, and does not take over its files or integration decisions.
+
+Skills/routines: reread SDP 1.1.1 and the Session continuity contract; reused the
+established document workflow and scoped ownership rules. Inspected clean PG and
+coordination branches. No implementation, delegation, host task or lifecycle
+transition was performed. The roadmap and plan/card states remain unchanged.
+
+The latest PG implementation candidate remains de4b795 (PGL2-C1); the existing
+[handoff](../05--Implementation/SDPTool/ProjectGovernance/Handoff-PGL2-C1.md)
+records its scope, evidence and integration invariants. No automatic handoff
+delivery is claimed. S6 remains active; the next implementation step is PGL2-C2
+assignment revision/retirement, actual disposition and provider-aware prerequisites,
+with shared integration kept in the other workstream.
