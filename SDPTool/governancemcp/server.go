@@ -90,6 +90,9 @@ func New(service *governance.Service, runID, attemptID, epoch string) (*mcp.Serv
 		if runID != "" && q != selection {
 			return nil, denied()
 		}
+		if runID != "" {
+			return service.RunContext(runID)
+		}
 		return service.Context(q)
 	})
 	add("route_evaluate", "Evaluate a proposed route without activating work.", governance.WireDefinition("RouteRequest"), true, func(b []byte) (any, error) {

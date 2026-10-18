@@ -127,6 +127,9 @@ func (s *Service) changePreparation(caller Caller, q PreparationChange, request 
 	if p.Revision != q.ExpectedRevision {
 		return out, fail("stale_revision", "assignment revision changed")
 	}
+	if _, ok := state.AssignmentRuns[p.ID]; ok {
+		return out, fail("invalid_transition", "activated preparation is immutable; use run interruption/replanning")
+	}
 	if p.State == "retired" {
 		return out, fail("invalid_transition", "retired preparation is terminal; prepare a new assignment")
 	}
@@ -156,7 +159,7 @@ func (s *Service) changePreparation(caller Caller, q PreparationChange, request 
 	p.ChangeReason = q.Reason
 	out = PreparationResult{Schema: PreparationLifecycleSchema, OperationID: q.OperationID,
 		Assignment: p, Dispatch: "unavailable", DesignAcceptance: "not-assessed"}
-	if state.Schema != designDecisionStateSchema {
+	if state.Schema != designDecisionStateSchema && state.Schema != activationStateSchema {
 		state.Schema = preparationLifecycleStateSchema
 	}
 	state.Prepared[p.ID] = p

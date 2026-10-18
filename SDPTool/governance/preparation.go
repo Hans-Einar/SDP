@@ -309,7 +309,7 @@ func (s *Service) InspectAssignments(id string) (Preparations, error) {
 		return out, err
 	}
 	out.Generation = head
-	if state.Schema == preparationLifecycleStateSchema || state.Schema == designDecisionStateSchema {
+	if state.Schema == preparationLifecycleStateSchema || state.Schema == designDecisionStateSchema || state.Schema == activationStateSchema {
 		out.Schema = PreparationLifecycleSchema
 	}
 	out.CheckoutID = state.CheckoutID

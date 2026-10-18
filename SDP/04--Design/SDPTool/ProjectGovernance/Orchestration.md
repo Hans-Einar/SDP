@@ -297,3 +297,48 @@ concurrent decision CAS, before/after-HEAD recovery, stale input while prompting
 profile preservation and old-reader refusal. Use a separate synthetic lab and label
 its scripted owner input as fixture evidence; never record the actual owner as its
 approver. No broad dispatch or final interaction design is delivered here.
+
+## PGL2-C2d — Activate approved implementation work, 2026-10-19
+
+Owner T024 authorizes continuing the plan toward Session completion. Connect a
+current approved Master preparation to the existing run/controller pipeline; do
+not create a second execution engine or mislabel ImplementationPlan work as
+Maintenance. SAD launch, responsive leader and multi-run control remain subsequent
+orchestration work. This is a runnable boundary, not just another eligibility flag.
+
+The privileged assignment activate operation atomically creates one ready run and
+an immutable preparation-to-run binding. Require exact checkout/generation,
+preparation revision, review revision and current approved decision operation.
+Recheck the actual providers and local scope before publication. Exact retry returns
+the original receipt; another operation cannot create a second run for that identity.
+Preparation cannot be revised or retired after activation: the run owns execution
+and interruption/replanning, and its preparation claim remains held. Do not release
+scope merely because a host becomes idle or a design becomes stale.
+
+Use an explicit implementation routine, with the existing implement/verify/review/
+record progression and evidence gates. Run context resolves ImplementationPlan
+coverage and the bound approved package. Read/status/overview expose stale sources;
+launch, steer, report, resume, retry, bind and reattach reject changed design or a
+superseding decision. Stop/fail/scope-change and host observation bookkeeping remain
+possible after drift. The controller includes the exact approved package in launch
+context and rechecks before host submission. Source checks remain optimistic; this
+is not filesystem locking or a sandbox preventing all writes after a concurrent edit.
+
+Reuse the existing owner run command and restricted worker MCP set. Launch-bound
+context_read resolves the actual run's coverage; general Maintenance route selection
+remains unchanged. No new worker launch or owner-decision privilege is granted.
+Host finish still does not complete the routine or grant independent review.
+
+Successful activation upgrades only its store to 0.5, preserving older profiles and
+0.4 decisions; later writes must not downgrade. The binding stays in operational
+state rather than adding caller-editable authority fields to Run. The additive
+implementation routine is selected only by the new activation entry point; old
+readers refuse the new store. Canonical management/model records remain untouched.
+Local scope checks are not global reservations; the existing manual cross-worktree
+preflight remains required. The checkout-wide controller leases still serialize
+owner control until the PGL3 concurrency contract is delivered.
+
+Verify real provider-created approval through activation and the built controller
+with a protocol fixture, current/stale worker context, drift before launch/steer,
+one-run retry/CAS and uncertain launch recovery. Record actual host trials separately
+from protocol fixtures; fixture-owner decisions are not actual owner acceptance.

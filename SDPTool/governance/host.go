@@ -205,7 +205,7 @@ func (s *Service) RecordHost(caller Caller, q HostRequest) (Result, error) {
 		if r.State != "ready" && r.State != "running" {
 			return Result{}, fail("conflict", "run not launchable")
 		}
-		c, e := s.Context(r.Selection)
+		c, e := s.runContext(r)
 		if e != nil {
 			return Result{}, e
 		}
@@ -275,7 +275,7 @@ func (s *Service) RecordHost(caller Caller, q HostRequest) (Result, error) {
 		if len(pending) > 0 {
 			return Result{}, fail("reconciliation_required", "approval closure remains unresolved")
 		}
-		coverage, err := s.Context(r.Selection)
+		coverage, err := s.runContext(r)
 		if err != nil {
 			return Result{}, err
 		}
@@ -337,7 +337,7 @@ func (s *Service) RecordHost(caller Caller, q HostRequest) (Result, error) {
 	r.Revision++
 	state.Runs[r.ID] = r
 	out := Result{Schema: Schema, Operation: "host." + q.Action, ProjectRef: s.project, CheckoutID: state.CheckoutID, OperationID: q.OperationID, Run: summarizeRun(r), Coverage: "known"}
-	c, e := s.Context(r.Selection)
+	c, e := s.runContext(r)
 	if e != nil {
 		return Result{}, e
 	}

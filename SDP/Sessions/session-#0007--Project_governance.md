@@ -2,10 +2,10 @@
 
 ## Session roadmap
 
-Latest recorded turn: T023 — owner reports the design-review fixture output.
-Explain the current technical basis versus the scripted rejected decision, and the
-optional local decision interaction. C2c remains delivered; dispatch prerequisites
-remain next. This report is not owner acceptance or rejection of PG.
+Latest recorded turn: T024 — owner asks to continue toward Session completion.
+PGL2-C2d activates approved implementation and verifies a real bounded Go task.
+Native report submission was refused under never; host completion is not assignment
+completion. Responsive coordination/reporting and the retained verification gates remain.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
 
 ```mermaid
@@ -26,7 +26,7 @@ gantt
 | completed | S1 | Recover skills, studies, card dependencies and ownership | Owner request, 2026-10-03 | Assessment below; RGS2 reused |
 | completed | S2 | Design the smallest common routing, run, Session and client contract | Owner continuation, T002 | [PGD1 / PLAN-SDP-0017](../04--Design/SDPTool/ProjectGovernance/Plan.md), contract, acceptance cases and protocol inspection |
 | waiting | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C6 verified; owner reports PGI3-U1 trial performed; native mapping remains unverified; KB052 now prioritized |
-| active | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation, C2a lifecycle, C2b provider checks and C2c local decision adapter delivered; dispatch/inbox/conversation gates next |
+| active | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation, C2a lifecycle, C2b provider checks and C2c decisions and C2d activation/native code trial delivered; reporting/inbox/conversation gates next |
 | planned | S4 | Verify interruption, resume, scope change and evidence disposition | S3 candidate | Evidence required before wider use |
 | planned | S5 | Project recorded activity into the KB043 timeline | Reliable S3/S4 capture and selected rendering scope | Full timeline remains deferred |
 
@@ -35,10 +35,10 @@ gantt
 | Session reference | SESSION-SDP-0007 |
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
-| Snapshot date | 2026-10-18 |
-| Current step | S6 / KB052; PGL2-C2c local decision adapter delivered |
-| Proposed next step | PGL2 dispatch prerequisites, incorporating owner feedback on interaction |
-| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough |
+| Snapshot date | 2026-10-19 |
+| Current step | S6 / KB052; PGL2-C2d activation/native code verified; report integration pending |
+| Proposed next step | PGL3 responsive coordination, per-run isolation and durable report delivery; preserve actual approval boundaries |
+| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion |
 
 ## Goal and ownership
 
@@ -66,7 +66,7 @@ No card is merged, split or closed merely to group this workstream.
 | Card | Role | Initial lifecycle / CardState | Planned outcome in this route | Current snapshot | Actual final |
 | --- | --- | --- | --- | --- | --- |
 | [KB038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) | Primary client and execution integration | backlog / backlog | One usable governed workflow | active / in-progress | PGI1/PGI2 delivered; PGI3 in progress |
-| [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md) | Project Leader and SAD runtime | backlog / backlog | Responsive owner coordination with bounded assignments | active / in-progress | PGL1 inspection, PGL2-C1 preparation and C2a lifecycle delivered; full workflow pending |
+| [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md) | Project Leader and SAD runtime | backlog / backlog | Responsive owner coordination with bounded assignments | active / in-progress | PGL1 inspection and PGL2 preparation/lifecycle/provider/decision/activation delivered in bounded increments; full workflow pending |
 | [KB036](../KanBan/backlog/%23036--Proposal--Request-routines-and-process-control.md) | Request classification and routine selection | backlog / backlog | Small shared entry contract exercised by pilot | backlog / backlog | Pending; broader coverage retained |
 | [KB037](../KanBan/backlog/%23037--Proposal--Observable-routine-state-machine.md) | Durable run state, transitions and observation | backlog / backlog | Minimum run/recovery core | backlog / backlog | Pending; full observer retained |
 | [KB042](../KanBan/backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md) | Session identity, roadmap and turn history | backlog / backlog | Capture/correlation beyond existing manual format | backlog / backlog | Pending |
@@ -1015,3 +1015,51 @@ Do not execute that interaction or supply a decision on the owner's behalf.
 S6, the plan and KB052 retain their current states. Next remains dispatch prerequisites
 and incorporation of actual interaction feedback. No new scope, gate, approval or
 management lifecycle transition is inferred from the pasted output.
+
+## T024 — Connect approved implementation to actual execution
+
+Date: 2026-10-19. Manual work summary; exact root host IDs/timing unavailable. Owner
+asks to continue the plan toward completing the Session. This retains implementation
+authority across the selected milestones, not acceptance of a synthetic design,
+permission for main merge/release or a waiver of remaining evidence/review gates.
+
+Loaded/reused SDP 1.2.0, document workflow, Master 2.1.0, Planning 1.0.0, Architect
+2.1.0 and Worker 2.0.0; reused verification/traceability procedures. OpenAI Docs was
+loaded for native host troubleshooting after inspecting local protocol code. No
+independent reviewer was spawned; no independent review is claimed. The plan now
+lists the concrete completion route through PGL3–5 and the retained PGI obligations.
+
+[Preflight](../05--Implementation/SDPTool/ProjectGovernance/preflight-PGL2-C2d.json)
+starts from 9a770ea with main e8760d3 integrated. Thirteen worktrees were inspected;
+historical dirty primary PG copies are excluded. Product edits stay in PG core,
+controller/MCP adapters and local trials. No provider, generic Actions, XFMD, shared
+skills/distribution or user host configuration is changed.
+
+[Evidence](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C2d.md)
+records activation of the exact currently approved Master package into one durable
+implementation run. The existing controller and five MCP operations consume live
+ImplementationPlan/design authority. Source or decision drift blocks advancement;
+stop bookkeeping remains possible. Immutable retry and one-run identity, profile0.5
+compatibility, preparation freeze and conservative retained scope are verified.
+Explicit run closure/replanning and parallel controllers remain later work.
+
+Affected race/vet and full SDPTool tests pass. Real provider/compiled protocol tests
+and 36 wire objects pass schema checks. The first native trial ended without any
+implementation because its isolated standalone host lacked the execution helper;
+that failure is retained. A fresh trial with the verified complete official0.161.0
+package performed the bounded Go task, passed external before/after behavioral checks
+and project tests, and changed only the two authorized code files. Installed0.162.1,
+existing managed account/model/config and 176 original lab entries remain unchanged.
+
+The native report call was rejected by automatic approval review under never. Do
+not retry the rejected call with weaker policy or fabricate a successful report.
+The recorded run remains running with a completed host attempt. The trial establishes
+activation/code execution and preservation, not complete reporting, owner acceptance
+or code conformance to a production SDL model. The new read-only ./implementation
+helper and owner walkthrough expose this distinction, while preserving prior previews.
+
+S3/S4/S6 and KB052 remain unfinished at their stated boundaries. Next: responsive
+leader/per-run control and durable reports, then direct SAD interaction and integrated
+evidence/review/Steering gates. No new owner permission gate is inferred for already
+authorized development. PM202 / KB374 record this milestone; system evidence remains
+in Traceability. This is a work summary, not a captured final answer.

@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"slices"
+	"strings"
 	"time"
 
 	"github.com/Hans-Einar/SDP/SDPTool/governance"
@@ -95,7 +96,7 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 	if e != nil {
 		return r, e
 	}
-	coverage, e := c.Service.Context(r.Run.Selection)
+	coverage, e := c.Service.RunContext(runID)
 	if e != nil {
 		return r, e
 	}
@@ -104,7 +105,15 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 		return r, e
 	}
 	instructions := "You are the fresh Master for one explicitly authorized SDP Maintenance assignment. Read the selected Session, authority, plan, card, AGENTS and relevant SDP skills before acting. Preserve writable/excluded boundaries and unrelated work. Native delegation is not granted by this launch; do not spawn children. Report candidate, tests, remaining gaps and observed outcome. Agent claims do not grant owner approval or independent review. Do not publish canonical management/Session records or mark the work complete; evidence publication is a later controller capability. Use assignment-bound MCP reads and report/fail/scope-change only."
-	payload, e := json.Marshal(map[string]any{"ownerInput": text, "assignment": r.Run.Assignment, "context": coverage, "runId": runID, "instructions": instructions, "sandbox": c.Sandbox, "approvalMode": c.Approvals})
+	approvedDesign, e := c.Service.RunDesign(runID)
+	if e != nil {
+		return r, e
+	}
+	if approvedDesign != nil {
+		instructions = strings.ReplaceAll(instructions, "SDP Maintenance assignment", "SDP implementation assignment")
+		instructions = "You are the Master for the exact approved SDP implementation package. Use the included design basis, task constraints, Session and ImplementationPlan. Do not change NOW/TARGET, broaden scope or treat host completion as approval. " + instructions
+	}
+	payload, e := json.Marshal(map[string]any{"approvedDesign": approvedDesign, "ownerInput": text, "assignment": r.Run.Assignment, "context": coverage, "runId": runID, "instructions": instructions, "sandbox": c.Sandbox, "approvalMode": c.Approvals})
 	if e != nil {
 		return r, e
 	}
@@ -167,6 +176,9 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 		return r, e
 	}
 	if e = governance.CheckSkillSnapshots(c.Root, v.Skills); e != nil {
+		return r, e
+	}
+	if e = c.Service.CheckRunReady(runID); e != nil {
 		return r, e
 	}
 	var turn governancehost.Turn

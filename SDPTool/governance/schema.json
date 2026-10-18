@@ -220,7 +220,10 @@
       "additionalProperties": false,
       "properties": {
         "id": {
-          "const": "maintenance"
+          "enum": [
+            "maintenance",
+            "implementation"
+          ]
         },
         "version": {
           "const": "0.1"
@@ -494,7 +497,8 @@
             "input.ack",
             "input.uncertain",
             "input.resolve",
-            "host.reattach"
+            "host.reattach",
+            "activate"
           ]
         },
         "projectRef": {

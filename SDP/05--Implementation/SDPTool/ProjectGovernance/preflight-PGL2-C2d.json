@@ -1,0 +1,170 @@
+{
+  "baseline": "9a770ea1ddb6afa62484b3cc9c688ea9b274fd19",
+  "main": "e8760d331933361ab631ef0d52c20e87268a22b3",
+  "worktrees": [
+    {
+      "worktree": "/home/warloc/git/SDP",
+      "head": "e8760d331933361ab631ef0d52c20e87268a22b3",
+      "dirty": "",
+      "committed": ""
+    },
+    {
+      "worktree": "/home/warloc/git/SDP-codex-issue-7-provisional-vnext-",
+      "head": "ea9fcf1cdd3198aeac515b89b55398282c463838",
+      "dirty": "",
+      "committed": ""
+    },
+    {
+      "worktree": "/home/warloc/git/SDP-coordination",
+      "head": "684b1f8952f2f5ff2dc9fb32c7592340d8aff60f",
+      "dirty": "",
+      "committed": ""
+    },
+    {
+      "worktree": "/home/warloc/git/SDP-project-governance",
+      "head": "9a770ea1ddb6afa62484b3cc9c688ea9b274fd19",
+      "dirty": "",
+      "committed": "SDP/04--Design/SDPTool/ProjectGovernance/Orchestration.md\nSDP/04--Design/SDPTool/ProjectGovernance/Owner-Walkthrough.md\nSDP/05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C2a.md\nSDP/05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C2b.md\nSDP/05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C2c.md\nSDP/05--Implementation/SDPTool/ProjectGovernance/Plan.md\nSDP/05--Implementation/SDPTool/ProjectGovernance/candidate-PGL2-C2a.json\nSDP/05--Implementation/SDPTool/ProjectGovernance/candidate-PGL2-C2b.json\nSDP/05--Implementation/SDPTool/ProjectGovernance/candidate-PGL2-C2c.json\nSDP/05--Implementation/SDPTool/ProjectGovernance/preflight-PGL2-C2a.json\nSDP/05--Implementation/SDPTool/ProjectGovernance/preflight-PGL2-C2b.json\nSDP/05--Implementation/SDPTool/ProjectGovernance/preflight-PGL2-C2c.json\nSDP/05--Implementation/SDPTool/ProjectGovernance/trial-PGL2-C2a.json\nSDP/05--Implementation/SDPTool/ProjectGovernance/trial-PGL2-C2b.json\nSDP/05--Implementation/SDPTool/ProjectGovernance/trial-PGL2-C2c.json\nSDP/Sessions/session-#0007--Project_governance.md\nSDPTool/cmd/sdp-controller/assignment.go\nSDPTool/cmd/sdp-controller/assignment_test.go\nSDPTool/cmd/sdp-controller/design_decision.go\nSDPTool/governance/design_check.go\nSDPTool/governance/design_check.schema.json\nSDPTool/governance/design_check_test.go\nSDPTool/governance/design_decision.go\nSDPTool/governance/design_decision.schema.json\nSDPTool/governance/design_decision_test.go\nSDPTool/governance/preparation.go\nSDPTool/governance/preparation.schema.json\nSDPTool/governance/preparation_lifecycle.go\nSDPTool/governance/preparation_lifecycle_test.go\nSDPTool/governance/run.go\nSDPTool/governance/store.go\nSDPTool/labs/project-governance/README.md\nSDPTool/labs/project-governance/decision_trial.py\nSDPTool/labs/project-governance/decision_view.py\nSDPTool/labs/project-governance/design_trial.py\nSDPTool/labs/project-governance/design_view.py\nSDPTool/labs/project-governance/lifecycle_trial.py"
+    },
+    {
+      "worktree": "/home/warloc/git/SDP-vNow",
+      "head": "0918098d572bc70be46cc8c72f711e3e2325078f",
+      "dirty": "M SDP/04--Design/SDPTool/ProjectGovernance/Design.md\n M SDP/05--Implementation/SDPTool/ProjectGovernance/Plan.md\n M SDP/Sessions/session-#0007--Project_governance.md\n?? SDP/05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI1.md\n?? SDP/05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI2.md\n?? SDP/05--Implementation/SDPTool/ProjectGovernance/candidate-PGI1.json\n?? SDP/05--Implementation/SDPTool/ProjectGovernance/candidate-PGI2.json\n?? SDP/05--Implementation/SDPTool/ProjectGovernance/protocol-PGI2.json\n?? SDPTool/cmd/sdp-controller/\n?? SDPTool/governance/\n?? SDPTool/governancemcp/",
+      "committed": ""
+    },
+    {
+      "worktree": "/home/warloc/git/SDP-xfmd-viewpoint-main",
+      "head": "ecd9dcd5cd95fb2b1f323cea96da1776659b2513",
+      "dirty": "",
+      "committed": ""
+    },
+    {
+      "worktree": "/home/warloc/git/SDP-xfmd-viewpoint-overviews",
+      "head": "cc7b52f84f05fdef63efc1a305023a12347026ad",
+      "dirty": "",
+      "committed": ""
+    },
+    {
+      "worktree": "/tmp/sdp-21-source",
+      "head": "93517ad98cd188c0debeb1d0f3d36d123c6e4a3b",
+      "dirty": "",
+      "committed": ""
+    },
+    {
+      "worktree": "/tmp/sdp-blueprint-implementation",
+      "head": "f64a5babc72bc7e392ec750eb195ef79c4262726",
+      "dirty": "",
+      "committed": ""
+    },
+    {
+      "worktree": "/tmp/sdp-rp3-candidate",
+      "head": "fede327d6f3af35fe7aad323e2c485a27134d20d",
+      "dirty": "",
+      "committed": ""
+    },
+    {
+      "worktree": "/tmp/sdp-runnable-programs",
+      "head": "3475367490804504d6bfd4459a48ffc85a33ee91",
+      "dirty": "",
+      "committed": ""
+    },
+    {
+      "worktree": "/tmp/sdp-session11-integration",
+      "head": "e8760d331933361ab631ef0d52c20e87268a22b3",
+      "dirty": "",
+      "committed": ""
+    },
+    {
+      "worktree": "/tmp/sdp-session3-release-source",
+      "head": "d304261c90066a86b2d8ffcaa2115517ea339b05",
+      "dirty": "",
+      "committed": ""
+    }
+  ],
+  "verdict": "Green for PG activation into existing controller/MCP run lifecycle and owning records/lab. PG owns these packages; old dirty primary copies excluded. No generic Actions, provider, host protocol or XFMD changes. Rescan event IDs and integration before delivery.",
+  "closeout": {
+    "main": "e8760d331933361ab631ef0d52c20e87268a22b3",
+    "worktrees": [
+      {
+        "worktree": "/home/warloc/git/SDP",
+        "head": "e8760d331933361ab631ef0d52c20e87268a22b3",
+        "scopedDirty": "",
+        "scopedCommitsAfterMain": ""
+      },
+      {
+        "worktree": "/home/warloc/git/SDP-codex-issue-7-provisional-vnext-",
+        "head": "ea9fcf1cdd3198aeac515b89b55398282c463838",
+        "scopedDirty": "",
+        "scopedCommitsAfterMain": ""
+      },
+      {
+        "worktree": "/home/warloc/git/SDP-coordination",
+        "head": "684b1f8952f2f5ff2dc9fb32c7592340d8aff60f",
+        "scopedDirty": "",
+        "scopedCommitsAfterMain": ""
+      },
+      {
+        "worktree": "/home/warloc/git/SDP-project-governance",
+        "head": "9a770ea1ddb6afa62484b3cc9c688ea9b274fd19",
+        "scopedDirty": "M SDP/04--Design/SDPTool/ProjectGovernance/Orchestration.md\n M SDP/04--Design/SDPTool/ProjectGovernance/Owner-Walkthrough.md\n M SDP/05--Implementation/SDPTool/ProjectGovernance/Plan.md\n M SDP/KanBan/active/#052--Change--Project-Leader-and-SAD-orchestration.md\n M SDP/Sessions/session-#0007--Project_governance.md\n M SDPTool/cmd/sdp-controller/assignment.go\n M SDPTool/cmd/sdp-controller/session.go\n M SDPTool/governance/design_decision.go\n M SDPTool/governance/dispatch.go\n M SDPTool/governance/host.go\n M SDPTool/governance/overview.go\n M SDPTool/governance/preparation.go\n M SDPTool/governance/preparation_lifecycle.go\n M SDPTool/governance/run.go\n M SDPTool/governance/schema.json\n M SDPTool/governance/store.go\n M SDPTool/labs/project-governance/README.md\n M SDPTool/labs/project-governance/design_trial.py\n?? SDP/05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C2d.md\n?? SDP/05--Implementation/SDPTool/ProjectGovernance/candidate-PGL2-C2d.json\n?? SDP/05--Implementation/SDPTool/ProjectGovernance/native-failure-PGL2-C2d.json\n?? SDP/05--Implementation/SDPTool/ProjectGovernance/preflight-PGL2-C2d.json\n?? SDP/05--Implementation/SDPTool/ProjectGovernance/trial-PGL2-C2d-native.json\n?? SDP/05--Implementation/SDPTool/ProjectGovernance/trial-PGL2-C2d-protocol.json\n?? SDPTool/governance/activation.go\n?? SDPTool/governance/activation.schema.json\n?? SDPTool/governance/activation_test.go\n?? SDPTool/labs/project-governance/activation_trial.py\n?? SDPTool/labs/project-governance/implementation_view.py",
+        "scopedCommitsAfterMain": "SDP/04--Design/SDPTool/ProjectGovernance/Orchestration.md\nSDP/04--Design/SDPTool/ProjectGovernance/Owner-Walkthrough.md\nSDP/05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C2a.md\nSDP/05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C2b.md\nSDP/05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C2c.md\nSDP/05--Implementation/SDPTool/ProjectGovernance/Plan.md\nSDP/05--Implementation/SDPTool/ProjectGovernance/candidate-PGL2-C2a.json\nSDP/05--Implementation/SDPTool/ProjectGovernance/candidate-PGL2-C2b.json\nSDP/05--Implementation/SDPTool/ProjectGovernance/candidate-PGL2-C2c.json\nSDP/05--Implementation/SDPTool/ProjectGovernance/preflight-PGL2-C2a.json\nSDP/05--Implementation/SDPTool/ProjectGovernance/preflight-PGL2-C2b.json\nSDP/05--Implementation/SDPTool/ProjectGovernance/preflight-PGL2-C2c.json\nSDP/05--Implementation/SDPTool/ProjectGovernance/trial-PGL2-C2a.json\nSDP/05--Implementation/SDPTool/ProjectGovernance/trial-PGL2-C2b.json\nSDP/05--Implementation/SDPTool/ProjectGovernance/trial-PGL2-C2c.json\nSDP/KanBan/active/#052--Change--Project-Leader-and-SAD-orchestration.md\nSDP/Sessions/session-#0007--Project_governance.md\nSDPTool/cmd/sdp-controller/assignment.go\nSDPTool/cmd/sdp-controller/assignment_test.go\nSDPTool/cmd/sdp-controller/design_decision.go\nSDPTool/governance/design_check.go\nSDPTool/governance/design_check.schema.json\nSDPTool/governance/design_check_test.go\nSDPTool/governance/design_decision.go\nSDPTool/governance/design_decision.schema.json\nSDPTool/governance/design_decision_test.go\nSDPTool/governance/preparation.go\nSDPTool/governance/preparation.schema.json\nSDPTool/governance/preparation_lifecycle.go\nSDPTool/governance/preparation_lifecycle_test.go\nSDPTool/governance/run.go\nSDPTool/governance/store.go\nSDPTool/labs/project-governance/README.md\nSDPTool/labs/project-governance/decision_trial.py\nSDPTool/labs/project-governance/decision_view.py\nSDPTool/labs/project-governance/design_trial.py\nSDPTool/labs/project-governance/design_view.py\nSDPTool/labs/project-governance/lifecycle_trial.py"
+      },
+      {
+        "worktree": "/home/warloc/git/SDP-vNow",
+        "head": "0918098d572bc70be46cc8c72f711e3e2325078f",
+        "scopedDirty": "M SDP/04--Design/SDPTool/ProjectGovernance/Design.md\n M SDP/05--Implementation/SDPTool/ProjectGovernance/Plan.md\n M SDP/Sessions/session-#0007--Project_governance.md\n?? SDP/05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI1.md\n?? SDP/05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI2.md\n?? SDP/05--Implementation/SDPTool/ProjectGovernance/candidate-PGI1.json\n?? SDP/05--Implementation/SDPTool/ProjectGovernance/candidate-PGI2.json\n?? SDP/05--Implementation/SDPTool/ProjectGovernance/protocol-PGI2.json\n?? SDPTool/cmd/sdp-controller/\n?? SDPTool/governance/",
+        "scopedCommitsAfterMain": ""
+      },
+      {
+        "worktree": "/home/warloc/git/SDP-xfmd-viewpoint-main",
+        "head": "ecd9dcd5cd95fb2b1f323cea96da1776659b2513",
+        "scopedDirty": "",
+        "scopedCommitsAfterMain": ""
+      },
+      {
+        "worktree": "/home/warloc/git/SDP-xfmd-viewpoint-overviews",
+        "head": "cc7b52f84f05fdef63efc1a305023a12347026ad",
+        "scopedDirty": "",
+        "scopedCommitsAfterMain": ""
+      },
+      {
+        "worktree": "/tmp/sdp-21-source",
+        "head": "93517ad98cd188c0debeb1d0f3d36d123c6e4a3b",
+        "scopedDirty": "",
+        "scopedCommitsAfterMain": ""
+      },
+      {
+        "worktree": "/tmp/sdp-blueprint-implementation",
+        "head": "f64a5babc72bc7e392ec750eb195ef79c4262726",
+        "scopedDirty": "",
+        "scopedCommitsAfterMain": ""
+      },
+      {
+        "worktree": "/tmp/sdp-rp3-candidate",
+        "head": "fede327d6f3af35fe7aad323e2c485a27134d20d",
+        "scopedDirty": "",
+        "scopedCommitsAfterMain": ""
+      },
+      {
+        "worktree": "/tmp/sdp-runnable-programs",
+        "head": "3475367490804504d6bfd4459a48ffc85a33ee91",
+        "scopedDirty": "",
+        "scopedCommitsAfterMain": ""
+      },
+      {
+        "worktree": "/tmp/sdp-session11-integration",
+        "head": "e8760d331933361ab631ef0d52c20e87268a22b3",
+        "scopedDirty": "",
+        "scopedCommitsAfterMain": ""
+      },
+      {
+        "worktree": "/tmp/sdp-session3-release-source",
+        "head": "d304261c90066a86b2d8ffcaa2115517ea339b05",
+        "scopedDirty": "",
+        "scopedCommitsAfterMain": ""
+      }
+    ],
+    "eventAllocation": "PM202 / KB374 and PGL2-C2D trace IDs unused in all other inspected worktrees",
+    "verdict": "No new scoped overlap outside owning PG branch. Historical dirty primary PG copies remain excluded. XFMD ecd9dcd changes viewpoint services outside this scope. Main remains integrated; future shared-history appends require reconciliation."
+  }
+}

@@ -11,6 +11,7 @@ type receipt struct {
 	Result Result `json:"result"`
 }
 type snapshot struct {
+	AssignmentRuns         map[string]AssignmentRun         `json:"assignmentRuns,omitempty"`
 	DesignDecisions        map[string]string                `json:"designDecisions,omitempty"`
 	DesignDecisionReceipts map[string]designDecisionReceipt `json:"designDecisionReceipts,omitempty"`
 	Prepared               map[string]PreparedAssignment    `json:"prepared,omitempty"`
@@ -48,17 +49,17 @@ func (s *Service) load() (snapshot, string, error) {
 	if e = decode(b, &state); e != nil {
 		return empty, "", fail("reconciliation_required", e.Error())
 	}
-	if state.Schema != Schema && state.Schema != preparationStateSchema && state.Schema != preparationLifecycleStateSchema && state.Schema != designDecisionStateSchema {
+	if state.Schema != Schema && state.Schema != preparationStateSchema && state.Schema != preparationLifecycleStateSchema && state.Schema != designDecisionStateSchema && state.Schema != activationStateSchema {
 		return empty, "", fail("incompatible_profile", "unsupported persisted state")
 	}
 	if (state.Schema == Schema && (state.Prepared != nil || state.PreparationReceipts != nil)) || (state.Schema != Schema && (state.Prepared == nil || state.PreparationReceipts == nil)) {
-		return empty, "", fail("incompatible_profile", "assignment preparation requires operational profile 0.2, 0.3 or 0.4")
+		return empty, "", fail("incompatible_profile", "assignment preparation requires operational profile 0.2 through 0.5")
 	}
 	for id, p := range state.Prepared {
 		if p.ID != id || !uuidPattern.MatchString(id) || p.Revision == 0 ||
 			(p.State != "" && p.State != "prepared" && p.State != "retired") ||
 			(p.Revision == 1 && (p.State != "" || p.ChangeReason != "")) ||
-			(p.Revision > 1 && ((state.Schema != preparationLifecycleStateSchema && state.Schema != designDecisionStateSchema) || p.State == "" || !validPreparationReason(p.ChangeReason))) {
+			(p.Revision > 1 && ((state.Schema != preparationLifecycleStateSchema && state.Schema != designDecisionStateSchema && state.Schema != activationStateSchema) || p.State == "" || !validPreparationReason(p.ChangeReason))) {
 			return empty, "", fail("reconciliation_required", "invalid persisted preparation lifecycle")
 		}
 	}
@@ -69,6 +70,9 @@ func (s *Service) load() (snapshot, string, error) {
 		return empty, "", fail("reconciliation_required", "invalid persisted state")
 	}
 	if err := validateDesignDecisionState(state); err != nil {
+		return empty, "", err
+	}
+	if err := validateAssignmentRuns(state); err != nil {
 		return empty, "", err
 	}
 	return state, head, nil

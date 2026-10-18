@@ -1,0 +1,104 @@
+{
+  "baseline": "9a770ea1ddb6afa62484b3cc9c688ea9b274fd19",
+  "integratedMain": "e8760d331933361ab631ef0d52c20e87268a22b3",
+  "scope": "PGL2-C2d delivers exact approved implementation activation, live run authority, immutable retry and protocol/native execution evidence. Native Go behavior and protected files pass; report submission was refused under never. Session and KB052 remain active for coordination, reporting and retained review gates.",
+  "candidateKind": "baseline plus exact source hashes; evidence precedes milestone commit",
+  "goVersion": "go version go1.27.1 linux/amd64",
+  "sourceFiles": {
+    "SDPTool/cmd/sdp-controller/assignment.go": "cfe690cb37519666842e5daac83b5c7662bf98840c59493358ae0e6df7067457",
+    "SDPTool/cmd/sdp-controller/session.go": "1dad49aeeec86f1275354a6a286edd98e7975fb30e0c374cc70824493796e6d9",
+    "SDPTool/governance/activation.go": "047528420c340a69fe9ace533232128228b68f0ac85e6b8799f802f1368cc0be",
+    "SDPTool/governance/activation.schema.json": "170385b0147607bcbe7fb3db0736b9579e384c0909ae62f45600c013c092a11f",
+    "SDPTool/governance/activation_test.go": "7ef4ddd49761d850665c9c5f4d35384eef6f564b21635bd42061dd5d54c13e50",
+    "SDPTool/governance/design_decision.go": "d45f784edaf5226f44f36f0400218deba34ee125fcb782699d2d08e89f4c5837",
+    "SDPTool/governance/dispatch.go": "c4cf8af4b4a35f61ced735db21a6d21d1b8b1ff11177915a9d3aa05ee0f5447a",
+    "SDPTool/governance/host.go": "e3fe483d041768e4a69883a2f26b0c4398346c1c3f78cb8bd7c74f368541e7f6",
+    "SDPTool/governance/overview.go": "0bc01272e83ed5e52e01d15cf119ea9017ff0f9d056b95c7fc7f6a62483a9eef",
+    "SDPTool/governance/preparation.go": "5faa8ef8d858ffc9fc08dc62c1a9f0770e6ba09d3a4edba5882936d4d2ec6a73",
+    "SDPTool/governance/preparation_lifecycle.go": "06cc22074e75a9515dbd4721bf0e071e98066e2374ec390d6938c5bbfc3eb853",
+    "SDPTool/governance/run.go": "a199c329218c52664f8932ba77dafb240286223378944c81fa70f6f80aae8961",
+    "SDPTool/governance/schema.json": "84675cd9fd46da543850579bae9006bc4b784cbb8cbfc9d90749d3e8f4b8bea4",
+    "SDPTool/governance/store.go": "37de83c3bcab46cf4977b6b0132187aa47c42bcec0bc5852d36e02cb0637a79f",
+    "SDPTool/governancecontroller/controller.go": "75e930ddfd1a3d94103d5e5e3daac6ef5cbf0698174f16152cb740f8930fb149",
+    "SDPTool/governancemcp/server.go": "46e78e4847978b70e0c969f24e6ef18c9b0538d49a884f6d6451b5901be2465c",
+    "SDPTool/labs/project-governance/README.md": "4db545576b9d3bde3f2716437980d7577a56f95c2bd2493e823da294f9b89056",
+    "SDPTool/labs/project-governance/activation_trial.py": "d568e4f7843ea5885e79a9571fc501ba8093530ab1f1fc918a9efb2751339ba9",
+    "SDPTool/labs/project-governance/design_trial.py": "7c711517cf65cb29474f6d957dea978440232bf127a21299d11c94eb2d80cce5",
+    "SDPTool/labs/project-governance/implementation_view.py": "b79b6c92d3601d06190077d6e09905ee7fb1b0fd9c00dd362aeaf15db8dc7759"
+  },
+  "fileSetDigest": "043eaebf8d04e6981c35efa40fd8832bc10ed7dec57769d83158e3f138646f07",
+  "binaryHashes": {
+    "sdp-controller": "c3011653d04d4302e31b2c3ed7369bbf3a75ac72ac3056a72106d2c8b9c21fa2",
+    "sdptool": "a879d107740550b7f7e1d826b4b40fd703f2c9d966d1637558c754f907b2321e",
+    "sdp-mcp": "40d823d6945ce27dde69d22da1f3b683983718672783b3a365df964c274d1fa0",
+    "protocol-host": "08bd3770aea3199b4e7188ab66f713d166cfa867f608ed647e5ba0502ed3a0ff"
+  },
+  "hostPackageSHA256": "04d8ab9dbcb9df0edf3c67dca5072a374babfdf762a9bc4ae649ae140b8e2cf0",
+  "hostBinarySHA256": "9a820c17865fa825d04db416818679a9d63bd72e50835c396f496e5684626c9c",
+  "hostHelperSHA256": "e87096087c02aa6ab90a5a85031659665aa0bf3ee20c07ca0b8ab701c83fcd5b",
+  "releaseSource": "https://github.com/openai/codex/releases/tag/rust-v0.161.0",
+  "hostVersion": "0.161.0",
+  "installedHostVersionUnchanged": "0.162.1",
+  "checks": {
+    "race.log": {
+      "result": "passed",
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t51.917s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t31.761s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t4.992s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t1.043s\n",
+      "sha256": "c5be0a484f13e6d7c6a18803323e6b7995e46f85029745b6018a539cce4360b0"
+    },
+    "vet.log": {
+      "result": "passed",
+      "output": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "sdptool-tests.log": {
+      "result": "passed",
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool\t14.364s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprints\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprintstate\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t(cached)\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp\t[no test files]\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdptool\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancehost\t0.067s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/install\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/model\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/presentation\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/projecthistory\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/tools/profile\t(cached)\n",
+      "sha256": "181f6557afdbf6d7c2d833573f9a268a4514e394f25eebda66b791d541be9fca"
+    },
+    "schema.log": {
+      "result": "passed",
+      "output": "PASS: 36 actual request/result objects across protocol and native activation trials\n",
+      "sha256": "ddc86260b8607896d2d013cc3749f439e985370db0b9a4a222358e29077b8457"
+    },
+    "native-final.log": {
+      "result": "passed for bounded checks; native report remains refused",
+      "output": "PASS: real provider/CLI journey, stable review digest, uncommitted TARGET drift, no writes or approval.\nStarting native controller trial in /home/warloc/git/pg_lab/previews/pgl2-c2d\nPASS: approved implementation activation through native; stale and duplicate launch refused; protected files preserved.\n",
+      "sha256": "23fd69eec68e91522f5c2c1c9a1063b94126a575054135147f7212da5d19a61f"
+    },
+    "protocol-final.log": {
+      "result": "passed",
+      "output": "PASS: real provider/CLI journey, stable review digest, uncommitted TARGET drift, no writes or approval.\nStarting protocol-fixture controller trial in /tmp/pg-pgl2-c2d/protocol-final\nPASS: approved implementation activation through protocol-fixture; stale and duplicate launch refused; protected files preserved.\n",
+      "sha256": "3f55f04b3800d30f7a717e09b33247839c0ffec47c43182964992b1ae8be7e13"
+    },
+    "management.log": {
+      "result": "passed",
+      "output": "PASS: 66 cards, 45 management records, 4 lineage operations, 612 events; schema/history/metadata/placement/grouping\n",
+      "sha256": "d2bde3deddedab16a9b8940811be6560cf1b4624017d843851b38699ef7fdb20"
+    },
+    "toolkit.log": {
+      "result": "passed",
+      "output": "SDP Toolkit validation passed\n",
+      "sha256": "5e9d1353c22f090c8b066ba39da56ff229fbc1b07a7e12e21bb8ac9ffbb9e3ad"
+    },
+    "integrity": {
+      "result": "passed",
+      "localMarkdownLinks": 124,
+      "canonicalLedgerPrefixesPreserved": true,
+      "maintainedTrialWireObjects": 36
+    }
+  },
+  "trialHashes": {
+    "trial-PGL2-C2d-native.json": "9e264ad66bd6fa975d58fad7baf60ec1f746f2ace3b44169559dc3be6b2f3cca",
+    "trial-PGL2-C2d-protocol.json": "db2d833838598e7da13a09c6f445545584d4cf9ad92b8ab1c0ea57a352a4bc26",
+    "native-failure-PGL2-C2d.json": "4582144441e9fd641006b8cea6bdd89463ce91bd6c8a45ecdf12a26396bbd30a"
+  },
+  "ownerLabEntriesPreserved": 176,
+  "independentReview": false,
+  "providerIntegration": true,
+  "modelTaskSubmitted": true,
+  "nativeReportSubmitted": false,
+  "nativeReportDisposition": "refused: MCP report requires approval under selected never policy; no policy override/retry",
+  "actualOwnerApprovalRecorded": false,
+  "scriptedFixtureDecisions": true,
+  "published": false
+}

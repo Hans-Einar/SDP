@@ -24,7 +24,7 @@ func ownerCommand(args []string) error {
 	f := flag.NewFlagSet(args[0], flag.ContinueOnError)
 	root := f.String("project", "", "explicit project root")
 	state := f.String("state", "", "private operational state directory")
-	run := f.String("run", "", "existing authorized Maintenance run UUID")
+	run := f.String("run", "", "existing authorized Maintenance or implementation run UUID")
 	socket := f.String("host-socket", "", "private local socket of separately running pinned host")
 	binary := f.String("codex", "codex", "pinned Codex executable")
 	mcp := f.String("mcp-binary", "", "sdp-mcp executable")

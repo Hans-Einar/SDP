@@ -301,7 +301,7 @@ sequenced with those workstreams rather than copied into a second engine.
 | Milestone | Runnable outcome | Required evidence / handoff scenarios | State |
 | --- | --- | --- | --- |
 | PGL1 | Readable/JSON overview of all registered work from existing operational state; lab inspection without launching work | Scenario 5 subset; empty store, multiple runs, stale records, historical host/skill/tool facts, no writes | delivered; [bounded evidence](Evidence-PGL1.md) |
-| PGL2 | Prepare and inspect distinct SAD/implementation assignments; stale design or conflicting scope refuses dispatch eligibility | Scenario 2 guards; current authority, exact bundle revisions, explicit cross-worktree claim boundary, retry/CAS tests | in-progress; [C1 preparation delivered](Evidence-PGL2-C1.md), [C2a revision/retirement delivered](Evidence-PGL2-C2a.md), [C2b provider checks delivered](Evidence-PGL2-C2b.md), [C2c local decision adapter delivered](Evidence-PGL2-C2c.md); dispatch prerequisites pending |
+| PGL2 | Prepare and inspect distinct SAD/implementation assignments; stale design or conflicting scope refuses dispatch eligibility | Scenario 2 guards; current authority, exact bundle revisions, explicit cross-worktree claim boundary, retry/CAS tests | in-progress; [C1 preparation delivered](Evidence-PGL2-C1.md), [C2a revision/retirement delivered](Evidence-PGL2-C2a.md), [C2b provider checks delivered](Evidence-PGL2-C2b.md), [C2c local decision adapter delivered](Evidence-PGL2-C2c.md), [C2d activation and native code trial delivered](Evidence-PGL2-C2d.md); reporting/coordination remain PGL3 |
 | PGL3 | Responsive Project Leader plus two bounded Masters through the trusted controller; durable report inbox and same-Session phase continuation | Scenarios 1, 3, 4; real host execution, no duplicate launch after uncertain reply, delayed report versus new steering | planned |
 | PGL4 | Direct SAD/Master conversation and project panel; revision-bound ModelGovernance/Blueprint handoff | Scenarios 2, 5; real TARGET change stales dependent implementation; roles/tools/children/freshness evidence; owner development trial | planned |
 | PGL5 | Integrated recovery/evidence review and revision-bound remote Steering package | All six scenarios; independent review and selected online-host evidence; PGI4/5 obligations retained | planned |
@@ -409,3 +409,40 @@ interaction remains open to owner feedback. No actual owner trial acceptance is
 inferred from scripted fixture decisions. PGL2 remains in progress for dispatch
 prerequisites; PGL3–5 remain planned. EVT-PM-SDP-000201 / EVT-KB-SDP-000373 record
 this bounded delivery; BranchPolicy and CommitPolicy are unchanged.
+
+## Session completion route — T024, 2026-10-19
+
+The owner asks to continue the plan toward completion of Session0007. Existing
+implementation authority covers the remaining selected milestones; it does not
+waive their evidence, owner-feedback or independent-review boundaries. Preserve
+BranchPolicy current and CommitPolicy milestone. Do not turn each internal check
+into a new owner permission gate, and do not close the Session after a local slice.
+
+| Remaining outcome | Current next delivery / evidence |
+| --- | --- |
+| Finish PGL2 handoff into execution | C2d activates an approved implementation package into the existing controller/MCP runtime; stale/revoked authority refuses advancement; protocol and native trials are distinguished |
+| PGL3 leader and coordinated execution | Responsive leader conversation, two disjoint Masters, durable report delivery, phase/idle continuation and uncertain-send recovery; no global-exclusion claims from local locks |
+| PGL4 integrated owner interaction | Direct SAD/Master dialogue, actual model handoff and readable project panel with tools/children/freshness; incorporate the owner's walkthrough/trial feedback |
+| PGL5 and retained PGI gates | Candidate-bound review/evidence/publication, recovery and independent review; remote Steering capability tested on the selected host, or explicitly dispositioned with the owner |
+| Session closeout | Reconcile S3/S4/S6 and related cards with actual evidence; retain the broader KB043 timeline as deferred scope with its explicit disposition, not an invented delivered feature |
+
+C2d follows the [activation contract](../../../04--Design/SDPTool/ProjectGovernance/Orchestration.md#pgl2-c2d--activate-approved-implementation-work-2026-10-19)
+and [scoped preflight](preflight-PGL2-C2d.json). The real-host trial must use the
+verified complete host package; the installed Codex version is not silently replaced.
+A host turn ending without implementation is a failed trial, not acceptance.
+
+## PGL2-C2d result — T024
+
+[Evidence](Evidence-PGL2-C2d.md), [candidate](candidate-PGL2-C2d.json) and the separate
+protocol/native trial records establish approved implementation activation, current
+run authority, immutable retry and bounded execution through the existing controller.
+The native code and external behavioral tests pass; report submission is refused
+under never. Host completion therefore does not advance or accept the assignment.
+The first failed native attempt remains recorded rather than overwritten.
+
+PGL2's Master activation boundary is delivered. PGL2 remains in-progress until its
+remaining handoff restrictions are reconciled with PGL3 execution: scope release/
+replanning, report integration and SAD dispatch are not silently declared complete.
+Next is PGL3's responsive coordination/durable report contract and per-run controller
+isolation, retaining the actual native report-policy limitation. PGL4/5 and retained
+PGI gates still apply. EVT-PM-SDP-000202 / EVT-KB-SDP-000374 record this delivery.

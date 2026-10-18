@@ -15,6 +15,7 @@ def main():
     parser.add_argument("--controller", type=Path, required=True)
     parser.add_argument("--sdptool", type=Path, required=True)
     parser.add_argument("--source", type=Path, required=True, help="SDL fixture directory with System.design")
+    parser.add_argument("--execution-fixture", action="store_true", help="authorize only a bounded isolated runtime test task")
     args = parser.parse_args()
     base = args.destination.resolve()
     base.mkdir(parents=True, exist_ok=False)
@@ -52,9 +53,16 @@ def main():
 
     selection = {"card": "SDP/KanBan/active/master.md", "plan": "SDP/Plans/master.md",
                  "session": "SDP/Sessions/master.md", "authority": "SDP/authority.md", "step": "S1"}
-    write(root / "AGENTS.md", "# Design check fixture\nNo model task or implementation is authorized.\n")
+    if args.execution_fixture:
+        write(root / "AGENTS.md", "# Isolated PG runtime fixture\nThe owner authorizes testing PG execution in this isolated fixture. Only change code/normalize.go and code/normalize_test.go. Preserve all other files, models, governance records and existing unrelated content. Do not spawn agents, install tools, use network, commit, publish or modify the host configuration. Report through the existing assignment-bound MCP tools.\n")
+        write(root / "code/go.mod", "module pgfixture\n\ngo 1.26.0\n")
+        write(root / "code/normalize.go", 'package pgfixture\nimport "strings"\nfunc Normalize(s string) string { return strings.Trim(s, " ") }\n')
+        write(root / "code/normalize_test.go", 'package pgfixture\nimport "testing"\nfunc TestExisting(t *testing.T) { if Normalize("  Keep  Case  ") != "Keep  Case" { t.Fatal("wrong normalization") } }\n')
+        write(root / "unrelated.txt", "Preserve this original fixture content.\n")
+    else:
+        write(root / "AGENTS.md", "# Design check fixture\nNo model task or implementation is authorized.\n")
     write(root / "SDP/SDP-project.manifest.yaml", "schemaVersion: '1.0'\nproject:\n  name: pg-design-lab\n")
-    write(root / selection["authority"], "# Fixture authority\nPrepare and inspect a bounded design package. No owner design acceptance is recorded.\n")
+    write(root / selection["authority"], "# Fixture authority\n" + ("Session0007 owner continuation authorizes a bounded isolated PG execution test. The test controller may create a clearly attributed fixture decision and launch one Master to fix Unicode edge whitespace normalization and add focused tests in code. No actual owner acceptance of project design is inferred.\n" if args.execution_fixture else "Prepare and inspect a bounded design package. No owner design acceptance is recorded.\n"))
     write(root / selection["card"], "# Work\n\n| Field | Value |\n| --- | --- |\n| id | KB-PGDES-001 |\n| PlanId | PLAN-PGDES-0001 |\n| CardState | in-progress |\n")
     write(root / selection["plan"], "# Plan\n\n| Field | Value |\n| --- | --- |\n| id | PLAN-PGDES-0001 |\n| PlanType | ImplementationPlan |\n| state | active |\n")
     write(root / selection["session"], "# Goal\n\n| State | Step |\n| --- | --- |\n| active | S1 |\n\n| Field | Value |\n| --- | --- |\n| Session reference | SESSION-PGDES-0001 |\n| Status | active |\n")
@@ -78,7 +86,7 @@ def main():
         path = Path(result["path"])
         shutil.copytree(args.source.resolve(), path, dirs_exist_ok=True)
         artifacts.append(path)
-    task = {"ID": "design-fixture", "Intent": "Inspect unchanged bounded model", "AllowedCodePaths": ["code"]}
+    task = {"ID": "design-fixture", "Intent": ("Fix Unicode surrounding whitespace in code/normalize.go; add regression tests preserving interior spacing and case. Preserve code/go.mod and unrelated content." if args.execution_fixture else "Inspect unchanged bounded model"), "AllowedCodePaths": ["code"]}
     task_path = root / "task.json"
     write(task_path, json.dumps(task) + "\n")
     bundle = run([tool, models, "model", "create", "blueprint", "from", "work:Before", "to", "work:After",
@@ -104,7 +112,7 @@ def main():
     prepare = {"schema": "sdp-governance-assignment/1", "projectRef": context["context"]["projectRef"],
                "checkoutId": context["context"]["checkoutId"], "operationId": str(uuid.uuid4()),
                "expectedGeneration": context["generation"], "inputRevision": context["context"]["revision"],
-               "role": "Master", "selection": selection, "assignment": {"outcome": "Review bounded design", "writablePaths": ["code"],
+               "role": "Master", "selection": selection, "assignment": {"outcome": task["Intent"], "writablePaths": ["code"],
                "excludedPaths": ["SDP"]}, "artifacts": pins, "returnCriteria": ["Return exact design review basis and unknowns"]}
     prepared = pg("prepare", prepare)
     view = pg("inspect")

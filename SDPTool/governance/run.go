@@ -146,7 +146,7 @@ func (s *Service) Read(runID string) (Result, error) {
 	if !ok {
 		return out, fail("missing_coverage", "run not found")
 	}
-	c, e := s.Context(r.Selection)
+	c, e := s.runContext(r)
 	if e != nil {
 		return out, e
 	}
@@ -202,7 +202,7 @@ func (s *Service) Transition(caller Caller, q TransitionRequest) (Result, error)
 	if q.ExpectedRevision != r.Revision && !approvedRevision(state, r, caller, q) {
 		return out, &Error{Code: "stale_revision", Message: "run revision changed", CurrentRevision: r.Revision}
 	}
-	c, e := s.Context(r.Selection)
+	c, e := s.runContext(r)
 	if e != nil {
 		return out, e
 	}
@@ -269,11 +269,11 @@ func (s *Service) Transition(caller Caller, q TransitionRequest) (Result, error)
 	}
 	state.Runs[r.ID] = r
 	state.Receipts[q.OperationID] = receipt{digest, out}
-	latest, e := s.Context(r.Selection)
+	latest, e := s.runContext(r)
 	if e != nil {
 		return Result{}, e
 	}
-	if !stopping && latest.Revision != c.Revision {
+	if !stopping && (latest.Revision != c.Revision || len(latest.Conditions) > 0) {
 		return Result{}, fail("stale_revision", "inputs changed during preparation")
 	}
 	if e = s.save(state, head); e != nil {

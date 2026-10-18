@@ -208,3 +208,45 @@ Caller authority does not authenticate a human: same-user shell access remains
 outside the boundary. A historical receipt is not fresh acceptance; use design-review
 with the current generation. New decision writes upgrade only that store to 0.4.
 Older readers refuse it; all new writers preserve it. Dispatch remains unavailable.
+
+## Approved implementation execution — PGL2-C2d
+
+Build the development controller, SDPTool and sdp-mcp without replacing installed
+commands. Use a complete Codex 0.161.0 host package (including its execution helper),
+not just the standalone codex executable. The exact host pin remains enforced. A
+managed account must already be available; this trial does not configure accounts.
+
+```sh
+go build -o /tmp/pg-mcp ./cmd/sdp-mcp
+python3 labs/project-governance/activation_trial.py --destination /absolute/new-implementation-trial --controller /absolute/new-controller --sdptool /absolute/new-sdptool --mcp /tmp/pg-mcp --source ../experiments/blueprint_mvp1/NOW --old-controller /absolute/c2c-controller --host /absolute/complete-codex-package/bin/codex --host-kind native
+python3 labs/project-governance/implementation_view.py --preview /absolute/new-implementation-trial
+```
+
+Unlike the read-only previews, this explicitly launches a real model task in a new
+isolated project. It supplies a labelled fixture-owner design decision and fixes a
+small Go Unicode-whitespace bug. The script verifies the bug before execution, then
+checks the resulting behavior with cases outside the agent's writable project, runs
+the project tests and checks protected files. The scripted decision is test authority,
+not actual project-owner acceptance. Provider artifacts are real, but the assignment
+is synthetic; passing this trial does not prove code conformance to a production SDL
+model. An ended host turn without the expected code change fails the trial.
+
+The maintained protocol-fixture mode uses the controller test executable and tests
+transport/guard behavior without model execution. Keep its results separate from a
+native trial. Both modes check immutable activation retry, duplicate-run refusal,
+stale-design launch refusal, duplicate launch refusal and old-reader rejection of
+operational profile 0.5. A failed native run is retained; use a fresh destination for
+a corrected attempt, never silently rerun the same completed attempt.
+
+Underlying operation: `sdp-controller assignment activate --project ROOT --state
+STATE --input REQUEST`. The activation schema references the exact checked package,
+current generation and approved decision operation. It creates a ready implementation
+run. The existing `run` command separately launches that run and rechecks authority.
+Once activated, preparation revision/retirement is refused; scope is retained pending
+an explicit future run closure/replanning workflow. This milestone does not deliver
+SAD launch, concurrent Masters, leader conversation or automatic report delivery.
+
+The installed owner-lab helper `./implementation` reads the separate C2d preview.
+It displays task, run state, host state, changed files and the recorded behavioral
+check. `--json` exposes current run inspection. It starts no agents and records no
+decision. An ended host turn is not a completed or accepted governance assignment.

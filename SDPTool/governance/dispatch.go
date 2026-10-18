@@ -117,7 +117,7 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 			index = i
 		}
 	}
-	context, e := s.Context(r.Selection)
+	context, e := s.runContext(r)
 	if e != nil {
 		return Result{}, e
 	}

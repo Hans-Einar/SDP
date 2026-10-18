@@ -17,10 +17,10 @@ func assignmentCommand(args []string, output io.Writer) error {
 
 func assignmentCommandIO(args []string, output io.Writer, ownerInput io.Reader, prompt io.Writer) error {
 	if len(args) == 0 {
-		return fmt.Errorf("assignment requires context|prepare|revise|retire|inspect|design-check|design-review|design-decide")
+		return fmt.Errorf("assignment requires context|prepare|revise|retire|inspect|design-check|design-review|design-decide|activate")
 	}
 	action := args[0]
-	if action != "context" && action != "prepare" && action != "revise" && action != "retire" && action != "inspect" && action != "design-check" && action != "design-review" && action != "design-decide" {
+	if action != "context" && action != "prepare" && action != "revise" && action != "retire" && action != "inspect" && action != "design-check" && action != "design-review" && action != "design-decide" && action != "activate" {
 		return fmt.Errorf("unsupported assignment operation")
 	}
 	f := flag.NewFlagSet("assignment "+action, flag.ContinueOnError)
@@ -84,6 +84,11 @@ func assignmentCommandIO(args []string, output io.Writer, ownerInput io.Reader, 
 		var q governance.RetirePreparationRequest
 		if err = governance.Decode(request, &q); err == nil {
 			result, err = service.RetireAssignment(governance.LocalController(), q)
+		}
+	case "activate":
+		var q governance.ActivationRequest
+		if err = governance.Decode(request, &q); err == nil {
+			result, err = service.ActivateAssignment(governance.LocalController(), q)
 		}
 	case "design-review":
 		var q governance.DesignCheckRequest

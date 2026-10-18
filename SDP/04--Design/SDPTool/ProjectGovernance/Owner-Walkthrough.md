@@ -1,7 +1,7 @@
 # ProjectGovernance — owner walkthrough and feedback
 
-Snapshot: 2026-10-18, Session0007 T022. The development branch now includes the
-PGL2-C2c local decision adapter described below; this is not a released feature set. This guide explains the existing
+Snapshot: 2026-10-19, Session0007 T024. The development branch now includes
+activation of an approved implementation package and a real isolated code trial; this is not a released feature set. This guide explains the existing
 [orchestration design](Orchestration.md) and its delivered boundaries. It does not
 introduce new approval requirements or record owner acceptance.
 
@@ -49,8 +49,8 @@ The role arrangement already comes from the
    talk directly with Master; relevant feedback must also reach Project Leader.
 
 The responsive leader conversation, automatic delivery of feedback and multiple
-running Masters are planned capabilities. They are not demonstrated by the current
-preparation and inspection commands.
+running Masters are planned capabilities. The current native trial runs one bounded
+implementation task; it does not demonstrate that coordination workflow.
 
 ## What works in the development version today
 
@@ -62,7 +62,7 @@ preparation and inspection commands.
 | Revise or retire preparation | Revises the same assignment with retained history, or retires it and releases its unlaunched local claim | Retirement is not completion or cancellation of a running agent |
 | Check the proposed design | Checks the assignment against the canonical Blueprint, actual NOW/TARGET contents, task and permitted paths | A successful check establishes a consistent review basis, not owner acceptance |
 | Record a design decision for this new route | A local controller adapter displays the proposal and reads an explicit decision and comment; it retains earlier decisions and checks current applicability | Local attributed input only; conversation capture and the final UI remain unfinished |
-| Start new SAD/Master work through this orchestration | Not available yet | Dispatch and the broader conversation/inbox workflow remain unfinished |
+| Activate approved Master implementation | Creates one ready run from the exact current approved design; the existing controller can execute it with bound MCP context | Native code trial passed; report submission was refused by the selected approval policy. SAD launch, leader conversation and inbox remain unfinished |
 
 The technical design check can say **current** or **blocked**. “Current” means the
 checked package still matches its referenced inputs. “Blocked” gives a reason, such
@@ -103,6 +103,25 @@ The [C2c evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidenc
 records these checks. The existing `design-check` remains technical-only; use
 `design-review` when inspecting the recorded decision and whether it still applies.
 
+### A real implementation trial
+
+Run `./implementation` in the PG lab to inspect the separate C2d preview. It shows
+one small Go task, the actual run and host states, changed files and behavioral test
+results. The approved package was activated, a real Codex host changed only the two
+permitted Go files, and external checks verified Unicode whitespace trimming while
+preserving interior spacing and case. Your original project/runtime remain unchanged.
+
+The synthetic fixture decision was not attributed to you. The host finished the
+code task, but its MCP report was refused because that call requires approval and
+the trial used `never`. The run therefore remains running, with a completed host
+attempt and no recorded assignment report. This is an integration limitation, not
+an accepted/completed assignment. The earlier read-only `design-review` remains a
+separate rejected fixture; this trial does not overwrite your inputs there.
+
+[Execution evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C2d.md)
+retains that distinction. The helper starts no work. Leader/report delivery, direct
+SAD conversation and the full project panel are still subsequent plan work.
+
 ## Where your feedback is useful now
 
 These are discussion points for shaping the next increment, not a pending approval
@@ -124,7 +143,7 @@ implementation evidence to give that feedback.
 - [Orchestration contract](Orchestration.md): exact behavior and delivered increments.
 - [Implementation plan](../../../05--Implementation/SDPTool/ProjectGovernance/Plan.md): remaining milestones.
 - [Session0007](../../../Sessions/session-%230007--Project_governance.md): owner direction, decisions and work history.
-- [Draft PR 56](https://github.com/Hans-Einar/SDP/pull/56): current C2a/C2b code delivery.
+- [Draft PR 56](https://github.com/Hans-Einar/SDP/pull/56): current PG development delivery.
 
 This Markdown document is the reading entry point for XFMD. No new XFMD approval
 control or native PG dashboard is supplied by this documentation update.
