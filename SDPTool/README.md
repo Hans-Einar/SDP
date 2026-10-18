@@ -209,3 +209,11 @@ with separately built sdp-mcp and sdp-controller probe commands. The [owner cont
 run/status/recover commands, durable input and bounded steering. PGI3 live execution
 remains unverified; candidate-evidence publication remains later work in
 PLAN-SDP-0018. These commands are not yet part of a published installer.
+
+
+## Discoverable operations and JSON requests
+
+Use `sdptool actions --json` to discover supported operations and
+`sdptool invoke --request -` for one JSON request on stdin. Human CLI commands
+remain available. [Actions.md](Actions.md) documents schemas, local attribution,
+path bases, nonzero JSON results and the current five-operation scope.

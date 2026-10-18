@@ -1,0 +1,8 @@
+flowchart LR
+    n_ExistingInstallationFacade["ExistingInstallationFacade (unit)"]
+    n_InstallationFacade["InstallationFacade (feature)"]
+    n_InvokeReviewedInstallation["InvokeReviewedInstallation (functionality)"]
+    n_SdpToolHost["SdpToolHost (container)"]
+    n_ExistingInstallationFacade -->|owns| n_InvokeReviewedInstallation
+    n_InvokeReviewedInstallation -->|allocated-to| n_SdpToolHost
+    n_InvokeReviewedInstallation -->|contributes-to| n_InstallationFacade

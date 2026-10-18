@@ -1,0 +1,22 @@
+flowchart LR
+    n_CheckTransitionAuthority["CheckTransitionAuthority (functionality)"]
+    n_ContextFacade["ContextFacade (unit)"]
+    n_GovernedProjectOperations["GovernedProjectOperations (feature)"]
+    n_ReconcileRunRevision["ReconcileRunRevision (functionality)"]
+    n_ResolveApplicableRoutine["ResolveApplicableRoutine (functionality)"]
+    n_ResolveCheckoutAuthority["ResolveCheckoutAuthority (functionality)"]
+    n_RoutineCoordinator["RoutineCoordinator (unit)"]
+    n_RunRepository["RunRepository (unit)"]
+    n_SdpToolHost["SdpToolHost (container)"]
+    n_CheckTransitionAuthority -->|allocated-to| n_SdpToolHost
+    n_CheckTransitionAuthority -->|contributes-to| n_GovernedProjectOperations
+    n_ContextFacade -->|owns| n_ResolveCheckoutAuthority
+    n_ReconcileRunRevision -->|allocated-to| n_SdpToolHost
+    n_ReconcileRunRevision -->|contributes-to| n_GovernedProjectOperations
+    n_ResolveApplicableRoutine -->|allocated-to| n_SdpToolHost
+    n_ResolveApplicableRoutine -->|contributes-to| n_GovernedProjectOperations
+    n_ResolveCheckoutAuthority -->|allocated-to| n_SdpToolHost
+    n_ResolveCheckoutAuthority -->|contributes-to| n_GovernedProjectOperations
+    n_RoutineCoordinator -->|owns| n_CheckTransitionAuthority
+    n_RoutineCoordinator -->|owns| n_ResolveApplicableRoutine
+    n_RunRepository -->|owns| n_ReconcileRunRevision

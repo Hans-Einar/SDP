@@ -88,12 +88,36 @@ with tempfile.TemporaryDirectory(prefix='sdp-actions-trial-') as temporary:
     invoke('blueprint.assignment.apply',{'request':request},attribution=caller)
     assert before==history.read_bytes()
     invoke('blueprint.assignment.list',{})
-    # A retained menu configuration survives producer downgrade; icon absence uses fallback.
-    saved=['project.discover','blueprint.generate','future.action']; preserved=list(saved)
-    old={'project.discover'};visible=[x for x in saved if x in old]
-    assert saved==preserved and visible==['project.discover']
+    # Headless reference projection, not native XFMD implementation.
+    def supports(schema):
+        return (schema.get('type','object') in {'object','string'}
+                and all(supports(v) for v in schema.get('properties',{}).values())
+                and all(supports(v) for v in schema.get('oneOf',[])))
+    def toolbar(metadata, preferences, icons):
+        if metadata['schema']!='sdptool.actions/1':
+            raise ValueError('unsupported catalogue schema')
+        actions={a['id']:a for a in metadata['actions']}
+        return [{'id':ident,'icon':icons.get(actions[ident]['iconKey'],'generic'),
+                 'enabled':supports(actions[ident]['inputSchema']) and actions[ident]['availability']['state']!='unavailable'}
+                for ident in preferences if ident in actions]
+    saved=['project.discover','blueprint.generate','future.action'];preserved=list(saved)
+    old=dict(catalogue,actions=[a for a in catalogue['actions'] if a['id']=='project.discover'])
+    assert [x['id'] for x in toolbar(old,saved,{})]==['project.discover'] and saved==preserved
     icons={'project-discover':'folder'}
-    assert any(icons.get(a['iconKey'],'generic')=='generic' for a in catalogue['actions'])
+    assert any(x['icon']=='generic' for x in toolbar(catalogue,saved,icons))
+    import copy
+    unsupported=copy.deepcopy(catalogue)
+    discover=next(a for a in unsupported['actions'] if a['id']=='project.discover')
+    discover['inputSchema']={'type':'future-control'}
+    assert not toolbar(unsupported,saved,icons)[0]['enabled']
+    discover['inputSchema']={'type':'object'};discover['availability']['state']='unavailable'
+    assert not toolbar(unsupported,saved,icons)[0]['enabled']
+    try:
+        toolbar(dict(catalogue,schema='future'),saved,icons)
+    except ValueError:
+        pass
+    else:
+        raise AssertionError('unsupported catalogue accepted')
     # Actual executable must unblock incomplete stdin when interrupted.
     child=subprocess.Popen([binary,'invoke','--request','-'],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
     child.stdin.write('{');child.stdin.flush();time.sleep(0.2);child.send_signal(signal.SIGINT)

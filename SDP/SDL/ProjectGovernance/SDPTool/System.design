@@ -89,7 +89,7 @@ ActionRegistry owns DescribeSupportedActions.
 ActionsDelivery addresses DescribeSupportedActions.
 ActionsDelivery addresses InvokeTypedAction.
 ActionsDelivery delivers DiscoverableActions.
-ActionsDelivery has implementation-status = planned.
+ActionsDelivery has implementation-status = implemented.
 AssessBlueprintEvidence allocated-to SdpToolHost in mode ProjectReading.
 AssessBlueprintEvidence contributes-to ScopedBlueprintReadiness.
 AssessBlueprintEvidence realizes DiagnosticBlueprint.

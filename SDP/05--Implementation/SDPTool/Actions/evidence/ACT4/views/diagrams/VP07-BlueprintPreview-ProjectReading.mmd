@@ -1,0 +1,8 @@
+flowchart LR
+    n_BlueprintFacade["BlueprintFacade (unit)"]
+    n_BlueprintPreview["BlueprintPreview (feature)"]
+    n_GenerateBlueprintPreview["GenerateBlueprintPreview (functionality)"]
+    n_SdpToolHost["SdpToolHost (container)"]
+    n_BlueprintFacade -->|owns| n_GenerateBlueprintPreview
+    n_GenerateBlueprintPreview -->|allocated-to| n_SdpToolHost
+    n_GenerateBlueprintPreview -->|contributes-to| n_BlueprintPreview

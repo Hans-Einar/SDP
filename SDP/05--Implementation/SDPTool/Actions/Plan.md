@@ -45,7 +45,7 @@ installation replacement and editing other worktrees remain outside scope.
 | ACT2 Read workflow | ACT2-M1 | Registry-derived actions catalogue, strict invoke stdin/file transport and project.discover through shared CLI service | completed; ACT2 evidence below |
 | ACT3 Blueprint workflow | ACT3-M1 | Generate/retain, assess and list typed actions; preserve preliminary sources, immutable bundles, blocked results and domain diagnostics | completed; ACT3 tests |
 | ACT3 Blueprint workflow | ACT3-M2 | Embedded assignment request, separately supplied principal, shared human/JSON handler, exact revision checks and safe retry reconciliation | completed; ACT3 tests |
-| ACT4 Consumer verification | ACT4-M1 | Compiled-process tests, headless consumer and actual gh-sdp transport with isolated signed development distribution; review and regressions | planned |
+| ACT4 Consumer verification | ACT4-M1 | Compiled-process tests, headless consumer and actual gh-sdp transport with isolated signed development distribution; review and regressions | completed; Evidence.md |
 | ACT5 Handoff | ACT5-M1 | Usage/examples, API/CLI contract, evidence and external XFMD handoff; reconcile card/Session and paused blueprint resume pointer | planned |
 
 ### ACT0 — coordination before product edits

@@ -1,0 +1,12 @@
+flowchart LR
+    n_ActionRegistry["ActionRegistry (unit)"]
+    n_DescribeSupportedActions["DescribeSupportedActions (functionality)"]
+    n_DiscoverableActions["DiscoverableActions (feature)"]
+    n_InvokeTypedAction["InvokeTypedAction (functionality)"]
+    n_JsonInvocationAdapter["JsonInvocationAdapter (unit)"]
+    n_SdpToolHost["SdpToolHost (container)"]
+    n_ActionRegistry -->|owns| n_DescribeSupportedActions
+    n_DescribeSupportedActions -->|allocated-to| n_SdpToolHost
+    n_DescribeSupportedActions -->|contributes-to| n_DiscoverableActions
+    n_InvokeTypedAction -->|contributes-to| n_DiscoverableActions
+    n_JsonInvocationAdapter -->|owns| n_InvokeTypedAction

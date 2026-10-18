@@ -1,7 +1,7 @@
 # XFMD blueprint integration handoff
 
-Status: source implementation on `sdp/blueprint-implementation`, inspected at
-`d2cc760` on 2026-10-09. This is not a published-release or native-GUI acceptance
+Status: blueprint implementation originally inspected at d2cc760; Actions/JSON
+producer delivery is recorded in Session0011 on 2026-10-18. This is not a published-release or native-GUI acceptance
 claim. Session0008 T013 records this handoff.
 
 ## Start here
@@ -69,40 +69,26 @@ The local CLI's --as/--authority are attribution, not remote authentication. A f
 adapter must establish the caller independently. Lifecycle writes currently require
 Linux; parsing or blueprint generation does not prove implementation conformance.
 
-## Proposed dynamic actions — not implemented
+## Dynamic actions and JSON input — implemented
 
-Content discovery is not a command catalogue. The current producer has no generic
-metadata contract sufficient to build arbitrary command menus/forms automatically.
-[KB-SDP-053](../SDP/KanBan/active/%23053--Proposal--Discoverable-SDPTool-actions.md)
-registers that producer work. External KB-XFMD-030 owns its consumer and preferences.
+[Actions.md](Actions.md) is the current producer contract and command guide.
+`sdptool [PROJECT] actions --json` advertises supported actions and typed input
+schemas; `sdptool invoke --request -|FILE` executes one JSON request. The registry
+contains discovery plus blueprint generation, assessment, assignment list/apply.
+Existing human CLI routes share the domain handlers. Caller attribution remains
+separate from JSON. Catalogue support and contextual availability are distinct.
 
-Use stable action IDs, labels/groups, descriptions, icon keys, typed inputs/outputs,
-context requirements and mutation classification. SDPTool owns operation semantics
-and validation; XFMD owns presentation, icons and personal configuration. Catalogue
-advertisement is not permission. Generic forms cover supported parameter types;
-complex workflows may still require a dedicated consumer adapter.
+Native XFMD still owns menu/Preferences/toolbar implementation under external
+KB-XFMD-030. Its previously inspected job transport must accept bounded stdin and
+retain structured stdout on nonzero exit. The headless consumer and actual gh-sdp
+trial prove the producer/transport; they do not prove a new native XFMD build.
+Unsupported action IDs remain in saved preferences, hidden on old producers;
+unavailable supported actions stay disabled with a reason. Unknown icons use a
+generic fallback. No executable snippets are accepted from catalogue metadata.
 
-Absent actions on an older producer are hidden without deleting saved preferences.
-An advertised action temporarily unavailable in the current context remains disabled
-with a reason, preserving XFMD's existing #029 interaction contract. Never infer
-commands by scraping help or execute catalogue-provided shell snippets.
-
-## Proposed JSON request adapter — T014, not implemented
-
-The owner proposes JSON input as well as JSON output. KB-SDP-053 recommends
-`sdptool invoke --request -` with one request on stdin and one JSON result/error on
-stdout; `--request FILE` would support saved inputs. These are illustrative command
-names, not current CLI support. Human commands and the JSON adapter should dispatch
-the same typed operations. A versioned envelope would carry correlation ID, action,
-context and parameters matching the catalogue. Diagnostics stay on stderr.
-
-Existing assignment apply accepts a JSON file, but there is no general invocation
-adapter. gh-sdp forwards stdin already. XFMD's current SdpToolJob opens /dev/null as
-child stdin and drops stdout on nonzero exit: integration must add bounded input
-transport and decode structured error/blocked results while retaining exit status.
-A request correlation ID does not replace mutation idempotency or expected revisions.
-One process per request is sufficient initially; this does not require a daemon and
-is not by itself an MCP server.
+[Session0011 evidence](../SDP/05--Implementation/SDPTool/Actions/Evidence.md) pins
+the tested engine and wrapper separately. The Actions card is now KB-SDP-053;
+KB-SDP-051 remains the published runnable-program card after identity reconciliation.
 
 ## Testing before main or release
 
@@ -111,7 +97,7 @@ for one XFMD process. Run the matching XFMD working build; an older installed bu
 may not implement this override or dynamic tabs.
 
 ```sh
-go -C /tmp/sdp-blueprint-implementation/SDPTool build -o /tmp/sdptool-blueprint-dev ./cmd/sdptool
+go -C /tmp/sdp-session11-integration/SDPTool build -o /tmp/sdptool-blueprint-dev ./cmd/sdptool
 /tmp/sdptool-blueprint-dev /home/warloc/git/xfmd-sdl-navigation discover --json
 XFMD_SDP_TOOL=/tmp/sdptool-blueprint-dev /path/to/working/xfmd
 ```
@@ -134,4 +120,6 @@ For the complete `gh sdp` path, the current gh-sdp README/main.go supports
 then scope these settings to test invocations. The descriptor and signature/assets
 must exist; setting SDP_RELEASE to a source branch or executable is not sufficient.
 Test extension installation can use isolated GH_CONFIG_DIR and XDG_DATA_HOME.
-No such distribution, installation or publication was performed in this handoff.
+Session0011 now verifies this path with a local test-signed distribution and
+isolated extension/cache configuration. No normal installation or publication
+was changed. See the linked evidence for the exact reproducible trial.

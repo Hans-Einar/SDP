@@ -371,3 +371,13 @@ Retained output bytes remain immutable and no manual navigation index is introdu
 
 Writes currently require Linux. Release packaging/installable capabilities and
 native XFMD integration are separate from this source implementation.
+
+
+## Actions and invocation — ACT
+
+`actions` emits a readable catalogue or sdptool.actions/1 with --json. `invoke`
+accepts strict sdptool.invoke/1 on stdin/regular file and always returns a machine
+envelope, preserving domain results and meaningful nonzero exits. The same typed
+handlers serve included human commands. [Actions.md](Actions.md) owns the public
+protocol detail and first five supported operations. This is an additive local
+subprocess/Go interface, not an HTTP/MCP endpoint or new caller authentication.

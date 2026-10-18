@@ -1,0 +1,4991 @@
+{
+  "version": "sdl-viewpoints-go-1.3",
+  "revision": "02ca3d1cf871998399f43803bbf47f6fa73321b38ce22301b196973963cd3480",
+  "renderer": "",
+  "diagrams": [
+    {
+      "id": "VP02-roots",
+      "title": "Architecture roots — no connection/allocation is inferred",
+      "kind": "flowchart",
+      "nodes": {
+        "n_ExternalCommandAdapter": {
+          "kind": "unit",
+          "model_id": "ExternalCommandAdapter",
+          "span": {
+            "column": 1,
+            "end": 1036,
+            "end_column": 29,
+            "end_line": 32,
+            "line": 32,
+            "node": "Span",
+            "start": 1008
+          }
+        },
+        "n_SdpToolHost": {
+          "kind": "container",
+          "model_id": "SdpToolHost",
+          "span": {
+            "column": 1,
+            "end": 2572,
+            "end_column": 23,
+            "end_line": 82,
+            "line": 82,
+            "node": "Span",
+            "start": 2550
+          }
+        }
+      },
+      "edges": [],
+      "source_facts": [],
+      "elements": []
+    },
+    {
+      "id": "VP02-SdpToolHost",
+      "title": "Logical decomposition: SdpToolHost",
+      "kind": "flowchart",
+      "nodes": {
+        "n_ActionRegistry": {
+          "kind": "unit",
+          "model_id": "ActionRegistry",
+          "span": {
+            "column": 1,
+            "end": 54,
+            "end_column": 21,
+            "end_line": 2,
+            "line": 2,
+            "node": "Span",
+            "start": 34
+          }
+        },
+        "n_BlueprintAssessment": {
+          "kind": "unit",
+          "model_id": "BlueprintAssessment",
+          "span": {
+            "column": 1,
+            "end": 145,
+            "end_column": 26,
+            "end_line": 5,
+            "line": 5,
+            "node": "Span",
+            "start": 120
+          }
+        },
+        "n_BlueprintCatalogue": {
+          "kind": "unit",
+          "model_id": "BlueprintCatalogue",
+          "span": {
+            "column": 1,
+            "end": 277,
+            "end_column": 25,
+            "end_line": 9,
+            "line": 9,
+            "node": "Span",
+            "start": 253
+          }
+        },
+        "n_BlueprintFacade": {
+          "kind": "unit",
+          "model_id": "BlueprintFacade",
+          "span": {
+            "column": 1,
+            "end": 336,
+            "end_column": 22,
+            "end_line": 11,
+            "line": 11,
+            "node": "Span",
+            "start": 315
+          }
+        },
+        "n_BlueprintLifecycle": {
+          "kind": "unit",
+          "model_id": "BlueprintLifecycle",
+          "span": {
+            "column": 1,
+            "end": 361,
+            "end_column": 25,
+            "end_line": 12,
+            "line": 12,
+            "node": "Span",
+            "start": 337
+          }
+        },
+        "n_ContextFacade": {
+          "kind": "unit",
+          "model_id": "ContextFacade",
+          "span": {
+            "column": 1,
+            "end": 629,
+            "end_column": 20,
+            "end_line": 20,
+            "line": 20,
+            "node": "Span",
+            "start": 610
+          }
+        },
+        "n_ExistingInstallationFacade": {
+          "kind": "unit",
+          "model_id": "ExistingInstallationFacade",
+          "span": {
+            "column": 1,
+            "end": 868,
+            "end_column": 33,
+            "end_line": 27,
+            "line": 27,
+            "node": "Span",
+            "start": 836
+          }
+        },
+        "n_ExistingNavigationFacade": {
+          "kind": "unit",
+          "model_id": "ExistingNavigationFacade",
+          "span": {
+            "column": 1,
+            "end": 938,
+            "end_column": 31,
+            "end_line": 29,
+            "line": 29,
+            "node": "Span",
+            "start": 908
+          }
+        },
+        "n_JsonInvocationAdapter": {
+          "kind": "unit",
+          "model_id": "JsonInvocationAdapter",
+          "span": {
+            "column": 1,
+            "end": 1378,
+            "end_column": 28,
+            "end_line": 42,
+            "line": 42,
+            "node": "Span",
+            "start": 1351
+          }
+        },
+        "n_RoutineCoordinator": {
+          "kind": "unit",
+          "model_id": "RoutineCoordinator",
+          "span": {
+            "column": 1,
+            "end": 1959,
+            "end_column": 25,
+            "end_line": 62,
+            "line": 62,
+            "node": "Span",
+            "start": 1935
+          }
+        },
+        "n_RunRepository": {
+          "kind": "unit",
+          "model_id": "RunRepository",
+          "span": {
+            "column": 1,
+            "end": 2493,
+            "end_column": 20,
+            "end_line": 79,
+            "line": 79,
+            "node": "Span",
+            "start": 2474
+          }
+        },
+        "n_SdpToolHost": {
+          "kind": "container",
+          "model_id": "SdpToolHost",
+          "span": {
+            "column": 1,
+            "end": 2572,
+            "end_column": 23,
+            "end_line": 82,
+            "line": 82,
+            "node": "Span",
+            "start": 2550
+          }
+        }
+      },
+      "edges": [
+        {
+          "source": "n_SdpToolHost",
+          "relation": "contains",
+          "target": "n_ActionRegistry",
+          "fact": "f0169"
+        },
+        {
+          "source": "n_SdpToolHost",
+          "relation": "contains",
+          "target": "n_BlueprintAssessment",
+          "fact": "f0170"
+        },
+        {
+          "source": "n_SdpToolHost",
+          "relation": "contains",
+          "target": "n_BlueprintCatalogue",
+          "fact": "f0171"
+        },
+        {
+          "source": "n_SdpToolHost",
+          "relation": "contains",
+          "target": "n_BlueprintFacade",
+          "fact": "f0172"
+        },
+        {
+          "source": "n_SdpToolHost",
+          "relation": "contains",
+          "target": "n_BlueprintLifecycle",
+          "fact": "f0173"
+        },
+        {
+          "source": "n_SdpToolHost",
+          "relation": "contains",
+          "target": "n_ContextFacade",
+          "fact": "f0174"
+        },
+        {
+          "source": "n_SdpToolHost",
+          "relation": "contains",
+          "target": "n_ExistingInstallationFacade",
+          "fact": "f0175"
+        },
+        {
+          "source": "n_SdpToolHost",
+          "relation": "contains",
+          "target": "n_ExistingNavigationFacade",
+          "fact": "f0176"
+        },
+        {
+          "source": "n_SdpToolHost",
+          "relation": "contains",
+          "target": "n_JsonInvocationAdapter",
+          "fact": "f0177"
+        },
+        {
+          "source": "n_SdpToolHost",
+          "relation": "contains",
+          "target": "n_RoutineCoordinator",
+          "fact": "f0178"
+        },
+        {
+          "source": "n_SdpToolHost",
+          "relation": "contains",
+          "target": "n_RunRepository",
+          "fact": "f0179"
+        }
+      ],
+      "source_facts": [
+        "f0169",
+        "f0170",
+        "f0171",
+        "f0172",
+        "f0173",
+        "f0174",
+        "f0175",
+        "f0176",
+        "f0177",
+        "f0178",
+        "f0179"
+      ],
+      "elements": []
+    },
+    {
+      "id": "VP07-BlueprintAssignments-RoutineHandling",
+      "title": "Feature: BlueprintAssignments — mode RoutineHandling",
+      "kind": "flowchart",
+      "nodes": {
+        "n_BlueprintAssignments": {
+          "kind": "feature",
+          "model_id": "BlueprintAssignments",
+          "span": {
+            "column": 1,
+            "end": 252,
+            "end_column": 30,
+            "end_line": 8,
+            "line": 8,
+            "node": "Span",
+            "start": 223
+          }
+        },
+        "n_BlueprintLifecycle": {
+          "kind": "unit",
+          "model_id": "BlueprintLifecycle",
+          "span": {
+            "column": 1,
+            "end": 361,
+            "end_column": 25,
+            "end_line": 12,
+            "line": 12,
+            "node": "Span",
+            "start": 337
+          }
+        },
+        "n_GovernBlueprintAssignment": {
+          "kind": "functionality",
+          "model_id": "GovernBlueprintAssignment",
+          "span": {
+            "column": 1,
+            "end": 1117,
+            "end_column": 41,
+            "end_line": 34,
+            "line": 34,
+            "node": "Span",
+            "start": 1077
+          }
+        },
+        "n_SdpToolHost": {
+          "kind": "container",
+          "model_id": "SdpToolHost",
+          "span": {
+            "column": 1,
+            "end": 2572,
+            "end_column": 23,
+            "end_line": 82,
+            "line": 82,
+            "node": "Span",
+            "start": 2550
+          }
+        }
+      },
+      "edges": [
+        {
+          "source": "n_BlueprintLifecycle",
+          "relation": "owns",
+          "target": "n_GovernBlueprintAssignment",
+          "fact": "f0026"
+        },
+        {
+          "source": "n_GovernBlueprintAssignment",
+          "relation": "allocated-to",
+          "target": "n_SdpToolHost",
+          "fact": "f0067"
+        },
+        {
+          "source": "n_GovernBlueprintAssignment",
+          "relation": "contributes-to",
+          "target": "n_BlueprintAssignments",
+          "fact": "f0068"
+        }
+      ],
+      "source_facts": [
+        "f0026",
+        "f0067",
+        "f0068"
+      ],
+      "elements": []
+    },
+    {
+      "id": "VP07-BlueprintPreview-ProjectReading",
+      "title": "Feature: BlueprintPreview — mode ProjectReading",
+      "kind": "flowchart",
+      "nodes": {
+        "n_BlueprintFacade": {
+          "kind": "unit",
+          "model_id": "BlueprintFacade",
+          "span": {
+            "column": 1,
+            "end": 336,
+            "end_column": 22,
+            "end_line": 11,
+            "line": 11,
+            "node": "Span",
+            "start": 315
+          }
+        },
+        "n_BlueprintPreview": {
+          "kind": "feature",
+          "model_id": "BlueprintPreview",
+          "span": {
+            "column": 1,
+            "end": 424,
+            "end_column": 26,
+            "end_line": 14,
+            "line": 14,
+            "node": "Span",
+            "start": 399
+          }
+        },
+        "n_GenerateBlueprintPreview": {
+          "kind": "functionality",
+          "model_id": "GenerateBlueprintPreview",
+          "span": {
+            "column": 1,
+            "end": 1076,
+            "end_column": 40,
+            "end_line": 33,
+            "line": 33,
+            "node": "Span",
+            "start": 1037
+          }
+        },
+        "n_SdpToolHost": {
+          "kind": "container",
+          "model_id": "SdpToolHost",
+          "span": {
+            "column": 1,
+            "end": 2572,
+            "end_column": 23,
+            "end_line": 82,
+            "line": 82,
+            "node": "Span",
+            "start": 2550
+          }
+        }
+      },
+      "edges": [
+        {
+          "source": "n_BlueprintFacade",
+          "relation": "owns",
+          "target": "n_GenerateBlueprintPreview",
+          "fact": "f0023"
+        },
+        {
+          "source": "n_GenerateBlueprintPreview",
+          "relation": "allocated-to",
+          "target": "n_SdpToolHost",
+          "fact": "f0064"
+        },
+        {
+          "source": "n_GenerateBlueprintPreview",
+          "relation": "contributes-to",
+          "target": "n_BlueprintPreview",
+          "fact": "f0065"
+        }
+      ],
+      "source_facts": [
+        "f0023",
+        "f0064",
+        "f0065"
+      ],
+      "elements": []
+    },
+    {
+      "id": "VP07-DiscoverableActions-ProjectReading",
+      "title": "Feature: DiscoverableActions — mode ProjectReading",
+      "kind": "flowchart",
+      "nodes": {
+        "n_ActionRegistry": {
+          "kind": "unit",
+          "model_id": "ActionRegistry",
+          "span": {
+            "column": 1,
+            "end": 54,
+            "end_column": 21,
+            "end_line": 2,
+            "line": 2,
+            "node": "Span",
+            "start": 34
+          }
+        },
+        "n_DescribeSupportedActions": {
+          "kind": "functionality",
+          "model_id": "DescribeSupportedActions",
+          "span": {
+            "column": 1,
+            "end": 742,
+            "end_column": 40,
+            "end_line": 23,
+            "line": 23,
+            "node": "Span",
+            "start": 703
+          }
+        },
+        "n_DiscoverableActions": {
+          "kind": "feature",
+          "model_id": "DiscoverableActions",
+          "span": {
+            "column": 1,
+            "end": 803,
+            "end_column": 29,
+            "end_line": 25,
+            "line": 25,
+            "node": "Span",
+            "start": 775
+          }
+        },
+        "n_InvokeTypedAction": {
+          "kind": "functionality",
+          "model_id": "InvokeTypedAction",
+          "span": {
+            "column": 1,
+            "end": 1350,
+            "end_column": 33,
+            "end_line": 41,
+            "line": 41,
+            "node": "Span",
+            "start": 1318
+          }
+        },
+        "n_JsonInvocationAdapter": {
+          "kind": "unit",
+          "model_id": "JsonInvocationAdapter",
+          "span": {
+            "column": 1,
+            "end": 1378,
+            "end_column": 28,
+            "end_line": 42,
+            "line": 42,
+            "node": "Span",
+            "start": 1351
+          }
+        },
+        "n_SdpToolHost": {
+          "kind": "container",
+          "model_id": "SdpToolHost",
+          "span": {
+            "column": 1,
+            "end": 2572,
+            "end_column": 23,
+            "end_line": 82,
+            "line": 82,
+            "node": "Span",
+            "start": 2550
+          }
+        }
+      },
+      "edges": [
+        {
+          "source": "n_ActionRegistry",
+          "relation": "owns",
+          "target": "n_DescribeSupportedActions",
+          "fact": "f0000"
+        },
+        {
+          "source": "n_DescribeSupportedActions",
+          "relation": "allocated-to",
+          "target": "n_SdpToolHost",
+          "fact": "f0045"
+        },
+        {
+          "source": "n_DescribeSupportedActions",
+          "relation": "contributes-to",
+          "target": "n_DiscoverableActions",
+          "fact": "f0046"
+        },
+        {
+          "source": "n_InvokeTypedAction",
+          "relation": "contributes-to",
+          "target": "n_DiscoverableActions",
+          "fact": "f0076"
+        },
+        {
+          "source": "n_JsonInvocationAdapter",
+          "relation": "owns",
+          "target": "n_InvokeTypedAction",
+          "fact": "f0078"
+        }
+      ],
+      "source_facts": [
+        "f0000",
+        "f0045",
+        "f0046",
+        "f0076",
+        "f0078"
+      ],
+      "elements": []
+    },
+    {
+      "id": "VP07-DiscoverableActions-RoutineHandling",
+      "title": "Feature: DiscoverableActions — mode RoutineHandling",
+      "kind": "flowchart",
+      "nodes": {
+        "n_ActionRegistry": {
+          "kind": "unit",
+          "model_id": "ActionRegistry",
+          "span": {
+            "column": 1,
+            "end": 54,
+            "end_column": 21,
+            "end_line": 2,
+            "line": 2,
+            "node": "Span",
+            "start": 34
+          }
+        },
+        "n_DescribeSupportedActions": {
+          "kind": "functionality",
+          "model_id": "DescribeSupportedActions",
+          "span": {
+            "column": 1,
+            "end": 742,
+            "end_column": 40,
+            "end_line": 23,
+            "line": 23,
+            "node": "Span",
+            "start": 703
+          }
+        },
+        "n_DiscoverableActions": {
+          "kind": "feature",
+          "model_id": "DiscoverableActions",
+          "span": {
+            "column": 1,
+            "end": 803,
+            "end_column": 29,
+            "end_line": 25,
+            "line": 25,
+            "node": "Span",
+            "start": 775
+          }
+        },
+        "n_InvokeTypedAction": {
+          "kind": "functionality",
+          "model_id": "InvokeTypedAction",
+          "span": {
+            "column": 1,
+            "end": 1350,
+            "end_column": 33,
+            "end_line": 41,
+            "line": 41,
+            "node": "Span",
+            "start": 1318
+          }
+        },
+        "n_JsonInvocationAdapter": {
+          "kind": "unit",
+          "model_id": "JsonInvocationAdapter",
+          "span": {
+            "column": 1,
+            "end": 1378,
+            "end_column": 28,
+            "end_line": 42,
+            "line": 42,
+            "node": "Span",
+            "start": 1351
+          }
+        },
+        "n_SdpToolHost": {
+          "kind": "container",
+          "model_id": "SdpToolHost",
+          "span": {
+            "column": 1,
+            "end": 2572,
+            "end_column": 23,
+            "end_line": 82,
+            "line": 82,
+            "node": "Span",
+            "start": 2550
+          }
+        }
+      },
+      "edges": [
+        {
+          "source": "n_ActionRegistry",
+          "relation": "owns",
+          "target": "n_DescribeSupportedActions",
+          "fact": "f0000"
+        },
+        {
+          "source": "n_DescribeSupportedActions",
+          "relation": "contributes-to",
+          "target": "n_DiscoverableActions",
+          "fact": "f0046"
+        },
+        {
+          "source": "n_InvokeTypedAction",
+          "relation": "allocated-to",
+          "target": "n_SdpToolHost",
+          "fact": "f0075"
+        },
+        {
+          "source": "n_InvokeTypedAction",
+          "relation": "contributes-to",
+          "target": "n_DiscoverableActions",
+          "fact": "f0076"
+        },
+        {
+          "source": "n_JsonInvocationAdapter",
+          "relation": "owns",
+          "target": "n_InvokeTypedAction",
+          "fact": "f0078"
+        }
+      ],
+      "source_facts": [
+        "f0000",
+        "f0046",
+        "f0075",
+        "f0076",
+        "f0078"
+      ],
+      "elements": []
+    },
+    {
+      "id": "VP07-GovernedProjectOperations-RoutineHandling",
+      "title": "Feature: GovernedProjectOperations — mode RoutineHandling",
+      "kind": "flowchart",
+      "nodes": {
+        "n_CheckTransitionAuthority": {
+          "kind": "functionality",
+          "model_id": "CheckTransitionAuthority",
+          "span": {
+            "column": 1,
+            "end": 609,
+            "end_column": 40,
+            "end_line": 19,
+            "line": 19,
+            "node": "Span",
+            "start": 570
+          }
+        },
+        "n_ContextFacade": {
+          "kind": "unit",
+          "model_id": "ContextFacade",
+          "span": {
+            "column": 1,
+            "end": 629,
+            "end_column": 20,
+            "end_line": 20,
+            "line": 20,
+            "node": "Span",
+            "start": 610
+          }
+        },
+        "n_GovernedProjectOperations": {
+          "kind": "feature",
+          "model_id": "GovernedProjectOperations",
+          "span": {
+            "column": 1,
+            "end": 1152,
+            "end_column": 35,
+            "end_line": 35,
+            "line": 35,
+            "node": "Span",
+            "start": 1118
+          }
+        },
+        "n_ReconcileRunRevision": {
+          "kind": "functionality",
+          "model_id": "ReconcileRunRevision",
+          "span": {
+            "column": 1,
+            "end": 1646,
+            "end_column": 36,
+            "end_line": 52,
+            "line": 52,
+            "node": "Span",
+            "start": 1611
+          }
+        },
+        "n_ResolveApplicableRoutine": {
+          "kind": "functionality",
+          "model_id": "ResolveApplicableRoutine",
+          "span": {
+            "column": 1,
+            "end": 1713,
+            "end_column": 40,
+            "end_line": 54,
+            "line": 54,
+            "node": "Span",
+            "start": 1674
+          }
+        },
+        "n_ResolveCheckoutAuthority": {
+          "kind": "functionality",
+          "model_id": "ResolveCheckoutAuthority",
+          "span": {
+            "column": 1,
+            "end": 1753,
+            "end_column": 40,
+            "end_line": 55,
+            "line": 55,
+            "node": "Span",
+            "start": 1714
+          }
+        },
+        "n_RoutineCoordinator": {
+          "kind": "unit",
+          "model_id": "RoutineCoordinator",
+          "span": {
+            "column": 1,
+            "end": 1959,
+            "end_column": 25,
+            "end_line": 62,
+            "line": 62,
+            "node": "Span",
+            "start": 1935
+          }
+        },
+        "n_RunRepository": {
+          "kind": "unit",
+          "model_id": "RunRepository",
+          "span": {
+            "column": 1,
+            "end": 2493,
+            "end_column": 20,
+            "end_line": 79,
+            "line": 79,
+            "node": "Span",
+            "start": 2474
+          }
+        },
+        "n_SdpToolHost": {
+          "kind": "container",
+          "model_id": "SdpToolHost",
+          "span": {
+            "column": 1,
+            "end": 2572,
+            "end_column": 23,
+            "end_line": 82,
+            "line": 82,
+            "node": "Span",
+            "start": 2550
+          }
+        }
+      },
+      "edges": [
+        {
+          "source": "n_CheckTransitionAuthority",
+          "relation": "allocated-to",
+          "target": "n_SdpToolHost",
+          "fact": "f0037"
+        },
+        {
+          "source": "n_CheckTransitionAuthority",
+          "relation": "contributes-to",
+          "target": "n_GovernedProjectOperations",
+          "fact": "f0038"
+        },
+        {
+          "source": "n_ContextFacade",
+          "relation": "owns",
+          "target": "n_ResolveCheckoutAuthority",
+          "fact": "f0041"
+        },
+        {
+          "source": "n_ReconcileRunRevision",
+          "relation": "allocated-to",
+          "target": "n_SdpToolHost",
+          "fact": "f0086"
+        },
+        {
+          "source": "n_ReconcileRunRevision",
+          "relation": "contributes-to",
+          "target": "n_GovernedProjectOperations",
+          "fact": "f0087"
+        },
+        {
+          "source": "n_ResolveApplicableRoutine",
+          "relation": "allocated-to",
+          "target": "n_SdpToolHost",
+          "fact": "f0091"
+        },
+        {
+          "source": "n_ResolveApplicableRoutine",
+          "relation": "contributes-to",
+          "target": "n_GovernedProjectOperations",
+          "fact": "f0092"
+        },
+        {
+          "source": "n_ResolveCheckoutAuthority",
+          "relation": "allocated-to",
+          "target": "n_SdpToolHost",
+          "fact": "f0094"
+        },
+        {
+          "source": "n_ResolveCheckoutAuthority",
+          "relation": "contributes-to",
+          "target": "n_GovernedProjectOperations",
+          "fact": "f0095"
+        },
+        {
+          "source": "n_RoutineCoordinator",
+          "relation": "owns",
+          "target": "n_CheckTransitionAuthority",
+          "fact": "f0113"
+        },
+        {
+          "source": "n_RoutineCoordinator",
+          "relation": "owns",
+          "target": "n_ResolveApplicableRoutine",
+          "fact": "f0114"
+        },
+        {
+          "source": "n_RunRepository",
+          "relation": "owns",
+          "target": "n_ReconcileRunRevision",
+          "fact": "f0166"
+        }
+      ],
+      "source_facts": [
+        "f0037",
+        "f0038",
+        "f0041",
+        "f0086",
+        "f0087",
+        "f0091",
+        "f0092",
+        "f0094",
+        "f0095",
+        "f0113",
+        "f0114",
+        "f0166"
+      ],
+      "elements": []
+    },
+    {
+      "id": "VP07-InstallationFacade-InstallationHandling",
+      "title": "Feature: InstallationFacade — mode InstallationHandling",
+      "kind": "flowchart",
+      "nodes": {
+        "n_ExistingInstallationFacade": {
+          "kind": "unit",
+          "model_id": "ExistingInstallationFacade",
+          "span": {
+            "column": 1,
+            "end": 868,
+            "end_column": 33,
+            "end_line": 27,
+            "line": 27,
+            "node": "Span",
+            "start": 836
+          }
+        },
+        "n_InstallationFacade": {
+          "kind": "feature",
+          "model_id": "InstallationFacade",
+          "span": {
+            "column": 1,
+            "end": 1248,
+            "end_column": 28,
+            "end_line": 38,
+            "line": 38,
+            "node": "Span",
+            "start": 1221
+          }
+        },
+        "n_InvokeReviewedInstallation": {
+          "kind": "functionality",
+          "model_id": "InvokeReviewedInstallation",
+          "span": {
+            "column": 1,
+            "end": 1317,
+            "end_column": 42,
+            "end_line": 40,
+            "line": 40,
+            "node": "Span",
+            "start": 1276
+          }
+        },
+        "n_SdpToolHost": {
+          "kind": "container",
+          "model_id": "SdpToolHost",
+          "span": {
+            "column": 1,
+            "end": 2572,
+            "end_column": 23,
+            "end_line": 82,
+            "line": 82,
+            "node": "Span",
+            "start": 2550
+          }
+        }
+      },
+      "edges": [
+        {
+          "source": "n_ExistingInstallationFacade",
+          "relation": "owns",
+          "target": "n_InvokeReviewedInstallation",
+          "fact": "f0055"
+        },
+        {
+          "source": "n_InvokeReviewedInstallation",
+          "relation": "allocated-to",
+          "target": "n_SdpToolHost",
+          "fact": "f0072"
+        },
+        {
+          "source": "n_InvokeReviewedInstallation",
+          "relation": "contributes-to",
+          "target": "n_InstallationFacade",
+          "fact": "f0073"
+        }
+      ],
+      "source_facts": [
+        "f0055",
+        "f0072",
+        "f0073"
+      ],
+      "elements": []
+    },
+    {
+      "id": "VP07-ProjectFacade-ProjectReading",
+      "title": "Feature: ProjectFacade — mode ProjectReading",
+      "kind": "flowchart",
+      "nodes": {
+        "n_DescribeRegisteredProject": {
+          "kind": "functionality",
+          "model_id": "DescribeRegisteredProject",
+          "span": {
+            "column": 1,
+            "end": 702,
+            "end_column": 41,
+            "end_line": 22,
+            "line": 22,
+            "node": "Span",
+            "start": 662
+          }
+        },
+        "n_ExistingNavigationFacade": {
+          "kind": "unit",
+          "model_id": "ExistingNavigationFacade",
+          "span": {
+            "column": 1,
+            "end": 938,
+            "end_column": 31,
+            "end_line": 29,
+            "line": 29,
+            "node": "Span",
+            "start": 908
+          }
+        },
+        "n_ProjectFacade": {
+          "kind": "feature",
+          "model_id": "ProjectFacade",
+          "span": {
+            "column": 1,
+            "end": 1463,
+            "end_column": 23,
+            "end_line": 45,
+            "line": 45,
+            "node": "Span",
+            "start": 1441
+          }
+        },
+        "n_SdpToolHost": {
+          "kind": "container",
+          "model_id": "SdpToolHost",
+          "span": {
+            "column": 1,
+            "end": 2572,
+            "end_column": 23,
+            "end_line": 82,
+            "line": 82,
+            "node": "Span",
+            "start": 2550
+          }
+        }
+      },
+      "edges": [
+        {
+          "source": "n_DescribeRegisteredProject",
+          "relation": "allocated-to",
+          "target": "n_SdpToolHost",
+          "fact": "f0042"
+        },
+        {
+          "source": "n_DescribeRegisteredProject",
+          "relation": "contributes-to",
+          "target": "n_ProjectFacade",
+          "fact": "f0043"
+        },
+        {
+          "source": "n_ExistingNavigationFacade",
+          "relation": "owns",
+          "target": "n_DescribeRegisteredProject",
+          "fact": "f0057"
+        }
+      ],
+      "source_facts": [
+        "f0042",
+        "f0043",
+        "f0057"
+      ],
+      "elements": []
+    },
+    {
+      "id": "VP07-RetainedBlueprintNavigation-ProjectReading",
+      "title": "Feature: RetainedBlueprintNavigation — mode ProjectReading",
+      "kind": "flowchart",
+      "nodes": {
+        "n_BlueprintCatalogue": {
+          "kind": "unit",
+          "model_id": "BlueprintCatalogue",
+          "span": {
+            "column": 1,
+            "end": 277,
+            "end_column": 25,
+            "end_line": 9,
+            "line": 9,
+            "node": "Span",
+            "start": 253
+          }
+        },
+        "n_BrowseRetainedBlueprints": {
+          "kind": "functionality",
+          "model_id": "BrowseRetainedBlueprints",
+          "span": {
+            "column": 1,
+            "end": 527,
+            "end_column": 40,
+            "end_line": 17,
+            "line": 17,
+            "node": "Span",
+            "start": 488
+          }
+        },
+        "n_RetainedBlueprintNavigation": {
+          "kind": "feature",
+          "model_id": "RetainedBlueprintNavigation",
+          "span": {
+            "column": 1,
+            "end": 1790,
+            "end_column": 37,
+            "end_line": 56,
+            "line": 56,
+            "node": "Span",
+            "start": 1754
+          }
+        },
+        "n_SdpToolHost": {
+          "kind": "container",
+          "model_id": "SdpToolHost",
+          "span": {
+            "column": 1,
+            "end": 2572,
+            "end_column": 23,
+            "end_line": 82,
+            "line": 82,
+            "node": "Span",
+            "start": 2550
+          }
+        },
+        "n_VerifyRetainedBlueprints": {
+          "kind": "functionality",
+          "model_id": "VerifyRetainedBlueprints",
+          "span": {
+            "column": 1,
+            "end": 2736,
+            "end_column": 40,
+            "end_line": 87,
+            "line": 87,
+            "node": "Span",
+            "start": 2697
+          }
+        }
+      },
+      "edges": [
+        {
+          "source": "n_BlueprintCatalogue",
+          "relation": "owns",
+          "target": "n_BrowseRetainedBlueprints",
+          "fact": "f0015"
+        },
+        {
+          "source": "n_BlueprintCatalogue",
+          "relation": "owns",
+          "target": "n_VerifyRetainedBlueprints",
+          "fact": "f0016"
+        },
+        {
+          "source": "n_BrowseRetainedBlueprints",
+          "relation": "allocated-to",
+          "target": "n_SdpToolHost",
+          "fact": "f0034"
+        },
+        {
+          "source": "n_BrowseRetainedBlueprints",
+          "relation": "contributes-to",
+          "target": "n_RetainedBlueprintNavigation",
+          "fact": "f0035"
+        },
+        {
+          "source": "n_VerifyRetainedBlueprints",
+          "relation": "allocated-to",
+          "target": "n_SdpToolHost",
+          "fact": "f0193"
+        },
+        {
+          "source": "n_VerifyRetainedBlueprints",
+          "relation": "contributes-to",
+          "target": "n_RetainedBlueprintNavigation",
+          "fact": "f0194"
+        }
+      ],
+      "source_facts": [
+        "f0015",
+        "f0016",
+        "f0034",
+        "f0035",
+        "f0193",
+        "f0194"
+      ],
+      "elements": []
+    },
+    {
+      "id": "VP07-ScopedBlueprintReadiness-ProjectReading",
+      "title": "Feature: ScopedBlueprintReadiness — mode ProjectReading",
+      "kind": "flowchart",
+      "nodes": {
+        "n_AssessBlueprintEvidence": {
+          "kind": "functionality",
+          "model_id": "AssessBlueprintEvidence",
+          "span": {
+            "column": 1,
+            "end": 119,
+            "end_column": 39,
+            "end_line": 4,
+            "line": 4,
+            "node": "Span",
+            "start": 81
+          }
+        },
+        "n_BlueprintAssessment": {
+          "kind": "unit",
+          "model_id": "BlueprintAssessment",
+          "span": {
+            "column": 1,
+            "end": 145,
+            "end_column": 26,
+            "end_line": 5,
+            "line": 5,
+            "node": "Span",
+            "start": 120
+          }
+        },
+        "n_ScopedBlueprintReadiness": {
+          "kind": "feature",
+          "model_id": "ScopedBlueprintReadiness",
+          "span": {
+            "column": 1,
+            "end": 2549,
+            "end_column": 34,
+            "end_line": 81,
+            "line": 81,
+            "node": "Span",
+            "start": 2516
+          }
+        },
+        "n_SdpToolHost": {
+          "kind": "container",
+          "model_id": "SdpToolHost",
+          "span": {
+            "column": 1,
+            "end": 2572,
+            "end_column": 23,
+            "end_line": 82,
+            "line": 82,
+            "node": "Span",
+            "start": 2550
+          }
+        }
+      },
+      "edges": [
+        {
+          "source": "n_AssessBlueprintEvidence",
+          "relation": "allocated-to",
+          "target": "n_SdpToolHost",
+          "fact": "f0005"
+        },
+        {
+          "source": "n_AssessBlueprintEvidence",
+          "relation": "contributes-to",
+          "target": "n_ScopedBlueprintReadiness",
+          "fact": "f0006"
+        },
+        {
+          "source": "n_BlueprintAssessment",
+          "relation": "owns",
+          "target": "n_AssessBlueprintEvidence",
+          "fact": "f0008"
+        }
+      ],
+      "source_facts": [
+        "f0005",
+        "f0006",
+        "f0008"
+      ],
+      "elements": []
+    }
+  ],
+  "facts": [
+    {
+      "id": "f0000",
+      "line": 88,
+      "node": "Relation",
+      "object": "DescribeSupportedActions",
+      "span": {
+        "column": 1,
+        "end": 2782,
+        "end_column": 46,
+        "end_line": 88,
+        "line": 88,
+        "node": "Span",
+        "start": 2737
+      },
+      "subject": "ActionRegistry",
+      "text": "ActionRegistry owns DescribeSupportedActions.",
+      "verb": "owns"
+    },
+    {
+      "id": "f0001",
+      "line": 89,
+      "node": "Relation",
+      "object": "DescribeSupportedActions",
+      "span": {
+        "column": 1,
+        "end": 2834,
+        "end_column": 52,
+        "end_line": 89,
+        "line": 89,
+        "node": "Span",
+        "start": 2783
+      },
+      "subject": "ActionsDelivery",
+      "text": "ActionsDelivery addresses DescribeSupportedActions.",
+      "verb": "addresses"
+    },
+    {
+      "id": "f0002",
+      "line": 90,
+      "node": "Relation",
+      "object": "InvokeTypedAction",
+      "span": {
+        "column": 1,
+        "end": 2879,
+        "end_column": 45,
+        "end_line": 90,
+        "line": 90,
+        "node": "Span",
+        "start": 2835
+      },
+      "subject": "ActionsDelivery",
+      "text": "ActionsDelivery addresses InvokeTypedAction.",
+      "verb": "addresses"
+    },
+    {
+      "id": "f0003",
+      "line": 91,
+      "node": "Relation",
+      "object": "DiscoverableActions",
+      "span": {
+        "column": 1,
+        "end": 2925,
+        "end_column": 46,
+        "end_line": 91,
+        "line": 91,
+        "node": "Span",
+        "start": 2880
+      },
+      "subject": "ActionsDelivery",
+      "text": "ActionsDelivery delivers DiscoverableActions.",
+      "verb": "delivers"
+    },
+    {
+      "id": "f0004",
+      "line": 92,
+      "node": "PropertyAssignment",
+      "property": "implementation-status",
+      "span": {
+        "column": 1,
+        "end": 2982,
+        "end_column": 57,
+        "end_line": 92,
+        "line": 92,
+        "node": "Span",
+        "start": 2926
+      },
+      "subject": "ActionsDelivery",
+      "text": "ActionsDelivery has implementation-status = implemented.",
+      "value": "implemented",
+      "verb": "has"
+    },
+    {
+      "id": "f0005",
+      "line": 93,
+      "mode": "ProjectReading",
+      "node": "Allocation",
+      "object": "SdpToolHost",
+      "span": {
+        "column": 1,
+        "end": 3055,
+        "end_column": 73,
+        "end_line": 93,
+        "line": 93,
+        "node": "Span",
+        "start": 2983
+      },
+      "subject": "AssessBlueprintEvidence",
+      "text": "AssessBlueprintEvidence allocated-to SdpToolHost in mode ProjectReading.",
+      "verb": "allocated-to"
+    },
+    {
+      "id": "f0006",
+      "line": 94,
+      "node": "Relation",
+      "object": "ScopedBlueprintReadiness",
+      "span": {
+        "column": 1,
+        "end": 3120,
+        "end_column": 65,
+        "end_line": 94,
+        "line": 94,
+        "node": "Span",
+        "start": 3056
+      },
+      "subject": "AssessBlueprintEvidence",
+      "text": "AssessBlueprintEvidence contributes-to ScopedBlueprintReadiness.",
+      "verb": "contributes-to"
+    },
+    {
+      "id": "f0007",
+      "line": 95,
+      "node": "Relation",
+      "object": "DiagnosticBlueprint",
+      "span": {
+        "column": 1,
+        "end": 3174,
+        "end_column": 54,
+        "end_line": 95,
+        "line": 95,
+        "node": "Span",
+        "start": 3121
+      },
+      "subject": "AssessBlueprintEvidence",
+      "text": "AssessBlueprintEvidence realizes DiagnosticBlueprint.",
+      "verb": "realizes"
+    },
+    {
+      "id": "f0008",
+      "line": 96,
+      "node": "Relation",
+      "object": "AssessBlueprintEvidence",
+      "span": {
+        "column": 1,
+        "end": 3224,
+        "end_column": 50,
+        "end_line": 96,
+        "line": 96,
+        "node": "Span",
+        "start": 3175
+      },
+      "subject": "BlueprintAssessment",
+      "text": "BlueprintAssessment owns AssessBlueprintEvidence.",
+      "verb": "owns"
+    },
+    {
+      "id": "f0009",
+      "line": 97,
+      "node": "Relation",
+      "object": "AssessBlueprintEvidence",
+      "span": {
+        "column": 1,
+        "end": 3287,
+        "end_column": 63,
+        "end_line": 97,
+        "line": 97,
+        "node": "Span",
+        "start": 3225
+      },
+      "subject": "BlueprintAssessmentDelivery",
+      "text": "BlueprintAssessmentDelivery addresses AssessBlueprintEvidence.",
+      "verb": "addresses"
+    },
+    {
+      "id": "f0010",
+      "line": 98,
+      "node": "Relation",
+      "object": "ScopedBlueprintReadiness",
+      "span": {
+        "column": 1,
+        "end": 3350,
+        "end_column": 63,
+        "end_line": 98,
+        "line": 98,
+        "node": "Span",
+        "start": 3288
+      },
+      "subject": "BlueprintAssessmentDelivery",
+      "text": "BlueprintAssessmentDelivery delivers ScopedBlueprintReadiness.",
+      "verb": "delivers"
+    },
+    {
+      "id": "f0011",
+      "line": 99,
+      "node": "PropertyAssignment",
+      "property": "implementation-status",
+      "span": {
+        "column": 1,
+        "end": 3419,
+        "end_column": 69,
+        "end_line": 99,
+        "line": 99,
+        "node": "Span",
+        "start": 3351
+      },
+      "subject": "BlueprintAssessmentDelivery",
+      "text": "BlueprintAssessmentDelivery has implementation-status = implemented.",
+      "value": "implemented",
+      "verb": "has"
+    },
+    {
+      "id": "f0012",
+      "line": 100,
+      "mode": "RoutineHandling",
+      "node": "Dependency",
+      "object": "CanonicalProjectHistoryLibrary",
+      "span": {
+        "column": 1,
+        "end": 3511,
+        "end_column": 92,
+        "end_line": 100,
+        "line": 100,
+        "node": "Span",
+        "start": 3420
+      },
+      "subject": "BlueprintAssignmentControl",
+      "text": "BlueprintAssignmentControl requires CanonicalProjectHistoryLibrary in mode RoutineHandling.",
+      "verb": "requires"
+    },
+    {
+      "id": "f0013",
+      "line": 101,
+      "mode": "RoutineHandling",
+      "node": "Dependency",
+      "object": "TrustedAssignmentBinding",
+      "span": {
+        "column": 1,
+        "end": 3597,
+        "end_column": 86,
+        "end_line": 101,
+        "line": 101,
+        "node": "Span",
+        "start": 3512
+      },
+      "subject": "BlueprintAssignmentControl",
+      "text": "BlueprintAssignmentControl requires TrustedAssignmentBinding in mode RoutineHandling.",
+      "verb": "requires"
+    },
+    {
+      "id": "f0014",
+      "line": 102,
+      "node": "Relation",
+      "object": "CoordinateGovernedWork",
+      "span": {
+        "column": 1,
+        "end": 3651,
+        "end_column": 54,
+        "end_line": 102,
+        "line": 102,
+        "node": "Span",
+        "start": 3598
+      },
+      "subject": "BlueprintAssignments",
+      "text": "BlueprintAssignments supports CoordinateGovernedWork.",
+      "verb": "supports"
+    },
+    {
+      "id": "f0015",
+      "line": 103,
+      "node": "Relation",
+      "object": "BrowseRetainedBlueprints",
+      "span": {
+        "column": 1,
+        "end": 3701,
+        "end_column": 50,
+        "end_line": 103,
+        "line": 103,
+        "node": "Span",
+        "start": 3652
+      },
+      "subject": "BlueprintCatalogue",
+      "text": "BlueprintCatalogue owns BrowseRetainedBlueprints.",
+      "verb": "owns"
+    },
+    {
+      "id": "f0016",
+      "line": 104,
+      "node": "Relation",
+      "object": "VerifyRetainedBlueprints",
+      "span": {
+        "column": 1,
+        "end": 3751,
+        "end_column": 50,
+        "end_line": 104,
+        "line": 104,
+        "node": "Span",
+        "start": 3702
+      },
+      "subject": "BlueprintCatalogue",
+      "text": "BlueprintCatalogue owns VerifyRetainedBlueprints.",
+      "verb": "owns"
+    },
+    {
+      "id": "f0017",
+      "line": 105,
+      "node": "Relation",
+      "object": "BrowseRetainedBlueprints",
+      "span": {
+        "column": 1,
+        "end": 3814,
+        "end_column": 63,
+        "end_line": 105,
+        "line": 105,
+        "node": "Span",
+        "start": 3752
+      },
+      "subject": "BlueprintCatalogueDelivery",
+      "text": "BlueprintCatalogueDelivery addresses BrowseRetainedBlueprints.",
+      "verb": "addresses"
+    },
+    {
+      "id": "f0018",
+      "line": 106,
+      "node": "Relation",
+      "object": "VerifyRetainedBlueprints",
+      "span": {
+        "column": 1,
+        "end": 3877,
+        "end_column": 63,
+        "end_line": 106,
+        "line": 106,
+        "node": "Span",
+        "start": 3815
+      },
+      "subject": "BlueprintCatalogueDelivery",
+      "text": "BlueprintCatalogueDelivery addresses VerifyRetainedBlueprints.",
+      "verb": "addresses"
+    },
+    {
+      "id": "f0019",
+      "line": 107,
+      "node": "Relation",
+      "object": "RetainedBlueprintNavigation",
+      "span": {
+        "column": 1,
+        "end": 3942,
+        "end_column": 65,
+        "end_line": 107,
+        "line": 107,
+        "node": "Span",
+        "start": 3878
+      },
+      "subject": "BlueprintCatalogueDelivery",
+      "text": "BlueprintCatalogueDelivery delivers RetainedBlueprintNavigation.",
+      "verb": "delivers"
+    },
+    {
+      "id": "f0020",
+      "line": 108,
+      "node": "PropertyAssignment",
+      "property": "implementation-status",
+      "span": {
+        "column": 1,
+        "end": 4010,
+        "end_column": 68,
+        "end_line": 108,
+        "line": 108,
+        "node": "Span",
+        "start": 3943
+      },
+      "subject": "BlueprintCatalogueDelivery",
+      "text": "BlueprintCatalogueDelivery has implementation-status = implemented.",
+      "value": "implemented",
+      "verb": "has"
+    },
+    {
+      "id": "f0021",
+      "line": 109,
+      "node": "Relation",
+      "object": "ExistingSdlProjectionLibrary",
+      "span": {
+        "column": 1,
+        "end": 4065,
+        "end_column": 55,
+        "end_line": 109,
+        "line": 109,
+        "node": "Span",
+        "start": 4011
+      },
+      "subject": "BlueprintFacade",
+      "text": "BlueprintFacade consumes ExistingSdlProjectionLibrary.",
+      "verb": "consumes"
+    },
+    {
+      "id": "f0022",
+      "line": 110,
+      "node": "Relation",
+      "object": "ModelSnapshotLibrary",
+      "span": {
+        "column": 1,
+        "end": 4112,
+        "end_column": 47,
+        "end_line": 110,
+        "line": 110,
+        "node": "Span",
+        "start": 4066
+      },
+      "subject": "BlueprintFacade",
+      "text": "BlueprintFacade consumes ModelSnapshotLibrary.",
+      "verb": "consumes"
+    },
+    {
+      "id": "f0023",
+      "line": 111,
+      "node": "Relation",
+      "object": "GenerateBlueprintPreview",
+      "span": {
+        "column": 1,
+        "end": 4159,
+        "end_column": 47,
+        "end_line": 111,
+        "line": 111,
+        "node": "Span",
+        "start": 4113
+      },
+      "subject": "BlueprintFacade",
+      "text": "BlueprintFacade owns GenerateBlueprintPreview.",
+      "verb": "owns"
+    },
+    {
+      "id": "f0024",
+      "line": 112,
+      "node": "Relation",
+      "object": "CanonicalProjectHistoryLibrary",
+      "span": {
+        "column": 1,
+        "end": 4219,
+        "end_column": 60,
+        "end_line": 112,
+        "line": 112,
+        "node": "Span",
+        "start": 4160
+      },
+      "subject": "BlueprintLifecycle",
+      "text": "BlueprintLifecycle consumes CanonicalProjectHistoryLibrary.",
+      "verb": "consumes"
+    },
+    {
+      "id": "f0025",
+      "line": 113,
+      "node": "Relation",
+      "object": "TrustedAssignmentBinding",
+      "span": {
+        "column": 1,
+        "end": 4273,
+        "end_column": 54,
+        "end_line": 113,
+        "line": 113,
+        "node": "Span",
+        "start": 4220
+      },
+      "subject": "BlueprintLifecycle",
+      "text": "BlueprintLifecycle consumes TrustedAssignmentBinding.",
+      "verb": "consumes"
+    },
+    {
+      "id": "f0026",
+      "line": 114,
+      "node": "Relation",
+      "object": "GovernBlueprintAssignment",
+      "span": {
+        "column": 1,
+        "end": 4324,
+        "end_column": 51,
+        "end_line": 114,
+        "line": 114,
+        "node": "Span",
+        "start": 4274
+      },
+      "subject": "BlueprintLifecycle",
+      "text": "BlueprintLifecycle owns GovernBlueprintAssignment.",
+      "verb": "owns"
+    },
+    {
+      "id": "f0027",
+      "line": 115,
+      "node": "Relation",
+      "object": "GovernBlueprintAssignment",
+      "span": {
+        "column": 1,
+        "end": 4388,
+        "end_column": 64,
+        "end_line": 115,
+        "line": 115,
+        "node": "Span",
+        "start": 4325
+      },
+      "subject": "BlueprintLifecycleDelivery",
+      "text": "BlueprintLifecycleDelivery addresses GovernBlueprintAssignment.",
+      "verb": "addresses"
+    },
+    {
+      "id": "f0028",
+      "line": 116,
+      "node": "Relation",
+      "object": "BlueprintAssignments",
+      "span": {
+        "column": 1,
+        "end": 4446,
+        "end_column": 58,
+        "end_line": 116,
+        "line": 116,
+        "node": "Span",
+        "start": 4389
+      },
+      "subject": "BlueprintLifecycleDelivery",
+      "text": "BlueprintLifecycleDelivery delivers BlueprintAssignments.",
+      "verb": "delivers"
+    },
+    {
+      "id": "f0029",
+      "line": 117,
+      "node": "PropertyAssignment",
+      "property": "implementation-status",
+      "span": {
+        "column": 1,
+        "end": 4514,
+        "end_column": 68,
+        "end_line": 117,
+        "line": 117,
+        "node": "Span",
+        "start": 4447
+      },
+      "subject": "BlueprintLifecycleDelivery",
+      "text": "BlueprintLifecycleDelivery has implementation-status = implemented.",
+      "value": "implemented",
+      "verb": "has"
+    },
+    {
+      "id": "f0030",
+      "line": 118,
+      "node": "Relation",
+      "object": "InspectProposedModelChange",
+      "span": {
+        "column": 1,
+        "end": 4568,
+        "end_column": 54,
+        "end_line": 118,
+        "line": 118,
+        "node": "Span",
+        "start": 4515
+      },
+      "subject": "BlueprintPreview",
+      "text": "BlueprintPreview supports InspectProposedModelChange.",
+      "verb": "supports"
+    },
+    {
+      "id": "f0031",
+      "line": 119,
+      "node": "Relation",
+      "object": "GenerateBlueprintPreview",
+      "span": {
+        "column": 1,
+        "end": 4629,
+        "end_column": 61,
+        "end_line": 119,
+        "line": 119,
+        "node": "Span",
+        "start": 4569
+      },
+      "subject": "BlueprintPreviewDelivery",
+      "text": "BlueprintPreviewDelivery addresses GenerateBlueprintPreview.",
+      "verb": "addresses"
+    },
+    {
+      "id": "f0032",
+      "line": 120,
+      "node": "Relation",
+      "object": "BlueprintPreview",
+      "span": {
+        "column": 1,
+        "end": 4681,
+        "end_column": 52,
+        "end_line": 120,
+        "line": 120,
+        "node": "Span",
+        "start": 4630
+      },
+      "subject": "BlueprintPreviewDelivery",
+      "text": "BlueprintPreviewDelivery delivers BlueprintPreview.",
+      "verb": "delivers"
+    },
+    {
+      "id": "f0033",
+      "line": 121,
+      "node": "PropertyAssignment",
+      "property": "implementation-status",
+      "span": {
+        "column": 1,
+        "end": 4747,
+        "end_column": 66,
+        "end_line": 121,
+        "line": 121,
+        "node": "Span",
+        "start": 4682
+      },
+      "subject": "BlueprintPreviewDelivery",
+      "text": "BlueprintPreviewDelivery has implementation-status = implemented.",
+      "value": "implemented",
+      "verb": "has"
+    },
+    {
+      "id": "f0034",
+      "line": 122,
+      "mode": "ProjectReading",
+      "node": "Allocation",
+      "object": "SdpToolHost",
+      "span": {
+        "column": 1,
+        "end": 4821,
+        "end_column": 74,
+        "end_line": 122,
+        "line": 122,
+        "node": "Span",
+        "start": 4748
+      },
+      "subject": "BrowseRetainedBlueprints",
+      "text": "BrowseRetainedBlueprints allocated-to SdpToolHost in mode ProjectReading.",
+      "verb": "allocated-to"
+    },
+    {
+      "id": "f0035",
+      "line": 123,
+      "node": "Relation",
+      "object": "RetainedBlueprintNavigation",
+      "span": {
+        "column": 1,
+        "end": 4890,
+        "end_column": 69,
+        "end_line": 123,
+        "line": 123,
+        "node": "Span",
+        "start": 4822
+      },
+      "subject": "BrowseRetainedBlueprints",
+      "text": "BrowseRetainedBlueprints contributes-to RetainedBlueprintNavigation.",
+      "verb": "contributes-to"
+    },
+    {
+      "id": "f0036",
+      "line": 124,
+      "node": "Relation",
+      "object": "DiagnosticBlueprint",
+      "span": {
+        "column": 1,
+        "end": 4945,
+        "end_column": 55,
+        "end_line": 124,
+        "line": 124,
+        "node": "Span",
+        "start": 4891
+      },
+      "subject": "BrowseRetainedBlueprints",
+      "text": "BrowseRetainedBlueprints realizes DiagnosticBlueprint.",
+      "verb": "realizes"
+    },
+    {
+      "id": "f0037",
+      "line": 125,
+      "mode": "RoutineHandling",
+      "node": "Allocation",
+      "object": "SdpToolHost",
+      "span": {
+        "column": 1,
+        "end": 5020,
+        "end_column": 75,
+        "end_line": 125,
+        "line": 125,
+        "node": "Span",
+        "start": 4946
+      },
+      "subject": "CheckTransitionAuthority",
+      "text": "CheckTransitionAuthority allocated-to SdpToolHost in mode RoutineHandling.",
+      "verb": "allocated-to"
+    },
+    {
+      "id": "f0038",
+      "line": 126,
+      "node": "Relation",
+      "object": "GovernedProjectOperations",
+      "span": {
+        "column": 1,
+        "end": 5087,
+        "end_column": 67,
+        "end_line": 126,
+        "line": 126,
+        "node": "Span",
+        "start": 5021
+      },
+      "subject": "CheckTransitionAuthority",
+      "text": "CheckTransitionAuthority contributes-to GovernedProjectOperations.",
+      "verb": "contributes-to"
+    },
+    {
+      "id": "f0039",
+      "line": 127,
+      "node": "Relation",
+      "object": "RoutineCoordination",
+      "span": {
+        "column": 1,
+        "end": 5142,
+        "end_column": 55,
+        "end_line": 127,
+        "line": 127,
+        "node": "Span",
+        "start": 5088
+      },
+      "subject": "CheckTransitionAuthority",
+      "text": "CheckTransitionAuthority realizes RoutineCoordination.",
+      "verb": "realizes"
+    },
+    {
+      "id": "f0040",
+      "line": 128,
+      "node": "Relation",
+      "object": "ProjectRecords",
+      "span": {
+        "column": 1,
+        "end": 5181,
+        "end_column": 39,
+        "end_line": 128,
+        "line": 128,
+        "node": "Span",
+        "start": 5143
+      },
+      "subject": "ContextFacade",
+      "text": "ContextFacade consumes ProjectRecords.",
+      "verb": "consumes"
+    },
+    {
+      "id": "f0041",
+      "line": 129,
+      "node": "Relation",
+      "object": "ResolveCheckoutAuthority",
+      "span": {
+        "column": 1,
+        "end": 5226,
+        "end_column": 45,
+        "end_line": 129,
+        "line": 129,
+        "node": "Span",
+        "start": 5182
+      },
+      "subject": "ContextFacade",
+      "text": "ContextFacade owns ResolveCheckoutAuthority.",
+      "verb": "owns"
+    },
+    {
+      "id": "f0042",
+      "line": 130,
+      "mode": "ProjectReading",
+      "node": "Allocation",
+      "object": "SdpToolHost",
+      "span": {
+        "column": 1,
+        "end": 5301,
+        "end_column": 75,
+        "end_line": 130,
+        "line": 130,
+        "node": "Span",
+        "start": 5227
+      },
+      "subject": "DescribeRegisteredProject",
+      "text": "DescribeRegisteredProject allocated-to SdpToolHost in mode ProjectReading.",
+      "verb": "allocated-to"
+    },
+    {
+      "id": "f0043",
+      "line": 131,
+      "node": "Relation",
+      "object": "ProjectFacade",
+      "span": {
+        "column": 1,
+        "end": 5357,
+        "end_column": 56,
+        "end_line": 131,
+        "line": 131,
+        "node": "Span",
+        "start": 5302
+      },
+      "subject": "DescribeRegisteredProject",
+      "text": "DescribeRegisteredProject contributes-to ProjectFacade.",
+      "verb": "contributes-to"
+    },
+    {
+      "id": "f0044",
+      "line": 132,
+      "node": "Relation",
+      "object": "ProjectInventory",
+      "span": {
+        "column": 1,
+        "end": 5410,
+        "end_column": 53,
+        "end_line": 132,
+        "line": 132,
+        "node": "Span",
+        "start": 5358
+      },
+      "subject": "DescribeRegisteredProject",
+      "text": "DescribeRegisteredProject realizes ProjectInventory.",
+      "verb": "realizes"
+    },
+    {
+      "id": "f0045",
+      "line": 133,
+      "mode": "ProjectReading",
+      "node": "Allocation",
+      "object": "SdpToolHost",
+      "span": {
+        "column": 1,
+        "end": 5484,
+        "end_column": 74,
+        "end_line": 133,
+        "line": 133,
+        "node": "Span",
+        "start": 5411
+      },
+      "subject": "DescribeSupportedActions",
+      "text": "DescribeSupportedActions allocated-to SdpToolHost in mode ProjectReading.",
+      "verb": "allocated-to"
+    },
+    {
+      "id": "f0046",
+      "line": 134,
+      "node": "Relation",
+      "object": "DiscoverableActions",
+      "span": {
+        "column": 1,
+        "end": 5545,
+        "end_column": 61,
+        "end_line": 134,
+        "line": 134,
+        "node": "Span",
+        "start": 5485
+      },
+      "subject": "DescribeSupportedActions",
+      "text": "DescribeSupportedActions contributes-to DiscoverableActions.",
+      "verb": "contributes-to"
+    },
+    {
+      "id": "f0047",
+      "line": 135,
+      "node": "Relation",
+      "object": "TypedLocalInvocation",
+      "span": {
+        "column": 1,
+        "end": 5601,
+        "end_column": 56,
+        "end_line": 135,
+        "line": 135,
+        "node": "Span",
+        "start": 5546
+      },
+      "subject": "DescribeSupportedActions",
+      "text": "DescribeSupportedActions realizes TypedLocalInvocation.",
+      "verb": "realizes"
+    },
+    {
+      "id": "f0048",
+      "line": 136,
+      "mode": "ProjectReading",
+      "node": "Dependency",
+      "object": "ExistingSdlProjectionLibrary",
+      "span": {
+        "column": 1,
+        "end": 5683,
+        "end_column": 82,
+        "end_line": 136,
+        "line": 136,
+        "node": "Span",
+        "start": 5602
+      },
+      "subject": "DiagnosticBlueprint",
+      "text": "DiagnosticBlueprint requires ExistingSdlProjectionLibrary in mode ProjectReading.",
+      "verb": "requires"
+    },
+    {
+      "id": "f0049",
+      "line": 137,
+      "mode": "ProjectReading",
+      "node": "Dependency",
+      "object": "ModelSnapshotLibrary",
+      "span": {
+        "column": 1,
+        "end": 5757,
+        "end_column": 74,
+        "end_line": 137,
+        "line": 137,
+        "node": "Span",
+        "start": 5684
+      },
+      "subject": "DiagnosticBlueprint",
+      "text": "DiagnosticBlueprint requires ModelSnapshotLibrary in mode ProjectReading.",
+      "verb": "requires"
+    },
+    {
+      "id": "f0050",
+      "line": 138,
+      "node": "Relation",
+      "object": "CoordinateGovernedWork",
+      "span": {
+        "column": 1,
+        "end": 5810,
+        "end_column": 53,
+        "end_line": 138,
+        "line": 138,
+        "node": "Span",
+        "start": 5758
+      },
+      "subject": "DiscoverableActions",
+      "text": "DiscoverableActions supports CoordinateGovernedWork.",
+      "verb": "supports"
+    },
+    {
+      "id": "f0051",
+      "line": 139,
+      "node": "Relation",
+      "object": "InvokeReviewedInstallation",
+      "span": {
+        "column": 1,
+        "end": 5870,
+        "end_column": 60,
+        "end_line": 139,
+        "line": 139,
+        "node": "Span",
+        "start": 5811
+      },
+      "subject": "ExistingInstallFacade",
+      "text": "ExistingInstallFacade addresses InvokeReviewedInstallation.",
+      "verb": "addresses"
+    },
+    {
+      "id": "f0052",
+      "line": 140,
+      "node": "Relation",
+      "object": "InstallationFacade",
+      "span": {
+        "column": 1,
+        "end": 5921,
+        "end_column": 51,
+        "end_line": 140,
+        "line": 140,
+        "node": "Span",
+        "start": 5871
+      },
+      "subject": "ExistingInstallFacade",
+      "text": "ExistingInstallFacade delivers InstallationFacade.",
+      "verb": "delivers"
+    },
+    {
+      "id": "f0053",
+      "line": 141,
+      "node": "PropertyAssignment",
+      "property": "implementation-status",
+      "span": {
+        "column": 1,
+        "end": 5984,
+        "end_column": 63,
+        "end_line": 141,
+        "line": 141,
+        "node": "Span",
+        "start": 5922
+      },
+      "subject": "ExistingInstallFacade",
+      "text": "ExistingInstallFacade has implementation-status = implemented.",
+      "value": "implemented",
+      "verb": "has"
+    },
+    {
+      "id": "f0054",
+      "line": 142,
+      "node": "Relation",
+      "object": "ExistingInstallationLibrary",
+      "span": {
+        "column": 1,
+        "end": 6049,
+        "end_column": 65,
+        "end_line": 142,
+        "line": 142,
+        "node": "Span",
+        "start": 5985
+      },
+      "subject": "ExistingInstallationFacade",
+      "text": "ExistingInstallationFacade consumes ExistingInstallationLibrary.",
+      "verb": "consumes"
+    },
+    {
+      "id": "f0055",
+      "line": 143,
+      "node": "Relation",
+      "object": "InvokeReviewedInstallation",
+      "span": {
+        "column": 1,
+        "end": 6109,
+        "end_column": 60,
+        "end_line": 143,
+        "line": 143,
+        "node": "Span",
+        "start": 6050
+      },
+      "subject": "ExistingInstallationFacade",
+      "text": "ExistingInstallationFacade owns InvokeReviewedInstallation.",
+      "verb": "owns"
+    },
+    {
+      "id": "f0056",
+      "line": 144,
+      "node": "Relation",
+      "object": "ExistingSdlProjectionLibrary",
+      "span": {
+        "column": 1,
+        "end": 6173,
+        "end_column": 64,
+        "end_line": 144,
+        "line": 144,
+        "node": "Span",
+        "start": 6110
+      },
+      "subject": "ExistingNavigationFacade",
+      "text": "ExistingNavigationFacade consumes ExistingSdlProjectionLibrary.",
+      "verb": "consumes"
+    },
+    {
+      "id": "f0057",
+      "line": 145,
+      "node": "Relation",
+      "object": "DescribeRegisteredProject",
+      "span": {
+        "column": 1,
+        "end": 6230,
+        "end_column": 57,
+        "end_line": 145,
+        "line": 145,
+        "node": "Span",
+        "start": 6174
+      },
+      "subject": "ExistingNavigationFacade",
+      "text": "ExistingNavigationFacade owns DescribeRegisteredProject.",
+      "verb": "owns"
+    },
+    {
+      "id": "f0058",
+      "line": 146,
+      "node": "Relation",
+      "object": "DescribeRegisteredProject",
+      "span": {
+        "column": 1,
+        "end": 6286,
+        "end_column": 56,
+        "end_line": 146,
+        "line": 146,
+        "node": "Span",
+        "start": 6231
+      },
+      "subject": "ExistingReadFacade",
+      "text": "ExistingReadFacade addresses DescribeRegisteredProject.",
+      "verb": "addresses"
+    },
+    {
+      "id": "f0059",
+      "line": 147,
+      "node": "Relation",
+      "object": "ProjectFacade",
+      "span": {
+        "column": 1,
+        "end": 6329,
+        "end_column": 43,
+        "end_line": 147,
+        "line": 147,
+        "node": "Span",
+        "start": 6287
+      },
+      "subject": "ExistingReadFacade",
+      "text": "ExistingReadFacade delivers ProjectFacade.",
+      "verb": "delivers"
+    },
+    {
+      "id": "f0060",
+      "line": 148,
+      "node": "PropertyAssignment",
+      "property": "implementation-status",
+      "span": {
+        "column": 1,
+        "end": 6389,
+        "end_column": 60,
+        "end_line": 148,
+        "line": 148,
+        "node": "Span",
+        "start": 6330
+      },
+      "subject": "ExistingReadFacade",
+      "text": "ExistingReadFacade has implementation-status = implemented.",
+      "value": "implemented",
+      "verb": "has"
+    },
+    {
+      "channel": "RoutineCalls",
+      "id": "f0061",
+      "line": 149,
+      "message": "TransitionAccepted",
+      "mode": "RoutineHandling",
+      "node": "Participation",
+      "role": "receiver",
+      "span": {
+        "column": 1,
+        "end": 6489,
+        "end_column": 100,
+        "end_line": 149,
+        "line": 149,
+        "node": "Span",
+        "start": 6390
+      },
+      "subject": "ExternalCommandAdapter",
+      "text": "ExternalCommandAdapter uses RoutineCalls as receiver of TransitionAccepted in mode RoutineHandling.",
+      "verb": "uses"
+    },
+    {
+      "channel": "RoutineCalls",
+      "id": "f0062",
+      "line": 150,
+      "message": "TransitionRefused",
+      "mode": "RoutineHandling",
+      "node": "Participation",
+      "role": "receiver",
+      "span": {
+        "column": 1,
+        "end": 6588,
+        "end_column": 99,
+        "end_line": 150,
+        "line": 150,
+        "node": "Span",
+        "start": 6490
+      },
+      "subject": "ExternalCommandAdapter",
+      "text": "ExternalCommandAdapter uses RoutineCalls as receiver of TransitionRefused in mode RoutineHandling.",
+      "verb": "uses"
+    },
+    {
+      "channel": "RoutineCalls",
+      "id": "f0063",
+      "line": 151,
+      "message": "RequestTransition",
+      "mode": "RoutineHandling",
+      "node": "Participation",
+      "role": "sender",
+      "span": {
+        "column": 1,
+        "end": 6685,
+        "end_column": 97,
+        "end_line": 151,
+        "line": 151,
+        "node": "Span",
+        "start": 6589
+      },
+      "subject": "ExternalCommandAdapter",
+      "text": "ExternalCommandAdapter uses RoutineCalls as sender of RequestTransition in mode RoutineHandling.",
+      "verb": "uses"
+    },
+    {
+      "id": "f0064",
+      "line": 152,
+      "mode": "ProjectReading",
+      "node": "Allocation",
+      "object": "SdpToolHost",
+      "span": {
+        "column": 1,
+        "end": 6759,
+        "end_column": 74,
+        "end_line": 152,
+        "line": 152,
+        "node": "Span",
+        "start": 6686
+      },
+      "subject": "GenerateBlueprintPreview",
+      "text": "GenerateBlueprintPreview allocated-to SdpToolHost in mode ProjectReading.",
+      "verb": "allocated-to"
+    },
+    {
+      "id": "f0065",
+      "line": 153,
+      "node": "Relation",
+      "object": "BlueprintPreview",
+      "span": {
+        "column": 1,
+        "end": 6817,
+        "end_column": 58,
+        "end_line": 153,
+        "line": 153,
+        "node": "Span",
+        "start": 6760
+      },
+      "subject": "GenerateBlueprintPreview",
+      "text": "GenerateBlueprintPreview contributes-to BlueprintPreview.",
+      "verb": "contributes-to"
+    },
+    {
+      "id": "f0066",
+      "line": 154,
+      "node": "Relation",
+      "object": "DiagnosticBlueprint",
+      "span": {
+        "column": 1,
+        "end": 6872,
+        "end_column": 55,
+        "end_line": 154,
+        "line": 154,
+        "node": "Span",
+        "start": 6818
+      },
+      "subject": "GenerateBlueprintPreview",
+      "text": "GenerateBlueprintPreview realizes DiagnosticBlueprint.",
+      "verb": "realizes"
+    },
+    {
+      "id": "f0067",
+      "line": 155,
+      "mode": "RoutineHandling",
+      "node": "Allocation",
+      "object": "SdpToolHost",
+      "span": {
+        "column": 1,
+        "end": 6948,
+        "end_column": 76,
+        "end_line": 155,
+        "line": 155,
+        "node": "Span",
+        "start": 6873
+      },
+      "subject": "GovernBlueprintAssignment",
+      "text": "GovernBlueprintAssignment allocated-to SdpToolHost in mode RoutineHandling.",
+      "verb": "allocated-to"
+    },
+    {
+      "id": "f0068",
+      "line": 156,
+      "node": "Relation",
+      "object": "BlueprintAssignments",
+      "span": {
+        "column": 1,
+        "end": 7011,
+        "end_column": 63,
+        "end_line": 156,
+        "line": 156,
+        "node": "Span",
+        "start": 6949
+      },
+      "subject": "GovernBlueprintAssignment",
+      "text": "GovernBlueprintAssignment contributes-to BlueprintAssignments.",
+      "verb": "contributes-to"
+    },
+    {
+      "id": "f0069",
+      "line": 157,
+      "node": "Relation",
+      "object": "BlueprintAssignmentControl",
+      "span": {
+        "column": 1,
+        "end": 7074,
+        "end_column": 63,
+        "end_line": 157,
+        "line": 157,
+        "node": "Span",
+        "start": 7012
+      },
+      "subject": "GovernBlueprintAssignment",
+      "text": "GovernBlueprintAssignment realizes BlueprintAssignmentControl.",
+      "verb": "realizes"
+    },
+    {
+      "id": "f0070",
+      "line": 158,
+      "node": "Relation",
+      "object": "CoordinateGovernedWork",
+      "span": {
+        "column": 1,
+        "end": 7133,
+        "end_column": 59,
+        "end_line": 158,
+        "line": 158,
+        "node": "Span",
+        "start": 7075
+      },
+      "subject": "GovernedProjectOperations",
+      "text": "GovernedProjectOperations supports CoordinateGovernedWork.",
+      "verb": "supports"
+    },
+    {
+      "id": "f0071",
+      "line": 159,
+      "node": "Relation",
+      "object": "InstallReviewedProcess",
+      "span": {
+        "column": 1,
+        "end": 7185,
+        "end_column": 52,
+        "end_line": 159,
+        "line": 159,
+        "node": "Span",
+        "start": 7134
+      },
+      "subject": "InstallationFacade",
+      "text": "InstallationFacade supports InstallReviewedProcess.",
+      "verb": "supports"
+    },
+    {
+      "id": "f0072",
+      "line": 160,
+      "mode": "InstallationHandling",
+      "node": "Allocation",
+      "object": "SdpToolHost",
+      "span": {
+        "column": 1,
+        "end": 7267,
+        "end_column": 82,
+        "end_line": 160,
+        "line": 160,
+        "node": "Span",
+        "start": 7186
+      },
+      "subject": "InvokeReviewedInstallation",
+      "text": "InvokeReviewedInstallation allocated-to SdpToolHost in mode InstallationHandling.",
+      "verb": "allocated-to"
+    },
+    {
+      "id": "f0073",
+      "line": 161,
+      "node": "Relation",
+      "object": "InstallationFacade",
+      "span": {
+        "column": 1,
+        "end": 7329,
+        "end_column": 62,
+        "end_line": 161,
+        "line": 161,
+        "node": "Span",
+        "start": 7268
+      },
+      "subject": "InvokeReviewedInstallation",
+      "text": "InvokeReviewedInstallation contributes-to InstallationFacade.",
+      "verb": "contributes-to"
+    },
+    {
+      "id": "f0074",
+      "line": 162,
+      "node": "Relation",
+      "object": "ReviewedInstallation",
+      "span": {
+        "column": 1,
+        "end": 7387,
+        "end_column": 58,
+        "end_line": 162,
+        "line": 162,
+        "node": "Span",
+        "start": 7330
+      },
+      "subject": "InvokeReviewedInstallation",
+      "text": "InvokeReviewedInstallation realizes ReviewedInstallation.",
+      "verb": "realizes"
+    },
+    {
+      "id": "f0075",
+      "line": 163,
+      "mode": "RoutineHandling",
+      "node": "Allocation",
+      "object": "SdpToolHost",
+      "span": {
+        "column": 1,
+        "end": 7455,
+        "end_column": 68,
+        "end_line": 163,
+        "line": 163,
+        "node": "Span",
+        "start": 7388
+      },
+      "subject": "InvokeTypedAction",
+      "text": "InvokeTypedAction allocated-to SdpToolHost in mode RoutineHandling.",
+      "verb": "allocated-to"
+    },
+    {
+      "id": "f0076",
+      "line": 164,
+      "node": "Relation",
+      "object": "DiscoverableActions",
+      "span": {
+        "column": 1,
+        "end": 7509,
+        "end_column": 54,
+        "end_line": 164,
+        "line": 164,
+        "node": "Span",
+        "start": 7456
+      },
+      "subject": "InvokeTypedAction",
+      "text": "InvokeTypedAction contributes-to DiscoverableActions.",
+      "verb": "contributes-to"
+    },
+    {
+      "id": "f0077",
+      "line": 165,
+      "node": "Relation",
+      "object": "TypedLocalInvocation",
+      "span": {
+        "column": 1,
+        "end": 7558,
+        "end_column": 49,
+        "end_line": 165,
+        "line": 165,
+        "node": "Span",
+        "start": 7510
+      },
+      "subject": "InvokeTypedAction",
+      "text": "InvokeTypedAction realizes TypedLocalInvocation.",
+      "verb": "realizes"
+    },
+    {
+      "id": "f0078",
+      "line": 166,
+      "node": "Relation",
+      "object": "InvokeTypedAction",
+      "span": {
+        "column": 1,
+        "end": 7604,
+        "end_column": 46,
+        "end_line": 166,
+        "line": 166,
+        "node": "Span",
+        "start": 7559
+      },
+      "subject": "JsonInvocationAdapter",
+      "text": "JsonInvocationAdapter owns InvokeTypedAction.",
+      "verb": "owns"
+    },
+    {
+      "id": "f0079",
+      "line": 167,
+      "node": "Relation",
+      "object": "RunSnapshots",
+      "span": {
+        "column": 1,
+        "end": 7644,
+        "end_column": 40,
+        "end_line": 167,
+        "line": 167,
+        "node": "Span",
+        "start": 7605
+      },
+      "subject": "OperationalRunStore",
+      "text": "OperationalRunStore holds RunSnapshots.",
+      "verb": "holds"
+    },
+    {
+      "id": "f0080",
+      "line": 168,
+      "node": "Relation",
+      "object": "BrowseProjectFacts",
+      "span": {
+        "column": 1,
+        "end": 7687,
+        "end_column": 43,
+        "end_line": 168,
+        "line": 168,
+        "node": "Span",
+        "start": 7645
+      },
+      "subject": "ProjectFacade",
+      "text": "ProjectFacade supports BrowseProjectFacts.",
+      "verb": "supports"
+    },
+    {
+      "id": "f0081",
+      "line": 169,
+      "mode": "ProjectReading",
+      "node": "Dependency",
+      "object": "ExistingSdlProjectionLibrary",
+      "span": {
+        "column": 1,
+        "end": 7766,
+        "end_column": 79,
+        "end_line": 169,
+        "line": 169,
+        "node": "Span",
+        "start": 7688
+      },
+      "subject": "ProjectInventory",
+      "text": "ProjectInventory requires ExistingSdlProjectionLibrary in mode ProjectReading.",
+      "verb": "requires"
+    },
+    {
+      "id": "f0082",
+      "line": 170,
+      "node": "Relation",
+      "object": "InstallReviewedProcess",
+      "span": {
+        "column": 1,
+        "end": 7816,
+        "end_column": 50,
+        "end_line": 170,
+        "line": 170,
+        "node": "Span",
+        "start": 7767
+      },
+      "subject": "ProjectMaintainer",
+      "text": "ProjectMaintainer pursues InstallReviewedProcess.",
+      "verb": "pursues"
+    },
+    {
+      "id": "f0083",
+      "line": 171,
+      "node": "Relation",
+      "object": "BrowseProjectFacts",
+      "span": {
+        "column": 1,
+        "end": 7858,
+        "end_column": 42,
+        "end_line": 171,
+        "line": 171,
+        "node": "Span",
+        "start": 7817
+      },
+      "subject": "ProjectReader",
+      "text": "ProjectReader pursues BrowseProjectFacts.",
+      "verb": "pursues"
+    },
+    {
+      "id": "f0084",
+      "line": 172,
+      "node": "Relation",
+      "object": "InspectProposedModelChange",
+      "span": {
+        "column": 1,
+        "end": 7908,
+        "end_column": 50,
+        "end_line": 172,
+        "line": 172,
+        "node": "Span",
+        "start": 7859
+      },
+      "subject": "ProjectReader",
+      "text": "ProjectReader pursues InspectProposedModelChange.",
+      "verb": "pursues"
+    },
+    {
+      "id": "f0085",
+      "line": 173,
+      "node": "Relation",
+      "object": "CoordinateGovernedWork",
+      "span": {
+        "column": 1,
+        "end": 7958,
+        "end_column": 50,
+        "end_line": 173,
+        "line": 173,
+        "node": "Span",
+        "start": 7909
+      },
+      "subject": "ProjectSupervisor",
+      "text": "ProjectSupervisor pursues CoordinateGovernedWork.",
+      "verb": "pursues"
+    },
+    {
+      "id": "f0086",
+      "line": 174,
+      "mode": "RoutineHandling",
+      "node": "Allocation",
+      "object": "SdpToolHost",
+      "span": {
+        "column": 1,
+        "end": 8029,
+        "end_column": 71,
+        "end_line": 174,
+        "line": 174,
+        "node": "Span",
+        "start": 7959
+      },
+      "subject": "ReconcileRunRevision",
+      "text": "ReconcileRunRevision allocated-to SdpToolHost in mode RoutineHandling.",
+      "verb": "allocated-to"
+    },
+    {
+      "id": "f0087",
+      "line": 175,
+      "node": "Relation",
+      "object": "GovernedProjectOperations",
+      "span": {
+        "column": 1,
+        "end": 8092,
+        "end_column": 63,
+        "end_line": 175,
+        "line": 175,
+        "node": "Span",
+        "start": 8030
+      },
+      "subject": "ReconcileRunRevision",
+      "text": "ReconcileRunRevision contributes-to GovernedProjectOperations.",
+      "verb": "contributes-to"
+    },
+    {
+      "id": "f0088",
+      "line": 176,
+      "node": "Relation",
+      "object": "RoutineCoordination",
+      "span": {
+        "column": 1,
+        "end": 8143,
+        "end_column": 51,
+        "end_line": 176,
+        "line": 176,
+        "node": "Span",
+        "start": 8093
+      },
+      "subject": "ReconcileRunRevision",
+      "text": "ReconcileRunRevision realizes RoutineCoordination.",
+      "verb": "realizes"
+    },
+    {
+      "id": "f0089",
+      "line": 177,
+      "node": "PropertyAssignment",
+      "property": "message-kind",
+      "span": {
+        "column": 1,
+        "end": 8189,
+        "end_column": 46,
+        "end_line": 177,
+        "line": 177,
+        "node": "Span",
+        "start": 8144
+      },
+      "subject": "RequestTransition",
+      "text": "RequestTransition has message-kind = request.",
+      "value": "request",
+      "verb": "has"
+    },
+    {
+      "id": "f0090",
+      "line": 178,
+      "node": "Relation",
+      "object": "RoutineRequest",
+      "span": {
+        "column": 1,
+        "end": 8231,
+        "end_column": 42,
+        "end_line": 178,
+        "line": 178,
+        "node": "Span",
+        "start": 8190
+      },
+      "subject": "RequestTransition",
+      "text": "RequestTransition upholds RoutineRequest.",
+      "verb": "upholds"
+    },
+    {
+      "id": "f0091",
+      "line": 179,
+      "mode": "RoutineHandling",
+      "node": "Allocation",
+      "object": "SdpToolHost",
+      "span": {
+        "column": 1,
+        "end": 8306,
+        "end_column": 75,
+        "end_line": 179,
+        "line": 179,
+        "node": "Span",
+        "start": 8232
+      },
+      "subject": "ResolveApplicableRoutine",
+      "text": "ResolveApplicableRoutine allocated-to SdpToolHost in mode RoutineHandling.",
+      "verb": "allocated-to"
+    },
+    {
+      "id": "f0092",
+      "line": 180,
+      "node": "Relation",
+      "object": "GovernedProjectOperations",
+      "span": {
+        "column": 1,
+        "end": 8373,
+        "end_column": 67,
+        "end_line": 180,
+        "line": 180,
+        "node": "Span",
+        "start": 8307
+      },
+      "subject": "ResolveApplicableRoutine",
+      "text": "ResolveApplicableRoutine contributes-to GovernedProjectOperations.",
+      "verb": "contributes-to"
+    },
+    {
+      "id": "f0093",
+      "line": 181,
+      "node": "Relation",
+      "object": "RoutineCoordination",
+      "span": {
+        "column": 1,
+        "end": 8428,
+        "end_column": 55,
+        "end_line": 181,
+        "line": 181,
+        "node": "Span",
+        "start": 8374
+      },
+      "subject": "ResolveApplicableRoutine",
+      "text": "ResolveApplicableRoutine realizes RoutineCoordination.",
+      "verb": "realizes"
+    },
+    {
+      "id": "f0094",
+      "line": 182,
+      "mode": "RoutineHandling",
+      "node": "Allocation",
+      "object": "SdpToolHost",
+      "span": {
+        "column": 1,
+        "end": 8503,
+        "end_column": 75,
+        "end_line": 182,
+        "line": 182,
+        "node": "Span",
+        "start": 8429
+      },
+      "subject": "ResolveCheckoutAuthority",
+      "text": "ResolveCheckoutAuthority allocated-to SdpToolHost in mode RoutineHandling.",
+      "verb": "allocated-to"
+    },
+    {
+      "id": "f0095",
+      "line": 183,
+      "node": "Relation",
+      "object": "GovernedProjectOperations",
+      "span": {
+        "column": 1,
+        "end": 8570,
+        "end_column": 67,
+        "end_line": 183,
+        "line": 183,
+        "node": "Span",
+        "start": 8504
+      },
+      "subject": "ResolveCheckoutAuthority",
+      "text": "ResolveCheckoutAuthority contributes-to GovernedProjectOperations.",
+      "verb": "contributes-to"
+    },
+    {
+      "id": "f0096",
+      "line": 184,
+      "node": "Relation",
+      "object": "RoutineCoordination",
+      "span": {
+        "column": 1,
+        "end": 8625,
+        "end_column": 55,
+        "end_line": 184,
+        "line": 184,
+        "node": "Span",
+        "start": 8571
+      },
+      "subject": "ResolveCheckoutAuthority",
+      "text": "ResolveCheckoutAuthority realizes RoutineCoordination.",
+      "verb": "realizes"
+    },
+    {
+      "id": "f0097",
+      "line": 185,
+      "node": "Relation",
+      "object": "InspectProposedModelChange",
+      "span": {
+        "column": 1,
+        "end": 8690,
+        "end_column": 65,
+        "end_line": 185,
+        "line": 185,
+        "node": "Span",
+        "start": 8626
+      },
+      "subject": "RetainedBlueprintNavigation",
+      "text": "RetainedBlueprintNavigation supports InspectProposedModelChange.",
+      "verb": "supports"
+    },
+    {
+      "id": "f0098",
+      "line": 186,
+      "mode": "InstallationHandling",
+      "node": "Dependency",
+      "object": "ExistingInstallationLibrary",
+      "span": {
+        "column": 1,
+        "end": 8778,
+        "end_column": 88,
+        "end_line": 186,
+        "line": 186,
+        "node": "Span",
+        "start": 8691
+      },
+      "subject": "ReviewedInstallation",
+      "text": "ReviewedInstallation requires ExistingInstallationLibrary in mode InstallationHandling.",
+      "verb": "requires"
+    },
+    {
+      "id": "f0099",
+      "line": 187,
+      "node": "Relation",
+      "object": "CoordinateGovernedWork",
+      "span": {
+        "column": 1,
+        "end": 8828,
+        "end_column": 50,
+        "end_line": 187,
+        "line": 187,
+        "node": "Span",
+        "start": 8779
+      },
+      "subject": "RoutineAccepted",
+      "text": "RoutineAccepted exercises CoordinateGovernedWork.",
+      "verb": "exercises"
+    },
+    {
+      "id": "f0100",
+      "line": 188,
+      "node": "PropertyAssignment",
+      "property": "completeness",
+      "span": {
+        "column": 1,
+        "end": 8871,
+        "end_column": 43,
+        "end_line": 188,
+        "line": 188,
+        "node": "Span",
+        "start": 8829
+      },
+      "subject": "RoutineAccepted",
+      "text": "RoutineAccepted has completeness = closed.",
+      "value": "closed",
+      "verb": "has"
+    },
+    {
+      "id": "f0101",
+      "line": 189,
+      "node": "Relation",
+      "object": "RoutineCoreDelivery",
+      "span": {
+        "column": 1,
+        "end": 8920,
+        "end_column": 49,
+        "end_line": 189,
+        "line": 189,
+        "node": "Span",
+        "start": 8872
+      },
+      "subject": "RoutineAccepted",
+      "text": "RoutineAccepted illustrates RoutineCoreDelivery.",
+      "verb": "illustrates"
+    },
+    {
+      "id": "f0102",
+      "line": 190,
+      "node": "Relation",
+      "object": "RoutineHandling",
+      "span": {
+        "column": 1,
+        "end": 8961,
+        "end_column": 41,
+        "end_line": 190,
+        "line": 190,
+        "node": "Span",
+        "start": 8921
+      },
+      "subject": "RoutineAccepted",
+      "text": "RoutineAccepted runs-in RoutineHandling.",
+      "verb": "runs-in"
+    },
+    {
+      "channel": "RoutineCalls",
+      "id": "f0103",
+      "line": 191,
+      "message": "RequestTransition",
+      "node": "Step",
+      "ordinal": 1,
+      "receiver": "RoutineCoordinator",
+      "reply_to": null,
+      "sender": "ExternalCommandAdapter",
+      "span": {
+        "column": 1,
+        "end": 9076,
+        "end_column": 115,
+        "end_line": 191,
+        "line": 191,
+        "node": "Span",
+        "start": 8962
+      },
+      "subject": "RoutineAccepted",
+      "text": "RoutineAccepted step 1 sends RequestTransition from ExternalCommandAdapter to RoutineCoordinator via RoutineCalls.",
+      "variant": null,
+      "verb": "step"
+    },
+    {
+      "channel": "RoutineCalls",
+      "id": "f0104",
+      "line": 192,
+      "message": "TransitionAccepted",
+      "node": "Step",
+      "ordinal": 2,
+      "receiver": "ExternalCommandAdapter",
+      "reply_to": 1,
+      "sender": "RoutineCoordinator",
+      "span": {
+        "column": 1,
+        "end": 9203,
+        "end_column": 127,
+        "end_line": 192,
+        "line": 192,
+        "node": "Span",
+        "start": 9077
+      },
+      "subject": "RoutineAccepted",
+      "text": "RoutineAccepted step 2 sends TransitionAccepted from RoutineCoordinator to ExternalCommandAdapter via RoutineCalls reply-to 1.",
+      "variant": null,
+      "verb": "step"
+    },
+    {
+      "id": "f0105",
+      "line": 193,
+      "node": "Relation",
+      "object": "RoutineCallsProtocol",
+      "span": {
+        "column": 1,
+        "end": 9246,
+        "end_column": 43,
+        "end_line": 193,
+        "line": 193,
+        "node": "Span",
+        "start": 9204
+      },
+      "subject": "RoutineCalls",
+      "text": "RoutineCalls upholds RoutineCallsProtocol.",
+      "verb": "upholds"
+    },
+    {
+      "id": "f0106",
+      "line": 194,
+      "node": "PropertyAssignment",
+      "property": "completeness",
+      "span": {
+        "column": 1,
+        "end": 9294,
+        "end_column": 48,
+        "end_line": 194,
+        "line": 194,
+        "node": "Span",
+        "start": 9247
+      },
+      "subject": "RoutineCallsProtocol",
+      "text": "RoutineCallsProtocol has completeness = closed.",
+      "value": "closed",
+      "verb": "has"
+    },
+    {
+      "id": "f0107",
+      "line": 195,
+      "node": "Relation",
+      "object": "RequestTransition",
+      "span": {
+        "column": 1,
+        "end": 9342,
+        "end_column": 48,
+        "end_line": 195,
+        "line": 195,
+        "node": "Span",
+        "start": 9295
+      },
+      "subject": "RoutineCallsProtocol",
+      "text": "RoutineCallsProtocol permits RequestTransition.",
+      "verb": "permits"
+    },
+    {
+      "id": "f0108",
+      "line": 196,
+      "node": "Relation",
+      "object": "TransitionAccepted",
+      "span": {
+        "column": 1,
+        "end": 9391,
+        "end_column": 49,
+        "end_line": 196,
+        "line": 196,
+        "node": "Span",
+        "start": 9343
+      },
+      "subject": "RoutineCallsProtocol",
+      "text": "RoutineCallsProtocol permits TransitionAccepted.",
+      "verb": "permits"
+    },
+    {
+      "id": "f0109",
+      "line": 197,
+      "node": "Relation",
+      "object": "TransitionRefused",
+      "span": {
+        "column": 1,
+        "end": 9439,
+        "end_column": 48,
+        "end_line": 197,
+        "line": 197,
+        "node": "Span",
+        "start": 9392
+      },
+      "subject": "RoutineCallsProtocol",
+      "text": "RoutineCallsProtocol permits TransitionRefused.",
+      "verb": "permits"
+    },
+    {
+      "id": "f0110",
+      "line": 198,
+      "mode": "RoutineHandling",
+      "node": "Dependency",
+      "object": "ProjectRecords",
+      "span": {
+        "column": 1,
+        "end": 9508,
+        "end_column": 69,
+        "end_line": 198,
+        "line": 198,
+        "node": "Span",
+        "start": 9440
+      },
+      "subject": "RoutineCoordination",
+      "text": "RoutineCoordination requires ProjectRecords in mode RoutineHandling.",
+      "verb": "requires"
+    },
+    {
+      "id": "f0111",
+      "line": 199,
+      "mode": "RoutineHandling",
+      "node": "Dependency",
+      "object": "TrustedAssignmentBinding",
+      "span": {
+        "column": 1,
+        "end": 9587,
+        "end_column": 79,
+        "end_line": 199,
+        "line": 199,
+        "node": "Span",
+        "start": 9509
+      },
+      "subject": "RoutineCoordination",
+      "text": "RoutineCoordination requires TrustedAssignmentBinding in mode RoutineHandling.",
+      "verb": "requires"
+    },
+    {
+      "id": "f0112",
+      "line": 200,
+      "node": "Relation",
+      "object": "TrustedAssignmentBinding",
+      "span": {
+        "column": 1,
+        "end": 9641,
+        "end_column": 54,
+        "end_line": 200,
+        "line": 200,
+        "node": "Span",
+        "start": 9588
+      },
+      "subject": "RoutineCoordinator",
+      "text": "RoutineCoordinator consumes TrustedAssignmentBinding.",
+      "verb": "consumes"
+    },
+    {
+      "id": "f0113",
+      "line": 201,
+      "node": "Relation",
+      "object": "CheckTransitionAuthority",
+      "span": {
+        "column": 1,
+        "end": 9691,
+        "end_column": 50,
+        "end_line": 201,
+        "line": 201,
+        "node": "Span",
+        "start": 9642
+      },
+      "subject": "RoutineCoordinator",
+      "text": "RoutineCoordinator owns CheckTransitionAuthority.",
+      "verb": "owns"
+    },
+    {
+      "id": "f0114",
+      "line": 202,
+      "node": "Relation",
+      "object": "ResolveApplicableRoutine",
+      "span": {
+        "column": 1,
+        "end": 9741,
+        "end_column": 50,
+        "end_line": 202,
+        "line": 202,
+        "node": "Span",
+        "start": 9692
+      },
+      "subject": "RoutineCoordinator",
+      "text": "RoutineCoordinator owns ResolveApplicableRoutine.",
+      "verb": "owns"
+    },
+    {
+      "channel": "RoutineCalls",
+      "id": "f0115",
+      "line": 203,
+      "message": "RequestTransition",
+      "mode": "RoutineHandling",
+      "node": "Participation",
+      "role": "receiver",
+      "span": {
+        "column": 1,
+        "end": 9836,
+        "end_column": 95,
+        "end_line": 203,
+        "line": 203,
+        "node": "Span",
+        "start": 9742
+      },
+      "subject": "RoutineCoordinator",
+      "text": "RoutineCoordinator uses RoutineCalls as receiver of RequestTransition in mode RoutineHandling.",
+      "verb": "uses"
+    },
+    {
+      "channel": "RoutineCalls",
+      "id": "f0116",
+      "line": 204,
+      "message": "TransitionAccepted",
+      "mode": "RoutineHandling",
+      "node": "Participation",
+      "role": "sender",
+      "span": {
+        "column": 1,
+        "end": 9930,
+        "end_column": 94,
+        "end_line": 204,
+        "line": 204,
+        "node": "Span",
+        "start": 9837
+      },
+      "subject": "RoutineCoordinator",
+      "text": "RoutineCoordinator uses RoutineCalls as sender of TransitionAccepted in mode RoutineHandling.",
+      "verb": "uses"
+    },
+    {
+      "channel": "RoutineCalls",
+      "id": "f0117",
+      "line": 205,
+      "message": "TransitionRefused",
+      "mode": "RoutineHandling",
+      "node": "Participation",
+      "role": "sender",
+      "span": {
+        "column": 1,
+        "end": 10023,
+        "end_column": 93,
+        "end_line": 205,
+        "line": 205,
+        "node": "Span",
+        "start": 9931
+      },
+      "subject": "RoutineCoordinator",
+      "text": "RoutineCoordinator uses RoutineCalls as sender of TransitionRefused in mode RoutineHandling.",
+      "verb": "uses"
+    },
+    {
+      "id": "f0118",
+      "line": 206,
+      "node": "Relation",
+      "object": "CheckTransitionAuthority",
+      "span": {
+        "column": 1,
+        "end": 10079,
+        "end_column": 56,
+        "end_line": 206,
+        "line": 206,
+        "node": "Span",
+        "start": 10024
+      },
+      "subject": "RoutineCoreDelivery",
+      "text": "RoutineCoreDelivery addresses CheckTransitionAuthority.",
+      "verb": "addresses"
+    },
+    {
+      "id": "f0119",
+      "line": 207,
+      "node": "Relation",
+      "object": "ReconcileRunRevision",
+      "span": {
+        "column": 1,
+        "end": 10131,
+        "end_column": 52,
+        "end_line": 207,
+        "line": 207,
+        "node": "Span",
+        "start": 10080
+      },
+      "subject": "RoutineCoreDelivery",
+      "text": "RoutineCoreDelivery addresses ReconcileRunRevision.",
+      "verb": "addresses"
+    },
+    {
+      "id": "f0120",
+      "line": 208,
+      "node": "Relation",
+      "object": "ResolveApplicableRoutine",
+      "span": {
+        "column": 1,
+        "end": 10187,
+        "end_column": 56,
+        "end_line": 208,
+        "line": 208,
+        "node": "Span",
+        "start": 10132
+      },
+      "subject": "RoutineCoreDelivery",
+      "text": "RoutineCoreDelivery addresses ResolveApplicableRoutine.",
+      "verb": "addresses"
+    },
+    {
+      "id": "f0121",
+      "line": 209,
+      "node": "Relation",
+      "object": "ResolveCheckoutAuthority",
+      "span": {
+        "column": 1,
+        "end": 10243,
+        "end_column": 56,
+        "end_line": 209,
+        "line": 209,
+        "node": "Span",
+        "start": 10188
+      },
+      "subject": "RoutineCoreDelivery",
+      "text": "RoutineCoreDelivery addresses ResolveCheckoutAuthority.",
+      "verb": "addresses"
+    },
+    {
+      "id": "f0122",
+      "line": 210,
+      "node": "Relation",
+      "object": "GovernedProjectOperations",
+      "span": {
+        "column": 1,
+        "end": 10299,
+        "end_column": 56,
+        "end_line": 210,
+        "line": 210,
+        "node": "Span",
+        "start": 10244
+      },
+      "subject": "RoutineCoreDelivery",
+      "text": "RoutineCoreDelivery delivers GovernedProjectOperations.",
+      "verb": "delivers"
+    },
+    {
+      "id": "f0123",
+      "line": 211,
+      "node": "PropertyAssignment",
+      "property": "implementation-status",
+      "span": {
+        "column": 1,
+        "end": 10356,
+        "end_column": 57,
+        "end_line": 211,
+        "line": 211,
+        "node": "Span",
+        "start": 10300
+      },
+      "subject": "RoutineCoreDelivery",
+      "text": "RoutineCoreDelivery has implementation-status = planned.",
+      "value": "planned",
+      "verb": "has"
+    },
+    {
+      "id": "f0124",
+      "line": 212,
+      "node": "PropertyAssignment",
+      "property": "completeness",
+      "span": {
+        "column": 1,
+        "end": 10398,
+        "end_column": 42,
+        "end_line": 212,
+        "line": 212,
+        "node": "Span",
+        "start": 10357
+      },
+      "subject": "RoutineOutcome",
+      "text": "RoutineOutcome has completeness = closed.",
+      "value": "closed",
+      "verb": "has"
+    },
+    {
+      "id": "f0125",
+      "line": 213,
+      "node": "Relation",
+      "object": "RoutineOutcomeCoverage",
+      "span": {
+        "column": 1,
+        "end": 10447,
+        "end_column": 49,
+        "end_line": 213,
+        "line": 213,
+        "node": "Span",
+        "start": 10399
+      },
+      "subject": "RoutineOutcome",
+      "text": "RoutineOutcome has-field RoutineOutcomeCoverage.",
+      "verb": "has-field"
+    },
+    {
+      "id": "f0126",
+      "line": 214,
+      "node": "Relation",
+      "object": "RoutineOutcomeDisposition",
+      "span": {
+        "column": 1,
+        "end": 10499,
+        "end_column": 52,
+        "end_line": 214,
+        "line": 214,
+        "node": "Span",
+        "start": 10448
+      },
+      "subject": "RoutineOutcome",
+      "text": "RoutineOutcome has-field RoutineOutcomeDisposition.",
+      "verb": "has-field"
+    },
+    {
+      "id": "f0127",
+      "line": 215,
+      "node": "Relation",
+      "object": "RoutineOutcomeEventCursor",
+      "span": {
+        "column": 1,
+        "end": 10551,
+        "end_column": 52,
+        "end_line": 215,
+        "line": 215,
+        "node": "Span",
+        "start": 10500
+      },
+      "subject": "RoutineOutcome",
+      "text": "RoutineOutcome has-field RoutineOutcomeEventCursor.",
+      "verb": "has-field"
+    },
+    {
+      "id": "f0128",
+      "line": 216,
+      "node": "Relation",
+      "object": "RoutineOutcomeRevision",
+      "span": {
+        "column": 1,
+        "end": 10600,
+        "end_column": 49,
+        "end_line": 216,
+        "line": 216,
+        "node": "Span",
+        "start": 10552
+      },
+      "subject": "RoutineOutcome",
+      "text": "RoutineOutcome has-field RoutineOutcomeRevision.",
+      "verb": "has-field"
+    },
+    {
+      "id": "f0129",
+      "line": 217,
+      "node": "PropertyAssignment",
+      "property": "presence",
+      "span": {
+        "column": 1,
+        "end": 10648,
+        "end_column": 48,
+        "end_line": 217,
+        "line": 217,
+        "node": "Span",
+        "start": 10601
+      },
+      "subject": "RoutineOutcomeCoverage",
+      "text": "RoutineOutcomeCoverage has presence = required.",
+      "value": "required",
+      "verb": "has"
+    },
+    {
+      "id": "f0130",
+      "line": 218,
+      "node": "PropertyAssignment",
+      "property": "value-type",
+      "span": {
+        "column": 1,
+        "end": 10694,
+        "end_column": 46,
+        "end_line": 218,
+        "line": 218,
+        "node": "Span",
+        "start": 10649
+      },
+      "subject": "RoutineOutcomeCoverage",
+      "text": "RoutineOutcomeCoverage has value-type = text.",
+      "value": "text",
+      "verb": "has"
+    },
+    {
+      "id": "f0131",
+      "line": 219,
+      "node": "PropertyAssignment",
+      "property": "presence",
+      "span": {
+        "column": 1,
+        "end": 10745,
+        "end_column": 51,
+        "end_line": 219,
+        "line": 219,
+        "node": "Span",
+        "start": 10695
+      },
+      "subject": "RoutineOutcomeDisposition",
+      "text": "RoutineOutcomeDisposition has presence = required.",
+      "value": "required",
+      "verb": "has"
+    },
+    {
+      "id": "f0132",
+      "line": 220,
+      "node": "PropertyAssignment",
+      "property": "value-type",
+      "span": {
+        "column": 1,
+        "end": 10794,
+        "end_column": 49,
+        "end_line": 220,
+        "line": 220,
+        "node": "Span",
+        "start": 10746
+      },
+      "subject": "RoutineOutcomeDisposition",
+      "text": "RoutineOutcomeDisposition has value-type = text.",
+      "value": "text",
+      "verb": "has"
+    },
+    {
+      "id": "f0133",
+      "line": 221,
+      "node": "PropertyAssignment",
+      "property": "presence",
+      "span": {
+        "column": 1,
+        "end": 10845,
+        "end_column": 51,
+        "end_line": 221,
+        "line": 221,
+        "node": "Span",
+        "start": 10795
+      },
+      "subject": "RoutineOutcomeEventCursor",
+      "text": "RoutineOutcomeEventCursor has presence = required.",
+      "value": "required",
+      "verb": "has"
+    },
+    {
+      "id": "f0134",
+      "line": 222,
+      "node": "PropertyAssignment",
+      "property": "value-type",
+      "span": {
+        "column": 1,
+        "end": 10894,
+        "end_column": 49,
+        "end_line": 222,
+        "line": 222,
+        "node": "Span",
+        "start": 10846
+      },
+      "subject": "RoutineOutcomeEventCursor",
+      "text": "RoutineOutcomeEventCursor has value-type = text.",
+      "value": "text",
+      "verb": "has"
+    },
+    {
+      "id": "f0135",
+      "line": 223,
+      "node": "PropertyAssignment",
+      "property": "presence",
+      "span": {
+        "column": 1,
+        "end": 10942,
+        "end_column": 48,
+        "end_line": 223,
+        "line": 223,
+        "node": "Span",
+        "start": 10895
+      },
+      "subject": "RoutineOutcomeRevision",
+      "text": "RoutineOutcomeRevision has presence = required.",
+      "value": "required",
+      "verb": "has"
+    },
+    {
+      "id": "f0136",
+      "line": 224,
+      "node": "PropertyAssignment",
+      "property": "value-type",
+      "span": {
+        "column": 1,
+        "end": 10988,
+        "end_column": 46,
+        "end_line": 224,
+        "line": 224,
+        "node": "Span",
+        "start": 10943
+      },
+      "subject": "RoutineOutcomeRevision",
+      "text": "RoutineOutcomeRevision has value-type = text.",
+      "value": "text",
+      "verb": "has"
+    },
+    {
+      "id": "f0137",
+      "line": 225,
+      "node": "PropertyAssignment",
+      "property": "completeness",
+      "span": {
+        "column": 1,
+        "end": 11030,
+        "end_column": 42,
+        "end_line": 225,
+        "line": 225,
+        "node": "Span",
+        "start": 10989
+      },
+      "subject": "RoutineRequest",
+      "text": "RoutineRequest has completeness = closed.",
+      "value": "closed",
+      "verb": "has"
+    },
+    {
+      "id": "f0138",
+      "line": 226,
+      "node": "Relation",
+      "object": "RoutineRequestAction",
+      "span": {
+        "column": 1,
+        "end": 11077,
+        "end_column": 47,
+        "end_line": 226,
+        "line": 226,
+        "node": "Span",
+        "start": 11031
+      },
+      "subject": "RoutineRequest",
+      "text": "RoutineRequest has-field RoutineRequestAction.",
+      "verb": "has-field"
+    },
+    {
+      "id": "f0139",
+      "line": 227,
+      "node": "Relation",
+      "object": "RoutineRequestCheckoutIdentity",
+      "span": {
+        "column": 1,
+        "end": 11134,
+        "end_column": 57,
+        "end_line": 227,
+        "line": 227,
+        "node": "Span",
+        "start": 11078
+      },
+      "subject": "RoutineRequest",
+      "text": "RoutineRequest has-field RoutineRequestCheckoutIdentity.",
+      "verb": "has-field"
+    },
+    {
+      "id": "f0140",
+      "line": 228,
+      "node": "Relation",
+      "object": "RoutineRequestEvidenceReferences",
+      "span": {
+        "column": 1,
+        "end": 11193,
+        "end_column": 59,
+        "end_line": 228,
+        "line": 228,
+        "node": "Span",
+        "start": 11135
+      },
+      "subject": "RoutineRequest",
+      "text": "RoutineRequest has-field RoutineRequestEvidenceReferences.",
+      "verb": "has-field"
+    },
+    {
+      "id": "f0141",
+      "line": 229,
+      "node": "Relation",
+      "object": "RoutineRequestExpectedRevision",
+      "span": {
+        "column": 1,
+        "end": 11250,
+        "end_column": 57,
+        "end_line": 229,
+        "line": 229,
+        "node": "Span",
+        "start": 11194
+      },
+      "subject": "RoutineRequest",
+      "text": "RoutineRequest has-field RoutineRequestExpectedRevision.",
+      "verb": "has-field"
+    },
+    {
+      "id": "f0142",
+      "line": 230,
+      "node": "Relation",
+      "object": "RoutineRequestOperationIdentity",
+      "span": {
+        "column": 1,
+        "end": 11308,
+        "end_column": 58,
+        "end_line": 230,
+        "line": 230,
+        "node": "Span",
+        "start": 11251
+      },
+      "subject": "RoutineRequest",
+      "text": "RoutineRequest has-field RoutineRequestOperationIdentity.",
+      "verb": "has-field"
+    },
+    {
+      "id": "f0143",
+      "line": 231,
+      "node": "Relation",
+      "object": "RoutineRequestProjectRoot",
+      "span": {
+        "column": 1,
+        "end": 11360,
+        "end_column": 52,
+        "end_line": 231,
+        "line": 231,
+        "node": "Span",
+        "start": 11309
+      },
+      "subject": "RoutineRequest",
+      "text": "RoutineRequest has-field RoutineRequestProjectRoot.",
+      "verb": "has-field"
+    },
+    {
+      "id": "f0144",
+      "line": 232,
+      "node": "Relation",
+      "object": "RoutineRequestRunIdentity",
+      "span": {
+        "column": 1,
+        "end": 11412,
+        "end_column": 52,
+        "end_line": 232,
+        "line": 232,
+        "node": "Span",
+        "start": 11361
+      },
+      "subject": "RoutineRequest",
+      "text": "RoutineRequest has-field RoutineRequestRunIdentity.",
+      "verb": "has-field"
+    },
+    {
+      "id": "f0145",
+      "line": 233,
+      "node": "PropertyAssignment",
+      "property": "presence",
+      "span": {
+        "column": 1,
+        "end": 11458,
+        "end_column": 46,
+        "end_line": 233,
+        "line": 233,
+        "node": "Span",
+        "start": 11413
+      },
+      "subject": "RoutineRequestAction",
+      "text": "RoutineRequestAction has presence = required.",
+      "value": "required",
+      "verb": "has"
+    },
+    {
+      "id": "f0146",
+      "line": 234,
+      "node": "PropertyAssignment",
+      "property": "value-type",
+      "span": {
+        "column": 1,
+        "end": 11502,
+        "end_column": 44,
+        "end_line": 234,
+        "line": 234,
+        "node": "Span",
+        "start": 11459
+      },
+      "subject": "RoutineRequestAction",
+      "text": "RoutineRequestAction has value-type = text.",
+      "value": "text",
+      "verb": "has"
+    },
+    {
+      "id": "f0147",
+      "line": 235,
+      "node": "PropertyAssignment",
+      "property": "presence",
+      "span": {
+        "column": 1,
+        "end": 11558,
+        "end_column": 56,
+        "end_line": 235,
+        "line": 235,
+        "node": "Span",
+        "start": 11503
+      },
+      "subject": "RoutineRequestCheckoutIdentity",
+      "text": "RoutineRequestCheckoutIdentity has presence = required.",
+      "value": "required",
+      "verb": "has"
+    },
+    {
+      "id": "f0148",
+      "line": 236,
+      "node": "PropertyAssignment",
+      "property": "value-type",
+      "span": {
+        "column": 1,
+        "end": 11612,
+        "end_column": 54,
+        "end_line": 236,
+        "line": 236,
+        "node": "Span",
+        "start": 11559
+      },
+      "subject": "RoutineRequestCheckoutIdentity",
+      "text": "RoutineRequestCheckoutIdentity has value-type = text.",
+      "value": "text",
+      "verb": "has"
+    },
+    {
+      "id": "f0149",
+      "line": 237,
+      "node": "PropertyAssignment",
+      "property": "presence",
+      "span": {
+        "column": 1,
+        "end": 11670,
+        "end_column": 58,
+        "end_line": 237,
+        "line": 237,
+        "node": "Span",
+        "start": 11613
+      },
+      "subject": "RoutineRequestEvidenceReferences",
+      "text": "RoutineRequestEvidenceReferences has presence = required.",
+      "value": "required",
+      "verb": "has"
+    },
+    {
+      "id": "f0150",
+      "line": 238,
+      "node": "PropertyAssignment",
+      "property": "value-type",
+      "span": {
+        "column": 1,
+        "end": 11726,
+        "end_column": 56,
+        "end_line": 238,
+        "line": 238,
+        "node": "Span",
+        "start": 11671
+      },
+      "subject": "RoutineRequestEvidenceReferences",
+      "text": "RoutineRequestEvidenceReferences has value-type = text.",
+      "value": "text",
+      "verb": "has"
+    },
+    {
+      "id": "f0151",
+      "line": 239,
+      "node": "PropertyAssignment",
+      "property": "presence",
+      "span": {
+        "column": 1,
+        "end": 11782,
+        "end_column": 56,
+        "end_line": 239,
+        "line": 239,
+        "node": "Span",
+        "start": 11727
+      },
+      "subject": "RoutineRequestExpectedRevision",
+      "text": "RoutineRequestExpectedRevision has presence = required.",
+      "value": "required",
+      "verb": "has"
+    },
+    {
+      "id": "f0152",
+      "line": 240,
+      "node": "PropertyAssignment",
+      "property": "value-type",
+      "span": {
+        "column": 1,
+        "end": 11836,
+        "end_column": 54,
+        "end_line": 240,
+        "line": 240,
+        "node": "Span",
+        "start": 11783
+      },
+      "subject": "RoutineRequestExpectedRevision",
+      "text": "RoutineRequestExpectedRevision has value-type = text.",
+      "value": "text",
+      "verb": "has"
+    },
+    {
+      "id": "f0153",
+      "line": 241,
+      "node": "PropertyAssignment",
+      "property": "presence",
+      "span": {
+        "column": 1,
+        "end": 11893,
+        "end_column": 57,
+        "end_line": 241,
+        "line": 241,
+        "node": "Span",
+        "start": 11837
+      },
+      "subject": "RoutineRequestOperationIdentity",
+      "text": "RoutineRequestOperationIdentity has presence = required.",
+      "value": "required",
+      "verb": "has"
+    },
+    {
+      "id": "f0154",
+      "line": 242,
+      "node": "PropertyAssignment",
+      "property": "value-type",
+      "span": {
+        "column": 1,
+        "end": 11948,
+        "end_column": 55,
+        "end_line": 242,
+        "line": 242,
+        "node": "Span",
+        "start": 11894
+      },
+      "subject": "RoutineRequestOperationIdentity",
+      "text": "RoutineRequestOperationIdentity has value-type = text.",
+      "value": "text",
+      "verb": "has"
+    },
+    {
+      "id": "f0155",
+      "line": 243,
+      "node": "PropertyAssignment",
+      "property": "presence",
+      "span": {
+        "column": 1,
+        "end": 11999,
+        "end_column": 51,
+        "end_line": 243,
+        "line": 243,
+        "node": "Span",
+        "start": 11949
+      },
+      "subject": "RoutineRequestProjectRoot",
+      "text": "RoutineRequestProjectRoot has presence = required.",
+      "value": "required",
+      "verb": "has"
+    },
+    {
+      "id": "f0156",
+      "line": 244,
+      "node": "PropertyAssignment",
+      "property": "value-type",
+      "span": {
+        "column": 1,
+        "end": 12048,
+        "end_column": 49,
+        "end_line": 244,
+        "line": 244,
+        "node": "Span",
+        "start": 12000
+      },
+      "subject": "RoutineRequestProjectRoot",
+      "text": "RoutineRequestProjectRoot has value-type = text.",
+      "value": "text",
+      "verb": "has"
+    },
+    {
+      "id": "f0157",
+      "line": 245,
+      "node": "PropertyAssignment",
+      "property": "presence",
+      "span": {
+        "column": 1,
+        "end": 12099,
+        "end_column": 51,
+        "end_line": 245,
+        "line": 245,
+        "node": "Span",
+        "start": 12049
+      },
+      "subject": "RoutineRequestRunIdentity",
+      "text": "RoutineRequestRunIdentity has presence = required.",
+      "value": "required",
+      "verb": "has"
+    },
+    {
+      "id": "f0158",
+      "line": 246,
+      "node": "PropertyAssignment",
+      "property": "value-type",
+      "span": {
+        "column": 1,
+        "end": 12148,
+        "end_column": 49,
+        "end_line": 246,
+        "line": 246,
+        "node": "Span",
+        "start": 12100
+      },
+      "subject": "RoutineRequestRunIdentity",
+      "text": "RoutineRequestRunIdentity has value-type = text.",
+      "value": "text",
+      "verb": "has"
+    },
+    {
+      "id": "f0159",
+      "line": 247,
+      "node": "Relation",
+      "object": "CoordinateGovernedWork",
+      "span": {
+        "column": 1,
+        "end": 12209,
+        "end_column": 61,
+        "end_line": 247,
+        "line": 247,
+        "node": "Span",
+        "start": 12149
+      },
+      "subject": "RoutineStaleOrUnauthorized",
+      "text": "RoutineStaleOrUnauthorized exercises CoordinateGovernedWork.",
+      "verb": "exercises"
+    },
+    {
+      "id": "f0160",
+      "line": 248,
+      "node": "PropertyAssignment",
+      "property": "completeness",
+      "span": {
+        "column": 1,
+        "end": 12263,
+        "end_column": 54,
+        "end_line": 248,
+        "line": 248,
+        "node": "Span",
+        "start": 12210
+      },
+      "subject": "RoutineStaleOrUnauthorized",
+      "text": "RoutineStaleOrUnauthorized has completeness = closed.",
+      "value": "closed",
+      "verb": "has"
+    },
+    {
+      "id": "f0161",
+      "line": 249,
+      "node": "Relation",
+      "object": "RoutineCoreDelivery",
+      "span": {
+        "column": 1,
+        "end": 12323,
+        "end_column": 60,
+        "end_line": 249,
+        "line": 249,
+        "node": "Span",
+        "start": 12264
+      },
+      "subject": "RoutineStaleOrUnauthorized",
+      "text": "RoutineStaleOrUnauthorized illustrates RoutineCoreDelivery.",
+      "verb": "illustrates"
+    },
+    {
+      "id": "f0162",
+      "line": 250,
+      "node": "Relation",
+      "object": "RoutineHandling",
+      "span": {
+        "column": 1,
+        "end": 12375,
+        "end_column": 52,
+        "end_line": 250,
+        "line": 250,
+        "node": "Span",
+        "start": 12324
+      },
+      "subject": "RoutineStaleOrUnauthorized",
+      "text": "RoutineStaleOrUnauthorized runs-in RoutineHandling.",
+      "verb": "runs-in"
+    },
+    {
+      "channel": "RoutineCalls",
+      "id": "f0163",
+      "line": 251,
+      "message": "RequestTransition",
+      "node": "Step",
+      "ordinal": 1,
+      "receiver": "RoutineCoordinator",
+      "reply_to": null,
+      "sender": "ExternalCommandAdapter",
+      "span": {
+        "column": 1,
+        "end": 12501,
+        "end_column": 126,
+        "end_line": 251,
+        "line": 251,
+        "node": "Span",
+        "start": 12376
+      },
+      "subject": "RoutineStaleOrUnauthorized",
+      "text": "RoutineStaleOrUnauthorized step 1 sends RequestTransition from ExternalCommandAdapter to RoutineCoordinator via RoutineCalls.",
+      "variant": null,
+      "verb": "step"
+    },
+    {
+      "channel": "RoutineCalls",
+      "id": "f0164",
+      "line": 252,
+      "message": "TransitionRefused",
+      "node": "Step",
+      "ordinal": 2,
+      "receiver": "ExternalCommandAdapter",
+      "reply_to": 1,
+      "sender": "RoutineCoordinator",
+      "span": {
+        "column": 1,
+        "end": 12638,
+        "end_column": 137,
+        "end_line": 252,
+        "line": 252,
+        "node": "Span",
+        "start": 12502
+      },
+      "subject": "RoutineStaleOrUnauthorized",
+      "text": "RoutineStaleOrUnauthorized step 2 sends TransitionRefused from RoutineCoordinator to ExternalCommandAdapter via RoutineCalls reply-to 1.",
+      "variant": null,
+      "verb": "step"
+    },
+    {
+      "id": "f0165",
+      "line": 253,
+      "node": "Relation",
+      "object": "OperationalRunStore",
+      "span": {
+        "column": 1,
+        "end": 12678,
+        "end_column": 40,
+        "end_line": 253,
+        "line": 253,
+        "node": "Span",
+        "start": 12639
+      },
+      "subject": "RunRepository",
+      "text": "RunRepository owns OperationalRunStore.",
+      "verb": "owns"
+    },
+    {
+      "id": "f0166",
+      "line": 254,
+      "node": "Relation",
+      "object": "ReconcileRunRevision",
+      "span": {
+        "column": 1,
+        "end": 12719,
+        "end_column": 41,
+        "end_line": 254,
+        "line": 254,
+        "node": "Span",
+        "start": 12679
+      },
+      "subject": "RunRepository",
+      "text": "RunRepository owns ReconcileRunRevision.",
+      "verb": "owns"
+    },
+    {
+      "id": "f0167",
+      "line": 255,
+      "node": "Relation",
+      "object": "RoutineOutcome",
+      "span": {
+        "column": 1,
+        "end": 12756,
+        "end_column": 37,
+        "end_line": 255,
+        "line": 255,
+        "node": "Span",
+        "start": 12720
+      },
+      "subject": "RunSnapshots",
+      "text": "RunSnapshots upholds RoutineOutcome.",
+      "verb": "upholds"
+    },
+    {
+      "id": "f0168",
+      "line": 256,
+      "node": "Relation",
+      "object": "InspectProposedModelChange",
+      "span": {
+        "column": 1,
+        "end": 12818,
+        "end_column": 62,
+        "end_line": 256,
+        "line": 256,
+        "node": "Span",
+        "start": 12757
+      },
+      "subject": "ScopedBlueprintReadiness",
+      "text": "ScopedBlueprintReadiness supports InspectProposedModelChange.",
+      "verb": "supports"
+    },
+    {
+      "id": "f0169",
+      "line": 257,
+      "node": "Relation",
+      "object": "ActionRegistry",
+      "span": {
+        "column": 1,
+        "end": 12855,
+        "end_column": 37,
+        "end_line": 257,
+        "line": 257,
+        "node": "Span",
+        "start": 12819
+      },
+      "subject": "SdpToolHost",
+      "text": "SdpToolHost contains ActionRegistry.",
+      "verb": "contains"
+    },
+    {
+      "id": "f0170",
+      "line": 258,
+      "node": "Relation",
+      "object": "BlueprintAssessment",
+      "span": {
+        "column": 1,
+        "end": 12897,
+        "end_column": 42,
+        "end_line": 258,
+        "line": 258,
+        "node": "Span",
+        "start": 12856
+      },
+      "subject": "SdpToolHost",
+      "text": "SdpToolHost contains BlueprintAssessment.",
+      "verb": "contains"
+    },
+    {
+      "id": "f0171",
+      "line": 259,
+      "node": "Relation",
+      "object": "BlueprintCatalogue",
+      "span": {
+        "column": 1,
+        "end": 12938,
+        "end_column": 41,
+        "end_line": 259,
+        "line": 259,
+        "node": "Span",
+        "start": 12898
+      },
+      "subject": "SdpToolHost",
+      "text": "SdpToolHost contains BlueprintCatalogue.",
+      "verb": "contains"
+    },
+    {
+      "id": "f0172",
+      "line": 260,
+      "node": "Relation",
+      "object": "BlueprintFacade",
+      "span": {
+        "column": 1,
+        "end": 12976,
+        "end_column": 38,
+        "end_line": 260,
+        "line": 260,
+        "node": "Span",
+        "start": 12939
+      },
+      "subject": "SdpToolHost",
+      "text": "SdpToolHost contains BlueprintFacade.",
+      "verb": "contains"
+    },
+    {
+      "id": "f0173",
+      "line": 261,
+      "node": "Relation",
+      "object": "BlueprintLifecycle",
+      "span": {
+        "column": 1,
+        "end": 13017,
+        "end_column": 41,
+        "end_line": 261,
+        "line": 261,
+        "node": "Span",
+        "start": 12977
+      },
+      "subject": "SdpToolHost",
+      "text": "SdpToolHost contains BlueprintLifecycle.",
+      "verb": "contains"
+    },
+    {
+      "id": "f0174",
+      "line": 262,
+      "node": "Relation",
+      "object": "ContextFacade",
+      "span": {
+        "column": 1,
+        "end": 13053,
+        "end_column": 36,
+        "end_line": 262,
+        "line": 262,
+        "node": "Span",
+        "start": 13018
+      },
+      "subject": "SdpToolHost",
+      "text": "SdpToolHost contains ContextFacade.",
+      "verb": "contains"
+    },
+    {
+      "id": "f0175",
+      "line": 263,
+      "node": "Relation",
+      "object": "ExistingInstallationFacade",
+      "span": {
+        "column": 1,
+        "end": 13102,
+        "end_column": 49,
+        "end_line": 263,
+        "line": 263,
+        "node": "Span",
+        "start": 13054
+      },
+      "subject": "SdpToolHost",
+      "text": "SdpToolHost contains ExistingInstallationFacade.",
+      "verb": "contains"
+    },
+    {
+      "id": "f0176",
+      "line": 264,
+      "node": "Relation",
+      "object": "ExistingNavigationFacade",
+      "span": {
+        "column": 1,
+        "end": 13149,
+        "end_column": 47,
+        "end_line": 264,
+        "line": 264,
+        "node": "Span",
+        "start": 13103
+      },
+      "subject": "SdpToolHost",
+      "text": "SdpToolHost contains ExistingNavigationFacade.",
+      "verb": "contains"
+    },
+    {
+      "id": "f0177",
+      "line": 265,
+      "node": "Relation",
+      "object": "JsonInvocationAdapter",
+      "span": {
+        "column": 1,
+        "end": 13193,
+        "end_column": 44,
+        "end_line": 265,
+        "line": 265,
+        "node": "Span",
+        "start": 13150
+      },
+      "subject": "SdpToolHost",
+      "text": "SdpToolHost contains JsonInvocationAdapter.",
+      "verb": "contains"
+    },
+    {
+      "id": "f0178",
+      "line": 266,
+      "node": "Relation",
+      "object": "RoutineCoordinator",
+      "span": {
+        "column": 1,
+        "end": 13234,
+        "end_column": 41,
+        "end_line": 266,
+        "line": 266,
+        "node": "Span",
+        "start": 13194
+      },
+      "subject": "SdpToolHost",
+      "text": "SdpToolHost contains RoutineCoordinator.",
+      "verb": "contains"
+    },
+    {
+      "id": "f0179",
+      "line": 267,
+      "node": "Relation",
+      "object": "RunRepository",
+      "span": {
+        "column": 1,
+        "end": 13270,
+        "end_column": 36,
+        "end_line": 267,
+        "line": 267,
+        "node": "Span",
+        "start": 13235
+      },
+      "subject": "SdpToolHost",
+      "text": "SdpToolHost contains RunRepository.",
+      "verb": "contains"
+    },
+    {
+      "id": "f0180",
+      "line": 268,
+      "node": "Relation",
+      "object": "BlueprintAssignmentControl",
+      "span": {
+        "column": 1,
+        "end": 13319,
+        "end_column": 49,
+        "end_line": 268,
+        "line": 268,
+        "node": "Span",
+        "start": 13271
+      },
+      "subject": "SdpToolHost",
+      "text": "SdpToolHost provides BlueprintAssignmentControl.",
+      "verb": "provides"
+    },
+    {
+      "id": "f0181",
+      "line": 269,
+      "node": "Relation",
+      "object": "DiagnosticBlueprint",
+      "span": {
+        "column": 1,
+        "end": 13361,
+        "end_column": 42,
+        "end_line": 269,
+        "line": 269,
+        "node": "Span",
+        "start": 13320
+      },
+      "subject": "SdpToolHost",
+      "text": "SdpToolHost provides DiagnosticBlueprint.",
+      "verb": "provides"
+    },
+    {
+      "id": "f0182",
+      "line": 270,
+      "node": "Relation",
+      "object": "ProjectInventory",
+      "span": {
+        "column": 1,
+        "end": 13400,
+        "end_column": 39,
+        "end_line": 270,
+        "line": 270,
+        "node": "Span",
+        "start": 13362
+      },
+      "subject": "SdpToolHost",
+      "text": "SdpToolHost provides ProjectInventory.",
+      "verb": "provides"
+    },
+    {
+      "id": "f0183",
+      "line": 271,
+      "node": "Relation",
+      "object": "ReviewedInstallation",
+      "span": {
+        "column": 1,
+        "end": 13443,
+        "end_column": 43,
+        "end_line": 271,
+        "line": 271,
+        "node": "Span",
+        "start": 13401
+      },
+      "subject": "SdpToolHost",
+      "text": "SdpToolHost provides ReviewedInstallation.",
+      "verb": "provides"
+    },
+    {
+      "id": "f0184",
+      "line": 272,
+      "node": "Relation",
+      "object": "RoutineCoordination",
+      "span": {
+        "column": 1,
+        "end": 13485,
+        "end_column": 42,
+        "end_line": 272,
+        "line": 272,
+        "node": "Span",
+        "start": 13444
+      },
+      "subject": "SdpToolHost",
+      "text": "SdpToolHost provides RoutineCoordination.",
+      "verb": "provides"
+    },
+    {
+      "id": "f0185",
+      "line": 273,
+      "node": "Relation",
+      "object": "TypedLocalInvocation",
+      "span": {
+        "column": 1,
+        "end": 13528,
+        "end_column": 43,
+        "end_line": 273,
+        "line": 273,
+        "node": "Span",
+        "start": 13486
+      },
+      "subject": "SdpToolHost",
+      "text": "SdpToolHost provides TypedLocalInvocation.",
+      "verb": "provides"
+    },
+    {
+      "id": "f0186",
+      "line": 274,
+      "node": "PropertyAssignment",
+      "property": "message-kind",
+      "span": {
+        "column": 1,
+        "end": 13574,
+        "end_column": 46,
+        "end_line": 274,
+        "line": 274,
+        "node": "Span",
+        "start": 13529
+      },
+      "subject": "TransitionAccepted",
+      "text": "TransitionAccepted has message-kind = result.",
+      "value": "result",
+      "verb": "has"
+    },
+    {
+      "id": "f0187",
+      "line": 275,
+      "node": "Relation",
+      "object": "RequestTransition",
+      "span": {
+        "column": 1,
+        "end": 13623,
+        "end_column": 49,
+        "end_line": 275,
+        "line": 275,
+        "node": "Span",
+        "start": 13575
+      },
+      "subject": "TransitionAccepted",
+      "text": "TransitionAccepted replies-to RequestTransition.",
+      "verb": "replies-to"
+    },
+    {
+      "id": "f0188",
+      "line": 276,
+      "node": "Relation",
+      "object": "RoutineOutcome",
+      "span": {
+        "column": 1,
+        "end": 13666,
+        "end_column": 43,
+        "end_line": 276,
+        "line": 276,
+        "node": "Span",
+        "start": 13624
+      },
+      "subject": "TransitionAccepted",
+      "text": "TransitionAccepted upholds RoutineOutcome.",
+      "verb": "upholds"
+    },
+    {
+      "id": "f0189",
+      "line": 277,
+      "node": "PropertyAssignment",
+      "property": "message-kind",
+      "span": {
+        "column": 1,
+        "end": 13711,
+        "end_column": 45,
+        "end_line": 277,
+        "line": 277,
+        "node": "Span",
+        "start": 13667
+      },
+      "subject": "TransitionRefused",
+      "text": "TransitionRefused has message-kind = result.",
+      "value": "result",
+      "verb": "has"
+    },
+    {
+      "id": "f0190",
+      "line": 278,
+      "node": "Relation",
+      "object": "RequestTransition",
+      "span": {
+        "column": 1,
+        "end": 13759,
+        "end_column": 48,
+        "end_line": 278,
+        "line": 278,
+        "node": "Span",
+        "start": 13712
+      },
+      "subject": "TransitionRefused",
+      "text": "TransitionRefused replies-to RequestTransition.",
+      "verb": "replies-to"
+    },
+    {
+      "id": "f0191",
+      "line": 279,
+      "node": "Relation",
+      "object": "RoutineOutcome",
+      "span": {
+        "column": 1,
+        "end": 13801,
+        "end_column": 42,
+        "end_line": 279,
+        "line": 279,
+        "node": "Span",
+        "start": 13760
+      },
+      "subject": "TransitionRefused",
+      "text": "TransitionRefused upholds RoutineOutcome.",
+      "verb": "upholds"
+    },
+    {
+      "id": "f0192",
+      "line": 280,
+      "mode": "RoutineHandling",
+      "node": "Dependency",
+      "object": "TrustedAssignmentBinding",
+      "span": {
+        "column": 1,
+        "end": 13881,
+        "end_column": 80,
+        "end_line": 280,
+        "line": 280,
+        "node": "Span",
+        "start": 13802
+      },
+      "subject": "TypedLocalInvocation",
+      "text": "TypedLocalInvocation requires TrustedAssignmentBinding in mode RoutineHandling.",
+      "verb": "requires"
+    },
+    {
+      "id": "f0193",
+      "line": 281,
+      "mode": "ProjectReading",
+      "node": "Allocation",
+      "object": "SdpToolHost",
+      "span": {
+        "column": 1,
+        "end": 13955,
+        "end_column": 74,
+        "end_line": 281,
+        "line": 281,
+        "node": "Span",
+        "start": 13882
+      },
+      "subject": "VerifyRetainedBlueprints",
+      "text": "VerifyRetainedBlueprints allocated-to SdpToolHost in mode ProjectReading.",
+      "verb": "allocated-to"
+    },
+    {
+      "id": "f0194",
+      "line": 282,
+      "node": "Relation",
+      "object": "RetainedBlueprintNavigation",
+      "span": {
+        "column": 1,
+        "end": 14024,
+        "end_column": 69,
+        "end_line": 282,
+        "line": 282,
+        "node": "Span",
+        "start": 13956
+      },
+      "subject": "VerifyRetainedBlueprints",
+      "text": "VerifyRetainedBlueprints contributes-to RetainedBlueprintNavigation.",
+      "verb": "contributes-to"
+    },
+    {
+      "id": "f0195",
+      "line": 283,
+      "node": "Relation",
+      "object": "DiagnosticBlueprint",
+      "span": {
+        "column": 1,
+        "end": 14079,
+        "end_column": 55,
+        "end_line": 283,
+        "line": 283,
+        "node": "Span",
+        "start": 14025
+      },
+      "subject": "VerifyRetainedBlueprints",
+      "text": "VerifyRetainedBlueprints realizes DiagnosticBlueprint.",
+      "verb": "realizes"
+    }
+  ],
+  "model_gaps": [
+    {
+      "code": "UNSPECIFIED_ALLOCATION",
+      "feature": "DiscoverableActions",
+      "message": "Container allocation is unspecified for contributions to DiscoverableActions.",
+      "mode": "ProjectReading",
+      "model_id": "InvokeTypedAction",
+      "viewpoint": "VP07"
+    },
+    {
+      "code": "UNSPECIFIED_ALLOCATION",
+      "feature": "DiscoverableActions",
+      "message": "Container allocation is unspecified for contributions to DiscoverableActions.",
+      "mode": "RoutineHandling",
+      "model_id": "DescribeSupportedActions",
+      "viewpoint": "VP07"
+    },
+    {
+      "code": "NO_ENCODINGS",
+      "message": "No Encoding declared.",
+      "model_id": "—",
+      "viewpoint": "VP10"
+    }
+  ],
+  "outputs": {
+    "A0/index.md": "fbc1d6cc99a8a8c226ab85ba548a9f165d62bbb4feaf306d8d62b212dea8d86d",
+    "A0/inventory.md": "6d1d27c654b4be68d6b0306793bfa83057b35bd4e5dfbfff5d86ff10f63639e7",
+    "A1/index.md": "5214afd59245d7b520f491872760268fed0db4e567c11803ba0c2248cded1944",
+    "A1/inventory.md": "5ae7a51be399fa46d8968d4e961ff6be37c215c3c54e42148f7f51a1f81b2f9f",
+    "A2/index.md": "fd50f68a7c138d9699d1086b7311116ab349f8fadb61abd5be73f2a8fcbc258e",
+    "A2/inventory.md": "344303691d1ee2d308ccd3fe65016568182654f96fd5115eba54cb9a21868602",
+    "A3/index.md": "b083f75057b345dc0f31e33090c4fbda6af4939014887573e315f97215d4c69a",
+    "A3/inventory.md": "49f89726a94dd75d85d044f890bc80259eca2c905595d5d55bcf8f82cb60992a",
+    "A4/index.md": "5e841741b3454e514b8982dc5adde77cf219cba6e732d0666f8676e668433365",
+    "A4/inventory.md": "e8426bac955cf37208c5419855603067af5bf9cd778fd3ad4cd9516d825e661d",
+    "A5/index.md": "3ddb326ea6dae1125db900cff3f8eae4aad0b6dd6373d528be21a7b82c4a43c8",
+    "A5/inventory.md": "8352ea84cb575aedbec9564d0408f74e41cfbaf26a66af9293b45b4613e59335",
+    "diagrams/VP02-SdpToolHost.mmd": "41f3bf197fcc143d701807a59ca5cc71661b9c6ee40865e34b182ff455f4bd08",
+    "diagrams/VP02-roots.mmd": "cba52ca61ecc2037a32bc481cbf81e5b5b2fd846759bd9d5dedee8b38a026687",
+    "diagrams/VP07-BlueprintAssignments-RoutineHandling.mmd": "bee4bb65e2dab312d36eeb7565674115539dd5c1d8023455a8451acdf51f8c80",
+    "diagrams/VP07-BlueprintPreview-ProjectReading.mmd": "32c6211d5c37282a6b8cf8f1c2fa1ca449269e21ea1728c60375bef13326c3ef",
+    "diagrams/VP07-DiscoverableActions-ProjectReading.mmd": "9d1cb9d49adc9d427b5ffafd63665073585317ba836c741c0cabb962e6809ce2",
+    "diagrams/VP07-DiscoverableActions-RoutineHandling.mmd": "e31d1099c30c21378195ed9413eca49d5a0b947efb73fba597aacfaf5cdaa530",
+    "diagrams/VP07-GovernedProjectOperations-RoutineHandling.mmd": "9c6f7fa864050dee1c1d472b7517feb517a7fc070815ff4f0fdbd503db7f90f8",
+    "diagrams/VP07-InstallationFacade-InstallationHandling.mmd": "a98b2f2bc23fd4c1d72f8299757465c2645086be2110f859a1a228bbc60c9632",
+    "diagrams/VP07-ProjectFacade-ProjectReading.mmd": "1ba2e725f7ff9dbe449ba98bfc8d213439915b0d502aab843c914af6bb98908f",
+    "diagrams/VP07-RetainedBlueprintNavigation-ProjectReading.mmd": "6a4d789752d8d90d36f3d7eda701395c98d7ee8f6bf2eaf6c9a7ea0d4f7075ff",
+    "diagrams/VP07-ScopedBlueprintReadiness-ProjectReading.mmd": "b328f5f83ac567eee94692a798f1031c93f0199f31bbc5f69426095c3da4f7da",
+    "index.md": "297ffb67f305fd24b7cfb5ada5bc9304bd30c0d0d25a055f9d131b69f2d29bc5",
+    "navigator.md": "85c1249f19a29227c535e32221029ce9cc7bd04f64903eb672fb5c0e04663498",
+    "viewpoints/VP02/VP02-SdpToolHost.md": "cd2ba28728d84cfd6edd0b31b6778f2ae485ed9a2bf374d21bd1806b081d12c1",
+    "viewpoints/VP02/VP02-roots.md": "1680e147ca60b81f0ab7d6ec59fb1b9d5c3e3426cd06ff02eac582371cc51f23",
+    "viewpoints/VP02/index.md": "57e5b222373e5f7f744e5c4c95b309731775d5891f99118959e7bc2ef178d1aa",
+    "viewpoints/VP07/VP07-BlueprintAssignments-RoutineHandling.md": "47d9d72b95b03d0e92db1727e85da2df3cb92b42b4450d7b9ebf0bf0fe8755d0",
+    "viewpoints/VP07/VP07-BlueprintPreview-ProjectReading.md": "c1e4a96285410b16353be1ee208908eba3b75f61a41c7c4cb49e4b880ca5e957",
+    "viewpoints/VP07/VP07-DiscoverableActions-ProjectReading.md": "36a83103e197edbab70b9aba65c42156f7129a88895bda33e9a6a2ea188d97a9",
+    "viewpoints/VP07/VP07-DiscoverableActions-RoutineHandling.md": "4034db4a186d1177ff91962996a06434cf7f649b75efcc26b0c440165801ff5a",
+    "viewpoints/VP07/VP07-GovernedProjectOperations-RoutineHandling.md": "d61110e3ae2a8c69eeca1286e89245ac5e372d0a911c45c4d431b5a7f1f65396",
+    "viewpoints/VP07/VP07-InstallationFacade-InstallationHandling.md": "e65162b8a4df2bc9eb83f94226561af43f498296ac9cf75f73d238bb45af27fa",
+    "viewpoints/VP07/VP07-ProjectFacade-ProjectReading.md": "1d6ba44f55bb4930412634cb21b6ab4146cbf473866a979512ef257b5686ffbf",
+    "viewpoints/VP07/VP07-RetainedBlueprintNavigation-ProjectReading.md": "307affb8bd26f49bffb22d683be39de746238a4fe29f367a05e891a9d9244388",
+    "viewpoints/VP07/VP07-ScopedBlueprintReadiness-ProjectReading.md": "7ab3fa64ee59b676ccd1ba1f89e8b94fdf1af020af707b21ebd8e22292abc9e5",
+    "viewpoints/VP07/index.md": "ab365695e7020c11ce78fd762283bb74d544fb01d97941a5e7224de372775ba1"
+  }
+}
