@@ -2,8 +2,8 @@
 
 ## Session roadmap
 
-T008, 2026-10-10. Active Session; product integration remains unresolved.
-T007 RED forecast is historical again because upstream heads advanced.
+T009, 2026-10-18. Active Session; product integration remains unresolved.
+PG is clean at de4b795; pin inputs and coordinate the integration window before writes.
 S1 contract proposal and PLAN-SDP-0024 are prepared. Next: resolve S0 integration
 ownership/identity and finalize S1 schemas/SDL on the selected baseline.
 Sequence only: dates below are display slots, not estimates or measured time. The table is the authoritative roadmap.
@@ -35,7 +35,7 @@ gantt
 | Session reference | SESSION-SDP-0011 |
 | Status | active |
 | Primary card | [KB-SDP-051](../KanBan/backlog/%23051--Proposal--Discoverable-SDPTool-actions.md) |
-| Snapshot date | 2026-10-10 |
+| Snapshot date | 2026-10-18 |
 | Current step | S0 refreshed red; S1 prose/plan ready, schemas/SDL waiting |
 | Proposed next step | Select integration ownership/order and reconcile KB051; fresh green baseline before ACT1 product/model changes |
 | Execution authority | Owner resumes delivery in T007; earlier green preflight prerequisite remains |
@@ -334,3 +334,27 @@ The earlier asynchronous integration-owner choice remains unresolved; do not inf
 an answer from this question. Next remains ACT0 integration scope/ownership selection,
 then a fresh forecast and reviewable conflict resolution. Session0008 stays paused.
 This is a manual work summary, not an exact transcript or completed implementation.
+
+
+### T009 — Bound the PG integration pause (2026-10-18)
+
+Owner input (summary): asks whether the PG agent should wait until this agent is
+finished. Reused SDP and the concurrent-work procedure. Read-only inspection finds
+PG clean at de4b795 (PGL2-C1 assignment preparation and revision guards); our branch
+is clean at 732e85c. Release lineage now points to 3475367. The separate coordination
+checkout at 684b1f8 records Session0012 and a recommended pinned integration route;
+its October 10 remote/publication observations require refresh before integration.
+
+Recommendation: ask PG to hold new implementation and shared design/history edits
+for the bounded integration window, preserving de4b795 as its handoff baseline.
+Read-only analysis/review can continue. Release this hold when a combined candidate
+is verified and a shared-file boundary/base is handed back, not after all ACT phases
+or all of Session0011. This uses a clean milestone boundary and avoids accumulating
+new deltas while reconciling existing ones. Independent future PG package work can
+resume under the explicit boundary rather than remaining idle for the full Session.
+
+No PG agent was contacted or interrupted; the owner asked for advice, so no actual
+pause or merge authorization is inferred. No external Session/card state changed.
+Next remains a pinned, coordinated ACT0 integration and current-baseline verification.
+Session0012's integration guidance is now a known input; preserve its coordinator
+ownership. Manual work summary only; session-only diff checked before commit.
