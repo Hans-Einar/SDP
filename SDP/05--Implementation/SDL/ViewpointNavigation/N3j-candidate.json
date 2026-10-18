@@ -1,0 +1,31 @@
+{
+  "base": "e8760d331933361ab631ef0d52c20e87268a22b3",
+  "branch": "sdp/xfmd-viewpoint-overviews-main",
+  "originalCommit": "cc7b52f84f05fdef63efc1a305023a12347026ad",
+  "files": {
+    "SDL/go/documents/selection.go": "8ac2172726ac9dc3d7e9740f4ec89347d5d1817a3414d3b7f6537d537070e8c1",
+    "SDL/go/go.mod": "83de817575ddce7cc8fcc13154cd42f5552a43feaa77b12edff4e522e9acb97b",
+    "SDL/go/go.sum": "14d7a86d1e9f33e231efa435eebe7e1e219a007ae1b014cf0a072761bc4955ec",
+    "SDL/go/viewpoint/feature_overview.go": "6444c8a862f68a71b7877da35fe2a6c2d3a62b347109e32febf9c5d345a097fc",
+    "SDL/go/viewpoint/feature_overview_test.go": "2ad233d84932e86409bfb8bc669a2cef91d8a7bf9ed3f9226f5298426af26816",
+    "SDL/go/viewpoint/overview.go": "134cc70b44f78d281cd0b242e4fc26d27646666c7957dc76bffe678412af3c5f",
+    "SDL/go/viewpoint/overview_test.go": "1effffae55c26314e764cc70fbfa0f35a4d40de3a6c439135499d11e94d371a7",
+    "SDL/go/viewpoint/query.go": "1bf3c059b03f172060eb44fdc4779d93d0b99c5871bb1efd403ed6e2b4a4925c",
+    "SDPTool/Contract.md": "1711f8a98af96879b201a53974e0c1fa149c0f58d616e1772a2fafd4ab47580d",
+    "SDPTool/go.mod": "e1e434779c9b8ed69d61626ee66103762b0692ff145dd1f5cb580a4c5d7ecf2e",
+    "SDPTool/go.sum": "b17de8bdf2c18ab40477b743c15ef494795aaebe18bc9eef3948ffed4cdb74e4",
+    "SDPTool/overview_actions_test.go": "423ed8499d849e119686ca669685ed0a000e040f23c10eca835820060f82b2d2",
+    "SDPTool/overview_test.go": "4113642d79cbc1643057d894f8f1f735b794d10c6cca817021c212c7fe7be4a4",
+    "SDPTool/tree.go": "e1e2efb9dd14837b5ce63ee4bdcdfd57822447b2dca8e1bcae6fb5a87685aa10",
+    "SDUI/go/go.mod": "a77b6ca6bc693215cb39bd76a0c1faa5cd086512a3984edc4bef3574f650657f",
+    "SDUI/go/go.sum": "692c019a4d399a0183f9f02a291aac808886af2be7df9de42ceea8367acaefaf"
+  },
+  "binary": {
+    "path": "/tmp/xfmd-n3j-sdptool",
+    "sha256": "e6c9d26d4d31d6fb17cdee63171538be845f2e50328430c746aa04daa7231a5a"
+  },
+  "nativeTest": {
+    "path": "/home/warloc/git/xfmd-sdl-navigation/build-ui/SdpOverviewGuiTest",
+    "sha256": "49947994eeb651be7cce8885943c27e91883dab5239d6b8c8c09139b755ab675"
+  }
+}

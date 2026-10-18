@@ -381,3 +381,40 @@ envelope, preserving domain results and meaningful nonzero exits. The same typed
 handlers serve included human commands. [Actions.md](Actions.md) owns the public
 protocol detail and first five supported operations. This is an additive local
 subprocess/Go interface, not an HTTP/MCP endpoint or new caller authentication.
+
+## Viewpoint overview targets — VP01 and VP07
+
+A viewpoint node may carry `overviewTarget` with the same Target shape as `target`.
+Its presence advertises an implemented aggregate projection, not bulk detail
+selection. VP01 and VP07 provide select targets whose producer-owned URI contains
+`projection=overview`, with the existing exact project/model/revision. Consumers
+pass that URI unchanged. Expansion never selects or renders it. Absence means
+overview unavailable; older consumers may ignore the optional field. Existing
+viewpoint and detail targets retain their original semantics.
+
+VP01 emits the complete declared actor/use-case inventory, including isolated
+declarations, as usecase-beta notation. Associations mean modeled `pursues`.
+Functionality/Feature realization stays in a companion table; no System boundary,
+UML include/extend, scenario order or pre/postcondition is inferred.
+
+VP07 retains every declared System/container/unit and structural contains edge.
+Feature keys annotate actual owners and selected-mode containers through explicit
+Functionality contributions. The legend covers every Feature, and the companion
+table and Diagram.Elements retain contribution/proof IDs. Features without a
+represented placement remain standalone rounded nodes. Annotations are derived
+views of source facts, not invented direct SDL relations.
+
+The VP07 parent target is logical and excludes allocations. Discovery adds a lazy
+child target for each declared mode; only its explicit allocated-to facts appear
+in that mode's projection. Missing allocation is reported as a gap. Never combine
+modes or infer allocation from ownership. Feature keys are local to the snapshot.
+
+SDL rejects unsupported projections/viewpoints and combinations with focus,
+diagram, relations, level or non-default traversal filters. Only VP07 accepts a
+mode, and that mode must be declared. Snapshot freshness, cancellation, publication
+and resource ownership rules still apply. Native-profile limits reject a complete
+oversized projection explicitly rather than truncating it. Discovery advertises
+capability without generating output. Renderers must support the emitted notation;
+this contract does not claim compatibility with every external Mermaid executable.
+
+Implementation/integration record: [ViewpointNavigation](../SDP/05--Implementation/SDL/ViewpointNavigation/Plan.md).

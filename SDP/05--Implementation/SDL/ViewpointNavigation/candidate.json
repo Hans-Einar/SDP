@@ -1,0 +1,28 @@
+{
+  "base": "48c919fda7cf18568df1397753fc10f0696bb6ca",
+  "branch": "sdp/xfmd-viewpoint-overviews",
+  "files": {
+    "SDL/go/viewpoint/query.go": "1bf3c059b03f172060eb44fdc4779d93d0b99c5871bb1efd403ed6e2b4a4925c",
+    "SDL/go/viewpoint/overview.go": "134cc70b44f78d281cd0b242e4fc26d27646666c7957dc76bffe678412af3c5f",
+    "SDL/go/viewpoint/overview_test.go": "1effffae55c26314e764cc70fbfa0f35a4d40de3a6c439135499d11e94d371a7",
+    "SDL/go/viewpoint/feature_overview.go": "6444c8a862f68a71b7877da35fe2a6c2d3a62b347109e32febf9c5d345a097fc",
+    "SDL/go/viewpoint/feature_overview_test.go": "2ad233d84932e86409bfb8bc669a2cef91d8a7bf9ed3f9226f5298426af26816",
+    "SDL/go/documents/selection.go": "8ac2172726ac9dc3d7e9740f4ec89347d5d1817a3414d3b7f6537d537070e8c1",
+    "SDPTool/tree.go": "7d770dbd63b4fd5662f2cd20b1b3a22bcf7e8d2efcc34724bb023eb64840932f",
+    "SDPTool/overview_test.go": "4113642d79cbc1643057d894f8f1f735b794d10c6cca817021c212c7fe7be4a4",
+    "SDL/go/go.mod": "bbdc55f0cd0d9e173a6d73e3d56905cd466a5cb45836021860b8801682423237",
+    "SDL/go/go.sum": "fe773228c62502f999e9cf9eedd335cdc17bff0eb9adb893f57aa91a45a04034",
+    "SDPTool/go.mod": "c32f2aa74695ffa149c62b61ff5191be82598c15cca54bf903aaad57c2076580",
+    "SDPTool/go.sum": "2e22580fb0c4c94d494b387f360857cfbd4f76dfe44a2c33d5f014fd2b943b25",
+    "SDUI/go/go.mod": "f882474a167fafdf43fb2488d14702a4a1f9c302690fd78a83edae6f93079e91",
+    "SDUI/go/go.sum": "9e7232670a61b52037b532583d32eb9518e671e4c9fe0140d2c99c7001c55f0e"
+  },
+  "testedBinary": {
+    "path": "/tmp/xfmd-n3i-sdptool",
+    "sha256": "a4d115ca7957f34b782820c096e5ebfe540354d558fa528419e42042d3df2d51"
+  },
+  "consumer": {
+    "nativeTestSha256": "49947994eeb651be7cce8885943c27e91883dab5239d6b8c8c09139b755ab675"
+  },
+  "note": "Binary built before milestone commit from the base plus these isolated code changes. No product code changed after build; the composed-source test was added and passed afterward."
+}
