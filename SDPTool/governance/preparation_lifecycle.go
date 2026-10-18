@@ -111,6 +111,9 @@ func (s *Service) changePreparation(caller Caller, q PreparationChange, request 
 		}
 		return old.Result, nil
 	}
+	if _, ok := state.DesignDecisionReceipts[q.OperationID]; ok {
+		return out, fail("idempotency_conflict", "operationId belongs to design decision")
+	}
 	if _, ok := state.Receipts[q.OperationID]; ok {
 		return out, fail("idempotency_conflict", "operationId belongs to a legacy operation")
 	}
@@ -153,7 +156,9 @@ func (s *Service) changePreparation(caller Caller, q PreparationChange, request 
 	p.ChangeReason = q.Reason
 	out = PreparationResult{Schema: PreparationLifecycleSchema, OperationID: q.OperationID,
 		Assignment: p, Dispatch: "unavailable", DesignAcceptance: "not-assessed"}
-	state.Schema = preparationLifecycleStateSchema
+	if state.Schema != designDecisionStateSchema {
+		state.Schema = preparationLifecycleStateSchema
+	}
 	state.Prepared[p.ID] = p
 	state.PreparationReceipts[q.OperationID] = preparationReceipt{Digest: digest, Result: out}
 	if revise != nil {

@@ -246,3 +246,54 @@ Blueprint assessment, frozen model, returned digest or request role cannot estab
 owner approval. This read operation does not upgrade operational storage or change
 the existing preparation inspection/worker MCP contract. A later owner-input increment
 must bind its disposition to this review revision and invalidate it on change.
+
+## PGL2-C2c owner decision records — 2026-10-18
+
+Owner Session0007 T022 authorizes continuation while reading the walkthrough. This
+is implementation authority, not an owner decision on a prepared test assignment.
+Reuse the checkout's atomic generation and immutable operation receipts to record
+approved, changes-requested or rejected against the exact C2b review revision.
+Keep this operational record separate from canonical card/plan lifecycle: neither
+approval nor rejection closes a card, changes a model or starts an agent.
+
+Select a trusted local-controller adapter, consistent with the existing Caller
+boundary. The core receives owner input separately from the package request and
+rejects worker callers. The CLI displays the bounded proposal and captures an
+explicit decision and comment from stdin, with a separately supplied owner label.
+Blank input, EOF and cancel write no decision. No decision is inferred from source
+files, technical readiness, silence or the request's role. Source/actor/comment are
+attributed controller observations, not cryptographic identity verification. Same-user
+shell access remains outside this boundary; an agent with unrestricted shell access
+can invoke local commands. Conversation capture and stronger authentication are not
+claimed. This adapter permits testing without selecting the final conversation/UI.
+
+Store the complete checked review basis and the captured input, timestamp and operation
+identity. A later decision supersedes the effective decision for that assignment;
+immutable receipts preserve earlier decisions. Exact retries return their historical
+receipt, never a renewed acceptance claim. Reusing an ID for changed content or any
+other operation refuses. A retry of the local CLI retrieves a matching receipt before
+prompting, so an uncertain successful write does not ask for another decision.
+
+Before recording, require current generation, preparation revision, exact review digest
+and a current provider check; repeat after collecting input and immediately before
+publication. Failed or stale checks do not upgrade storage. A new read-only design-review
+operation reports the latest recorded decision and its current applicability. It says
+stale if the current checked basis differs or cannot be checked, including retirement.
+Exact source restoration can match again: this checks current facts, not unobserved
+transient file edits. A new preparation revision changes the basis even with equal
+source bytes. Rejection/changes-requested on a current basis supersedes approval.
+
+First successful decision upgrades only its chosen store to profile 0.4. New code
+reads older profiles and preserves 0.4 on every later operation; older binaries refuse
+it. Existing preparation inspection remains explicitly not-assessed; C2b design-check
+retains its technical-only not-recorded result. Use design-review for effective owner
+disposition. No new MCP privileges are exposed, and dispatch remains unavailable
+even for an approved, current package. The external disposition file pin from C1 is
+still a source reference; it cannot substitute for this controller record.
+
+Verification: real provider fixtures, current decision/restart/retry, changed-source
+and preparation invalidation, supersession, worker/identity/collision refusal,
+concurrent decision CAS, before/after-HEAD recovery, stale input while prompting,
+profile preservation and old-reader refusal. Use a separate synthetic lab and label
+its scripted owner input as fixture evidence; never record the actual owner as its
+approver. No broad dispatch or final interaction design is delivered here.

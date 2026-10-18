@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PG controller-attributed owner design decisions",
+  "$comment": "OwnerInput is supplied separately by the trusted adapter, never decoded from Request. Result is historical; Review reports current applicability. Same-user shell access is outside the local authority boundary.",
+  "$defs": {
+    "Request": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-design-decision/1"
+        },
+        "projectRef": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "checkoutId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "operationId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "review": {
+          "$ref": "design_check.schema.json#/$defs/Request"
+        },
+        "reviewRevision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "operationId",
+        "review",
+        "reviewRevision"
+      ]
+    },
+    "OwnerInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "decision": {
+          "enum": [
+            "approved",
+            "changes-requested",
+            "rejected"
+          ]
+        },
+        "comment": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        }
+      },
+      "required": [
+        "actor",
+        "source",
+        "decision",
+        "comment"
+      ]
+    },
+    "Record": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "input": {
+          "$ref": "#/$defs/OwnerInput"
+        },
+        "recordedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "basis": {
+          "$ref": "design_check.schema.json#/$defs/Result"
+        }
+      },
+      "required": [
+        "input",
+        "recordedAt",
+        "basis"
+      ]
+    },
+    "Result": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-design-decision/1"
+        },
+        "operationId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "record": {
+          "$ref": "#/$defs/Record"
+        },
+        "dispatch": {
+          "const": "unavailable"
+        }
+      },
+      "required": [
+        "schema",
+        "operationId",
+        "record",
+        "dispatch"
+      ]
+    },
+    "Review": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-design-decision/1"
+        },
+        "check": {
+          "$ref": "design_check.schema.json#/$defs/Result"
+        },
+        "decision": {
+          "$ref": "#/$defs/Result"
+        },
+        "acceptance": {
+          "enum": [
+            "not-recorded",
+            "approved",
+            "changes-requested",
+            "rejected",
+            "stale"
+          ]
+        },
+        "dispatch": {
+          "const": "unavailable"
+        }
+      },
+      "required": [
+        "schema",
+        "check",
+        "acceptance",
+        "dispatch"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "acceptance": {
+                "const": "not-recorded"
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "required": [
+                "decision"
+              ]
+            }
+          },
+          "else": {
+            "required": [
+              "decision"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

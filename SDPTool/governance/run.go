@@ -20,6 +20,9 @@ func (s *Service) authorize(c Caller, schema, project, checkout, operation strin
 	return nil
 }
 func retry(state snapshot, id, digest string) (Result, bool, error) {
+	if _, ok := state.DesignDecisionReceipts[id]; ok {
+		return Result{}, true, fail("idempotency_conflict", "operationId belongs to design decision")
+	}
 	if _, ok := state.PreparationReceipts[id]; ok {
 		return Result{}, true, fail("idempotency_conflict", "operationId belongs to assignment preparation")
 	}

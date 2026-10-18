@@ -175,3 +175,36 @@ basis; it never means owner approval or permission to launch. A blocked result i
 successful inspection with conditions, not a process failure. Invalid requests fail
 as usual. The provider's bounded live-check budget can return unknown and block a
 check in larger projects; this slice preserves that limitation.
+
+## Local owner-input adapter — PGL2-C2c
+
+Use the new development binaries and a prior C2b controller to reproduce the
+compatibility check, always in a new destination:
+
+```sh
+python3 labs/project-governance/decision_trial.py --destination /absolute/new-decision-trial --controller /absolute/new-controller --sdptool /absolute/new-sdptool --source ../experiments/blueprint_mvp1/NOW --old-controller /absolute/c2b-controller
+python3 labs/project-governance/decision_view.py --preview /absolute/new-decision-trial
+```
+
+The trial supplies explicit **fixture-owner** input to the actual controller. It
+checks cancel/EOF, decision capture, immutable retry without another prompt, stale
+TARGET after approval and while waiting for input, superseding decisions and old-reader
+refusal. It leaves a technically current design with a rejected fixture decision.
+No actual owner approval, agent launch or change to an existing trial is implied.
+
+The view is read-only by default. Optional `--decide --owner NAME` starts an input
+interaction in this isolated project. The controller shows the bounded package,
+reads approved/changes-requested/rejected/cancel and a required comment, then rechecks
+the exact review before recording anything. It returns JSON on stdout and prompts
+on stderr. There is no default decision. This is a provisional adapter; normal
+conversation capture and a final client UI are not delivered.
+
+Underlying commands: `assignment design-decide --project ROOT --state STATE --input
+REQUEST --owner NAME` and `assignment design-review --project ROOT --state STATE
+--input CHECK_REQUEST`. The decision request contains the exact C2b check request,
+review revision, checkout/project binding and operation UUID. It contains no actor,
+choice or owner-role claim. The trusted adapter supplies captured input separately.
+Caller authority does not authenticate a human: same-user shell access remains
+outside the boundary. A historical receipt is not fresh acceptance; use design-review
+with the current generation. New decision writes upgrade only that store to 0.4.
+Older readers refuse it; all new writers preserve it. Dispatch remains unavailable.

@@ -2,10 +2,10 @@
 
 ## Session roadmap
 
-Latest recorded turn: T021 — clarify the difference between feedback on PG itself
-and the planned ability to record an owner's decision on a project task. The owner
-walkthrough explains current behavior, remaining capabilities and feedback topics.
-PGL2-C2b remains delivered; actual owner disposition is still the next increment.
+Latest recorded turn: T022 — PGL2-C2c delivers explicit local controller decision
+capture, revision-bound history and current applicability checks. The owner reads
+the walkthrough while work continues; final interaction remains open to feedback.
+Dispatch prerequisites are next; no actual owner approval or agent launch is claimed.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
 
 ```mermaid
@@ -26,7 +26,7 @@ gantt
 | completed | S1 | Recover skills, studies, card dependencies and ownership | Owner request, 2026-10-03 | Assessment below; RGS2 reused |
 | completed | S2 | Design the smallest common routing, run, Session and client contract | Owner continuation, T002 | [PGD1 / PLAN-SDP-0017](../04--Design/SDPTool/ProjectGovernance/Plan.md), contract, acceptance cases and protocol inspection |
 | waiting | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C6 verified; owner reports PGI3-U1 trial performed; native mapping remains unverified; KB052 now prioritized |
-| active | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation, C2a revision/retirement and C2b provider checks delivered; owner disposition/dispatch/inbox gates next |
+| active | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation, C2a lifecycle, C2b provider checks and C2c local decision adapter delivered; dispatch/inbox/conversation gates next |
 | planned | S4 | Verify interruption, resume, scope change and evidence disposition | S3 candidate | Evidence required before wider use |
 | planned | S5 | Project recorded activity into the KB043 timeline | Reliable S3/S4 capture and selected rendering scope | Full timeline remains deferred |
 
@@ -36,9 +36,9 @@ gantt
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-18 |
-| Current step | S6 / KB052; PGL2-C2b delivered, actual owner disposition next |
-| Proposed next step | PGL2-C2 trusted owner disposition bound to current review revision, then dispatch prerequisites |
-| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues the plan with provider-backed review checks |
+| Current step | S6 / KB052; PGL2-C2c local decision adapter delivered |
+| Proposed next step | PGL2 dispatch prerequisites, incorporating owner feedback on interaction |
+| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough |
 
 ## Goal and ownership
 
@@ -949,3 +949,49 @@ it does not change the selected plan or claim another implementation delivery.
 S6 and KB052 remain in-progress. Next: use owner feedback to refine the presentation
 and interaction before implementing actual revision-bound owner disposition. Existing
 continuation authority remains; there is no newly invented approval gate.
+
+## T022 — Continue with the local owner-input adapter
+
+Date: 2026-10-18. Manual work summary; exact host IDs/timing unavailable. Owner says
+there is enough information to continue and will read the walkthrough in parallel.
+This authorizes continued implementation; it is not approval of a prepared design
+package. No response timeout or silence is treated as a decision.
+
+Loaded/reused routines: SDP 1.2.0 and document workflow; Architect 2.1.0 for the
+bounded decision contract, then Worker 2.0.0 for implementation; existing Verifier/
+Traceability and Session routines. No delegation or independent review occurred.
+[Preflight](../05--Implementation/SDPTool/ProjectGovernance/preflight-PGL2-C2c.json)
+records thirteen worktrees, baseline e25f13c and main e8760d3. Historical dirty primary
+PG copies remain excluded; no provider, generic Actions, host protocol or XFMD code
+changes are included.
+
+The existing trusted local-controller boundary is sufficient for a first testable
+adapter without choosing a final conversation/UI mechanism. Record owner input
+separately from the JSON package request, against the exact current review basis.
+Actor/source are attributed observations; same-user shell access is outside this
+boundary and no human identity authentication is claimed. The maintained contract
+records this limitation explicitly. No new mandatory confirmation button is adopted.
+
+[Evidence](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C2c.md) and
+[candidate](../05--Implementation/SDPTool/ProjectGovernance/candidate-PGL2-C2c.json)
+record immutable receipts, supersession, effective current/stale decision inspection,
+source drift while prompting, worker/collision refusal and before/after-HEAD recovery.
+First successful decision upgrades only the selected store to 0.4; new writers preserve
+it and the C2b old reader refuses it without writes. Dispatch remains unavailable.
+The concurrent test respects both existing busy-lock and stale-generation refusals.
+
+Affected race tests and vet, the complete SDPTool suite and 48 schema-validated
+actual wire objects pass. The separate pgl2-c2c preview supplies scripted fixture-owner
+input and ends with a rejected decision on a technically current package. No actual
+owner is represented as its approver. All 176 original owner project/runtime entries
+remain unchanged. The read-only design-review helper exposes the distinction; its
+optional explicit --decide interaction affects only the fixture.
+
+The owner walkthrough is updated with delivered behavior and the provisional adapter.
+S6 and KB052 remain active. Next: dispatch prerequisites under current authority,
+incorporating any incoming interaction feedback; responsive leader, inbox and direct
+conversation integration remain later milestones. Existing continuation authority
+stands. No main merge, release, production owner approval or completed PGL2 is claimed.
+
+Closeout records: EVT-PM-SDP-000201 / EVT-KB-SDP-000373; system evidence in Traceability.
+This is a work summary, not a captured final response or owner acceptance.

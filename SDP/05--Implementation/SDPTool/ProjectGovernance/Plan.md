@@ -301,7 +301,7 @@ sequenced with those workstreams rather than copied into a second engine.
 | Milestone | Runnable outcome | Required evidence / handoff scenarios | State |
 | --- | --- | --- | --- |
 | PGL1 | Readable/JSON overview of all registered work from existing operational state; lab inspection without launching work | Scenario 5 subset; empty store, multiple runs, stale records, historical host/skill/tool facts, no writes | delivered; [bounded evidence](Evidence-PGL1.md) |
-| PGL2 | Prepare and inspect distinct SAD/implementation assignments; stale design or conflicting scope refuses dispatch eligibility | Scenario 2 guards; current authority, exact bundle revisions, explicit cross-worktree claim boundary, retry/CAS tests | in-progress; [C1 preparation delivered](Evidence-PGL2-C1.md), [C2a revision/retirement delivered](Evidence-PGL2-C2a.md), [C2b provider checks delivered](Evidence-PGL2-C2b.md); actual owner disposition and dispatch prerequisites pending |
+| PGL2 | Prepare and inspect distinct SAD/implementation assignments; stale design or conflicting scope refuses dispatch eligibility | Scenario 2 guards; current authority, exact bundle revisions, explicit cross-worktree claim boundary, retry/CAS tests | in-progress; [C1 preparation delivered](Evidence-PGL2-C1.md), [C2a revision/retirement delivered](Evidence-PGL2-C2a.md), [C2b provider checks delivered](Evidence-PGL2-C2b.md), [C2c local decision adapter delivered](Evidence-PGL2-C2c.md); dispatch prerequisites pending |
 | PGL3 | Responsive Project Leader plus two bounded Masters through the trusted controller; durable report inbox and same-Session phase continuation | Scenarios 1, 3, 4; real host execution, no duplicate launch after uncertain reply, delayed report versus new steering | planned |
 | PGL4 | Direct SAD/Master conversation and project panel; revision-bound ModelGovernance/Blueprint handoff | Scenarios 2, 5; real TARGET change stales dependent implementation; roles/tools/children/freshness evidence; owner development trial | planned |
 | PGL5 | Integrated recovery/evidence review and revision-bound remote Steering package | All six scenarios; independent review and selected online-host evidence; PGI4/5 obligations retained | planned |
@@ -391,3 +391,21 @@ proof of no writes. Actual design disposition and dispatch remain unfinished C2 
 [CLI trial](trial-PGL2-C2b.json) record delivery. The provider-backed review basis is
 implemented and verified; actual owner-input disposition and dispatch remain next.
 PGL2 stays in progress. EVT-PM-SDP-000200 / EVT-KB-SDP-000372 record this boundary.
+
+## PGL2-C2c — Controller-attributed owner design decisions
+
+Session0007 T022 owner authorizes continuing while reviewing the walkthrough. Reuse
+the existing local controller authority and atomic operational store for explicit
+revision-bound decisions; do not select a final conversation or XFMD UI. The
+[contract](../../../04--Design/SDPTool/ProjectGovernance/Orchestration.md#pgl2-c2c-owner-decision-records--2026-10-18)
+separates package requests, trusted captured input and current applicability.
+[Preflight](preflight-PGL2-C2c.json) bounds writes to PG and its own records.
+
+[Evidence](Evidence-PGL2-C2c.md), [candidate](candidate-PGL2-C2c.json) and
+[actual trial](trial-PGL2-C2c.json) record the delivered local adapter, immutable
+history, stale refusal, supersession and 0.4 compatibility. This does not authenticate
+humans against same-user shell processes or deliver conversation capture. The final
+interaction remains open to owner feedback. No actual owner trial acceptance is
+inferred from scripted fixture decisions. PGL2 remains in progress for dispatch
+prerequisites; PGL3–5 remain planned. EVT-PM-SDP-000201 / EVT-KB-SDP-000373 record
+this bounded delivery; BranchPolicy and CommitPolicy are unchanged.

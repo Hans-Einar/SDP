@@ -256,6 +256,9 @@ func (s *Service) PrepareAssignment(caller Caller, q PrepareRequest) (Preparatio
 		}
 		return old.Result, nil
 	}
+	if _, ok := state.DesignDecisionReceipts[q.OperationID]; ok {
+		return out, fail("idempotency_conflict", "operationId belongs to design decision")
+	}
 	if _, ok := state.Receipts[q.OperationID]; ok {
 		return out, fail("idempotency_conflict", "operationId already belongs to a legacy operation")
 	}
@@ -306,7 +309,7 @@ func (s *Service) InspectAssignments(id string) (Preparations, error) {
 		return out, err
 	}
 	out.Generation = head
-	if state.Schema == preparationLifecycleStateSchema {
+	if state.Schema == preparationLifecycleStateSchema || state.Schema == designDecisionStateSchema {
 		out.Schema = PreparationLifecycleSchema
 	}
 	out.CheckoutID = state.CheckoutID

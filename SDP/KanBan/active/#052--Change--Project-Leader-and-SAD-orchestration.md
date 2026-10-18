@@ -9,7 +9,7 @@
 | created | 2026-10-09T12:08:50.581137+00:00 |
 | source | Owner Session0011 T004 role definition and T005 KanBan handoff request |
 | Systems | SDPTOOL |
-| next_review | PGL2-C2 actual owner disposition bound to review revision, then dispatch prerequisites |
+| next_review | PGL2 dispatch prerequisites and owner feedback on decision interaction |
 | PlanId | PLAN-SDP-0018 |
 | tags | project-leader, steering, SAD, master, MCP, app-server, coordination |
 
@@ -111,3 +111,10 @@ and live ModelGovernance captures, exact task/scope and preparation revision.
 records source-drift refusals, compiled CLI/schema checks and the isolated lab preview.
 No owner acceptance is inferred. CardState stays in-progress for trusted disposition,
 dispatch and PGL3–5. EVT-KB-SDP-000372 links this review to the active plan delivery.
+
+2026-10-18 / T022: Owner authorizes continuing while reading the walkthrough.
+PGL2-C2c delivers the local controller decision adapter with immutable revision-bound
+records, supersession and current/stale applicability. [Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C2c.md)
+uses scripted fixture decisions, not actual owner approval. Final conversation/UI and
+same-user identity authentication are not claimed. CardState remains in-progress;
+dispatch prerequisites and PGL3–5 remain. EVT-KB-SDP-000373 records this update.
