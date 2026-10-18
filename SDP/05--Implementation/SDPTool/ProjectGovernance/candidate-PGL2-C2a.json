@@ -1,0 +1,64 @@
+{
+  "baseline": "5c4bb8bc4d115ab4caf7c288920504d6e609bc9a",
+  "integratedMain": "8aa16c2ba531569fad77eafd5225e4b3d504549a",
+  "scope": "PGL2-C2a prepared assignment revision and retirement; remaining C2 not delivered",
+  "candidateKind": "baseline plus exact source hashes; evidence precedes milestone commit",
+  "goVersion": "go version go1.27.1 linux/amd64",
+  "sourceFiles": {
+    "SDPTool/cmd/sdp-controller/assignment.go": "96e8df2ca62118ef672eeb47db07577853c92f4b8bb012ade08d042e17aac9d5",
+    "SDPTool/cmd/sdp-controller/assignment_test.go": "a30bd40131df10981c71346b09cffc75567589e244d783db4c84fbdbce116070",
+    "SDPTool/governance/preparation.go": "0568250ebf8113fe93e28c40bc32a247426356385bc2ece3849fbaca693b24d5",
+    "SDPTool/governance/preparation.schema.json": "fa400ee0e521df7b1eb124374be6f538efbf99a11146aac3b67ef357a4dea284",
+    "SDPTool/governance/preparation_lifecycle.go": "52704c4cf4055d290a5dad5d54cabdd5a6ac1ec5cb5fc79220147d259bc442e1",
+    "SDPTool/governance/preparation_lifecycle_test.go": "a1176b5626e7a76b71916a9728bc16b7c40986b0b5086df9b82c1cd048a83fce",
+    "SDPTool/governance/run.go": "fe18468bf3d4fb6f02d025e3be4d4de28decfec4c1d1672492fc6c751626029f",
+    "SDPTool/governance/store.go": "7eeabf59b9868aa694e9b062fa56234541665961f37f4a94a7db0b0056baaa94",
+    "SDPTool/labs/project-governance/lifecycle_trial.py": "be8117b1362c466a01db26b18998f13eacf44382a4987e5b163ea7061359c8d3"
+  },
+  "fileSetDigest": "112c13506428ff36b9fb12bb79306efd1c2dac47f183077d0cf447be08a6d645",
+  "controllerSHA256": "10bf6d9ba06e1e2eb214b19f2b61e7eb935028a3021ef2cb9af886bc45b60c10",
+  "checks": {
+    "final-race.log": {
+      "result": "passed",
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t12.767s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t42.747s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t11.449s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t1.079s\n",
+      "sha256": "78cc47d9b420c6aa1ea6a96230a6ab696f0476385f411b6dd3a442cec529b68e"
+    },
+    "final-vet.log": {
+      "result": "passed",
+      "output": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "final-legacy-cli.log": {
+      "result": "passed",
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool\t0.910s\n",
+      "sha256": "43bcb1b0056a73cea2fb0c08511ef79888b04185980c1621231059ed5e8ffb57"
+    },
+    "schema.log": {
+      "result": "passed",
+      "output": "PASS: 38 actual wire requests/results validated\n",
+      "sha256": "bd2cba9f07cb5654b33da3c6c568bf09c9e74817362f5df529baf885cf790782"
+    },
+    "management.log": {
+      "result": "passed",
+      "output": "PASS: 66 cards, 45 management records, 4 lineage operations, 602 events; schema/history/metadata/placement/grouping\n",
+      "sha256": "36dd517e1059701614f6620e93af2a50d1c513d0169fa6b7a128039ad5630e2c"
+    },
+    "toolkit.log": {
+      "result": "passed",
+      "output": "SDP Toolkit validation passed\n",
+      "sha256": "5e9d1353c22f090c8b066ba39da56ff229fbc1b07a7e12e21bb8ac9ffbb9e3ad"
+    },
+    "integrity": {
+      "result": "passed",
+      "localMarkdownLinks": 83,
+      "canonicalLedgerPrefixesPreserved": true,
+      "maintainedTrialWireObjects": 38
+    }
+  },
+  "trialSHA256": "e79ee6340bfeb42d32812f77583ac9b0fe3e3770da224af3cdd3ddef29cc06b0",
+  "ownerLabEntriesPreserved": 176,
+  "independentReview": false,
+  "providerIntegration": false,
+  "modelTaskSubmitted": false,
+  "published": false
+}

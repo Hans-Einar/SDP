@@ -162,3 +162,45 @@ prepare persists only after the checks above. All responses identify their narro
 preparation boundary. No model/account access occurs. A reproducible separate
 local trial must show SAD and Master preparation, retry after restart, conflicting
 scope refusal and a changed TARGET producing stale inspection.
+
+## PGL2-C2a revision and retirement contract — 2026-10-18
+
+Owner Session0007 T018 selects the PG-local continuation. Reuse the existing
+atomic generation and immutable receipts instead of allocating a replacement ID
+on every edit: an assignment retains its ID, role and selection, with monotonically
+increasing revision. Revision supplies the complete new package, current coverage
+and artifact pins plus a bounded reason. Reject overlapping claims except the
+assignment's own old claim; publish replacement and receipt together. The old scope
+is released only when the new revision is committed. Stale preparations retain claims
+until explicitly revised or retired; source drift is never implicit cancellation.
+
+Retirement is terminal for this prepared identity. The trusted controller supplies
+assignment ID, expected revision/generation and a reason. It can retire stale work
+even when source files or canonical coverage are unavailable: releasing an unlaunched
+claim must not require repairing obsolete inputs. Retirement preserves the last
+package and its receipt history, increments revision and releases the local claim.
+It is not completion, owner acceptance, cancellation of a running agent or deletion.
+New work after retirement needs a new preparation ID. Retained records still count
+toward the existing bounded store capacity; no garbage collection is added.
+
+Both operations require the existing trusted controller/checkout binding; worker
+capabilities cannot invoke them. Expected generation and assignment revision prevent
+lost updates. Exact retries return the original immutable receipt even after later
+revision/retirement; changed content or cross-operation UUID reuse refuses. Receipts
+and generation history retain every prior version. Existing legacy run claims still
+block conflicting replacement; retired preparations no longer block legacy starts.
+
+`assignment revise|retire --input FILE` adds lifecycle wire profile
+`sdp-governance-assignment/2`. First successful lifecycle mutation upgrades only the
+selected store to `sdp-project-governance-state/0.3`; C1 binaries must refuse it.
+New code reads 0.1/0.2/0.3 and never downgrades 0.3 on later preparation or legacy
+writes. C1 prepare/context requests and immutable receipts retain wire profile 1;
+inspection of a 0.3 store uses profile 2 and reports retired records explicitly.
+Older stores remain unchanged by reads. Design acceptance stays not-assessed and
+dispatch stays unavailable. Provider-backed disposition and dispatch remain C2 work.
+
+Verification must cover restart/retry, stale input refresh, atomic scope replacement,
+retirement with missing sources, terminal refusal, concurrent CAS, before/after-HEAD
+fault recovery, binding/worker refusal, profile downgrade prevention, legacy scope
+release and compiled CLI/schema behavior. Use a separate synthetic trial store;
+preserve the owner's existing lab attempts.

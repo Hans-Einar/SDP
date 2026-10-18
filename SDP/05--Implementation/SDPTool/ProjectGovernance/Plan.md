@@ -301,7 +301,7 @@ sequenced with those workstreams rather than copied into a second engine.
 | Milestone | Runnable outcome | Required evidence / handoff scenarios | State |
 | --- | --- | --- | --- |
 | PGL1 | Readable/JSON overview of all registered work from existing operational state; lab inspection without launching work | Scenario 5 subset; empty store, multiple runs, stale records, historical host/skill/tool facts, no writes | delivered; [bounded evidence](Evidence-PGL1.md) |
-| PGL2 | Prepare and inspect distinct SAD/implementation assignments; stale design or conflicting scope refuses dispatch eligibility | Scenario 2 guards; current authority, exact bundle revisions, explicit cross-worktree claim boundary, retry/CAS tests | in-progress; [C1 preparation delivered](Evidence-PGL2-C1.md), C2 authority/provider integration pending |
+| PGL2 | Prepare and inspect distinct SAD/implementation assignments; stale design or conflicting scope refuses dispatch eligibility | Scenario 2 guards; current authority, exact bundle revisions, explicit cross-worktree claim boundary, retry/CAS tests | in-progress; [C1 preparation delivered](Evidence-PGL2-C1.md), [C2a revision/retirement delivered](Evidence-PGL2-C2a.md); C2 authority/provider integration pending |
 | PGL3 | Responsive Project Leader plus two bounded Masters through the trusted controller; durable report inbox and same-Session phase continuation | Scenarios 1, 3, 4; real host execution, no duplicate launch after uncertain reply, delayed report versus new steering | planned |
 | PGL4 | Direct SAD/Master conversation and project panel; revision-bound ModelGovernance/Blueprint handoff | Scenarios 2, 5; real TARGET change stales dependent implementation; roles/tools/children/freshness evidence; owner development trial | planned |
 | PGL5 | Integrated recovery/evidence review and revision-bound remote Steering package | All six scenarios; independent review and selected online-host evidence; PGI4/5 obligations retained | planned |
@@ -354,3 +354,21 @@ Before delivery, incorporate current main, inspect concurrent committed and dirt
 changes, test the combined candidate and prepare a PR limited to the new PG delta.
 This is a clean integration route, not a guarantee about future conflicts or authority
 to merge main. No C2 implementation or acceptance is claimed by this synchronization.
+
+## PGL2-C2a — Preparation revision and retirement
+
+Owner Session0007 T018 continues the bounded PG-local work. Implement stable-ID
+revision and terminal retirement of unlaunched preparations through the core and
+standalone controller. [Orchestration](../../../04--Design/SDPTool/ProjectGovernance/Orchestration.md#pgl2-c2a-revision-and-retirement-contract--2026-10-18)
+owns exact behavior, compatibility and verification obligations. Shared Actions
+dispatch, provider services and runtime agent launch remain outside this slice.
+[Preflight](preflight-PGL2-C2a.json) records the integrated baseline and relevant
+worktrees; stale primary PG copies remain excluded. Use canonical post-ACT0 IDs.
+
+[Evidence](Evidence-PGL2-C2a.md) and [candidate](candidate-PGL2-C2a.json) record the
+delivery boundary and checks. This delivers revision/retirement only. PGL2 remains
+in progress: actual controller-bound design disposition and provider-aware revision/
+dispatch prerequisites are next. No owner acceptance or multi-agent execution is
+implied by a prepared, revised or retired assignment.
+
+2026-10-18: EVT-PM-SDP-000198 records PGL2-C2a delivery; EVT-KB-SDP-000370 updates KB052.

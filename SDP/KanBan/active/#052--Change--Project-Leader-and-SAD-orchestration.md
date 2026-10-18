@@ -9,7 +9,7 @@
 | created | 2026-10-09T12:08:50.581137+00:00 |
 | source | Owner Session0011 T004 role definition and T005 KanBan handoff request |
 | Systems | SDPTOOL |
-| next_review | PGL2-C2 disposition, provider and assignment revision gates |
+| next_review | PGL2-C2 disposition and provider-aware dispatch prerequisites |
 | PlanId | PLAN-SDP-0018 |
 | tags | project-leader, steering, SAD, master, MCP, app-server, coordination |
 
@@ -98,3 +98,9 @@ exact source/generation checks, local scope refusal, retry recovery and stale
 inspection. [Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C1.md)
 is CLI/service-level with fixture artifacts. PGL2 remains in-progress for actual
 disposition/provider/revision/retirement gates; PGL3–5 and owner acceptance remain.
+
+2026-10-18 / T018: PGL2-C2a delivers stable-ID package revision and terminal
+retirement with preserved receipts and local scope release.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C2a.md)
+records scoped tests and the separate compiled CLI trial. CardState remains
+in-progress; actual disposition/provider checks and PGL3–5 remain unfinished.

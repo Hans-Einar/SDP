@@ -2,10 +2,9 @@
 
 ## Session roadmap
 
-Latest recorded turn: T017 — remote main contains PGL2-C1; PG branch refreshed
-without conflicts. Continue within the PG boundary, checking shared integration
-before affected writes. PGL2-C2 remains next; design acceptance and actual
-multi-agent dispatch are not delivered.
+Latest recorded turn: T018 — PGL2-C2a delivers revision and retirement of prepared
+assignments with preserved identity/history and local scope release. Remaining C2
+work is actual design disposition and provider-aware dispatch prerequisites.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
 
 ```mermaid
@@ -26,7 +25,7 @@ gantt
 | completed | S1 | Recover skills, studies, card dependencies and ownership | Owner request, 2026-10-03 | Assessment below; RGS2 reused |
 | completed | S2 | Design the smallest common routing, run, Session and client contract | Owner continuation, T002 | [PGD1 / PLAN-SDP-0017](../04--Design/SDPTool/ProjectGovernance/Plan.md), contract, acceptance cases and protocol inspection |
 | waiting | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C6 verified; owner reports PGI3-U1 trial performed; native mapping remains unverified; KB052 now prioritized |
-| active | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation delivered; disposition/dispatch/inbox/design gates next |
+| active | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation and C2a revision/retirement delivered; disposition/dispatch/inbox/design gates next |
 | planned | S4 | Verify interruption, resume, scope change and evidence disposition | S3 candidate | Evidence required before wider use |
 | planned | S5 | Project recorded activity into the KB043 timeline | Reliable S3/S4 capture and selected rendering scope | Full timeline remains deferred |
 
@@ -36,9 +35,9 @@ gantt
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-18 |
-| Current step | S6 / KB052; PGL2-C1 delivered, C2 next |
-| Proposed next step | PGL2-C2 assignment revision/retirement, actual disposition and provider-aware dispatch prerequisites |
-| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation |
+| Current step | S6 / KB052; PGL2-C2a delivered, remaining C2 next |
+| Proposed next step | PGL2-C2 actual disposition and provider-aware dispatch prerequisites |
+| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement |
 
 ## Goal and ownership
 
@@ -66,7 +65,7 @@ No card is merged, split or closed merely to group this workstream.
 | Card | Role | Initial lifecycle / CardState | Planned outcome in this route | Current snapshot | Actual final |
 | --- | --- | --- | --- | --- | --- |
 | [KB038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) | Primary client and execution integration | backlog / backlog | One usable governed workflow | active / in-progress | PGI1/PGI2 delivered; PGI3 in progress |
-| [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md) | Project Leader and SAD runtime | backlog / backlog | Responsive owner coordination with bounded assignments | active / in-progress | PGL1 inspection and PGL2-C1 preparation delivered; full workflow pending |
+| [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md) | Project Leader and SAD runtime | backlog / backlog | Responsive owner coordination with bounded assignments | active / in-progress | PGL1 inspection, PGL2-C1 preparation and C2a lifecycle delivered; full workflow pending |
 | [KB036](../KanBan/backlog/%23036--Proposal--Request-routines-and-process-control.md) | Request classification and routine selection | backlog / backlog | Small shared entry contract exercised by pilot | backlog / backlog | Pending; broader coverage retained |
 | [KB037](../KanBan/backlog/%23037--Proposal--Observable-routine-state-machine.md) | Durable run state, transitions and observation | backlog / backlog | Minimum run/recovery core | backlog / backlog | Pending; full observer retained |
 | [KB042](../KanBan/backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md) | Session identity, roadmap and turn history | backlog / backlog | Capture/correlation beyond existing manual format | backlog / backlog | Pending |
@@ -770,3 +769,47 @@ The plan now records the Git continuation boundary. S6 remains active, C2 next.
 Before delivery, refresh main, check concurrent committed/dirty changes, verify the
 combined candidate and prepare a PR of only new PG changes. No product implementation,
 delegation, push, main merge, release or independent review occurred this turn.
+
+## T018 — Revise and retire prepared assignments
+
+Date: 2026-10-18. Manual work summary; exact host IDs/timing unavailable. Owner
+input, verbatim Norwegian quotation: “ok fortsett med det”. Continue the PG-local
+revision/retirement boundary selected in T017, on integrated main ancestry.
+
+Loaded/reused routines: SDP 1.2.0, Architect 2.1.0 for the concrete lifecycle
+contract, Worker 2.0.0 for implementation, Verifier/Traceability 2.0.0 for checks
+and records, Planning 1.0.0, document workflow, concurrent-work preflight and Session
+upkeep. No subagent, model task or independent review was invoked. Upstream skills
+are now present through ACT0 integration; their presence is not runtime compliance.
+
+[Preflight](../05--Implementation/SDPTool/ProjectGovernance/preflight-PGL2-C2a.json)
+records twelve worktrees and the scoped PG boundary. Shared Actions CLI/API and
+provider services remain excluded. Canonical ACT0 identities/history are retained;
+old dirty primary PG copies were not replayed. [Orchestration](../04--Design/SDPTool/ProjectGovernance/Orchestration.md)
+selects stable identity/role/selection, revision/generation guards, immutable
+receipts and terminal retirement before implementation. Retirement releases only
+an unlaunched local claim; it is not completion, approval or host cancellation.
+
+[Evidence](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C2a.md) and
+[candidate](../05--Implementation/SDPTool/ProjectGovernance/candidate-PGL2-C2a.json)
+record affected race tests, vet, legacy CLI regression, compiled lifecycle journey
+and profile-specific schemas. The first CLI trial exposed unsupported embedded
+request fields in the strict decoder; explicit wire fields and regression tests
+fixed it without changing shared decoding. Final subprocess trials pass, including
+C1-reader refusal of 0.3. Thirty-eight successful wire objects pass schema checks.
+The original owner's 176 project/runtime entries remain unchanged. A separate
+`pg_lab/assignments-lifecycle` helper displays the synthetic lifecycle preview.
+
+S6 remains active; PGL2-C2a is delivered, while controller-bound design disposition,
+provider-aware revision checks and dispatch prerequisites remain next. No full PGL2,
+owner acceptance, live Project Leader, cross-store reservation, PR/main merge,
+release or independent review is claimed. This slice does not change the worker
+MCP privilege set or the generic Actions interface.
+
+Closeout records: EVT-PM-SDP-000198, EVT-KB-SDP-000370; scoped system evidence in Traceability.
+
+T018 closeout checks: candidate/source hashes and canonical ledger prefixes pass;
+83 local documentation links resolve, management/Toolkit validators pass. Actions
+has no committed changes in the PG core/controller or owning design/plan/Session
+at inspected 0b85a11. Shared history still needs normal append reconciliation on
+future integration; PM198/KB370 have no observed conflicting identities.

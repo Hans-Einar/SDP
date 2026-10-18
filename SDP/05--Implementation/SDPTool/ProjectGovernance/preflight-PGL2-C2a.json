@@ -1,0 +1,94 @@
+{
+  "baseline": "5c4bb8bc4d115ab4caf7c288920504d6e609bc9a",
+  "main": "8aa16c2ba531569fad77eafd5225e4b3d504549a",
+  "scope": [
+    "SDPTool/governance",
+    "SDPTool/cmd/sdp-controller",
+    "SDP/04--Design/SDPTool/ProjectGovernance",
+    "SDP/05--Implementation/SDPTool/ProjectGovernance",
+    "SDP/Sessions/session-#0007--Project_governance.md",
+    "SDP/ProjectManagement/Ledger.ndjson",
+    "SDP/Traceability/Ledger.ndjson"
+  ],
+  "worktrees": [
+    {
+      "worktree": "/home/warloc/git/SDP",
+      "head": "2cb49c02145621b099c47d05786716598e414e75",
+      "scopedStatus": "",
+      "scopedCommittedDelta": ""
+    },
+    {
+      "worktree": "/home/warloc/git/SDP-codex-issue-7-provisional-vnext-",
+      "head": "ea9fcf1cdd3198aeac515b89b55398282c463838",
+      "scopedStatus": "",
+      "scopedCommittedDelta": ""
+    },
+    {
+      "worktree": "/home/warloc/git/SDP-coordination",
+      "head": "684b1f8952f2f5ff2dc9fb32c7592340d8aff60f",
+      "scopedStatus": "",
+      "scopedCommittedDelta": ""
+    },
+    {
+      "worktree": "/home/warloc/git/SDP-project-governance",
+      "head": "5c4bb8bc4d115ab4caf7c288920504d6e609bc9a",
+      "scopedStatus": "",
+      "scopedCommittedDelta": "SDP/05--Implementation/SDPTool/ProjectGovernance/Plan.md\nSDP/Sessions/session-#0007--Project_governance.md"
+    },
+    {
+      "worktree": "/home/warloc/git/SDP-vNow",
+      "head": "0918098d572bc70be46cc8c72f711e3e2325078f",
+      "scopedStatus": "M SDP/04--Design/SDPTool/ProjectGovernance/Design.md\n M SDP/05--Implementation/SDPTool/ProjectGovernance/Plan.md\n M SDP/ProjectManagement/Ledger.ndjson\n M SDP/Sessions/session-#0007--Project_governance.md\n M SDP/Traceability/Ledger.ndjson\n?? SDP/05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI1.md\n?? SDP/05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI2.md\n?? SDP/05--Implementation/SDPTool/ProjectGovernance/candidate-PGI1.json\n?? SDP/05--Implementation/SDPTool/ProjectGovernance/candidate-PGI2.json\n?? SDP/05--Implementation/SDPTool/ProjectGovernance/protocol-PGI2.json\n?? SDPTool/cmd/sdp-controller/\n?? SDPTool/governance/",
+      "scopedCommittedDelta": "SDP/ProjectManagement/Ledger.ndjson\nSDP/Traceability/Ledger.ndjson"
+    },
+    {
+      "worktree": "/home/warloc/git/SDP-xfmd-viewpoint-overviews",
+      "head": "cc7b52f84f05fdef63efc1a305023a12347026ad",
+      "scopedStatus": "",
+      "scopedCommittedDelta": "SDP/ProjectManagement/Ledger.ndjson\nSDP/Traceability/Ledger.ndjson"
+    },
+    {
+      "worktree": "/tmp/sdp-21-source",
+      "head": "93517ad98cd188c0debeb1d0f3d36d123c6e4a3b",
+      "scopedStatus": "D SDP/Traceability/Ledger.ndjson",
+      "scopedCommittedDelta": ""
+    },
+    {
+      "worktree": "/tmp/sdp-blueprint-implementation",
+      "head": "f64a5babc72bc7e392ec750eb195ef79c4262726",
+      "scopedStatus": "",
+      "scopedCommittedDelta": ""
+    },
+    {
+      "worktree": "/tmp/sdp-rp3-candidate",
+      "head": "fede327d6f3af35fe7aad323e2c485a27134d20d",
+      "scopedStatus": "D SDP/ProjectManagement/Ledger.ndjson\n D SDP/Traceability/Ledger.ndjson",
+      "scopedCommittedDelta": ""
+    },
+    {
+      "worktree": "/tmp/sdp-runnable-programs",
+      "head": "3475367490804504d6bfd4459a48ffc85a33ee91",
+      "scopedStatus": "",
+      "scopedCommittedDelta": ""
+    },
+    {
+      "worktree": "/tmp/sdp-session11-integration",
+      "head": "4b2d92be489102c7eb6a14103bf819ec370c6313",
+      "scopedStatus": "",
+      "scopedCommittedDelta": "SDP/ProjectManagement/Ledger.ndjson"
+    },
+    {
+      "worktree": "/tmp/sdp-session3-release-source",
+      "head": "d304261c90066a86b2d8ffcaa2115517ea339b05",
+      "scopedStatus": "D SDP/Traceability/Ledger.ndjson",
+      "scopedCommittedDelta": ""
+    }
+  ],
+  "verdict": "PG core/controller and own design/plan/session are scoped green; stale primary PG copies remain excluded. Shared event IDs will be rescanned at closeout; Actions shared CLI/API stays excluded. No provider integration or dispatch.",
+  "closeout": {
+    "actionsHead": "0b85a11b21d9236e9199cbef2bb4fc1e90c21435",
+    "actionsScopedCommittedOverlap": "",
+    "sharedHistory": "Both streams append canonical management history. Current own drafts use PM198 and KB370; rescan before committing. Future merge must preserve both streams, with no obsolete source ledger replay.",
+    "newEventCollisionCheck": "PM198 and KB370 compared across known canonical worktree ledgers; no differing identity found before commit"
+  }
+}

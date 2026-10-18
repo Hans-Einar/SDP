@@ -1,0 +1,2596 @@
+{
+  "fixtureOnly": true,
+  "modelSubmitted": false,
+  "binarySHA256": "10bf6d9ba06e1e2eb214b19f2b61e7eb935028a3021ef2cb9af886bc45b60c10",
+  "cases": [
+    {
+      "case": "context",
+      "request": {
+        "role": "SAD",
+        "selection": {
+          "card": "SDP/KanBan/active/sad.md",
+          "plan": "SDP/Plans/sad.md",
+          "session": "SDP/Sessions/sad.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        }
+      },
+      "response": {
+        "schema": "sdp-governance-assignment/1",
+        "generation": "d2f9b51b35f6eb8c7baf8b989b21e1c470a3220506ef934f2f4ea38a0ddfe9d0",
+        "role": "SAD",
+        "context": {
+          "schema": "sdp-project-governance/0.1",
+          "operation": "context",
+          "projectRef": "pg-preparation-lab",
+          "root": "/home/warloc/git/pg_lab/previews/pgl2-c2a/project",
+          "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+          "revision": "aeeff82767f043cb463685b830a44fede7ce97eff24f8f87de49b2d046e71208",
+          "selection": {
+            "card": "SDP/KanBan/active/sad.md",
+            "plan": "SDP/Plans/sad.md",
+            "session": "SDP/Sessions/sad.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "sources": [
+            {
+              "path": "AGENTS.md",
+              "sha256": "725db623a0c25ff4767fb9e85b1de4e610f82a59f820654356890dc742673eb4"
+            },
+            {
+              "path": "SDP/KanBan/active/sad.md",
+              "sha256": "3daa1177249c783f01678cc9fe0f101fbb229eea969cd505b268a6dbf3ce6fce"
+            },
+            {
+              "path": "SDP/Plans/sad.md",
+              "sha256": "6c4fd13136670d53bcfeb02ae1c3b18c10b3c58555687714c1218aa6bc560adf"
+            },
+            {
+              "path": "SDP/ProjectManagement/Ledger.ndjson",
+              "sha256": "aad45132dba528f1e7f1bc418a33712025c42cbc826bb79b59d13ebf6b773a4f"
+            },
+            {
+              "path": "SDP/SDP-project.manifest.yaml",
+              "sha256": "d21f444026a1f4a0335301c54dc8b7ff8a8ae7f7d82d96c49f7a0ade42dbe4b2"
+            },
+            {
+              "path": "SDP/Sessions/sad.md",
+              "sha256": "c5d4630b4e8db9aff8d96300674217a7cee932b96f6b6e5ce4c532f2020d331c"
+            },
+            {
+              "path": "SDP/authority.md",
+              "sha256": "fa0af92650e2c2dd1549f669ce1cda0ac93f3bb5144eb4e2484ebeb174fba823"
+            }
+          ],
+          "coverage": "known",
+          "conditions": [],
+          "cardId": "KB-PGPREP-001",
+          "planId": "PLAN-PGPREP-0001",
+          "sessionId": "SESSION-PGPREP-0001"
+        }
+      }
+    },
+    {
+      "case": "prepare",
+      "request": {
+        "schema": "sdp-governance-assignment/1",
+        "projectRef": "pg-preparation-lab",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "operationId": "559d3671-a8ee-4ffc-b906-b4d0acd1acc9",
+        "expectedGeneration": "d2f9b51b35f6eb8c7baf8b989b21e1c470a3220506ef934f2f4ea38a0ddfe9d0",
+        "inputRevision": "aeeff82767f043cb463685b830a44fede7ce97eff24f8f87de49b2d046e71208",
+        "role": "SAD",
+        "selection": {
+          "card": "SDP/KanBan/active/sad.md",
+          "plan": "SDP/Plans/sad.md",
+          "session": "SDP/Sessions/sad.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "Prepare bounded SAD fixture",
+          "writablePaths": [
+            "model-work"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "artifacts"
+          ]
+        },
+        "artifacts": [
+          {
+            "kind": "now",
+            "path": "artifacts/now.json",
+            "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+          }
+        ],
+        "returnCriteria": [
+          "Return exact candidate evidence and unresolved questions"
+        ]
+      },
+      "response": {
+        "schema": "sdp-governance-assignment/1",
+        "operationId": "559d3671-a8ee-4ffc-b906-b4d0acd1acc9",
+        "assignment": {
+          "id": "1b653e99-f7bc-4ab6-ba32-909113ed52db",
+          "revision": 1,
+          "role": "SAD",
+          "selection": {
+            "card": "SDP/KanBan/active/sad.md",
+            "plan": "SDP/Plans/sad.md",
+            "session": "SDP/Sessions/sad.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Prepare bounded SAD fixture",
+            "writablePaths": [
+              "model-work"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "artifacts"
+            ]
+          },
+          "inputRevision": "aeeff82767f043cb463685b830a44fede7ce97eff24f8f87de49b2d046e71208",
+          "artifacts": [
+            {
+              "kind": "now",
+              "path": "artifacts/now.json",
+              "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+            }
+          ],
+          "returnCriteria": [
+            "Return exact candidate evidence and unresolved questions"
+          ]
+        },
+        "dispatch": "unavailable",
+        "designAcceptance": "not-assessed"
+      }
+    },
+    {
+      "case": "prepare",
+      "request": {
+        "schema": "sdp-governance-assignment/1",
+        "projectRef": "pg-preparation-lab",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "operationId": "559d3671-a8ee-4ffc-b906-b4d0acd1acc9",
+        "expectedGeneration": "d2f9b51b35f6eb8c7baf8b989b21e1c470a3220506ef934f2f4ea38a0ddfe9d0",
+        "inputRevision": "aeeff82767f043cb463685b830a44fede7ce97eff24f8f87de49b2d046e71208",
+        "role": "SAD",
+        "selection": {
+          "card": "SDP/KanBan/active/sad.md",
+          "plan": "SDP/Plans/sad.md",
+          "session": "SDP/Sessions/sad.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "Prepare bounded SAD fixture",
+          "writablePaths": [
+            "model-work"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "artifacts"
+          ]
+        },
+        "artifacts": [
+          {
+            "kind": "now",
+            "path": "artifacts/now.json",
+            "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+          }
+        ],
+        "returnCriteria": [
+          "Return exact candidate evidence and unresolved questions"
+        ]
+      },
+      "response": {
+        "schema": "sdp-governance-assignment/1",
+        "operationId": "559d3671-a8ee-4ffc-b906-b4d0acd1acc9",
+        "assignment": {
+          "id": "1b653e99-f7bc-4ab6-ba32-909113ed52db",
+          "revision": 1,
+          "role": "SAD",
+          "selection": {
+            "card": "SDP/KanBan/active/sad.md",
+            "plan": "SDP/Plans/sad.md",
+            "session": "SDP/Sessions/sad.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Prepare bounded SAD fixture",
+            "writablePaths": [
+              "model-work"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "artifacts"
+            ]
+          },
+          "inputRevision": "aeeff82767f043cb463685b830a44fede7ce97eff24f8f87de49b2d046e71208",
+          "artifacts": [
+            {
+              "kind": "now",
+              "path": "artifacts/now.json",
+              "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+            }
+          ],
+          "returnCriteria": [
+            "Return exact candidate evidence and unresolved questions"
+          ]
+        },
+        "dispatch": "unavailable",
+        "designAcceptance": "not-assessed"
+      }
+    },
+    {
+      "case": "context",
+      "request": {
+        "role": "Master",
+        "selection": {
+          "card": "SDP/KanBan/active/master.md",
+          "plan": "SDP/Plans/master.md",
+          "session": "SDP/Sessions/master.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        }
+      },
+      "response": {
+        "schema": "sdp-governance-assignment/1",
+        "generation": "fb81727fdaa4f2126f5a62868e1a1c1d73a8ad5fc551804fbbff198a9e3bd00d",
+        "role": "Master",
+        "context": {
+          "schema": "sdp-project-governance/0.1",
+          "operation": "context",
+          "projectRef": "pg-preparation-lab",
+          "root": "/home/warloc/git/pg_lab/previews/pgl2-c2a/project",
+          "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+          "revision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+          "selection": {
+            "card": "SDP/KanBan/active/master.md",
+            "plan": "SDP/Plans/master.md",
+            "session": "SDP/Sessions/master.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "sources": [
+            {
+              "path": "AGENTS.md",
+              "sha256": "725db623a0c25ff4767fb9e85b1de4e610f82a59f820654356890dc742673eb4"
+            },
+            {
+              "path": "SDP/KanBan/active/master.md",
+              "sha256": "3be8a6ae05d795fdd9c0727f03aa388b7629f2aab132e8c535e03e835aa04ed3"
+            },
+            {
+              "path": "SDP/Plans/master.md",
+              "sha256": "93312b43191982c3c605fe6cd33e1979254a2933a245ab2de9931160c3bf1d54"
+            },
+            {
+              "path": "SDP/ProjectManagement/Ledger.ndjson",
+              "sha256": "aad45132dba528f1e7f1bc418a33712025c42cbc826bb79b59d13ebf6b773a4f"
+            },
+            {
+              "path": "SDP/SDP-project.manifest.yaml",
+              "sha256": "d21f444026a1f4a0335301c54dc8b7ff8a8ae7f7d82d96c49f7a0ade42dbe4b2"
+            },
+            {
+              "path": "SDP/Sessions/master.md",
+              "sha256": "b7e45fdf8154737b1d3cda9c4dd62a7d15d33a37b7ce2c1f6064adaf459b66d8"
+            },
+            {
+              "path": "SDP/authority.md",
+              "sha256": "fa0af92650e2c2dd1549f669ce1cda0ac93f3bb5144eb4e2484ebeb174fba823"
+            }
+          ],
+          "coverage": "known",
+          "conditions": [],
+          "cardId": "KB-PGPREP-002",
+          "planId": "PLAN-PGPREP-0002",
+          "sessionId": "SESSION-PGPREP-0002"
+        }
+      }
+    },
+    {
+      "case": "prepare",
+      "request": {
+        "schema": "sdp-governance-assignment/1",
+        "projectRef": "pg-preparation-lab",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "operationId": "a80285a6-bbbe-430f-aec4-74acbaddae9f",
+        "expectedGeneration": "fb81727fdaa4f2126f5a62868e1a1c1d73a8ad5fc551804fbbff198a9e3bd00d",
+        "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+        "role": "Master",
+        "selection": {
+          "card": "SDP/KanBan/active/master.md",
+          "plan": "SDP/Plans/master.md",
+          "session": "SDP/Sessions/master.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "Prepare bounded Master fixture",
+          "writablePaths": [
+            "code"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "artifacts"
+          ]
+        },
+        "artifacts": [
+          {
+            "kind": "now",
+            "path": "artifacts/now.json",
+            "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+          },
+          {
+            "kind": "target",
+            "path": "artifacts/target.json",
+            "sha256": "91b966ac36129db68b959af08e26916f470a943776ffc0e838a3b39e45d35782"
+          },
+          {
+            "kind": "task",
+            "path": "artifacts/task.json",
+            "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+          },
+          {
+            "kind": "blueprint",
+            "path": "artifacts/blueprint.json",
+            "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+          },
+          {
+            "kind": "design-disposition",
+            "path": "artifacts/design-disposition.json",
+            "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+          }
+        ],
+        "returnCriteria": [
+          "Return exact candidate evidence and unresolved questions"
+        ]
+      },
+      "response": {
+        "schema": "sdp-governance-assignment/1",
+        "operationId": "a80285a6-bbbe-430f-aec4-74acbaddae9f",
+        "assignment": {
+          "id": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+          "revision": 1,
+          "role": "Master",
+          "selection": {
+            "card": "SDP/KanBan/active/master.md",
+            "plan": "SDP/Plans/master.md",
+            "session": "SDP/Sessions/master.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Prepare bounded Master fixture",
+            "writablePaths": [
+              "code"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "artifacts"
+            ]
+          },
+          "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+          "artifacts": [
+            {
+              "kind": "now",
+              "path": "artifacts/now.json",
+              "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+            },
+            {
+              "kind": "target",
+              "path": "artifacts/target.json",
+              "sha256": "91b966ac36129db68b959af08e26916f470a943776ffc0e838a3b39e45d35782"
+            },
+            {
+              "kind": "task",
+              "path": "artifacts/task.json",
+              "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+            },
+            {
+              "kind": "blueprint",
+              "path": "artifacts/blueprint.json",
+              "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+            },
+            {
+              "kind": "design-disposition",
+              "path": "artifacts/design-disposition.json",
+              "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+            }
+          ],
+          "returnCriteria": [
+            "Return exact candidate evidence and unresolved questions"
+          ]
+        },
+        "dispatch": "unavailable",
+        "designAcceptance": "not-assessed"
+      }
+    },
+    {
+      "case": "prepare",
+      "request": {
+        "schema": "sdp-governance-assignment/1",
+        "projectRef": "pg-preparation-lab",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "operationId": "a80285a6-bbbe-430f-aec4-74acbaddae9f",
+        "expectedGeneration": "fb81727fdaa4f2126f5a62868e1a1c1d73a8ad5fc551804fbbff198a9e3bd00d",
+        "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+        "role": "Master",
+        "selection": {
+          "card": "SDP/KanBan/active/master.md",
+          "plan": "SDP/Plans/master.md",
+          "session": "SDP/Sessions/master.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "Prepare bounded Master fixture",
+          "writablePaths": [
+            "code"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "artifacts"
+          ]
+        },
+        "artifacts": [
+          {
+            "kind": "now",
+            "path": "artifacts/now.json",
+            "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+          },
+          {
+            "kind": "target",
+            "path": "artifacts/target.json",
+            "sha256": "91b966ac36129db68b959af08e26916f470a943776ffc0e838a3b39e45d35782"
+          },
+          {
+            "kind": "task",
+            "path": "artifacts/task.json",
+            "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+          },
+          {
+            "kind": "blueprint",
+            "path": "artifacts/blueprint.json",
+            "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+          },
+          {
+            "kind": "design-disposition",
+            "path": "artifacts/design-disposition.json",
+            "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+          }
+        ],
+        "returnCriteria": [
+          "Return exact candidate evidence and unresolved questions"
+        ]
+      },
+      "response": {
+        "schema": "sdp-governance-assignment/1",
+        "operationId": "a80285a6-bbbe-430f-aec4-74acbaddae9f",
+        "assignment": {
+          "id": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+          "revision": 1,
+          "role": "Master",
+          "selection": {
+            "card": "SDP/KanBan/active/master.md",
+            "plan": "SDP/Plans/master.md",
+            "session": "SDP/Sessions/master.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Prepare bounded Master fixture",
+            "writablePaths": [
+              "code"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "artifacts"
+            ]
+          },
+          "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+          "artifacts": [
+            {
+              "kind": "now",
+              "path": "artifacts/now.json",
+              "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+            },
+            {
+              "kind": "target",
+              "path": "artifacts/target.json",
+              "sha256": "91b966ac36129db68b959af08e26916f470a943776ffc0e838a3b39e45d35782"
+            },
+            {
+              "kind": "task",
+              "path": "artifacts/task.json",
+              "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+            },
+            {
+              "kind": "blueprint",
+              "path": "artifacts/blueprint.json",
+              "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+            },
+            {
+              "kind": "design-disposition",
+              "path": "artifacts/design-disposition.json",
+              "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+            }
+          ],
+          "returnCriteria": [
+            "Return exact candidate evidence and unresolved questions"
+          ]
+        },
+        "dispatch": "unavailable",
+        "designAcceptance": "not-assessed"
+      }
+    },
+    {
+      "case": "inspect",
+      "request": null,
+      "response": {
+        "schema": "sdp-governance-assignment/1",
+        "generation": "380c60b354b74edb76e21923c0c88a81ecf8de770623e9b9c8c2eea375271517",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "scope": "selected-checkout-only",
+        "assignments": [
+          {
+            "assignment": {
+              "id": "1b653e99-f7bc-4ab6-ba32-909113ed52db",
+              "revision": 1,
+              "role": "SAD",
+              "selection": {
+                "card": "SDP/KanBan/active/sad.md",
+                "plan": "SDP/Plans/sad.md",
+                "session": "SDP/Sessions/sad.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Prepare bounded SAD fixture",
+                "writablePaths": [
+                  "model-work"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "artifacts"
+                ]
+              },
+              "inputRevision": "aeeff82767f043cb463685b830a44fede7ce97eff24f8f87de49b2d046e71208",
+              "artifacts": [
+                {
+                  "kind": "now",
+                  "path": "artifacts/now.json",
+                  "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+                }
+              ],
+              "returnCriteria": [
+                "Return exact candidate evidence and unresolved questions"
+              ]
+            },
+            "readiness": "prepared",
+            "conditions": [],
+            "dispatch": "unavailable",
+            "designAcceptance": "not-assessed"
+          },
+          {
+            "assignment": {
+              "id": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+              "revision": 1,
+              "role": "Master",
+              "selection": {
+                "card": "SDP/KanBan/active/master.md",
+                "plan": "SDP/Plans/master.md",
+                "session": "SDP/Sessions/master.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Prepare bounded Master fixture",
+                "writablePaths": [
+                  "code"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "artifacts"
+                ]
+              },
+              "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+              "artifacts": [
+                {
+                  "kind": "now",
+                  "path": "artifacts/now.json",
+                  "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+                },
+                {
+                  "kind": "target",
+                  "path": "artifacts/target.json",
+                  "sha256": "91b966ac36129db68b959af08e26916f470a943776ffc0e838a3b39e45d35782"
+                },
+                {
+                  "kind": "task",
+                  "path": "artifacts/task.json",
+                  "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+                },
+                {
+                  "kind": "blueprint",
+                  "path": "artifacts/blueprint.json",
+                  "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+                },
+                {
+                  "kind": "design-disposition",
+                  "path": "artifacts/design-disposition.json",
+                  "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+                }
+              ],
+              "returnCriteria": [
+                "Return exact candidate evidence and unresolved questions"
+              ]
+            },
+            "readiness": "prepared",
+            "conditions": [],
+            "dispatch": "unavailable",
+            "designAcceptance": "not-assessed"
+          }
+        ]
+      }
+    },
+    {
+      "case": "prepare",
+      "expectedFailure": "conflict:",
+      "stderr": "conflict: prepared assignment 1b653e99-f7bc-4ab6-ba32-909113ed52db overlaps model-work/subdir\n"
+    },
+    {
+      "case": "inspect",
+      "request": null,
+      "response": {
+        "schema": "sdp-governance-assignment/1",
+        "generation": "380c60b354b74edb76e21923c0c88a81ecf8de770623e9b9c8c2eea375271517",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "scope": "selected-checkout-only",
+        "assignments": [
+          {
+            "assignment": {
+              "id": "1b653e99-f7bc-4ab6-ba32-909113ed52db",
+              "revision": 1,
+              "role": "SAD",
+              "selection": {
+                "card": "SDP/KanBan/active/sad.md",
+                "plan": "SDP/Plans/sad.md",
+                "session": "SDP/Sessions/sad.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Prepare bounded SAD fixture",
+                "writablePaths": [
+                  "model-work"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "artifacts"
+                ]
+              },
+              "inputRevision": "aeeff82767f043cb463685b830a44fede7ce97eff24f8f87de49b2d046e71208",
+              "artifacts": [
+                {
+                  "kind": "now",
+                  "path": "artifacts/now.json",
+                  "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+                }
+              ],
+              "returnCriteria": [
+                "Return exact candidate evidence and unresolved questions"
+              ]
+            },
+            "readiness": "prepared",
+            "conditions": [],
+            "dispatch": "unavailable",
+            "designAcceptance": "not-assessed"
+          },
+          {
+            "assignment": {
+              "id": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+              "revision": 1,
+              "role": "Master",
+              "selection": {
+                "card": "SDP/KanBan/active/master.md",
+                "plan": "SDP/Plans/master.md",
+                "session": "SDP/Sessions/master.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Prepare bounded Master fixture",
+                "writablePaths": [
+                  "code"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "artifacts"
+                ]
+              },
+              "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+              "artifacts": [
+                {
+                  "kind": "now",
+                  "path": "artifacts/now.json",
+                  "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+                },
+                {
+                  "kind": "target",
+                  "path": "artifacts/target.json",
+                  "sha256": "91b966ac36129db68b959af08e26916f470a943776ffc0e838a3b39e45d35782"
+                },
+                {
+                  "kind": "task",
+                  "path": "artifacts/task.json",
+                  "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+                },
+                {
+                  "kind": "blueprint",
+                  "path": "artifacts/blueprint.json",
+                  "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+                },
+                {
+                  "kind": "design-disposition",
+                  "path": "artifacts/design-disposition.json",
+                  "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+                }
+              ],
+              "returnCriteria": [
+                "Return exact candidate evidence and unresolved questions"
+              ]
+            },
+            "readiness": "stale",
+            "conditions": [
+              "stale_revision: artifact changed: target"
+            ],
+            "dispatch": "unavailable",
+            "designAcceptance": "not-assessed"
+          }
+        ]
+      }
+    },
+    {
+      "case": "prepare",
+      "request": {
+        "schema": "sdp-governance-assignment/1",
+        "projectRef": "pg-preparation-lab",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "operationId": "a80285a6-bbbe-430f-aec4-74acbaddae9f",
+        "expectedGeneration": "fb81727fdaa4f2126f5a62868e1a1c1d73a8ad5fc551804fbbff198a9e3bd00d",
+        "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+        "role": "Master",
+        "selection": {
+          "card": "SDP/KanBan/active/master.md",
+          "plan": "SDP/Plans/master.md",
+          "session": "SDP/Sessions/master.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "Prepare bounded Master fixture",
+          "writablePaths": [
+            "code"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "artifacts"
+          ]
+        },
+        "artifacts": [
+          {
+            "kind": "now",
+            "path": "artifacts/now.json",
+            "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+          },
+          {
+            "kind": "target",
+            "path": "artifacts/target.json",
+            "sha256": "91b966ac36129db68b959af08e26916f470a943776ffc0e838a3b39e45d35782"
+          },
+          {
+            "kind": "task",
+            "path": "artifacts/task.json",
+            "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+          },
+          {
+            "kind": "blueprint",
+            "path": "artifacts/blueprint.json",
+            "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+          },
+          {
+            "kind": "design-disposition",
+            "path": "artifacts/design-disposition.json",
+            "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+          }
+        ],
+        "returnCriteria": [
+          "Return exact candidate evidence and unresolved questions"
+        ]
+      },
+      "response": {
+        "schema": "sdp-governance-assignment/1",
+        "operationId": "a80285a6-bbbe-430f-aec4-74acbaddae9f",
+        "assignment": {
+          "id": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+          "revision": 1,
+          "role": "Master",
+          "selection": {
+            "card": "SDP/KanBan/active/master.md",
+            "plan": "SDP/Plans/master.md",
+            "session": "SDP/Sessions/master.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Prepare bounded Master fixture",
+            "writablePaths": [
+              "code"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "artifacts"
+            ]
+          },
+          "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+          "artifacts": [
+            {
+              "kind": "now",
+              "path": "artifacts/now.json",
+              "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+            },
+            {
+              "kind": "target",
+              "path": "artifacts/target.json",
+              "sha256": "91b966ac36129db68b959af08e26916f470a943776ffc0e838a3b39e45d35782"
+            },
+            {
+              "kind": "task",
+              "path": "artifacts/task.json",
+              "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+            },
+            {
+              "kind": "blueprint",
+              "path": "artifacts/blueprint.json",
+              "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+            },
+            {
+              "kind": "design-disposition",
+              "path": "artifacts/design-disposition.json",
+              "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+            }
+          ],
+          "returnCriteria": [
+            "Return exact candidate evidence and unresolved questions"
+          ]
+        },
+        "dispatch": "unavailable",
+        "designAcceptance": "not-assessed"
+      }
+    },
+    {
+      "case": "prepare",
+      "expectedFailure": "stale_revision:",
+      "stderr": "stale_revision: artifact changed: target\n"
+    },
+    {
+      "case": "old-binary-refuses-0.2",
+      "stderr": "{\"error\":{\"code\":\"reconciliation_required\",\"message\":\"invalid_request: json: unknown field \\\"prepared\\\"\",\"retryable\":false},\"operation\":\"error\",\"schema\":\"sdp-project-governance/0.1\",\"status\":\"error\"}\n"
+    },
+    {
+      "case": "context",
+      "request": {
+        "role": "Master",
+        "selection": {
+          "card": "SDP/KanBan/active/master.md",
+          "plan": "SDP/Plans/master.md",
+          "session": "SDP/Sessions/master.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        }
+      },
+      "response": {
+        "schema": "sdp-governance-assignment/1",
+        "generation": "380c60b354b74edb76e21923c0c88a81ecf8de770623e9b9c8c2eea375271517",
+        "role": "Master",
+        "context": {
+          "schema": "sdp-project-governance/0.1",
+          "operation": "context",
+          "projectRef": "pg-preparation-lab",
+          "root": "/home/warloc/git/pg_lab/previews/pgl2-c2a/project",
+          "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+          "revision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+          "selection": {
+            "card": "SDP/KanBan/active/master.md",
+            "plan": "SDP/Plans/master.md",
+            "session": "SDP/Sessions/master.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "sources": [
+            {
+              "path": "AGENTS.md",
+              "sha256": "725db623a0c25ff4767fb9e85b1de4e610f82a59f820654356890dc742673eb4"
+            },
+            {
+              "path": "SDP/KanBan/active/master.md",
+              "sha256": "3be8a6ae05d795fdd9c0727f03aa388b7629f2aab132e8c535e03e835aa04ed3"
+            },
+            {
+              "path": "SDP/Plans/master.md",
+              "sha256": "93312b43191982c3c605fe6cd33e1979254a2933a245ab2de9931160c3bf1d54"
+            },
+            {
+              "path": "SDP/ProjectManagement/Ledger.ndjson",
+              "sha256": "aad45132dba528f1e7f1bc418a33712025c42cbc826bb79b59d13ebf6b773a4f"
+            },
+            {
+              "path": "SDP/SDP-project.manifest.yaml",
+              "sha256": "d21f444026a1f4a0335301c54dc8b7ff8a8ae7f7d82d96c49f7a0ade42dbe4b2"
+            },
+            {
+              "path": "SDP/Sessions/master.md",
+              "sha256": "b7e45fdf8154737b1d3cda9c4dd62a7d15d33a37b7ce2c1f6064adaf459b66d8"
+            },
+            {
+              "path": "SDP/authority.md",
+              "sha256": "fa0af92650e2c2dd1549f669ce1cda0ac93f3bb5144eb4e2484ebeb174fba823"
+            }
+          ],
+          "coverage": "known",
+          "conditions": [],
+          "cardId": "KB-PGPREP-002",
+          "planId": "PLAN-PGPREP-0002",
+          "sessionId": "SESSION-PGPREP-0002"
+        }
+      }
+    },
+    {
+      "case": "inspect",
+      "request": null,
+      "response": {
+        "schema": "sdp-governance-assignment/1",
+        "generation": "380c60b354b74edb76e21923c0c88a81ecf8de770623e9b9c8c2eea375271517",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "scope": "selected-checkout-only",
+        "assignments": [
+          {
+            "assignment": {
+              "id": "1b653e99-f7bc-4ab6-ba32-909113ed52db",
+              "revision": 1,
+              "role": "SAD",
+              "selection": {
+                "card": "SDP/KanBan/active/sad.md",
+                "plan": "SDP/Plans/sad.md",
+                "session": "SDP/Sessions/sad.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Prepare bounded SAD fixture",
+                "writablePaths": [
+                  "model-work"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "artifacts"
+                ]
+              },
+              "inputRevision": "aeeff82767f043cb463685b830a44fede7ce97eff24f8f87de49b2d046e71208",
+              "artifacts": [
+                {
+                  "kind": "now",
+                  "path": "artifacts/now.json",
+                  "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+                }
+              ],
+              "returnCriteria": [
+                "Return exact candidate evidence and unresolved questions"
+              ]
+            },
+            "readiness": "prepared",
+            "conditions": [],
+            "dispatch": "unavailable",
+            "designAcceptance": "not-assessed"
+          },
+          {
+            "assignment": {
+              "id": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+              "revision": 1,
+              "role": "Master",
+              "selection": {
+                "card": "SDP/KanBan/active/master.md",
+                "plan": "SDP/Plans/master.md",
+                "session": "SDP/Sessions/master.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Prepare bounded Master fixture",
+                "writablePaths": [
+                  "code"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "artifacts"
+                ]
+              },
+              "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+              "artifacts": [
+                {
+                  "kind": "now",
+                  "path": "artifacts/now.json",
+                  "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+                },
+                {
+                  "kind": "target",
+                  "path": "artifacts/target.json",
+                  "sha256": "91b966ac36129db68b959af08e26916f470a943776ffc0e838a3b39e45d35782"
+                },
+                {
+                  "kind": "task",
+                  "path": "artifacts/task.json",
+                  "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+                },
+                {
+                  "kind": "blueprint",
+                  "path": "artifacts/blueprint.json",
+                  "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+                },
+                {
+                  "kind": "design-disposition",
+                  "path": "artifacts/design-disposition.json",
+                  "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+                }
+              ],
+              "returnCriteria": [
+                "Return exact candidate evidence and unresolved questions"
+              ]
+            },
+            "readiness": "stale",
+            "conditions": [
+              "stale_revision: artifact changed: target"
+            ],
+            "dispatch": "unavailable",
+            "designAcceptance": "not-assessed"
+          }
+        ]
+      }
+    },
+    {
+      "case": "revise",
+      "request": {
+        "schema": "sdp-governance-assignment/2",
+        "projectRef": "pg-preparation-lab",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "operationId": "1c12763e-2627-41e9-9e7d-c2105385df45",
+        "expectedGeneration": "380c60b354b74edb76e21923c0c88a81ecf8de770623e9b9c8c2eea375271517",
+        "assignmentId": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+        "expectedRevision": 1,
+        "reason": "Fixture owner revises the work",
+        "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+        "assignment": {
+          "outcome": "Prepare bounded Master fixture",
+          "writablePaths": [
+            "code-v2"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "artifacts"
+          ]
+        },
+        "artifacts": [
+          {
+            "kind": "now",
+            "path": "artifacts/now.json",
+            "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+          },
+          {
+            "kind": "target",
+            "path": "artifacts/target.json",
+            "sha256": "c83ffc62c3093565ff207d2af76a19ebfa241958a5134fcc4b15619d8858f711"
+          },
+          {
+            "kind": "task",
+            "path": "artifacts/task.json",
+            "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+          },
+          {
+            "kind": "blueprint",
+            "path": "artifacts/blueprint.json",
+            "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+          },
+          {
+            "kind": "design-disposition",
+            "path": "artifacts/design-disposition.json",
+            "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+          }
+        ],
+        "returnCriteria": [
+          "Return exact candidate evidence and unresolved questions"
+        ]
+      },
+      "expectedFailure": "stale_revision:",
+      "stderr": "stale_revision: artifact changed: target\n"
+    },
+    {
+      "case": "revise",
+      "request": {
+        "schema": "sdp-governance-assignment/2",
+        "projectRef": "pg-preparation-lab",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "operationId": "1c12763e-2627-41e9-9e7d-c2105385df45",
+        "expectedGeneration": "380c60b354b74edb76e21923c0c88a81ecf8de770623e9b9c8c2eea375271517",
+        "assignmentId": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+        "expectedRevision": 1,
+        "reason": "Fixture owner revises the work",
+        "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+        "assignment": {
+          "outcome": "Prepare bounded Master fixture",
+          "writablePaths": [
+            "code-v2"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "artifacts"
+          ]
+        },
+        "artifacts": [
+          {
+            "kind": "now",
+            "path": "artifacts/now.json",
+            "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+          },
+          {
+            "kind": "target",
+            "path": "artifacts/target.json",
+            "sha256": "c83ffc62c3093565ff207d2af76a19ebfa241958a5134fcc4b15619d8858f711"
+          },
+          {
+            "kind": "task",
+            "path": "artifacts/task.json",
+            "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+          },
+          {
+            "kind": "blueprint",
+            "path": "artifacts/blueprint.json",
+            "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+          },
+          {
+            "kind": "design-disposition",
+            "path": "artifacts/design-disposition.json",
+            "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+          }
+        ],
+        "returnCriteria": [
+          "Return exact candidate evidence and unresolved questions"
+        ]
+      },
+      "response": {
+        "schema": "sdp-governance-assignment/2",
+        "operationId": "1c12763e-2627-41e9-9e7d-c2105385df45",
+        "assignment": {
+          "id": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+          "revision": 2,
+          "state": "prepared",
+          "changeReason": "Fixture owner revises the work",
+          "role": "Master",
+          "selection": {
+            "card": "SDP/KanBan/active/master.md",
+            "plan": "SDP/Plans/master.md",
+            "session": "SDP/Sessions/master.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Prepare bounded Master fixture",
+            "writablePaths": [
+              "code-v2"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "artifacts"
+            ]
+          },
+          "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+          "artifacts": [
+            {
+              "kind": "now",
+              "path": "artifacts/now.json",
+              "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+            },
+            {
+              "kind": "target",
+              "path": "artifacts/target.json",
+              "sha256": "c83ffc62c3093565ff207d2af76a19ebfa241958a5134fcc4b15619d8858f711"
+            },
+            {
+              "kind": "task",
+              "path": "artifacts/task.json",
+              "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+            },
+            {
+              "kind": "blueprint",
+              "path": "artifacts/blueprint.json",
+              "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+            },
+            {
+              "kind": "design-disposition",
+              "path": "artifacts/design-disposition.json",
+              "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+            }
+          ],
+          "returnCriteria": [
+            "Return exact candidate evidence and unresolved questions"
+          ]
+        },
+        "dispatch": "unavailable",
+        "designAcceptance": "not-assessed"
+      }
+    },
+    {
+      "case": "revise",
+      "request": {
+        "schema": "sdp-governance-assignment/2",
+        "projectRef": "pg-preparation-lab",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "operationId": "1c12763e-2627-41e9-9e7d-c2105385df45",
+        "expectedGeneration": "380c60b354b74edb76e21923c0c88a81ecf8de770623e9b9c8c2eea375271517",
+        "assignmentId": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+        "expectedRevision": 1,
+        "reason": "Fixture owner revises the work",
+        "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+        "assignment": {
+          "outcome": "Prepare bounded Master fixture",
+          "writablePaths": [
+            "code-v2"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "artifacts"
+          ]
+        },
+        "artifacts": [
+          {
+            "kind": "now",
+            "path": "artifacts/now.json",
+            "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+          },
+          {
+            "kind": "target",
+            "path": "artifacts/target.json",
+            "sha256": "c83ffc62c3093565ff207d2af76a19ebfa241958a5134fcc4b15619d8858f711"
+          },
+          {
+            "kind": "task",
+            "path": "artifacts/task.json",
+            "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+          },
+          {
+            "kind": "blueprint",
+            "path": "artifacts/blueprint.json",
+            "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+          },
+          {
+            "kind": "design-disposition",
+            "path": "artifacts/design-disposition.json",
+            "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+          }
+        ],
+        "returnCriteria": [
+          "Return exact candidate evidence and unresolved questions"
+        ]
+      },
+      "response": {
+        "schema": "sdp-governance-assignment/2",
+        "operationId": "1c12763e-2627-41e9-9e7d-c2105385df45",
+        "assignment": {
+          "id": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+          "revision": 2,
+          "state": "prepared",
+          "changeReason": "Fixture owner revises the work",
+          "role": "Master",
+          "selection": {
+            "card": "SDP/KanBan/active/master.md",
+            "plan": "SDP/Plans/master.md",
+            "session": "SDP/Sessions/master.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Prepare bounded Master fixture",
+            "writablePaths": [
+              "code-v2"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "artifacts"
+            ]
+          },
+          "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+          "artifacts": [
+            {
+              "kind": "now",
+              "path": "artifacts/now.json",
+              "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+            },
+            {
+              "kind": "target",
+              "path": "artifacts/target.json",
+              "sha256": "c83ffc62c3093565ff207d2af76a19ebfa241958a5134fcc4b15619d8858f711"
+            },
+            {
+              "kind": "task",
+              "path": "artifacts/task.json",
+              "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+            },
+            {
+              "kind": "blueprint",
+              "path": "artifacts/blueprint.json",
+              "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+            },
+            {
+              "kind": "design-disposition",
+              "path": "artifacts/design-disposition.json",
+              "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+            }
+          ],
+          "returnCriteria": [
+            "Return exact candidate evidence and unresolved questions"
+          ]
+        },
+        "dispatch": "unavailable",
+        "designAcceptance": "not-assessed"
+      }
+    },
+    {
+      "case": "C1-reader-refuses-0.3",
+      "stderr": "reconciliation_required: invalid_request: json: unknown field \"state\"\n",
+      "binarySHA256": "512ff7161afb10d1c38295b29d1be876a7b92dcec808e57d428a563d475a2b26"
+    },
+    {
+      "case": "inspect",
+      "request": null,
+      "response": {
+        "schema": "sdp-governance-assignment/2",
+        "generation": "e779dc1545d7b96e402fbbe90b2536ec49ccfaca2f40eee0a5fa0610f074eeba",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "scope": "selected-checkout-only",
+        "assignments": [
+          {
+            "assignment": {
+              "id": "1b653e99-f7bc-4ab6-ba32-909113ed52db",
+              "revision": 1,
+              "role": "SAD",
+              "selection": {
+                "card": "SDP/KanBan/active/sad.md",
+                "plan": "SDP/Plans/sad.md",
+                "session": "SDP/Sessions/sad.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Prepare bounded SAD fixture",
+                "writablePaths": [
+                  "model-work"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "artifacts"
+                ]
+              },
+              "inputRevision": "aeeff82767f043cb463685b830a44fede7ce97eff24f8f87de49b2d046e71208",
+              "artifacts": [
+                {
+                  "kind": "now",
+                  "path": "artifacts/now.json",
+                  "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+                }
+              ],
+              "returnCriteria": [
+                "Return exact candidate evidence and unresolved questions"
+              ]
+            },
+            "readiness": "prepared",
+            "conditions": [],
+            "dispatch": "unavailable",
+            "designAcceptance": "not-assessed"
+          },
+          {
+            "assignment": {
+              "id": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+              "revision": 2,
+              "state": "prepared",
+              "changeReason": "Fixture owner revises the work",
+              "role": "Master",
+              "selection": {
+                "card": "SDP/KanBan/active/master.md",
+                "plan": "SDP/Plans/master.md",
+                "session": "SDP/Sessions/master.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Prepare bounded Master fixture",
+                "writablePaths": [
+                  "code-v2"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "artifacts"
+                ]
+              },
+              "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+              "artifacts": [
+                {
+                  "kind": "now",
+                  "path": "artifacts/now.json",
+                  "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+                },
+                {
+                  "kind": "target",
+                  "path": "artifacts/target.json",
+                  "sha256": "c83ffc62c3093565ff207d2af76a19ebfa241958a5134fcc4b15619d8858f711"
+                },
+                {
+                  "kind": "task",
+                  "path": "artifacts/task.json",
+                  "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+                },
+                {
+                  "kind": "blueprint",
+                  "path": "artifacts/blueprint.json",
+                  "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+                },
+                {
+                  "kind": "design-disposition",
+                  "path": "artifacts/design-disposition.json",
+                  "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+                }
+              ],
+              "returnCriteria": [
+                "Return exact candidate evidence and unresolved questions"
+              ]
+            },
+            "readiness": "prepared",
+            "conditions": [],
+            "dispatch": "unavailable",
+            "designAcceptance": "not-assessed"
+          }
+        ]
+      }
+    },
+    {
+      "case": "revise",
+      "request": {
+        "schema": "sdp-governance-assignment/2",
+        "projectRef": "pg-preparation-lab",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "operationId": "b0eb5c6f-c0b9-411b-8217-d216e190379e",
+        "expectedGeneration": "e779dc1545d7b96e402fbbe90b2536ec49ccfaca2f40eee0a5fa0610f074eeba",
+        "assignmentId": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+        "expectedRevision": 2,
+        "reason": "Fixture owner revises the work",
+        "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+        "assignment": {
+          "outcome": "Prepare bounded Master fixture",
+          "writablePaths": [
+            "model-work/nested"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "artifacts"
+          ]
+        },
+        "artifacts": [
+          {
+            "kind": "now",
+            "path": "artifacts/now.json",
+            "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+          },
+          {
+            "kind": "target",
+            "path": "artifacts/target.json",
+            "sha256": "c83ffc62c3093565ff207d2af76a19ebfa241958a5134fcc4b15619d8858f711"
+          },
+          {
+            "kind": "task",
+            "path": "artifacts/task.json",
+            "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+          },
+          {
+            "kind": "blueprint",
+            "path": "artifacts/blueprint.json",
+            "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+          },
+          {
+            "kind": "design-disposition",
+            "path": "artifacts/design-disposition.json",
+            "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+          }
+        ],
+        "returnCriteria": [
+          "Return exact candidate evidence and unresolved questions"
+        ]
+      },
+      "expectedFailure": "conflict:",
+      "stderr": "conflict: prepared assignment 1b653e99-f7bc-4ab6-ba32-909113ed52db overlaps model-work/nested\n"
+    },
+    {
+      "case": "inspect",
+      "request": null,
+      "response": {
+        "schema": "sdp-governance-assignment/2",
+        "generation": "e779dc1545d7b96e402fbbe90b2536ec49ccfaca2f40eee0a5fa0610f074eeba",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "scope": "selected-checkout-only",
+        "assignments": [
+          {
+            "assignment": {
+              "id": "1b653e99-f7bc-4ab6-ba32-909113ed52db",
+              "revision": 1,
+              "role": "SAD",
+              "selection": {
+                "card": "SDP/KanBan/active/sad.md",
+                "plan": "SDP/Plans/sad.md",
+                "session": "SDP/Sessions/sad.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Prepare bounded SAD fixture",
+                "writablePaths": [
+                  "model-work"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "artifacts"
+                ]
+              },
+              "inputRevision": "aeeff82767f043cb463685b830a44fede7ce97eff24f8f87de49b2d046e71208",
+              "artifacts": [
+                {
+                  "kind": "now",
+                  "path": "artifacts/now.json",
+                  "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+                }
+              ],
+              "returnCriteria": [
+                "Return exact candidate evidence and unresolved questions"
+              ]
+            },
+            "readiness": "prepared",
+            "conditions": [],
+            "dispatch": "unavailable",
+            "designAcceptance": "not-assessed"
+          },
+          {
+            "assignment": {
+              "id": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+              "revision": 2,
+              "state": "prepared",
+              "changeReason": "Fixture owner revises the work",
+              "role": "Master",
+              "selection": {
+                "card": "SDP/KanBan/active/master.md",
+                "plan": "SDP/Plans/master.md",
+                "session": "SDP/Sessions/master.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Prepare bounded Master fixture",
+                "writablePaths": [
+                  "code-v2"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "artifacts"
+                ]
+              },
+              "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+              "artifacts": [
+                {
+                  "kind": "now",
+                  "path": "artifacts/now.json",
+                  "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+                },
+                {
+                  "kind": "target",
+                  "path": "artifacts/target.json",
+                  "sha256": "c83ffc62c3093565ff207d2af76a19ebfa241958a5134fcc4b15619d8858f711"
+                },
+                {
+                  "kind": "task",
+                  "path": "artifacts/task.json",
+                  "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+                },
+                {
+                  "kind": "blueprint",
+                  "path": "artifacts/blueprint.json",
+                  "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+                },
+                {
+                  "kind": "design-disposition",
+                  "path": "artifacts/design-disposition.json",
+                  "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+                }
+              ],
+              "returnCriteria": [
+                "Return exact candidate evidence and unresolved questions"
+              ]
+            },
+            "readiness": "prepared",
+            "conditions": [],
+            "dispatch": "unavailable",
+            "designAcceptance": "not-assessed"
+          }
+        ]
+      }
+    },
+    {
+      "case": "retire",
+      "request": {
+        "schema": "sdp-governance-assignment/2",
+        "projectRef": "pg-preparation-lab",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "operationId": "e23b94f0-a0f3-4770-8236-337d3abee4aa",
+        "expectedGeneration": "e779dc1545d7b96e402fbbe90b2536ec49ccfaca2f40eee0a5fa0610f074eeba",
+        "assignmentId": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+        "expectedRevision": 2,
+        "reason": "Fixture owner no longer wants this prepared work"
+      },
+      "response": {
+        "schema": "sdp-governance-assignment/2",
+        "operationId": "e23b94f0-a0f3-4770-8236-337d3abee4aa",
+        "assignment": {
+          "id": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+          "revision": 3,
+          "state": "retired",
+          "changeReason": "Fixture owner no longer wants this prepared work",
+          "role": "Master",
+          "selection": {
+            "card": "SDP/KanBan/active/master.md",
+            "plan": "SDP/Plans/master.md",
+            "session": "SDP/Sessions/master.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Prepare bounded Master fixture",
+            "writablePaths": [
+              "code-v2"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "artifacts"
+            ]
+          },
+          "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+          "artifacts": [
+            {
+              "kind": "now",
+              "path": "artifacts/now.json",
+              "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+            },
+            {
+              "kind": "target",
+              "path": "artifacts/target.json",
+              "sha256": "c83ffc62c3093565ff207d2af76a19ebfa241958a5134fcc4b15619d8858f711"
+            },
+            {
+              "kind": "task",
+              "path": "artifacts/task.json",
+              "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+            },
+            {
+              "kind": "blueprint",
+              "path": "artifacts/blueprint.json",
+              "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+            },
+            {
+              "kind": "design-disposition",
+              "path": "artifacts/design-disposition.json",
+              "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+            }
+          ],
+          "returnCriteria": [
+            "Return exact candidate evidence and unresolved questions"
+          ]
+        },
+        "dispatch": "unavailable",
+        "designAcceptance": "not-assessed"
+      }
+    },
+    {
+      "case": "retire",
+      "request": {
+        "schema": "sdp-governance-assignment/2",
+        "projectRef": "pg-preparation-lab",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "operationId": "e23b94f0-a0f3-4770-8236-337d3abee4aa",
+        "expectedGeneration": "e779dc1545d7b96e402fbbe90b2536ec49ccfaca2f40eee0a5fa0610f074eeba",
+        "assignmentId": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+        "expectedRevision": 2,
+        "reason": "Fixture owner no longer wants this prepared work"
+      },
+      "response": {
+        "schema": "sdp-governance-assignment/2",
+        "operationId": "e23b94f0-a0f3-4770-8236-337d3abee4aa",
+        "assignment": {
+          "id": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+          "revision": 3,
+          "state": "retired",
+          "changeReason": "Fixture owner no longer wants this prepared work",
+          "role": "Master",
+          "selection": {
+            "card": "SDP/KanBan/active/master.md",
+            "plan": "SDP/Plans/master.md",
+            "session": "SDP/Sessions/master.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Prepare bounded Master fixture",
+            "writablePaths": [
+              "code-v2"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "artifacts"
+            ]
+          },
+          "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+          "artifacts": [
+            {
+              "kind": "now",
+              "path": "artifacts/now.json",
+              "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+            },
+            {
+              "kind": "target",
+              "path": "artifacts/target.json",
+              "sha256": "c83ffc62c3093565ff207d2af76a19ebfa241958a5134fcc4b15619d8858f711"
+            },
+            {
+              "kind": "task",
+              "path": "artifacts/task.json",
+              "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+            },
+            {
+              "kind": "blueprint",
+              "path": "artifacts/blueprint.json",
+              "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+            },
+            {
+              "kind": "design-disposition",
+              "path": "artifacts/design-disposition.json",
+              "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+            }
+          ],
+          "returnCriteria": [
+            "Return exact candidate evidence and unresolved questions"
+          ]
+        },
+        "dispatch": "unavailable",
+        "designAcceptance": "not-assessed"
+      }
+    },
+    {
+      "case": "revise",
+      "request": {
+        "schema": "sdp-governance-assignment/2",
+        "projectRef": "pg-preparation-lab",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "operationId": "1c12763e-2627-41e9-9e7d-c2105385df45",
+        "expectedGeneration": "380c60b354b74edb76e21923c0c88a81ecf8de770623e9b9c8c2eea375271517",
+        "assignmentId": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+        "expectedRevision": 1,
+        "reason": "Fixture owner revises the work",
+        "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+        "assignment": {
+          "outcome": "Prepare bounded Master fixture",
+          "writablePaths": [
+            "code-v2"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "artifacts"
+          ]
+        },
+        "artifacts": [
+          {
+            "kind": "now",
+            "path": "artifacts/now.json",
+            "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+          },
+          {
+            "kind": "target",
+            "path": "artifacts/target.json",
+            "sha256": "c83ffc62c3093565ff207d2af76a19ebfa241958a5134fcc4b15619d8858f711"
+          },
+          {
+            "kind": "task",
+            "path": "artifacts/task.json",
+            "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+          },
+          {
+            "kind": "blueprint",
+            "path": "artifacts/blueprint.json",
+            "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+          },
+          {
+            "kind": "design-disposition",
+            "path": "artifacts/design-disposition.json",
+            "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+          }
+        ],
+        "returnCriteria": [
+          "Return exact candidate evidence and unresolved questions"
+        ]
+      },
+      "response": {
+        "schema": "sdp-governance-assignment/2",
+        "operationId": "1c12763e-2627-41e9-9e7d-c2105385df45",
+        "assignment": {
+          "id": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+          "revision": 2,
+          "state": "prepared",
+          "changeReason": "Fixture owner revises the work",
+          "role": "Master",
+          "selection": {
+            "card": "SDP/KanBan/active/master.md",
+            "plan": "SDP/Plans/master.md",
+            "session": "SDP/Sessions/master.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Prepare bounded Master fixture",
+            "writablePaths": [
+              "code-v2"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "artifacts"
+            ]
+          },
+          "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+          "artifacts": [
+            {
+              "kind": "now",
+              "path": "artifacts/now.json",
+              "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+            },
+            {
+              "kind": "target",
+              "path": "artifacts/target.json",
+              "sha256": "c83ffc62c3093565ff207d2af76a19ebfa241958a5134fcc4b15619d8858f711"
+            },
+            {
+              "kind": "task",
+              "path": "artifacts/task.json",
+              "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+            },
+            {
+              "kind": "blueprint",
+              "path": "artifacts/blueprint.json",
+              "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+            },
+            {
+              "kind": "design-disposition",
+              "path": "artifacts/design-disposition.json",
+              "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+            }
+          ],
+          "returnCriteria": [
+            "Return exact candidate evidence and unresolved questions"
+          ]
+        },
+        "dispatch": "unavailable",
+        "designAcceptance": "not-assessed"
+      }
+    },
+    {
+      "case": "prepare",
+      "request": {
+        "schema": "sdp-governance-assignment/1",
+        "projectRef": "pg-preparation-lab",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "operationId": "a80285a6-bbbe-430f-aec4-74acbaddae9f",
+        "expectedGeneration": "fb81727fdaa4f2126f5a62868e1a1c1d73a8ad5fc551804fbbff198a9e3bd00d",
+        "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+        "role": "Master",
+        "selection": {
+          "card": "SDP/KanBan/active/master.md",
+          "plan": "SDP/Plans/master.md",
+          "session": "SDP/Sessions/master.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "Prepare bounded Master fixture",
+          "writablePaths": [
+            "code"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "artifacts"
+          ]
+        },
+        "artifacts": [
+          {
+            "kind": "now",
+            "path": "artifacts/now.json",
+            "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+          },
+          {
+            "kind": "target",
+            "path": "artifacts/target.json",
+            "sha256": "91b966ac36129db68b959af08e26916f470a943776ffc0e838a3b39e45d35782"
+          },
+          {
+            "kind": "task",
+            "path": "artifacts/task.json",
+            "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+          },
+          {
+            "kind": "blueprint",
+            "path": "artifacts/blueprint.json",
+            "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+          },
+          {
+            "kind": "design-disposition",
+            "path": "artifacts/design-disposition.json",
+            "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+          }
+        ],
+        "returnCriteria": [
+          "Return exact candidate evidence and unresolved questions"
+        ]
+      },
+      "response": {
+        "schema": "sdp-governance-assignment/1",
+        "operationId": "a80285a6-bbbe-430f-aec4-74acbaddae9f",
+        "assignment": {
+          "id": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+          "revision": 1,
+          "role": "Master",
+          "selection": {
+            "card": "SDP/KanBan/active/master.md",
+            "plan": "SDP/Plans/master.md",
+            "session": "SDP/Sessions/master.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Prepare bounded Master fixture",
+            "writablePaths": [
+              "code"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "artifacts"
+            ]
+          },
+          "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+          "artifacts": [
+            {
+              "kind": "now",
+              "path": "artifacts/now.json",
+              "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+            },
+            {
+              "kind": "target",
+              "path": "artifacts/target.json",
+              "sha256": "91b966ac36129db68b959af08e26916f470a943776ffc0e838a3b39e45d35782"
+            },
+            {
+              "kind": "task",
+              "path": "artifacts/task.json",
+              "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+            },
+            {
+              "kind": "blueprint",
+              "path": "artifacts/blueprint.json",
+              "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+            },
+            {
+              "kind": "design-disposition",
+              "path": "artifacts/design-disposition.json",
+              "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+            }
+          ],
+          "returnCriteria": [
+            "Return exact candidate evidence and unresolved questions"
+          ]
+        },
+        "dispatch": "unavailable",
+        "designAcceptance": "not-assessed"
+      }
+    },
+    {
+      "case": "inspect",
+      "request": null,
+      "response": {
+        "schema": "sdp-governance-assignment/2",
+        "generation": "19121246d93da5d28e9f0c0ce80273e9be18eff366a7afe6a3a2adbb556e1d1c",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "scope": "selected-checkout-only",
+        "assignments": [
+          {
+            "assignment": {
+              "id": "1b653e99-f7bc-4ab6-ba32-909113ed52db",
+              "revision": 1,
+              "role": "SAD",
+              "selection": {
+                "card": "SDP/KanBan/active/sad.md",
+                "plan": "SDP/Plans/sad.md",
+                "session": "SDP/Sessions/sad.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Prepare bounded SAD fixture",
+                "writablePaths": [
+                  "model-work"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "artifacts"
+                ]
+              },
+              "inputRevision": "aeeff82767f043cb463685b830a44fede7ce97eff24f8f87de49b2d046e71208",
+              "artifacts": [
+                {
+                  "kind": "now",
+                  "path": "artifacts/now.json",
+                  "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+                }
+              ],
+              "returnCriteria": [
+                "Return exact candidate evidence and unresolved questions"
+              ]
+            },
+            "readiness": "prepared",
+            "conditions": [],
+            "dispatch": "unavailable",
+            "designAcceptance": "not-assessed"
+          },
+          {
+            "assignment": {
+              "id": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+              "revision": 3,
+              "state": "retired",
+              "changeReason": "Fixture owner no longer wants this prepared work",
+              "role": "Master",
+              "selection": {
+                "card": "SDP/KanBan/active/master.md",
+                "plan": "SDP/Plans/master.md",
+                "session": "SDP/Sessions/master.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Prepare bounded Master fixture",
+                "writablePaths": [
+                  "code-v2"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "artifacts"
+                ]
+              },
+              "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+              "artifacts": [
+                {
+                  "kind": "now",
+                  "path": "artifacts/now.json",
+                  "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+                },
+                {
+                  "kind": "target",
+                  "path": "artifacts/target.json",
+                  "sha256": "c83ffc62c3093565ff207d2af76a19ebfa241958a5134fcc4b15619d8858f711"
+                },
+                {
+                  "kind": "task",
+                  "path": "artifacts/task.json",
+                  "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+                },
+                {
+                  "kind": "blueprint",
+                  "path": "artifacts/blueprint.json",
+                  "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+                },
+                {
+                  "kind": "design-disposition",
+                  "path": "artifacts/design-disposition.json",
+                  "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+                }
+              ],
+              "returnCriteria": [
+                "Return exact candidate evidence and unresolved questions"
+              ]
+            },
+            "readiness": "retired",
+            "conditions": [],
+            "dispatch": "unavailable",
+            "designAcceptance": "not-assessed"
+          }
+        ]
+      }
+    },
+    {
+      "case": "revise",
+      "request": {
+        "schema": "sdp-governance-assignment/2",
+        "projectRef": "pg-preparation-lab",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "operationId": "9bb0e75b-fdba-435e-ad75-206f0162be23",
+        "expectedGeneration": "19121246d93da5d28e9f0c0ce80273e9be18eff366a7afe6a3a2adbb556e1d1c",
+        "assignmentId": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+        "expectedRevision": 3,
+        "reason": "Fixture owner revises the work",
+        "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+        "assignment": {
+          "outcome": "Prepare bounded Master fixture",
+          "writablePaths": [
+            "code-v2"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "artifacts"
+          ]
+        },
+        "artifacts": [
+          {
+            "kind": "now",
+            "path": "artifacts/now.json",
+            "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+          },
+          {
+            "kind": "target",
+            "path": "artifacts/target.json",
+            "sha256": "c83ffc62c3093565ff207d2af76a19ebfa241958a5134fcc4b15619d8858f711"
+          },
+          {
+            "kind": "task",
+            "path": "artifacts/task.json",
+            "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+          },
+          {
+            "kind": "blueprint",
+            "path": "artifacts/blueprint.json",
+            "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+          },
+          {
+            "kind": "design-disposition",
+            "path": "artifacts/design-disposition.json",
+            "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+          }
+        ],
+        "returnCriteria": [
+          "Return exact candidate evidence and unresolved questions"
+        ]
+      },
+      "expectedFailure": "invalid_transition:",
+      "stderr": "invalid_transition: retired preparation is terminal; prepare a new assignment\n"
+    },
+    {
+      "case": "inspect",
+      "request": null,
+      "response": {
+        "schema": "sdp-governance-assignment/2",
+        "generation": "19121246d93da5d28e9f0c0ce80273e9be18eff366a7afe6a3a2adbb556e1d1c",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "scope": "selected-checkout-only",
+        "assignments": [
+          {
+            "assignment": {
+              "id": "1b653e99-f7bc-4ab6-ba32-909113ed52db",
+              "revision": 1,
+              "role": "SAD",
+              "selection": {
+                "card": "SDP/KanBan/active/sad.md",
+                "plan": "SDP/Plans/sad.md",
+                "session": "SDP/Sessions/sad.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Prepare bounded SAD fixture",
+                "writablePaths": [
+                  "model-work"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "artifacts"
+                ]
+              },
+              "inputRevision": "aeeff82767f043cb463685b830a44fede7ce97eff24f8f87de49b2d046e71208",
+              "artifacts": [
+                {
+                  "kind": "now",
+                  "path": "artifacts/now.json",
+                  "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+                }
+              ],
+              "returnCriteria": [
+                "Return exact candidate evidence and unresolved questions"
+              ]
+            },
+            "readiness": "prepared",
+            "conditions": [],
+            "dispatch": "unavailable",
+            "designAcceptance": "not-assessed"
+          },
+          {
+            "assignment": {
+              "id": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+              "revision": 3,
+              "state": "retired",
+              "changeReason": "Fixture owner no longer wants this prepared work",
+              "role": "Master",
+              "selection": {
+                "card": "SDP/KanBan/active/master.md",
+                "plan": "SDP/Plans/master.md",
+                "session": "SDP/Sessions/master.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Prepare bounded Master fixture",
+                "writablePaths": [
+                  "code-v2"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "artifacts"
+                ]
+              },
+              "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+              "artifacts": [
+                {
+                  "kind": "now",
+                  "path": "artifacts/now.json",
+                  "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+                },
+                {
+                  "kind": "target",
+                  "path": "artifacts/target.json",
+                  "sha256": "c83ffc62c3093565ff207d2af76a19ebfa241958a5134fcc4b15619d8858f711"
+                },
+                {
+                  "kind": "task",
+                  "path": "artifacts/task.json",
+                  "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+                },
+                {
+                  "kind": "blueprint",
+                  "path": "artifacts/blueprint.json",
+                  "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+                },
+                {
+                  "kind": "design-disposition",
+                  "path": "artifacts/design-disposition.json",
+                  "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+                }
+              ],
+              "returnCriteria": [
+                "Return exact candidate evidence and unresolved questions"
+              ]
+            },
+            "readiness": "retired",
+            "conditions": [],
+            "dispatch": "unavailable",
+            "designAcceptance": "not-assessed"
+          }
+        ]
+      }
+    },
+    {
+      "case": "prepare",
+      "request": {
+        "schema": "sdp-governance-assignment/1",
+        "projectRef": "pg-preparation-lab",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "operationId": "3df9ffba-b243-4886-aa73-fbd25e152f7e",
+        "expectedGeneration": "19121246d93da5d28e9f0c0ce80273e9be18eff366a7afe6a3a2adbb556e1d1c",
+        "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+        "role": "Master",
+        "selection": {
+          "card": "SDP/KanBan/active/master.md",
+          "plan": "SDP/Plans/master.md",
+          "session": "SDP/Sessions/master.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "Prepare bounded Master fixture",
+          "writablePaths": [
+            "code-v2"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "artifacts"
+          ]
+        },
+        "artifacts": [
+          {
+            "kind": "now",
+            "path": "artifacts/now.json",
+            "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+          },
+          {
+            "kind": "target",
+            "path": "artifacts/target.json",
+            "sha256": "c83ffc62c3093565ff207d2af76a19ebfa241958a5134fcc4b15619d8858f711"
+          },
+          {
+            "kind": "task",
+            "path": "artifacts/task.json",
+            "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+          },
+          {
+            "kind": "blueprint",
+            "path": "artifacts/blueprint.json",
+            "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+          },
+          {
+            "kind": "design-disposition",
+            "path": "artifacts/design-disposition.json",
+            "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+          }
+        ],
+        "returnCriteria": [
+          "Return exact candidate evidence and unresolved questions"
+        ]
+      },
+      "response": {
+        "schema": "sdp-governance-assignment/1",
+        "operationId": "3df9ffba-b243-4886-aa73-fbd25e152f7e",
+        "assignment": {
+          "id": "140a68f8-6203-4bfa-b8f8-0cd5840da9fa",
+          "revision": 1,
+          "role": "Master",
+          "selection": {
+            "card": "SDP/KanBan/active/master.md",
+            "plan": "SDP/Plans/master.md",
+            "session": "SDP/Sessions/master.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Prepare bounded Master fixture",
+            "writablePaths": [
+              "code-v2"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "artifacts"
+            ]
+          },
+          "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+          "artifacts": [
+            {
+              "kind": "now",
+              "path": "artifacts/now.json",
+              "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+            },
+            {
+              "kind": "target",
+              "path": "artifacts/target.json",
+              "sha256": "c83ffc62c3093565ff207d2af76a19ebfa241958a5134fcc4b15619d8858f711"
+            },
+            {
+              "kind": "task",
+              "path": "artifacts/task.json",
+              "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+            },
+            {
+              "kind": "blueprint",
+              "path": "artifacts/blueprint.json",
+              "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+            },
+            {
+              "kind": "design-disposition",
+              "path": "artifacts/design-disposition.json",
+              "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+            }
+          ],
+          "returnCriteria": [
+            "Return exact candidate evidence and unresolved questions"
+          ]
+        },
+        "dispatch": "unavailable",
+        "designAcceptance": "not-assessed"
+      }
+    },
+    {
+      "case": "inspect",
+      "request": null,
+      "response": {
+        "schema": "sdp-governance-assignment/2",
+        "generation": "9d2e77535553dafed7886f63cb483515c7a70b614b3a3e54a8b181247db58d4f",
+        "checkoutId": "88b96187-b605-435c-9fba-3e8b5ccffe9a",
+        "scope": "selected-checkout-only",
+        "assignments": [
+          {
+            "assignment": {
+              "id": "140a68f8-6203-4bfa-b8f8-0cd5840da9fa",
+              "revision": 1,
+              "role": "Master",
+              "selection": {
+                "card": "SDP/KanBan/active/master.md",
+                "plan": "SDP/Plans/master.md",
+                "session": "SDP/Sessions/master.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Prepare bounded Master fixture",
+                "writablePaths": [
+                  "code-v2"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "artifacts"
+                ]
+              },
+              "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+              "artifacts": [
+                {
+                  "kind": "now",
+                  "path": "artifacts/now.json",
+                  "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+                },
+                {
+                  "kind": "target",
+                  "path": "artifacts/target.json",
+                  "sha256": "c83ffc62c3093565ff207d2af76a19ebfa241958a5134fcc4b15619d8858f711"
+                },
+                {
+                  "kind": "task",
+                  "path": "artifacts/task.json",
+                  "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+                },
+                {
+                  "kind": "blueprint",
+                  "path": "artifacts/blueprint.json",
+                  "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+                },
+                {
+                  "kind": "design-disposition",
+                  "path": "artifacts/design-disposition.json",
+                  "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+                }
+              ],
+              "returnCriteria": [
+                "Return exact candidate evidence and unresolved questions"
+              ]
+            },
+            "readiness": "prepared",
+            "conditions": [],
+            "dispatch": "unavailable",
+            "designAcceptance": "not-assessed"
+          },
+          {
+            "assignment": {
+              "id": "1b653e99-f7bc-4ab6-ba32-909113ed52db",
+              "revision": 1,
+              "role": "SAD",
+              "selection": {
+                "card": "SDP/KanBan/active/sad.md",
+                "plan": "SDP/Plans/sad.md",
+                "session": "SDP/Sessions/sad.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Prepare bounded SAD fixture",
+                "writablePaths": [
+                  "model-work"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "artifacts"
+                ]
+              },
+              "inputRevision": "aeeff82767f043cb463685b830a44fede7ce97eff24f8f87de49b2d046e71208",
+              "artifacts": [
+                {
+                  "kind": "now",
+                  "path": "artifacts/now.json",
+                  "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+                }
+              ],
+              "returnCriteria": [
+                "Return exact candidate evidence and unresolved questions"
+              ]
+            },
+            "readiness": "prepared",
+            "conditions": [],
+            "dispatch": "unavailable",
+            "designAcceptance": "not-assessed"
+          },
+          {
+            "assignment": {
+              "id": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+              "revision": 3,
+              "state": "retired",
+              "changeReason": "Fixture owner no longer wants this prepared work",
+              "role": "Master",
+              "selection": {
+                "card": "SDP/KanBan/active/master.md",
+                "plan": "SDP/Plans/master.md",
+                "session": "SDP/Sessions/master.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Prepare bounded Master fixture",
+                "writablePaths": [
+                  "code-v2"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "artifacts"
+                ]
+              },
+              "inputRevision": "b7059db66d295f6559822fe239671c9f4450ae5e854ff6c00b1dd2966d151154",
+              "artifacts": [
+                {
+                  "kind": "now",
+                  "path": "artifacts/now.json",
+                  "sha256": "29a7f4c2b3a6d2c6338efc1ac5984d8b7b454e87fe83d5f6fe1847ac231d7b2f"
+                },
+                {
+                  "kind": "target",
+                  "path": "artifacts/target.json",
+                  "sha256": "c83ffc62c3093565ff207d2af76a19ebfa241958a5134fcc4b15619d8858f711"
+                },
+                {
+                  "kind": "task",
+                  "path": "artifacts/task.json",
+                  "sha256": "1edc06aa42d4b067f1606ee7f21bbe7838456c6b24d4d1ac4430fad3f51752fe"
+                },
+                {
+                  "kind": "blueprint",
+                  "path": "artifacts/blueprint.json",
+                  "sha256": "3c8a47bc8bed27904ba1b8a0efc7737205dc651b811649cdab19b2332606c782"
+                },
+                {
+                  "kind": "design-disposition",
+                  "path": "artifacts/design-disposition.json",
+                  "sha256": "d35fa85954e0fa04790dd72811cbbeb0d7df54baf16beca9ef4de6aa6444a31c"
+                }
+              ],
+              "returnCriteria": [
+                "Return exact candidate evidence and unresolved questions"
+              ]
+            },
+            "readiness": "retired",
+            "conditions": [],
+            "dispatch": "unavailable",
+            "designAcceptance": "not-assessed"
+          }
+        ]
+      }
+    }
+  ],
+  "lifecycle": {
+    "originalID": "29c2a5fc-8ae6-40eb-99fb-461b678ab920",
+    "replacementID": "140a68f8-6203-4bfa-b8f8-0cd5840da9fa",
+    "retiredRevision": 3,
+    "profile": "sdp-project-governance-state/0.3"
+  }
+}

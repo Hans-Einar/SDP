@@ -85,7 +85,7 @@ func (s *Service) Start(caller Caller, q StartRequest) (Result, error) {
 			return out, fail("conflict", "request already has a run; retry the original operation or inspect it")
 		}
 	}
-	if len(state.Prepared) > 0 {
+	if hasPreparedClaim(state) {
 		for _, p := range q.Assignment.WritablePaths {
 			if strings.ContainsAny(p, "*?[]") {
 				return out, fail("conflict", "nonliteral legacy scope requires reconciliation with prepared work")

@@ -46,11 +46,19 @@ func (s *Service) load() (snapshot, string, error) {
 	if e = decode(b, &state); e != nil {
 		return empty, "", fail("reconciliation_required", e.Error())
 	}
-	if state.Schema != Schema && state.Schema != preparationStateSchema {
+	if state.Schema != Schema && state.Schema != preparationStateSchema && state.Schema != preparationLifecycleStateSchema {
 		return empty, "", fail("incompatible_profile", "unsupported persisted state")
 	}
-	if (state.Schema == Schema && (state.Prepared != nil || state.PreparationReceipts != nil)) || (state.Schema == preparationStateSchema && (state.Prepared == nil || state.PreparationReceipts == nil)) {
-		return empty, "", fail("incompatible_profile", "assignment preparation requires operational profile 0.2")
+	if (state.Schema == Schema && (state.Prepared != nil || state.PreparationReceipts != nil)) || (state.Schema != Schema && (state.Prepared == nil || state.PreparationReceipts == nil)) {
+		return empty, "", fail("incompatible_profile", "assignment preparation requires operational profile 0.2 or 0.3")
+	}
+	for id, p := range state.Prepared {
+		if p.ID != id || !uuidPattern.MatchString(id) || p.Revision == 0 ||
+			(p.State != "" && p.State != "prepared" && p.State != "retired") ||
+			(p.Revision == 1 && (p.State != "" || p.ChangeReason != "")) ||
+			(p.Revision > 1 && (state.Schema != preparationLifecycleStateSchema || p.State == "" || !validPreparationReason(p.ChangeReason))) {
+			return empty, "", fail("reconciliation_required", "invalid persisted preparation lifecycle")
+		}
 	}
 	if state.Root != s.root || state.Project != s.project {
 		return empty, "", fail("unauthorized", "state belongs to another checkout")
