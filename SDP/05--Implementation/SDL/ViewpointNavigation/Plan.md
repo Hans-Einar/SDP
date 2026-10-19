@@ -276,3 +276,19 @@ VP05 index and isolated named-mode overview are implemented and verified through
 producer/native/PDF workflows. [N8](N8.md) retains exact evidence and limitations.
 VP07 and original details are preserved. Broader scope remains; N5–N8 are stacked
 candidates, without merge/release/install.
+
+## N9 selection — Session0007 T005
+
+Owner continuation selects VP06 complete activity decomposition, separate
+dependencies and source-claimed status/commitment registers. BranchPolicy:
+sdp/xfmd-vp06-overview from 3b3d935, milestone commit. N9 design precedes code.
+Verify producer/native/PDF and actual empty XFMD plan; preserve detail identities
+and authored models. No merge/release/install; broader plan remains active.
+
+### N9 outcome
+
+VP06 complete activity decomposition, separate prerequisites and source-claimed
+status/commitment registers are implemented and verified. [N9](N9.md) records
+candidate and evidence. Empty actual XFMD plan is explicit; no implementation
+absence is inferred from missing addresses. N5–N9 remain unmerged candidates.
+Broader scope remains active; VP08 channels/scenario overview is proposed next.

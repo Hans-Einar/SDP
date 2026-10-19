@@ -104,3 +104,14 @@ No inheritance, sufficiency, provider, consumption or runtime-flow inference.
 Preserve existing detail IDs, VP07 targets and composed source freshness. Reject
 unknown modes and other partial-overview filters; add no count-only truncation.
 Consumers must retain viewpoint as well as mode when identifying mode rows.
+
+## VP06 delivery-plan overview — N9
+
+Advertise VP06 overviewTarget for all Activities with refines, a separate explicit
+depends-on graph, source-linked status and addresses/owns/delivers/illustrates
+registers. Retain isolated/statusless activities and unaddressed Functionality
+inventory. Implementation status is a source claim, never completion evidence;
+no inherited status/dependencies, scheduling, dates or scenario execution is
+inferred. Empty cases are explicit. Keep existing detail and implementation.md
+behavior; reject partial overview filters, preserve composed-source freshness
+and add no count-only truncation or native/schema changes.
