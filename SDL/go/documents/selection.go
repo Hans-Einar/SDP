@@ -46,6 +46,8 @@ func Selected(ctx context.Context, v *viewpoint.Views, q viewpoint.Query, r Rend
 			text += s.ArchitectureOverviewContext()
 		} else if q.Viewpoint == "VP03" {
 			text += s.ResponsibilityOverviewContext()
+		} else if q.Viewpoint == "VP04" {
+			text += s.InterfaceOverviewContext()
 		} else if q.Viewpoint == "VP07" {
 			text += s.FeatureOverviewContext(q.Mode)
 		} else {

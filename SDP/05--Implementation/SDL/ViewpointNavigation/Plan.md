@@ -245,3 +245,19 @@ VP03 complete architecture annotations and responsibility/capability registers
 are implemented and verified through producer and native XFMD. [N6](N6.md)
 records the exact candidate and evidence. N6 stacks on N5; neither is merged or
 released. Remaining viewpoint/publication work stays open under the same plan.
+
+## N7 selection — Session0007 T003, 2026-10-19
+
+Owner continuation selects VP04 interface consumption. BranchPolicy:
+sdp/xfmd-vp04-overview stacked on N6 63da7ae; CommitPolicy: scoped milestone.
+Complete interface inventory with explicit consumes dependency graph/register,
+no inferred provider/transport/necessity; preserve ordinary VP04 table selection.
+N7 design selects the projection before code, with full producer/native evidence.
+No authored model changes or merge/release/install; broader plan remains active.
+
+### N7 outcome
+
+VP04 complete interface/consumer dependency diagram and source-linked register
+are implemented and verified through producer/native/PDF workflows. [N7](N7.md)
+records candidate, tests and the preserved keyboard semantics. Other viewpoint
+and large-publication obligations remain. N5/N6/N7 are stacked, unmerged candidates.

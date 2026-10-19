@@ -6,7 +6,9 @@ import (
 )
 
 // HasOverview advertises implemented projections only. It never generates output.
-func HasOverview(vp string) bool { return vp == "VP01" || vp == "VP02" || vp == "VP03" || vp == "VP07" }
+func HasOverview(vp string) bool {
+	return vp == "VP01" || vp == "VP02" || vp == "VP03" || vp == "VP04" || vp == "VP07"
+}
 
 // overview selects the complete validated inventory, not a union of detail views.
 func (v *Views) overview(q Query) (*Views, error) {
@@ -15,6 +17,9 @@ func (v *Views) overview(q Query) (*Views, error) {
 	}
 	if q.Viewpoint == "VP03" {
 		return v.responsibilityOverview(), nil
+	}
+	if q.Viewpoint == "VP04" {
+		return v.interfaceOverview(), nil
 	}
 	if q.Viewpoint == "VP07" {
 		return v.featureOverview(q)

@@ -80,3 +80,16 @@ Keep source evidence, old detail targets and complete-selection freshness checks
 Architecture annotations and linked registers may summarize explicit fact paths
 without adding language relations. Verify semantic, composed-source and native
 consumer behavior; large-format publication remains a separate obligation.
+
+## VP04 interface overview — N7
+
+VP04 advertises the optional overviewTarget with projection=overview. It must
+retain every declared interface, every explicit consumes fact and its consumer
+(including Containers). Unconsumed interfaces remain visible. Dashed consumes
+arrows describe design-time use, not observed calls or required availability.
+No provider, Channel, transport, call ordering or mode necessity is inferred.
+Source-linked inventory/register accompanies the unchanged Interface use table.
+Empty inventories are explicit. Other structural units belong to VP02. Existing
+sourceLinks/composed-source freshness rules apply; no schema change or new
+count-only cap. Complete overview rejects mode/focus/relation/diagram/traversal
+filters and preserves ordinary VP04 table selection.

@@ -464,3 +464,16 @@ No feature/allocation inference, schema change or count-only truncation. Empty
 inventories are explicit. Original per-capability/provider detail targets remain
 unchanged; mode/focus/relation/diagram/traversal filters are rejected. Existing
 composed-source snapshots, exact links and freshness rules apply.
+
+## VP04 interface overview — N7
+
+VP04 advertises the optional overviewTarget with projection=overview. It must
+retain every declared interface, every explicit consumes fact and its consumer
+(including Containers). Unconsumed interfaces remain visible. Dashed consumes
+arrows describe design-time use, not observed calls or required availability.
+No provider, Channel, transport, call ordering or mode necessity is inferred.
+Source-linked inventory/register accompanies the unchanged Interface use table.
+Empty inventories are explicit. Other structural units belong to VP02. Existing
+sourceLinks/composed-source freshness rules apply; no schema change or new
+count-only cap. Complete overview rejects mode/focus/relation/diagram/traversal
+filters and preserves ordinary VP04 table selection.
