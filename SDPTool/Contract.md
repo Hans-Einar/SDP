@@ -477,3 +477,14 @@ Empty inventories are explicit. Other structural units belong to VP02. Existing
 sourceLinks/composed-source freshness rules apply; no schema change or new
 count-only cap. Complete overview rejects mode/focus/relation/diagram/traversal
 filters and preserves ordinary VP04 table selection.
+
+## VP05 mode dependency overview — N8
+
+VP05 overviewTarget without mode returns a declared-mode index, counts and source
+links, never a union dependency graph. Advertise an existing-style overview-mode
+target for every declared mode. With mode, select all Capabilities and the exact
+mode's requires facts/Interfaces. Empty capabilities/requirements are explicit.
+No inheritance, sufficiency, provider, consumption or runtime-flow inference.
+Preserve existing detail IDs, VP07 targets and composed source freshness. Reject
+unknown modes and other partial-overview filters; add no count-only truncation.
+Consumers must retain viewpoint as well as mode when identifying mode rows.

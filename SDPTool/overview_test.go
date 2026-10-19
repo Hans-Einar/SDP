@@ -30,7 +30,7 @@ func TestOverviewTargetGenerationAndFreshness(t *testing.T) {
 	var overview *Target
 	for _, n := range tree.Nodes {
 		if n.OverviewTarget != nil {
-			if (!strings.HasSuffix(n.ID, "/VP01") && !strings.HasSuffix(n.ID, "/VP02") && !strings.HasSuffix(n.ID, "/VP03") && !strings.HasSuffix(n.ID, "/VP04") && !strings.HasSuffix(n.ID, "/VP07")) || n.Target.URI == n.OverviewTarget.URI {
+			if (!strings.HasSuffix(n.ID, "/VP01") && !strings.HasSuffix(n.ID, "/VP02") && !strings.HasSuffix(n.ID, "/VP03") && !strings.HasSuffix(n.ID, "/VP04") && !strings.HasSuffix(n.ID, "/VP05") && !strings.HasSuffix(n.ID, "/VP07")) || n.Target.URI == n.OverviewTarget.URI {
 				t.Fatal(n)
 			}
 			if strings.HasSuffix(n.ID, "/VP01") {
@@ -112,7 +112,7 @@ Work allocated-to Remote in mode Online.
 			action = n.OverviewTarget
 			logical = action != nil
 		}
-		if strings.Contains(n.ID, "/overview-mode/") {
+		if strings.Contains(n.ID, "/VP07/overview-mode/") {
 			action = n.Target
 			modes++
 		}
@@ -178,8 +178,8 @@ func TestOverviewTargetsPreserveComposedSourceProvenance(t *testing.T) {
 			targets[n.OverviewTarget.URI] = n.OverviewTarget
 		}
 	}
-	// VP02–VP04 are additional implemented overviews, not replacements.
-	if len(targets) != 5 {
+	// VP02–VP05 are additional implemented overviews, not replacements.
+	if len(targets) != 6 {
 		t.Fatal("missing composed overview targets", targets)
 	}
 	outputs := map[string][]byte{}

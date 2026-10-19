@@ -24,7 +24,7 @@ func Selected(ctx context.Context, v *viewpoint.Views, q viewpoint.Query, r Rend
 		text += "Selection: `" + string(j) + "`.\n\n"
 	}
 	b.Files["selection.json"] = append(j, '\n')
-	if len(s.Diagrams) == 0 {
+	if len(s.Diagrams) == 0 && !(q.Projection == "overview" && q.Viewpoint == "VP05") {
 		text += "No diagrams match this selection. This does not imply the concept is impossible or absent from the system.\n\n"
 	}
 	for _, d := range s.Diagrams {
@@ -48,6 +48,8 @@ func Selected(ctx context.Context, v *viewpoint.Views, q viewpoint.Query, r Rend
 			text += s.ResponsibilityOverviewContext()
 		} else if q.Viewpoint == "VP04" {
 			text += s.InterfaceOverviewContext()
+		} else if q.Viewpoint == "VP05" {
+			text += v.ModeOverviewContext(q.Mode)
 		} else if q.Viewpoint == "VP07" {
 			text += s.FeatureOverviewContext(q.Mode)
 		} else {

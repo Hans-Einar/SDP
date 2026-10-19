@@ -261,3 +261,18 @@ VP04 complete interface/consumer dependency diagram and source-linked register
 are implemented and verified through producer/native/PDF workflows. [N7](N7.md)
 records candidate, tests and the preserved keyboard semantics. Other viewpoint
 and large-publication obligations remain. N5/N6/N7 are stacked, unmerged candidates.
+
+## N8 selection — Session0007 T004
+
+Owner continuation selects VP05 mode-index and isolated per-mode dependencies.
+BranchPolicy: sdp/xfmd-vp05-overview from N7 85d62f2; milestone commit. N8 design
+precedes code, preserving original details, VP07 overlays and authored models.
+Verify producer/native/PDF workflows and actual XFMD's empty NormalDesktop scope.
+No merge/release/install; broader plan and cards remain active.
+
+### N8 outcome
+
+VP05 index and isolated named-mode overview are implemented and verified through
+producer/native/PDF workflows. [N8](N8.md) retains exact evidence and limitations.
+VP07 and original details are preserved. Broader scope remains; N5–N8 are stacked
+candidates, without merge/release/install.

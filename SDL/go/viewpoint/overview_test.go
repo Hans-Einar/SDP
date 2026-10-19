@@ -48,7 +48,7 @@ func TestVP01OverviewCompleteAndSeparate(t *testing.T) {
 			t.Fatal("overview generated eagerly")
 		}
 	}
-	for _, q := range []Query{{Viewpoint: "VP05", Projection: "overview"}, {Viewpoint: "VP01", Projection: "bad"}, {Viewpoint: "VP01", Projection: "overview", Focus: "Goal0"}, {Viewpoint: "VP01", Projection: "overview", Relations: []string{"pursues"}}, {Viewpoint: "VP01", Projection: "overview", Depth: 1}, {Viewpoint: "VP01", Projection: "overview", Direction: "out"}, {Viewpoint: "VP01", Projection: "overview", Diagram: "VP01-Goal0"}} {
+	for _, q := range []Query{{Viewpoint: "VP06", Projection: "overview"}, {Viewpoint: "VP01", Projection: "bad"}, {Viewpoint: "VP01", Projection: "overview", Focus: "Goal0"}, {Viewpoint: "VP01", Projection: "overview", Relations: []string{"pursues"}}, {Viewpoint: "VP01", Projection: "overview", Depth: 1}, {Viewpoint: "VP01", Projection: "overview", Direction: "out"}, {Viewpoint: "VP01", Projection: "overview", Diagram: "VP01-Goal0"}} {
 		if _, e := v.Select(q); e == nil {
 			t.Fatal("ignored overview filter", q)
 		}
