@@ -69,3 +69,14 @@ slices separate and preserve exact source provenance. Logical structure must not
 be represented as deployment, Functionality ownership or runtime communication.
 Empty structural inventories are explicit; unsupported filters cannot turn a
 partial graph into a claimed complete overview. See ViewpointNavigation/N5.md.
+
+### VP03 overview acceptance (N6)
+
+The optional VP03 overview must retain all structural declarations and all declared
+responsibilities/capabilities. Distinguish immediate ownership, realization
+contribution and explicit capability provision; do not infer one from another or
+substitute Features. Show isolated declarations and missing providers/contributors.
+Keep source evidence, old detail targets and complete-selection freshness checks.
+Architecture annotations and linked registers may summarize explicit fact paths
+without adding language relations. Verify semantic, composed-source and native
+consumer behavior; large-format publication remains a separate obligation.

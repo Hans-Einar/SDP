@@ -30,7 +30,7 @@ func TestOverviewTargetGenerationAndFreshness(t *testing.T) {
 	var overview *Target
 	for _, n := range tree.Nodes {
 		if n.OverviewTarget != nil {
-			if (!strings.HasSuffix(n.ID, "/VP01") && !strings.HasSuffix(n.ID, "/VP02") && !strings.HasSuffix(n.ID, "/VP07")) || n.Target.URI == n.OverviewTarget.URI {
+			if (!strings.HasSuffix(n.ID, "/VP01") && !strings.HasSuffix(n.ID, "/VP02") && !strings.HasSuffix(n.ID, "/VP03") && !strings.HasSuffix(n.ID, "/VP07")) || n.Target.URI == n.OverviewTarget.URI {
 				t.Fatal(n)
 			}
 			if strings.HasSuffix(n.ID, "/VP01") {
@@ -178,8 +178,8 @@ func TestOverviewTargetsPreserveComposedSourceProvenance(t *testing.T) {
 			targets[n.OverviewTarget.URI] = n.OverviewTarget
 		}
 	}
-	// VP02 is now an additional implemented overview, not a replacement.
-	if len(targets) != 3 {
+	// VP02 and VP03 are additional implemented overviews, not replacements.
+	if len(targets) != 4 {
 		t.Fatal("missing composed overview targets", targets)
 	}
 	outputs := map[string][]byte{}

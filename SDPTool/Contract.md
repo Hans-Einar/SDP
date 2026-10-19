@@ -450,3 +450,17 @@ Empty architecture is explicit. No allocation/ownership/deployment inference;
 no new schema or fixed diagram-count cap. Original VP02 roots/parent detail targets
 remain unchanged. Like VP01, no mode/focus/relation/diagram/traversal filters are
 accepted for this complete overview. Existing sourceLinks/freshness rules apply.
+
+## VP03 responsibilities overview — N6
+
+VP03 advertises the optional overviewTarget using projection=overview. Complete
+System/Container/Unit decomposition carries sorted Rxx responsibility annotations
+on immediate owners, Cxx contribution annotations derived from owns plus realizes,
+and separate Cxx offered-capability annotations from explicit provides. The linked
+register retains every Functionality and Capability; unplaced capabilities remain
+standalone nodes. Realization means contribution, never completeness or verification;
+provides does not imply realizes. Every annotation retains exact supporting facts.
+No feature/allocation inference, schema change or count-only truncation. Empty
+inventories are explicit. Original per-capability/provider detail targets remain
+unchanged; mode/focus/relation/diagram/traversal filters are rejected. Existing
+composed-source snapshots, exact links and freshness rules apply.

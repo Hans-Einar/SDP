@@ -1,0 +1,42 @@
+{
+  "base": "cdf4437471c83042b035090ec99dcc898158c273",
+  "branch": "sdp/xfmd-vp03-overview",
+  "files": {
+    "SDL/go/documents/selection.go": "53cd04bf5661e5bbe3a57f46dd21ef80529fd13df6103527e27b16f21d519912",
+    "SDL/go/viewpoint/overview.go": "a519b32253b5193a2ccb0a6f8ad417819fe510e1570c26d486144b636655fab4",
+    "SDL/go/viewpoint/overview_test.go": "37f5b615474328e2b9fa0670190fa0c7135e5742ca31305517b426b2704c84ba",
+    "SDL/go/viewpoint/responsibility_context.go": "05920b58719b4c9fc32a1a21f9dd601998d0e1aaa0847a5fb4f7101b9963307a",
+    "SDL/go/viewpoint/responsibility_overview.go": "50047368a5646de9f00c05428e1ca397b2eb4ff82bd0d1179232aacd7b5e92db",
+    "SDL/go/viewpoint/responsibility_overview_test.go": "416a6517c0f89ba233bb5bc245cbfffd5e1b296d59637f6d5156c90b738dfea8",
+    "SDPTool/Contract.md": "6f6920ea9ee883b0ebd9def6bdf7927297179c3341ad461a5fd94fae49834faf",
+    "SDPTool/overview_actions_test.go": "248e250f1b6686e95c24e0beeaf9b9e322fc469114dc1c1af3fd3c0a1cccd5e2",
+    "SDPTool/overview_test.go": "0e87d887cef1c0955564764f928d97416b3e21bb25f7fcb00e00962bf1fffa4f",
+    "SDPTool/responsibility_overview_test.go": "dc2ccde2867f9ccac91077fd9638ebdb39939acb27119655999f41074953d80d"
+  },
+  "binary": {
+    "path": "/tmp/xfmd-n6-sdptool",
+    "sha256": "367ddabe6bb0e5ce927ac3dfe2e2d5802eef6aff58acae8aeb64c7ecec8c22d0"
+  },
+  "consumerTest": {
+    "path": "/home/warloc/git/xfmd-sdl-navigation/tests/gui/SdpOverviewGuiTest.cpp",
+    "sha256": "69d451b2aa5a6c0166202bff32722a855e09785a2ff1df544945300f2f97721a"
+  },
+  "nativeTestBinarySha256": "ea46cf00b1a5507db9d354b2bec15c782e43c3e7899822c06ff9152269652472",
+  "consumerBaseEvidence": "../N4-001/candidate.json; product unchanged, native test extended",
+  "actualModel": {
+    "nodes": 23,
+    "edges": 19,
+    "responsibilities": 28,
+    "pdfLabels": "all structural names and all 28 R keys present; six long responsibility identifiers wrap across table lines, inspected separately",
+    "wrappedResponsibilityNames": [
+      "ApplicationPreferences",
+      "GeneratedDocumentNavigation",
+      "MarkdownInterpretation",
+      "MermaidInterpretation",
+      "SourceAnchorMapping",
+      "TypographyAndDrawing"
+    ],
+    "sourceLinksChecked": 154,
+    "noCapabilitiesExplicit": true
+  }
+}

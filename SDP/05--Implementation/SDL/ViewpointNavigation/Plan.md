@@ -227,3 +227,21 @@ VP02's complete logical overview and source-linked register are implemented and
 verified through producer and native XFMD. See [N5](N5.md) and its candidate record.
 N3j/N4 is on main 5ca0e90; N5 remains its own milestone for later integration.
 Other viewpoints and previously recorded publication/resource obligations remain.
+
+## N6 execution — XFMD Session0007 T002, 2026-10-19
+
+Owner continuation selects VP03 responsibilities and capabilities. BranchPolicy:
+sdp/xfmd-vp03-overview stacked on N5 cdf4437; CommitPolicy: scoped milestone.
+[N6](N6.md) selects the architecture annotation/register projection before code.
+Keep owns, realizes and provides distinct, retain all inventories and proof links,
+and preserve detail views. Concurrent preflight finds no PG/coordination overlap.
+Production models remain held. Verify full modules, native generation/rendering
+and actual XFMD responsibilities without invented capabilities. No merge/release
+or install is authorized by this continuation.
+
+### N6 outcome
+
+VP03 complete architecture annotations and responsibility/capability registers
+are implemented and verified through producer and native XFMD. [N6](N6.md)
+records the exact candidate and evidence. N6 stacks on N5; neither is merged or
+released. Remaining viewpoint/publication work stays open under the same plan.
