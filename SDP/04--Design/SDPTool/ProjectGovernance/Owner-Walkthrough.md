@@ -1,6 +1,6 @@
 # ProjectGovernance — owner walkthrough and feedback
 
-Snapshot: 2026-10-19, Session0007 T025. The development branch now includes
+Snapshot: 2026-10-19, Session0007 T026. The development branch now includes
 activation of an approved implementation package and a real isolated code trial; this is not a released feature set. This guide explains the existing
 [orchestration design](Orchestration.md) and its delivered boundaries. It does not
 introduce new approval requirements or record owner acceptance.
@@ -62,7 +62,8 @@ implementation task; it does not demonstrate that coordination workflow.
 | Revise or retire preparation | Revises the same assignment with retained history, or retires it and releases its unlaunched local claim | Retirement is not completion or cancellation of a running agent |
 | Check the proposed design | Checks the assignment against the canonical Blueprint, actual NOW/TARGET contents, task and permitted paths | A successful check establishes a consistent review basis, not owner acceptance |
 | Record a design decision for this new route | A local controller adapter displays the proposal and reads an explicit decision and comment; it retains earlier decisions and checks current applicability | Local attributed input only; conversation capture and the final UI remain unfinished |
-| Activate approved Master implementation | Creates one ready run from the exact current approved design; the existing controller can execute it with bound MCP context | Native code trial passed; report submission was refused by the selected approval policy. SAD launch, leader conversation and inbox remain unfinished |
+| Automatic reports and local report inbox | A fresh automatic-mode trial stores the report without a separate prompt; the inbox shows submitted text and current coverage | Reports await verification; consumption, attention/replies and automatic phase continuation are not yet delivered |
+| Activate approved Master implementation | Creates one ready run from the exact current approved design; the existing controller can execute it with bound MCP context | Native code and automatic-report trial passed with explicit automatic mode. SAD launch and leader conversation remain unfinished |
 
 The technical design check can say **current** or **blocked**. “Current” means the
 checked package still matches its referenced inputs. “Blocked” gives a reason, such
@@ -137,7 +138,8 @@ and its [architecture proposal](../../../03--Architecture/ProjectGovernance/Atte
 describe local execution, a proposed hub and a responsive PWA. ChatGPT MCP Events
 is an optional documented possibility requiring an actual integration trial. These
 are design directions, not features of the current lab. SDP_Analyzer is not reused.
-The local report/inbox path comes first under KB052; the broader hub/client has a
+The local report/inbox path comes first under KB052; the owner assigns the hub and
+web application to a separate project. The broader hub/client has a
 separate follow-on scope. Existing evidence/review gates remain.
 
 ## Where your feedback is useful now
@@ -165,3 +167,20 @@ implementation evidence to give that feedback.
 
 This Markdown document is the reading entry point for XFMD. No new XFMD approval
 control or native PG dashboard is supplied by this documentation update.
+
+
+## Inspect the automatic report — T026
+
+From /home/warloc/git/pg_lab run `./inbox` for a readable report or `./inbox --json`
+for the machine view. This reads a separate synthetic preview and starts no agent.
+The final native trial changed the two permitted Go files, passed external tests,
+and submitted one report automatically. The assignment is now verifying; that is
+not owner acceptance or completed project work. The earlier ./implementation and
+./design-review helpers retain their earlier previews and may show different states.
+
+This is the first local report inbox, not the final communication interface. The next
+local increment is an attention question with a correlated reply; leader acknowledgement
+and automatic continuation follow. Hub/webapp and notifications belong to the separate
+project confirmed by the owner. Feedback on report readability and the distinction
+between submitted/verified/accepted is useful, but no new approval is required to
+continue the already authorized local development.

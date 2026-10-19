@@ -352,3 +352,37 @@ legacy/new exclusion in both directions, failed-acquisition cleanup and subproce
 exit. These are not evidence of two real native agents, a responsive Project Leader,
 a report inbox or phase continuation. Existing native reporting under never remains
 refused; this change does not alter host policies or answer approval prompts.
+
+## PGL3-C2 automatic reporting and report inbox
+
+For a **new** authorized launch, add `--reporting automatic`. The default `manual`
+retains the prior policy. Automatic mode sets only the thread-local MCP policy
+`sdp_governance.tools.run_transition.approval_mode = "approve"`; the launch payload
+records the selected mode. `--approvals` and all other tools retain their previous
+behavior. Attach/recover cannot retrofit this launch policy. The tool's capabilities
+remain report/fail/scope-change for the current assignment, not approval or dispatch.
+
+A current agent report can cross only receipt-proven tool/message observations
+with unchanged decision state. Steering, approval requests, disconnect/reconnect,
+lifecycle and source changes still invalidate it. This avoids making a completed
+`run_read` observation invalidate its own next report. Controller CAS stays strict.
+
+```sh
+sdp-controller inbox --project ROOT --state DIR
+sdp-controller inbox --project ROOT --state DIR --run UUID --json
+```
+
+The [inbox schema](../governance/inbox.schema.json) describes a read-only projection
+of immutable report receipts. Operation IDs identify messages; reported revisions
+and text remain historical even if a run later fails or is canceled. Current state
+and source coverage are separate. Exact retries do not duplicate a report. Empty
+inspection creates no store. The generation pins the operational snapshot; filesystem
+coverage is checked separately and is not an atomic snapshot of source files.
+
+This local view includes report text and should be handled as project data. Terminal
+rendering quotes control characters. It does not claim author authentication beyond
+existing local controller/capability binding, remote delivery, leader consumption,
+acceptance or automatic continuation. The current store's 1024-receipt capacity still
+applies; this is not evidence of multi-hour throughput. Structured attention/replies
+remain subsequent local work. Hub/web/mobile implementation belongs to a separate
+project under the owner's T026 boundary.

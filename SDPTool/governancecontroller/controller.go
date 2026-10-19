@@ -24,10 +24,10 @@ type Host interface {
 }
 
 type Controller struct {
-	SkillPaths                                                         []string
-	Service                                                            *governance.Service
-	Host                                                               Host
-	Root, StateDir, MCPBinary, Epoch, Sandbox, Approvals, HostIdentity string
+	SkillPaths                                                                    []string
+	Service                                                                       *governance.Service
+	Host                                                                          Host
+	Root, StateDir, MCPBinary, Epoch, Sandbox, Approvals, Reporting, HostIdentity string
 }
 
 // Retry only bookkeeping rejected before mutation. Never retry a host effect.
@@ -85,6 +85,13 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 	if c.MCPBinary == "" || (c.Sandbox != "read-only" && c.Sandbox != "workspace-write") {
 		return result, fmt.Errorf("explicit MCP executable and sandbox required")
 	}
+	reporting := c.Reporting
+	if reporting == "" {
+		reporting = "manual"
+	}
+	if reporting != "manual" && reporting != "automatic" {
+		return result, fmt.Errorf("unsupported reporting mode")
+	}
 	mode, e := c.Host.AccountMode(ctx)
 	if e != nil {
 		return result, e
@@ -113,7 +120,7 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 		instructions = strings.ReplaceAll(instructions, "SDP Maintenance assignment", "SDP implementation assignment")
 		instructions = "You are the Master for the exact approved SDP implementation package. Use the included design basis, task constraints, Session and ImplementationPlan. Do not change NOW/TARGET, broaden scope or treat host completion as approval. " + instructions
 	}
-	payload, e := json.Marshal(map[string]any{"approvedDesign": approvedDesign, "ownerInput": text, "assignment": r.Run.Assignment, "context": coverage, "runId": runID, "instructions": instructions, "sandbox": c.Sandbox, "approvalMode": c.Approvals})
+	payload, e := json.Marshal(map[string]any{"approvedDesign": approvedDesign, "ownerInput": text, "assignment": r.Run.Assignment, "context": coverage, "runId": runID, "instructions": instructions, "sandbox": c.Sandbox, "approvalMode": c.Approvals, "reportingMode": reporting})
 	if e != nil {
 		return r, e
 	}
@@ -140,6 +147,9 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 		}
 	}()
 	config := map[string]any{"sdp_governance": map[string]any{"command": c.MCPBinary, "args": []string{"--project", c.Root, "--state", c.StateDir, "--run", runID, "--attempt", v.AttemptID, "--epoch", c.Epoch}}}
+	if reporting == "automatic" {
+		config["sdp_governance"].(map[string]any)["tools"] = map[string]any{"run_transition": map[string]any{"approval_mode": "approve"}}
+	}
 	thread, e := c.Host.StartWorkThread(ctx, c.Root, c.Sandbox, instructions, c.Approvals, config)
 	if e != nil {
 		return r, e

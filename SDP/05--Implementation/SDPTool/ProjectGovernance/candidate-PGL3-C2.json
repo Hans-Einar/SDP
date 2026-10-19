@@ -1,0 +1,85 @@
+{
+  "baseline": "3e407d698e8d0349c632947e085dd6c3c7470b05",
+  "integratedMain": "5ca0e90f82c5da449d529906b4f753f39a907cb4",
+  "candidateKind": "baseline plus exact source hashes; evidence precedes milestone commit",
+  "scope": "PGL3-C2 automatic bound reports, observation-only revision proof and read-only report inbox; no acceptance, leader consumption or remote project implementation",
+  "sourceFiles": {
+    "SDPTool/cmd/sdp-controller/inbox.go": "cb19833c34abfa78fc7c3727eb5253384f48d52be52372c5b66a252675d97fc1",
+    "SDPTool/cmd/sdp-controller/inbox_test.go": "bd397d196cae53a28ab57eeaef79abc10250e2836d19be4831d11467cdf4b6b2",
+    "SDPTool/cmd/sdp-controller/main.go": "8d3fd68a4b97545ab0bd0b17c120915ea3d8e369a5a85c708a7ce4e7dfddf993",
+    "SDPTool/cmd/sdp-controller/session.go": "c010aafca10247f1084464c0f3b0d231878706884539f9d5b80311dee01523d3",
+    "SDPTool/governance/inbox.go": "03ae2ea96779e991f1a5a466c29dbf6773105849162559fb12bc29989fdee99f",
+    "SDPTool/governance/inbox.schema.json": "dcb1ccde345ffbd7028f1ce23217df4b299cd700d087e98ae2fa2bd56f049c1c",
+    "SDPTool/governance/inbox_test.go": "df90fc3e4f166c60c2ceea8aa1b2a57a4d382bc0b189e2d5b511bff0bf70dacd",
+    "SDPTool/governance/report_revision.go": "f8ccd667c39f74baa02996e9bd8a5b92e4063489bd025cb2a406d967cd63a85d",
+    "SDPTool/governance/run.go": "c80f4a49bf57cda1d14adfc6e650a283a942f94d2effd7b6b1424ba6e6c0ed6d",
+    "SDPTool/governancecontroller/README.md": "d07039d57a0d7118f6f35a94dfd084c144459f0bc756ebb0776500ce7c5c8561",
+    "SDPTool/governancecontroller/controller.go": "ff35907bb42811e24b93423cd66c7a7339337b55640ea965dba41fd73a52d89c",
+    "SDPTool/governancecontroller/reporting_test.go": "6de734770a7bc0664d85dd0175d7a6f9d3f1b8768c2fccc5da9bd1bfef43507a",
+    "SDPTool/labs/project-governance/README.md": "e91cc34e444353abd454a15712088069932f5fb4a9014efc55f075ff7ada1efb",
+    "SDPTool/labs/project-governance/activation_trial.py": "f7aa38bda3fa62e712e4ae98c4135837041720b2a9cdc36d9a650d121e668250"
+  },
+  "fileSetDigest": "07854c060c012ac893e98dddd9feaf7baec06a77f86c480b104c4e22a2ebfe8c",
+  "goVersion": "go version go1.27.1 linux/amd64",
+  "checks": {
+    "sdptool-tests.log": {
+      "result": "passed",
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool\t66.169s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprints\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprintstate\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t(cached)\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp\t[no test files]\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdptool\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t59.095s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t39.748s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancehost\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t11.855s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/install\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/model\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/presentation\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/projecthistory\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/tools/profile\t(cached)\n",
+      "sha256": "9b31022e8d76d0817ec3375abfb8d3ceda2ecce53fba0d4476d76b179366aa07"
+    },
+    "race.log": {
+      "result": "passed",
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t144.133s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t119.596s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t21.491s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t1.077s\n",
+      "sha256": "aae7dd47eba620277e20361641c45c2191fbf29503f23ed043705a802502109c"
+    },
+    "vet.log": {
+      "result": "passed",
+      "output": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "native-final.log": {
+      "result": "passed",
+      "output": "PASS: real provider/CLI journey, stable review digest, uncommitted TARGET drift, no writes or approval.\nStarting native controller trial in /home/warloc/git/pg_lab/previews/pgl3-c2-final\nPASS: approved implementation activation through native; stale and duplicate launch refused; protected files preserved.\n",
+      "sha256": "cd4fc37fb7df913b5c90d3123a1c5de2acb7d0453f7a713c4c561ac4b7bb893e"
+    },
+    "management.log": {
+      "result": "passed",
+      "output": "PASS: 67 cards, 45 management records, 4 lineage operations, 620 events; schema/history/metadata/placement/grouping\n",
+      "sha256": "52aba25c9fe21feb5f332b09d791f35bcae2b63bad1752f78487c40f78d02a53"
+    },
+    "toolkit.log": {
+      "result": "passed",
+      "output": "SDP Toolkit validation passed\n",
+      "sha256": "5e9d1353c22f090c8b066ba39da56ff229fbc1b07a7e12e21bb8ac9ffbb9e3ad"
+    },
+    "integrity": {
+      "result": "passed",
+      "localMarkdownLinks": 244,
+      "canonicalLedgerPrefixesPreserved": true,
+      "inboxWireObjects": 3,
+      "exactSourceHashes": true
+    }
+  },
+  "nativeTrial": {
+    "path": "/home/warloc/git/pg_lab/previews/pgl3-c2-final",
+    "evidenceSHA256": "eb99c90c6bb623aa5595678f5d1e7a37bad23aa12243025bc0850c96b5ce774c",
+    "controllerSHA256": "f82a6a25bdd21328bff34f86107875c77a0822c80c2d1ec202b03b1ad4f7fca2",
+    "mcpSHA256": "a041efb8f4fe73ff4b06466342ff2903043e2f195bbd680544afcce8f58724c9",
+    "hostVersion": "0.161.0",
+    "reportCount": 1,
+    "state": "verifying",
+    "scriptedFixtureOwnerNotActualAcceptance": true
+  },
+  "originalLabEntriesPreserved": 176,
+  "helper": {
+    "path": "/home/warloc/git/pg_lab/inbox",
+    "sha256": "63e9a709ab8f9c1f6b3dca51e455ae5c0db617edb4501e4de1265e4878a37aff"
+  },
+  "limitations": [
+    "No independent review or owner acceptance",
+    "No leader inbox acknowledgement or automatic continuation",
+    "No attention question/reply delivery yet",
+    "No native parallel or multi-hour evidence; 1024 receipt store capacity remains",
+    "Hub/webapp belong to a separate project; no merge/release"
+  ]
+}

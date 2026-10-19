@@ -135,7 +135,10 @@ Do not disable global approval controls or claim a callback bypasses a host refu
 Add a typed attention request and reply using the same local authority and correlation
 rules; make it usable locally before adding a network dependency.
 
-KB054 then selects a separate bounded plan: two enrolled machines and projects,
+Owner T026 assigns the hub and web application to a separate project. KB054 remains
+the SDP-side handoff and future adapter coordination record until an external
+repository/board is selected. That separate project selects its own bounded plan:
+two enrolled machines and projects,
 a persistent hub inbox and read-only overview first, followed by authenticated replies
 and targeted controls, then PWA installation and push. ChatGPT integration is an
 optional parallel investigation and not a prerequisite. Large-project unattended
@@ -151,3 +154,12 @@ Verify one task waiting while independent authorized tasks progress; denied/miss
 push must leave a usable inbox. Real desktop and mobile tests must establish installed
 behavior, notification opt-in and the link back to the exact question. These are
 future acceptance criteria, not claims about the current CLI pilot.
+
+## Confirmed project boundary — T026
+
+The owner explicitly separates the hub and web application from SDP/SDPTool. Local
+execution, report persistence, attention requests/replies and the eventual transport
+adapter belong here. Hub storage, authentication, multi-device aggregation, web/mobile
+views and push delivery belong to the external project. The architecture above is
+a handoff proposal for those components, not authorization to build them in SDP.
+No new repository, service identity, deployment or public network protocol is selected.

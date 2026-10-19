@@ -302,7 +302,7 @@ sequenced with those workstreams rather than copied into a second engine.
 | --- | --- | --- | --- |
 | PGL1 | Readable/JSON overview of all registered work from existing operational state; lab inspection without launching work | Scenario 5 subset; empty store, multiple runs, stale records, historical host/skill/tool facts, no writes | delivered; [bounded evidence](Evidence-PGL1.md) |
 | PGL2 | Prepare and inspect distinct SAD/implementation assignments; stale design or conflicting scope refuses dispatch eligibility | Scenario 2 guards; current authority, exact bundle revisions, explicit cross-worktree claim boundary, retry/CAS tests | in-progress; [C1 preparation delivered](Evidence-PGL2-C1.md), [C2a revision/retirement delivered](Evidence-PGL2-C2a.md), [C2b provider checks delivered](Evidence-PGL2-C2b.md), [C2c local decision adapter delivered](Evidence-PGL2-C2c.md), [C2d activation and native code trial delivered](Evidence-PGL2-C2d.md); reporting/coordination remain PGL3 |
-| PGL3 | Responsive Project Leader plus two bounded Masters through the trusted controller; durable report inbox and same-Session phase continuation | Scenarios 1, 3, 4; real host execution, no duplicate launch after uncertain reply, delayed report versus new steering | in-progress; [C1 per-run isolation delivered](Evidence-PGL3-C1.md); leader/inbox/native parallel evidence pending |
+| PGL3 | Responsive Project Leader plus two bounded Masters through the trusted controller; durable report inbox and same-Session phase continuation | Scenarios 1, 3, 4; real host execution, no duplicate launch after uncertain reply, delayed report versus new steering | in-progress; [C1 per-run isolation delivered](Evidence-PGL3-C1.md), [C2 automatic reports and read-only inbox delivered](Evidence-PGL3-C2.md); attention/replies, leader consumption/continuation and native parallel evidence pending |
 | PGL4 | Direct SAD/Master conversation and project panel; revision-bound ModelGovernance/Blueprint handoff | Scenarios 2, 5; real TARGET change stales dependent implementation; roles/tools/children/freshness evidence; owner development trial | planned |
 | PGL5 | Integrated recovery/evidence review and revision-bound remote Steering package | All six scenarios; independent review and selected online-host evidence; PGI4/5 obligations retained | planned |
 
@@ -480,3 +480,41 @@ ChatGPT MCP Events adapter. Follow-on runtime/hosting needs its own bounded plan
 registration does not silently enlarge PLAN-SDP-0018's completion criteria or revive
 SDP_Analyzer. Existing branch/commit policy, remaining PGL/PGI gates and no-merge/
 no-release boundaries remain. PM204 records the plan refinement, not implementation.
+
+## PGL3-C2 — Automatic reporting and local report inbox
+
+T026 owner confirms that the hub and web application belong to a separate project.
+Continue local PG in SDP/SDPTool. KB054 is the coordination/handoff record until an
+external project has a concrete destination; it does not authorize hub implementation
+here. The current branch and milestone commit policies remain unchanged.
+
+Select one bounded increment: an explicit automatic reporting mode for new controller
+launches using the pinned host's documented per-tool policy, plus a read-only durable
+report inbox projected from immutable transition receipts. Keep existing launches
+compatible and all assignment, source, epoch and owner-decision checks intact. Reports
+are submissions for verification, not acceptance, delivery acknowledgement or permission
+to launch more work. No new persistence profile, network service or global host setting
+is needed. Structured attention/replies and actual leader consumption remain subsequent
+local work. Verify policy isolation, persistence, duplicate reports, stale authority,
+unchanged approval refusal behavior and a fresh native implementation/report trial.
+
+[Preflight](preflight-PGL3-C2.json) records the scoped worktree boundary. The native
+trial must be separate from the previously refused report; retain that historical
+failure. No merge, release or independent-review claim is authorized by this increment.
+
+
+## PGL3-C2 result — T026
+
+[Evidence](Evidence-PGL3-C2.md), [candidate](candidate-PGL3-C2.json) and the
+[native trial](trial-PGL3-C2-native.json) establish automatic bound report submission
+and a durable read-only inbox. The first incorrect host-policy mapping remains
+[failed evidence](trial-PGL3-C2-failed.json). The corrected candidate passed actual
+Go implementation, external tests and automatic report delivery into verifying;
+no approval request was observed and no acceptance is inferred. Full tests/race/vet
+pass. PM205 / KB378–379 record delivery and the separate hub/webapp project boundary.
+
+PGL3 remains in progress. Next local delivery is typed attention/reply with current
+revision binding, then leader consumption and responsive continuation. Receipt
+capacity (currently 1024), restart/recovery and native parallel/multi-hour evidence
+must be resolved before claiming sustained unattended operation. PGL2 scope closure/
+SAD dispatch, PGL4/5 and the retained PGI gates remain. No merge/release is selected.

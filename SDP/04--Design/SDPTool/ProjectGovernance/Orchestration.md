@@ -23,12 +23,15 @@ feedback, not rejection or acceptance. The old lab demonstrates one Maintenance
 Master and cannot demonstrate the new coordination model. Keep its actual state and
 candidate intact. Do not require further old-lab acceptance before selected KB052 work.
 
-Current runtime has one checkout-local run store, run/attempt/host identities,
+The T014 baseline had one checkout-local run store, run/attempt/host identities,
 controller-only launch, restricted worker MCP, replay receipts, exact skill inputs
-and correlated recovery. Both controller leases are checkout-wide. Master context,
-coverage and routine selection are Maintenance-only; the role validator accepts
-only Master. Simply changing a prompt or launching multiple current controllers
-would not implement the proposed system. No native child mapping is proven.
+and correlated recovery. At that baseline both leases were checkout-wide, context and routine selection
+were Maintenance-only, and the role validator accepted only Master. Subsequent
+PGL2 deliveries add SAD/Master preparation and approved Master implementation;
+PGL3-C1 adds per-run leases and C2 adds automatic reports/read-only inbox. See the
+[current evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C2.md).
+Responsive leader consumption, SAD dispatch and native parallel/child mapping
+remain unproven. Prompt changes alone do not implement those remaining contracts.
 
 ## Selected architecture and alternatives
 
@@ -391,3 +394,42 @@ share one message identity and answer disposition. This is proposed architecture
 not an implemented remote product or revival of obsolete SDP_Analyzer. Select its
 own bounded execution plan after the local contract; retain this plan's existing
 completion boundaries. No production deployment or account changes occur here.
+
+## PGL3-C2 — Automatic report delivery and local inbox (2026-10-19)
+
+New launches may explicitly select automatic reporting. The controller records that
+selection in the launch payload and configures only the assignment-bound
+`sdp_governance.run_transition` tool with `approval_mode = "approve"`. The tool retains
+its truthful write annotation and only report/fail/scope-change capabilities. This
+uses the pinned 0.161.0 host's supported configuration; it does not change global
+approval settings, answer arbitrary approval requests or accept a submitted result.
+Existing launches retain their previous policy unless automatic reporting is selected.
+
+A report submitted from a current running agent may tolerate intervening tool/message
+observations only if every immutable revision proves unchanged decision state. It
+must not skip approval requests, owner inputs, lifecycle transitions, reconnects or
+source/approval drift. Controller calls retain strict revision comparison. Exact
+operation retry remains idempotent.
+
+The local report inbox projects report transition receipts, retaining operation ID,
+reported revision, input revision and text separately from current run state and
+coverage. Reading does not create or mutate state. Reports survive process restart
+and later run transitions; repeated reads/retries do not create duplicate messages.
+This initial view has no consumed/accepted state, leader acknowledgement or automatic
+continuation. Structured attention questions/replies are the next local contract.
+
+T026 owner boundary: the hub, web/mobile application and notification delivery belong
+to a separate project. SDP/SDPTool owns local execution, durable reports and attention,
+and its eventual adapter contract. KB054 retains the external coordination handoff;
+no destination repository or implementation is invented.
+
+Host configuration references: [official MCP configuration](https://learn.chatgpt.com/docs/extend/mcp)
+and [pinned 0.161.0 configuration schema](https://github.com/openai/codex/blob/rust-v0.161.0/codex-rs/core/config.schema.json).
+
+The initial C2 native experiment mapped automatic reporting to host `auto`; the host
+correctly refused the write under `never`. Pinned host implementation distinguishes
+annotation-based `auto` from per-tool `approve`. The owner's T025 automatic reporting
+selection is represented by `approve` for this bound tool only on a fresh launch.
+No rejected operation is replayed, existing attempt policy changed or arbitrary tool
+preapproved. The failed trial remains separate evidence. Source:
+[pinned tool approval semantics](https://github.com/openai/codex/blob/rust-v0.161.0/codex-rs/core/src/mcp_tool_call.rs).

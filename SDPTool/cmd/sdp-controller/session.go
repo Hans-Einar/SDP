@@ -30,6 +30,7 @@ func ownerCommand(args []string) error {
 	mcp := f.String("mcp-binary", "", "sdp-mcp executable")
 	message := f.String("message", "", "file with exact owner input for launch")
 	approvals := f.String("approvals", "never", "never or ask for per-request SDP MCP approval")
+	reporting := f.String("reporting", "manual", "manual or automatic assignment-bound reporting (run only)")
 	sandbox := f.String("sandbox", "read-only", "read-only or explicitly authorized workspace-write")
 	var skillPaths []string
 	f.Func("skill", "project-relative enabled SKILL.md to invoke (repeatable; run only)", func(v string) error { skillPaths = append(skillPaths, v); return nil })
@@ -45,6 +46,9 @@ func ownerCommand(args []string) error {
 	}
 	if *approvals != "never" && *approvals != "ask" {
 		return fmt.Errorf("unsupported approval mode")
+	}
+	if (*reporting != "manual" && *reporting != "automatic") || (*reporting != "manual" && args[0] != "run") {
+		return fmt.Errorf("--reporting requires run and manual or automatic")
 	}
 	p, e := sdptool.Discover(*root)
 	if e != nil {
@@ -121,7 +125,7 @@ func ownerCommand(args []string) error {
 		return e
 	}
 	defer client.Close()
-	ctl := &governancecontroller.Controller{SkillPaths: skillPaths, Service: service, Host: client, Root: p.Root, StateDir: dir, MCPBinary: *mcp, HostIdentity: client.HostIdentity, Epoch: client.Epoch, Sandbox: *sandbox, Approvals: *approvals}
+	ctl := &governancecontroller.Controller{SkillPaths: skillPaths, Service: service, Host: client, Root: p.Root, StateDir: dir, MCPBinary: *mcp, HostIdentity: client.HostIdentity, Epoch: client.Epoch, Sandbox: *sandbox, Approvals: *approvals, Reporting: *reporting}
 	if args[0] == "recover" {
 		r, e := service.Read(*run)
 		if e != nil {

@@ -25,7 +25,7 @@
 | KB-SDP-040 | Proposal | backlog | [KanBan terminal navigator](backlog/%23040--Proposal--KanBan-TUI.md) |
 | KB-SDP-042 | Proposal | backlog | [Goal-oriented Sessions, roadmaps and turn history](backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md) |
 | KB-SDP-043 | Proposal | backlog | [Event-derived Session roadmaps and turn timelines](backlog/%23043--Proposal--Event-derived-session-timelines.md) |
-| KB-SDP-054 | Proposal | backlog | [PG attention mailbox and remote coordination](backlog/%23054--Proposal--PG-attention-and-remote-coordination.md) |
+| KB-SDP-054 | Proposal | backlog | [PG attention and separate hub/webapp project handoff](backlog/%23054--Proposal--PG-attention-and-remote-coordination.md) |
 | KB-SDP-053 | Proposal | completed | [Discoverable SDPTool actions for native clients](completed/%23053--Proposal--Discoverable-SDPTool-actions.md) |
 | KB-SDP-018 | Study | canceled | [Audit Toolkit responsibilities, organization and distribution](canceled/%23018--Study--Toolkit-audit-and-organization.md) |
 | KB-SDP-001 | Proposal | completed | [Project structure, Template and studies per phase](completed/%23001--Proposal--Project-structure.md) |

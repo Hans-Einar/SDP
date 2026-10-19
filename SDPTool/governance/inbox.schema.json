@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:sdp:project-governance:inbox:1",
+  "title": "Local report receipt projection; no consumption or acceptance state",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "projectRef": {
+      "type": "string"
+    },
+    "checkoutId": {
+      "type": "string"
+    },
+    "generation": {
+      "type": "string"
+    },
+    "schema": {
+      "const": "sdp-governance-inbox/1"
+    },
+    "inspectedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scope": {
+      "const": "report-receipts-in-selected-checkout"
+    },
+    "consumption": {
+      "const": "not-tracked"
+    },
+    "reports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "runId": {
+            "type": "string"
+          },
+          "inputRevision": {
+            "type": "string"
+          },
+          "outcome": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "currentState": {
+            "type": "string"
+          },
+          "reportedRevision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "currentRevision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "coverage": {
+            "enum": [
+              "known",
+              "stale",
+              "unavailable"
+            ]
+          },
+          "conditions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "selection": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "card": {
+                "type": "string"
+              },
+              "plan": {
+                "type": "string"
+              },
+              "session": {
+                "type": "string"
+              },
+              "authority": {
+                "type": "string"
+              },
+              "step": {
+                "type": "string"
+              }
+            },
+            "required": []
+          }
+        },
+        "required": [
+          "id",
+          "runId",
+          "inputRevision",
+          "outcome",
+          "text",
+          "currentState",
+          "reportedRevision",
+          "currentRevision",
+          "coverage",
+          "conditions",
+          "selection"
+        ]
+      }
+    }
+  },
+  "required": [
+    "projectRef",
+    "checkoutId",
+    "generation",
+    "schema",
+    "inspectedAt",
+    "scope",
+    "consumption",
+    "reports"
+  ]
+}

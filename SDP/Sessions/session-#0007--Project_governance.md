@@ -2,10 +2,10 @@
 
 ## Session roadmap
 
-Latest recorded turn: T025 — owner selects automatic reporting and unattended work
-within mandate, with attention requests for decisions. Register KB054 for a proposed
-self-hosted multi-machine mailbox/overview and responsive installable web client.
-Next remains local PGL3 reporting/inbox; no hub/app implementation is claimed.
+Latest recorded turn: T026 — hub/webapp belong to a separate project. Local PGL3-C2
+now verifies automatic bound reports and a durable read-only inbox with a real agent.
+The first incorrect host-policy trial is retained as failed evidence. Next is local
+attention/reply, leader consumption and continuation; the Session remains active.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
 
 ```mermaid
@@ -26,7 +26,7 @@ gantt
 | completed | S1 | Recover skills, studies, card dependencies and ownership | Owner request, 2026-10-03 | Assessment below; RGS2 reused |
 | completed | S2 | Design the smallest common routing, run, Session and client contract | Owner continuation, T002 | [PGD1 / PLAN-SDP-0017](../04--Design/SDPTool/ProjectGovernance/Plan.md), contract, acceptance cases and protocol inspection |
 | waiting | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C6 verified; owner reports PGI3-U1 trial performed; native mapping remains unverified; KB052 now prioritized |
-| active | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation, C2a lifecycle, C2b provider checks and C2c decisions and C2d activation/native code trial delivered; reporting/inbox/conversation gates next |
+| active | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation, C2a lifecycle, C2b provider checks and C2c decisions and C2d activation/native code trial delivered; PGL3-C2 automatic reporting/read-only inbox delivered; attention, leader conversation and continuation remain |
 | planned | S4 | Verify interruption, resume, scope change and evidence disposition | S3 candidate | Evidence required before wider use |
 | planned | S5 | Project recorded activity into the KB043 timeline | Reliable S3/S4 capture and selected rendering scope | Full timeline remains deferred |
 
@@ -36,9 +36,9 @@ gantt
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-19 |
-| Current step | S6 / KB052; C2d activation/native code and PGL3-C1 per-run isolation delivered; leader/report integration pending |
-| Proposed next step | PGL3 supported automatic reporting, durable local inbox and revision-bound attention/replies; KB054 follow-on hub/client remains backlog |
-| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension |
+| Current step | S6 / KB052; PGL3-C2 automatic reports/read-only inbox delivered; attention and leader integration pending |
+| Proposed next step | PGL3 revision-bound attention/replies, leader consumption and continuation; KB054 retains separate-project hub/client handoff |
+| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension; T026 assigns hub/webapp to a separate project and continues local SDP/SDPTool work |
 
 ## Goal and ownership
 
@@ -1143,3 +1143,80 @@ Toolkit validation, 224 relative document links and preserved canonical ledger b
 prefixes pass. This turn changes documentation/authority records only; no new product
 test or independent review is claimed. Event references: KB376 (new KB054), KB377
 (KB052 refinement), PM204 (plan) and the distinct design record in Traceability.
+
+## T026 — Local reporting; separate hub/webapp project
+
+Date: 2026-10-19. Manual work summary; exact root host IDs/timing unavailable. Owner
+confirms the hub and web application are a separate project and asks to continue
+what belongs in SDP and SDPTool. Preserve KB054 as the external handoff/adapter
+record until a destination exists. Local PG execution, inbox and attention remain
+KB052 / PLAN-SDP-0018 work; no hub deployment or client implementation is selected.
+
+Recovered Session0007 and its current branch at 3e407d6; fetched origin and inspected
+thirteen worktrees, retaining the prior scoped isolation. Reused SDP entrypoint,
+document workflow, Master, Architect, Planning, Worker and verification/traceability
+routines. OpenAI Docs research inspected local adapter code first, then the official
+MCP configuration and pinned 0.161.0 schema. Both expose a per-tool approval mode.
+No global settings, account, model or installed host replacement is selected.
+
+Selected PGL3-C2: explicit automatic assignment-bound reports for new launches and
+a read-only durable report inbox. Existing receipt storage supplies stable identity
+and historical text; current coverage/state remain separate. Automatic reports are
+not acceptance or permission to launch another task. Structured attention/reply,
+leader consumption and coordinated continuation remain subsequent work. Candidate/test outcomes are recorded below.
+
+During the turn, the owner reports "Selected model is at capacity. Please try a
+different model." despite redeeming a reset in another chat. Official OpenAI guidance
+says Work/Codex share allowance and a full reset refreshes covered account limits;
+it is not chat-local. A prior official service incident used that capacity message,
+so the wording alone does not establish exhausted quota. The owner's account/reset
+state is not visible here. Suggested checking Settings/Usage for the same account/
+workspace; no model, account or global settings were changed. The PG trial did not
+show this capacity error. This is steering/status discussion within T026, not a new
+Session or cancellation of the authorized local work.
+
+The first fresh automatic-report experiment failed: host `auto` means annotation-
+based approval classification, not preapproval. The real agent finished the code
+change but its report was refused under `never`; the failed trial is retained.
+Pinned source establishes `approve` as the explicit per-tool setting matching the
+owner's T025 reporting selection. Corrected only that fresh-launch mapping; no old
+operation was replayed, existing attempt policy changed or arbitrary tool approved.
+A separate fresh candidate trial checks the corrected mapping and actual delivery.
+
+Reset/capacity discussion sources: [OpenAI Work/Codex allowance and resets](https://help.openai.com/en/articles/20001516-managing-usage-with-gpt-6-astra-in-work-and-codex)
+and [historical capacity service incident](https://status.openai.com/incidents/0pqnp2gq).
+The historical incident does not establish a current outage or diagnose this account.
+
+
+### T026 delivery outcome
+
+[PGL3-C2 evidence](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C2.md)
+and its exact source/binary candidate record establish automatic reports and the
+read-only local inbox. The corrected final native trial fixed the bounded Go task,
+passed project and external behavior checks, preserved all other project files,
+and stored exactly one report with no observed approval request. Run state is
+verifying, coverage known and host attempt completed; work is not accepted. The
+original 176 owner project/runtime entries and earlier previews are unchanged.
+New ./inbox reads the separate final preview and starts no model or decision.
+
+Full SDPTool tests, affected race tests and vet pass. Existing explicit approval
+accept/decline/cancel guards remain. The report revision exception skips only proven
+tool/message observations; controller CAS, steering, approval, disconnect and source
+checks are retained. Inbox reads survive reopen and later cancellation, retain text
+with current freshness separately, deduplicate exact retries and quote terminal text.
+No new persistence profile, global policy/account/model change or hub was introduced.
+
+Updated current plan, walkthrough, KB052 and external-handoff KB054. PM205 / KB378–379
+record management disposition; separate Traceability entries link source and evidence.
+S6/PGL3 and Session stay active. Next: typed local attention/reply, leader consumption
+and responsive continuation, addressing capacity/recovery before sustained-hour claims.
+SAD dispatch, scope closure, native parallel and retained integrated review/Steering
+remain. No independent review, owner acceptance, main merge or release is claimed.
+This is the work outcome, not a captured final response.
+
+Final record checks: management replay passes with 67 cards, 45 records and 620
+events; Toolkit validation, 244 relative document links, three actual inbox JSON
+objects, exact source hashes and canonical ledger byte-prefix preservation pass.
+The thirteen-worktree closeout scan finds no allocated event-ID collision. Shared
+history may still require reconciliation during future integration. Milestone changes
+are prepared for the authorized branch commit/push and draft PR56 update.

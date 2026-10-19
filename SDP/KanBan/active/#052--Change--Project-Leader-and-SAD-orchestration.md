@@ -9,7 +9,7 @@
 | created | 2026-10-09T12:08:50.581137+00:00 |
 | source | Owner Session0011 T004 role definition and T005 KanBan handoff request |
 | Systems | SDPTOOL |
-| next_review | PGL3 automatic local reporting/inbox and attention replies; remote extension registered in KB054 |
+| next_review | PGL3 attention/replies and leader inbox consumption/continuation; separate hub/webapp handoff in KB054 |
 | PlanId | PLAN-SDP-0018 |
 | tags | project-leader, steering, SAD, master, MCP, app-server, coordination |
 
@@ -141,3 +141,13 @@ card. [KB054](../backlog/%23054--Proposal--PG-attention-and-remote-coordination.
 registers the proposed self-hosted multi-machine hub and web/PWA client separately.
 See the [architecture proposal](../../03--Architecture/ProjectGovernance/Attention-and-Remote-Coordination.md).
 CardState stays in-progress; runtime completion/evidence remain unfulfilled.
+
+
+2026-10-19 / T026: Owner separates hub/webapp into another project and continues local
+SDP/SDPTool. [PGL3-C2 evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C2.md)
+records explicit automatic reports and the durable read-only inbox. Final native
+code/report trial passes; first incorrect host-policy mapping is retained as failed
+evidence. Run remains verifying, not accepted. Next: typed attention/reply, leader
+consumption/continuation and native parallel evidence; receipt capacity/recovery must
+support the later multi-hour claim. CardState remains in-progress. KB378 records this
+bounded delivery; KB379 records the separate-project handoff refinement in KB054.

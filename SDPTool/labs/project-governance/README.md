@@ -250,3 +250,25 @@ The installed owner-lab helper `./implementation` reads the separate C2d preview
 It displays task, run state, host state, changed files and the recorded behavioral
 check. `--json` exposes current run inspection. It starts no agents and records no
 decision. An ended host turn is not a completed or accepted governance assignment.
+
+## Automatic reporting and inbox — PGL3-C2
+
+Use a fresh activation-trial destination and add `--reporting automatic` to the
+native command above. This explicitly selects the supported thread-local policy
+for the assignment's report/fail/scope-change tool. It does not change installed
+host settings. The trial requires an actual report, state `verifying`, exactly one
+inbox message and no observed approval request, in addition to the code/preservation
+checks. A missing report fails this trial. Earlier manual-policy trials remain valid
+historical records with their narrower claims.
+
+```sh
+sdp-controller inbox --project /absolute/new-trial/project --state /absolute/new-trial/runtime/state
+sdp-controller inbox --project /absolute/new-trial/project --state /absolute/new-trial/runtime/state --json
+```
+
+The separate owner-lab `./inbox` helper reads the C2 preview after it is prepared.
+It starts no agent and accepts no work. Reports include the submitted summary and
+revision alongside current state/coverage; they are durable review inputs. There
+is no leader acknowledgement or attention-response interaction in this increment.
+The hub and web application belong to a separate project. Their absence does not
+prevent inspecting this local result.

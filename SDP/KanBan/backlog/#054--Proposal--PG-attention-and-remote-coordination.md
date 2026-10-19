@@ -9,7 +9,7 @@
 | Systems | SDPTOOL |
 | created | 2026-10-18T22:33:35.255668+00:00 |
 | source | Owner Session0007 T025: autonomous work, call attention and self-hosted multi-machine oversight |
-| next_review | After KB052 PGL3 local report/inbox contract; select a bounded hub/client plan |
+| next_review | Select external project destination and hub/client handoff; local attention/replies remain KB052 |
 | tags | project-governance, autonomy, attention, mailbox, remote-control, web, mobile, pwa |
 
 ## Requested outcome and ownership
@@ -31,9 +31,10 @@ public protocol, hosting or deployment is selected by card registration alone.
 [PLAN-SDP-0018](../../05--Implementation/SDPTool/ProjectGovernance/Plan.md) keep the
 local leader, report/inbox, authority and continuation implementation. The owner's
 choice of automatic reporting applies there immediately as product direction.
-This card owns the extension across machines and its web/mobile delivery. Select
-its execution plan explicitly; do not silently make the entire remote service a
-new completion requirement for the existing local Session milestones.
+Owner T026 assigns the hub and web application to a separate project. This card
+retains the cross-project handoff and SDPTool adapter requirements until that project
+has an actual destination. Do not implement the hub or client in this repository or
+make their delivery a completion requirement for the existing local Session milestones.
 
 [KB038](../active/%23038--Proposal--Codex-app-server-development-client.md) remains
 the client/runtime foundation. [KB043](%23043--Proposal--Event-derived-session-timelines.md)
@@ -70,3 +71,8 @@ local worktrees (highest prior SDP card 53). Recorded owner automation decision 
 proposed local-runtime / self-hosted-hub / responsive-PWA boundaries. Official WebKit,
 MDN and OpenAI sources establish platform possibilities, not tested PG integration.
 Existing KB052 execution continues; implementation of this extension is not started.
+
+2026-10-19 / T026: Owner confirms hub/webapp are a separate project and asks to
+continue SDP/SDPTool. Local reporting, inbox, attention/reply and execution stay in
+KB052. External repository/board identifiers are not yet selected; retain this card
+as a backlog handoff rather than inventing a Ref destination or starting hub work.

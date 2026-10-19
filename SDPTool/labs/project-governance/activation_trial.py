@@ -16,6 +16,7 @@ def main():
     for name in ['destination', 'controller', 'sdptool', 'mcp', 'source', 'host', 'old-controller']:
         p.add_argument('--' + name, type=Path, required=True)
     p.add_argument('--host-kind', choices=['protocol-fixture', 'native'], required=True)
+    p.add_argument("--reporting", choices=["manual", "automatic"], default="manual")
     a = p.parse_args()
     base = a.destination.resolve()
     subprocess.run([sys.executable, str(Path(__file__).with_name('design_trial.py')), '--destination', str(base),
@@ -76,7 +77,7 @@ def main():
                        'No actual owner project approval is represented by the scripted fixture decision.\n')
     command = [str(controller), 'run', '--project', str(root), '--state', str(state), '--run', run_id,
                '--codex', str(a.host.resolve()), '--mcp-binary', str(a.mcp.resolve()), '--message', str(message),
-               '--sandbox', 'workspace-write' if a.host_kind == 'native' else 'read-only', '--approvals', 'never', '--timeout', '5m']
+               '--sandbox', 'workspace-write' if a.host_kind == 'native' else 'read-only', '--approvals', 'never', '--reporting', a.reporting, '--timeout', '5m']
     env = dict(os.environ)
     if a.host_kind == 'protocol-fixture':
         env['SDP_PGI3_FAKE_HOST'] = '1'
@@ -111,6 +112,16 @@ def main():
     assert final['run']['routine']['id'] == 'implementation' and final['coverage'] == 'known'
     assert final['run']['state'] != 'completed', 'host completion must not complete governance work'
     assert final['run']['attempts'][-1]['status'] == 'completed', final
+    if a.reporting == 'automatic':
+        inbox = json.loads(subprocess.check_output([str(controller), 'inbox', '--project', str(root),
+                                                   '--state', str(state), '--run', run_id, '--json'], text=True))
+        (base / 'inbox.json').write_text(json.dumps(inbox, indent=2) + '\n')
+        evidence['inbox'] = inbox
+        evidence['reportingMode'] = a.reporting
+        (base / 'evidence.json').write_text(json.dumps(evidence, indent=2) + '\n')
+        assert final['run']['state'] == 'verifying', final
+        assert len(inbox['reports']) == 1 and inbox['reports'][0]['runId'] == run_id, inbox
+        assert not any(v.get('observation', {}).get('kind') == 'approval.requested' for v in observed), 'unexpected approval prompt'
     # A second launch cannot send another turn into the same completed attempt.
     retry = subprocess.run(command, input='', text=True, capture_output=True, env=env, timeout=60)
     assert retry.returncode != 0, 'duplicate launch accepted'
