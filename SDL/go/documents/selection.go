@@ -24,7 +24,7 @@ func Selected(ctx context.Context, v *viewpoint.Views, q viewpoint.Query, r Rend
 		text += "Selection: `" + string(j) + "`.\n\n"
 	}
 	b.Files["selection.json"] = append(j, '\n')
-	if len(s.Diagrams) == 0 && !(q.Projection == "overview" && (q.Viewpoint == "VP05" || q.Viewpoint == "VP06" || q.Viewpoint == "VP08" || q.Viewpoint == "VP09" || q.Viewpoint == "VP10")) {
+	if len(s.Diagrams) == 0 && !(q.Projection == "overview" && (q.Viewpoint == "VP05" || q.Viewpoint == "VP06" || q.Viewpoint == "VP08" || q.Viewpoint == "VP09" || q.Viewpoint == "VP10" || q.Viewpoint == "VP11")) {
 		text += "No diagrams match this selection. This does not imply the concept is impossible or absent from the system.\n\n"
 	}
 	for _, d := range s.Diagrams {
@@ -38,7 +38,7 @@ func Selected(ctx context.Context, v *viewpoint.Views, q viewpoint.Query, r Rend
 		}
 		text += s.DiagramMarkdown(d, "diagrams/", r != nil)
 	}
-	if r != nil {
+	if r != nil && !(q.Projection == "overview" && q.Viewpoint == "VP11") {
 		text += "\nSymbol profile: SDL 1. Actor/ellipse use UML shapes; labeled SDL relations retain their language semantics. consumes is a dashed dependency; realizes is a contribution.\n\n"
 	}
 	if q.Projection == "overview" {
@@ -52,6 +52,8 @@ func Selected(ctx context.Context, v *viewpoint.Views, q viewpoint.Query, r Rend
 			text += v.ModeOverviewContext(q.Mode)
 		} else if q.Viewpoint == "VP06" {
 			text += s.ActivityOverviewContext()
+		} else if q.Viewpoint == "VP11" {
+			text += s.TraceabilityOverviewContext()
 		} else if q.Viewpoint == "VP10" {
 			text += s.EncodingOverviewContext()
 		} else if q.Viewpoint == "VP09" {
@@ -67,7 +69,7 @@ func Selected(ctx context.Context, v *viewpoint.Views, q viewpoint.Query, r Rend
 	if q.Viewpoint == "VP01" && q.Projection == "" {
 		text += s.UseCaseContext()
 	}
-	if !(q.Projection == "overview" && (q.Viewpoint == "VP09" || q.Viewpoint == "VP10")) {
+	if !(q.Projection == "overview" && (q.Viewpoint == "VP09" || q.Viewpoint == "VP10" || q.Viewpoint == "VP11")) {
 		text += s.Tables(q.Viewpoint)
 	}
 	b.Put("entry.md", text)

@@ -540,3 +540,15 @@ padding, optional-field layout or union packet. No fixed diagram-count cap. Exis
 detail targets remain unchanged. Complete overview rejects narrowing filters/mode.
 Native product needs no specialized VP10 handling; exact source references use the
 existing sdl-source contract. Source graph freshness applies to every included file.
+
+## VP11 properties/traceability overview — N13
+
+Advertise a complete VP11 overviewTarget through existing model/revision/URI selection.
+It retains every fact and declaration, explicit property assignments and all reported
+gaps across viewpoints, with exact source links and source-file/line context. Counts
+by kind/verb describe only the checked snapshot. Gap origin/code/subject/mode/Feature
+are retained; absence has no invented source span. No combined diagram or inferred
+implementation coverage/default properties. Gap rules are not an exhaustive audit.
+The original ordinary VP11 selection is preserved. Overview rejects narrowing filters
+and mode; empty states are explicit, with no arbitrary inventory cap. Composed source
+freshness applies. XFMD consumes this page through its existing generic navigation.

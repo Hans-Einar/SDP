@@ -1,0 +1,58 @@
+{
+  "base": "f1c334218c00cb6ca20f8dce19880cb65536cea4",
+  "branch": "sdp/xfmd-vp11-overview",
+  "files": {
+    "SDL/go/documents/selection.go": "512f4f5e05f3bf9f5556d35721dfa434b0fdc83c47a15844e9a0d12d93bd9c87",
+    "SDL/go/documents/traceability_test.go": "c5e02ee650ade8652b6d63458423ef008b1c185f7898484c81c80fc54f98b0d4",
+    "SDL/go/viewpoint/overview.go": "bc7ae26a81e6dd99dd8bba84e1905be5848bb742a12956a97f64ba597925dc5e",
+    "SDL/go/viewpoint/overview_test.go": "fa18ae7466eb694bdf2b75edcfd2d3787c5855fcb05c6cd19b87d1d4ab1b122b",
+    "SDL/go/viewpoint/traceability_context.go": "53ab67ff944dcfb4258940c47853eeb655bbf1b518df977182d6e7ecb206eb41",
+    "SDL/go/viewpoint/traceability_overview.go": "5b012429ec32a54aa769c530e01b9722b9195fd495cde0e2e256b3d62215efa1",
+    "SDL/go/viewpoint/traceability_overview_test.go": "705aaeb171d38b7bfa2dbcc45886162050bcc253b63143371e92167ece802e83",
+    "SDPTool/Contract.md": "017758ff2b7b627b087673a0b393720dfd708fd5bf5f6ac2c2cd8ad82ba782db",
+    "SDPTool/overview_actions_test.go": "6c48941f892bda800d1fed58a5b74dd7738cce6d3f65b132a064548fcd573659",
+    "SDPTool/overview_test.go": "0d345935b79660a342a4606ef32229a13717d8c4ccc424690033350ef5ff42e1",
+    "SDPTool/traceability_overview_test.go": "dd1fb7c7be479e56dd6c77db7fa7bf51937213b659e3a9f5945c32fd37600ba8"
+  },
+  "binary": {
+    "path": "/tmp/xfmd-n13-sdptool",
+    "sha256": "3e3767a962a9f806107de067867eb38d0417c23958117e8af1d89d40392dba16"
+  },
+  "consumerTestFiles": {
+    "tests/gui/SdpOverviewGuiTest.cpp": "788b7aadd040070e2c77b0493b052d3bb073072571b4dee477111ce8c3d6c5a6",
+    "tests/gui/OverviewFixture.h": "e7cbcf5086790edaffba936b26fd7f0f33ad28a7ab5b43edf9100316782a818f",
+    "tests/gui/SdpChannelOverviewChecks.h": "d9b113195cadbeced9c6cacb239b8f8ff5be1cb8664f0e0fc6aa2a873a6779d4",
+    "tests/gui/SdpDataOverviewChecks.h": "eea5cd5d6bf36c6c8efaaa62ad8bf3b8f5b4a6124641e6e49f8ca3178168a23d",
+    "tests/gui/SdpEncodingOverviewChecks.h": "9f762757d826e33066cf5f13bf8978ea8998dc9ddf8191b7c78eb15cb9da2e77",
+    "tests/gui/SdpTraceabilityOverviewChecks.h": "ca4f6c80d9a85c32d977f797a769276281623d3e6279e071cffe1d095c74cf90"
+  },
+  "nativeTestBinarySha256": "7e0680dcd9d9521c9fe335878a0d9f6efb39b862fae502aa03b82dc63fa5968a",
+  "consumerBaseEvidence": "../N4-001/candidate.json; native product unchanged by N13; fixture/overview test extended",
+  "artifacts": {
+    "vp11-actual": {
+      "declarations": 312,
+      "facts": 1034,
+      "explicitProperties": 195,
+      "exactSourceSpans": 1346,
+      "allFactStatementsAndDeclarationNamesInPdf": true,
+      "pdfPages": 88,
+      "reportedGaps": 1
+    },
+    "vp11-native": {
+      "declarations": 47,
+      "facts": 87,
+      "explicitProperties": 29,
+      "exactSourceSpans": 134,
+      "allFactStatementsAndDeclarationNamesInPdf": true,
+      "pdfPages": 11,
+      "reportedGaps": null
+    },
+    "limits": "Counts describe checked sources only; reported gap rules are not exhaustive. Same-context verification; no independent or general large-print acceptance. Existing KB020/025 residuals unchanged."
+  },
+  "limitations": [
+    "No independent review or general large-print acceptance",
+    "Existing KB020 packet label clipping/crowded bit labels and union routing residuals retained",
+    "KB025 whole-root discovery guard remains; explicit model tree/select used",
+    "No merge/release/install or authored model edit"
+  ]
+}

@@ -340,3 +340,19 @@ Existing narrow packet label clipping/crowded boundary labels are retained in KB
 source registers preserve complete field names and positions. No native product or
 authored model change, merge/release/install or general visual acceptance. Broader
 plan remains active; VP11 is next. N5–N12 await selected integration.
+
+## N13 selection — Session0007 T009, 2026-10-21
+
+VP11 complete properties, traceability and reported model gaps follow N13 design.
+Branch sdp/xfmd-vp11-overview stacks on f1c3342; scoped milestone commit.
+No authored model changes or merge/release/install. Broader plan remains active.
+
+### N13 outcome
+
+VP11 properties, snapshot counts, cross-viewpoint reported gaps and complete source
+registries are implemented. N13-candidate.json/XFMD N13-001 record full producer
+suites/vet, 12 consumer checks, exact native property-source selection and actual
+312 declarations/1034 facts/195 properties/1346 source spans through native/PDF.
+All catalog overviews have selected candidates; N5–N13 await integration. The
+broader plan/cards remain active for acceptance, publication and retained KB020/
+KB025/KB032 residuals. No native product/authored model change or merge/release/install.
