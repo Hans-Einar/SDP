@@ -133,3 +133,14 @@ across diagrams keep the same declaration identity. This is a semantic partition
 not a size threshold or truncated graph. It avoids an all-channel union that cannot
 currently be routed within the native renderer budget. Sequence targets and the
 complete source-linked registers remain unchanged.
+
+## VP09 data/storage overview — N11
+
+Advertise a complete on-demand VP09 overview. Partition diagrams by Dataset with
+explicit origin, holders, Database owners and data contracts. Include all data,
+Database, Contract, Variant and Field definitions in source-linked registers,
+including idle/unused definitions; retain explicit shape membership and ternary
+projection/owner proofs. Detail contract diagrams remain independently selectable.
+Do not infer SQL/ER semantics, persistence for Unit-held data, transformations or
+wire encodings. Missing inventories/properties are explicit. Existing source and
+freshness guarantees apply; no silent content truncation or new consumer schema.

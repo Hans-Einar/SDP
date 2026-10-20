@@ -1,0 +1,42 @@
+{
+  "base": "d677d70f4bc839f6684e964f94a625c821795940",
+  "branch": "sdp/xfmd-vp09-overview",
+  "files": {
+    "SDL/go/documents/selection.go": "51f48cd357f0ff404387e35f3311f12b7e31f70136de4059fc95163cdfc85ee4",
+    "SDL/go/viewpoint/data_context.go": "52e9497ab6000cab9ea7067a780f0a607bfb983055add84b8bbfa68774d47530",
+    "SDL/go/viewpoint/data_overview.go": "7f2e2858a42d365046f8dcbd9e8a61e0bb060b073fd8834c39c9cb88e7683cfc",
+    "SDL/go/viewpoint/data_overview_test.go": "8febeeb4c510e3c0abf07487f09bc0929843e743100432108dceddca28878b9b",
+    "SDL/go/viewpoint/overview.go": "4ad407a6777a295ae9f1ed89e06bcc2bb7275a5134d78f66d42972d03d2e00ca",
+    "SDL/go/viewpoint/overview_test.go": "ea7b53d0642f0f9a42ee64273f334d0b6f7e128b96801ea4cfcd8734f0475f2c",
+    "SDPTool/Contract.md": "3809826276c86589b06aa84d6fce1a86fcb6276de2f6bc7fdf6dfa52eebdd9ac",
+    "SDPTool/data_overview_test.go": "7699f381f0bc891cd8d48f2b1e76e4548a1c44fcb8c4e02d7809736ecd475fa0",
+    "SDPTool/overview_actions_test.go": "de81b37d92433c4956b9bd464eed445596ebd547e69429d63bccd013083dede5",
+    "SDPTool/overview_test.go": "24cae4a87a83edee6bd0112d2395a05342003b55f81f29b2345df633a64dacf1"
+  },
+  "binary": {
+    "path": "/tmp/xfmd-n11-sdptool",
+    "sha256": "fda6003fe3b4505cc2bfdc8fa511b54527fb6ef5be61a4cd4ab53ffe4ef7728c"
+  },
+  "consumerTestFiles": {
+    "tests/gui/SdpOverviewGuiTest.cpp": "b6d9492d0ab468b1df77e98f89bad9d40ee28eb271422ac6c4149c153bf3d2ad",
+    "tests/gui/OverviewFixture.h": "74f70203392b6077a255bb822c1c3a057c369405692a4a184247b59dac6bcca9",
+    "tests/gui/SdpChannelOverviewChecks.h": "d9b113195cadbeced9c6cacb239b8f8ff5be1cb8664f0e0fc6aa2a873a6779d4",
+    "tests/gui/SdpDataOverviewChecks.h": "eea5cd5d6bf36c6c8efaaa62ad8bf3b8f5b4a6124641e6e49f8ca3178168a23d"
+  },
+  "nativeTestBinarySha256": "eb2ed551d1789db373c5a8e0a30c9b742b79926b2ce82e7b01ab437f7cd58b2b",
+  "consumerBaseEvidence": "../N4-001/candidate.json; native product unchanged; overview fixture/test extended",
+  "artifacts": {
+    "dataset": 3,
+    "datagram": 0,
+    "database": 0,
+    "contract": 44,
+    "variant": 0,
+    "field": 14,
+    "diagrams": 3,
+    "nodes": 9,
+    "edges": 6,
+    "sourceSpansInBounds": 358,
+    "allInventoryNamesInPdf": true,
+    "pdfMethod": "layout text plus bbox first-column reconstruction of wrapped contract/field identifiers"
+  }
+}

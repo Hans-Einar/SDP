@@ -309,3 +309,18 @@ scenario registers are implemented and verified. [N10](N10.md) records the initi
 union routing failure and selected complete per-channel partition, with native/PDF
 and full producer/consumer evidence. Discovery resource limit is explicitly handed
 off to KB025. N5–N10 remain unmerged; broader plan stays active. VP09 is next.
+
+## N11 selection — Session0007 T007, 2026-10-21
+
+Select VP09 Dataset neighborhoods and complete storage/contract/shape/projection
+registers per N11 design. BranchPolicy: sdp/xfmd-vp09-overview from d677d70;
+scoped milestone commit. Verify producer/native/source/PDF, preserving original
+details and authored models. No scoped PG/coordination overlap. No merge/release/
+install; broader plan remains active.
+
+### N11 outcome
+
+VP09 complete data/storage/contract inventory and Dataset neighborhoods are
+implemented and verified. [N11](N11.md) records source-linked semantics, preserved
+details and actual producer/native/PDF evidence. N5–N11 remain unmerged candidates;
+broader plan stays active. VP10 encodings/packets is next proposed.
