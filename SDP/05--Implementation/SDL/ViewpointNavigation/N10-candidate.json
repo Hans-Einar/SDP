@@ -1,0 +1,46 @@
+{
+  "base": "76fc87f2bc41cf03026aa1b0620249086157ef3b",
+  "branch": "sdp/xfmd-vp08-overview",
+  "files": {
+    "SDL/go/documents/selection.go": "7532200ed95db78b50085f116761f02e57ec3f6f8ec000936f71f31884b3ca00",
+    "SDL/go/viewpoint/channel_context.go": "1649f53c7572b2e274ac2cbcc483ba5b437d0091d8a596dcaf2f3683a6020106",
+    "SDL/go/viewpoint/channel_overview.go": "d1b253b3af99c354436f192d9bbeaee7aefbf80491f36c9f7db5c5c4570118f4",
+    "SDL/go/viewpoint/channel_overview_test.go": "d4b37f7d76de93c03921420158a29e1e7ee13c62a0b4a4f2a6e84883910a32cd",
+    "SDL/go/viewpoint/channels.go": "e77880332cca5bada627cd4fac96b57cd150b489db7a132bcf9c04b4548ee038",
+    "SDL/go/viewpoint/overview.go": "f1f9f330299f9a2e11fb86d0b574f1a277c18926ff810f3942d62d12efd9d2a4",
+    "SDL/go/viewpoint/overview_test.go": "40067d016ad780b8247f641038e453d146184de94ded33a1dca1938efc670b28",
+    "SDL/go/viewpoint/query.go": "a0ee7b980a6325b7d284bdd43ed262b2a3ec9d03b180f1ccb2e221efdd3f2183",
+    "SDPTool/Contract.md": "2a6aaf05f7e215dc0179c4c61eef25f30746815ccf032cedf706863de20c414c",
+    "SDPTool/channel_overview_test.go": "917016a41ca1a4c8f300b1d43ad1f7c6f7152747f3f8a5353abbe77ee16e5803",
+    "SDPTool/overview_actions_test.go": "3712650109e347ce8642a68aa171903be471e770eff04d2d2a45ae9e79d0a933",
+    "SDPTool/overview_test.go": "f92eb1c48403287e6c56cdc2f6890432068f1fa407cf1d861e9c8757171a255c",
+    "SDPTool/tree.go": "0f7b63a4a5644eabce45c0639c865320282bae8a2ee506b8a7c5e1b096cb5457"
+  },
+  "binary": {
+    "path": "/tmp/xfmd-n10-sdptool",
+    "sha256": "e16afecd31fa682c4ef1dcb62a6d8c479f97b9674ae07ec19b58744b2bfe8bbc"
+  },
+  "consumerTestFiles": {
+    "tests/gui/SdpOverviewGuiTest.cpp": "6c4a53279a382932ff202c7d340c0d5bb4242b6eec5a2d1274ed2009db71309b",
+    "tests/gui/SdpChannelOverviewChecks.h": "d9b113195cadbeced9c6cacb239b8f8ff5be1cb8664f0e0fc6aa2a873a6779d4",
+    "tests/gui/OverviewFixture.h": "96d27a0b96cd2b3b546790a85dd1e84a114547a9eb1c1437531a100bf5167446"
+  },
+  "nativeTestBinarySha256": "94107768a6c3455d78af5c0fbe34f3083b8c0387651d65ff92acfb81543a12d4",
+  "consumerBaseEvidence": "../N4-001/candidate.json; product unchanged, native test extended and split into focused fixture/check headers",
+  "artifacts": {
+    "diagrams": 40,
+    "totalNodes": 119,
+    "uniqueNodes": 60,
+    "edges": 123,
+    "maxNodes": 5,
+    "maxEdges": 5,
+    "allUniqueNodeNamesInPdf": true,
+    "scenariosInPdf": 22,
+    "sourceSpansInBounds": 850,
+    "allOriginalBindingsPreserved": 202,
+    "originalEdgesPreserved": true,
+    "nativeScenesVerified": 40,
+    "discoveryLimitAlsoReproducedOnN9": true,
+    "scenarioPdfMethod": "bbox first-column coordinates join wrapped identifiers; plain text extraction interleaves other columns"
+  }
+}

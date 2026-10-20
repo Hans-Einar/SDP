@@ -292,3 +292,20 @@ status/commitment registers are implemented and verified. [N9](N9.md) records
 candidate and evidence. Empty actual XFMD plan is explicit; no implementation
 absence is inferred from missing addresses. N5–N9 remain unmerged candidates.
 Broader scope remains active; VP08 channels/scenario overview is proposed next.
+
+## N10 selection — Session0007 T006, 2026-10-20
+
+Owner continuation selects VP08 mode-index, isolated communication topology and
+scenario registers. N10 design precedes code. BranchPolicy: sdp/xfmd-vp08-overview
+from 76fc87f; scoped milestone commit. Verify producer/native/source/PDF and actual
+XFMD topology while preserving sequence details and authored models. No merge,
+release or install; broader plan stays active. Concurrent preflight finds no current
+PG/coordination overlap; shared history/product scope remains untouched.
+
+### N10 outcome
+
+VP08 index, mode-isolated channel neighborhoods and source-linked participation/
+scenario registers are implemented and verified. [N10](N10.md) records the initial
+union routing failure and selected complete per-channel partition, with native/PDF
+and full producer/consumer evidence. Discovery resource limit is explicitly handed
+off to KB025. N5–N10 remain unmerged; broader plan stays active. VP09 is next.

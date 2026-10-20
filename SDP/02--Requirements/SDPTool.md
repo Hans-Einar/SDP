@@ -115,3 +115,21 @@ no inherited status/dependencies, scheduling, dates or scenario execution is
 inferred. Empty cases are explicit. Keep existing detail and implementation.md
 behavior; reject partial overview filters, preserve composed-source freshness
 and add no count-only truncation or native/schema changes.
+
+## VP08 communication overview — N10
+
+Advertise an on-demand VP08 overview index and explicit named-mode overview targets.
+The index lists all channels/modes/scenarios without a merged graph. Per-mode output
+retains every channel and only explicit participants of that mode, grouping topology
+edges by channel/participant/role while preserving all supporting source facts and
+individual message bindings. Scenario and MessageSet scope is mode-isolated. Existing
+scenario sequence targets remain unchanged. Empty scope is explicit; no timeline,
+mode inheritance, transport or runtime success is inferred. Composed-source links,
+revision freshness and generic consumer contracts apply unchanged.
+
+The selected mode page partitions topology into one diagram per Channel. Every
+channel neighborhood and supporting uses fact is retained; participants repeated
+across diagrams keep the same declaration identity. This is a semantic partition,
+not a size threshold or truncated graph. It avoids an all-channel union that cannot
+currently be routed within the native renderer budget. Sequence targets and the
+complete source-linked registers remain unchanged.

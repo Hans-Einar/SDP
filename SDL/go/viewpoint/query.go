@@ -82,7 +82,7 @@ func ParseURI(raw string) (Selection, error) {
 	return s, nil
 }
 func (q Query) Validate(v *Views) error {
-	if q.Projection != "" && (q.Projection != "overview" || !HasOverview(q.Viewpoint) || q.Focus != "" || q.Diagram != "" || (q.Mode != "" && q.Viewpoint != "VP07" && q.Viewpoint != "VP05") || q.Level != "" || len(q.Relations) > 0 || (q.Direction != "" && q.Direction != "both") || (q.Depth != 0 && q.Depth != 2)) {
+	if q.Projection != "" && (q.Projection != "overview" || !HasOverview(q.Viewpoint) || q.Focus != "" || q.Diagram != "" || (q.Mode != "" && q.Viewpoint != "VP07" && q.Viewpoint != "VP05" && q.Viewpoint != "VP08") || q.Level != "" || len(q.Relations) > 0 || (q.Direction != "" && q.Direction != "both") || (q.Depth != 0 && q.Depth != 2)) {
 		return fmt.Errorf("unsupported-overview-selection")
 	}
 

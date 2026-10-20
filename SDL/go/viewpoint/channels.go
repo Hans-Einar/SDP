@@ -35,7 +35,7 @@ func (v *Views) channels() {
 				proof = unique(append(append(proof, p.S("id")), values(members, "id")...))
 				v.MessageSets = append(v.MessageSets, Fact{"channel": ch, "mode": mode, "message": msg, "contract": contract, "payload_contract": contracts[msg], "variants": values(eq(r["defines"], "subject", contracts[msg]), "object"), "senders": senders, "receivers": receivers, "source_facts": proof})
 				if len(senders) == 0 || len(receivers) == 0 {
-					v.Gaps = append(v.Gaps, Fact{"viewpoint": "VP08", "model_id": ch, "mode": mode, "code": "INCOMPLETE_PARTICIPATION", "message": "Ufullstendig deltakelse for " + msg + "."})
+					v.Gaps = append(v.Gaps, Fact{"viewpoint": "VP08", "model_id": ch, "mode": mode, "code": "INCOMPLETE_PARTICIPATION", "message": "Incomplete participation for " + msg + "."})
 				}
 			}
 		}
