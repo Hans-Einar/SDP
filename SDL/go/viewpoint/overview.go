@@ -7,7 +7,7 @@ import (
 
 // HasOverview advertises implemented projections only. It never generates output.
 func HasOverview(vp string) bool {
-	return vp == "VP01" || vp == "VP02" || vp == "VP03" || vp == "VP04" || vp == "VP05" || vp == "VP06" || vp == "VP07" || vp == "VP08" || vp == "VP09"
+	return vp == "VP01" || vp == "VP02" || vp == "VP03" || vp == "VP04" || vp == "VP05" || vp == "VP06" || vp == "VP07" || vp == "VP08" || vp == "VP09" || vp == "VP10"
 }
 
 // overview selects the complete validated inventory, not a union of detail views.
@@ -26,6 +26,9 @@ func (v *Views) overview(q Query) (*Views, error) {
 	}
 	if q.Viewpoint == "VP06" {
 		return v.activityOverview(), nil
+	}
+	if q.Viewpoint == "VP10" {
+		return v.encodingOverview(), nil
 	}
 	if q.Viewpoint == "VP09" {
 		return v.dataOverview(), nil

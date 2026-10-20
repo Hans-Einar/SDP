@@ -324,3 +324,19 @@ VP09 complete data/storage/contract inventory and Dataset neighborhoods are
 implemented and verified. [N11](N11.md) records source-linked semantics, preserved
 details and actual producer/native/PDF evidence. N5–N11 remain unmerged candidates;
 broader plan stays active. VP10 encodings/packets is next proposed.
+
+## N12 selection — Session0007 T008, 2026-10-21
+
+VP10 Encoding inventory and separate validated packet layouts follow N12 design.
+Branch sdp/xfmd-vp10-overview stacks on 6b80b40; scoped milestone commit.
+No authored model changes or merge/release/install. Broader plan remains active.
+
+### N12 outcome
+
+VP10 complete Encoding/Variant coverage, separate validated packets and source-linked
+field positions are implemented. N12-candidate.json/XFMD N12-001 retain full producer
+suites/vet, 12 consumer checks, native fixture/detail/actual-empty/PDF evidence.
+Existing narrow packet label clipping/crowded boundary labels are retained in KB020;
+source registers preserve complete field names and positions. No native product or
+authored model change, merge/release/install or general visual acceptance. Broader
+plan remains active; VP11 is next. N5–N12 await selected integration.

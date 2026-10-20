@@ -528,3 +528,15 @@ projection/owner proofs. Detail contract diagrams remain independently selectabl
 Do not infer SQL/ER semantics, persistence for Unit-held data, transformations or
 wire encodings. Missing inventories/properties are explicit. Existing source and
 freshness guarantees apply; no silent content truncation or new consumer schema.
+
+## VP10 encoding/packet overview — N12
+
+Advertise complete on-demand VP10 overviewTarget using the existing model/revision/
+URI contract. Generate one separate validated packet per Encoding plus source-linked
+Encoding and ordered field registers (bit offsets/widths, type/presence and header/
+variant owner). Include Variant coverage and explicit missing Encoding/empty states.
+Byte/bit order and closed Contract are source facts; no serialization, inferred
+padding, optional-field layout or union packet. No fixed diagram-count cap. Existing
+detail targets remain unchanged. Complete overview rejects narrowing filters/mode.
+Native product needs no specialized VP10 handling; exact source references use the
+existing sdl-source contract. Source graph freshness applies to every included file.
