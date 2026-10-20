@@ -173,7 +173,7 @@ func (s *Service) recordDesignDecision(caller Caller, q DesignDecisionRequest, i
 	if state.DesignDecisionReceipts == nil {
 		state.DesignDecisionReceipts = map[string]designDecisionReceipt{}
 	}
-	if state.Schema != activationStateSchema {
+	if state.Schema != activationStateSchema && state.Schema != attentionStateSchema {
 		state.Schema = designDecisionStateSchema
 	}
 	state.DesignDecisions[q.Review.AssignmentID] = q.OperationID
@@ -211,7 +211,10 @@ func (s *Service) ReviewAssignmentDesign(q DesignCheckRequest) (DesignReviewResu
 }
 
 func validateDesignDecisionState(state snapshot) error {
-	if state.Schema != designDecisionStateSchema && state.Schema != activationStateSchema {
+	if state.Schema == attentionStateSchema && state.DesignDecisions == nil && state.DesignDecisionReceipts == nil {
+		return nil
+	}
+	if state.Schema != designDecisionStateSchema && state.Schema != activationStateSchema && state.Schema != attentionStateSchema {
 		if state.DesignDecisions != nil || state.DesignDecisionReceipts != nil {
 			return fail("incompatible_profile", "design decisions require profile 0.4")
 		}

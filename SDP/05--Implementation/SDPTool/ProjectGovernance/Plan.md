@@ -302,7 +302,7 @@ sequenced with those workstreams rather than copied into a second engine.
 | --- | --- | --- | --- |
 | PGL1 | Readable/JSON overview of all registered work from existing operational state; lab inspection without launching work | Scenario 5 subset; empty store, multiple runs, stale records, historical host/skill/tool facts, no writes | delivered; [bounded evidence](Evidence-PGL1.md) |
 | PGL2 | Prepare and inspect distinct SAD/implementation assignments; stale design or conflicting scope refuses dispatch eligibility | Scenario 2 guards; current authority, exact bundle revisions, explicit cross-worktree claim boundary, retry/CAS tests | in-progress; [C1 preparation delivered](Evidence-PGL2-C1.md), [C2a revision/retirement delivered](Evidence-PGL2-C2a.md), [C2b provider checks delivered](Evidence-PGL2-C2b.md), [C2c local decision adapter delivered](Evidence-PGL2-C2c.md), [C2d activation and native code trial delivered](Evidence-PGL2-C2d.md); reporting/coordination remain PGL3 |
-| PGL3 | Responsive Project Leader plus two bounded Masters through the trusted controller; durable report inbox and same-Session phase continuation | Scenarios 1, 3, 4; real host execution, no duplicate launch after uncertain reply, delayed report versus new steering | in-progress; [C1 per-run isolation delivered](Evidence-PGL3-C1.md), [C2 automatic reports and read-only inbox delivered](Evidence-PGL3-C2.md); attention/replies, leader consumption/continuation and native parallel evidence pending |
+| PGL3 | Responsive Project Leader plus two bounded Masters through the trusted controller; durable report inbox and same-Session phase continuation | Scenarios 1, 3, 4; real host execution, no duplicate launch after uncertain reply, delayed report versus new steering | in-progress; [C1 per-run isolation delivered](Evidence-PGL3-C1.md), [C2 automatic reports and read-only inbox delivered](Evidence-PGL3-C2.md), [C3 durable attention/replies delivered](Evidence-PGL3-C3.md); leader consumption/continuation and native attention/parallel evidence pending |
 | PGL4 | Direct SAD/Master conversation and project panel; revision-bound ModelGovernance/Blueprint handoff | Scenarios 2, 5; real TARGET change stales dependent implementation; roles/tools/children/freshness evidence; owner development trial | planned |
 | PGL5 | Integrated recovery/evidence review and revision-bound remote Steering package | All six scenarios; independent review and selected online-host evidence; PGI4/5 obligations retained | planned |
 
@@ -518,3 +518,34 @@ revision binding, then leader consumption and responsive continuation. Receipt
 capacity (currently 1024), restart/recovery and native parallel/multi-hour evidence
 must be resolved before claiming sustained unattended operation. PGL2 scope closure/
 SAD dispatch, PGL4/5 and the retained PGI gates remain. No merge/release is selected.
+
+## PGL3-C3 selection — T027
+
+Owner continues on 2026-10-21. Implement the local durable attention question/reply
+contract in Orchestration: existing atomic store/receipts, scoped agent ask capability,
+controller-attributed reply/withdrawal, readable CLI and revision applicability.
+[Preflight](preflight-PGL3-C3.json) isolates PG from historical dirty primary copies
+and newer main changes. Existing branch/milestone policy applies. No hub, automatic
+new host turn, actual owner acceptance or full Session closeout is selected here.
+
+
+## PGL3-C3 result — T027
+
+[Evidence](Evidence-PGL3-C3.md), [candidate](candidate-PGL3-C3.json) and
+[CLI trial](trial-PGL3-C3.json) record durable local questions, optional choices,
+free-text replies, explicit withdrawal and current applicability. Blocking questions
+guard only their run's advancement. Bound agents may ask/read; trusted controllers
+capture attributed replies. No answer grants design approval or expanded scope.
+Operational profile 0.6 is explicit; legacy readers refuse, all writers preserve it.
+
+The isolated owner-lab ./attention helper displays one open question and supports
+--reply --owner NAME. Tests cover restart/retry, stale authority/steering, capability
+binding, sibling/other-run independence, MCP transport and compiled CLI input capture.
+The synthetic CLI trial starts no model. Earlier native report evidence stays scoped
+to C2; native attention/reply continuation is still required. PM206 / KB380 record
+this delivery while the plan/card stay active.
+
+Next: durable leader consumption and guarded continuation after a reply/report,
+then responsive native parallel execution. Resolve bounded receipt/state capacity
+and recovery before sustained-hour claims. SAD dispatch/scope closure, PGL4/5 and
+retained PGI gates remain. Hub/webapp stay in the separate project; no merge/release.

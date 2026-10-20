@@ -9,7 +9,7 @@
 | created | 2026-10-09T12:08:50.581137+00:00 |
 | source | Owner Session0011 T004 role definition and T005 KanBan handoff request |
 | Systems | SDPTOOL |
-| next_review | PGL3 attention/replies and leader inbox consumption/continuation; separate hub/webapp handoff in KB054 |
+| next_review | PGL3 leader consumption and guarded continuation; native attention/parallel evidence; separate hub/webapp handoff in KB054 |
 | PlanId | PLAN-SDP-0018 |
 | tags | project-leader, steering, SAD, master, MCP, app-server, coordination |
 
@@ -151,3 +151,13 @@ evidence. Run remains verifying, not accepted. Next: typed attention/reply, lead
 consumption/continuation and native parallel evidence; receipt capacity/recovery must
 support the later multi-hour claim. CardState remains in-progress. KB378 records this
 bounded delivery; KB379 records the separate-project handoff refinement in KB054.
+
+
+2026-10-21 / T027: Owner continues local PG. [PGL3-C3 evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C3.md)
+delivers durable questions, revision-bound attributed replies, withdrawal and per-run
+advancement guards. Agent MCP and compiled CLI evidence pass; the separate lab has
+an open question for owner experimentation. No native attention continuation or
+actual owner acceptance is claimed. Next: leader consumption, guarded continuation,
+capacity/recovery and native parallel evidence. KB380 records this review; CardState
+remains in-progress. Backlog/onHold review retains KB036/037/042/043 dependencies
+and KB054's separate-project boundary; no new card activation or scope expansion.

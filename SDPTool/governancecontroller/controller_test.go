@@ -132,5 +132,5 @@ func TestManagedAccountAndControllerLease(t *testing.T) {
 }
 
 func (f *fakeHost) MCPTools(context.Context, string, string) ([]string, string, error) {
-	return []string{"context_read", "events_read", "route_evaluate", "run_read", "run_transition"}, "unsupported", nil
+	return []string{"attention_read", "attention_request", "context_read", "events_read", "route_evaluate", "run_read", "run_transition"}, "unsupported", nil
 }

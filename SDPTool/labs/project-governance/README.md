@@ -272,3 +272,25 @@ revision alongside current state/coverage; they are durable review inputs. There
 is no leader acknowledgement or attention-response interaction in this increment.
 The hub and web application belong to a separate project. Their absence does not
 prevent inspecting this local result.
+
+
+## Local attention questions and replies — PGL3-C3
+
+Build development binaries as above; a fresh destination keeps all earlier trials
+intact. This trial starts no model and uses labelled synthetic controller input.
+
+```sh
+python3 labs/project-governance/attention_trial.py --destination /absolute/new-attention-trial --controller /absolute/new-controller --sdptool /absolute/new-sdptool --old-controller /absolute/c2-controller
+python3 labs/project-governance/attention_view.py --preview /absolute/new-attention-trial
+python3 labs/project-governance/attention_view.py --preview /absolute/new-attention-trial --reply --owner NAME
+```
+
+The trial exercises actual compiled CLI processes: ask, report refusal while waiting,
+another run's progress, EOF/invalid-choice refusal, attributed answer, immutable retry,
+stale authority refusal, explicit withdrawal and old-reader refusal. Protected files
+end byte-identical. It leaves one answered, one withdrawn and one open question.
+The original lab's `./attention` helper selects this separate preview; `--json` lists
+machine data and `--reply --owner NAME` lets the owner try the remaining question.
+No choice is preselected. The controller requires an answer/comment after an optional
+option ID. This stores input only; it does not resume an agent or approve design.
+These facts are distinct from the earlier native implementation/report trial.

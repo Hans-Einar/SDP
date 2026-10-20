@@ -46,7 +46,7 @@ func TestReportingPolicyIsExplicitAndToolScoped(t *testing.T) {
 			server := h.config["sdp_governance"].(map[string]any)
 			policy, _ := json.Marshal(server["tools"])
 			if mode == "automatic" {
-				if string(policy) != `{"run_transition":{"approval_mode":"approve"}}` {
+				if string(policy) != `{"attention_request":{"approval_mode":"approve"},"run_transition":{"approval_mode":"approve"}}` {
 					t.Fatal(string(policy))
 				}
 			} else if string(policy) != "null" {

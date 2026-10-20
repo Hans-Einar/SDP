@@ -54,7 +54,7 @@ func TestMain(m *testing.M) {
 			case "thread/start":
 				result = map[string]any{"thread": map[string]any{"id": "thread", "status": map[string]any{"type": "idle"}}}
 			case "mcpServerStatus/list":
-				result = map[string]any{"data": []any{map[string]any{"name": "sdp_governance", "authStatus": "unsupported", "tools": map[string]any{"context_read": map[string]any{}, "events_read": map[string]any{}, "route_evaluate": map[string]any{}, "run_read": map[string]any{}, "run_transition": map[string]any{}}}}}
+				result = map[string]any{"data": []any{map[string]any{"name": "sdp_governance", "authStatus": "unsupported", "tools": map[string]any{"attention_read": map[string]any{}, "attention_request": map[string]any{}, "context_read": map[string]any{}, "events_read": map[string]any{}, "route_evaluate": map[string]any{}, "run_read": map[string]any{}, "run_transition": map[string]any{}}}}}
 			case "turn/start":
 				result = map[string]any{"turn": map[string]any{"id": "turn", "status": "inProgress"}}
 			case "thread/read":

@@ -62,7 +62,7 @@ implementation task; it does not demonstrate that coordination workflow.
 | Revise or retire preparation | Revises the same assignment with retained history, or retires it and releases its unlaunched local claim | Retirement is not completion or cancellation of a running agent |
 | Check the proposed design | Checks the assignment against the canonical Blueprint, actual NOW/TARGET contents, task and permitted paths | A successful check establishes a consistent review basis, not owner acceptance |
 | Record a design decision for this new route | A local controller adapter displays the proposal and reads an explicit decision and comment; it retains earlier decisions and checks current applicability | Local attributed input only; conversation capture and the final UI remain unfinished |
-| Automatic reports and local report inbox | A fresh automatic-mode trial stores the report without a separate prompt; the inbox shows submitted text and current coverage | Reports await verification; consumption, attention/replies and automatic phase continuation are not yet delivered |
+| Automatic reports and local report inbox | A fresh automatic-mode trial stores the report without a separate prompt; the inbox shows submitted text and current coverage | Reports await verification; consumption and automatic phase continuation are not yet delivered |
 | Activate approved Master implementation | Creates one ready run from the exact current approved design; the existing controller can execute it with bound MCP context | Native code and automatic-report trial passed with explicit automatic mode. SAD launch and leader conversation remain unfinished |
 
 The technical design check can say **current** or **blocked**. “Current” means the
@@ -178,9 +178,39 @@ and submitted one report automatically. The assignment is now verifying; that is
 not owner acceptance or completed project work. The earlier ./implementation and
 ./design-review helpers retain their earlier previews and may show different states.
 
-This is the first local report inbox, not the final communication interface. The next
-local increment is an attention question with a correlated reply; leader acknowledgement
-and automatic continuation follow. Hub/webapp and notifications belong to the separate
+This is the first local report inbox, not the final communication interface. Local attention questions and replies are now available in the separate preview below;
+leader acknowledgement and automatic continuation remain next. Hub/webapp and notifications belong to the separate
 project confirmed by the owner. Feedback on report readability and the distinction
 between submitted/verified/accepted is useful, but no new approval is required to
 continue the already authorized local development.
+
+
+## Try a local question and reply — T027
+
+From /home/warloc/git/pg_lab:
+
+```sh
+./attention
+./attention --reply --owner warloc
+./attention
+```
+
+The first command shows three synthetic questions: one answered, one withdrawn and
+one open. The second selects the open question, displays it again and asks for an
+option ID (short/detailed, or blank for free text), then your answer/comment. The last
+command shows the stored reply. `./attention --json` exposes the same records to a
+local client. No agent is started and no production design approval is recorded.
+Earlier previews and the original project/runtime retain their own states.
+
+This demonstrates the local mailbox, including answering later after process restart.
+A blocking question guards only the affected run; other runs can progress. A reply
+must still match the question's assignment and authority. If these have changed,
+the controller refuses the reply; an obsolete question can be explicitly withdrawn.
+The next delivery must let the leader consume the reply and continue the appropriate
+work. That automatic continuation is not delivered by this preview.
+
+Useful feedback: can you see what is waiting, why an answer is needed and what it
+applies to? Is choosing an option plus adding a comment natural, or should an option
+alone be sufficient? This terminal interaction is a provisional local client; the
+separate hub/webapp can later present the same concepts differently. You need not
+answer this demonstration question for authorized development to continue.

@@ -1,0 +1,1505 @@
+{
+  "fixtureOnly": true,
+  "modelSubmitted": false,
+  "protectedFiles": 9,
+  "protectedBytesUnchanged": true,
+  "controllerSHA256": "093e17715ac500764dfaf999b90c7f49909b7f7814785612ca925b31c5316b4e",
+  "sdptoolSHA256": "283ea5d75f7b0fceae6cc9d8196f8cc603ce8c755e48924cb8828279a648a2dd",
+  "cases": [
+    {
+      "operation": "core.context",
+      "request": {
+        "card": "SDP/KanBan/active/card.md",
+        "plan": "SDP/Maintenance/Plan.md",
+        "session": "SDP/Sessions/session.md",
+        "authority": "SDP/authority.md",
+        "step": "S1"
+      },
+      "exitCode": 0,
+      "stderr": "",
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "context",
+        "projectRef": "pg-attention-lab",
+        "root": "/home/warloc/git/pg_lab/previews/pgl3-c3-final/project",
+        "checkoutId": "",
+        "revision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "sources": [
+          {
+            "path": "AGENTS.md",
+            "sha256": "48a54710d4479166358a2f9e5104617db8cc3d81a6d1d2ef10547c9f23ad5617"
+          },
+          {
+            "path": "SDP/KanBan/active/card.md",
+            "sha256": "897fe07168c527872afa06e6dcc8e9d7bb890ebc2b94747e353fcc116fa35b3b"
+          },
+          {
+            "path": "SDP/Maintenance/Plan.md",
+            "sha256": "1f653cada50af008e22962106092db010205d177dc4f8e4afd4e4fc9e380a1cb"
+          },
+          {
+            "path": "SDP/ProjectManagement/Ledger.ndjson",
+            "sha256": "afd810f336f3e49bb53cf4a7f2b3b3e1dc289d38881a9e56777778a250cb6a24"
+          },
+          {
+            "path": "SDP/SDP-project.manifest.yaml",
+            "sha256": "a1996e23f5b5e02f857a16f9f1b6c4ffcc7d11309c800f5c44c4367f13437053"
+          },
+          {
+            "path": "SDP/Sessions/session.md",
+            "sha256": "44a2b1de9c01f0106713a419ddac9593c9705f13e9b0e07674675031a52e3fd3"
+          },
+          {
+            "path": "SDP/authority.md",
+            "sha256": "45dce981af71c7c6f87cb5b7ee4d8b72ef54aa9caa8d8b2715b00e4fee09f78c"
+          }
+        ],
+        "coverage": "known",
+        "conditions": [],
+        "cardId": "KB-PGATT-001",
+        "planId": "MAINT-PGATT-0001",
+        "sessionId": "SESSION-PGATT-0001"
+      }
+    },
+    {
+      "operation": "core.route",
+      "request": {
+        "schema": "sdp-project-governance/0.1",
+        "categories": [
+          "maintenance"
+        ],
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "routineId": "maintenance",
+        "routineVersion": "0.1"
+      },
+      "exitCode": 0,
+      "stderr": "",
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "route",
+        "disposition": "matched",
+        "basis": "caller-proposed category; no automatic language classification",
+        "context": {
+          "schema": "sdp-project-governance/0.1",
+          "operation": "context",
+          "projectRef": "pg-attention-lab",
+          "root": "/home/warloc/git/pg_lab/previews/pgl3-c3-final/project",
+          "checkoutId": "",
+          "revision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+          "selection": {
+            "card": "SDP/KanBan/active/card.md",
+            "plan": "SDP/Maintenance/Plan.md",
+            "session": "SDP/Sessions/session.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "sources": [
+            {
+              "path": "AGENTS.md",
+              "sha256": "48a54710d4479166358a2f9e5104617db8cc3d81a6d1d2ef10547c9f23ad5617"
+            },
+            {
+              "path": "SDP/KanBan/active/card.md",
+              "sha256": "897fe07168c527872afa06e6dcc8e9d7bb890ebc2b94747e353fcc116fa35b3b"
+            },
+            {
+              "path": "SDP/Maintenance/Plan.md",
+              "sha256": "1f653cada50af008e22962106092db010205d177dc4f8e4afd4e4fc9e380a1cb"
+            },
+            {
+              "path": "SDP/ProjectManagement/Ledger.ndjson",
+              "sha256": "afd810f336f3e49bb53cf4a7f2b3b3e1dc289d38881a9e56777778a250cb6a24"
+            },
+            {
+              "path": "SDP/SDP-project.manifest.yaml",
+              "sha256": "a1996e23f5b5e02f857a16f9f1b6c4ffcc7d11309c800f5c44c4367f13437053"
+            },
+            {
+              "path": "SDP/Sessions/session.md",
+              "sha256": "44a2b1de9c01f0106713a419ddac9593c9705f13e9b0e07674675031a52e3fd3"
+            },
+            {
+              "path": "SDP/authority.md",
+              "sha256": "45dce981af71c7c6f87cb5b7ee4d8b72ef54aa9caa8d8b2715b00e4fee09f78c"
+            }
+          ],
+          "coverage": "known",
+          "conditions": [],
+          "cardId": "KB-PGATT-001",
+          "planId": "MAINT-PGATT-0001",
+          "sessionId": "SESSION-PGATT-0001"
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa"
+      }
+    },
+    {
+      "operation": "core.bind",
+      "request": null,
+      "exitCode": 0,
+      "stderr": "",
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "bind",
+        "projectRef": "pg-attention-lab",
+        "root": "/home/warloc/git/pg_lab/previews/pgl3-c3-final/project",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc"
+      }
+    },
+    {
+      "operation": "core.start",
+      "request": {
+        "schema": "sdp-project-governance/0.1",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "5f718e04-e209-4a07-af7e-b7a5caa2d86e",
+        "requestId": "7b95f5da-36cc-49c5-a486-1511c2322029",
+        "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "Clarify the fixture output label",
+          "writablePaths": [
+            "target.txt"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "AGENTS.md",
+            "unrelated.txt"
+          ]
+        }
+      },
+      "exitCode": 0,
+      "stderr": "",
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "start",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "5f718e04-e209-4a07-af7e-b7a5caa2d86e",
+        "run": {
+          "id": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+          "revision": 1,
+          "requestId": "7b95f5da-36cc-49c5-a486-1511c2322029",
+          "state": "ready",
+          "step": "implement",
+          "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+          "selection": {
+            "card": "SDP/KanBan/active/card.md",
+            "plan": "SDP/Maintenance/Plan.md",
+            "session": "SDP/Sessions/session.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Clarify the fixture output label",
+            "writablePaths": [
+              "target.txt"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "AGENTS.md",
+              "unrelated.txt"
+            ]
+          },
+          "routine": {
+            "id": "maintenance",
+            "version": "0.1",
+            "steps": [
+              "implement",
+              "verify",
+              "review",
+              "record"
+            ],
+            "completion": "candidate evidence, applicable independent review and checked publication required"
+          },
+          "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+          "reason": "coverage resolved; trusted local controller selected bounded work"
+        },
+        "coverage": "known"
+      }
+    },
+    {
+      "operation": "core.transition",
+      "request": {
+        "schema": "sdp-project-governance/0.1",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "b383f32f-c782-46de-9963-12d4047608b3",
+        "runId": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+        "expectedRevision": 1,
+        "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+        "action": "start",
+        "reason": "Synthetic attention trial"
+      },
+      "exitCode": 0,
+      "stderr": "",
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "transition",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "b383f32f-c782-46de-9963-12d4047608b3",
+        "run": {
+          "id": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+          "revision": 2,
+          "requestId": "7b95f5da-36cc-49c5-a486-1511c2322029",
+          "state": "running",
+          "step": "implement",
+          "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+          "selection": {
+            "card": "SDP/KanBan/active/card.md",
+            "plan": "SDP/Maintenance/Plan.md",
+            "session": "SDP/Sessions/session.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Clarify the fixture output label",
+            "writablePaths": [
+              "target.txt"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "AGENTS.md",
+              "unrelated.txt"
+            ]
+          },
+          "routine": {
+            "id": "maintenance",
+            "version": "0.1",
+            "steps": [
+              "implement",
+              "verify",
+              "review",
+              "record"
+            ],
+            "completion": "candidate evidence, applicable independent review and checked publication required"
+          },
+          "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+          "reason": "Synthetic attention trial"
+        },
+        "coverage": "known"
+      }
+    },
+    {
+      "operation": "attention.request",
+      "request": {
+        "schema": "sdp-governance-attention/1",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "3dd4249f-da99-43ef-b33f-a79249e634e0",
+        "runId": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+        "expectedRevision": 2,
+        "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+        "prompt": "Which output label should this fixture use?",
+        "options": [
+          {
+            "id": "short",
+            "label": "Short label"
+          },
+          {
+            "id": "detailed",
+            "label": "Detailed label"
+          }
+        ],
+        "blocking": true
+      },
+      "exitCode": 0,
+      "stderr": "",
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "attention.request",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "3dd4249f-da99-43ef-b33f-a79249e634e0",
+        "run": {
+          "attention": [
+            {
+              "id": "3dd4249f-da99-43ef-b33f-a79249e634e0",
+              "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046",
+              "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+              "raisedRevision": 3,
+              "raisedAt": "2026-10-20T22:53:29.21512813Z",
+              "origin": "controller",
+              "prompt": "Which output label should this fixture use?",
+              "options": [
+                {
+                  "id": "short",
+                  "label": "Short label"
+                },
+                {
+                  "id": "detailed",
+                  "label": "Detailed label"
+                }
+              ],
+              "blocking": true
+            }
+          ],
+          "id": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+          "revision": 3,
+          "requestId": "7b95f5da-36cc-49c5-a486-1511c2322029",
+          "state": "running",
+          "step": "implement",
+          "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+          "selection": {
+            "card": "SDP/KanBan/active/card.md",
+            "plan": "SDP/Maintenance/Plan.md",
+            "session": "SDP/Sessions/session.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Clarify the fixture output label",
+            "writablePaths": [
+              "target.txt"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "AGENTS.md",
+              "unrelated.txt"
+            ]
+          },
+          "routine": {
+            "id": "maintenance",
+            "version": "0.1",
+            "steps": [
+              "implement",
+              "verify",
+              "review",
+              "record"
+            ],
+            "completion": "candidate evidence, applicable independent review and checked publication required"
+          },
+          "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+          "reason": "Synthetic attention trial"
+        },
+        "coverage": "known"
+      }
+    },
+    {
+      "operation": "core.transition",
+      "request": {
+        "schema": "sdp-project-governance/0.1",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "7756ceda-091f-42be-998b-7295155fad2e",
+        "runId": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+        "expectedRevision": 3,
+        "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+        "action": "report",
+        "reason": "Synthetic attention trial"
+      },
+      "exitCode": 2,
+      "stderr": "{\"error\":{\"code\":\"attention_required\",\"message\":\"answer or withdraw blocking questions before advancing this run\",\"retryable\":false},\"operation\":\"error\",\"schema\":\"sdp-project-governance/0.1\",\"status\":\"error\"}\n",
+      "expectedFailure": "attention_required"
+    },
+    {
+      "operation": "core.start",
+      "request": {
+        "schema": "sdp-project-governance/0.1",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "8e7afe82-9cad-4200-aad0-c6a2f94be6c9",
+        "requestId": "1e7f04aa-4c0c-46ca-860e-e3d4fbec3f71",
+        "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "Clarify the fixture output label",
+          "writablePaths": [
+            "target.txt"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "AGENTS.md",
+            "unrelated.txt"
+          ]
+        }
+      },
+      "exitCode": 0,
+      "stderr": "",
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "start",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "8e7afe82-9cad-4200-aad0-c6a2f94be6c9",
+        "run": {
+          "id": "3b854839-1ebb-4ac2-bfb9-c37b459851b9",
+          "revision": 1,
+          "requestId": "1e7f04aa-4c0c-46ca-860e-e3d4fbec3f71",
+          "state": "ready",
+          "step": "implement",
+          "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+          "selection": {
+            "card": "SDP/KanBan/active/card.md",
+            "plan": "SDP/Maintenance/Plan.md",
+            "session": "SDP/Sessions/session.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Clarify the fixture output label",
+            "writablePaths": [
+              "target.txt"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "AGENTS.md",
+              "unrelated.txt"
+            ]
+          },
+          "routine": {
+            "id": "maintenance",
+            "version": "0.1",
+            "steps": [
+              "implement",
+              "verify",
+              "review",
+              "record"
+            ],
+            "completion": "candidate evidence, applicable independent review and checked publication required"
+          },
+          "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+          "reason": "coverage resolved; trusted local controller selected bounded work"
+        },
+        "coverage": "known"
+      }
+    },
+    {
+      "operation": "core.transition",
+      "request": {
+        "schema": "sdp-project-governance/0.1",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "b742f5c7-ff6a-409a-a854-b22cfd1c0d38",
+        "runId": "3b854839-1ebb-4ac2-bfb9-c37b459851b9",
+        "expectedRevision": 1,
+        "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+        "action": "start",
+        "reason": "Synthetic attention trial"
+      },
+      "exitCode": 0,
+      "stderr": "",
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "transition",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "b742f5c7-ff6a-409a-a854-b22cfd1c0d38",
+        "run": {
+          "id": "3b854839-1ebb-4ac2-bfb9-c37b459851b9",
+          "revision": 2,
+          "requestId": "1e7f04aa-4c0c-46ca-860e-e3d4fbec3f71",
+          "state": "running",
+          "step": "implement",
+          "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+          "selection": {
+            "card": "SDP/KanBan/active/card.md",
+            "plan": "SDP/Maintenance/Plan.md",
+            "session": "SDP/Sessions/session.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Clarify the fixture output label",
+            "writablePaths": [
+              "target.txt"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "AGENTS.md",
+              "unrelated.txt"
+            ]
+          },
+          "routine": {
+            "id": "maintenance",
+            "version": "0.1",
+            "steps": [
+              "implement",
+              "verify",
+              "review",
+              "record"
+            ],
+            "completion": "candidate evidence, applicable independent review and checked publication required"
+          },
+          "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+          "reason": "Synthetic attention trial"
+        },
+        "coverage": "known"
+      }
+    },
+    {
+      "operation": "core.transition",
+      "request": {
+        "schema": "sdp-project-governance/0.1",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "d253af17-839b-4e68-9676-5f2baefb3c89",
+        "runId": "3b854839-1ebb-4ac2-bfb9-c37b459851b9",
+        "expectedRevision": 2,
+        "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+        "action": "report",
+        "reason": "Synthetic attention trial"
+      },
+      "exitCode": 0,
+      "stderr": "",
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "transition",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "d253af17-839b-4e68-9676-5f2baefb3c89",
+        "run": {
+          "id": "3b854839-1ebb-4ac2-bfb9-c37b459851b9",
+          "revision": 3,
+          "requestId": "1e7f04aa-4c0c-46ca-860e-e3d4fbec3f71",
+          "state": "verifying",
+          "step": "implement",
+          "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+          "selection": {
+            "card": "SDP/KanBan/active/card.md",
+            "plan": "SDP/Maintenance/Plan.md",
+            "session": "SDP/Sessions/session.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Clarify the fixture output label",
+            "writablePaths": [
+              "target.txt"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "AGENTS.md",
+              "unrelated.txt"
+            ]
+          },
+          "routine": {
+            "id": "maintenance",
+            "version": "0.1",
+            "steps": [
+              "implement",
+              "verify",
+              "review",
+              "record"
+            ],
+            "completion": "candidate evidence, applicable independent review and checked publication required"
+          },
+          "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+          "reason": "Synthetic attention trial"
+        },
+        "coverage": "known"
+      }
+    },
+    {
+      "operation": "attention.reply",
+      "request": {
+        "schema": "sdp-governance-attention/1",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "2976a91f-8eb9-4181-ab75-e9e75d174750",
+        "runId": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+        "questionId": "3dd4249f-da99-43ef-b33f-a79249e634e0",
+        "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046"
+      },
+      "exitCode": 2,
+      "stderr": "PG attention: 1 question(s)\nProject: \"pg-attention-lab\"\nReplies are recorded input; agent consumption and automatic continuation are not tracked.\n\nQuestion \"3dd4249f-da99-43ef-b33f-a79249e634e0\" / run \"378d74f5-c008-4e6c-b26e-0198768baaa5\"\n  Status: \"open\"; applicability: \"current\"; coverage: \"known\"; blocking: true\n  Prompt: \"Which output label should this fixture use?\"\n  Option \"short\": \"Short label\"\n  Option \"detailed\": \"Detailed label\"\nReply attributed to \"fixture-owner\". Enter an option ID, or leave blank for free text (no default):\nno reply recorded: input ended: <nil>\n",
+      "expectedFailure": "no reply recorded"
+    },
+    {
+      "operation": "attention.reply",
+      "request": {
+        "schema": "sdp-governance-attention/1",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "2976a91f-8eb9-4181-ab75-e9e75d174750",
+        "runId": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+        "questionId": "3dd4249f-da99-43ef-b33f-a79249e634e0",
+        "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046"
+      },
+      "exitCode": 2,
+      "stderr": "PG attention: 1 question(s)\nProject: \"pg-attention-lab\"\nReplies are recorded input; agent consumption and automatic continuation are not tracked.\n\nQuestion \"3dd4249f-da99-43ef-b33f-a79249e634e0\" / run \"378d74f5-c008-4e6c-b26e-0198768baaa5\"\n  Status: \"open\"; applicability: \"current\"; coverage: \"known\"; blocking: true\n  Prompt: \"Which output label should this fixture use?\"\n  Option \"short\": \"Short label\"\n  Option \"detailed\": \"Detailed label\"\nReply attributed to \"fixture-owner\". Enter an option ID, or leave blank for free text (no default):\nEnter your answer/comment (required; no work is launched):\ninvalid_request: unknown question option\n",
+      "expectedFailure": "invalid_request"
+    },
+    {
+      "operation": "attention.reply",
+      "request": {
+        "schema": "sdp-governance-attention/1",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "2976a91f-8eb9-4181-ab75-e9e75d174750",
+        "runId": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+        "questionId": "3dd4249f-da99-43ef-b33f-a79249e634e0",
+        "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046"
+      },
+      "exitCode": 0,
+      "stderr": "PG attention: 1 question(s)\nProject: \"pg-attention-lab\"\nReplies are recorded input; agent consumption and automatic continuation are not tracked.\n\nQuestion \"3dd4249f-da99-43ef-b33f-a79249e634e0\" / run \"378d74f5-c008-4e6c-b26e-0198768baaa5\"\n  Status: \"open\"; applicability: \"current\"; coverage: \"known\"; blocking: true\n  Prompt: \"Which output label should this fixture use?\"\n  Option \"short\": \"Short label\"\n  Option \"detailed\": \"Detailed label\"\nReply attributed to \"fixture-owner\". Enter an option ID, or leave blank for free text (no default):\nEnter your answer/comment (required; no work is launched):\n",
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "attention.reply",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "2976a91f-8eb9-4181-ab75-e9e75d174750",
+        "run": {
+          "attention": [
+            {
+              "id": "3dd4249f-da99-43ef-b33f-a79249e634e0",
+              "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046",
+              "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+              "raisedRevision": 3,
+              "raisedAt": "2026-10-20T22:53:29.21512813Z",
+              "origin": "controller",
+              "prompt": "Which output label should this fixture use?",
+              "options": [
+                {
+                  "id": "short",
+                  "label": "Short label"
+                },
+                {
+                  "id": "detailed",
+                  "label": "Detailed label"
+                }
+              ],
+              "blocking": true,
+              "reply": {
+                "operationId": "2976a91f-8eb9-4181-ab75-e9e75d174750",
+                "actor": "fixture-owner",
+                "source": "local-controller-stdin",
+                "optionId": "short",
+                "text": "Synthetic fixture response: use a short label.",
+                "recordedAt": "2026-10-20T22:53:29.327600942Z"
+              }
+            }
+          ],
+          "id": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+          "revision": 4,
+          "requestId": "7b95f5da-36cc-49c5-a486-1511c2322029",
+          "state": "running",
+          "step": "implement",
+          "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+          "selection": {
+            "card": "SDP/KanBan/active/card.md",
+            "plan": "SDP/Maintenance/Plan.md",
+            "session": "SDP/Sessions/session.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Clarify the fixture output label",
+            "writablePaths": [
+              "target.txt"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "AGENTS.md",
+              "unrelated.txt"
+            ]
+          },
+          "routine": {
+            "id": "maintenance",
+            "version": "0.1",
+            "steps": [
+              "implement",
+              "verify",
+              "review",
+              "record"
+            ],
+            "completion": "candidate evidence, applicable independent review and checked publication required"
+          },
+          "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+          "reason": "Synthetic attention trial"
+        },
+        "coverage": "known"
+      }
+    },
+    {
+      "operation": "attention.reply",
+      "request": {
+        "schema": "sdp-governance-attention/1",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "2976a91f-8eb9-4181-ab75-e9e75d174750",
+        "runId": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+        "questionId": "3dd4249f-da99-43ef-b33f-a79249e634e0",
+        "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046"
+      },
+      "exitCode": 0,
+      "stderr": "",
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "attention.reply",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "2976a91f-8eb9-4181-ab75-e9e75d174750",
+        "run": {
+          "attention": [
+            {
+              "id": "3dd4249f-da99-43ef-b33f-a79249e634e0",
+              "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046",
+              "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+              "raisedRevision": 3,
+              "raisedAt": "2026-10-20T22:53:29.21512813Z",
+              "origin": "controller",
+              "prompt": "Which output label should this fixture use?",
+              "options": [
+                {
+                  "id": "short",
+                  "label": "Short label"
+                },
+                {
+                  "id": "detailed",
+                  "label": "Detailed label"
+                }
+              ],
+              "blocking": true,
+              "reply": {
+                "operationId": "2976a91f-8eb9-4181-ab75-e9e75d174750",
+                "actor": "fixture-owner",
+                "source": "local-controller-stdin",
+                "optionId": "short",
+                "text": "Synthetic fixture response: use a short label.",
+                "recordedAt": "2026-10-20T22:53:29.327600942Z"
+              }
+            }
+          ],
+          "id": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+          "revision": 4,
+          "requestId": "7b95f5da-36cc-49c5-a486-1511c2322029",
+          "state": "running",
+          "step": "implement",
+          "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+          "selection": {
+            "card": "SDP/KanBan/active/card.md",
+            "plan": "SDP/Maintenance/Plan.md",
+            "session": "SDP/Sessions/session.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Clarify the fixture output label",
+            "writablePaths": [
+              "target.txt"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "AGENTS.md",
+              "unrelated.txt"
+            ]
+          },
+          "routine": {
+            "id": "maintenance",
+            "version": "0.1",
+            "steps": [
+              "implement",
+              "verify",
+              "review",
+              "record"
+            ],
+            "completion": "candidate evidence, applicable independent review and checked publication required"
+          },
+          "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+          "reason": "Synthetic attention trial"
+        },
+        "coverage": "known"
+      }
+    },
+    {
+      "operation": "attention.reply",
+      "request": {
+        "schema": "sdp-governance-attention/1",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "2976a91f-8eb9-4181-ab75-e9e75d174750",
+        "runId": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+        "questionId": "3dd4249f-da99-43ef-b33f-a79249e634e0",
+        "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046"
+      },
+      "exitCode": 2,
+      "stderr": "idempotency_conflict: reply attribution differs\n",
+      "expectedFailure": "idempotency_conflict"
+    },
+    {
+      "operation": "attention.list",
+      "request": null,
+      "exitCode": 0,
+      "stderr": "",
+      "response": {
+        "schema": "sdp-governance-attention/1",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "generation": "cf1efc36d82fe912d3c0bfa752b806d39578dec10d9ada00b75d08f134feebeb",
+        "items": [
+          {
+            "runId": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+            "question": {
+              "id": "3dd4249f-da99-43ef-b33f-a79249e634e0",
+              "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046",
+              "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+              "raisedRevision": 3,
+              "raisedAt": "2026-10-20T22:53:29.21512813Z",
+              "origin": "controller",
+              "prompt": "Which output label should this fixture use?",
+              "options": [
+                {
+                  "id": "short",
+                  "label": "Short label"
+                },
+                {
+                  "id": "detailed",
+                  "label": "Detailed label"
+                }
+              ],
+              "blocking": true,
+              "reply": {
+                "operationId": "2976a91f-8eb9-4181-ab75-e9e75d174750",
+                "actor": "fixture-owner",
+                "source": "local-controller-stdin",
+                "optionId": "short",
+                "text": "Synthetic fixture response: use a short label.",
+                "recordedAt": "2026-10-20T22:53:29.327600942Z"
+              }
+            },
+            "status": "answered",
+            "coverage": "known",
+            "applicability": "current",
+            "currentRevision": 4,
+            "consumption": "not-tracked"
+          }
+        ]
+      }
+    },
+    {
+      "operation": "attention.request",
+      "request": {
+        "schema": "sdp-governance-attention/1",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "8c88cd4c-c183-4eac-a2ae-2f3c7ba1ef61",
+        "runId": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+        "expectedRevision": 4,
+        "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+        "prompt": "This deliberately obsolete question must be withdrawn.",
+        "options": [
+          {
+            "id": "short",
+            "label": "Short label"
+          },
+          {
+            "id": "detailed",
+            "label": "Detailed label"
+          }
+        ],
+        "blocking": true
+      },
+      "exitCode": 0,
+      "stderr": "",
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "attention.request",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "8c88cd4c-c183-4eac-a2ae-2f3c7ba1ef61",
+        "run": {
+          "attention": [
+            {
+              "id": "3dd4249f-da99-43ef-b33f-a79249e634e0",
+              "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046",
+              "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+              "raisedRevision": 3,
+              "raisedAt": "2026-10-20T22:53:29.21512813Z",
+              "origin": "controller",
+              "prompt": "Which output label should this fixture use?",
+              "options": [
+                {
+                  "id": "short",
+                  "label": "Short label"
+                },
+                {
+                  "id": "detailed",
+                  "label": "Detailed label"
+                }
+              ],
+              "blocking": true,
+              "reply": {
+                "operationId": "2976a91f-8eb9-4181-ab75-e9e75d174750",
+                "actor": "fixture-owner",
+                "source": "local-controller-stdin",
+                "optionId": "short",
+                "text": "Synthetic fixture response: use a short label.",
+                "recordedAt": "2026-10-20T22:53:29.327600942Z"
+              }
+            },
+            {
+              "id": "8c88cd4c-c183-4eac-a2ae-2f3c7ba1ef61",
+              "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046",
+              "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+              "raisedRevision": 5,
+              "raisedAt": "2026-10-20T22:53:29.386769261Z",
+              "origin": "controller",
+              "prompt": "This deliberately obsolete question must be withdrawn.",
+              "options": [
+                {
+                  "id": "short",
+                  "label": "Short label"
+                },
+                {
+                  "id": "detailed",
+                  "label": "Detailed label"
+                }
+              ],
+              "blocking": true
+            }
+          ],
+          "id": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+          "revision": 5,
+          "requestId": "7b95f5da-36cc-49c5-a486-1511c2322029",
+          "state": "running",
+          "step": "implement",
+          "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+          "selection": {
+            "card": "SDP/KanBan/active/card.md",
+            "plan": "SDP/Maintenance/Plan.md",
+            "session": "SDP/Sessions/session.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Clarify the fixture output label",
+            "writablePaths": [
+              "target.txt"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "AGENTS.md",
+              "unrelated.txt"
+            ]
+          },
+          "routine": {
+            "id": "maintenance",
+            "version": "0.1",
+            "steps": [
+              "implement",
+              "verify",
+              "review",
+              "record"
+            ],
+            "completion": "candidate evidence, applicable independent review and checked publication required"
+          },
+          "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+          "reason": "Synthetic attention trial"
+        },
+        "coverage": "known"
+      }
+    },
+    {
+      "operation": "attention.list",
+      "request": null,
+      "exitCode": 0,
+      "stderr": "",
+      "response": {
+        "schema": "sdp-governance-attention/1",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "generation": "5abb4afabd5cb7422f257b3dbd0b2ea1e6a6e95518d13fe6438cd19fd5ae7efa",
+        "items": [
+          {
+            "runId": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+            "question": {
+              "id": "3dd4249f-da99-43ef-b33f-a79249e634e0",
+              "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046",
+              "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+              "raisedRevision": 3,
+              "raisedAt": "2026-10-20T22:53:29.21512813Z",
+              "origin": "controller",
+              "prompt": "Which output label should this fixture use?",
+              "options": [
+                {
+                  "id": "short",
+                  "label": "Short label"
+                },
+                {
+                  "id": "detailed",
+                  "label": "Detailed label"
+                }
+              ],
+              "blocking": true,
+              "reply": {
+                "operationId": "2976a91f-8eb9-4181-ab75-e9e75d174750",
+                "actor": "fixture-owner",
+                "source": "local-controller-stdin",
+                "optionId": "short",
+                "text": "Synthetic fixture response: use a short label.",
+                "recordedAt": "2026-10-20T22:53:29.327600942Z"
+              }
+            },
+            "status": "answered",
+            "coverage": "stale",
+            "applicability": "stale",
+            "currentRevision": 5,
+            "consumption": "not-tracked"
+          },
+          {
+            "runId": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+            "question": {
+              "id": "8c88cd4c-c183-4eac-a2ae-2f3c7ba1ef61",
+              "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046",
+              "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+              "raisedRevision": 5,
+              "raisedAt": "2026-10-20T22:53:29.386769261Z",
+              "origin": "controller",
+              "prompt": "This deliberately obsolete question must be withdrawn.",
+              "options": [
+                {
+                  "id": "short",
+                  "label": "Short label"
+                },
+                {
+                  "id": "detailed",
+                  "label": "Detailed label"
+                }
+              ],
+              "blocking": true
+            },
+            "status": "open",
+            "coverage": "stale",
+            "applicability": "stale",
+            "currentRevision": 5,
+            "consumption": "not-tracked"
+          }
+        ]
+      }
+    },
+    {
+      "operation": "attention.reply",
+      "request": {
+        "schema": "sdp-governance-attention/1",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "85852f10-c5db-4071-a64e-327e103e23dd",
+        "runId": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+        "questionId": "8c88cd4c-c183-4eac-a2ae-2f3c7ba1ef61",
+        "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046"
+      },
+      "exitCode": 2,
+      "stderr": "stale_revision: displayed question is not open/current\n",
+      "expectedFailure": "stale_revision"
+    },
+    {
+      "operation": "attention.withdraw",
+      "request": {
+        "schema": "sdp-governance-attention/1",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "85852f10-c5db-4071-a64e-327e103e23dd",
+        "runId": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+        "questionId": "8c88cd4c-c183-4eac-a2ae-2f3c7ba1ef61",
+        "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046"
+      },
+      "exitCode": 0,
+      "stderr": "",
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "attention.withdraw",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "85852f10-c5db-4071-a64e-327e103e23dd",
+        "run": {
+          "attention": [
+            {
+              "id": "3dd4249f-da99-43ef-b33f-a79249e634e0",
+              "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046",
+              "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+              "raisedRevision": 3,
+              "raisedAt": "2026-10-20T22:53:29.21512813Z",
+              "origin": "controller",
+              "prompt": "Which output label should this fixture use?",
+              "options": [
+                {
+                  "id": "short",
+                  "label": "Short label"
+                },
+                {
+                  "id": "detailed",
+                  "label": "Detailed label"
+                }
+              ],
+              "blocking": true,
+              "reply": {
+                "operationId": "2976a91f-8eb9-4181-ab75-e9e75d174750",
+                "actor": "fixture-owner",
+                "source": "local-controller-stdin",
+                "optionId": "short",
+                "text": "Synthetic fixture response: use a short label.",
+                "recordedAt": "2026-10-20T22:53:29.327600942Z"
+              }
+            },
+            {
+              "id": "8c88cd4c-c183-4eac-a2ae-2f3c7ba1ef61",
+              "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046",
+              "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+              "raisedRevision": 5,
+              "raisedAt": "2026-10-20T22:53:29.386769261Z",
+              "origin": "controller",
+              "prompt": "This deliberately obsolete question must be withdrawn.",
+              "options": [
+                {
+                  "id": "short",
+                  "label": "Short label"
+                },
+                {
+                  "id": "detailed",
+                  "label": "Detailed label"
+                }
+              ],
+              "blocking": true,
+              "withdrawal": {
+                "operationId": "85852f10-c5db-4071-a64e-327e103e23dd",
+                "reason": "Synthetic authority changed; retain history.",
+                "recordedAt": "2026-10-20T22:53:29.427665539Z"
+              }
+            }
+          ],
+          "id": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+          "revision": 6,
+          "requestId": "7b95f5da-36cc-49c5-a486-1511c2322029",
+          "state": "running",
+          "step": "implement",
+          "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+          "selection": {
+            "card": "SDP/KanBan/active/card.md",
+            "plan": "SDP/Maintenance/Plan.md",
+            "session": "SDP/Sessions/session.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Clarify the fixture output label",
+            "writablePaths": [
+              "target.txt"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "AGENTS.md",
+              "unrelated.txt"
+            ]
+          },
+          "routine": {
+            "id": "maintenance",
+            "version": "0.1",
+            "steps": [
+              "implement",
+              "verify",
+              "review",
+              "record"
+            ],
+            "completion": "candidate evidence, applicable independent review and checked publication required"
+          },
+          "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+          "reason": "Synthetic attention trial"
+        },
+        "coverage": "stale"
+      }
+    },
+    {
+      "operation": "attention.request",
+      "request": {
+        "schema": "sdp-governance-attention/1",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "f9627bc3-4e1b-4648-84b7-f48ddfe0b4f1",
+        "runId": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+        "expectedRevision": 6,
+        "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+        "prompt": "Try the local mailbox: which label style would you choose? Your reply stays in this isolated preview.",
+        "options": [
+          {
+            "id": "short",
+            "label": "Short label"
+          },
+          {
+            "id": "detailed",
+            "label": "Detailed label"
+          }
+        ],
+        "blocking": true
+      },
+      "exitCode": 0,
+      "stderr": "",
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "attention.request",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "operationId": "f9627bc3-4e1b-4648-84b7-f48ddfe0b4f1",
+        "run": {
+          "attention": [
+            {
+              "id": "3dd4249f-da99-43ef-b33f-a79249e634e0",
+              "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046",
+              "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+              "raisedRevision": 3,
+              "raisedAt": "2026-10-20T22:53:29.21512813Z",
+              "origin": "controller",
+              "prompt": "Which output label should this fixture use?",
+              "options": [
+                {
+                  "id": "short",
+                  "label": "Short label"
+                },
+                {
+                  "id": "detailed",
+                  "label": "Detailed label"
+                }
+              ],
+              "blocking": true,
+              "reply": {
+                "operationId": "2976a91f-8eb9-4181-ab75-e9e75d174750",
+                "actor": "fixture-owner",
+                "source": "local-controller-stdin",
+                "optionId": "short",
+                "text": "Synthetic fixture response: use a short label.",
+                "recordedAt": "2026-10-20T22:53:29.327600942Z"
+              }
+            },
+            {
+              "id": "8c88cd4c-c183-4eac-a2ae-2f3c7ba1ef61",
+              "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046",
+              "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+              "raisedRevision": 5,
+              "raisedAt": "2026-10-20T22:53:29.386769261Z",
+              "origin": "controller",
+              "prompt": "This deliberately obsolete question must be withdrawn.",
+              "options": [
+                {
+                  "id": "short",
+                  "label": "Short label"
+                },
+                {
+                  "id": "detailed",
+                  "label": "Detailed label"
+                }
+              ],
+              "blocking": true,
+              "withdrawal": {
+                "operationId": "85852f10-c5db-4071-a64e-327e103e23dd",
+                "reason": "Synthetic authority changed; retain history.",
+                "recordedAt": "2026-10-20T22:53:29.427665539Z"
+              }
+            },
+            {
+              "id": "f9627bc3-4e1b-4648-84b7-f48ddfe0b4f1",
+              "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046",
+              "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+              "raisedRevision": 7,
+              "raisedAt": "2026-10-20T22:53:29.448711254Z",
+              "origin": "controller",
+              "prompt": "Try the local mailbox: which label style would you choose? Your reply stays in this isolated preview.",
+              "options": [
+                {
+                  "id": "short",
+                  "label": "Short label"
+                },
+                {
+                  "id": "detailed",
+                  "label": "Detailed label"
+                }
+              ],
+              "blocking": true
+            }
+          ],
+          "id": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+          "revision": 7,
+          "requestId": "7b95f5da-36cc-49c5-a486-1511c2322029",
+          "state": "running",
+          "step": "implement",
+          "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+          "selection": {
+            "card": "SDP/KanBan/active/card.md",
+            "plan": "SDP/Maintenance/Plan.md",
+            "session": "SDP/Sessions/session.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Clarify the fixture output label",
+            "writablePaths": [
+              "target.txt"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "AGENTS.md",
+              "unrelated.txt"
+            ]
+          },
+          "routine": {
+            "id": "maintenance",
+            "version": "0.1",
+            "steps": [
+              "implement",
+              "verify",
+              "review",
+              "record"
+            ],
+            "completion": "candidate evidence, applicable independent review and checked publication required"
+          },
+          "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+          "reason": "Synthetic attention trial"
+        },
+        "coverage": "known"
+      }
+    },
+    {
+      "operation": "attention.list",
+      "request": null,
+      "exitCode": 0,
+      "stderr": "",
+      "response": {
+        "schema": "sdp-governance-attention/1",
+        "projectRef": "pg-attention-lab",
+        "checkoutId": "c71300ec-d5e7-4129-b2f3-0786a67f14bc",
+        "generation": "cfd34279d7cf6e8b039c53884b4ecebdbdfa034e226562d4717479a30d55323a",
+        "items": [
+          {
+            "runId": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+            "question": {
+              "id": "3dd4249f-da99-43ef-b33f-a79249e634e0",
+              "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046",
+              "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+              "raisedRevision": 3,
+              "raisedAt": "2026-10-20T22:53:29.21512813Z",
+              "origin": "controller",
+              "prompt": "Which output label should this fixture use?",
+              "options": [
+                {
+                  "id": "short",
+                  "label": "Short label"
+                },
+                {
+                  "id": "detailed",
+                  "label": "Detailed label"
+                }
+              ],
+              "blocking": true,
+              "reply": {
+                "operationId": "2976a91f-8eb9-4181-ab75-e9e75d174750",
+                "actor": "fixture-owner",
+                "source": "local-controller-stdin",
+                "optionId": "short",
+                "text": "Synthetic fixture response: use a short label.",
+                "recordedAt": "2026-10-20T22:53:29.327600942Z"
+              }
+            },
+            "status": "answered",
+            "coverage": "known",
+            "applicability": "current",
+            "currentRevision": 7,
+            "consumption": "not-tracked"
+          },
+          {
+            "runId": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+            "question": {
+              "id": "8c88cd4c-c183-4eac-a2ae-2f3c7ba1ef61",
+              "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046",
+              "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+              "raisedRevision": 5,
+              "raisedAt": "2026-10-20T22:53:29.386769261Z",
+              "origin": "controller",
+              "prompt": "This deliberately obsolete question must be withdrawn.",
+              "options": [
+                {
+                  "id": "short",
+                  "label": "Short label"
+                },
+                {
+                  "id": "detailed",
+                  "label": "Detailed label"
+                }
+              ],
+              "blocking": true,
+              "withdrawal": {
+                "operationId": "85852f10-c5db-4071-a64e-327e103e23dd",
+                "reason": "Synthetic authority changed; retain history.",
+                "recordedAt": "2026-10-20T22:53:29.427665539Z"
+              }
+            },
+            "status": "withdrawn",
+            "coverage": "known",
+            "applicability": "current",
+            "currentRevision": 7,
+            "consumption": "not-tracked"
+          },
+          {
+            "runId": "378d74f5-c008-4e6c-b26e-0198768baaa5",
+            "question": {
+              "id": "f9627bc3-4e1b-4648-84b7-f48ddfe0b4f1",
+              "basis": "3ef4668961a91ab6a651ea95073a22e28a32c48430396199fdb7083f4a535046",
+              "inputRevision": "cf1335fb65af58ff3e49012c8455424ef1f33759e45a0a95a3d62edb27df3a17",
+              "raisedRevision": 7,
+              "raisedAt": "2026-10-20T22:53:29.448711254Z",
+              "origin": "controller",
+              "prompt": "Try the local mailbox: which label style would you choose? Your reply stays in this isolated preview.",
+              "options": [
+                {
+                  "id": "short",
+                  "label": "Short label"
+                },
+                {
+                  "id": "detailed",
+                  "label": "Detailed label"
+                }
+              ],
+              "blocking": true
+            },
+            "status": "open",
+            "coverage": "known",
+            "applicability": "current",
+            "currentRevision": 7,
+            "consumption": "not-tracked"
+          }
+        ]
+      }
+    },
+    {
+      "operation": "old-reader-refusal",
+      "exitCode": 2,
+      "stderr": "reconciliation_required: invalid_request: json: unknown field \"attention\"\n"
+    }
+  ]
+}

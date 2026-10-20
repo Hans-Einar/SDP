@@ -199,7 +199,7 @@ func (s *Service) Transition(caller Caller, q TransitionRequest) (Result, error)
 	if !ok {
 		return out, fail("missing_coverage", "run not found")
 	}
-	if q.ExpectedRevision != r.Revision && !approvedRevision(state, r, caller, q) && !observedReportRevision(state, r, caller, q) {
+	if q.ExpectedRevision != r.Revision && !approvedRevision(state, r, caller, q) && !(q.Action == "report" && observedAgentRevision(state, r, caller, q.ExpectedRevision)) {
 		return out, &Error{Code: "stale_revision", Message: "run revision changed", CurrentRevision: r.Revision}
 	}
 	c, e := s.runContext(r)
@@ -214,6 +214,9 @@ func (s *Service) Transition(caller Caller, q TransitionRequest) (Result, error)
 	}
 	if !stopping && (c.Revision != r.InputRevision || len(c.Conditions) > 0) {
 		return out, fail("stale_revision", "authority/work changed; reconcile before advancing")
+	}
+	if (q.Action == "report" || q.Action == "start" || q.Action == "resume") && hasBlockingAttention(r) {
+		return out, fail("attention_required", "answer or withdraw blocking questions before advancing this run")
 	}
 	next := ""
 	switch q.Action {

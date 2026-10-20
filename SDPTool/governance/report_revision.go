@@ -2,10 +2,10 @@ package governance
 
 import "encoding/json"
 
-// A tool read is itself followed by a host observation. Permit an agent report
+// A tool read is itself followed by a host observation. Permit an agent report or question
 // across only proven tool/message observations, never arbitrary stale revisions.
-func observedReportRevision(state snapshot, r Run, caller Caller, q TransitionRequest) bool {
-	if caller.controller || q.Action != "report" || q.ExpectedRevision >= r.Revision || r.State != "running" || len(r.Attempts) == 0 {
+func observedAgentRevision(state snapshot, r Run, caller Caller, expectedRevision uint64) bool {
+	if caller.controller || expectedRevision >= r.Revision || r.State != "running" || len(r.Attempts) == 0 {
 		return false
 	}
 	a := r.Attempts[len(r.Attempts)-1]
@@ -18,7 +18,7 @@ func observedReportRevision(state snapshot, r Run, caller Caller, q TransitionRe
 			revisions[receipt.Result.Run.Revision] = receipt.Result
 		}
 	}
-	base, ok := revisions[q.ExpectedRevision]
+	base, ok := revisions[expectedRevision]
 	if !ok || len(base.Run.Attempts) != len(r.Attempts) {
 		return false
 	}
@@ -34,7 +34,7 @@ func observedReportRevision(state snapshot, r Run, caller Caller, q TransitionRe
 	}
 	basis := normalize(base.Run)
 	count := base.Run.Attempts[len(base.Run.Attempts)-1].EventCount
-	for rev := q.ExpectedRevision; rev < r.Revision; {
+	for rev := expectedRevision; rev < r.Revision; {
 		rev++
 		next, ok := revisions[rev]
 		if !ok || next.Operation != "host.observe" || len(next.Run.Attempts) != len(r.Attempts) || normalize(next.Run) != basis {

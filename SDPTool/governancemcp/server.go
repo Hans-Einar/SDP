@@ -116,6 +116,32 @@ func New(service *governance.Service, runID, attemptID, epoch string) (*mcp.Serv
 		return service.Read(runID)
 	})
 	if attemptID != "" {
+		add("attention_read", "Read questions, attributed replies and current applicability for the assigned run. Supply questionId from attention_request to bound large histories. Reading does not consume an answer.", map[string]any{"type": "object", "properties": map[string]any{"questionId": map[string]any{"type": "string", "format": "uuid"}}, "additionalProperties": false}, true, func(b []byte) (any, error) {
+			var q struct {
+				QuestionID string `json:"questionId"`
+			}
+			if e := governance.Decode(b, &q); e != nil {
+				return nil, e
+			}
+			view, e := service.AttentionInbox(runID)
+			if e != nil || q.QuestionID == "" {
+				return view, e
+			}
+			for _, item := range view.Items {
+				if item.Question.ID == q.QuestionID {
+					view.Items = []governance.AttentionView{item}
+					return view, nil
+				}
+			}
+			return nil, &governance.Error{Code: "missing_coverage", Message: "question absent from assigned run"}
+		})
+		add("attention_request", "Ask a durable question for the assigned run; a blocking question prevents report advancement. Stop dependent work while waiting. Read replies and applicability through attention_read; asking grants no owner authority.", governance.WireDefinition("AttentionRequest"), false, func(b []byte) (any, error) {
+			var q governance.AttentionRequest
+			if e := governance.Decode(b, &q); e != nil {
+				return nil, e
+			}
+			return service.RequestAttention(caller, q)
+		})
 		add("events_read", "Read a bounded page of observations for the launch-bound attempt; cursor pins the run revision.", map[string]any{
 			"type": "object", "additionalProperties": false, "properties": map[string]any{"cursor": map[string]any{"type": "string"}, "limit": map[string]any{"type": "integer", "minimum": 1, "maximum": 256}}, "required": []string{"cursor", "limit"}}, true, func(b []byte) (any, error) {
 			var q struct {

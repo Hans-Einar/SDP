@@ -111,7 +111,7 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 	if e != nil {
 		return r, e
 	}
-	instructions := "You are the fresh Master for one explicitly authorized SDP Maintenance assignment. Read the selected Session, authority, plan, card, AGENTS and relevant SDP skills before acting. Preserve writable/excluded boundaries and unrelated work. Native delegation is not granted by this launch; do not spawn children. Report candidate, tests, remaining gaps and observed outcome. Agent claims do not grant owner approval or independent review. Do not publish canonical management/Session records or mark the work complete; evidence publication is a later controller capability. Use assignment-bound MCP reads and report/fail/scope-change only."
+	instructions := "You are the fresh Master for one explicitly authorized SDP Maintenance assignment. Read the selected Session, authority, plan, card, AGENTS and relevant SDP skills before acting. Preserve writable/excluded boundaries and unrelated work. Native delegation is not granted by this launch; do not spawn children. Report candidate, tests, remaining gaps and observed outcome. Agent claims do not grant owner approval or independent review. Do not publish canonical management/Session records or mark the work complete; evidence publication is a later controller capability. Use assignment-bound MCP reads, attention questions and report/fail/scope-change only. For input you need, use attention_request with blocking=true, stop dependent work, and read any reply and its current applicability via attention_read. If no reply is available, return a waiting summary; do not poll indefinitely or invent an answer. A reply records input, not authority to change scope."
 	approvedDesign, e := c.Service.RunDesign(runID)
 	if e != nil {
 		return r, e
@@ -148,7 +148,7 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 	}()
 	config := map[string]any{"sdp_governance": map[string]any{"command": c.MCPBinary, "args": []string{"--project", c.Root, "--state", c.StateDir, "--run", runID, "--attempt", v.AttemptID, "--epoch", c.Epoch}}}
 	if reporting == "automatic" {
-		config["sdp_governance"].(map[string]any)["tools"] = map[string]any{"run_transition": map[string]any{"approval_mode": "approve"}}
+		config["sdp_governance"].(map[string]any)["tools"] = map[string]any{"run_transition": map[string]any{"approval_mode": "approve"}, "attention_request": map[string]any{"approval_mode": "approve"}}
 	}
 	thread, e := c.Host.StartWorkThread(ctx, c.Root, c.Sandbox, instructions, c.Approvals, config)
 	if e != nil {
@@ -178,7 +178,7 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 	if e != nil {
 		return r, e
 	}
-	if !slices.Equal(names, []string{"context_read", "events_read", "route_evaluate", "run_read", "run_transition"}) {
+	if !slices.Equal(names, []string{"attention_read", "attention_request", "context_read", "events_read", "route_evaluate", "run_read", "run_transition"}) {
 		return r, fmt.Errorf("assignment-bound MCP tools unavailable")
 	}
 	r, e = c.transition(runID, "start", "owner selected fresh bounded Master attempt")

@@ -94,7 +94,7 @@ progress independently with distinct host connections. New per-run leases also h
 a shared lock on the legacy checkout lease, so an older exclusive controller cannot
 race them. The short exclusive store mutation lock remains shared with MCP. The launch pins source references,
 Session, assignment and sandbox in its payload; after thread binding it requires
-the five assignment-bound MCP tools before starting a turn. The fresh Master is
+the seven assignment-bound MCP tools before starting a turn. The fresh Master is
 instructed to read governing documents and preserve bounds. No native child or
 independent-review provenance is established by that instruction string.
 
@@ -357,7 +357,8 @@ refused; this change does not alter host policies or answer approval prompts.
 
 For a **new** authorized launch, add `--reporting automatic`. The default `manual`
 retains the prior policy. Automatic mode sets only the thread-local MCP policy
-`sdp_governance.tools.run_transition.approval_mode = "approve"`; the launch payload
+`sdp_governance.tools.run_transition.approval_mode = "approve"` and, since PGL3-C3,
+the same policy for `attention_request`; the launch payload
 records the selected mode. `--approvals` and all other tools retain their previous
 behavior. Attach/recover cannot retrofit this launch policy. The tool's capabilities
 remain report/fail/scope-change for the current assignment, not approval or dispatch.
@@ -383,6 +384,50 @@ This local view includes report text and should be handled as project data. Term
 rendering quotes control characters. It does not claim author authentication beyond
 existing local controller/capability binding, remote delivery, leader consumption,
 acceptance or automatic continuation. The current store's 1024-receipt capacity still
-applies; this is not evidence of multi-hour throughput. Structured attention/replies
-remain subsequent local work. Hub/web/mobile implementation belongs to a separate
+applies; this is not evidence of multi-hour throughput. Structured attention/replies are described below. Hub/web/mobile implementation belongs to a separate
 project under the owner's T026 boundary.
+
+
+## PGL3-C3 durable attention
+
+The bound agent may call `attention_request` with a current run/input revision,
+operation UUID, prompt, up to five options and `blocking`. Use `attention_read`
+with optional `questionId` to read the reply and current applicability. A question
+may cross receipt-proven tool/message observations, with the same strict authority
+checks as reporting. The seven-tool inventory is required at launch; pair this
+controller with the matching MCP binary. Older five-tool binaries are refused.
+No agent tool can answer on behalf of an owner, dispatch work or grant approval.
+
+```sh
+sdp-controller attention list --project ROOT --state DIR
+sdp-controller attention list --project ROOT --state DIR --run UUID --json
+sdp-controller attention request --project ROOT --state DIR --input QUESTION.json
+sdp-controller attention reply --project ROOT --state DIR --input REPLY.json --owner NAME
+sdp-controller attention withdraw --project ROOT --state DIR --input REPLY.json --reason TEXT
+```
+
+The [wire definitions](../governance/schema.json) include AttentionRequest,
+AttentionDisposition and AttentionInbox. Request/disposition JSON never supplies
+owner attribution. Reply separately captures an option ID (blank allows free text)
+and required answer/comment from stdin, then rechecks the exact displayed basis.
+EOF and invalid input write nothing. Exact operation retries recover the immutable
+reply without prompting again; attribution conflicts refuse. This is local trusted
+controller attribution, not authentication of the human behind a shell account.
+Mutations return JSON on stdout; input prompts use stderr.
+
+A blocking unresolved question prevents report/start/resume on that run. It does
+not freeze unrelated runs, or claim to stop arbitrary host file/tool actions. The
+agent is instructed to stop dependent work and return a waiting summary. New owner
+steering, authority changes, lifecycle changes or an observation gap make a question
+stale; ordinary host messages and turn completion do not. Explicit withdrawal retains
+obsolete history. Answering is neither design approval nor expanded scope.
+
+The first question write upgrades only the selected store to operational profile
+0.6. Older readers refuse; preparation, design and activation writers preserve it.
+Limits remain 32 retained questions per run, 4096 prompt/answer bytes, five options,
+1024 operation receipts and 16 MiB state. MCP responses retain the 256 KiB bound;
+use questionId for an individual record when the full history exceeds that bound.
+Current source coverage is checked separately from the pinned store generation.
+No leader consumption acknowledgement, automatic new host turn, multi-hour capacity
+claim, hub or notification delivery is included. Native question/reply continuation
+has not yet been verified; the new mailbox has service, MCP and CLI evidence.

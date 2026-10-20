@@ -432,6 +432,18 @@ func CheckWire(b []byte) error {
 // Routine snapshots expose attempt metadata/counts. Message content is available
 // only through byte- and count-bounded Events pages, including in receipts.
 func summarizeRun(r Run) Run {
+	r.Attention = append([]AttentionQuestion(nil), r.Attention...)
+	for i := range r.Attention {
+		r.Attention[i].Options = append([]AttentionOption{}, r.Attention[i].Options...)
+		if v := r.Attention[i].Reply; v != nil {
+			copy := *v
+			r.Attention[i].Reply = &copy
+		}
+		if v := r.Attention[i].Withdrawal; v != nil {
+			copy := *v
+			r.Attention[i].Withdrawal = &copy
+		}
+	}
 	r.Inputs = append([]OwnerInput(nil), r.Inputs...)
 	for i := range r.Inputs {
 		r.Inputs[i].ContentOmitted = true

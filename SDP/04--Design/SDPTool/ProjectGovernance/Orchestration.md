@@ -433,3 +433,48 @@ selection is represented by `approve` for this bound tool only on a fresh launch
 No rejected operation is replayed, existing attempt policy changed or arbitrary tool
 preapproved. The failed trial remains separate evidence. Source:
 [pinned tool approval semantics](https://github.com/openai/codex/blob/rust-v0.161.0/codex-rs/core/src/mcp_tool_call.rs).
+
+## PGL3-C3 — Durable local questions and attributed replies (2026-10-21)
+
+Owner T027 continues the selected local attention/reply step. Extend the existing
+atomic run store and immutable operation receipts instead of introducing a competing
+mailbox ledger. Explicit question writes select operational profile 0.6; old stores
+remain readable and old readers refuse the extended store. All writers retain 0.6.
+
+A launch-bound agent or controller may ask a question on a running, current run:
+nonempty prompt, zero to five stable option IDs/labels, free text always available,
+and a blocking flag. IDs are operation UUIDs. Questions retain source revision,
+run/attempt binding, creation time and a decision-basis digest. Host observations
+may advance the run revision without invalidating the question; owner steering,
+source/design changes, lifecycle changes and replacement/disconnected attempts do
+invalidate applicability. Sibling questions/replies do not invalidate each other.
+The question/reply is project data, not a design approval or expanded mandate.
+
+Only a trusted controller may attribute a reply captured from its input surface.
+The request names the question and exact basis, never an owner identity. Retain text,
+optional selected option, actor/source, receipt ID and server timestamp. One reply
+per question; exact retries return immutable history, conflicting repeats refuse.
+An answered record is not proof of agent consumption or application. A controller
+may explicitly withdraw an obsolete question with a reason; preserve its history.
+
+Open blocking questions prevent report/start/resume advancement for that run even
+when stale, until answered or explicitly withdrawn. Other runs and stop/fail/scope
+bookkeeping remain available. This is a governance advancement guard, not a claim
+that arbitrary host file/tool execution is forcibly suspended. Agents are instructed
+to stop dependent work and return when waiting; a reply does not automatically start
+another host turn in this increment. Leader consumption/continuation remains next.
+
+Add write-annotated attention_request and read-only attention_read MCP tools,
+restricted to the launch-bound run/attempt. The read returns current applicability,
+not just historical records; optional questionId bounds the result for large histories.
+No owner-reply tool is given to agents. Automatic-mode launches preapprove this bounded reporting tool
+alongside run_transition, retaining all core guards. The controller CLI lists current
+applicability, captures a reply against a displayed question, and supports explicit
+withdrawal. Terminal output quotes project-controlled content; JSON supports local
+clients. No hub, notification transport or new global host configuration is added.
+
+Verification: ask/read/reply across reopen; option/free-text input; idempotency and
+wrong-run/epoch/actor refusal; source, steering and terminal-state staleness; sibling
+independence; two-run progress; report guard; withdrawal; legacy reader refusal and
+all writer profile preservation; real MCP transport and CLI capture. Native question/
+reply continuation and independent review remain distinct unfulfilled evidence.

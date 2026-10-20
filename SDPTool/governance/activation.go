@@ -102,7 +102,9 @@ func (s *Service) ActivateAssignment(caller Caller, q ActivationRequest) (Result
 		state.AssignmentRuns = map[string]AssignmentRun{}
 	}
 	state.AssignmentRuns[p.ID] = AssignmentRun{RunID: id, PreparationRevision: p.Revision, ReviewRevision: q.ReviewRevision, DecisionOperationID: q.DecisionOperationID}
-	state.Schema = activationStateSchema
+	if state.Schema != attentionStateSchema {
+		state.Schema = activationStateSchema
+	}
 	state.Runs[id] = r
 	state.Receipts[q.OperationID] = receipt{digest, out}
 	if err = s.save(state, head); err != nil {
@@ -182,11 +184,11 @@ func (s *Service) RunDesign(runID string) (*DesignDecisionResult, error) {
 }
 
 func validateAssignmentRuns(state snapshot) error {
-	if state.Schema != activationStateSchema {
+	if state.Schema != activationStateSchema && state.Schema != attentionStateSchema {
 		if state.AssignmentRuns != nil {
 			return fail("incompatible_profile", "assignment activation requires profile 0.5")
 		}
-	} else if len(state.AssignmentRuns) == 0 {
+	} else if state.Schema == activationStateSchema && len(state.AssignmentRuns) == 0 {
 		return fail("reconciliation_required", "activation profile has no bindings")
 	}
 	seen := map[string]bool{}

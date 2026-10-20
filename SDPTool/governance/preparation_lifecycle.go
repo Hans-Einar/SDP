@@ -159,7 +159,7 @@ func (s *Service) changePreparation(caller Caller, q PreparationChange, request 
 	p.ChangeReason = q.Reason
 	out = PreparationResult{Schema: PreparationLifecycleSchema, OperationID: q.OperationID,
 		Assignment: p, Dispatch: "unavailable", DesignAcceptance: "not-assessed"}
-	if state.Schema != designDecisionStateSchema && state.Schema != activationStateSchema {
+	if state.Schema != designDecisionStateSchema && state.Schema != activationStateSchema && state.Schema != attentionStateSchema {
 		state.Schema = preparationLifecycleStateSchema
 	}
 	state.Prepared[p.ID] = p
