@@ -552,3 +552,37 @@ implementation coverage/default properties. Gap rules are not an exhaustive audi
 The original ordinary VP11 selection is preserved. Overview rejects narrowing filters
 and mode; empty states are explicit, with no arbitrary inventory cap. Composed source
 freshness applies. XFMD consumes this page through its existing generic navigation.
+
+## Deferred SDL model navigation — N15a
+
+`discover --navigation lazy-sdl --json` and JSON action `project.discover` with
+`{"navigation":"lazy-sdl"}` retain the same source registry, validation and
+non-SDL tabs. Valid SDL source nodes have no graph children yet; they carry
+`childrenDeferred: true` and the existing `target` with operation `tree`, project,
+model and revision. Invalid, unsupported and context-required sources stay visible
+with diagnostics and without actionable deferred children. Top-level
+`navigationMode: "lazy-sdl"` distinguishes this payload from an empty model.
+Default/`--navigation eager` and omitted JSON parameters retain legacy eager output.
+The action catalogue advertises the supported values; unknown values are errors.
+
+`tree --model ID --revision HASH --model-only --json` and JSON action
+`project.model-tree` with required `model` and `revision` return only that model's
+complete SDL Tree rooted at `sdl`. All original node identities, child/reference
+links and detail/overview targets are retained. Missing model/revision is an
+argument error; changed revision (including composed inputs) is `stale`. A client
+must validate project/model/revision before attaching this response beneath its
+source node. Ordinary `tree --model ID` retains its old multi-tab behavior; a
+revision without `--model-only` is rejected rather than silently ignored.
+
+These read-only calls share the existing source/path/model services and use the
+same JSON action/CLI implementation. They do not write an index or generate view
+bundles. Revision describes the loaded snapshot; a later filesystem change still
+requires normal refresh/selection checks. Source validation still scans the area;
+this feature defers model **graph expansion**, not parsing or filesystem discovery.
+No evidence/model directories are hidden. Existing source/filesystem/byte guards,
+per-model graph guards and other tab inventories remain; compact navigation avoids
+the all-model graph sum without claiming unrestricted inventory size. A validated
+source can still report a graph-resource error when explicitly expanded.
+
+Native XFMD integration is N15b and is not delivered by the producer change alone.
+An old client continues to request the compatible eager form until upgraded.

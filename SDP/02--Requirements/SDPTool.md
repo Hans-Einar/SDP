@@ -144,3 +144,16 @@ projection/owner proofs. Detail contract diagrams remain independently selectabl
 Do not infer SQL/ER semantics, persistence for Unit-held data, transformations or
 wire encodings. Missing inventories/properties are explicit. Existing source and
 freshness guarantees apply; no silent content truncation or new consumer schema.
+
+## Deferred model-tree navigation — N15a refinement
+
+REQ-SDPTOOL-002/003/004 and KB-XFMD-025 require source visibility, on-demand work
+and revision-bound selection. A project must be able to expose all its discovered
+SDL models without eagerly combining every model graph into one navigation reply.
+Provide opt-in compact discovery and explicit revision-bound single-model expansion
+through both CLI and the JSON action catalogue. Preserve invalid/context-dependent
+sources and diagnostics, original node/detail/overview identities, non-SDL tabs and
+legacy eager behavior. Changes to composed inputs invalidate prior expansion.
+No policy silently excludes ordinary evidence models. Native expansion/refresh and
+retirement of the remaining filesystem/source/per-model/GUI caps are subsequent
+work; this bounded producer service does not claim unlimited project scale.

@@ -100,10 +100,16 @@ func RunWithInput(ctx context.Context, args []string, in io.Reader, out, errs io
 		return install.Run(ctx, selected, args[0], installArgs, out, errs)
 	}
 	if len(args) > 0 && args[0] == "discover" {
-		if len(args) != 1 {
+		fs := flag.NewFlagSet("discover", flag.ContinueOnError)
+		fs.SetOutput(io.Discard)
+		navigation := fs.String("navigation", "", "eager or lazy-sdl navigation")
+		if e := fs.Parse(args[1:]); e != nil {
+			return report(errs, failure("arguments", e))
+		}
+		if fs.NArg() != 0 {
 			return report(errs, failure("arguments", fmt.Errorf("discover takes no positional arguments")))
 		}
-		value, _, e := performDiscover(ctx, actionContext{Root: selected}, noActionParameters{})
+		value, _, e := performDiscover(ctx, actionContext{Root: selected}, DiscoverOptions{Navigation: *navigation})
 		p, _ := value.(Project)
 		if e != nil {
 			return report(errs, e)
@@ -175,11 +181,26 @@ func RunWithInput(ctx context.Context, args []string, in io.Reader, out, errs io
 		fs := flag.NewFlagSet("tree", flag.ContinueOnError)
 		fs.SetOutput(io.Discard)
 		model := fs.String("model", "", "discovered model")
+		revision := fs.String("revision", "", "expected model revision")
+		modelOnly := fs.Bool("model-only", false, "return only the revision-bound SDL model tree")
 		if e := fs.Parse(args[1:]); e != nil {
 			return report(errs, failure("arguments", e))
 		}
 		if fs.NArg() != 0 {
 			return report(errs, failure("arguments", fmt.Errorf("unexpected arguments")))
+		}
+		if *modelOnly {
+			t, e := ExpandModel(selected, ModelTreeOptions{Model: *model, Revision: *revision})
+			if e != nil {
+				return report(errs, e)
+			}
+			if e = emit(t); e != nil {
+				return report(errs, e)
+			}
+			return 0
+		}
+		if *revision != "" {
+			return report(errs, failure("arguments", fmt.Errorf("revision requires model-only")))
 		}
 		p, e := discover(selected, false)
 		if e != nil {

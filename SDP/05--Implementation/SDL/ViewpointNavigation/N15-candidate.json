@@ -1,0 +1,22 @@
+{
+  "base": "486b29df14d22e8fdc77ee5e5002d6ee22ba9abe",
+  "branch": "sdp/xfmd-lazy-discovery",
+  "files": {
+    "SDPTool/Contract.md": "a41d32960a7beaa29392fb7b221c1a5259b1f142064a0f03954410e95704aeb7",
+    "SDPTool/action_process_test.go": "6d272188c742347820fd02c3f0108a08a1320099fc00da9cd47e2d6e81b2a0db",
+    "SDPTool/action_registry.go": "2c90948e482fe5babed2de08e7bdbeff2eee726150fa2c21a61347e79ff24a8c",
+    "SDPTool/cli.go": "7bc718a6f249ca495ad2c8e949c3183967f8bc6dabea0d6eb0f8a0ac483ec0fb",
+    "SDPTool/navigation.go": "38c4a35402fcf25d0a04cebfa37d3393f943deb43eed715308429dadc3346da8",
+    "SDPTool/project.go": "434f8e24d738ce7b6be508ac0cef4cd2ef7805d68fa99cc75e39dc44fd6d23dd",
+    "SDPTool/tree.go": "66f72f498c8efd68859bb4c71c7128089a84e4e403e8df4404722cbdb8d3d6e4",
+    "SDPTool/deferred_actions_test.go": "7a5ad376effd72316a2df39e1ab64ef1794bed7931c8602f777463eec45f702b",
+    "SDPTool/deferred_navigation.go": "aa367488100083ebe34204d34648eaa2414ffc40dd34c0fdfd993b34476fad78",
+    "SDPTool/deferred_navigation_test.go": "63fda858240f30cf8ac066d3f3bf281fa9323fbcf6879bfdc9e181ba0fd0ef24"
+  },
+  "binary": {
+    "path": "/tmp/xfmd-n15-sdptool",
+    "sha256": "5be94afd377f7cb8d82dbc1bd47a352df82f70d7ae32fd5e6641c16fa268cbc0"
+  },
+  "consumerBase": "41fa4948c5377edd792ba3f503e6b92b0fd4717a",
+  "scope": "Producer N15a only; native product unchanged. Native compatibility uses legacy eager discovery, not deferred expansion."
+}

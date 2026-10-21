@@ -34,13 +34,13 @@ func defineAction[T any](d ActionDescriptor, run func(context.Context, actionCon
 type noActionParameters struct{}
 
 func actionRegistry() []actionSpec {
-	return append([]actionSpec{defineAction(ActionDescriptor{ID: "project.discover", Label: "Discover project", Description: "Read project sources, navigation and available content without writing an index.", Group: "Project", IconKey: "project-discover", Mutation: "none", OutputSchema: Version}, performDiscover)}, blueprintActions()...)
+	return append([]actionSpec{discoveryAction(), modelTreeAction()}, blueprintActions()...)
 }
-func performDiscover(ctx context.Context, c actionContext, _ noActionParameters) (any, int, error) {
+func performDiscover(ctx context.Context, c actionContext, options DiscoverOptions) (any, int, error) {
 	if err := ctx.Err(); err != nil {
 		return nil, 130, err
 	}
-	r, e := Discover(c.Root)
+	r, e := DiscoverWithOptions(c.Root, options)
 	return r, 0, e
 }
 func resolveActionContext(selected string, caller ActionCaller) (actionContext, error) {

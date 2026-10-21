@@ -356,3 +356,12 @@ suites/vet, 12 consumer checks, exact native property-source selection and actua
 All catalog overviews have selected candidates; N5–N13 await integration. The
 broader plan/cards remain active for acceptance, publication and retained KB020/
 KB025/KB032 residuals. No native product/authored model change or merge/release/install.
+
+## N15 selection — Session0007 T011
+
+N15a delivers the additive deferred SDL discovery and revision-bound single-model
+tree contract described in N15. N15b integrates native expansion afterward.
+Producer BranchPolicy: `sdp/xfmd-lazy-discovery` stacked on 486b29d; CommitPolicy:
+scoped N15a milestone. Preserve shared dirty trees/history and authored-model hold.
+No merge/release/install. Source/graph/GUI guard removal beyond this model-tree
+boundary remains explicit KB025 work; do not mark the card complete.
