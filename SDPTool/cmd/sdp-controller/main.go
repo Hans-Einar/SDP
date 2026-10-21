@@ -43,7 +43,7 @@ func main() {
 		}
 		return
 	}
-	if len(os.Args) > 1 && (os.Args[1] == "run" || os.Args[1] == "status" || os.Args[1] == "recover" || os.Args[1] == "attach" || os.Args[1] == "provenance") {
+	if len(os.Args) > 1 && (os.Args[1] == "run" || os.Args[1] == "continue" || os.Args[1] == "status" || os.Args[1] == "recover" || os.Args[1] == "attach" || os.Args[1] == "provenance") {
 		if e := ownerCommand(os.Args[1:]); e != nil {
 			fmt.Fprintln(os.Stderr, e)
 			os.Exit(2)
@@ -51,7 +51,7 @@ func main() {
 		return
 	}
 	if len(os.Args) < 2 || os.Args[1] != "probe" {
-		fmt.Fprintln(os.Stderr, "usage: sdp-controller probe|run|status|recover|attach|provenance|overview|inbox|attention|assignment --project ROOT [options]; each command accepts --help")
+		fmt.Fprintln(os.Stderr, "usage: sdp-controller probe|run|continue|status|recover|attach|provenance|overview|inbox|attention|assignment --project ROOT [options]; each command accepts --help")
 		os.Exit(2)
 	}
 	f := flag.NewFlagSet("probe", flag.ExitOnError)

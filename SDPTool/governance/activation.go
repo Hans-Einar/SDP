@@ -102,7 +102,7 @@ func (s *Service) ActivateAssignment(caller Caller, q ActivationRequest) (Result
 		state.AssignmentRuns = map[string]AssignmentRun{}
 	}
 	state.AssignmentRuns[p.ID] = AssignmentRun{RunID: id, PreparationRevision: p.Revision, ReviewRevision: q.ReviewRevision, DecisionOperationID: q.DecisionOperationID}
-	if state.Schema != attentionStateSchema {
+	if !attentionProfile(state.Schema) {
 		state.Schema = activationStateSchema
 	}
 	state.Runs[id] = r
@@ -184,7 +184,7 @@ func (s *Service) RunDesign(runID string) (*DesignDecisionResult, error) {
 }
 
 func validateAssignmentRuns(state snapshot) error {
-	if state.Schema != activationStateSchema && state.Schema != attentionStateSchema {
+	if state.Schema != activationStateSchema && !attentionProfile(state.Schema) {
 		if state.AssignmentRuns != nil {
 			return fail("incompatible_profile", "assignment activation requires profile 0.5")
 		}

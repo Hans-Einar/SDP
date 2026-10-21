@@ -21,7 +21,7 @@ def main():
     base = a.preview.resolve()
     common = ['--project',str(base/'project'),'--state',str(base/'runtime/state')]
     binary = str(base/'sdp-controller')
-    print('Separate synthetic attention preview. No agent is launched and no design approval is recorded.', file=__import__('sys').stderr)
+    print('Separate synthetic attention preview. This helper starts no agent itself; an authorized watcher may continue after a reply. No design approval is recorded.', file=__import__('sys').stderr)
     if not a.reply:
         subprocess.run([binary,'attention','list',*common,*(['--json'] if a.json else [])],check=True)
         return

@@ -9,7 +9,7 @@
 | created | 2026-10-09T12:08:50.581137+00:00 |
 | source | Owner Session0011 T004 role definition and T005 KanBan handoff request |
 | Systems | SDPTOOL |
-| next_review | PGL3 leader consumption and guarded continuation; native attention/parallel evidence; separate hub/webapp handoff in KB054 |
+| next_review | PGL3 report consumption and responsive coordination; capacity/recovery and native parallel evidence; separate hub/webapp handoff in KB054 |
 | PlanId | PLAN-SDP-0018 |
 | tags | project-leader, steering, SAD, master, MCP, app-server, coordination |
 
@@ -161,3 +161,14 @@ actual owner acceptance is claimed. Next: leader consumption, guarded continuati
 capacity/recovery and native parallel evidence. KB380 records this review; CardState
 remains in-progress. Backlog/onHold review retains KB036/037/042/043 dependencies
 and KB054's separate-project boundary; no new card activation or scope expansion.
+
+
+2026-10-21 / T028: [PGL3-C4 evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C4.md)
+delivers guarded current-reply continuation through a fresh attempt in the same run,
+with original policies/skills, durable dispatch claims and a bounded opt-in watcher.
+The native ask/reply/code/report trial and duplicate/stale/uncertain guards pass.
+A report remains verifying; no owner acceptance or full leader is claimed. PM207 /
+KB381 record the milestone. CardState remains in-progress. Next: report consumption,
+responsive coordination, native parallel evidence and capacity/recovery; SAD/PGL4/5
+and retained PGI gates remain. Backlog/onHold review retains KB036/037/042/043 and the
+KB054 separate-project boundary without activating additional work.

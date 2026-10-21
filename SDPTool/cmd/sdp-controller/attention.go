@@ -87,12 +87,12 @@ func attentionCommand(args []string, out io.Writer, input io.Reader, prompt io.W
 	return json.NewEncoder(out).Encode(result)
 }
 func renderAttention(out io.Writer, v governance.AttentionInbox) error {
-	if _, e := fmt.Fprintf(out, "PG attention: %d question(s)\nProject: %q\nReplies are recorded input; agent consumption and automatic continuation are not tracked.\n", len(v.Items), v.ProjectRef); e != nil {
+	if _, e := fmt.Fprintf(out, "PG attention: %d question(s)\nProject: %q\nReplies are recorded input. Dispatch acknowledgement does not prove agent consumption or acceptance.\nAn authorized waiting controller may continue after a current reply.\n", len(v.Items), v.ProjectRef); e != nil {
 		return e
 	}
 	for _, item := range v.Items {
 		q := item.Question
-		if _, e := fmt.Fprintf(out, "\nQuestion %q / run %q\n  Status: %q; applicability: %q; coverage: %q; blocking: %t\n  Prompt: %q\n", q.ID, item.RunID, item.Status, item.Applicability, item.Coverage, q.Blocking, q.Prompt); e != nil {
+		if _, e := fmt.Fprintf(out, "\nQuestion %q / run %q\n  Status: %q; applicability: %q; coverage: %q; blocking: %t; delivery: %q\n  Prompt: %q\n", q.ID, item.RunID, item.Status, item.Applicability, item.Coverage, q.Blocking, item.Consumption, q.Prompt); e != nil {
 			return e
 		}
 		for _, option := range q.Options {
@@ -145,7 +145,7 @@ func captureAttentionReply(s *governance.Service, q governance.AttentionDisposit
 			return empty, fmt.Errorf("no reply recorded: input ended: %v", scanner.Err())
 		}
 		option := strings.TrimSpace(scanner.Text())
-		if _, e = fmt.Fprintln(prompt, "Enter your answer/comment (required; no work is launched):"); e != nil {
+		if _, e = fmt.Fprintln(prompt, "Enter your answer/comment (required; an authorized waiting controller may continue):"); e != nil {
 			return empty, e
 		}
 		if !scanner.Scan() {

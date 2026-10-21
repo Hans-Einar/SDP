@@ -158,7 +158,9 @@ func (s *Service) saveAttention(state snapshot, head string, r Run, operation, o
 		return Result{}, fail("limit", "operational receipt or revision capacity reached")
 	}
 	r.Revision++
-	state.Schema = attentionStateSchema
+	if state.Schema != attentionContinuationStateSchema {
+		state.Schema = attentionStateSchema
+	}
 	if state.Prepared == nil {
 		state.Prepared = map[string]PreparedAssignment{}
 	}
@@ -361,7 +363,7 @@ func (s *Service) AttentionInbox(runID string) (AttentionInbox, error) {
 		}
 		basis := attentionBasis(r)
 		for _, q := range r.Attention {
-			v := AttentionView{RunID: id, Question: q, Status: "open", Coverage: coverage, Applicability: "current", CurrentRevision: r.Revision, Consumption: "not-tracked"}
+			v := AttentionView{RunID: id, Question: q, Status: "open", Coverage: coverage, Applicability: "current", CurrentRevision: r.Revision, Consumption: attentionDispatch(r, q.ID)}
 			if q.Basis != basis || coverage != "known" {
 				v.Applicability = "stale"
 			}
@@ -401,7 +403,7 @@ func validateAttentionState(state snapshot) error {
 		for _, q := range r.Attention {
 			count++
 			_, timeErr := time.Parse(time.RFC3339Nano, q.RaisedAt)
-			if state.Schema != attentionStateSchema || !uuidPattern.MatchString(q.ID) || seen[q.ID] || !digestPattern.MatchString(q.Basis) || q.InputRevision != r.InputRevision || q.RaisedRevision == 0 || q.RaisedRevision > r.Revision || timeErr != nil || !validAttentionQuestion(q.Prompt, q.Options) || (q.Origin != "agent" && q.Origin != "controller") || (q.Origin == "agent" && !uuidPattern.MatchString(q.AttemptID)) || (q.Reply != nil && q.Withdrawal != nil) {
+			if !attentionProfile(state.Schema) || !uuidPattern.MatchString(q.ID) || seen[q.ID] || !digestPattern.MatchString(q.Basis) || q.InputRevision != r.InputRevision || q.RaisedRevision == 0 || q.RaisedRevision > r.Revision || timeErr != nil || !validAttentionQuestion(q.Prompt, q.Options) || (q.Origin != "agent" && q.Origin != "controller") || (q.Origin == "agent" && !uuidPattern.MatchString(q.AttemptID)) || (q.Reply != nil && q.Withdrawal != nil) {
 				return fail("reconciliation_required", "invalid retained question")
 			}
 			seen[q.ID] = true
@@ -433,7 +435,7 @@ func validateAttentionState(state snapshot) error {
 			}
 		}
 	}
-	if state.Schema == attentionStateSchema && count == 0 {
+	if attentionProfile(state.Schema) && count == 0 {
 		return fail("reconciliation_required", "attention profile has no questions")
 	}
 	return nil

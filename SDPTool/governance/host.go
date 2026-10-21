@@ -446,6 +446,7 @@ func summarizeRun(r Run) Run {
 	}
 	r.Inputs = append([]OwnerInput(nil), r.Inputs...)
 	for i := range r.Inputs {
+		r.Inputs[i].AttentionReplies = append([]AttentionReplyRef(nil), r.Inputs[i].AttentionReplies...)
 		r.Inputs[i].ContentOmitted = true
 		r.Inputs[i].Text = ""
 		r.Inputs[i].Payload = ""

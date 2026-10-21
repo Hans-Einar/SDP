@@ -549,3 +549,37 @@ Next: durable leader consumption and guarded continuation after a reply/report,
 then responsive native parallel execution. Resolve bounded receipt/state capacity
 and recovery before sustained-hour claims. SAD dispatch/scope closure, PGL4/5 and
 retained PGI gates remain. Hub/webapp stay in the separate project; no merge/release.
+
+## PGL3-C4 selection — T028
+
+Continue with guarded reply delivery into a fresh attempt in the same authorized run,
+using existing durable launch claims. Add an explicit continuation command and bounded
+opt-in waiting loop; preserve launch policies/skills, prevent duplicate sends and retain
+actual dispatch state in attention inspection. A fresh native trial must demonstrate
+ask, delayed reply, continuation, code behavior and report. [Preflight](preflight-PGL3-C4.json)
+selects only PG paths and current milestone branch/commit policy. Full Project Leader,
+report acceptance, scope expansion, hub/webapp and sustained-hour claims remain outside
+this increment. No merge/release or independent-review authority is inferred.
+
+
+## PGL3-C4 result — T028
+
+[Evidence](Evidence-PGL3-C4.md) and [candidate](candidate-PGL3-C4.json) bind guarded
+continuation to exact recorded replies. A fresh attempt reuses the original mandate,
+policies and skills, with durable prepare/claim/ack fencing uncertain or duplicate
+sends. The explicit continue command and bounded opt-in watcher share this path.
+Profile 0.7 retains dispatch references; older readers refuse and writers preserve it.
+
+The native trial demonstrates ask, delayed fixture reply, one fresh attempt, selected
+Go behavior, protected files and automatic report into verifying. Protocol tests
+cover stale/changed authority, uncertain delivery, duplicate refusal without state
+mutation and current source checks. Full tests, affected race/vet and actual JSON
+schema checks are recorded in the candidate. The original lab and earlier previews
+remain intact; ./continuation provides a read-only view. PM207 / KB381 record this
+bounded delivery, with separate Traceability implementation/verification entries.
+
+PGL3 remains active. Next: leader consumption of reports and responsive coordination,
+with native parallel execution. Establish capacity/recovery before sustained-hour
+claims. SAD dispatch/scope closure, PGL4/5 and retained PGI gates remain. No independent
+review, owner acceptance, main integration or release is claimed. Hub/webapp remain
+in the separate project; backlog/onHold dependency scopes are unchanged.

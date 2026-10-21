@@ -431,3 +431,49 @@ Current source coverage is checked separately from the pinned store generation.
 No leader consumption acknowledgement, automatic new host turn, multi-hour capacity
 claim, hub or notification delivery is included. Native question/reply continuation
 has not yet been verified; the new mailbox has service, MCP and CLI evidence.
+
+## PGL3-C4 guarded attention continuation
+
+Use `run ... --attention-continuations N` (0..8, default 0) to opt into a bounded
+local watcher. After a clean completed waiting turn it checks stored replies once
+per second without calling a model or appending idle receipts. When all blocking
+questions are resolved and at least one current blocking question is answered, it
+may start a fresh Master thread/attempt in the same authorized run. It stops at the
+configured count or lifetime, on report/failed work, stale authority or unresolved
+outbound delivery. This is not a cross-project scheduler or conversational leader.
+
+A separate `continue` command handles an already completed waiting run after a reply:
+
+```sh
+sdp-controller continue --project ROOT --state DIR --run UUID --codex PINNED_HOST --mcp-binary MATCHING_MCP --sandbox workspace-write --approvals never --reporting automatic
+```
+
+Use exactly the original sandbox and approval/reporting policy. Original owner input
+and skill selections are recovered from the recorded launch; --message and --skill
+are not accepted for continue. A fresh attempt receives the original assignment,
+current context, exact selected reply references and question/reply history. Previous
+attempts remain historical. A reply does not approve design or change scope.
+
+Launch preparation atomically binds the exact question/reply/basis references and
+makes the run ready. Claim rechecks authority before host effects. Source changes,
+open blocking questions, mismatched policy/skills, observation gaps, a non-completed
+prior attempt or unresolved input refuse. Prepared/sending/uncertain inputs are never
+automatically replayed. Existing history recovery may prove an exact accepted send;
+it does not send work again. Prepared-but-unsent recovery is still a manual reconciliation
+gap, not a claim of automatic crash recovery or exactly-once remote execution.
+
+New continuation inputs select operational profile 0.7; all writers preserve it and
+older tools refuse. Attention's consumption field now reports dispatch-prepared,
+dispatch-sending, dispatch-uncertain or dispatch-acknowledged when selected. The last
+means host acknowledgement, not semantic consumption or implementation correctness.
+Original-question applicability may become historical after a fresh attempt starts;
+its immutable reply references remain in the new launch input. Current launch/run
+context still governs execution.
+
+The CLI marks late events from known completed predecessor threads as ignored instead
+of applying them to the fresh attempt. An expired wait retains the clean completed
+attempt and question for a later explicit continuation. Loss during actual execution
+still requires reconciliation. Waiting-controller settings are local and transient;
+reply capture warns that an authorized waiting controller may continue after a reply.
+No global host settings or default automatic behavior changes. Receipt, input, attempt,
+payload and state bounds remain; sustained multi-hour execution is not established.

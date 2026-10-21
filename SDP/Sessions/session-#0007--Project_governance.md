@@ -2,10 +2,10 @@
 
 ## Session roadmap
 
-Latest recorded turn: T027 — local PGL3-C3 attention questions and attributed replies
-are delivered with service, MCP and compiled CLI evidence. The isolated lab supports
-listing and answering a question. Leader consumption and automatic continuation are
-next; native attention/parallel evidence and sustained-hour capacity remain open.
+Latest recorded turn: T028 — PGL3-C4 guarded attention continuation delivered.
+The native trial asks, receives a delayed fixture reply, starts one fresh attempt
+and implements/reports the selected behavior. Leader report consumption and responsive
+coordination remain, alongside native parallel evidence and sustained-hour capacity.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
 
 ```mermaid
@@ -26,7 +26,7 @@ gantt
 | completed | S1 | Recover skills, studies, card dependencies and ownership | Owner request, 2026-10-03 | Assessment below; RGS2 reused |
 | completed | S2 | Design the smallest common routing, run, Session and client contract | Owner continuation, T002 | [PGD1 / PLAN-SDP-0017](../04--Design/SDPTool/ProjectGovernance/Plan.md), contract, acceptance cases and protocol inspection |
 | waiting | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C6 verified; owner reports PGI3-U1 trial performed; native mapping remains unverified; KB052 now prioritized |
-| active | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation, C2a lifecycle, C2b provider checks and C2c decisions and C2d activation/native code trial delivered; PGL3-C2 reports/inbox and PGL3-C3 attention/replies delivered; leader conversation and continuation remain |
+| active | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation, C2a lifecycle, C2b provider checks and C2c decisions and C2d activation/native code trial delivered; PGL3-C2 reports/inbox, C3 attention/replies and C4 guarded continuation delivered; responsive leader and report consumption remain |
 | planned | S4 | Verify interruption, resume, scope change and evidence disposition | S3 candidate | Evidence required before wider use |
 | planned | S5 | Project recorded activity into the KB043 timeline | Reliable S3/S4 capture and selected rendering scope | Full timeline remains deferred |
 
@@ -36,9 +36,9 @@ gantt
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-21 |
-| Current step | S6 / KB052; PGL3-C3 durable attention/replies delivered; leader integration pending |
-| Proposed next step | PGL3 leader consumption and guarded continuation, with native attention/reply evidence; KB054 retains separate-project hub/client handoff |
-| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension; T026 assigns hub/webapp to a separate project and continues local SDP/SDPTool work; T027 continues local attention/replies |
+| Current step | S6 / KB052; PGL3-C4 guarded attention continuation delivered; leader integration pending |
+| Proposed next step | PGL3 report consumption and responsive coordination; capacity/recovery and native parallel evidence; KB054 retains separate-project hub/client handoff |
+| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension; T026 assigns hub/webapp to a separate project and continues local SDP/SDPTool work; T027 continues local attention/replies; T028 continues guarded attention continuation |
 
 ## Goal and ownership
 
@@ -1284,3 +1284,67 @@ The final compiled preview is pgl3-c3-final; the initial synthetic preview is re
 The helper was redirected only after verifying that no owner reply had changed its
 initial preview. Final candidate/evidence are prepared for the authorized milestone
 commit/push and draft PR update, with no main merge or release.
+
+## T028 — Continue after an attention reply
+
+Date: 2026-10-21. Owner says to continue. Recovered C3 at 6dfde97, clean owning
+worktree. Loaded SDP 1.2/document workflow, Master/Architect 2.1, Planning 1.0,
+Worker/Verifier/Traceability 2.0. No delegation. Thirteen-worktree preflight retains
+historical dirty SDP-vNow PG copies outside this scope and finds no new competing PG
+implementation. Main remains observed at 5ca0e90, not integrated. PM206 / KB380 are
+the highest observed management identities at selection.
+
+Selected PGL3-C4: consume exact current replies through durable launch input/claim,
+then create a fresh Master attempt in the same run. Reuse existing host methods and
+recovery; avoid silently changing ended-turn correlation semantics. Preserve original
+policy/skill bounds. Add bounded optional waiting and an explicit continuation command;
+verify with protocol guards and a separate native workflow. Full leader conversation,
+report acceptance and sustained-hour capacity remain open. Results will be recorded
+before returning; this is not an owner acceptance or implementation claim.
+
+T028 outcome: PGL3-C4 implements fresh-attempt continuation in the same run using
+exact question/reply/basis references and durable prepare/claim/ack. Original owner
+input, sandbox, approval/reporting policy and selected skills are retained. Explicit
+continue and the opt-in bounded watcher use the same path. Profile 0.7 retains dispatch
+correlation; older readers refuse. Acknowledgement is delivery, not semantic consumption
+or owner acceptance. Native delegation remains ungranted.
+
+Core/controller and compiled CLI tests cover current authority, source/claim changes,
+policy/scope/gap refusal, uncertain send and duplicate prevention. Inspection caught
+an inherited generic disconnect on refused explicit continuation; the correction and
+regression test preserve the completed predecessor and exact HEAD. The first native
+harness attempt collided with read-only generation inspection, then was cancelled;
+its uncertainty was not retried. The retained failed artifact's modelTaskSubmitted
+boolean was based on attempt presence and is not proof of an observed model turn.
+The harness now retries only read-only stale-generation inspection. An intermediate
+native success is retained separately from final exact-binary evidence.
+
+The final isolated native trial asks a blocking prefix question, waits without source
+or state writes, captures a scripted fixture answer, launches exactly one fresh
+attempt, implements the selected Go behavior, passes external/project tests and
+submits an automatic report. It ends verifying with two clean completed attempts.
+Only label.go and label_test.go change; nine protected files remain unchanged.
+No fixture reply is attributed to actual owner acceptance. The read-only ./continuation
+helper displays this final preview; the earlier ./attention and all prior records
+remain separate. The full SDPTool suite passes on the final product source.
+
+Updated current roadmap, design/walkthrough, plan, KB052 and reproducible lab procedures.
+Reviewed backlog/onHold dependencies KB036/037/042/043 and KB054; no additional card
+activation or hub/webapp implementation. Loaded routines remain those listed at T028
+selection; no subagent or independent review. PM207 / KB381 and separate system
+evidence entries record the final verified candidate, preserving ledger history.
+Next: report consumption and responsive leader coordination, with native parallel
+evidence and capacity/recovery before multi-hour claims. SAD dispatch/scope closure,
+PGL4/5 and retained PGI gates remain. Session/S6/PGL3 remain active. No main merge,
+release or conflict-free future integration claim. This is a work summary, not a
+captured final response; scoped milestone commit/push and draft PR56 update follow
+final checks under existing owner authorization.
+
+
+Final T028 validation: full SDPTool tests, affected race tests and vet pass. Native
+final binaries and transcript match the candidate hashes. Management validation
+reports 67 cards, 45 records and 624 events; Toolkit validation passes. Integrity
+checks pass for 169 relative links, five actual continuation/reply wire objects,
+exact source hashes and canonical ledger byte prefixes. All 176 original lab entries
+are unchanged. PM207 / KB381 and system implementation/verification events are now
+recorded. The owning worktree contains only scoped PG changes for the milestone.

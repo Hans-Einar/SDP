@@ -1014,6 +1014,13 @@
           "items": {
             "$ref": "#/$defs/SkillInput"
           }
+        },
+        "attentionReplies": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {
+            "$ref": "#/$defs/AttentionReplyRef"
+          }
         }
       }
     },
@@ -1652,7 +1659,13 @@
           "minimum": 1
         },
         "consumption": {
-          "const": "not-tracked"
+          "enum": [
+            "not-tracked",
+            "dispatch-prepared",
+            "dispatch-sending",
+            "dispatch-uncertain",
+            "dispatch-acknowledged"
+          ]
         }
       },
       "required": [
@@ -1694,6 +1707,29 @@
         "checkoutId",
         "generation",
         "items"
+      ]
+    },
+    "AttentionReplyRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "questionId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "replyOperationId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "basis": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "questionId",
+        "replyOperationId",
+        "basis"
       ]
     }
   }

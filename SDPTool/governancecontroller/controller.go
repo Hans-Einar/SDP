@@ -76,7 +76,11 @@ func now() string { return time.Now().UTC().Format(time.RFC3339Nano) }
 
 // Launch consumes a new intent once while holding the controller lease. Failures
 // after claim remain uncertain, even if an RPC may have succeeded. No retry sends.
-func (c *Controller) Launch(ctx context.Context, runID, text string) (result governance.Result, err error) {
+func (c *Controller) Launch(ctx context.Context, runID, text string) (governance.Result, error) {
+	return c.launch(ctx, runID, text, false)
+}
+
+func (c *Controller) launch(ctx context.Context, runID, text string, continuing bool) (result governance.Result, err error) {
 	unlock, e := c.Service.RunControllerLease(governance.LocalController(), runID)
 	if e != nil {
 		return result, e
@@ -103,6 +107,20 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 	if e != nil {
 		return r, e
 	}
+	var continuation continuationContext
+	if continuing {
+		continuation, e = c.continuationContext(runID)
+		if e != nil {
+			return r, e
+		}
+		text = continuation.Original.Text
+		copy := *c
+		copy.SkillPaths, e = continuationSkillPaths(c.Root, continuation.Original.Skills)
+		if e != nil {
+			return r, e
+		}
+		c = &copy
+	}
 	coverage, e := c.Service.RunContext(runID)
 	if e != nil {
 		return r, e
@@ -120,7 +138,13 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 		instructions = strings.ReplaceAll(instructions, "SDP Maintenance assignment", "SDP implementation assignment")
 		instructions = "You are the Master for the exact approved SDP implementation package. Use the included design basis, task constraints, Session and ImplementationPlan. Do not change NOW/TARGET, broaden scope or treat host completion as approval. " + instructions
 	}
-	payload, e := json.Marshal(map[string]any{"approvedDesign": approvedDesign, "ownerInput": text, "assignment": r.Run.Assignment, "context": coverage, "runId": runID, "instructions": instructions, "sandbox": c.Sandbox, "approvalMode": c.Approvals, "reportingMode": reporting})
+	if continuing {
+		if !slices.Equal(selected, continuation.Original.Skills) {
+			return r, fmt.Errorf("conflict: continuation skill selection changed")
+		}
+		instructions += " This is a fresh continuation attempt after recorded attention replies. Reuse the original assignment and existing working files. Read attentionContext: it distinguishes historical replies from the exact replies selected by attentionReferences. Do not ask the same resolved question again. Continue only within the original mandate; report or raise a new question when required."
+	}
+	payload, e := json.Marshal(map[string]any{"attentionContext": continuation.History, "attentionReferences": continuation.References, "approvedDesign": approvedDesign, "ownerInput": text, "assignment": r.Run.Assignment, "context": coverage, "runId": runID, "instructions": instructions, "sandbox": c.Sandbox, "approvalMode": c.Approvals, "reportingMode": reporting})
 	if e != nil {
 		return r, e
 	}
@@ -132,7 +156,7 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 		}
 		wireText = markers + "\n" + wireText
 	}
-	v := governance.OwnerInput{Skills: selected, ID: governancehost.UUID(), Kind: "launch", Text: text, Payload: wireText, AttemptID: governancehost.UUID(), Epoch: c.Epoch, ReceivedAt: now()}
+	v := governance.OwnerInput{AttentionReplies: continuation.References, Skills: selected, ID: governancehost.UUID(), Kind: "launch", Text: text, Payload: wireText, AttemptID: governancehost.UUID(), Epoch: c.Epoch, ReceivedAt: now()}
 	if _, e = c.input(runID, "prepare", v); e != nil {
 		return r, e
 	}

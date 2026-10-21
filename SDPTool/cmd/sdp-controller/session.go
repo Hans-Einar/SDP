@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"context"
 	"encoding/json"
+	"errors"
 	"flag"
 	"fmt"
 	"io"
@@ -30,7 +31,8 @@ func ownerCommand(args []string) error {
 	mcp := f.String("mcp-binary", "", "sdp-mcp executable")
 	message := f.String("message", "", "file with exact owner input for launch")
 	approvals := f.String("approvals", "never", "never or ask for per-request SDP MCP approval")
-	reporting := f.String("reporting", "manual", "manual or automatic assignment-bound reporting (run only)")
+	reporting := f.String("reporting", "manual", "manual or automatic assignment-bound reporting (run/continue only)")
+	continuations := f.Int("attention-continuations", 0, "maximum automatic fresh attempts after current attention replies (0..8; run/continue only)")
 	sandbox := f.String("sandbox", "read-only", "read-only or explicitly authorized workspace-write")
 	var skillPaths []string
 	f.Func("skill", "project-relative enabled SKILL.md to invoke (repeatable; run only)", func(v string) error { skillPaths = append(skillPaths, v); return nil })
@@ -41,14 +43,20 @@ func ownerCommand(args []string) error {
 	if *root == "" || *state == "" || *run == "" || f.NArg() != 0 || *timeout <= 0 {
 		return fmt.Errorf("require --project ROOT --state DIR --run UUID")
 	}
+	if *continuations < 0 || *continuations > 8 || (*continuations > 0 && args[0] != "run" && args[0] != "continue") {
+		return fmt.Errorf("--attention-continuations requires run/continue and 0..8")
+	}
+	if args[0] == "continue" && (*message != "" || len(skillPaths) > 0 || *mcp == "") {
+		return fmt.Errorf("continue requires --mcp-binary and reuses original input/skills")
+	}
 	if len(skillPaths) > 0 && args[0] != "run" {
 		return fmt.Errorf("--skill is only supported by run")
 	}
 	if *approvals != "never" && *approvals != "ask" {
 		return fmt.Errorf("unsupported approval mode")
 	}
-	if (*reporting != "manual" && *reporting != "automatic") || (*reporting != "manual" && args[0] != "run") {
-		return fmt.Errorf("--reporting requires run and manual or automatic")
+	if (*reporting != "manual" && *reporting != "automatic") || (*reporting != "manual" && args[0] != "run" && args[0] != "continue") {
+		return fmt.Errorf("--reporting requires run/continue and manual or automatic")
 	}
 	p, e := sdptool.Discover(*root)
 	if e != nil {
@@ -157,7 +165,7 @@ func ownerCommand(args []string) error {
 		emit(r)
 		return nil // History reconciliation only; never resume/resend a model turn.
 	}
-	if args[0] != "run" && args[0] != "attach" {
+	if args[0] != "run" && args[0] != "attach" && args[0] != "continue" {
 		return fmt.Errorf("unknown owner command")
 	}
 	var r governance.Result
@@ -167,11 +175,17 @@ func ownerCommand(args []string) error {
 			return err
 		}
 		r, e = service.RecordHost(governance.LocalController(), recovery.ReattachRequest(client.HostIdentity))
+	} else if args[0] == "continue" {
+		r, e = ctl.ContinueAttention(ctx, *run)
 	} else {
 		r, e = ctl.Launch(ctx, *run, text)
 	}
 	if e != nil {
-		_, _ = ctl.Disconnect(*run)
+		// A refused continuation must preserve the completed predecessor. Launch
+		// already records post-claim delivery uncertainty before returning.
+		if args[0] != "continue" {
+			_, _ = ctl.Disconnect(*run)
+		}
 		return e
 	}
 	emit(r)
@@ -206,9 +220,43 @@ func ownerCommand(args []string) error {
 			}
 		}
 	}()
+	waitingForReply := false
+	var ticks <-chan time.Time
+	if *continuations > 0 {
+		ticker := time.NewTicker(time.Second)
+		defer ticker.Stop()
+		ticks = ticker.C
+	}
 	for {
 		select {
+		case <-ticks:
+			if !waitingForReply {
+				continue
+			}
+			waiting, ready, err := ctl.AttentionPending(*run)
+			if err != nil {
+				var changed *governance.Error
+				if errors.As(err, &changed) && changed.Code == "stale_revision" {
+					continue
+				} // Read-only generation changed; no host effect occurred.
+				return err
+			}
+			if !waiting && !ready {
+				return nil
+			}
+			if ready {
+				r, e = ctl.ContinueAttention(ctx, *run)
+				if e != nil {
+					return e
+				}
+				*continuations--
+				waitingForReply = false
+				emit(r)
+			}
 		case <-ctx.Done():
+			if waitingForReply {
+				return fmt.Errorf("attention wait ended; completed attempt and durable question retained: %w", ctx.Err())
+			}
 			_, _ = ctl.Disconnect(*run)
 			return fmt.Errorf("controller ended; host outcome requires reconciliation: %w", ctx.Err())
 		case in, ok := <-commands:
@@ -245,8 +293,24 @@ func ownerCommand(args []string) error {
 			}
 		case event, ok := <-client.Notifications:
 			if !ok {
+				if waitingForReply {
+					return fmt.Errorf("host ended while waiting; completed attempt and question retained: %v", client.Err())
+				}
 				_, _ = ctl.Disconnect(*run)
 				return fmt.Errorf("host transport ended; reconciliation required: %v", client.Err())
+			}
+			// Events from completed predecessor threads cannot control the fresh attempt.
+			if len(r.Run.Attempts) > 1 && event.ThreadID != r.Run.Attempts[len(r.Run.Attempts)-1].ThreadID {
+				historical := false
+				for _, a := range r.Run.Attempts[:len(r.Run.Attempts)-1] {
+					if a.ThreadID == event.ThreadID && a.Status == "completed" {
+						historical = true
+					}
+				}
+				if historical {
+					emit(map[string]any{"ignoredCompletedPredecessorEvent": event})
+					continue
+				}
 			}
 			if event.Observation.Kind == "approval.resolved" {
 				r, e = ctl.ResolveApproval(*run, event)
@@ -281,6 +345,11 @@ func ownerCommand(args []string) error {
 					}
 				}
 				emit(r)
+				if *continuations > 0 {
+					waitingForReply = true
+					emit(map[string]any{"attentionChecking": true, "remainingContinuations": *continuations})
+					continue
+				}
 				return nil
 			}
 		}

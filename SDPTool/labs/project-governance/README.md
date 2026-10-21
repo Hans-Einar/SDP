@@ -294,3 +294,28 @@ machine data and `--reply --owner NAME` lets the owner try the remaining questio
 No choice is preselected. The controller requires an answer/comment after an optional
 option ID. This stores input only; it does not resume an agent or approve design.
 These facts are distinct from the earlier native implementation/report trial.
+
+## Native attention and continuation — PGL3-C4
+
+The maintained continuation_trial.py creates a new disposable project and explicitly
+runs up to two model attempts through the pinned complete Codex package:
+
+```sh
+python3 labs/project-governance/continuation_trial.py --destination /absolute/new-continuation-trial --controller /absolute/current-controller --sdptool /absolute/current-sdptool --mcp /absolute/current-mcp --host /absolute/complete-codex-package/bin/codex --old-controller /absolute/c3-controller
+```
+
+The first agent must ask a blocking label-prefix question and stop without editing.
+A separate process captures a labelled synthetic reply after waiting; the automatic
+watcher starts one fresh attempt in the same run. The second agent must implement the
+selected prefix, pass project/external tests and report. The script checks original
+bytes before reply, no waiting-state writes, exactly two completed attempts, correlated
+reply dispatch, protected files and old-reader refusal. It retains failed trials;
+never reuse a destination or resend an uncertain request. Synthetic input is not
+actual owner acceptance, and a verifying result is not completed project work.
+
+
+`continuation_view.py --preview /absolute/completed-trial` provides a read-only
+summary of current attempts, the recorded answer and its dispatch, code paths and
+the independently checked result. `--json` exposes the same current run and inbox.
+The local owner-lab `./continuation` selects the verified C4 preview and starts no
+agent. The original `./attention` preview remains separate.

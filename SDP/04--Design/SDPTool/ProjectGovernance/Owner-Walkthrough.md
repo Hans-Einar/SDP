@@ -1,6 +1,6 @@
 # ProjectGovernance — owner walkthrough and feedback
 
-Snapshot: 2026-10-19, Session0007 T026. The development branch now includes
+Snapshot: 2026-10-21, Session0007 T028. The development branch now includes
 activation of an approved implementation package and a real isolated code trial; this is not a released feature set. This guide explains the existing
 [orchestration design](Orchestration.md) and its delivered boundaries. It does not
 introduce new approval requirements or record owner acceptance.
@@ -63,6 +63,7 @@ implementation task; it does not demonstrate that coordination workflow.
 | Check the proposed design | Checks the assignment against the canonical Blueprint, actual NOW/TARGET contents, task and permitted paths | A successful check establishes a consistent review basis, not owner acceptance |
 | Record a design decision for this new route | A local controller adapter displays the proposal and reads an explicit decision and comment; it retains earlier decisions and checks current applicability | Local attributed input only; conversation capture and the final UI remain unfinished |
 | Automatic reports and local report inbox | A fresh automatic-mode trial stores the report without a separate prompt; the inbox shows submitted text and current coverage | Reports await verification; consumption and automatic phase continuation are not yet delivered |
+| Continue after an attention reply | A current answer can start a fresh attempt in the same assignment, explicitly or through a bounded opt-in watcher | Original scope, policies and skills remain; uncertain delivery blocks retries. This is not the responsive Project Leader |
 | Activate approved Master implementation | Creates one ready run from the exact current approved design; the existing controller can execute it with bound MCP context | Native code and automatic-report trial passed with explicit automatic mode. SAD launch and leader conversation remain unfinished |
 
 The technical design check can say **current** or **blocked**. “Current” means the
@@ -214,3 +215,34 @@ applies to? Is choosing an option plus adding a comment natural, or should an op
 alone be sufficient? This terminal interaction is a provisional local client; the
 separate hub/webapp can later present the same concepts differently. You need not
 answer this demonstration question for authorized development to continue.
+
+
+## Inspect a real continuation — T028
+
+From /home/warloc/git/pg_lab, run `./continuation`. This read-only view shows the
+new isolated native trial: the first agent asked which label prefix to use and
+ended its turn; a separate scripted fixture reply selected the short prefix; the
+controller started one new attempt in the same assignment; that agent changed the
+two permitted Go files, passed tests and submitted its report. The run is verifying.
+The reply is test input, not your acceptance. This command starts no new model task.
+
+The earlier `./attention` preview remains separate, including any answer you gave.
+To reproduce the complete new trial with a development build, follow the maintained
+[lab procedure](../../../../SDPTool/labs/project-governance/README.md#native-attention-and-continuation--pgl3-c4).
+No sdptool/gh extension release or installation change is needed.
+
+In ordinary use, the controller can wait with `--attention-continuations 1` (up to
+8, default 0). You answer the stored question through the local attention CLI; a
+waiting controller checks that the answer still applies before continuing. Without
+a watcher, `sdp-controller continue` selects the current answer explicitly. Original
+sandbox, reporting and approval settings must match. This is bounded continuation,
+not a multi-hour scheduler or a complete leader conversation.
+
+A delivered answer displays dispatch-acknowledged. The old question basis becomes
+historical after the fresh attempt begins; the exact question/reply references are
+retained in the launch. That is delivery evidence, not proof of semantic consumption
+or approval. The native trial separately checks the resulting code behavior.
+
+Useful feedback: is it clear which assignment a question belongs to, that answering
+may continue already-authorized work, and which result is awaiting review? You can
+inspect this while implementation continues; no new approval of PG itself is required.

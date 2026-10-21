@@ -10,18 +10,19 @@ import (
 // OwnerInput retains exact owner/outbound text and explicit skill selections. A sending or
 // uncertain record must never be retransmitted automatically after a crash.
 type OwnerInput struct {
-	Skills         []SkillInput `json:"skills,omitempty"`
-	ContentOmitted bool         `json:"contentOmitted,omitempty"`
-	ID             string       `json:"id"`
-	Kind           string       `json:"kind"`
-	Text           string       `json:"text"`
-	Payload        string       `json:"payload"`
-	AttemptID      string       `json:"attemptId"`
-	Epoch          string       `json:"epoch"`
-	ThreadID       string       `json:"threadId"`
-	TurnID         string       `json:"turnId"`
-	State          string       `json:"state"`
-	ReceivedAt     string       `json:"receivedAt"`
+	AttentionReplies []AttentionReplyRef `json:"attentionReplies,omitempty"`
+	Skills           []SkillInput        `json:"skills,omitempty"`
+	ContentOmitted   bool                `json:"contentOmitted,omitempty"`
+	ID               string              `json:"id"`
+	Kind             string              `json:"kind"`
+	Text             string              `json:"text"`
+	Payload          string              `json:"payload"`
+	AttemptID        string              `json:"attemptId"`
+	Epoch            string              `json:"epoch"`
+	ThreadID         string              `json:"threadId"`
+	TurnID           string              `json:"turnId"`
+	State            string              `json:"state"`
+	ReceivedAt       string              `json:"receivedAt"`
 }
 type InputRequest struct {
 	Schema           string     `json:"schema"`
@@ -65,6 +66,9 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 		return Result{}, fail("unauthorized", "owner input requires controller provenance")
 	}
 	v := q.Input
+	if len(v.AttentionReplies) > 0 && v.Kind != "launch" {
+		return Result{}, fail("invalid_request", "reply references require a launch")
+	}
 	if !ValidSkillInputs(v.Skills) || (len(v.Skills) > 0 && v.Kind != "launch") {
 		return Result{}, fail("invalid_request", "skills require a bounded launch")
 	}
@@ -148,6 +152,13 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 					return Result{}, fail("reconciliation_required", "prior host attempt is not terminal")
 				}
 			}
+			if len(v.AttentionReplies) > 0 {
+				if e := checkAttentionContinuation(r, v, false); e != nil {
+					return Result{}, e
+				}
+				r.State = "ready"
+				state.Schema = attentionContinuationStateSchema
+			}
 			if r.State != "ready" || v.ThreadID != "" || v.TurnID != "" {
 				return Result{}, fail("conflict", "launch needs a ready run and new thread")
 			}
@@ -182,7 +193,7 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 		}
 		old := r.Inputs[index]
 		// Acknowledgment adds observed host identity; content and source provenance stay immutable.
-		if !slices.Equal(old.Skills, v.Skills) || old.Kind != v.Kind || old.Text != v.Text || old.Payload != v.Payload || old.AttemptID != v.AttemptID || old.Epoch != v.Epoch || old.ReceivedAt != v.ReceivedAt || old.State != v.State {
+		if !slices.Equal(old.AttentionReplies, v.AttentionReplies) || !slices.Equal(old.Skills, v.Skills) || old.Kind != v.Kind || old.Text != v.Text || old.Payload != v.Payload || old.AttemptID != v.AttemptID || old.Epoch != v.Epoch || old.ReceivedAt != v.ReceivedAt || old.State != v.State {
 			return Result{}, fail("conflict", "input content or state changed")
 		}
 		if old.ThreadID != "" && old.ThreadID != v.ThreadID || old.TurnID != "" && old.TurnID != v.TurnID {
@@ -190,6 +201,11 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 		}
 		switch q.Action {
 		case "claim":
+			if len(v.AttentionReplies) > 0 {
+				if e := checkAttentionContinuation(r, v, true); e != nil {
+					return Result{}, e
+				}
+			}
 			if e := CheckSkillSnapshots(s.root, v.Skills); e != nil {
 				return Result{}, e
 			}

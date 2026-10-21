@@ -478,3 +478,46 @@ wrong-run/epoch/actor refusal; source, steering and terminal-state staleness; si
 independence; two-run progress; report guard; withdrawal; legacy reader refusal and
 all writer profile preservation; real MCP transport and CLI capture. Native question/
 reply continuation and independent review remain distinct unfulfilled evidence.
+
+## PGL3-C4 — Guarded attention continuation (2026-10-21)
+
+T028 continues the authorized local workflow. When a running assignment's latest
+host attempt has completed cleanly while awaiting input, answered current questions
+may select a fresh bounded Master attempt in the same run. Reuse the existing launch
+intent/claim/acknowledgement protocol and fresh thread isolation. Extending an ended
+turn in place would require new host correlation/recovery semantics; a fresh attempt
+fits the existing capability boundary and preserves the prior attempt as history.
+This increment is the controller primitive and optional bounded watcher for future
+Project Leader coordination, not the complete conversational leader.
+
+A trusted continuation selects exact question/reply/basis references, requires all
+blocking questions resolved, unchanged sources/authority, no observation gap, completed
+prior attempt and no unresolved outbound input. Preparation atomically records a new
+launch input and makes this same run ready. Claim rechecks the question's pre-prepare
+basis and current authority before any host effect. Inputs retain immutable references;
+prepared/sending/uncertain requests are never blindly resent. Existing terminal-history
+recovery may prove an accepted send but does not authorize another send.
+
+The fresh payload retains the original owner request, current assignment/context,
+question/reply history and explicit continuation instructions. Sandbox, approval/
+reporting policy and selected skill bytes must match the original launch. Reply input
+is not design approval, scope expansion or acceptance. A report remains verifying and
+cannot trigger this continuation. New questions in a later attempt require new replies.
+
+Operational profile 0.7 adds reply references to launch input; legacy readers refuse
+and every writer preserves it. Attention inspection derives dispatch-prepared/sending/
+uncertain/acknowledged from those inputs. Host acknowledgement is not proof of semantic
+consumption or correct implementation; retain that distinction in views and evidence.
+
+Expose explicit continuation and an opt-in bounded automatic watcher on the local
+controller. Default launch behavior remains unchanged. A watcher stays alive after a
+clean waiting turn, checks for current answers and starts at most its configured number
+of fresh attempts. Waiting does not append receipts or poll a model. It stops on report,
+failure, stale authority, unresolved delivery or lifetime exhaustion. It starts no new
+assignment, grants no native delegation and does not implement the external hub.
+
+Verification: durable exact reply binding; source/steering/stale/duplicate refusals;
+claim before host effects; lost response/crash never causes duplicate launch; unchanged
+policies/skills; native ask, delayed reply, fresh attempt, real code change and report;
+protected files, prior lab and legacy reader refusal. Multi-hour capacity and full
+leader/report consumption, direct SAD dialogue and independent review remain separate.
