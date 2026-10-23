@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T012. S1–S8, the combined main integration, independent installed lab and SDPTool
+Latest recorded turn: T013. S1–S8, the combined main integration, independent installed lab and SDPTool
 program discovery/launch, paired release and extension upgrade are completed.
 WCI1/WCI2 are implemented, verified and independently reviewed; WCI3 scalar fields and extended text are delivered and independently reviewed; WCI4 is delivered and independently reviewed. Diagram is **sequence only**, using synthetic equal
 slots; it is not a delivery schedule or measured timeline.
@@ -984,6 +984,21 @@ publication approval. Reused the loaded SDP release/versioning and record routin
 Product publication and local upgrade were already complete; the remaining work
 is committing/pushing owned reconciliation records and preserving unrelated work
 in the shared checkout. S8 remains completed. Next owner step is manual XFMD testing.
+
+### T013 — remaining-work status, 2026-10-18
+
+Owner prompt, verbatim:
+
+> har du noe gjennstående i denne sesjonen?
+
+Work summary: recovered Session0010 and MAINT-SDP-0015. S1–S8 and both release
+milestones remain completed; no selected implementation, release, upgrade or
+closeout task remains. The recorded next step is the owner's manual XFMD test.
+XFMD Run-button adoption and any later release-branch integration into main were
+outside the completed release assignment. This status check does not claim new
+XFMD acceptance or refresh remote PR state. No new work is selected or started.
+Refreshed SDP entrypoint 1.1.1 and the mandatory Session turn routine; reused the
+existing scope and completion evidence. Session status remains completed.
 
 ## Closeout
 
