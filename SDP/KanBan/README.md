@@ -14,11 +14,12 @@
 | KB-SDP-003 | Idea | backlog | [KanBan graph with a time axis and progressive detail](backlog/%23003--Idea--KanBan-graph.md) |
 | KB-SDP-004 | Proposal | backlog | [Traceability between SDL design, slices, code and evidence](backlog/%23004--Proposal--Design-traceability.md) |
 | KB-SDUI-004 | Bug | backlog | [Text and Markdown fidelity across SDUI exports](backlog/%23004--SDUI--Bug--Text-and-Markdown-fidelity.md) |
+| KB-SDUI-005 | Proposal | active | [Combined SDUI preview and launch readiness](active/%23005--SDUI--Proposal--Combined-preview-and-launch-readiness.md) |
 | KB-SDL-005 | Change | backlog | [SDL System and explicit source-set contract](backlog/%23005--SDL--Change--System-and-source-sets.md) |
 | KB-SDL-006 | Study | backlog | [Study executable SDL Channel tests and real Unit bindings](backlog/%23006--SDL--Study--Executable-channel-tests-and-unit-bindings.md) |
 | KB-SDP-014 | Proposal | backlog | [Define the KanBan version contract and reusable distribution](backlog/%23014--Proposal--KanBan-version-contract-and-distribution.md) |
 | KB-SDP-020 | Change | backlog | [Organize shared system design sources by phase](backlog/%23020--Change--Shared-design-source-organization.md) |
-| KB-SDP-032 | Study | backlog | [Evaluate SDL viewpoints through integrated XFMD navigation](backlog/%23032--Study--Viewpoint-navigation-feedback.md) |
+| KB-SDP-032 | Study | active | [Evaluate SDL viewpoints through integrated XFMD navigation](active/%23032--Study--Viewpoint-navigation-feedback.md) |
 | KB-SDP-035 | Proposal | backlog | [Community feedback after an understood internal pilot](backlog/%23035--Proposal--Community-feedback-after-internal-pilot.md) |
 | KB-SDP-036 | Proposal | backlog | [Request classification and mandatory routine selection](backlog/%23036--Proposal--Request-routines-and-process-control.md) |
 | KB-SDP-037 | Proposal | backlog | [Observable routine execution and agent work-package progress](backlog/%23037--Proposal--Observable-routine-state-machine.md) |
