@@ -1,0 +1,119 @@
+[
+  {
+    "definition": "McpServerElicitationRequestParams",
+    "value": {
+      "_meta": {
+        "codex_approval_kind": "mcp_tool_call",
+        "persist": [
+          "session",
+          "always"
+        ],
+        "tool_params": {
+          "schema": "",
+          "projectRef": "",
+          "checkoutId": "",
+          "operationId": "1fdfe01b-9f70-4b54-a2a3-8292969ec72b",
+          "runId": "",
+          "expectedRevision": 0,
+          "inputRevision": "",
+          "action": "report",
+          "reason": ""
+        }
+      },
+      "message": "Allow the sdp_governance MCP server to run tool \"run_transition\"?",
+      "mode": "form",
+      "requestedSchema": {
+        "properties": {},
+        "type": "object"
+      },
+      "serverName": "sdp_governance",
+      "threadId": "thread",
+      "turnId": "turn"
+    }
+  },
+  {
+    "definition": "McpServerElicitationRequestResponse",
+    "value": {
+      "action": "accept",
+      "content": {}
+    }
+  },
+  {
+    "definition": "McpServerElicitationRequestParams",
+    "value": {
+      "_meta": {
+        "codex_approval_kind": "mcp_tool_call",
+        "persist": [
+          "session",
+          "always"
+        ],
+        "tool_params": {
+          "schema": "",
+          "projectRef": "",
+          "checkoutId": "",
+          "operationId": "47ff6226-f63b-4aeb-ba62-4f244c7a1fa7",
+          "runId": "",
+          "expectedRevision": 0,
+          "inputRevision": "",
+          "action": "report",
+          "reason": ""
+        }
+      },
+      "message": "Allow the sdp_governance MCP server to run tool \"run_transition\"?",
+      "mode": "form",
+      "requestedSchema": {
+        "properties": {},
+        "type": "object"
+      },
+      "serverName": "sdp_governance",
+      "threadId": "thread",
+      "turnId": "turn"
+    }
+  },
+  {
+    "definition": "McpServerElicitationRequestResponse",
+    "value": {
+      "action": "decline",
+      "content": null
+    }
+  },
+  {
+    "definition": "McpServerElicitationRequestParams",
+    "value": {
+      "_meta": {
+        "codex_approval_kind": "mcp_tool_call",
+        "persist": [
+          "session",
+          "always"
+        ],
+        "tool_params": {
+          "schema": "",
+          "projectRef": "",
+          "checkoutId": "",
+          "operationId": "55723931-e658-4153-b71c-2e96d5d54079",
+          "runId": "",
+          "expectedRevision": 0,
+          "inputRevision": "",
+          "action": "report",
+          "reason": ""
+        }
+      },
+      "message": "Allow the sdp_governance MCP server to run tool \"run_transition\"?",
+      "mode": "form",
+      "requestedSchema": {
+        "properties": {},
+        "type": "object"
+      },
+      "serverName": "sdp_governance",
+      "threadId": "thread",
+      "turnId": "turn"
+    }
+  },
+  {
+    "definition": "McpServerElicitationRequestResponse",
+    "value": {
+      "action": "cancel",
+      "content": null
+    }
+  }
+]

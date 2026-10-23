@@ -602,3 +602,14 @@ actual version/attempt propagation, refusal/preservation checks and shared wire
 schema alignment. Scoped package races pass. Final committed-candidate full affected
 module checks and real no-model probe are PGC1-C next. Existing full native and
 independent-review/leader gates remain open; no release/merge selected.
+
+## PGC1-C result — T029
+
+Code candidate 98b449c passes full affected SDPTool race/vet, Python Toolkit/
+management/import checks, 60 actual wire-object schema checks and the real 0.164.0
+no-model PG controller/MCP probe. Fresh private lab preparation reports the selected
+source's correct minimum and stays ready. [Evidence](Evidence-PGC1.md) preserves
+exact limits. KB057 closes for this bounded compatibility increment; PLAN-SDP-0018
+and KB038/052 remain active for native workflow/independent-review, leader/report,
+canonical publication and sustained recovery/capacity gates. Do not infer full PG
+readiness, future-host certification, merge, release or new native task authority.

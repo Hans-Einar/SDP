@@ -1,0 +1,18 @@
+{
+  "sourceCommit": "98b449cbcc38254d4fb32cdcce264e79bfd664cf",
+  "sourceRepository": "/home/warloc/git/SDP",
+  "archiveSHA256": "dcf9eb2b76bb4c98726446cee1426dc2e620381dd5af1a23be32d68036a1adbe",
+  "go": "go version go1.27.1 linux/amd64",
+  "hostRequirement": "stable codex-cli >= 0.164.0; bounded wire compatibility required",
+  "releasedInstallation": false,
+  "binaries": {
+    "sdptool": "2741e8dd380c2f4ddf9f3f7324425f58b26a6a86aa6ccb293c870f7f4327c74a",
+    "sdp-controller": "96a9676d6ae80b212b6aabbf88e40a24929f5613a92abf85c0c85da5df19672b",
+    "sdp-mcp": "74f4442a47f6bb5cda35ba344c8629202482aceae344108aa23ca1da32cbea26"
+  },
+  "harness": {
+    "console.py": "d531588228e623175d40af24e11428b5754e6c8182affb84a65e8d942c1f7019",
+    "seed.py": "5bece2888cad3a34589816fa5cc5502ade2dc7fc878e0c584ea7b6fb69b3399f",
+    "README.md": "3527111ab3ff653a51eac29332f0ff81a2d0a4f6ae3a3017cd53a34805b8a9ce"
+  }
+}

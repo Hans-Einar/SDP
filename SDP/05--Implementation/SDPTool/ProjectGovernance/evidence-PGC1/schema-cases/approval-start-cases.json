@@ -1,0 +1,16 @@
+[
+  {
+    "definition": "ThreadStartParams",
+    "value": {
+      "approvalPolicy": "on-request",
+      "approvalsReviewer": "user",
+      "config": {
+        "mcp_servers": {}
+      },
+      "cwd": "/fixture",
+      "developerInstructions": "bounded",
+      "ephemeral": false,
+      "sandbox": "read-only"
+    }
+  }
+]

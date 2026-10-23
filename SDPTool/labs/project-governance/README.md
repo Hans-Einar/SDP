@@ -213,8 +213,10 @@ Older readers refuse it; all new writers preserve it. Dispatch remains unavailab
 ## Approved implementation execution — PGL2-C2d
 
 Build the development controller, SDPTool and sdp-mcp without replacing installed
-commands. Use a complete Codex 0.161.0 host package (including its execution helper),
-not just the standalone codex executable. The exact host pin remains enforced. A
+commands. For a PGC1 engine, use a complete compatible stable Codex >= 0.164.0
+host package (including its execution helper), not just the standalone executable.
+Historical C2d evidence used the then-pinned 0.161.0 host; it is not current-host
+acceptance. Candidate metadata identifies the selected engine requirement. A
 managed account must already be available; this trial does not configure accounts.
 
 ```sh

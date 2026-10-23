@@ -188,8 +188,14 @@ EVT-KB-SDP-000387. MVP1 is deferred; the existing Ponsse pilot model is preserve
 
 ## T029 selected host compatibility — 2026-10-23T22:10:45.708406+00:00
 
-Owner selects [KB057](%23057--Change--Codex-forward-compatibility.md) / PGC1 under
+Owner selects [KB057](../completed/%23057--Change--Codex-forward-compatibility.md) / PGC1 under
 PLAN-SDP-0018, minimum 0.164.0 and compatible later hosts. This replaces exact
 release admission while retaining observed identity, live wire checks and recovery
 boundaries. PGL3 leader/report work remains open; CardState stays in-progress.
 EVT-KB-SDP-000390.
+
+2026-10-23T22:33:53.920551+00:00: PGC1 source 98b449c delivers stable >=0.164.0 admission, actual-version
+provenance and guarded legacy/recovery behavior. Full affected race/vet, 60 wire
+objects and real no-model 0.164.0 probe pass. Earlier exact-version blocker is
+resolved at this boundary. Current-host full native task/review and leader/report/
+evidence gates remain. CardState stays in-progress; EVT-KB-SDP-000397.

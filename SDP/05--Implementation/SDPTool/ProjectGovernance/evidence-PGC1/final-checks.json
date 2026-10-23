@@ -1,0 +1,171 @@
+{
+  "candidate": "98b449cbcc38254d4fb32cdcce264e79bfd664cf",
+  "observedAt": "2026-10-23T22:30:30.476907+00:00",
+  "go": "go version go1.27.1 linux/amd64",
+  "checks": [
+    {
+      "name": "full-sdptool-race",
+      "command": [
+        "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+        "-C",
+        "SDPTool",
+        "test",
+        "-race",
+        "-count=1",
+        "./..."
+      ],
+      "exitCode": 0,
+      "seconds": 203.744,
+      "log": "/home/warloc/.cache/sdp-workstation/PGC1/full-sdptool-race.log",
+      "logSHA256": "676d78c6d3c10cfed4525e3eb11522afc5410966554c363856165ee58ebdc3a2"
+    },
+    {
+      "name": "full-sdptool-vet",
+      "command": [
+        "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+        "-C",
+        "SDPTool",
+        "vet",
+        "./..."
+      ],
+      "exitCode": 0,
+      "seconds": 0.737,
+      "log": "/home/warloc/.cache/sdp-workstation/PGC1/full-sdptool-vet.log",
+      "logSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "toolkit-validator",
+      "command": [
+        "python",
+        "Toolkit/scripts/validate_sdp.py",
+        "--base-ref",
+        "main"
+      ],
+      "exitCode": 0,
+      "seconds": 1.597,
+      "log": "/home/warloc/.cache/sdp-workstation/PGC1/toolkit-validator.log",
+      "logSHA256": "5e9d1353c22f090c8b066ba39da56ff229fbc1b07a7e12e21bb8ac9ffbb9e3ad"
+    },
+    {
+      "name": "toolkit-tests",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "Toolkit/tests",
+        "-p",
+        "test_*.py"
+      ],
+      "exitCode": 0,
+      "seconds": 5.813,
+      "log": "/home/warloc/.cache/sdp-workstation/PGC1/toolkit-tests.log",
+      "logSHA256": "84658173df26f1b37b04c14fd5323b85904aa64c370514f0f82f406210f9e99d"
+    },
+    {
+      "name": "management-tests",
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "SDP/ProjectManagement",
+        "-p",
+        "test_*.py"
+      ],
+      "exitCode": 0,
+      "seconds": 0.319,
+      "log": "/home/warloc/.cache/sdp-workstation/PGC1/management-tests.log",
+      "logSHA256": "fa9c6a537940499f352909d6851af03495e3598bf10f6e9521d7cc959eed5e82"
+    },
+    {
+      "name": "management-validator",
+      "command": [
+        "python",
+        "SDP/ProjectManagement/validate.py"
+      ],
+      "exitCode": 0,
+      "seconds": 0.369,
+      "log": "/home/warloc/.cache/sdp-workstation/PGC1/management-validator.log",
+      "logSHA256": "5a5be2ab737221553d1e576fb20da8bcde61cb0adf4a3cf5940fedcb134b7f22"
+    },
+    {
+      "name": "history-import",
+      "command": [
+        "python",
+        "SDP/ProjectManagement/History/Session0011/verify.py"
+      ],
+      "exitCode": 0,
+      "seconds": 0.067,
+      "log": "/home/warloc/.cache/sdp-workstation/PGC1/history-import.log",
+      "logSHA256": "8c462d41e69e0b61bb599b1b5e0b11f6ee31a90accf788f60745d7c8eab92a7e"
+    },
+    {
+      "name": "final-build",
+      "command": [
+        "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+        "-C",
+        "SDPTool",
+        "build",
+        "-trimpath",
+        "-ldflags",
+        "-X github.com/Hans-Einar/SDP/SDPTool.BuildVersion=development-PGC1 -X github.com/Hans-Einar/SDP/SDPTool.BuildRevision=98b449cbcc38254d4fb32cdcce264e79bfd664cf",
+        "-o",
+        "/home/warloc/.cache/sdp-workstation/PGC1/bin-final",
+        "./cmd/sdp-controller",
+        "./cmd/sdp-mcp"
+      ],
+      "exitCode": 0,
+      "seconds": 0.975,
+      "log": "/home/warloc/.cache/sdp-workstation/PGC1/final-build.log",
+      "logSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "live-codex-0.164-probe",
+      "command": [
+        "/home/warloc/.cache/sdp-workstation/PGC1/bin-final/sdp-controller",
+        "probe",
+        "--project",
+        "/home/warloc/git/SDP",
+        "--codex",
+        "/home/warloc/.local/bin/codex",
+        "--mcp-binary",
+        "/home/warloc/.cache/sdp-workstation/PGC1/bin-final/sdp-mcp",
+        "--state",
+        "/home/warloc/.cache/sdp-workstation/PGC1/final-no-state"
+      ],
+      "exitCode": 0,
+      "seconds": 1.32,
+      "log": "/home/warloc/.cache/sdp-workstation/PGC1/live-codex-0.164-probe.log",
+      "logSHA256": "8fa14ffa05d77585e1cfb6d0bb4b96c61cd9997e71e51867727114a448f63561"
+    },
+    {
+      "name": "prepare-no-model-lab",
+      "command": [
+        "python",
+        "SDPTool/labs/project-governance/prepare.py",
+        "--source",
+        "/home/warloc/git/SDP",
+        "--revision",
+        "98b449cbcc38254d4fb32cdcce264e79bfd664cf",
+        "--destination",
+        "/home/warloc/.cache/sdp-workstation/PGC1/lab-final",
+        "--go",
+        "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go"
+      ],
+      "exitCode": 0,
+      "seconds": 3.381,
+      "log": "/home/warloc/.cache/sdp-workstation/PGC1/prepare-no-model-lab.log",
+      "logSHA256": "320b695a2de7eef4b7ecace70ca32b6a84d6525626ead734075354cfcbf12384"
+    }
+  ],
+  "binaries": {
+    "sdp-controller": "9ac0ea6b592ea5b5b1452be0079b5a0690060a674813b7a572b856cc30eaa86d",
+    "sdp-mcp": "7a37ba85b4d2d6211bf5ee5667195a434b0d6191cda11eb52623d1c518eda40c"
+  },
+  "modelTaskSubmitted": false,
+  "independentReview": false,
+  "nativeFullWorkflow": "not verified"
+}

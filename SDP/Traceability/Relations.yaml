@@ -240,6 +240,13 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-PGC1:
+    status: passed-bounded-host-compatibility
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGC1.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-057
+    design: SDPTOOL-DES-0001
+    note: Source 98b449c passes full affected race/vet, wire-schema cases and real no-model 0.164.0 probe. Compatible future hosts are eligible, not certified; full native workflow, independent review and broader PG gates remain open.
   SDPTOOL-VER-ACT:
     status: passed-bounded-producer-and-compiled-wrapper
     path: 05--Implementation/SDPTool/Actions/Evidence.md

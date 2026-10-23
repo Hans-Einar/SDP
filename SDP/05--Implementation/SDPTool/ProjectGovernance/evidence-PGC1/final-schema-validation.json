@@ -1,0 +1,374 @@
+{
+  "passCount": 60,
+  "counts": {
+    "Codex 0.164.0 default": 14,
+    "governance application": 46
+  },
+  "cases": [
+    {
+      "capture": "approval-rpc-cases.json",
+      "definition": "McpServerElicitationRequestParams",
+      "schema": "Codex 0.164.0 default",
+      "result": "pass"
+    },
+    {
+      "capture": "approval-rpc-cases.json",
+      "definition": "McpServerElicitationRequestResponse",
+      "schema": "Codex 0.164.0 default",
+      "result": "pass"
+    },
+    {
+      "capture": "approval-rpc-cases.json",
+      "definition": "McpServerElicitationRequestParams",
+      "schema": "Codex 0.164.0 default",
+      "result": "pass"
+    },
+    {
+      "capture": "approval-rpc-cases.json",
+      "definition": "McpServerElicitationRequestResponse",
+      "schema": "Codex 0.164.0 default",
+      "result": "pass"
+    },
+    {
+      "capture": "approval-rpc-cases.json",
+      "definition": "McpServerElicitationRequestParams",
+      "schema": "Codex 0.164.0 default",
+      "result": "pass"
+    },
+    {
+      "capture": "approval-rpc-cases.json",
+      "definition": "McpServerElicitationRequestResponse",
+      "schema": "Codex 0.164.0 default",
+      "result": "pass"
+    },
+    {
+      "capture": "approval-start-cases.json",
+      "definition": "ThreadStartParams",
+      "schema": "Codex 0.164.0 default",
+      "result": "pass"
+    },
+    {
+      "capture": "attach-rpc-cases.json",
+      "definition": "ThreadResumeParams",
+      "schema": "Codex 0.164.0 default",
+      "result": "pass"
+    },
+    {
+      "capture": "attach-wire-cases.json",
+      "definition": "HostRequest",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "attach-wire-cases.json",
+      "definition": "Result",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "attention-completion.json",
+      "definition": "AttentionRequest",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "attention-completion.json",
+      "definition": "AttentionDisposition",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "attention-completion.json",
+      "definition": "AttentionInbox",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "attention-completion.json",
+      "definition": "Result",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "attention-observations.json",
+      "definition": "AttentionRequest",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "attention-observations.json",
+      "definition": "AttentionDisposition",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "attention-observations.json",
+      "definition": "AttentionInbox",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "attention-observations.json",
+      "definition": "Result",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "cli-wire-cases.json",
+      "definition": "Selection",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "cli-wire-cases.json",
+      "definition": "Context",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "cli-wire-cases.json",
+      "definition": "RouteRequest",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "cli-wire-cases.json",
+      "definition": "Route",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "cli-wire-cases.json",
+      "definition": "RouteRequest",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "cli-wire-cases.json",
+      "definition": "Route",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "cli-wire-cases.json",
+      "definition": "Binding",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "cli-wire-cases.json",
+      "definition": "StartRequest",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "cli-wire-cases.json",
+      "definition": "Result",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "cli-wire-cases.json",
+      "definition": "TransitionRequest",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "cli-wire-cases.json",
+      "definition": "Result",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "cli-wire-cases.json",
+      "definition": "TransitionRequest",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "cli-wire-cases.json",
+      "definition": "Result",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "cli-wire-cases.json",
+      "definition": "TransitionRequest",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "cli-wire-cases.json",
+      "definition": "Result",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "cli-wire-cases.json",
+      "definition": "TransitionRequest",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "cli-wire-cases.json",
+      "definition": "Result",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "cli-wire-cases.json",
+      "definition": "TransitionRequest",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "cli-wire-cases.json",
+      "definition": "Result",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "cli-wire-cases.json",
+      "definition": "Error",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "cli-wire-cases.json",
+      "definition": "Result",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "continuation.json",
+      "definition": "OwnerInput",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "continuation.json",
+      "definition": "Result",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "continuation.json",
+      "definition": "AttentionInbox",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "dispatch-wire-cases.json",
+      "definition": "InputRequest",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "dispatch-wire-cases.json",
+      "definition": "OwnerInput",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "dispatch-wire-cases.json",
+      "definition": "Result",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "host-wire-cases.json",
+      "definition": "Result",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "host-wire-cases.json",
+      "definition": "HostRequest",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "host-wire-cases.json",
+      "definition": "Result",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "host-wire-cases.json",
+      "definition": "EventPage",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "provenance-wire-cases.json",
+      "definition": "ProvenanceView",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "provenance-wire-cases.json",
+      "definition": "ContextProvenance",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "skill-rpc-cases.json",
+      "definition": "TurnStartParams",
+      "schema": "Codex 0.164.0 default",
+      "result": "pass"
+    },
+    {
+      "capture": "skill-wire-cases.json",
+      "definition": "OwnerInput",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "skill-wire-cases.json",
+      "definition": "ProvenanceView",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "skill-wire-cases.json",
+      "definition": "Observation",
+      "schema": "governance application",
+      "result": "pass"
+    },
+    {
+      "capture": "skills-rpc-cases.json",
+      "definition": "SkillsListParams",
+      "schema": "Codex 0.164.0 default",
+      "result": "pass"
+    },
+    {
+      "capture": "work-rpc-cases.json",
+      "definition": "ThreadStartParams",
+      "schema": "Codex 0.164.0 default",
+      "result": "pass"
+    },
+    {
+      "capture": "work-rpc-cases.json",
+      "definition": "TurnStartParams",
+      "schema": "Codex 0.164.0 default",
+      "result": "pass"
+    },
+    {
+      "capture": "work-rpc-cases.json",
+      "definition": "TurnSteerParams",
+      "schema": "Codex 0.164.0 default",
+      "result": "pass"
+    },
+    {
+      "capture": "work-rpc-cases.json",
+      "definition": "TurnInterruptParams",
+      "schema": "Codex 0.164.0 default",
+      "result": "pass"
+    }
+  ],
+  "schemaExportHashes": {
+    "ClientRequest.json": "9b89e2459362d20cec67a429ef9430fe6b0e9fb8bd87d445d4c9a6acccd87450",
+    "ServerRequest.json": "f339be472737a0003efa25fba2e6e6c9237e621cd065b6d6995c51256e9dc1fb",
+    "codex_app_server_protocol.schemas.json": "5f633ad1f0a07459a5f63ed5604f8a61e0366ac5c36a15d648b44c8de4ffafb1"
+  }
+}

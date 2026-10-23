@@ -1,0 +1,1 @@
+[{"definition":"TurnStartParams","value":{"clientUserMessageId":"f5037e6c-e68c-44c4-bda7-39e7cda664d4","input":[{"text":"$sdp $sdp-master\nexact","type":"text"},{"name":"sdp","path":"/project/Skills/sdp/SKILL.md","type":"skill"},{"name":"sdp-master","path":"/project/Skills/sdp-master/SKILL.md","type":"skill"}],"threadId":"thread"}}]

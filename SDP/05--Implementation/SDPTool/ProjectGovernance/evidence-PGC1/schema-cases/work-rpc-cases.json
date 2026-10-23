@@ -1,0 +1,50 @@
+[
+  {
+    "definition": "ThreadStartParams",
+    "value": {
+      "approvalPolicy": "never",
+      "approvalsReviewer": "user",
+      "config": {
+        "mcp_servers": {}
+      },
+      "cwd": "/fixture",
+      "developerInstructions": "bounded Master",
+      "ephemeral": false,
+      "sandbox": "read-only"
+    }
+  },
+  {
+    "definition": "TurnStartParams",
+    "value": {
+      "clientUserMessageId": "48ef6653-5e0d-455a-89f7-8ad719874623",
+      "input": [
+        {
+          "text": "exact input",
+          "type": "text"
+        }
+      ],
+      "threadId": "thread"
+    }
+  },
+  {
+    "definition": "TurnSteerParams",
+    "value": {
+      "clientUserMessageId": "db38094a-4875-42f6-afd0-1841f8b45057",
+      "expectedTurnId": "turn",
+      "input": [
+        {
+          "text": "steering",
+          "type": "text"
+        }
+      ],
+      "threadId": "thread"
+    }
+  },
+  {
+    "definition": "TurnInterruptParams",
+    "value": {
+      "threadId": "thread",
+      "turnId": "turn"
+    }
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "state": "ready",
+  "hostRequirement": "stable codex-cli >= 0.164.0; bounded wire compatibility required",
+  "modelSubmitted": false,
+  "description": "Fresh private fixture only; source archive/build/seed preparation, no host or model execution."
+}

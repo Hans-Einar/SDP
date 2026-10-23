@@ -1,0 +1,105 @@
+[
+  {
+    "definition": "InputRequest",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "projectRef": "trial",
+      "checkoutId": "2ac4edc1-2612-49f6-a3db-813942b12be7",
+      "operationId": "fc455b45-b9e7-4424-a234-acb061e27295",
+      "runId": "63d9be2e-d344-47d0-b240-a5d36d0fadf9",
+      "expectedRevision": 3,
+      "inputRevision": "215d99bf7b250b04022e11b6b3d7120432aafb7d20e9b1e02041ace5125f1633",
+      "action": "claim",
+      "input": {
+        "id": "d6234fb1-299e-4cb2-b847-3d3c0afe40ed",
+        "kind": "launch",
+        "text": "different",
+        "payload": "bounded assignment",
+        "attemptId": "b6384d99-87a3-4b99-b1fa-0c102d042537",
+        "epoch": "fcb8351c-b4a8-42ca-acc4-9ddfca63a1dc",
+        "threadId": "",
+        "turnId": "",
+        "state": "prepared",
+        "receivedAt": "2026-10-23T22:27:52.566230682Z"
+      }
+    }
+  },
+  {
+    "definition": "OwnerInput",
+    "value": {
+      "id": "d6234fb1-299e-4cb2-b847-3d3c0afe40ed",
+      "kind": "launch",
+      "text": "owner input\nexact",
+      "payload": "bounded assignment",
+      "attemptId": "b6384d99-87a3-4b99-b1fa-0c102d042537",
+      "epoch": "fcb8351c-b4a8-42ca-acc4-9ddfca63a1dc",
+      "threadId": "",
+      "turnId": "",
+      "state": "sending",
+      "receivedAt": "2026-10-23T22:27:52.566230682Z"
+    }
+  },
+  {
+    "definition": "Result",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "operation": "input.claim",
+      "projectRef": "trial",
+      "checkoutId": "2ac4edc1-2612-49f6-a3db-813942b12be7",
+      "operationId": "02f40826-d548-4ba5-a3ab-93b0ed015c68",
+      "run": {
+        "inputs": [
+          {
+            "contentOmitted": true,
+            "id": "d6234fb1-299e-4cb2-b847-3d3c0afe40ed",
+            "kind": "launch",
+            "text": "",
+            "payload": "",
+            "attemptId": "b6384d99-87a3-4b99-b1fa-0c102d042537",
+            "epoch": "fcb8351c-b4a8-42ca-acc4-9ddfca63a1dc",
+            "threadId": "",
+            "turnId": "",
+            "state": "sending",
+            "receivedAt": "2026-10-23T22:27:52.566230682Z"
+          }
+        ],
+        "id": "63d9be2e-d344-47d0-b240-a5d36d0fadf9",
+        "revision": 3,
+        "requestId": "0bb0801a-dcfd-4b5b-a93b-9cfbc7dfc53a",
+        "state": "ready",
+        "step": "implement",
+        "inputRevision": "215d99bf7b250b04022e11b6b3d7120432aafb7d20e9b1e02041ace5125f1633",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "fix fixture",
+          "writablePaths": [
+            "target.txt"
+          ],
+          "excludedPaths": [
+            "unrelated.txt"
+          ]
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "reason": "coverage resolved; trusted local controller selected bounded work"
+      },
+      "coverage": "known"
+    }
+  }
+]

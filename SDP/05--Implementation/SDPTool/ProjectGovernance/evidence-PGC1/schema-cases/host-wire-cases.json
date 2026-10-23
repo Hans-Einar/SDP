@@ -1,0 +1,208 @@
+[
+  {
+    "definition": "Result",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "operation": "host.bind",
+      "projectRef": "trial",
+      "checkoutId": "a640c98a-73f0-46fe-86fa-cd51a4d5f8f8",
+      "operationId": "a6632ac0-973a-41f8-9e02-f7d3184a137e",
+      "run": {
+        "attempts": [
+          {
+            "agentEpoch": "607daffd-bc16-4978-a43d-2d6ee29fdc45",
+            "lastObservedAt": "2026-10-23T22:27:52.96207511Z",
+            "eventCount": 1,
+            "id": "fb0c18a0-2db5-4df1-9d21-c86f938c3a5c",
+            "hostVersion": "0.160.1",
+            "threadId": "observed-thread",
+            "turnId": "",
+            "inputRevision": "a2d34ca3e8fb70f1903a398f8e7cf8061fc6fe7fd611a55a3985060029012a82",
+            "epoch": "607daffd-bc16-4978-a43d-2d6ee29fdc45",
+            "status": "idle",
+            "gap": false,
+            "events": []
+          }
+        ],
+        "id": "6e6931e2-c1dd-466e-9afb-7e53d838a39a",
+        "revision": 3,
+        "requestId": "64043a08-2cb5-4910-a3f7-024140f25c5b",
+        "state": "running",
+        "step": "implement",
+        "inputRevision": "a2d34ca3e8fb70f1903a398f8e7cf8061fc6fe7fd611a55a3985060029012a82",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "fix fixture",
+          "writablePaths": [
+            "target.txt"
+          ],
+          "excludedPaths": [
+            "unrelated.txt"
+          ]
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "reason": "test observed boundary"
+      },
+      "coverage": "known"
+    }
+  },
+  {
+    "definition": "HostRequest",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "projectRef": "trial",
+      "checkoutId": "a640c98a-73f0-46fe-86fa-cd51a4d5f8f8",
+      "operationId": "ad1a02e9-6975-4ac1-b1b5-8a9a0c553dca",
+      "runId": "6e6931e2-c1dd-466e-9afb-7e53d838a39a",
+      "expectedRevision": 6,
+      "inputRevision": "a2d34ca3e8fb70f1903a398f8e7cf8061fc6fe7fd611a55a3985060029012a82",
+      "action": "reconcile",
+      "attemptId": "fb0c18a0-2db5-4df1-9d21-c86f938c3a5c",
+      "hostVersion": "0.160.1",
+      "threadId": "observed-thread",
+      "observation": {
+        "kind": "reconciled",
+        "turnId": "turn",
+        "itemId": "",
+        "phase": "",
+        "text": "",
+        "status": "completed",
+        "epoch": "95444fde-a505-4c87-9904-3773cbea411b",
+        "receivedAt": "2026-10-23T22:27:52.96207511Z"
+      }
+    }
+  },
+  {
+    "definition": "Result",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "operation": "transition",
+      "projectRef": "trial",
+      "checkoutId": "a640c98a-73f0-46fe-86fa-cd51a4d5f8f8",
+      "operationId": "2108c2b4-3edb-4c22-8973-e0e2e0a5cb57",
+      "run": {
+        "attempts": [
+          {
+            "agentEpoch": "95444fde-a505-4c87-9904-3773cbea411b",
+            "lastObservedAt": "2026-10-23T22:27:52.96207511Z",
+            "eventCount": 4,
+            "id": "fb0c18a0-2db5-4df1-9d21-c86f938c3a5c",
+            "hostVersion": "0.160.1",
+            "threadId": "observed-thread",
+            "turnId": "turn",
+            "inputRevision": "a2d34ca3e8fb70f1903a398f8e7cf8061fc6fe7fd611a55a3985060029012a82",
+            "epoch": "95444fde-a505-4c87-9904-3773cbea411b",
+            "status": "completed",
+            "gap": true,
+            "events": []
+          }
+        ],
+        "id": "6e6931e2-c1dd-466e-9afb-7e53d838a39a",
+        "revision": 8,
+        "requestId": "64043a08-2cb5-4910-a3f7-024140f25c5b",
+        "state": "verifying",
+        "step": "implement",
+        "inputRevision": "a2d34ca3e8fb70f1903a398f8e7cf8061fc6fe7fd611a55a3985060029012a82",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "fix fixture",
+          "writablePaths": [
+            "target.txt"
+          ],
+          "excludedPaths": [
+            "unrelated.txt"
+          ]
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "reason": "test observed boundary"
+      },
+      "coverage": "known"
+    }
+  },
+  {
+    "definition": "EventPage",
+    "value": {
+      "runId": "6e6931e2-c1dd-466e-9afb-7e53d838a39a",
+      "attemptId": "fb0c18a0-2db5-4df1-9d21-c86f938c3a5c",
+      "revision": 8,
+      "events": [
+        {
+          "kind": "bound",
+          "turnId": "",
+          "itemId": "",
+          "phase": "",
+          "text": "",
+          "status": "idle",
+          "epoch": "607daffd-bc16-4978-a43d-2d6ee29fdc45",
+          "receivedAt": "2026-10-23T22:27:52.96207511Z"
+        },
+        {
+          "kind": "agentMessage",
+          "turnId": "turn",
+          "itemId": "item",
+          "phase": "commentary",
+          "text": "Working",
+          "status": "",
+          "epoch": "607daffd-bc16-4978-a43d-2d6ee29fdc45",
+          "receivedAt": "2026-10-23T22:27:52.96207511Z"
+        },
+        {
+          "kind": "disconnected",
+          "turnId": "",
+          "itemId": "",
+          "phase": "",
+          "text": "",
+          "status": "unknown",
+          "epoch": "607daffd-bc16-4978-a43d-2d6ee29fdc45",
+          "receivedAt": "2026-10-23T22:27:52.96207511Z"
+        },
+        {
+          "kind": "reconciled",
+          "turnId": "turn",
+          "itemId": "",
+          "phase": "",
+          "text": "",
+          "status": "completed",
+          "epoch": "95444fde-a505-4c87-9904-3773cbea411b",
+          "receivedAt": "2026-10-23T22:27:52.96207511Z"
+        }
+      ],
+      "nextCursor": "",
+      "gap": true
+    }
+  }
+]

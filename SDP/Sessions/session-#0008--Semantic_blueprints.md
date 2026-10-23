@@ -6,7 +6,7 @@ remain as recorded; see ProjectManagement/History/Session0011/import.json.
 
 ## Session roadmap
 
-T015, 2026-10-09. Session paused by owner; resume at S1 / BP2-A. Sequence only; dates are display slots, not duration estimates.
+Latest discussion T017, 2026-10-24. Execution remains paused by owner; resume at S1 / BP2-A only when selected. Sequence only; dates are display slots, not duration estimates.
 
 ```mermaid
 gantt
@@ -36,7 +36,7 @@ gantt
 | Session reference | SESSION-SDP-0008 |
 | Status | paused |
 | Primary card | KB-SDP-050 |
-| Snapshot date | 2026-10-09 |
+| Snapshot date | 2026-10-24 |
 | Execution authority | Owner says continue after the proposed KB050 pilot route |
 
 ## Goal
@@ -46,7 +46,7 @@ then hand off measurable implementation slices. The eventual generator must show
 NOW/TARGET differences, affected surroundings, preserved obligations and unknowns.
 The DesignPlan led to completed ImplementationPlan PLAN-SDP-0020. Diagnostic
 generation, catalogue discovery and bounded assignment lifecycle/evidence are
-implemented; general code-conformance proof remains explicitly outside this scope. The Ponsse pilot is not an implemented change.
+implemented; general code-conformance proof remains explicitly outside this scope. The reduced Blueprint specimen is not evidence of an implemented Ponsse application change. The owner confirms an existing pilot model in Ponsse; current MVP1 work remains deferred.
 
 ## Cards and plans
 

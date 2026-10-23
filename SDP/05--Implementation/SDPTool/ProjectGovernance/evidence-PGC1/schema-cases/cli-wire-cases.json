@@ -1,0 +1,701 @@
+[
+  {
+    "definition": "Selection",
+    "value": {
+      "card": "SDP/KanBan/active/card.md",
+      "plan": "SDP/Maintenance/Plan.md",
+      "session": "SDP/Sessions/session.md",
+      "authority": "SDP/authority.md",
+      "step": "S1"
+    }
+  },
+  {
+    "definition": "Context",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "operation": "context",
+      "projectRef": "trial",
+      "root": "/tmp/TestCompiledGovernanceJourney3704571563/002",
+      "checkoutId": "",
+      "revision": "87b0c21ce1b67b77759c0ea8b95109291f3a58294fbe03471b91b3f00709b7c6",
+      "selection": {
+        "card": "SDP/KanBan/active/card.md",
+        "plan": "SDP/Maintenance/Plan.md",
+        "session": "SDP/Sessions/session.md",
+        "authority": "SDP/authority.md",
+        "step": "S1"
+      },
+      "sources": [
+        {
+          "path": "AGENTS.md",
+          "sha256": "absent"
+        },
+        {
+          "path": "SDP/KanBan/active/card.md",
+          "sha256": "4109b4399801ba311e4600b8bae98a43e5c45fa4653a4c0ab738ae15229e5928"
+        },
+        {
+          "path": "SDP/Maintenance/Plan.md",
+          "sha256": "73e3b6a5aebe257f28014aa912e5f9ede0d51878459701ba6a5c6b14d72eeed4"
+        },
+        {
+          "path": "SDP/ProjectManagement/Ledger.ndjson",
+          "sha256": "7c636db7d0e6f34dc80c90a8581d96524daf7c7cb97ab439589720aa78d1c1d1"
+        },
+        {
+          "path": "SDP/SDP-project.manifest.yaml",
+          "sha256": "bf1d21be9fe885671ddcc461769e0496e3dd528c3c5dd1536a29d1e926b9296f"
+        },
+        {
+          "path": "SDP/Sessions/session.md",
+          "sha256": "5a9acdb6d35b4b16d1c8a79fac516ec2d24664bb5377d6b2068fb061c860f898"
+        },
+        {
+          "path": "SDP/authority.md",
+          "sha256": "895d01e2b5068917239a0f73eabcac94da50888960cd7aeb05ccedfa27e3e50d"
+        }
+      ],
+      "coverage": "known",
+      "conditions": [],
+      "cardId": "KB-TEST-001",
+      "planId": "MAINT-TEST-0001",
+      "sessionId": "SESSION-TEST-0001"
+    }
+  },
+  {
+    "definition": "RouteRequest",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "categories": [
+        "status"
+      ],
+      "intent": "",
+      "selection": {
+        "card": "",
+        "plan": "",
+        "session": "",
+        "authority": "",
+        "step": ""
+      },
+      "routineId": "",
+      "routineVersion": "",
+      "inputRevision": ""
+    }
+  },
+  {
+    "definition": "Route",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "operation": "route",
+      "disposition": "no-work",
+      "basis": "caller-proposed category; no automatic language classification",
+      "context": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "context",
+        "projectRef": "trial",
+        "root": "/tmp/TestCompiledGovernanceJourney3704571563/002",
+        "checkoutId": "",
+        "revision": "1b57e5f50fb8e32b051e65b9929b378914ed5d6e4a6938cf8787c1303b2935c6",
+        "selection": {
+          "card": "",
+          "plan": "",
+          "session": "",
+          "authority": "",
+          "step": ""
+        },
+        "sources": [
+          {
+            "path": "AGENTS.md",
+            "sha256": "absent"
+          },
+          {
+            "path": "SDP/KanBan/active/card.md",
+            "sha256": "4109b4399801ba311e4600b8bae98a43e5c45fa4653a4c0ab738ae15229e5928"
+          },
+          {
+            "path": "SDP/Maintenance/Plan.md",
+            "sha256": "73e3b6a5aebe257f28014aa912e5f9ede0d51878459701ba6a5c6b14d72eeed4"
+          }
+        ],
+        "coverage": "known",
+        "conditions": [
+          "work reference missing",
+          "work reference missing",
+          "work reference missing",
+          "authority reference missing",
+          "card identity missing",
+          "required plan identity prefix: MAINT-",
+          "Session identity missing",
+          "card must be ready or in-progress",
+          "card must be in active board directory",
+          "active MaintenancePlan required",
+          "active Session required",
+          "Session step is missing"
+        ],
+        "cardId": "",
+        "planId": "",
+        "sessionId": ""
+      },
+      "routine": {
+        "id": "maintenance",
+        "version": "0.1",
+        "steps": [
+          "implement",
+          "verify",
+          "review",
+          "record"
+        ],
+        "completion": "candidate evidence, applicable independent review and checked publication required"
+      },
+      "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa"
+    }
+  },
+  {
+    "definition": "RouteRequest",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "categories": [
+        "maintenance"
+      ],
+      "intent": "",
+      "selection": {
+        "card": "SDP/KanBan/active/card.md",
+        "plan": "SDP/Maintenance/Plan.md",
+        "session": "SDP/Sessions/session.md",
+        "authority": "SDP/authority.md",
+        "step": "S1"
+      },
+      "routineId": "maintenance",
+      "routineVersion": "0.1",
+      "inputRevision": ""
+    }
+  },
+  {
+    "definition": "Route",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "operation": "route",
+      "disposition": "matched",
+      "basis": "caller-proposed category; no automatic language classification",
+      "context": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "context",
+        "projectRef": "trial",
+        "root": "/tmp/TestCompiledGovernanceJourney3704571563/002",
+        "checkoutId": "",
+        "revision": "87b0c21ce1b67b77759c0ea8b95109291f3a58294fbe03471b91b3f00709b7c6",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "sources": [
+          {
+            "path": "AGENTS.md",
+            "sha256": "absent"
+          },
+          {
+            "path": "SDP/KanBan/active/card.md",
+            "sha256": "4109b4399801ba311e4600b8bae98a43e5c45fa4653a4c0ab738ae15229e5928"
+          },
+          {
+            "path": "SDP/Maintenance/Plan.md",
+            "sha256": "73e3b6a5aebe257f28014aa912e5f9ede0d51878459701ba6a5c6b14d72eeed4"
+          },
+          {
+            "path": "SDP/ProjectManagement/Ledger.ndjson",
+            "sha256": "7c636db7d0e6f34dc80c90a8581d96524daf7c7cb97ab439589720aa78d1c1d1"
+          },
+          {
+            "path": "SDP/SDP-project.manifest.yaml",
+            "sha256": "bf1d21be9fe885671ddcc461769e0496e3dd528c3c5dd1536a29d1e926b9296f"
+          },
+          {
+            "path": "SDP/Sessions/session.md",
+            "sha256": "5a9acdb6d35b4b16d1c8a79fac516ec2d24664bb5377d6b2068fb061c860f898"
+          },
+          {
+            "path": "SDP/authority.md",
+            "sha256": "895d01e2b5068917239a0f73eabcac94da50888960cd7aeb05ccedfa27e3e50d"
+          }
+        ],
+        "coverage": "known",
+        "conditions": [],
+        "cardId": "KB-TEST-001",
+        "planId": "MAINT-TEST-0001",
+        "sessionId": "SESSION-TEST-0001"
+      },
+      "routine": {
+        "id": "maintenance",
+        "version": "0.1",
+        "steps": [
+          "implement",
+          "verify",
+          "review",
+          "record"
+        ],
+        "completion": "candidate evidence, applicable independent review and checked publication required"
+      },
+      "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa"
+    }
+  },
+  {
+    "definition": "Binding",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "operation": "bind",
+      "projectRef": "trial",
+      "root": "/tmp/TestCompiledGovernanceJourney3704571563/002",
+      "checkoutId": "1931a33d-e300-4a69-89b9-f4316114215b"
+    }
+  },
+  {
+    "definition": "StartRequest",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "projectRef": "trial",
+      "checkoutId": "1931a33d-e300-4a69-89b9-f4316114215b",
+      "operationId": "00000000-0000-4000-8000-000000000001",
+      "requestId": "00000000-0000-4000-8000-000000000002",
+      "inputRevision": "87b0c21ce1b67b77759c0ea8b95109291f3a58294fbe03471b91b3f00709b7c6",
+      "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+      "selection": {
+        "card": "SDP/KanBan/active/card.md",
+        "plan": "SDP/Maintenance/Plan.md",
+        "session": "SDP/Sessions/session.md",
+        "authority": "SDP/authority.md",
+        "step": "S1"
+      },
+      "assignment": {
+        "outcome": "fixture fix",
+        "writablePaths": [
+          "target.txt"
+        ],
+        "excludedPaths": [
+          "dirty.txt"
+        ]
+      }
+    }
+  },
+  {
+    "definition": "Result",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "operation": "start",
+      "projectRef": "trial",
+      "checkoutId": "1931a33d-e300-4a69-89b9-f4316114215b",
+      "operationId": "00000000-0000-4000-8000-000000000001",
+      "run": {
+        "id": "a3f1133b-ef29-45c6-a5d0-73a02da34199",
+        "revision": 1,
+        "requestId": "00000000-0000-4000-8000-000000000002",
+        "state": "ready",
+        "step": "implement",
+        "inputRevision": "87b0c21ce1b67b77759c0ea8b95109291f3a58294fbe03471b91b3f00709b7c6",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "fixture fix",
+          "writablePaths": [
+            "target.txt"
+          ],
+          "excludedPaths": [
+            "dirty.txt"
+          ]
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "reason": "coverage resolved; trusted local controller selected bounded work"
+      },
+      "coverage": "known"
+    }
+  },
+  {
+    "definition": "TransitionRequest",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "projectRef": "trial",
+      "checkoutId": "1931a33d-e300-4a69-89b9-f4316114215b",
+      "operationId": "00000000-0000-4000-8000-000000000010",
+      "runId": "a3f1133b-ef29-45c6-a5d0-73a02da34199",
+      "expectedRevision": 1,
+      "inputRevision": "87b0c21ce1b67b77759c0ea8b95109291f3a58294fbe03471b91b3f00709b7c6",
+      "action": "start",
+      "reason": "local fixture observation"
+    }
+  },
+  {
+    "definition": "Result",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "operation": "transition",
+      "projectRef": "trial",
+      "checkoutId": "1931a33d-e300-4a69-89b9-f4316114215b",
+      "operationId": "00000000-0000-4000-8000-000000000010",
+      "run": {
+        "id": "a3f1133b-ef29-45c6-a5d0-73a02da34199",
+        "revision": 2,
+        "requestId": "00000000-0000-4000-8000-000000000002",
+        "state": "running",
+        "step": "implement",
+        "inputRevision": "87b0c21ce1b67b77759c0ea8b95109291f3a58294fbe03471b91b3f00709b7c6",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "fixture fix",
+          "writablePaths": [
+            "target.txt"
+          ],
+          "excludedPaths": [
+            "dirty.txt"
+          ]
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "reason": "local fixture observation"
+      },
+      "coverage": "known"
+    }
+  },
+  {
+    "definition": "TransitionRequest",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "projectRef": "trial",
+      "checkoutId": "1931a33d-e300-4a69-89b9-f4316114215b",
+      "operationId": "00000000-0000-4000-8000-000000000011",
+      "runId": "a3f1133b-ef29-45c6-a5d0-73a02da34199",
+      "expectedRevision": 2,
+      "inputRevision": "87b0c21ce1b67b77759c0ea8b95109291f3a58294fbe03471b91b3f00709b7c6",
+      "action": "interrupt",
+      "reason": "local fixture observation"
+    }
+  },
+  {
+    "definition": "Result",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "operation": "transition",
+      "projectRef": "trial",
+      "checkoutId": "1931a33d-e300-4a69-89b9-f4316114215b",
+      "operationId": "00000000-0000-4000-8000-000000000011",
+      "run": {
+        "id": "a3f1133b-ef29-45c6-a5d0-73a02da34199",
+        "revision": 3,
+        "requestId": "00000000-0000-4000-8000-000000000002",
+        "state": "interrupted",
+        "step": "implement",
+        "inputRevision": "87b0c21ce1b67b77759c0ea8b95109291f3a58294fbe03471b91b3f00709b7c6",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "fixture fix",
+          "writablePaths": [
+            "target.txt"
+          ],
+          "excludedPaths": [
+            "dirty.txt"
+          ]
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "reason": "local fixture observation"
+      },
+      "coverage": "known"
+    }
+  },
+  {
+    "definition": "TransitionRequest",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "projectRef": "trial",
+      "checkoutId": "1931a33d-e300-4a69-89b9-f4316114215b",
+      "operationId": "00000000-0000-4000-8000-000000000012",
+      "runId": "a3f1133b-ef29-45c6-a5d0-73a02da34199",
+      "expectedRevision": 3,
+      "inputRevision": "87b0c21ce1b67b77759c0ea8b95109291f3a58294fbe03471b91b3f00709b7c6",
+      "action": "resume",
+      "reason": "local fixture observation"
+    }
+  },
+  {
+    "definition": "Result",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "operation": "transition",
+      "projectRef": "trial",
+      "checkoutId": "1931a33d-e300-4a69-89b9-f4316114215b",
+      "operationId": "00000000-0000-4000-8000-000000000012",
+      "run": {
+        "id": "a3f1133b-ef29-45c6-a5d0-73a02da34199",
+        "revision": 4,
+        "requestId": "00000000-0000-4000-8000-000000000002",
+        "state": "ready",
+        "step": "implement",
+        "inputRevision": "87b0c21ce1b67b77759c0ea8b95109291f3a58294fbe03471b91b3f00709b7c6",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "fixture fix",
+          "writablePaths": [
+            "target.txt"
+          ],
+          "excludedPaths": [
+            "dirty.txt"
+          ]
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "reason": "local fixture observation"
+      },
+      "coverage": "known"
+    }
+  },
+  {
+    "definition": "TransitionRequest",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "projectRef": "trial",
+      "checkoutId": "1931a33d-e300-4a69-89b9-f4316114215b",
+      "operationId": "00000000-0000-4000-8000-000000000013",
+      "runId": "a3f1133b-ef29-45c6-a5d0-73a02da34199",
+      "expectedRevision": 4,
+      "inputRevision": "87b0c21ce1b67b77759c0ea8b95109291f3a58294fbe03471b91b3f00709b7c6",
+      "action": "start",
+      "reason": "local fixture observation"
+    }
+  },
+  {
+    "definition": "Result",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "operation": "transition",
+      "projectRef": "trial",
+      "checkoutId": "1931a33d-e300-4a69-89b9-f4316114215b",
+      "operationId": "00000000-0000-4000-8000-000000000013",
+      "run": {
+        "id": "a3f1133b-ef29-45c6-a5d0-73a02da34199",
+        "revision": 5,
+        "requestId": "00000000-0000-4000-8000-000000000002",
+        "state": "running",
+        "step": "implement",
+        "inputRevision": "87b0c21ce1b67b77759c0ea8b95109291f3a58294fbe03471b91b3f00709b7c6",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "fixture fix",
+          "writablePaths": [
+            "target.txt"
+          ],
+          "excludedPaths": [
+            "dirty.txt"
+          ]
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "reason": "local fixture observation"
+      },
+      "coverage": "known"
+    }
+  },
+  {
+    "definition": "TransitionRequest",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "projectRef": "trial",
+      "checkoutId": "1931a33d-e300-4a69-89b9-f4316114215b",
+      "operationId": "00000000-0000-4000-8000-000000000014",
+      "runId": "a3f1133b-ef29-45c6-a5d0-73a02da34199",
+      "expectedRevision": 5,
+      "inputRevision": "87b0c21ce1b67b77759c0ea8b95109291f3a58294fbe03471b91b3f00709b7c6",
+      "action": "report",
+      "reason": "local fixture observation"
+    }
+  },
+  {
+    "definition": "Result",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "operation": "transition",
+      "projectRef": "trial",
+      "checkoutId": "1931a33d-e300-4a69-89b9-f4316114215b",
+      "operationId": "00000000-0000-4000-8000-000000000014",
+      "run": {
+        "id": "a3f1133b-ef29-45c6-a5d0-73a02da34199",
+        "revision": 6,
+        "requestId": "00000000-0000-4000-8000-000000000002",
+        "state": "verifying",
+        "step": "implement",
+        "inputRevision": "87b0c21ce1b67b77759c0ea8b95109291f3a58294fbe03471b91b3f00709b7c6",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "fixture fix",
+          "writablePaths": [
+            "target.txt"
+          ],
+          "excludedPaths": [
+            "dirty.txt"
+          ]
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "reason": "local fixture observation"
+      },
+      "coverage": "known"
+    }
+  },
+  {
+    "definition": "Error",
+    "value": {
+      "error": {
+        "code": "evidence_missing",
+        "message": "PGI1 does not accept delivery evidence or owner/reviewer dispositions; completion is unavailable",
+        "retryable": false
+      },
+      "operation": "error",
+      "schema": "sdp-project-governance/0.1",
+      "status": "error"
+    }
+  },
+  {
+    "definition": "Result",
+    "value": {
+      "schema": "sdp-project-governance/0.1",
+      "operation": "read",
+      "projectRef": "trial",
+      "checkoutId": "1931a33d-e300-4a69-89b9-f4316114215b",
+      "operationId": "",
+      "run": {
+        "id": "a3f1133b-ef29-45c6-a5d0-73a02da34199",
+        "revision": 6,
+        "requestId": "00000000-0000-4000-8000-000000000002",
+        "state": "verifying",
+        "step": "implement",
+        "inputRevision": "87b0c21ce1b67b77759c0ea8b95109291f3a58294fbe03471b91b3f00709b7c6",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "fixture fix",
+          "writablePaths": [
+            "target.txt"
+          ],
+          "excludedPaths": [
+            "dirty.txt"
+          ]
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "reason": "local fixture observation"
+      },
+      "coverage": "known"
+    }
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-10-23T22:36:10.129097+00:00",
+  "runtimeCandidate": "98b449c",
+  "closeoutRuntimeDiff": "none; docs/evidence/management only",
+  "newDocumentLinks": 22,
+  "retainedArtifacts": "all hashes and JSON pass",
+  "managementLedgerPrefix": "c907e22 preserved",
+  "traceabilityLedgerPrefix": "c907e22 preserved",
+  "managementReplay": "73 cards, 47 records, 4 lineage operations, 649 events; pass",
+  "toolkitValidation": "pass after relation insertion correction",
+  "nativeModelTask": false,
+  "independentReview": false
+}
