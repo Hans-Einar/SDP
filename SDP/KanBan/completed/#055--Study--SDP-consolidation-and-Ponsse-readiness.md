@@ -51,6 +51,6 @@ it must not remain active solely to track later implementation.
 
 Study/roadmap accepted as the execution basis with C4 replaced by MCP adoption
 study. MVP1 pilot deferred; existing Ponsse pilot model acknowledged. Bounded Study
-complete; [KB056](../active/%23056--Change--SDP-consolidation-and-PG-MCP-readiness.md)
+complete; [KB056](../completed/%23056--Change--SDP-consolidation-and-PG-MCP-readiness.md)
 and [WR2](../../Maintenance/WorkstationReadiness/ExecutionPlan.md) own the successor.
 No broader product acceptance or pause removal is inferred.

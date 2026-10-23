@@ -2,8 +2,8 @@
 
 ## Session roadmap
 
-Latest turn T002, 23 October 2026. Owner authorizes execution with C4 replaced
-by a ProjectGovernance MCP adoption study; MVP1 pilot deferred. Sequence only; synthetic dates
+Latest turn T002, begun 23 October 2026 and finalized 24 October Europe/Oslo. Owner authorizes execution with C4 replaced
+by a ProjectGovernance MCP adoption study. Bounded round delivered; full PG readiness remains open and MVP1 deferred. Sequence only; synthetic dates
 are display slots, not estimates or promised durations.
 
 ```mermaid
@@ -20,7 +20,7 @@ gantt
     DONE S6 Authority and handoffs C2 :done,s6,after s5,1d
     DONE S7 Bounded integrated checks C3 :done,s7,after s6,1d
     DONE S8 PG MCP adoption study C4 :done,s8,after s7,1d
-    ACTIVE S9 Readiness closeout C5 :active,s9,after s8,1d
+    DONE S9 Bounded closeout C5 :done,s9,after s8,1d
 ```
 
 | State | Step | Work / linked milestone | Prerequisite and authority | Completion evidence / outcome |
@@ -33,16 +33,16 @@ gantt
 | completed | S6 | Consolidate authority, identity/state mapping and handoffs; C2 / WR2-M2 | Owner T002; scoped documentation preflight | State responsibility map and current MCP/action/orchestration docs reconciled; no demonstrated semantic duplicate requires refactor. |
 | completed | S7 | Execute bounded integrated verification; C3 / WR2-M3 | Owner T002; exact candidate | Real model/Blueprint/provider CLI and MCP transport/host read checks pass. Full native execution and independent review remain unverified, transferred to existing PG gates. |
 | completed | S8 | Study starting ProjectGovernance use through MCP; revised C4 / WR2-M4 | Owner T002; S7 evidence | Adoption study/configuration delivered; actual Codex inspection works; execution/leader gaps explicit. Existing Ponsse pilot model preserved. |
-| on-going | S9 | Close consolidation/MCP readiness round; C5 | S8 evidence | Pending: truthful result, remaining PG work and recommended next bounded increment; MVP1 remains deferred. |
+| completed | S9 | Close consolidation/MCP readiness round; C5 / WR2-M5 | S8 evidence; authorized bounded scope | Results and limits recorded; full PG execution/leader/evidence gates retained under KB038/052 and PLAN-SDP-0018. MVP1 remains deferred. |
 
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0013 |
-| Status | active |
-| Primary card | [KB-SDP-056](../KanBan/active/%23056--Change--SDP-consolidation-and-PG-MCP-readiness.md); predecessor KB055 completed |
-| Snapshot date | 2026-10-23 |
-| Current step | S9 / WR2-M5 reconcile evidence and close bounded round |
-| Proposed next step | Close WR2 with retained PG limitations and handoff to current-host compatibility, leader/report and evidence gates |
+| Status | completed — revised bounded consolidation and MCP study |
+| Primary card | [KB-SDP-056](../KanBan/completed/%23056--Change--SDP-consolidation-and-PG-MCP-readiness.md); predecessor KB055 completed |
+| Snapshot date | 2026-10-24 |
+| Current step | none; S1–S9 disposed at their documented boundaries |
+| Proposed next step | Existing PG workstream: select current-host compatibility, then leader/report and evidence gates; no new implementation increment auto-selected |
 | Execution authority | T002 authorizes executing the Session plan with C4 replaced by PG MCP adoption study; no MVP1 pilot |
 | BranchPolicy | current; sdp/workstation-completion-assessment |
 | CommitPolicy | milestone |
@@ -75,7 +75,7 @@ existing PG/Blueprint/XFMD Sessions continue to own their scopes and pause decis
 | --- | --- | --- | --- | --- |
 | KB055 | Predecessor study/planning review | Absent | completed; owner selects revised route in T002 | Delivered study transferred to KB056/WR2; no product acceptance. |
 | MAINT-SDP-0017 | Predecessor study/planning assignment | Absent | completed; WR1-M3 disposition recorded | WR2 owns authorized continuation. |
-| KB056 / MAINT-SDP-0018 | Consolidation and MCP study | Absent | in-progress / active; M1–M4 delivered | Bounded closeout pending; full PG acceptance excluded. |
+| KB056 / MAINT-SDP-0018 | Consolidation and MCP study | Absent | completed; M1–M5 delivered | Bounded round complete; retained PG conditions handed to KB038/052 and PLAN-SDP-0018. |
 | KB038 / KB052 / PLAN-SDP-0018 | PG context; retained implementation owner | active / in-progress | Unchanged; broader workflow and verification open | No takeover, cancellation or acceptance inferred. |
 | KB050 / Session0008 | Blueprint pilot context | gate-review / owner-paused | Unchanged | Pilot feedback still required when resumed. |
 | KB032 / XFMD Session0007 | Producer/consumer handoff context | active / on-going | Latest October 21 delivery inspected | Acceptance/resource/release residuals retained with owners. |
@@ -85,7 +85,7 @@ existing PG/Blueprint/XFMD Sessions continue to own their scopes and pause decis
 | Ref | Plan | Document readiness | Lifecycle | Outcome |
 | --- | --- | --- | --- | --- |
 | P1 | [MAINT-SDP-0017 — WR1](../Maintenance/WorkstationReadiness/Plan.md) | completed | completed | Study/roadmap delivered and selected with T002 revision. |
-| P2 | [MAINT-SDP-0018 — WR2](../Maintenance/WorkstationReadiness/ExecutionPlan.md) | on-going | active | Authorized candidate/consolidation/workflow checks and revised MCP adoption study. |
+| P2 | [MAINT-SDP-0018 — WR2](../Maintenance/WorkstationReadiness/ExecutionPlan.md) | completed | completed | Candidate/consolidation checks and revised MCP adoption study delivered; limits and successor PG work explicit. |
 
 The Session is the cross-work roadmap, not a second detailed implementation plan.
 
@@ -114,8 +114,10 @@ The Session is the cross-work roadmap, not a second detailed implementation plan
 
 ## Closeout
 
-Study and planning artifacts are delivered for review. Session remains active.
-Ponsse readiness, product implementation and independent review are not claimed.
+Initial study/planning and the T002-authorized bounded execution round are complete.
+The revised scope ends in the MCP adoption study; MVP1 remains deferred. PG feature
+completion, full Ponsse readiness and independent review are not claimed. Existing
+PG/Blueprint/XFMD records retain their unfinished or paused scopes.
 
 ### T002 — 2026-10-23 execute consolidation and study PG MCP adoption
 
@@ -133,3 +135,15 @@ Ponsse readiness, product implementation and independent review are not claimed.
 - Seven real stdio worker tools exercised under an explicitly scripted host binding; report retry is idempotent, final state verifying, complete/controller-start refuse, all fixture preimages preserved. This is fixture evidence, not implementation, native host execution or acceptance.
 - Current state responsibility map, MCP/action usage and orchestration facts corrected. Go/runtime source unchanged; no semantic duplicate diagnosis or broad refactor. MCP adoption study and concrete config validated via nonpersistent CLI overrides are delivered.
 - WR2-M1–M4 complete at their declared boundaries. S7 full native/independent-review conditions remain unverified and stay with PG's existing plan/cards; they are not silently passed. S9 reconciles this bounded round and handoff. Evidence: Execution-Evidence.md and evidence/WR2.
+
+### T002 final work summary — bounded closeout
+
+- WR2-M5 completed at 2026-10-23T22:00:17.273279+00:00; this is an observed work summary, not a captured future final response. WR2/KB056 and this revised Session round close; S7's full native and independent-review conditions remain explicitly unverified and transferred to existing PG gates. No full PG/SDP acceptance is inferred.
+- Go/race/vet results remain applicable to unchanged runtime source. Final Toolkit validator, 85 Toolkit tests, six management tests and exact history import verification pass. Local document links and retained artifact hashes resolve; original ledger prefix preserved. Final management replay/placement checks run after closure.
+- Additional context boundary: the successful condition-free read selected active WR2 Maintenance work. An actual query of PG's ImplementationPlan reports the legacy Maintenance-only coverage conditions. Do not wrap/rename that plan to hide the gap; broader leader inspection belongs to its existing service integration work. Old WR2 context becomes historical at closure.
+- Current MCP study/config, state map and execution evidence are the durable results. No global MCP config, stable signed engine, Ponsse pilot model or domain source was changed; no agents spawned, native model tasks, independent approval, merge or release performed.
+- Next recommended work: an explicit current-Codex compatibility increment under PLAN-SDP-0018, then trusted leader/report consumption and evidence/publication gates. Inspection-only adoption is separately demonstrated and can be selected without claiming complete PG readiness. No further scope or phase auto-started.
+
+- Calendar continuity note: the environment date advanced to 24 October Europe/Oslo during T002 closeout. Earlier checks retain their actual recorded UTC timestamps and original dates; no new owner scope instruction was supplied by that environment update.
+
+- Final record verification: [WR2 final checks](../Maintenance/WorkstationReadiness/evidence/WR2-final-checks.json); management replay 70 cards / 47 records / four lineage operations / 637 events passes after closure, with Toolkit validation, local links, JSON, retained hashes and preserved ledger prefix.

@@ -1,5 +1,14 @@
 # Interim project governance overview
 
+Current result — Session0013 T002: the authorized consolidation round and revised
+[MCP adoption study](../../Maintenance/WorkstationReadiness/MCP-Adoption-Study.md)
+are delivered. Private current build/race/vet checks and actual Codex inspection
+pass; the PG execution controller refuses current Codex 0.164.0 because it pins
+0.161.0. Full leader/report/evidence gates remain under PLAN-SDP-0018. MVP1 is
+deferred and the owner confirms its pilot model already exists in Ponsse. This is
+not a declaration that the full SDP system is ready.
+
+
 Owner update — 23 October 2026: all remaining laptop work has been handed over.
 The new status study and proposed consolidation route are maintained in
 [Session0013](../../Sessions/session-%230013--SDP_consolidation_and_Ponsse_readiness.md)

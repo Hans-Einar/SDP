@@ -5,7 +5,7 @@
 | id | KB-SDP-056 |
 | project | SDP |
 | type | Change |
-| CardState | in-progress |
+| CardState | completed |
 | created | 2026-10-23T21:47:48.869325+00:00 |
 | source | Owner Session0013 T002; successor to KB-SDP-055 |
 | PlanId | MAINT-SDP-0018 |
@@ -44,3 +44,15 @@ and [MCP study](../../Maintenance/WorkstationReadiness/MCP-Adoption-Study.md)
 deliver precise boundaries and next increments. Current docs reconciled; no product
 source rewrite, stable install, Ponsse model/application change or independent review.
 CardState stays in-progress for WR2-M5 closeout. EVT-KB-SDP-000386.
+
+## WR2-M5 closeout — 2026-10-23T22:00:17.273279+00:00
+
+Bounded candidate verification, documentation reconciliation and revised MCP
+adoption study delivered. Four Go race suites, three vet checks, 85 Toolkit tests,
+six management tests and integrity checks pass. Inspection works at its documented
+Maintenance-specific scope; current-host execution and full leader/acceptance flow
+remain unverified. No product runtime feature or broad PG completion is claimed.
+Retained implementation belongs to [KB038](../active/%23038--Proposal--Codex-app-server-development-client.md),
+[KB052](../active/%23052--Change--Project-Leader-and-SAD-orchestration.md) and
+[PLAN-SDP-0018](../../05--Implementation/SDPTool/ProjectGovernance/Plan.md).
+CardState completed for authorized WR2 scope; EVT-KB-SDP-000388.

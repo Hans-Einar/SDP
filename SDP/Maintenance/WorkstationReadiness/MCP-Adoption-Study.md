@@ -34,6 +34,23 @@ This is a capability assessment rather than a percentage-complete estimate:
 substantial primitives are implemented, but the missing integration gates determine
 whether a particular workflow is usable.
 
+## Inspection coverage is intentionally narrow
+
+The successful condition-free context read selected WR2 while its MaintenancePlan
+and card were active. Unbound context_read uses the legacy Maintenance coverage
+path; it is not a whole-board reader or a generic ImplementationPlan inspector.
+An additional [actual check](evidence/WR2-implementation-context.json) against PG's
+active ImplementationPlan returns `required plan identity prefix: MAINT-` and
+`active MaintenancePlan required`. That is a coverage limitation, not a reason to
+rename the PG plan or create a duplicate Maintenance wrapper. Bound activated
+implementation runs use the separate run-context path.
+
+After this bounded WR2 plan closes, its old selection must not be presented as an
+active assignment. Generic status-only routing still reads without activation;
+select current eligible work when evaluating Maintenance coverage. Broader project
+status/overview and prepared assignment inspection currently belong to controller
+services/CLI and are part of the proposed leader MCP integration.
+
 ## Three distinct MCP uses
 
 | Mode | Launch binding / tools | Current status |

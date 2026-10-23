@@ -4,7 +4,7 @@
 | --- | --- |
 | id | MAINT-SDP-0018 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | MaintenancePlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -27,7 +27,7 @@ SDP system is the readiness concern. Continue on the existing working branch.
 | WR2-M2 / C2 | Reconcile current entrypoints and model/Blueprint/PG identity-state responsibilities; correct demonstrated documentation/contract mismatches without speculative refactoring | delivered; see result register |
 | WR2-M3 / C3 | Exercise integrated provider/assignment/MCP workflow and negative/recovery checks against compiled candidate; distinguish fixtures, real SDK transport and host/native execution; preserve required independent-review boundary | delivered; see result register |
 | WR2-M4 / revised C4 | Deliver evidence-backed MCP adoption study: usable modes/tools, deployment/configuration, authority, current limitations and smallest implementation sequence for ordinary use | delivered; see result register |
-| WR2-M5 / C5 | Reconcile Session/cards/plan/evidence; state actual verification gaps and next bounded PG work | in-progress; final record/link checks and closeout |
+| WR2-M5 / C5 | Reconcile Session/cards/plan/evidence; state actual verification gaps and next bounded PG work | delivered; bounded round closed with explicit retained PG gates |
 
 ## Preserved boundaries
 
@@ -79,5 +79,18 @@ actual Codex 0.164.0 read calls pass. The pinned PG controller refuses 0.164.0 a
 expected; no native task or independent review is claimed. Current responsibilities
 and stale MCP/action documentation are reconciled without product code changes.
 [MCP adoption study](MCP-Adoption-Study.md) and a validated concrete inspection
-configuration are delivered. WR2-M5 closeout is next; broader PG readiness remains
+configuration are delivered. WR2-M5 closeout is complete; broader PG readiness remains
 open under its existing plan/cards.
+
+## WR2-M5 closeout — T002
+
+The authorized consolidation/verification and revised MCP study are delivered.
+Final Toolkit validation, 85 Toolkit and six management tests, history-import
+verification, local links/artifact hashes and ledger-prefix checks pass. No Go or
+runtime schema source changed after candidate checks; final changes are docs/records.
+KB056 closes for this bounded result. Session0013 closes its revised round with
+explicit remaining work under KB038/052 and PLAN-SDP-0018: current-host execution
+compatibility, leader report/control integration, native/independent-review evidence,
+canonical publication and capacity/recovery. This is not full SDP/PG acceptance.
+MVP1 remains deferred, existing Ponsse pilot model preserved; no merge/release or
+persistent global MCP registration performed. No further phase is auto-selected.

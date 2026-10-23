@@ -1,0 +1,72 @@
+{
+  "command": [
+    "/home/warloc/.cache/sdp-workstation/session0013-WR2/bin/sdptool",
+    "/home/warloc/git/SDP",
+    "governance",
+    "context",
+    "--state",
+    "/home/warloc/.cache/sdp-workstation/session0013-WR2/implementation-inspection-state",
+    "--input",
+    "/home/warloc/.cache/sdp-workstation/session0013-WR2/pg-implementation-selection.json",
+    "--json"
+  ],
+  "selection": {
+    "card": "SDP/KanBan/active/#052--Change--Project-Leader-and-SAD-orchestration.md",
+    "plan": "SDP/05--Implementation/SDPTool/ProjectGovernance/Plan.md",
+    "session": "SDP/Sessions/session-#0007--Project_governance.md",
+    "authority": "SDP/05--Implementation/SDPTool/ProjectGovernance/Plan.md",
+    "step": "S6"
+  },
+  "exitCode": 0,
+  "result": {
+    "schema": "sdp-project-governance/0.1",
+    "operation": "context",
+    "projectRef": "sdp",
+    "root": "/home/warloc/git/SDP",
+    "checkoutId": "",
+    "revision": "e06a63395623c120728cfa37b715f7b8c8533078a8408864447945cea0b20d66",
+    "selection": {
+      "card": "SDP/KanBan/active/#052--Change--Project-Leader-and-SAD-orchestration.md",
+      "plan": "SDP/05--Implementation/SDPTool/ProjectGovernance/Plan.md",
+      "session": "SDP/Sessions/session-#0007--Project_governance.md",
+      "authority": "SDP/05--Implementation/SDPTool/ProjectGovernance/Plan.md",
+      "step": "S6"
+    },
+    "sources": [
+      {
+        "path": "AGENTS.md",
+        "sha256": "fb0fdbd1fb1ad894b7e9a5d5a66e33fe3fb2ffb7a2c2ac5be8b763adc244427f"
+      },
+      {
+        "path": "SDP/05--Implementation/SDPTool/ProjectGovernance/Plan.md",
+        "sha256": "dea617b2e9376773b96a0cfb030c891121abefd4d921140535bc664060f18264"
+      },
+      {
+        "path": "SDP/KanBan/active/#052--Change--Project-Leader-and-SAD-orchestration.md",
+        "sha256": "015cce710cd4395ecce29332878759ff15f7780c30c0c0a82b9ad9857308c6e9"
+      },
+      {
+        "path": "SDP/ProjectManagement/Ledger.ndjson",
+        "sha256": "97ab6dffff40a0e9c3ad7f3e9a6b2ad3bf7f5dcaf06358b179546aaa296379de"
+      },
+      {
+        "path": "SDP/SDP-project.manifest.yaml",
+        "sha256": "absent"
+      },
+      {
+        "path": "SDP/Sessions/session-#0007--Project_governance.md",
+        "sha256": "659e35cf948eb636f051dc34e648a3dba85b6ba3a3f0799328e1b300415f1384"
+      }
+    ],
+    "coverage": "known",
+    "conditions": [
+      "required plan identity prefix: MAINT-",
+      "active MaintenancePlan required"
+    ],
+    "cardId": "KB-SDP-052",
+    "planId": "PLAN-SDP-0018",
+    "sessionId": "SESSION-SDP-0007"
+  },
+  "stderr": "",
+  "limits": "Exercises the same unbound Context service used by context_read; not a complete Project Leader/ImplementationPlan inspector."
+}

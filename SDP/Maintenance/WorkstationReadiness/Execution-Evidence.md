@@ -88,6 +88,12 @@ No persistent global MCP registration was installed. Current host schema export
 is summarized in [schema inventory](evidence/WR2/schema-inventory.json); this is
 not a completed protocol migration assessment.
 
+An additional [implementation-context check](evidence/WR2-implementation-context.json)
+confirms that unbound context_read's shared service remains Maintenance-specific:
+PG's active ImplementationPlan produces explicit coverage conditions. The successful
+WR2 selection was active at observation time; it becomes historical at closeout.
+This does not certify generic project/leader inspection or justify wrapper plans.
+
 ## Claims and remaining work
 
 The authorized consolidation and adoption investigation can finish with these
@@ -102,3 +108,12 @@ The owner-requested MVP1 deferral is preserved. Next bounded PG work is current-
 compatibility and then leader/control/report/evidence integration, as detailed in
 the adoption study. This round adds no merge, release, application migration or
 acceptance of the existing paused Blueprint pilot.
+
+## Final WR2-M5 record checks
+
+[Final record checks](evidence/WR2-final-checks.json) confirm resolved local links,
+valid JSON, unchanged retained runtime artifact hashes and original ledger prefix.
+Final management replay passes with 70 cards, 47 records, four lineage operations
+and 637 events; Toolkit validation passes. The 85 Toolkit and six management tests
+pass on this round's documentation candidate. Closure does not extend the runtime
+or independent-review claims above.
