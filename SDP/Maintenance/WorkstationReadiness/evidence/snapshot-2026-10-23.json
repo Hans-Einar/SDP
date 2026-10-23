@@ -1,0 +1,471 @@
+{
+  "observedAt": "2026-10-23T20:22:13.270062+00:00",
+  "candidate": "37836acb19905887b6fee172600e585639d9726e",
+  "main": "bfe3b40b6798b801d4a7449575b41e8cfc97593a",
+  "worktrees": "worktree /home/warloc/git/SDP\nHEAD 37836acb19905887b6fee172600e585639d9726e\nbranch refs/heads/sdp/workstation-completion-assessment",
+  "initialStatus": "",
+  "ownerCorrection": "All remaining laptop work was handed over; no laptop recovery dependency remains.",
+  "xfmd": {
+    "root": "/home/warloc/git/xfmd",
+    "head": "953d09ec9bee5ef573893cfa73afed13233dfb67",
+    "status": ""
+  },
+  "goOnPath": null,
+  "cards": [
+    {
+      "path": "SDP/KanBan/active/#005--SDUI--Proposal--Combined-preview-and-launch-readiness.md",
+      "metadata": {
+        "Field": "Value",
+        "---": "---",
+        "id": "KB-SDUI-005",
+        "project": "SDUI",
+        "type": "Proposal",
+        "CardState": "gate-review",
+        "Systems": "SDUI, SDPTOOL",
+        "created": "2026-10-06T21:50:48.729784+00:00",
+        "source": "Owner XFMD Session 0003 T001, 2026-10-06",
+        "next_review": "Review delivered combined preview/readiness and XFMD U4-001 evidence"
+      }
+    },
+    {
+      "path": "SDP/KanBan/active/#010--Proposal--Document-consolidation.md",
+      "metadata": {
+        "Field": "Value",
+        "---": "---",
+        "id": "KB-SDP-010",
+        "CardState": "gate-review",
+        "ScrumId": "SCRUM-SDP-0001",
+        "Systems": "SDP, SDL, SDUI",
+        "project": "SDP",
+        "type": "Proposal",
+        "created": "2026-09-24T13:54:42Z",
+        "source": "owner-conversation-2026-09-24",
+        "next_review": "Owner review of the R3-M2 consolidation result",
+        "owner": "Codex"
+      }
+    },
+    {
+      "path": "SDP/KanBan/active/#017--Proposal--sdptool-and-project-navigation.md",
+      "metadata": {
+        "Field": "Value",
+        "---": "---",
+        "id": "KB-SDP-017",
+        "project": "SDP",
+        "type": "Proposal",
+        "CardState": "ready",
+        "ScrumId": "SCRUM-SDP-0002",
+        "Systems": "SDPTOOL",
+        "created": "2026-09-25T01:41:26Z",
+        "source": "KB-SDP-002 and KB-SDP-016; owner clarification 2026-09-25",
+        "next_review": "First discovery contract and navigation delivery; coordinate with XFMD",
+        "tags": "tooling, discovery, navigation, SDL, SDUI, XFMD",
+        "Tab": "Navigation and selected action",
+        "KanBan": "Tree of lifecycle statuses and card filenames; show CardState where helpful. Open the selected card in the main document viewer. Distinguish a Ref from its primary and follow current paths by stable identity.",
+        "SDL": "Tree of supported ViewPoints, typed collections and model objects. For example, VP01 → UseCase → each actual UseCase. A selection asks SDL tooling for the corresponding current-source projection and shows the result in the main viewer.",
+        "SDUI": "Entry point for project SDUI sources and supported documentation/preview operations. Exact nodes/actions are a later bounded decision; keep current Go/Fyne/SVG ownership. This tab does not establish an XFMD widget runtime.",
+        "Step": "Bounded outcome and checks",
+        "N1 — shared contract": "Decide descriptor ownership/name/version, validity, path bases, overrides and capability behavior. Inventory existing APIs and define the model-backed tree boundary with XFMD. Include valid, minimal, unsupported and invalid examples and argument mapping.",
+        "N2 — resolver and viewer bridge": "Implement the selected contract and first `view ip` path using prebuilt tools. Verify explicit project path, repo root, SDP area, unrelated cwd, missing/nested projects, optional capabilities, unavailable tools and preserved source/plan files.",
+        "N3 — general navigation producer": "SDPTool supplies a versioned model-derived tree inventory for all supported groupable concepts, stable targets and selected generation, with SDL/SDUI-owned semantics. Test non-UseCase collections, variable depth, shared references/cycles, revision/refresh and KanBan inventory.",
+        "External consumer — KB-XFMD-014": "Native SDP / KanBan / SDL / SDUI tabs and all XFMD integration/GUI checks are planned and implemented in XFMD. They are not SDP-vNow implementation milestones.",
+        "Later milestones": "Separately select slice synthesis/validation, evidence-aware roadmap and integrated history/diff. Each needs its owning contract and concrete trial; navigation completion does not complete these."
+      }
+    },
+    {
+      "path": "SDP/KanBan/active/#032--Study--Viewpoint-navigation-feedback.md",
+      "metadata": {
+        "Field": "Value",
+        "---": "---",
+        "id": "KB-SDP-032",
+        "project": "SDP",
+        "type": "Study",
+        "CardState": "in-progress",
+        "Systems": "SDL, SDPTOOL",
+        "created": "2026-09-25T22:20:56Z",
+        "source": "Owner conversation 2026-09-26: SDL context, implementation drift and post-main XFMD adoption",
+        "next_review": "Review/integrate stacked VP02–VP06 and VP08–VP11 candidates; prioritize retained KB020/KB025 and legacy eager-export work. Release, shared-history reconciliation and large-print acceptance remain"
+      }
+    },
+    {
+      "path": "SDP/KanBan/active/#038--Proposal--Codex-app-server-development-client.md",
+      "metadata": {
+        "Field": "Value",
+        "---": "---",
+        "id": "KB-SDP-038",
+        "project": "SDP",
+        "type": "Proposal",
+        "CardState": "in-progress",
+        "created": "2026-09-28T15:10:13.034937+00:00",
+        "source": "Owner conversation 2026-09-28: register app-server-based system development and assess SDPTool MCP",
+        "next_review": "PGI3-U1 owner trial prepared; obtain overview/interaction feedback and reconcile workflow before more features",
+        "tags": "codex, app-server, client, MCP, supervision, blueprints, observability",
+        "Systems": "SDPTOOL",
+        "PlanId": "PLAN-SDP-0018",
+        "Component": "Responsibility",
+        "Codex app-server": "Agent conversations/threads, model execution, authentication, host approvals and activity events",
+        "SDPTool core": "Project discovery, current process/model context, selected work and validated routine/evidence operations as those capabilities are implemented",
+        "SDPTool MCP adapter": "Let Codex agents query that context and invoke bounded SDPTool operations; reuse the same core as CLI",
+        "SDP-aware client": "Owner dialogue, project/task navigation, role/thread association, observation and decision presentation"
+      }
+    },
+    {
+      "path": "SDP/KanBan/active/#050--Proposal--Semantic-blueprints.md",
+      "metadata": {
+        "Field": "Value",
+        "---": "---",
+        "id": "KB-SDP-050",
+        "project": "SDP",
+        "type": "Proposal",
+        "CardState": "gate-review",
+        "Systems": "SDPTOOL, SDL, SDUI",
+        "created": "2026-10-03",
+        "source": "Owner discussion; KB-SDP-048 split KBO-SDP-000005"
+      }
+    },
+    {
+      "path": "SDP/KanBan/active/#052--Change--Project-Leader-and-SAD-orchestration.md",
+      "metadata": {
+        "Field": "Value",
+        "---": "---",
+        "id": "KB-SDP-052",
+        "project": "SDP",
+        "type": "Change",
+        "CardState": "in-progress",
+        "created": "2026-10-09T12:08:50.581137+00:00",
+        "source": "Owner Session0011 T004 role definition and T005 KanBan handoff request",
+        "Systems": "SDPTOOL",
+        "next_review": "PGL3 report consumption and responsive coordination; capacity/recovery and native parallel evidence; separate hub/webapp handoff in KB054",
+        "PlanId": "PLAN-SDP-0018",
+        "tags": "project-leader, steering, SAD, master, MCP, app-server, coordination"
+      }
+    }
+  ],
+  "management": [
+    {
+      "id": "SCRUM-SDP-0001",
+      "state": "completed",
+      "path": "Agents/Scrum/Scrum--#0001--Backlog-and-project-management.md",
+      "kind": "Scrum"
+    },
+    {
+      "id": "MAINT-SDP-0001",
+      "state": "completed",
+      "path": "Maintenance/PM1/Plan-and-Evidence.md",
+      "kind": "Maintenance"
+    },
+    {
+      "id": "SCRUM-SDP-0002",
+      "state": "completed",
+      "path": "Agents/Scrum/Scrum--#0002--SDPTool-delivery-sprint.md",
+      "kind": "Scrum"
+    },
+    {
+      "id": "SPR-SDP-0001",
+      "state": "completed",
+      "path": "Sprints/Sprint--#0001--SDPTool-preview-and-navigation.md",
+      "kind": "Sprint"
+    },
+    {
+      "id": "REVIEW-SDP-0001",
+      "state": "completed",
+      "path": "Verification/REVIEW-SDP-0001.md",
+      "kind": "CodeReview"
+    },
+    {
+      "id": "SCRUM-SDP-0003",
+      "state": "completed",
+      "path": "Agents/Scrum/Scrum--#0003--Skills-and-agent-activation.md",
+      "kind": "Scrum"
+    },
+    {
+      "id": "MAINT-SDP-0002",
+      "state": "completed",
+      "path": "Maintenance/SK1/Plan-and-Evidence.md",
+      "kind": "Maintenance"
+    },
+    {
+      "id": "MAINT-SDP-0003",
+      "state": "completed",
+      "path": "Maintenance/IU1/Plan.md",
+      "kind": "Maintenance"
+    },
+    {
+      "id": "MAINT-SDP-0004",
+      "state": "completed",
+      "path": "Maintenance/PL1/Plan.md",
+      "kind": "Maintenance"
+    },
+    {
+      "id": "MAINT-SDP-0005",
+      "state": "completed",
+      "path": "Maintenance/MP1/MergePlan.md",
+      "kind": "Maintenance"
+    },
+    {
+      "id": "PLAN-SDP-0001",
+      "state": "active",
+      "path": "04--Design/SDPTool/Blueprints/Plan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "MAINT-SDP-0006",
+      "state": "completed",
+      "path": "Maintenance/ST1/Plan.md",
+      "kind": "Maintenance"
+    },
+    {
+      "id": "PLAN-SDP-0002",
+      "state": "completed",
+      "path": "04--Design/SDPTool/Installation/Plan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "PLAN-SDP-0003",
+      "state": "completed",
+      "path": "05--Implementation/SDPTool/Installation/Plan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "MAINT-SDP-0007",
+      "state": "completed",
+      "path": "Maintenance/RP1/Plan.md",
+      "kind": "Maintenance"
+    },
+    {
+      "id": "PLAN-SDP-0004",
+      "state": "completed",
+      "path": "05--Implementation/SDPTool/ExternalReferences/Plan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "MAINT-SDP-0008",
+      "state": "completed",
+      "path": "Maintenance/RP2/Plan.md",
+      "kind": "Maintenance"
+    },
+    {
+      "id": "PLAN-SDP-0005",
+      "state": "completed",
+      "path": "04--Design/MVP1/SourcePilot/Plan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "MAINT-SDP-0009",
+      "state": "completed",
+      "path": "Maintenance/TS1/Plan.md",
+      "kind": "Maintenance"
+    },
+    {
+      "id": "MAINT-SDP-0010",
+      "state": "completed",
+      "path": "Maintenance/RP3/Plan.md",
+      "kind": "Maintenance"
+    },
+    {
+      "id": "PLAN-SDP-0006",
+      "state": "completed",
+      "path": "02--Requirements/RoutineGovernance/Plan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "PLAN-SDP-0007",
+      "state": "completed",
+      "path": "02--Requirements/RoutineGovernance/StudyPlan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "PLAN-SDP-0008",
+      "state": "completed",
+      "path": "03--Architecture/Ecosystems/Plan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "PLAN-SDP-0009",
+      "state": "completed",
+      "path": "02--Requirements/XFMD-Gaps/StudyPlan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "PLAN-SDP-0010",
+      "state": "completed",
+      "path": "04--Design/SDL/SourceSets/Plan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "PLAN-SDP-0011",
+      "state": "completed",
+      "path": "04--Design/SDL/SourceComposition/Plan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "PLAN-SDP-0012",
+      "state": "completed",
+      "path": "05--Implementation/SDL/SourceComposition/Plan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "MAINT-SDP-0011",
+      "state": "completed",
+      "path": "Maintenance/RL1/Plan.md",
+      "kind": "Maintenance"
+    },
+    {
+      "id": "PLAN-SDP-0013",
+      "state": "completed",
+      "path": "05--Implementation/SDPTool/Output/Plan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "PLAN-SDP-0014",
+      "state": "completed",
+      "path": "05--Implementation/SDPTool/Discovery/Plan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "PLAN-SDP-0015",
+      "state": "completed",
+      "path": "05--Implementation/SDPTool/Sessions/Plan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "MAINT-SDP-0012",
+      "state": "completed",
+      "path": "Maintenance/SR1/Plan.md",
+      "kind": "Maintenance"
+    },
+    {
+      "id": "MAINT-SDP-0013",
+      "state": "completed",
+      "path": "Maintenance/SR2/Plan.md",
+      "kind": "Maintenance"
+    },
+    {
+      "id": "MAINT-SDP-0014",
+      "state": "completed",
+      "path": "Maintenance/SC1/Plan.md",
+      "kind": "Maintenance"
+    },
+    {
+      "id": "PLAN-SDP-0016",
+      "state": "completed",
+      "path": "04--Design/SDPTool/ModelGovernance/Plan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "PLAN-SDP-0017",
+      "state": "completed",
+      "path": "04--Design/SDPTool/ProjectGovernance/Plan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "PLAN-SDP-0018",
+      "state": "active",
+      "path": "05--Implementation/SDPTool/ProjectGovernance/Plan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "PLAN-SDP-0019",
+      "state": "completed",
+      "path": "05--Implementation/SDPTool/ModelGovernance/Plan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "PLAN-SDP-0020",
+      "state": "completed",
+      "path": "05--Implementation/SDPTool/Blueprints/Plan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "PLAN-SDP-0021",
+      "state": "completed",
+      "path": "04--Design/SDUI/Widgets/Plan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "PLAN-SDP-0022",
+      "state": "completed",
+      "path": "05--Implementation/SDUI/Widgets/Plan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "PLAN-SDP-0023",
+      "state": "completed",
+      "path": "05--Implementation/SDPTool/Programs/Plan.md",
+      "kind": "Plan"
+    },
+    {
+      "id": "MAINT-SDP-0015",
+      "state": "completed",
+      "path": "Maintenance/RSP2/Plan.md",
+      "kind": "Maintenance"
+    },
+    {
+      "id": "MAINT-SDP-0016",
+      "state": "completed",
+      "path": "Maintenance/PLR1/Plan.md",
+      "kind": "Maintenance"
+    },
+    {
+      "id": "PLAN-SDP-0024",
+      "state": "completed",
+      "path": "05--Implementation/SDPTool/Actions/Plan.md",
+      "kind": "Plan"
+    }
+  ],
+  "sourceSHA256": {
+    "SDP/Sessions/session-#0006--Model_governance.md": "5336a6346732668311d0c86ac491c5916a20288b40fda36248a345c1c734d94c",
+    "SDP/Sessions/session-#0007--Project_governance.md": "659e35cf948eb636f051dc34e648a3dba85b6ba3a3f0799328e1b300415f1384",
+    "SDP/Sessions/session-#0008--Semantic_blueprints.md": "faf7b2ff79d0db1905e9ac2b078cd7bc665efc74a76ba4e5652ef2bf0023713b",
+    "SDP/Sessions/session-#0011--SDPTool_actions_and_JSON_API.md": "dc1b6f55b18c6f163491cbfed56705e4f0f29e30860453c7d7f6d669f845ad81",
+    "SDP/05--Implementation/SDPTool/ProjectGovernance/Plan.md": "dea617b2e9376773b96a0cfb030c891121abefd4d921140535bc664060f18264",
+    "SDPTool/governance/design_check.go": "33aa80294fa40e372f01edfd5ce63f15256fdbd74d7e22ccb88a638a732a2094",
+    "SDPTool/governance/preparation.go": "ce5051f7e2e8adc1a96bd7118c2bbc1ff094b88d1d15e1462b391301509a1a2d",
+    "SDPTool/blueprints/lifecycle.go": "919a9f7023b0a1400322e993f727eb756e935c04e65a26e5c82947778eed090a",
+    "SDPTool/blueprintstate/state.go": "a6842758b3a15d5b8721b4a5af65cb96e12427c4aebed9c2da2f4e1be2213893",
+    "SDPTool/model/README.md": "09bdb49f61f173696d45f3d3b3e05ad38b56e41d69779bdcb2213d6b5919c498",
+    "SDPTool/Actions.md": "94497e0056509ae3715705b7294e689723b358077b685295a8e263c8a275f105"
+  },
+  "exactNonTestGoDuplicateGroups": [],
+  "duplicateScanLimits": "Exact bytes only, excludes _test.go and testdata/vendor/fixtures path components; not semantic equivalence analysis.",
+  "checks": [
+    {
+      "command": "python SDP/ProjectManagement/validate.py",
+      "result": "PASS: 68 cards, 45 management records, 4 lineage operations, 626 events; schema/history/metadata/placement/grouping"
+    },
+    {
+      "command": "python SDP/ProjectManagement/History/Session0011/verify.py",
+      "result": "PASS: exact archives, release prefix, complete event representation and mapped projections"
+    },
+    {
+      "command": "python -m unittest discover -s SDP/ProjectManagement -p 'test_*.py'",
+      "result": "6 tests, OK"
+    },
+    {
+      "command": "python Toolkit/scripts/validate_sdp.py --base-ref main",
+      "result": "SDP Toolkit validation passed"
+    },
+    {
+      "command": "python -m unittest discover -s Toolkit/tests -p 'test_*.py'",
+      "result": "85 tests, OK"
+    },
+    {
+      "command": "gh sdp --version --json",
+      "result": {
+        "version": "2.2.0",
+        "revision": "ef8741c433c7fde67e689f94a74e7afdf938f24f"
+      }
+    },
+    {
+      "command": "gh sdp SDP actions --json",
+      "exitCode": 1,
+      "result": {
+        "error": {
+          "code": "arguments",
+          "message": "usage: sdptool preview FILE --output DIRECTORY [--viewpoint VPnn | --uri URI] [--renderer PROGRAM] [--revision HASH]"
+        },
+        "schema": "sdptool/0.2"
+      }
+    }
+  ],
+  "checkProvenance": "Commands executed and results manually summarized during Session0013 T001, before documentation registration. No Go, native GUI or Ponsse workflow test executed."
+}

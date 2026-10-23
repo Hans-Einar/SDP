@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest local turn: T002, 23 October 2026. Workstation recovery assessment recorded below. Original handoff delivery remains unobserved; current repository consolidation supersedes the old integration baseline. Sequence only; synthetic dates are not estimates.
+Latest local turn: T003, 23 October 2026. Workstation recovery assessment recorded below. Original handoff delivery remains unobserved; current repository consolidation supersedes the old integration baseline. Sequence only; synthetic dates are not estimates.
 
 ```mermaid
 gantt
@@ -85,3 +85,11 @@ Initial inspection and prompt preparation are complete. The broader coordination
 - Scoped preflight verdict: yellow for product implementation because remaining remote/laptop work ownership is unknown. Isolated coordination records only are permitted this turn. New branch sdp/workstation-completion-assessment from the clean main baseline; no product, card state, ledger or worker Session edits.
 - Roadmap reconciliation: S3 remains next for actual ownership/handoff agreement. S4 now has a dated recovery assessment, but combined workflow verification remains outstanding. The October 10 overview is historical; its original remote, branch and next-milestone claims must not be used as current facts.
 - Next: agree a single completion owner and a bounded Ponsse-readiness target, recover actual Ponsse installation/model state, then select/revise an existing plan through the planning routine. No merge, release, owner acceptance or change to existing pause decisions is inferred.
+
+## T003 — 2026-10-23 owner correction and successor Session
+
+- Owner confirms all remaining laptop work was handed over; the T002 laptop-recovery uncertainty is superseded and must not remain a prerequisite.
+- Owner explicitly requests a new status/consolidation Session, study, proposed changes and Session plan. This goal now belongs to [Session0013](session-%230013--SDP_consolidation_and_Ponsse_readiness.md), KB055 and MAINT-SDP-0017. This is a scope handoff, not closure or acceptance of existing PG/Blueprint/XFMD work.
+- Loaded routines and work summary are captured in Session0013 T001, including planning/change-analysis skills and current checks. No product implementation or delegation performed.
+- Roadmap note: historical S3/S4 remain records of the prior coordination route. The new owner-selected study/readiness route is Session0013; do not run both as competing allocation plans. Interim coordination remains available for its original scope.
+- Next: continue owner study disposition and readiness planning in Session0013; no further laptop recovery request.

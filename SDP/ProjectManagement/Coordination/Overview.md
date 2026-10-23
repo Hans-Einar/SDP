@@ -1,5 +1,12 @@
 # Interim project governance overview
 
+Owner update — 23 October 2026: all remaining laptop work has been handed over.
+The new status study and proposed consolidation route are maintained in
+[Session0013](../../Sessions/session-%230013--SDP_consolidation_and_Ponsse_readiness.md)
+and [WR1 Study](../../Maintenance/WorkstationReadiness/Study.md). Use those for
+current readiness planning; the October 10 snapshot below remains historical.
+
+
 Current recovery note — 23 October 2026: the snapshot below is historical. SDP main is now locally consolidated at bfe3b40; ModelGovernance and Actions are recorded complete, PG has advanced through Session0007 T028, and the selected XFMD viewpoint round is complete with residual handoffs. See [Session0012 T002](../../Sessions/session-%230012--Interim_project_coordination.md#t002--2026-10-23-workstation-recovery-and-completion-strategy) for evidence limits and the single-owner completion recommendation. No new execution allocation or Ponsse-readiness acceptance has been made.
 
 Snapshot: **10 October 2026, 04:01:59 Europe/Oslo**. This is the owner's coordination view across SDP and XFMD. It projects existing Sessions, plans, Git candidates and observed publication facts; it is not another lifecycle ledger. Refresh it before allocating overlapping work. Agent activity and messages are not monitored in the background.

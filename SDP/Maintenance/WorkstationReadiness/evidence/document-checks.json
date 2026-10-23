@@ -1,0 +1,9 @@
+{
+  "localDocumentLinksChecked": 17,
+  "snapshotJSON": "pass",
+  "preTurnLedgerPrefix": "byte-preserved",
+  "management": "PASS: 69 cards, 46 management records, 4 lineage operations, 628 events",
+  "historyImport": "PASS",
+  "whitespace": "git diff --check passed before report creation",
+  "limits": "Documentation registration checks only; product checks remain bounded by snapshot."
+}

@@ -4,6 +4,7 @@
 
 | ID | Type | Status | Document |
 | --- | --- | --- | --- |
+| KB-SDP-055 | Study | active | [SDP consolidation and Ponsse readiness study](active/%23055--Study--SDP-consolidation-and-Ponsse-readiness.md) |
 | KB-SDP-010 | Proposal | active | [Consolidate documentation and separate active contracts from history](active/%23010--Proposal--Document-consolidation.md) |
 | KB-SDP-017 | Proposal | active | [sdptool and integrated project navigation](active/%23017--Proposal--sdptool-and-project-navigation.md) |
 | KB-SDP-038 | Proposal | active | [SDP development client using Codex app-server](active/%23038--Proposal--Codex-app-server-development-client.md) |
