@@ -1,0 +1,24 @@
+{
+  "baseline": "a84d71cdc36ca93fcf7fbedc4cbd2b7b8f125728",
+  "candidate": "baseline plus listed source/test/schema bytes; documentation and evidence tracked in introducing milestone commit",
+  "sources": {
+    "SDPTool/cmd/sdp-controller/inbox.go": "8d505b0450880370919876e76e434e6dd532f1d8f6f0f521e58013d91719e28a",
+    "SDPTool/governance/attention.go": "38ef5e7e2367fe7c04b05fe278149aad24db9a8eb69f1f5ec95c8fd3eb32e284",
+    "SDPTool/governance/attention_continuation.go": "df9eb6ea23f31c415f70be9efea636d977b5d536cf7a2766fa92498a7eba993f",
+    "SDPTool/governance/dispatch.go": "55a67a434f5d9e39a70fa114a559bca5cbb8ebcd2cd235d7ff5a26c4bd46dd3d",
+    "SDPTool/governance/inbox.go": "6adf88121ccb4b24268e2f19104abb39bf35a4dacb22eac8a9305f4d5c9e9441",
+    "SDPTool/governance/inbox.schema.json": "9709ac3c9f2f3e76607510db69a3865a2fd1ba6fec36cba36f3f3e20b77c4c9a",
+    "SDPTool/governance/report_acknowledgement.go": "8f6f5e1e5dc57ee8ca4817df6792a560f2e7a524a051f2a2a21ffefeca1f4977",
+    "SDPTool/governance/report_acknowledgement_test.go": "320819e738429eedb933f9e0e598ede8f568fd83ba8e7632deee31e79d36de0e",
+    "SDPTool/governance/schema.json": "0e0a40fdaf505d8cff0dcc5108fefe15f4c8b5c4e657e426de88f840718bb580",
+    "SDPTool/governance/store.go": "0ea2e7132fde903b1df4069b379340274ebe48cc1cd16e52af9ce23006bba37b",
+    "SDPTool/governance/types.go": "9bdac19e181bd3f9c30d6802ba4507cf3318f0eade46530682bd92641ea10a22",
+    "SDPTool/governancecontroller/report_acknowledgement_cli_test.go": "ac891b067f1f06126aa263d19ea0d86cc9fc24b24aafae5f026a16ceca81ea30"
+  },
+  "legacyControllerBaseline": "a84d71cdc36ca93fcf7fbedc4cbd2b7b8f125728",
+  "legacyControllerSHA256": "01daf8f2892db1f4461d71a8192a4a3ec41d9be5ba7537be522bfc917e689e22",
+  "toolchain": "go version go1.27.1 linux/amd64",
+  "delegation": false,
+  "nativeModelTask": false,
+  "independentReview": false
+}

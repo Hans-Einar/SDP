@@ -1,0 +1,19 @@
+{
+  "testedSourceHashes": 12,
+  "evidenceHashes": 7,
+  "historicalLedgerPrefixes": "preserved",
+  "relativeLinks": 205,
+  "missingLinks": [],
+  "management": {
+    "exitCode": 0,
+    "output": "PASS: 73 cards, 47 management records, 4 lineage operations, 654 events; schema/history/metadata/placement/grouping\n"
+  },
+  "toolkit": {
+    "exitCode": 0,
+    "output": "SDP Toolkit validation passed\n"
+  },
+  "diff": {
+    "exitCode": 0,
+    "output": ""
+  }
+}

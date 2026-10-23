@@ -158,7 +158,7 @@ func (s *Service) saveAttention(state snapshot, head string, r Run, operation, o
 		return Result{}, fail("limit", "operational receipt or revision capacity reached")
 	}
 	r.Revision++
-	if state.Schema != attentionContinuationStateSchema {
+	if state.Schema != attentionContinuationStateSchema && state.Schema != reportAcknowledgementStateSchema {
 		state.Schema = attentionStateSchema
 	}
 	if state.Prepared == nil {
@@ -435,7 +435,7 @@ func validateAttentionState(state snapshot) error {
 			}
 		}
 	}
-	if attentionProfile(state.Schema) && count == 0 {
+	if (state.Schema == attentionStateSchema || state.Schema == attentionContinuationStateSchema) && count == 0 {
 		return fail("reconciliation_required", "attention profile has no questions")
 	}
 	return nil

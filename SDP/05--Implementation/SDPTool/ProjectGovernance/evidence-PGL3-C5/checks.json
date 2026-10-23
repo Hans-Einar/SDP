@@ -1,0 +1,28 @@
+[
+  {
+    "name": "sdptool-race",
+    "command": [
+      "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+      "-C",
+      "SDPTool",
+      "test",
+      "-race",
+      "-count=1",
+      "./..."
+    ],
+    "exitCode": 0,
+    "seconds": 200.82
+  },
+  {
+    "name": "sdptool-vet",
+    "command": [
+      "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+      "-C",
+      "SDPTool",
+      "vet",
+      "./..."
+    ],
+    "exitCode": 0,
+    "seconds": 1.02
+  }
+]

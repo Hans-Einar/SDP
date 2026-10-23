@@ -53,7 +53,7 @@ func (s *Service) load() (snapshot, string, error) {
 		return empty, "", fail("incompatible_profile", "unsupported persisted state")
 	}
 	if (state.Schema == Schema && (state.Prepared != nil || state.PreparationReceipts != nil)) || (state.Schema != Schema && !attentionProfile(state.Schema) && (state.Prepared == nil || state.PreparationReceipts == nil)) || ((state.Prepared == nil) != (state.PreparationReceipts == nil)) {
-		return empty, "", fail("incompatible_profile", "assignment preparation requires operational profile 0.2 through 0.7")
+		return empty, "", fail("incompatible_profile", "assignment preparation requires operational profile 0.2 through 0.8")
 	}
 	for id, p := range state.Prepared {
 		if p.ID != id || !uuidPattern.MatchString(id) || p.Revision == 0 ||
@@ -79,6 +79,9 @@ func (s *Service) load() (snapshot, string, error) {
 		return empty, "", err
 	}
 	if err := validateAttentionContinuations(state); err != nil {
+		return empty, "", err
+	}
+	if err := validateReportAcknowledgements(state); err != nil {
 		return empty, "", err
 	}
 	return state, head, nil

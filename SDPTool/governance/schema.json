@@ -508,7 +508,8 @@
             "activate",
             "attention.request",
             "attention.reply",
-            "attention.withdraw"
+            "attention.withdraw",
+            "report.acknowledge"
           ]
         },
         "projectRef": {
@@ -538,6 +539,9 @@
             "known",
             "stale"
           ]
+        },
+        "reportAcknowledgement": {
+          "$ref": "#/$defs/ReportAcknowledgement"
         }
       },
       "required": [
@@ -548,6 +552,29 @@
         "operationId",
         "run",
         "coverage"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "operation": {
+                "const": "report.acknowledge"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "reportAcknowledgement"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "reportAcknowledgement"
+              ]
+            }
+          }
+        }
       ]
     },
     "Binding": {
@@ -1754,6 +1781,91 @@
         "questionId",
         "replyOperationId",
         "basis"
+      ]
+    },
+    "ReportAcknowledgementRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "projectRef": {
+          "type": "string"
+        },
+        "checkoutId": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "operationId": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "runId": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "reportId": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "inputRevision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "expectedGeneration": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "coordinator": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "schema": {
+          "const": "sdp-governance-report-acknowledgement/1"
+        },
+        "reportedRevision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "projectRef",
+        "checkoutId",
+        "operationId",
+        "runId",
+        "reportId",
+        "inputRevision",
+        "expectedGeneration",
+        "coordinator",
+        "note",
+        "schema",
+        "reportedRevision",
+        "expectedRevision"
+      ]
+    },
+    "ReportAcknowledgement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "request": {
+          "$ref": "#/$defs/ReportAcknowledgementRequest"
+        },
+        "recordedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "request",
+        "recordedAt"
       ]
     }
   }

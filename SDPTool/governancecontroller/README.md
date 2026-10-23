@@ -393,6 +393,41 @@ applies; this is not evidence of multi-hour throughput. Structured attention/rep
 project under the owner's T026 boundary.
 
 
+## PGL3-C5 report acknowledgement
+
+After inspecting `inbox --json`, a trusted controller can record that one exact
+report was processed:
+
+```sh
+sdp-controller inbox acknowledge --project ROOT --state DIR --input acknowledgement.json
+```
+
+The input follows `ReportAcknowledgementRequest` in
+[the application schema](../governance/schema.json): `schema` is
+`sdp-governance-report-acknowledgement/1`; copy `projectRef`, `checkoutId` and
+`generation` (as `expectedGeneration`) from the inspected inbox. Supply a fresh
+UUID `operationId`, the report's `runId`, `id` (as `reportId`), `reportedRevision`,
+`inputRevision`, and `currentRevision` (as `expectedRevision`), plus bounded
+`coordinator` and `note` text. The command emits the durable receipt as JSON.
+Retry the identical input after a lost response; do not generate a new operation
+ID for a retry. A changed generation requires a new inspection and decision.
+
+Acknowledgement means recorded processing. It does not verify evidence, accept
+work, publish Session/card records or launch another attempt. The run remains
+verifying, with unchanged run revision. Workers cannot invoke this through MCP;
+coordinator attribution comes from the trusted local controller, not authenticated
+human identity. The same-user shell boundary is unchanged.
+
+The first write selects operational profile 0.8. Older binaries refuse that store;
+use the current binary to continue. Reads of stores without acknowledgements keep
+inbox profile 1; profile 2 adds each report's optional `acknowledgementId` and
+`acknowledgement`. Unacknowledged reports are displayed as pending. Current coverage
+and current run state remain separate from the historical acknowledgement. Changed
+source/authority, report decision context, run revision or store generation prevents
+a first acknowledgement; an identical retry returns the original historical receipt.
+An acknowledgement consumes one existing receipt slot; capacity is still bounded.
+
+
 ## PGL3-C3 durable attention
 
 The bound agent may call `attention_request` with a current run/input revision,

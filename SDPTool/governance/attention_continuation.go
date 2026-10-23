@@ -10,8 +10,9 @@ type AttentionReplyRef struct {
 	Basis            string `json:"basis"`
 }
 
+// Later store profiles retain attention capabilities even without questions.
 func attentionProfile(schema string) bool {
-	return schema == attentionStateSchema || schema == attentionContinuationStateSchema
+	return schema == attentionStateSchema || schema == attentionContinuationStateSchema || schema == reportAcknowledgementStateSchema
 }
 
 // Verify the original decision state, before this particular launch input made
@@ -91,7 +92,7 @@ func validateAttentionContinuations(state snapshot) error {
 				continue
 			}
 			count++
-			if state.Schema != attentionContinuationStateSchema || v.Kind != "launch" || len(v.AttentionReplies) > 32 || !slices.Contains([]string{"prepared", "sending", "uncertain", "acknowledged"}, v.State) {
+			if (state.Schema != attentionContinuationStateSchema && state.Schema != reportAcknowledgementStateSchema) || v.Kind != "launch" || len(v.AttentionReplies) > 32 || !slices.Contains([]string{"prepared", "sending", "uncertain", "acknowledged"}, v.State) {
 				return fail("reconciliation_required", "invalid attention dispatch input")
 			}
 			for _, ref := range v.AttentionReplies {

@@ -1,0 +1,156 @@
+{
+  "inboxV1": {
+    "schema": "sdp-governance-inbox/1",
+    "projectRef": "trial",
+    "checkoutId": "608aac3d-146b-48f5-abc9-6077eb77f2cb",
+    "generation": "f15e1be02787cedb4cf2b6210c69a75cb2fbc82b259ea939de7870ead5655852",
+    "inspectedAt": "2026-10-23T23:33:34.526427559Z",
+    "scope": "report-receipts-in-selected-checkout",
+    "consumption": "not-tracked",
+    "reports": [
+      {
+        "id": "b3f6e124-ce35-4dd6-b30c-ba6946f4e5e8",
+        "runId": "0feba40d-7c98-4310-85a6-a8156cbc374c",
+        "reportedRevision": 3,
+        "inputRevision": "c64bba2db38ee934fccb4c2963d57fac2503ec8539b1fac1fee506e6195bb0d8",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "outcome": "fix fixture",
+        "text": "compiled report fixture",
+        "currentRevision": 3,
+        "currentState": "verifying",
+        "coverage": "known",
+        "conditions": []
+      }
+    ]
+  },
+  "inboxV2": {
+    "schema": "sdp-governance-inbox/2",
+    "projectRef": "trial",
+    "checkoutId": "608aac3d-146b-48f5-abc9-6077eb77f2cb",
+    "generation": "e7ab295f6ef652953218216e7b1f90ae5095d09fc158a085913cdd67bfa3b335",
+    "inspectedAt": "2026-10-23T23:33:34.555063356Z",
+    "scope": "report-receipts-in-selected-checkout",
+    "consumption": "acknowledgement-recorded-separately",
+    "reports": [
+      {
+        "acknowledgement": {
+          "request": {
+            "schema": "sdp-governance-report-acknowledgement/1",
+            "projectRef": "trial",
+            "checkoutId": "608aac3d-146b-48f5-abc9-6077eb77f2cb",
+            "operationId": "b866c5b4-8008-4397-9c85-57e27a924787",
+            "runId": "0feba40d-7c98-4310-85a6-a8156cbc374c",
+            "reportId": "b3f6e124-ce35-4dd6-b30c-ba6946f4e5e8",
+            "reportedRevision": 3,
+            "inputRevision": "c64bba2db38ee934fccb4c2963d57fac2503ec8539b1fac1fee506e6195bb0d8",
+            "expectedRevision": 3,
+            "expectedGeneration": "f15e1be02787cedb4cf2b6210c69a75cb2fbc82b259ea939de7870ead5655852",
+            "coordinator": "fixture-leader",
+            "note": "Read and queued for verification; not accepted."
+          },
+          "recordedAt": "2026-10-23T23:33:34.532398205Z"
+        },
+        "acknowledgementId": "b866c5b4-8008-4397-9c85-57e27a924787",
+        "id": "b3f6e124-ce35-4dd6-b30c-ba6946f4e5e8",
+        "runId": "0feba40d-7c98-4310-85a6-a8156cbc374c",
+        "reportedRevision": 3,
+        "inputRevision": "c64bba2db38ee934fccb4c2963d57fac2503ec8539b1fac1fee506e6195bb0d8",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "outcome": "fix fixture",
+        "text": "compiled report fixture",
+        "currentRevision": 3,
+        "currentState": "verifying",
+        "coverage": "known",
+        "conditions": []
+      }
+    ]
+  },
+  "request": {
+    "schema": "sdp-governance-report-acknowledgement/1",
+    "projectRef": "trial",
+    "checkoutId": "608aac3d-146b-48f5-abc9-6077eb77f2cb",
+    "operationId": "b866c5b4-8008-4397-9c85-57e27a924787",
+    "runId": "0feba40d-7c98-4310-85a6-a8156cbc374c",
+    "reportId": "b3f6e124-ce35-4dd6-b30c-ba6946f4e5e8",
+    "reportedRevision": 3,
+    "inputRevision": "c64bba2db38ee934fccb4c2963d57fac2503ec8539b1fac1fee506e6195bb0d8",
+    "expectedRevision": 3,
+    "expectedGeneration": "f15e1be02787cedb4cf2b6210c69a75cb2fbc82b259ea939de7870ead5655852",
+    "coordinator": "fixture-leader",
+    "note": "Read and queued for verification; not accepted."
+  },
+  "result": {
+    "reportAcknowledgement": {
+      "request": {
+        "schema": "sdp-governance-report-acknowledgement/1",
+        "projectRef": "trial",
+        "checkoutId": "608aac3d-146b-48f5-abc9-6077eb77f2cb",
+        "operationId": "b866c5b4-8008-4397-9c85-57e27a924787",
+        "runId": "0feba40d-7c98-4310-85a6-a8156cbc374c",
+        "reportId": "b3f6e124-ce35-4dd6-b30c-ba6946f4e5e8",
+        "reportedRevision": 3,
+        "inputRevision": "c64bba2db38ee934fccb4c2963d57fac2503ec8539b1fac1fee506e6195bb0d8",
+        "expectedRevision": 3,
+        "expectedGeneration": "f15e1be02787cedb4cf2b6210c69a75cb2fbc82b259ea939de7870ead5655852",
+        "coordinator": "fixture-leader",
+        "note": "Read and queued for verification; not accepted."
+      },
+      "recordedAt": "2026-10-23T23:33:34.532398205Z"
+    },
+    "schema": "sdp-project-governance/0.1",
+    "operation": "report.acknowledge",
+    "projectRef": "trial",
+    "checkoutId": "608aac3d-146b-48f5-abc9-6077eb77f2cb",
+    "operationId": "b866c5b4-8008-4397-9c85-57e27a924787",
+    "run": {
+      "id": "0feba40d-7c98-4310-85a6-a8156cbc374c",
+      "revision": 3,
+      "requestId": "ca289223-520a-461d-b22a-1fec74f5ec93",
+      "state": "verifying",
+      "step": "implement",
+      "inputRevision": "c64bba2db38ee934fccb4c2963d57fac2503ec8539b1fac1fee506e6195bb0d8",
+      "selection": {
+        "card": "SDP/KanBan/active/card.md",
+        "plan": "SDP/Maintenance/Plan.md",
+        "session": "SDP/Sessions/session.md",
+        "authority": "SDP/authority.md",
+        "step": "S1"
+      },
+      "assignment": {
+        "outcome": "fix fixture",
+        "writablePaths": [
+          "target.txt"
+        ],
+        "excludedPaths": [
+          "unrelated.txt"
+        ]
+      },
+      "routine": {
+        "id": "maintenance",
+        "version": "0.1",
+        "steps": [
+          "implement",
+          "verify",
+          "review",
+          "record"
+        ],
+        "completion": "candidate evidence, applicable independent review and checked publication required"
+      },
+      "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+      "reason": "compiled report fixture"
+    },
+    "coverage": "known"
+  }
+}

@@ -272,3 +272,10 @@ versions. Existing owner-lab state is not upgraded by inspection.
 Maintenance/MCP wire stays unchanged. All prepared results explicitly report
 `dispatch: unavailable` and `designAcceptance: not-assessed`. C2 owns authenticated
 disposition, provider-aware revisions and retirement/revision; PGL3 owns execution.
+
+
+PGL3-C5 adds trusted-controller `AcknowledgeReport`: exact report/current-generation
+binding, durable retry and separate recorded processing, without advancing the run.
+The first acknowledgement selects operational profile 0.8 and inbox profile 2;
+untouched stores retain their profiles. See the
+[controller workflow](../governancecontroller/README.md#pgl3-c5-report-acknowledgement).

@@ -160,13 +160,14 @@ type Run struct {
 	Reason        string              `json:"reason"`
 }
 type Result struct {
-	Schema      string `json:"schema"`
-	Operation   string `json:"operation"`
-	ProjectRef  string `json:"projectRef"`
-	CheckoutID  string `json:"checkoutId"`
-	OperationID string `json:"operationId"`
-	Run         Run    `json:"run"`
-	Coverage    string `json:"coverage"`
+	ReportAcknowledgement *ReportAcknowledgement `json:"reportAcknowledgement,omitempty"`
+	Schema                string                 `json:"schema"`
+	Operation             string                 `json:"operation"`
+	ProjectRef            string                 `json:"projectRef"`
+	CheckoutID            string                 `json:"checkoutId"`
+	OperationID           string                 `json:"operationId"`
+	Run                   Run                    `json:"run"`
+	Coverage              string                 `json:"coverage"`
 }
 type Binding struct {
 	Schema     string `json:"schema"`

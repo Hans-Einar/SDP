@@ -1,0 +1,22 @@
+[
+  {
+    "object": "request",
+    "definition": "ReportAcknowledgementRequest",
+    "passed": true
+  },
+  {
+    "object": "result",
+    "definition": "Result",
+    "passed": true
+  },
+  {
+    "object": "inboxV1",
+    "schema": "sdp-governance-inbox/1",
+    "passed": true
+  },
+  {
+    "object": "inboxV2",
+    "schema": "sdp-governance-inbox/2",
+    "passed": true
+  }
+]

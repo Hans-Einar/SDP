@@ -9,7 +9,7 @@
 | created | 2026-10-09T12:08:50.581137+00:00 |
 | source | Owner Session0011 T004 role definition and T005 KanBan handoff request |
 | Systems | SDPTOOL |
-| next_review | PGL3 report consumption and responsive coordination; capacity/recovery and native parallel evidence; separate hub/webapp handoff in KB054 |
+| next_review | Responsive leader coordination after PGL3-C5 durable acknowledgement; retained native workflow, capacity/recovery and evidence gates |
 | PlanId | PLAN-SDP-0018 |
 | tags | project-leader, steering, SAD, master, MCP, app-server, coordination |
 
@@ -199,3 +199,15 @@ provenance and guarded legacy/recovery behavior. Full affected race/vet, 60 wire
 objects and real no-model 0.164.0 probe pass. Earlier exact-version blocker is
 resolved at this boundary. Current-host full native task/review and leader/report/
 evidence gates remain. CardState stays in-progress; EVT-KB-SDP-000397.
+
+
+## T031 — PGL3-C5 durable report acknowledgement
+
+Delivered trusted-controller acknowledgement of exact reports with bounded
+attribution/note, durable retry and current-source/generation checks. Acknowledgement
+leaves runs unchanged and does not verify/accept work. Full affected race/vet,
+compiled CLI/restart/old-reader and wire schema checks pass; see
+[evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C5.md).
+CardState remains in-progress for responsive coordination and the retained plan
+gates. No native task, independent review, Blueprint pilot resumption or Ponsse work.
+SDL-only direction and KB059 onHold remain. EVT-KB-SDP-000400 records this result.

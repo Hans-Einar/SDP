@@ -157,7 +157,9 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 					return Result{}, e
 				}
 				r.State = "ready"
-				state.Schema = attentionContinuationStateSchema
+				if state.Schema != reportAcknowledgementStateSchema {
+					state.Schema = attentionContinuationStateSchema
+				}
 			}
 			if r.State != "ready" || v.ThreadID != "" || v.TurnID != "" {
 				return Result{}, fail("conflict", "launch needs a ready run and new thread")

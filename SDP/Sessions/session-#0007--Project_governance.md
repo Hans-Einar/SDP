@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T030 — owner narrows context work to SDL and requests GPT-6 Astra high continuation. PGC1 is delivered; existing PG readiness work remains.
+Latest recorded turn: T031 — owner continues; PGL3-C5 durable report acknowledgement delivered at the local service/CLI boundary; responsive coordination remains.
 The native trial asks, receives a delayed fixture reply, starts one fresh attempt
 and implements/reports the selected behavior. Leader report consumption and responsive
 coordination remain, alongside native parallel evidence and sustained-hour capacity.
@@ -17,7 +17,7 @@ gantt
     DONE S2 Shared contract and pilot design :done,s2,after s1,1d
     WAITING S3 Complete single-workflow gates :s3,after s2,1d
     DONE S7 Codex host compatibility :done,s7,after s3,1d
-    NEXT S6 Project Leader and SAD orchestration :s6,after s7,1d
+    ACTIVE S6 Project Leader and SAD orchestration :s6,after s7,1d
     PLANNED S4 Recovery and evidence verification :s4,after s6,1d
     PLANNED S5 Timeline projection :s5,after s4,1d
 ```
@@ -28,7 +28,7 @@ gantt
 | completed | S2 | Design the smallest common routing, run, Session and client contract | Owner continuation, T002 | [PGD1 / PLAN-SDP-0017](../04--Design/SDPTool/ProjectGovernance/Plan.md), contract, acceptance cases and protocol inspection |
 | waiting | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C6 verified; owner reports PGI3-U1 trial performed; native mapping remains unverified; KB052 now prioritized |
 | completed | S7 | Codex 0.164.0 and compatible later hosts / PGC1 | Owner T029; KB057 and existing PLAN-SDP-0018 | 98b449c range/identity/recovery checks, full race/vet, 60 schema cases and real no-model 0.164.0 controller/MCP probe pass; full native/review gates remain |
-| next | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation, C2a lifecycle, C2b provider checks and C2c decisions and C2d activation/native code trial delivered; PGL3-C2 reports/inbox, C3 attention/replies and C4 guarded continuation delivered; responsive leader and report consumption remain |
+| on-going | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation, C2a lifecycle, C2b provider checks and C2c decisions and C2d activation/native code trial delivered; PGL3-C2 reports/inbox, C3 attention/replies and C4 guarded continuation delivered; C5 durable report acknowledgement delivered; responsive leader coordination remains |
 | planned | S4 | Verify interruption, resume, scope change and evidence disposition | S3 candidate | Evidence required before wider use |
 | planned | S5 | Project recorded activity into the KB043 timeline | Reliable S3/S4 capture and selected rendering scope | Full timeline remains deferred |
 
@@ -38,8 +38,8 @@ gantt
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-24 |
-| Current step | S7 complete at bounded wire-profile scope; retained S6 and whole-workflow gates next |
-| Proposed next step | Continue existing PG readiness toward one SDL-based workflow after owner selects Astra high; KB059 onHold, no new code/runtime context features; retain native/review and leader/report/evidence gaps |
+| Current step | S6 active: PGL3-C5 local report acknowledgement delivered; whole-workflow gates remain |
+| Proposed next step | Responsive leader coordination using durable reports/replies, then retained PG readiness gates. SDL-only context scope; KB059 onHold |
 | Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension; T026 assigns hub/webapp to a separate project and continues local SDP/SDPTool work; T027 continues local attention/replies; T028 continues guarded attention continuation; T029 selects stable Codex >=0.164.0 and compatible later hosts, preserving other scopes |
 
 ## Goal and ownership
@@ -1400,3 +1400,56 @@ recorded. The owning worktree contains only scoped PG changes for the milestone.
 - Loaded/reused routines, agent-reported: sdp, planning, Session/KanBan/management upkeep, OpenAI Docs for the requested model/High capability. No enforced routine-run or independent-review claim. Work is documentation/management scope only; no product edits.
 - Work summary: SDL scope and next-step projection updated, KB059 deferred with history/links, Blueprint Session0008 and KB050 receive the correction. Preparing a truthful model handoff does not pause/cancel the overall PG goal, accept the Blueprint pilot or capture a future final response.
 - Resume: recover this Session, current plan and Git status on the selected model; complete the existing PG readiness path toward one SDL-based workflow. Do not resurrect code/runtime expansion or create another Ponsse pilot. A model switch alone is not independent-review context.
+
+
+## T031 — 24 October 2026: resume the selected completion route
+
+- Owner says “fortsett”. Recovered T030, current plan and clean a84d71c baseline.
+  Model preference remains recorded; continuation is not proof of an actual host
+  model switch or an independent review. Existing authorization persists.
+- Loaded routines: SDP entrypoint/document workflow, Master, Worker, Architect,
+  Planning and Verifier; Session, KanBan, management and concurrent-work preflight.
+  One implementation context; no delegation or native model task launched.
+- Recovered existing report receipts, attention and continuation implementation.
+  Select PGL3-C5 durable controller acknowledgement of exact reports, preserving
+  source freshness, idempotency, run state and worker authority. This refines the
+  existing PGL3 durable-delivery obligation rather than expanding the product goal.
+- [Preflight](../05--Implementation/SDPTool/ProjectGovernance/preflight-PGL3-C5.json):
+  green for scoped PG writes. One local worktree; other unmerged local branch is
+  ancestral; existing integrated work and paused Blueprint boundary preserved.
+- S6 active; implementation/check results will be recorded before return. SDL-only
+  direction, KB059 onHold and Ponsse MVP1 deferral remain. No acceptance implied.
+
+
+### T031 work summary
+
+- PGL3-C5 implements controller-only acknowledgement of exact report processing.
+  It retains coordinator/note and revision/generation basis in the atomic store;
+  retries return the immutable receipt. Source/authority/run-context changes and
+  conflicting duplicates refuse. Acknowledgement changes no run or attempt state.
+- New store profile 0.8 is selected only on this explicit write; the old binary
+  refuses it. Existing attention, continuation, preparation and design writers
+  preserve the profile. Untouched inboxes retain profile 1; profile 2 exposes
+  recorded acknowledgement separately from verification/acceptance.
+- [Evidence](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C5.md):
+  full SDPTool race (15 tested packages) and vet pass, as do compiled CLI/restart/
+  retry and actual old-reader refusal; four captured wire objects validate.
+  Every project file in the CLI fixture is preserved. No native model or subagent,
+  independent review, stable installation/global config change, merge or release.
+- Updated orchestration/current state map, owner walkthrough, controller/core docs,
+  plan and KB052. Management records the actual bounded result; Traceability owns
+  source/verification evidence. Skills also include Traceability for that closeout.
+- Reviewed KB036/037/042/043/054/058 backlog and KB059 onHold; no activation or scope
+  expansion. Blueprint Session0008 remains paused; existing Ponsse model/MVP1
+  deferral and SDL-only direction retained.
+- Next: responsive leader coordination over the durable report/reply path, then
+  current-host whole-workflow verification and the retained review/publication/
+  recovery gates. This local acknowledgement does not finish ProjectGovernance.
+  This is the work summary, not a captured final response.
+
+
+Final T031 record checks: 12 tested source hashes and retained artifacts match;
+205 relative links resolve; canonical ledger prefixes are preserved. Management
+replay (73 cards, 47 records, 654 events), Toolkit validation and whitespace checks
+pass. Preparing the scoped milestone commit and authorized branch push; this does
+not merge main, publish a release or establish full PG acceptance.

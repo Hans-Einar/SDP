@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:sdp:project-governance:inbox:1",
-  "title": "Local report receipt projection; no consumption or acceptance state",
+  "$id": "urn:sdp:project-governance:inbox:1-or-2",
+  "title": "Local report receipt projection with optional durable acknowledgement",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -15,7 +15,10 @@
       "type": "string"
     },
     "schema": {
-      "const": "sdp-governance-inbox/1"
+      "enum": [
+        "sdp-governance-inbox/1",
+        "sdp-governance-inbox/2"
+      ]
     },
     "inspectedAt": {
       "type": "string",
@@ -25,7 +28,10 @@
       "const": "report-receipts-in-selected-checkout"
     },
     "consumption": {
-      "const": "not-tracked"
+      "enum": [
+        "not-tracked",
+        "acknowledgement-recorded-separately"
+      ]
     },
     "reports": {
       "type": "array",
@@ -93,6 +99,12 @@
               }
             },
             "required": []
+          },
+          "acknowledgement": {
+            "$ref": "#/$defs/ReportAcknowledgement"
+          },
+          "acknowledgementId": {
+            "type": "string"
           }
         },
         "required": [
@@ -107,7 +119,15 @@
           "coverage",
           "conditions",
           "selection"
-        ]
+        ],
+        "dependentRequired": {
+          "acknowledgement": [
+            "acknowledgementId"
+          ],
+          "acknowledgementId": [
+            "acknowledgement"
+          ]
+        }
       }
     }
   },
@@ -120,5 +140,135 @@
     "scope",
     "consumption",
     "reports"
+  ],
+  "$defs": {
+    "ReportAcknowledgementRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "projectRef": {
+          "type": "string"
+        },
+        "checkoutId": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "operationId": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "runId": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "reportId": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "inputRevision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "expectedGeneration": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "coordinator": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "schema": {
+          "const": "sdp-governance-report-acknowledgement/1"
+        },
+        "reportedRevision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "projectRef",
+        "checkoutId",
+        "operationId",
+        "runId",
+        "reportId",
+        "inputRevision",
+        "expectedGeneration",
+        "coordinator",
+        "note",
+        "schema",
+        "reportedRevision",
+        "expectedRevision"
+      ]
+    },
+    "ReportAcknowledgement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "request": {
+          "$ref": "#/$defs/ReportAcknowledgementRequest"
+        },
+        "recordedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "request",
+        "recordedAt"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "schema": {
+            "const": "sdp-governance-inbox/1"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "consumption": {
+            "const": "not-tracked"
+          },
+          "reports": {
+            "items": {
+              "not": {
+                "anyOf": [
+                  {
+                    "required": [
+                      "acknowledgement"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "acknowledgementId"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "consumption": {
+            "const": "acknowledgement-recorded-separately"
+          }
+        }
+      }
+    }
   ]
 }

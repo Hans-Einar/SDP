@@ -623,3 +623,30 @@ engineering/evidence checks and the existing Ponsse pilot model/MVP1 deferral.
 Owner requests GPT-6 Astra high for continuation; this agent cannot change the
 current client model. Authorization for existing work persists across the model
 handoff; no new permission gate or implementation/release authority is inferred.
+
+
+## PGL3-C5 selection — T031
+
+Owner continues the existing completion route after the model handoff. Select
+bounded durable report acknowledgement under the existing PGL3 inbox contract.
+[Preflight](preflight-PGL3-C5.json) records the current clean single-worktree baseline;
+[design](../../../04--Design/SDPTool/ProjectGovernance/Orchestration.md#pgl3-c5--durable-report-acknowledgement-2026-10-24)
+defines identity, authority, retry, freshness and compatibility boundaries. Keep
+BranchPolicy current / CommitPolicy milestone on sdp/codex-forward-compatibility.
+Service and compiled CLI checks must prove acknowledgement without acceptance or
+run advancement. No native model/subagent launch, Blueprint resumption, Ponsse
+pilot, code/runtime context expansion, merge or release is selected by this step.
+
+
+## PGL3-C5 result — T031
+
+[Evidence](Evidence-PGL3-C5.md) records durable exact-report acknowledgement through
+the trusted controller and compiled CLI. Full SDPTool race/vet, retained wire schema
+checks, actual old-reader refusal, retry/restart/authority/freshness guards and
+profile coexistence pass. All run state remains unchanged by acknowledgement.
+Existing worker MCP tools/privileges remain unchanged. No native agent or independent
+review is claimed. S6/PGL3 remain active: next is responsive leader coordination
+using the durable report/reply path, followed by current-host integrated workflow,
+capacity/recovery, SAD/scope closure and retained PGI4/5 evidence/publication gates.
+Backlog/onHold review preserves KB036/037/042/043, external KB054, proposed KB058 and
+SDL-only/KB059 deferral. No new scope selected; no merge or release.

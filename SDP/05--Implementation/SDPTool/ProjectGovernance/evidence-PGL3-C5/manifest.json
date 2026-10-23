@@ -1,0 +1,13 @@
+{
+  "baseline": "a84d71cdc36ca93fcf7fbedc4cbd2b7b8f125728",
+  "sourceManifest": "candidate.json",
+  "artifacts": {
+    "candidate.json": "d425806e9d0f00374da00a557a4429611ff1986132f928616ebde58f3cc59670",
+    "checks.json": "f43815977506a538578aa54b6bf980682bc0b2b0cd01f0d3ccdb1dc67d777a6b",
+    "checks.py": "da179f181beead35dc7663e9ec6b2e7363ae8a7fb715a2999ca45833479d3418",
+    "schema-checks.json": "d7bbddb3c679e025f4f84b5ffd7fab6b9deedce9f250d1683e534c8ea55933e8",
+    "sdptool-race.log": "92a440176e762c0a0a3084058ec6b87bcf0c675ebcd802a6e60f30b87dd19d0b",
+    "sdptool-vet.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "wire.json": "3710b6fd8b7961e0341722f5cbb9de33ca54371749bceb0e70f0c96b4a14ad3c"
+  }
+}

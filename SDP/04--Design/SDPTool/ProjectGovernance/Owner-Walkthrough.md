@@ -246,3 +246,18 @@ or approval. The native trial separately checks the resulting code behavior.
 Useful feedback: is it clear which assignment a question belongs to, that answering
 may continue already-authorized work, and which result is awaiting review? You can
 inspect this while implementation continues; no new approval of PG itself is required.
+
+
+## Report processing acknowledgement — T031
+
+The next local increment lets the coordinator acknowledge a specific report after
+reading it. The report remains awaiting verification. The inbox shows who recorded
+processing and their note, survives restart, and retains that record if the sources
+later change. Changed inputs require a new inspection before first acknowledgement.
+This makes pending versus processed reports visible; it does not yet provide the
+responsive Project Leader conversation or automatic phase continuation.
+
+Use the [controller instructions](../../../../SDPTool/governancecontroller/README.md#pgl3-c5-report-acknowledgement)
+with an explicitly built current binary. The historical laptop lab paths and trials
+above remain historical evidence, not an installation on this workstation. No new
+Ponsse pilot or owner acceptance is inferred.

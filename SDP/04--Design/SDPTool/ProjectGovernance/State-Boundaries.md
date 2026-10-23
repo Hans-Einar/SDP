@@ -1,6 +1,6 @@
 # Current model, Blueprint and ProjectGovernance state responsibilities
 
-Session0013 / WR2-M2, 23 October 2026. This explains existing implemented boundaries;
+Session0013 / WR2-M2, updated by Session0007 T031 on 24 October 2026. This explains existing implemented boundaries;
 it does not merge their state machines or add new authority. The
 [orchestration design](Orchestration.md), [PG design](Design.md),
 [model design](../ModelGovernance/Design.md) and
@@ -17,7 +17,7 @@ it does not merge their state machines or add new authority. The
 | Review revision and attributed design decision | governance/design_check.go and design_decision.go | Check canonical Blueprint assignment and recaptured live model/task/preparation. Trusted controller records an explicit decision against that exact basis; source drift invalidates applicability. |
 | Activated execution run ID/revision | governance/activation.go and shared run core | Controller activates one approved Master package. Legacy Maintenance can start independently without models; activation uses the prepared ImplementationPlan path. |
 | Attempt/thread/turn and observation/agent epoch | governancehost/controller with durable run observations | Observed execution, delivery and recovery identities. Epoch changes and uncertain sends must be reconciled; a role string is not a capability. |
-| Worker report / report receipt | restricted governance MCP run_transition; report inbox projection | Report moves work to verifying. Inbox consumption currently reports not-tracked; a report is not reviewed delivery or owner acceptance. |
+| Worker report / report receipt | restricted governance MCP run_transition; report inbox projection | Report moves work to verifying. PGL3-C5 permits a trusted-controller acknowledgement of exact report processing; this leaves the run unchanged and is not reviewed delivery or owner acceptance. |
 | Owner questions, replies and continuation references | governance attention/continuation services; trusted reply adapter | Durable attributed input, applicability and guarded fresh attempt. Answer acknowledgement is not approval of implementation or another phase. |
 | Card/typed-plan lifecycle and Session roadmap | canonical ProjectManagement ledger, current records and authored Session | Canonical project work disposition. Private PG operational state does not automatically publish a completed card/Session. |
 
@@ -52,6 +52,7 @@ WR2 checks source/provider integration, real MCP transport and existing negative
 recovery tests on the consolidated candidate. Its fixtures are not native agent
 execution or independent review. The [execution evidence](../../../Maintenance/WorkstationReadiness/Execution-Evidence.md)
 and [MCP adoption study](../../../Maintenance/WorkstationReadiness/MCP-Adoption-Study.md)
-record the exact result. Host compatibility, leader report consumption, SAD dispatch,
+record the exact result. PGC1 subsequently delivers bounded host compatibility and
+PGL3-C5 adds report acknowledgement. Responsive leader processing, SAD dispatch,
 capacity/recovery and canonical evidence/publication gates remain with PLAN-SDP-0018.
 No broad code refactor is selected without a demonstrated conflicting rule.

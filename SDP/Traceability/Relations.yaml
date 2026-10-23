@@ -240,6 +240,13 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-PGL3-C5:
+    status: passed-bounded-report-acknowledgement
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C5.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-052
+    design: SDPTOOL-DES-0001
+    note: Exact source hashes, full affected race/vet, compiled CLI and old-reader refusal; no native task, independent review or full PG readiness.
   SDPTOOL-VER-PGC1:
     status: passed-bounded-host-compatibility
     path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGC1.md

@@ -527,3 +527,38 @@ claim before host effects; lost response/crash never causes duplicate launch; un
 policies/skills; native ask, delayed reply, fresh attempt, real code change and report;
 protected files, prior lab and legacy reader refusal. Multi-hour capacity and full
 leader/report consumption, direct SAD dialogue and independent review remain separate.
+
+
+## PGL3-C5 — Durable report acknowledgement (2026-10-24)
+
+Refinement of the selected durable inbox contract: a trusted local controller can
+record that a particular report was processed by a named coordinator, with a bounded
+note. This is an acknowledgement, not evidence review, owner acceptance, publication
+or permission to launch another attempt. No automatic host dispatch is selected.
+The worker MCP retains its seven tools and cannot acknowledge reports.
+
+Reuse the atomic operational store rather than a second queue or canonical ledger.
+Pin report operation ID, run ID, reported revision and input revision; require the
+inspected store generation and current run revision at first write. Require current
+source/assignment coverage and a verifying run. Delayed reports after steering,
+source changes or run disposition refuse, with the historical report still visible.
+An identical operation retry returns its recorded result even after later changes;
+a different request using that operation ID conflicts. Each report has at most one
+acknowledgement; a second operation cannot silently overwrite it. Caller-supplied
+coordinator attribution is local-controller provenance, not human authentication.
+
+Store acknowledgements separately from run progress so reading/acknowledging one
+report does not change routine state, attempt identity or another run's revision.
+Adopt operational profile 0.8 only at the explicit acknowledgement write; older
+readers must refuse. Preserve 0.8 through later preparation/attention/continuation
+writes. Extend the inbox with a version 2 projection only once acknowledgements
+exist; retain version 1 for untouched stores. Semantic agent consumption remains
+unobserved even when acknowledgement is recorded.
+
+Expose `sdp-controller inbox acknowledge --project ROOT --state DIR --input FILE`.
+The request pins the inspected basis; it does not silently refresh stale inputs.
+Verification covers persistence/restart, exact retry and conflicting duplicate,
+authority and stale-source/generation/state refusals without mutation, no run
+advancement, coexistence with attention/continuation profiles, legacy reader
+refusal and actual compiled CLI/schema output. Native leader reasoning, automatic
+continuation, independent review and the remaining PGI/PGL gates stay separate.
