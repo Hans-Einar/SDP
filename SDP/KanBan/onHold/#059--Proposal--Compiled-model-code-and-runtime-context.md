@@ -5,11 +5,11 @@
 | id | KB-SDP-059 |
 | project | SDP |
 | type | Proposal |
-| CardState | backlog |
+| CardState | onHold |
 | created | 2026-10-23T22:24:47.632367+00:00 |
 | source | Owner compiled-context/runtime-state question during Session0007 T029 |
 | Systems | SDL, SDPTOOL, ProjectGovernance |
-| next_review | Blueprint owner review after selected PG compatibility work |
+| next_review | After initial SDL-only use, only if the owner explicitly reselects this extension |
 
 ## Need and proposal
 
@@ -36,3 +36,11 @@ PGC1 remains the current implementation.
 
 2026-10-23T22:24:47.632367+00:00: EVT-KB-SDP-000393 registers the owner question and source-backed initial
 study; backlog state. No implemented context compiler or automatic preload claim.
+
+## Owner deferral — 2026-10-23T23:23:59.095012+00:00
+
+Owner restricts current context/Blueprint work to SDL and prioritizes finishing
+the existing system for actual use. Code-derived context, runtime snapshots/traces
+and new simulation semantics are deferred; they are not prerequisites or selected
+implementation. Restart only after SDL-based use and explicit owner selection.
+Preserve this proposal for later learning. CardState onHold; EVT-KB-SDP-000398.

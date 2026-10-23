@@ -613,3 +613,13 @@ exact limits. KB057 closes for this bounded compatibility increment; PLAN-SDP-00
 and KB038/052 remain active for native workflow/independent-review, leader/report,
 canonical publication and sustained recovery/capacity gates. Do not infer full PG
 readiness, future-host certification, merge, release or new native task authority.
+
+## T030 — SDL-only scope and model handoff
+
+Owner defers further code/runtime context expansion and prioritizes completing the
+existing PG/SDL/Blueprint route for first use. KB059 is onHold; no new runtime,
+snapshot collector or source-analysis prerequisite. Preserve required existing
+engineering/evidence checks and the existing Ponsse pilot model/MVP1 deferral.
+Owner requests GPT-6 Astra high for continuation; this agent cannot change the
+current client model. Authorization for existing work persists across the model
+handoff; no new permission gate or implementation/release authority is inferred.

@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T029 — PGC1 bounded host compatibility delivered; real 0.164.0 no-model probe and full affected checks pass.
+Latest recorded turn: T030 — owner narrows context work to SDL and requests GPT-6 Astra high continuation. PGC1 is delivered; existing PG readiness work remains.
 The native trial asks, receives a delayed fixture reply, starts one fresh attempt
 and implements/reports the selected behavior. Leader report consumption and responsive
 coordination remain, alongside native parallel evidence and sustained-hour capacity.
@@ -39,7 +39,7 @@ gantt
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-24 |
 | Current step | S7 complete at bounded wire-profile scope; retained S6 and whole-workflow gates next |
-| Proposed next step | Current-host native workflow/independent-review and retained leader/report/evidence gates; KB058/059 stay unselected and Blueprint execution paused |
+| Proposed next step | Continue existing PG readiness toward one SDL-based workflow after owner selects Astra high; KB059 onHold, no new code/runtime context features; retain native/review and leader/report/evidence gaps |
 | Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension; T026 assigns hub/webapp to a separate project and continues local SDP/SDPTool work; T027 continues local attention/replies; T028 continues guarded attention continuation; T029 selects stable Codex >=0.164.0 and compatible later hosts, preserving other scopes |
 
 ## Goal and ownership
@@ -1390,3 +1390,13 @@ recorded. The owning worktree contains only scoped PG changes for the milestone.
 - Next: return these concrete results and feasibility assessment to the owner. Within the existing PG roadmap, current-host native workflow/independent review and then leader/report/evidence gates remain. Blueprint/package/runtime proposals require their own selection; avoid silently widening PGC1.
 
 - Final record check: [PGC1 final records](../05--Implementation/SDPTool/ProjectGovernance/final-record-checks-PGC1.json) validates new study/evidence links, retained hashes/JSON, unchanged 98b449c runtime bytes and preserved original management/Traceability ledger prefixes. Post-closeout management replay and Toolkit validation pass; a draft verification-relation placement error was caught and corrected before commit.
+
+## T030 — 24 October 2026: SDL-only first use and Astra high handoff
+
+- Owner input, manual summary: stay with SDL for now rather than expanding further; finish the existing system and try it. Then requests switching to GPT-6 Astra high for this work. Exact host/turn IDs and prompt timestamps unknown.
+- Decision: defer KB059 code/runtime-context proposal to onHold, with restart after actual SDL-based use and explicit selection. SDL-based Blueprint orientation/NOW/TARGET/local context remains the direction; no new source-analysis, runtime capture, simulator, metrics or language work is activated. Existing engineering checks and Ponsse pilot/model/MVP1 deferral preserved.
+- Model preference recorded as owner-selected GPT-6 Astra, reasoning high. No tool is available to change this active conversation's model. No global default/config edit or sub-agent substitution performed. Client-side selection remains the owner's action; authorization for ongoing work persists.
+- Handoff baseline before this documentation turn: 107a788 on sdp/codex-forward-compatibility, clean. PGC1 source 98b449c and exact evidence are committed; stable >=0.164.0 eligibility, actual version provenance, 15-package race/vet, 85 Toolkit/6 management tests, 60 wire cases and real no-model 0.164.0 probe pass. Full native task/independent review and leader/report/evidence gates remain.
+- Loaded/reused routines, agent-reported: sdp, planning, Session/KanBan/management upkeep, OpenAI Docs for the requested model/High capability. No enforced routine-run or independent-review claim. Work is documentation/management scope only; no product edits.
+- Work summary: SDL scope and next-step projection updated, KB059 deferred with history/links, Blueprint Session0008 and KB050 receive the correction. Preparing a truthful model handoff does not pause/cancel the overall PG goal, accept the Blueprint pilot or capture a future final response.
+- Resume: recover this Session, current plan and Git status on the selected model; complete the existing PG readiness path toward one SDL-based workflow. Do not resurrect code/runtime expansion or create another Ponsse pilot. A model switch alone is not independent-review context.

@@ -5,6 +5,11 @@ Session0007 T029; linked continuity in Session0008. KB050 remains gate-review an
 Session0008 remains owner-paused for execution. This is not acceptance of the
 agent-selected pilot, a new implementation assignment or a Ponsse model change.
 
+Current owner scope — 24 October 2026: keep the next context/Blueprint delivery
+SDL-based, finish the existing system and try it. Code-analysis/runtime proposals
+are deferred under KB059 and are not adoption gates. Existing engineering tests
+and verification obligations remain; no extra data-source feature is selected.
+
 ## Owner clarification
 
 The owner wants agents to understand a large system and the impact of a bounded

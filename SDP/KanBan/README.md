@@ -5,7 +5,7 @@
 | ID | Type | Status | Document |
 | --- | --- | --- | --- |
 | KB-SDP-057 | Change | completed | [Codex 0.164.0 and compatible later hosts](completed/%23057--Change--Codex-forward-compatibility.md) |
-| KB-SDP-059 | Proposal | backlog | [Model-linked code and runtime context for agents](backlog/%23059--Proposal--Compiled-model-code-and-runtime-context.md) |
+| KB-SDP-059 | Proposal | onHold | [Model-linked code and runtime context for agents](onHold/%23059--Proposal--Compiled-model-code-and-runtime-context.md) |
 | KB-SDP-058 | Proposal | backlog | [Measure PG usefulness and coordination overhead](backlog/%23058--Proposal--PG-usefulness-and-overhead-measures.md) |
 | KB-SDP-056 | Change | completed | [SDP consolidation and ProjectGovernance MCP readiness](completed/%23056--Change--SDP-consolidation-and-PG-MCP-readiness.md) |
 | KB-SDP-055 | Study | completed | [SDP consolidation and Ponsse readiness study](completed/%23055--Study--SDP-consolidation-and-Ponsse-readiness.md) |

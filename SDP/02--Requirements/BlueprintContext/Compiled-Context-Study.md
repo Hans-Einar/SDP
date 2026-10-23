@@ -1,5 +1,10 @@
 # Compiled agent context from design, code and runtime observations
 
+Current owner disposition — 24 October 2026: code/runtime context extensions are
+on hold. The selected direction is SDL-only Blueprints/context and completion of
+the existing system for first use. This historical feasibility study adds no
+prerequisite; restart requires explicit owner selection after actual SDL-based use.
+
 Initial feasibility study, 24 October 2026. Owner discussion during Session0007
 T029; primary proposal KB059. This records a possible direction, not selected
 implementation, an adopted trace schema or a new executable SDL profile.

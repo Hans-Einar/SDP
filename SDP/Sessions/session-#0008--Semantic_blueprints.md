@@ -6,7 +6,7 @@ remain as recorded; see ProjectManagement/History/Session0011/import.json.
 
 ## Session roadmap
 
-Latest discussion T017, 2026-10-24. Execution remains paused by owner; resume at S1 / BP2-A only when selected. Sequence only; dates are display slots, not duration estimates.
+Latest discussion T018, 2026-10-24. Execution remains paused by owner; resume at S1 / BP2-A only when selected. Sequence only; dates are display slots, not duration estimates.
 
 ```mermaid
 gantt
@@ -491,3 +491,10 @@ owner redirection. This is a manual work summary, not an exact transcript.
 - Initial feasibility study and KB059 backlog proposal delivered: client injects a compact pinned package, MCP supplies details; keep design intent, static code facts and observed trace/state distinct. Explain concurrent/global snapshot limits and trace replay versus executable design simulation. Existing action-core and KB004/KB-SDL-006 are reused as foundations; no general structural SDL execution is claimed.
 - Skills reused: sdp, change analysis/Architect, OpenAI Docs for host context-input support, Session/KanBan upkeep. Exact host/turn identifiers unavailable; manual work summary, not a final-response transcript.
 - Session remains paused for implementation and KB050 gate-review. No collector, new language/profile, model change or Ponsse execution selected. Next at owner Blueprint review: discuss layered context delivery first, then one scoped code/runtime mapping if selected.
+
+### T018 — 24 October 2026 SDL-only focus and model handoff
+
+- Owner restricts the current direction to SDL and wants the existing system finished for actual use. Code/runtime expansion is deferred, not a prerequisite. KB059 moved to onHold; KB050 stays gate-review for the existing concrete pilot, without inferred acceptance.
+- Continue from existing SDL NOW/TARGET, broad orientation and relevant local details. Preserve the existing Ponsse pilot model and MVP1 deferral; no new runtime/profile or source-analysis work. Current PG readiness remains the active execution route.
+- Owner requests GPT-6 Astra high for continuation. Preference recorded; agent cannot change the current client model and has not altered global configuration or spawned a substitute agent. Active PG Session0007 T030 is the implementation handoff.
+- Skills/routines reused: sdp, planning and manual Session/KanBan upkeep. This is a summarized discussion/work outcome; exact host/turn identifiers unavailable. Execution pause/pilot gate is not silently lifted; review the existing package when selected, without new feature prerequisites.
