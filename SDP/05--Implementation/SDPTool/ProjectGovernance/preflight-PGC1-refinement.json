@@ -1,0 +1,12 @@
+{
+  "observedAt": "2026-10-23T22:22:19.649722+00:00",
+  "head": "80384356b89b65ab4d79285d25ab87e2a30342c6",
+  "status": " M SDPTool/cmd/sdp-controller/main.go\n M SDPTool/governance/host.go\n M SDPTool/governance/schema.json\n M SDPTool/governancecontroller/cli_test.go\n M SDPTool/governancecontroller/controller.go\n M SDPTool/governancecontroller/controller_test.go\n M SDPTool/governancehost/attach.go\n M SDPTool/governancehost/capture.go\n M SDPTool/governancehost/client.go\n M SDPTool/governancehost/reconcile.go\n M SDPTool/governancehost/socket_linux_test.go\n M SDPTool/governancehost/work.go\n?? SDPTool/codexcompat/\n?? SDPTool/governancecontroller/compatibility_test.go\n?? SDPTool/governancehost/compatibility_test.go\n",
+  "verdict": "green for PGC1 refinement",
+  "scopeAddition": [
+    "SDPTool/governance/schema.json",
+    "SDPTool/labs/project-governance/prepare.py",
+    "SDPTool/labs/project-governance/README.md"
+  ],
+  "basis": "Single known worktree; all dirty source edits belong to current PGC1 turn. Shared wire enum also pinned legacy versions and must match runtime admission. Lab candidate metadata must refer to the selected source revision, preserving old labs/archives. No code/store format or role authority expansion."
+}

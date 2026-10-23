@@ -80,7 +80,7 @@ func main() {
 		c.Close()
 		check(e)
 	}
-	out := map[string]any{"schema": "sdp-host-probe/1", "hostVersion": governancehost.HostVersion, "initialized": true, "accountMode": mode, "managedAccount": mode == "chatgpt", "modelSubmitted": false}
+	out := map[string]any{"schema": "sdp-host-probe/1", "hostVersion": c.Version(), "minimumHostVersion": governancehost.HostVersion, "wireProfile": governancehost.WireProfile, "compatibility": "bounded-wire-profile; not workflow acceptance", "initialized": true, "accountMode": mode, "managedAccount": mode == "chatgpt", "modelSubmitted": false}
 	if *mcpBinary != "" {
 		mcpPath, e := filepath.Abs(*mcpBinary)
 		if e != nil {

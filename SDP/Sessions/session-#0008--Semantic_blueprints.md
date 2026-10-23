@@ -484,3 +484,10 @@ owner redirection. This is a manual work summary, not an exact transcript.
 - Skills/routines reused, agent-reported: sdp, change analysis and Architect; mandatory Session upkeep. Exact host/turn IDs and routine-run identity unknown. Work summary only, no future final response claimed captured.
 - Card KB050 remains gate-review. No acceptance of the calibration extraction, general Blueprint readiness, new schema or pilot resumption inferred. Session remains paused for execution; current authorized implementation remains PG PGC1. No model/generated output or Blueprint source code changed.
 - Next when separately resumed: review the readable package and these proposals with the owner at the existing BP2-A gate; preserve the existing Ponsse model and MVP1 deferral.
+
+### T017 — 24 October 2026 compiled context and runtime-state proposal
+
+- Owner asks whether a compiled package can preload model/Blueprint knowledge through MCP, add compiler-derived code knowledge and use debug/runtime state maps to inspect flow or step design logic. Discussion arrives during active PG T029, not as a cancellation of compatibility work.
+- Initial feasibility study and KB059 backlog proposal delivered: client injects a compact pinned package, MCP supplies details; keep design intent, static code facts and observed trace/state distinct. Explain concurrent/global snapshot limits and trace replay versus executable design simulation. Existing action-core and KB004/KB-SDL-006 are reused as foundations; no general structural SDL execution is claimed.
+- Skills reused: sdp, change analysis/Architect, OpenAI Docs for host context-input support, Session/KanBan upkeep. Exact host/turn identifiers unavailable; manual work summary, not a final-response transcript.
+- Session remains paused for implementation and KB050 gate-review. No collector, new language/profile, model change or Ponsse execution selected. Next at owner Blueprint review: discuss layered context delivery first, then one scoped code/runtime mapping if selected.

@@ -594,3 +594,11 @@ consolidated c907e22; the historical pilot branch/commits remain preserved in ma
 history. No rewriting of earlier branch commitments or source evidence.
 PGC1-A analysis/contract delivered; PGC1-B implementation starts. Later PG/leader,
 independent review and publication gates remain unchanged. No merge/release selected.
+
+## PGC1-B result — T029
+
+[Evidence-PGC1](Evidence-PGC1.md) records stable minimum/forward eligibility,
+actual version/attempt propagation, refusal/preservation checks and shared wire
+schema alignment. Scoped package races pass. Final committed-candidate full affected
+module checks and real no-model probe are PGC1-C next. Existing full native and
+independent-review/leader gates remain open; no release/merge selected.

@@ -142,7 +142,14 @@ type Binding struct {
 }
 
 func (b Binding) Request(action string, o governance.Observation) governance.HostRequest {
-	return governance.HostRequest{Schema: governance.Schema, ProjectRef: b.Result.ProjectRef, CheckoutID: b.Result.CheckoutID, OperationID: UUID(), RunID: b.Result.Run.ID, ExpectedRevision: b.Result.Run.Revision, InputRevision: b.Result.Run.InputRevision, Action: action, AttemptID: b.AttemptID, HostVersion: HostVersion, ThreadID: b.ThreadID, Observation: o}
+	version := ""
+	for _, attempt := range b.Result.Run.Attempts {
+		if attempt.ID == b.AttemptID {
+			version = attempt.HostVersion
+			break
+		}
+	}
+	return governance.HostRequest{Schema: governance.Schema, ProjectRef: b.Result.ProjectRef, CheckoutID: b.Result.CheckoutID, OperationID: UUID(), RunID: b.Result.Run.ID, ExpectedRevision: b.Result.Run.Revision, InputRevision: b.Result.Run.InputRevision, Action: action, AttemptID: b.AttemptID, HostVersion: version, ThreadID: b.ThreadID, Observation: o}
 }
 
 // History returns a conservative recovery result for one already mapped turn.

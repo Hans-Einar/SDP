@@ -64,12 +64,20 @@ func (c *Controller) transition(runID, action, reason string) (governance.Result
 	return c.Service.Transition(governance.LocalController(), governance.TransitionRequest{Schema: governance.Schema, ProjectRef: r.ProjectRef, CheckoutID: r.CheckoutID, RunID: runID, OperationID: governancehost.UUID(), ExpectedRevision: r.Run.Revision, InputRevision: r.Run.InputRevision, Action: action, Reason: reason})
 }
 func (c *Controller) record(runID, attemptID, threadID, action string, o governance.Observation) (governance.Result, error) {
+	observed, ok := c.Host.(interface{ Version() string })
+	if !ok {
+		return governance.Result{}, fmt.Errorf("incompatible_profile: observed host version required")
+	}
+	version := observed.Version()
+	if version == "" {
+		return governance.Result{}, fmt.Errorf("incompatible_profile: observed host version required")
+	}
 	return retryRecord(func() (governance.Result, error) {
 		r, e := c.Service.Read(runID)
 		if e != nil {
 			return r, e
 		}
-		return c.Service.RecordHost(governance.LocalController(), governance.HostRequest{HostIdentity: c.HostIdentity, Schema: governance.Schema, ProjectRef: r.ProjectRef, CheckoutID: r.CheckoutID, RunID: runID, OperationID: governancehost.UUID(), ExpectedRevision: r.Run.Revision, InputRevision: r.Run.InputRevision, Action: action, AttemptID: attemptID, HostVersion: governancehost.HostVersion, ThreadID: threadID, Observation: o})
+		return c.Service.RecordHost(governance.LocalController(), governance.HostRequest{HostIdentity: c.HostIdentity, Schema: governance.Schema, ProjectRef: r.ProjectRef, CheckoutID: r.CheckoutID, RunID: runID, OperationID: governancehost.UUID(), ExpectedRevision: r.Run.Revision, InputRevision: r.Run.InputRevision, Action: action, AttemptID: attemptID, HostVersion: version, ThreadID: threadID, Observation: o})
 	})
 }
 func now() string { return time.Now().UTC().Format(time.RFC3339Nano) }

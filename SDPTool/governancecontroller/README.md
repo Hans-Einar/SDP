@@ -70,6 +70,11 @@ unmapped history remains unresolved; no input is resent. Executing-turn reconnec
 uses the separate attach path below. Native child/reviewer attribution remains
 unverified. The default controller lifetime is 30 minutes (`--timeout`).
 
+Current connections admit stable Codex 0.164.0 and compatible later releases.
+Probe output and attempt observations retain the actual version. This is not a
+claim that every future release or native workflow has been tested; unsupported
+required wire methods/shapes refuse. See [PGC1](../../SDP/05--Implementation/SDPTool/ProjectGovernance/Codex-Compatibility.md).
+
 ## Durable dispatch contract
 
 RecordInput is controller-only and uses existing immutable generations, receipts,
@@ -171,7 +176,7 @@ No owner acceptance or canonical Session/card publication follows from an approv
 ## Reattach to an executing turn (Linux private socket profile)
 
 The default stdio host is owned by the controller and ends with that process. For
-work that must survive controller loss, explicitly run pinned Codex 0.161.0 in a
+work that must survive controller loss, explicitly run a compatible Codex >= 0.164.0 in a
 separate terminal, using a private directory owned by your user:
 
 ```sh

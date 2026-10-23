@@ -285,6 +285,15 @@ for 0.160.0 and earlier 0.158.0 evidence remain historical. Unsupported versions
 a compatibility diagnostic until tested. Do not require undocumented experimental
 fields or interpret the documentation's newest example as the installed contract.
 
+Owner Session0007 T029 selects PGC1 as the current admission rule: stable Codex
+0.164.0 or later under the bounded existing wire contract. This supersedes exact
+version admission, preserving the prior measurements as history. Executable and
+initialize versions must agree; persist the observed connection version per attempt.
+Required operation/response changes refuse explicitly, and future eligibility is
+not a claim of native workflow verification. Keep old attempt histories readable;
+recovery may not relabel them onto a different connected host version. See the
+[PGC1 contract](../../../05--Implementation/SDPTool/ProjectGovernance/Codex-Compatibility.md).
+
 Initialize once per connection, create/resume mapped threads, then submit/start or
 steer the identified turn. Generate clientUserMessageId before persistence/submission
 where the pinned schema supports it; it is correlation, not a proven server-side

@@ -103,8 +103,9 @@ Create another destination for another clean trial.
 candidate.json records source commit, source archive hash, Go version, binary hashes
 and the copied harness hashes. The console refuses changed binaries. `go version -m`
 on a binary may show the module's existing development version; candidate.json owns
-this trial's exact source identity. The host requirement is Codex 0.161.0 using the
-existing managed ChatGPT account. No API-key fallback or account reconfiguration is
+this trial's exact source identity. New PGC1 engine builds require stable Codex >= 0.164.0 under the bounded wire
+profile, using the existing managed ChatGPT account. candidate.json describes
+the selected archived source; historical 0.161.0 trial records remain unchanged. No API-key fallback or account reconfiguration is
 provided. The three binaries live only in candidate/bin; stable gh-sdp, SDPTool,
 PATH and the widget lab are not replaced.
 

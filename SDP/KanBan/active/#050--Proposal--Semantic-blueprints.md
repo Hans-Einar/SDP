@@ -151,3 +151,12 @@ to existing source/evidence and proposes layered orientation, explicit before/af
 progressive context and honest model/code correspondence. These are recommendations,
 not new product delivery or accepted pilot feedback. CardState remains gate-review;
 Session0008 implementation remains paused. EVT-KB-SDP-000392.
+
+## Compiled context and runtime-state discussion — 2026-10-23T22:24:47.632367+00:00
+
+Owner asks about preloading compiled SDL/Blueprint/code context and mapped runtime
+state/trace views. [KB059](../backlog/%23059--Proposal--Compiled-model-code-and-runtime-context.md)
+and its study capture the additional proposal, reusing KB004 and KB-SDL-006 boundaries.
+MCP delivery does not automatically inject context; structural SDL is not generally
+executable. No context compiler, runtime instrumentation or new SDL semantics selected.
+CardState gate-review and Session0008 execution pause preserved. EVT-KB-SDP-000394.

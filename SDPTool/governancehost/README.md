@@ -1,9 +1,11 @@
 # ProjectGovernance app-server adapter — PGI2
 
 The default transport owns a local stdio app-server process, selected cwd and bounded JSON
-transport. PGI3-C4 optionally connects to a separately running private socket host. New connections require **codex-cli 0.161.0** (measured in PGI3-C2). Typed request/result projections
-were derived from that executable's generated default schemas; unknown optional
-host fields are not persisted. Malformed JSON, duplicate keys, invalid UTF-8 and
+transport. PGI3-C4 optionally connects to a separately running private socket host. New connections require **stable codex-cli 0.164.0 or later** within the bounded
+PG wire profile. The actual executable and initialize identity must agree; socket
+connections retain the observed server version. Later stable versions are eligible,
+not automatically workflow-tested. Missing required operations/shapes refuse
+explicitly; unknown optional fields are not persisted. Malformed JSON, duplicate keys, invalid UTF-8 and
 frames over 1 MiB refuse. The PGI3 [owner controller candidate](../governancecontroller/README.md) adds
 explicit work-thread/start/steer/interrupt requests. Sign-in and account-mode
 fallback remain unsupported. A new connection has a new epoch.
@@ -59,7 +61,10 @@ recorded userMessage.clientId and its exact text match the durable outbound inpu
 in the already bound thread. Persisted correlated observations precede resolution.
 Missing, duplicate, changed or unmapped input stays uncertain. An in-progress
 turn cannot supply completed-message evidence. No recovery path resends a model request,
-changes a Session identity or treats turn completion as SDP acceptance.
+changes a Session identity or treats turn completion as SDP acceptance. Recovery
+and reattachment require the connected host version to match the recorded attempt;
+a software upgrade cannot silently relabel existing work. Legacy 0.160.1/0.161.0
+records remain readable through the core. See [PGC1](../../SDP/05--Implementation/SDPTool/ProjectGovernance/Codex-Compatibility.md).
 
 ## Evidence boundaries
 

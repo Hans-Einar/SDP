@@ -111,6 +111,16 @@ func TestPrivateSocketReconnectIdentityAndFrameBoundary(t *testing.T) {
 	}
 	c.Close()
 	server2.Close()
+	_, futureServer := listen("0.190.3")
+	c, err = OpenSocket(ctx, path)
+	if err != nil {
+		t.Fatal("compatible future socket refused", err)
+	}
+	if c.Version() != "0.190.3" {
+		t.Fatal("future socket version lost", c.Version())
+	}
+	c.Close()
+	futureServer.Close()
 	_, server3 := listen("0.0.0")
 	defer server3.Close()
 	if c, err = OpenSocket(ctx, path); err == nil {

@@ -24,3 +24,9 @@ owns continuity. No complete leader workflow, Ponsse trial, merge or release sel
 | Time | Actor / event | Result and next action |
 | --- | --- | --- |
 | 2026-10-23T22:10:45.708406+00:00 | Codex; EVT-KB-SDP-000389 | Register selected PGC1; contract/preflight delivered. Implement minimum/profile admission and actual host identity with recovery preservation. |
+
+2026-10-23T22:26:13.624760+00:00: PGC1-B delivers stable >=0.164.0 eligibility with observed-version identity,
+wire-schema alignment and legacy/recovery preservation. Scoped race/negative/future
+fixture checks pass; final PGC1-C verification next. See
+[evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGC1.md).
+CardState stays in-progress. EVT-KB-SDP-000395.

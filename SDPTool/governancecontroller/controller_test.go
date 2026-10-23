@@ -17,6 +17,7 @@ type fakeHost struct {
 }
 
 func (f *fakeHost) AccountMode(context.Context) (string, error) { return f.mode, nil }
+func (f *fakeHost) Version() string                             { return governancehost.HostVersion }
 func (f *fakeHost) StartWorkThread(context.Context, string, string, string, string, map[string]any) (governancehost.Thread, error) {
 	r, e := f.c.Service.Read(f.runID)
 	if e != nil {

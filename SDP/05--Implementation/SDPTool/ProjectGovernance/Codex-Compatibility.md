@@ -33,7 +33,7 @@ while new network/process connections require at least 0.164.0.
 | Milestone | Acceptance | State |
 | --- | --- | --- |
 | PGC1-A Contract and preflight | Source impact, owner intent, floor/profile and provenance/recovery boundary documented | delivered |
-| PGC1-B Adapter/core compatibility | Stable version range, actual connection/attempt provenance, handshake/response checks and compatible-future/refusal tests | in-progress |
+| PGC1-B Adapter/core compatibility | Stable version range, actual connection/attempt provenance, handshake/response checks and compatible-future/refusal tests | delivered; bounded implementation/scoped race checks pass |
 | PGC1-C Candidate evidence | Scoped and full affected race/vet, real 0.164.0 no-model probe/MCP discovery and actual request-schema checks; precise native/independent-review limits | planned |
 
 No new leader MCP rights, report scheduler, evidence publication, default model,
@@ -41,3 +41,5 @@ account mode, sandbox permission, Ponsse pilot/model edits, release or merge sel
 Use one agent; native model/child trials and independent review remain distinct from
 protocol fixtures and read-only live probes. No native task is silently launched by
 these checks. The original PG acceptance gaps remain with PLAN-SDP-0018.
+
+[Implementation/evidence](Evidence-PGC1.md) records PGC1-B. PGC1-C full candidate checks remain next; eligible future versions are not declared tested native hosts.

@@ -29,7 +29,7 @@ func (c *Client) StartWorkThread(ctx context.Context, cwd, sandbox, instructions
 	}
 	e := c.call(ctx, "thread/start", map[string]any{"cwd": cwd, "ephemeral": false, "sandbox": sandbox, "approvalPolicy": policy, "approvalsReviewer": "user", "developerInstructions": instructions, "config": map[string]any{"mcp_servers": config}}, &out)
 	if e == nil && (out.Thread.ID == "" || out.Thread.Status.Type != "idle") {
-		e = fmt.Errorf("thread is not observed idle")
+		e = fmt.Errorf("incompatible_profile: thread is not observed idle")
 	}
 	if e == nil {
 		source := ""
@@ -62,7 +62,7 @@ func (c *Client) StartSkillTurn(ctx context.Context, threadID, messageID, text s
 	}
 	e := c.call(ctx, "turn/start", map[string]any{"threadId": threadID, "clientUserMessageId": messageID, "input": governance.TurnInputs(text, skills)}, &out)
 	if e == nil && (out.Turn.ID == "" || out.Turn.Status != "inProgress") {
-		e = fmt.Errorf("turn start not observed active")
+		e = fmt.Errorf("incompatible_profile: turn start not observed active")
 	}
 	return out.Turn, e
 }

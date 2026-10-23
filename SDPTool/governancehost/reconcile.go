@@ -30,6 +30,9 @@ func (c *Client) PrepareRecovery(ctx context.Context, service *governance.Servic
 		if a.ID != attemptID {
 			continue
 		}
+		if a.HostVersion != c.Version() {
+			return Recovery{}, fmt.Errorf("incompatible_profile: recorded attempt host version differs from connected host")
+		}
 		t, e := c.ReadThread(ctx, a.ThreadID)
 		if e != nil {
 			return Recovery{}, e

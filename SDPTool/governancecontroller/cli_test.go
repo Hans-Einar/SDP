@@ -21,8 +21,12 @@ import (
 // It never invokes Codex or a model, and never represents independent review.
 func TestMain(m *testing.M) {
 	if os.Getenv("SDP_PGI3_FAKE_HOST") == "1" {
+		version := governancehost.HostVersion
+		if future := os.Getenv("SDP_PGC1_FAKE_HOST_VERSION"); future != "" {
+			version = future
+		}
 		if len(os.Args) > 1 && os.Args[1] == "--version" {
-			fmt.Println("codex-cli " + governancehost.HostVersion)
+			fmt.Println("codex-cli " + version)
 			return
 		}
 		encoder := json.NewEncoder(os.Stdout)
@@ -48,7 +52,7 @@ func TestMain(m *testing.M) {
 			var result any
 			switch q.Method {
 			case "initialize":
-				result = map[string]any{"userAgent": "fixture", "platformOs": "linux"}
+				result = map[string]any{"userAgent": "sdp_governance/" + version + " fixture", "platformOs": "linux"}
 			case "account/read":
 				result = map[string]any{"account": map[string]any{"type": "chatgpt"}}
 			case "thread/start":

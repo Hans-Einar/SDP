@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import shutil
 import subprocess
@@ -44,9 +45,21 @@ def main():
     harness = Path(__file__).resolve().parent
     for name in ['console.py', 'seed.py', 'README.md']:
         shutil.copyfile(harness / name, dest / name)
+    # Describe the archived engine, not the possibly newer preparation harness.
+    compatibility = snapshot / 'SDPTool/codexcompat/version.go'
+    if compatibility.exists():
+        matches = re.findall(r'const MinimumVersion = "([0-9]+\.[0-9]+\.[0-9]+)"', compatibility.read_text())
+        if len(matches) != 1:
+            raise RuntimeError('Selected source has no unambiguous minimum host version')
+        requirement = 'stable codex-cli >= ' + matches[0] + '; bounded wire compatibility required'
+    else:
+        matches = re.findall(r'const HostVersion = "([0-9]+\.[0-9]+\.[0-9]+)"', (snapshot / 'SDPTool/governancehost/client.go').read_text())
+        if len(matches) != 1:
+            raise RuntimeError('Selected source has no unambiguous pinned host version')
+        requirement = 'codex-cli ' + matches[0]
     identity = {'sourceCommit': revision, 'sourceRepository': str(source), 'archiveSHA256': sha(archive),
                 'go': subprocess.check_output([go, 'version'], text=True).strip(),
-                'hostRequirement': 'codex-cli 0.161.0', 'releasedInstallation': False,
+                'hostRequirement': requirement, 'releasedInstallation': False,
                 'binaries': {name: sha(binary / name) for name in ['sdptool', 'sdp-controller', 'sdp-mcp']},
                 'harness': {name: sha(dest / name) for name in ['console.py', 'seed.py', 'README.md']}}
     (dest / 'candidate.json').write_text(json.dumps(identity, indent=2) + '\n')

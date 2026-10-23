@@ -3,6 +3,7 @@ package governance
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Hans-Einar/SDP/SDPTool/codexcompat"
 	"strconv"
 	"strings"
 	"time"
@@ -147,8 +148,8 @@ func (s *Service) RecordHost(caller Caller, q HostRequest) (Result, error) {
 	if !uuidPattern.MatchString(q.RunID) || !uuidPattern.MatchString(q.AttemptID) || !digestPattern.MatchString(q.InputRevision) || q.ExpectedRevision == 0 || !opaque(q.ThreadID) || !validObservation(q.Observation) {
 		return Result{}, fail("invalid_request", "invalid bounded host observation")
 	}
-	if q.HostVersion != "0.160.1" && q.HostVersion != "0.161.0" {
-		return Result{}, fail("incompatible_profile", "only measured Codex 0.160.1 and 0.161.0 are supported")
+	if q.HostVersion != "0.160.1" && q.HostVersion != "0.161.0" && !codexcompat.Supported(q.HostVersion) {
+		return Result{}, fail("incompatible_profile", "unsupported Codex observation version")
 	}
 	if q.HostIdentity != "" && !digestPattern.MatchString(q.HostIdentity) {
 		return Result{}, fail("invalid_request", "invalid host identity")

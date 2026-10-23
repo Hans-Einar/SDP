@@ -19,7 +19,7 @@ func (c *Client) PrepareAttachment(ctx context.Context, service *governance.Serv
 		return Recovery{}, fmt.Errorf("current running assignment required")
 	}
 	a := r.Run.Attempts[len(r.Run.Attempts)-1]
-	if c.HostIdentity == "" || c.HostIdentity != a.HostIdentity || a.HostVersion != HostVersion || a.TurnID == "" || (a.Status != "running" && a.Status != "unknown") {
+	if c.HostIdentity == "" || c.HostIdentity != a.HostIdentity || a.HostVersion != c.Version() || a.TurnID == "" || (a.Status != "running" && a.Status != "unknown") {
 		return Recovery{}, fmt.Errorf("same active socket host and mapped turn required")
 	}
 	for _, input := range r.Run.Inputs {
@@ -63,7 +63,7 @@ func (c *Client) PrepareAttachment(ctx context.Context, service *governance.Serv
 	c.ask = approvals == "ask"
 	c.approvalMu.Unlock()
 	valid := func(t Thread) bool {
-		if t.ID != a.ThreadID || t.Cwd != cwd || t.CLIVersion != HostVersion || t.Status.Type != "active" {
+		if t.ID != a.ThreadID || t.Cwd != cwd || t.CLIVersion != c.Version() || t.Status.Type != "active" {
 			return false
 		}
 		found := false

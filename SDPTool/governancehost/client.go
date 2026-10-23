@@ -15,10 +15,13 @@ import (
 	"sync"
 	"time"
 
+	"github.com/Hans-Einar/SDP/SDPTool/codexcompat"
 	"github.com/Hans-Einar/SDP/SDPTool/governance"
 )
 
-const HostVersion = "0.161.0"
+// HostVersion names the measured baseline; actual connections retain Version().
+const HostVersion = codexcompat.MinimumVersion
+const WireProfile = codexcompat.Profile
 
 func UUID() string {
 	var b [16]byte
@@ -62,6 +65,16 @@ type Client struct {
 	Epoch         string
 	HostIdentity  string
 	UserAgent     string
+	version       string
+}
+
+// Version returns the observed connection version. Unexported in-memory test
+// clients use the measured baseline; both public constructors establish identity.
+func (c *Client) Version() string {
+	if c.version != "" {
+		return c.version
+	}
+	return HostVersion
 }
 
 // Open starts an owned stdio process with its existing managed-account setup.
@@ -71,8 +84,9 @@ func Open(ctx context.Context, binary, cwd string) (*Client, error) {
 	if e != nil {
 		return nil, fmt.Errorf("host version unavailable: %w", e)
 	}
-	if strings.TrimSpace(string(v)) != "codex-cli "+HostVersion {
-		return nil, fmt.Errorf("incompatible_profile: require codex-cli %s", HostVersion)
+	version := strings.TrimPrefix(strings.TrimSpace(string(v)), "codex-cli ")
+	if !strings.HasPrefix(strings.TrimSpace(string(v)), "codex-cli ") || !codexcompat.Supported(version) {
+		return nil, fmt.Errorf("incompatible_profile: require stable codex-cli >= %s", HostVersion)
 	}
 	cmd := exec.CommandContext(ctx, binary, "app-server", "--listen", "stdio://")
 	cmd.Dir = cwd
@@ -92,6 +106,7 @@ func Open(ctx context.Context, binary, cwd string) (*Client, error) {
 	}
 	c := newClient(in, out)
 	c.cmd = cmd
+	c.version = version
 	return c.initialize(ctx)
 }
 
@@ -106,8 +121,16 @@ func (c *Client) initialize(ctx context.Context) (*Client, error) {
 	if e == nil && (init.UserAgent == "" || init.PlatformOs == "") {
 		e = fmt.Errorf("incompatible_profile: missing initialize capabilities")
 	}
-	if e == nil && c.HostIdentity != "" && !strings.HasPrefix(init.UserAgent, "sdp_governance/"+HostVersion+" ") {
-		e = fmt.Errorf("incompatible_profile: socket server version mismatch")
+	if e == nil {
+		version, ok := strings.CutPrefix(init.UserAgent, "sdp_governance/")
+		if ok {
+			version, _, ok = strings.Cut(version, " ")
+		}
+		if !ok || !codexcompat.Supported(version) || c.version != "" && version != c.version {
+			e = fmt.Errorf("incompatible_profile: host version mismatch or unsupported initialize identity")
+		} else {
+			c.version = version
+		}
 	}
 	if e == nil {
 		e = c.send(map[string]any{"method": "initialized", "params": map[string]any{}})
@@ -249,9 +272,12 @@ func (c *Client) call(ctx context.Context, method string, params, out any) error
 			return fmt.Errorf("reconciliation_required: response identity mismatch")
 		}
 		if r.f.Error != nil {
+			if r.f.Error.Code == -32601 || r.f.Error.Code == -32602 {
+				return fmt.Errorf("incompatible_profile: host method %s rejected the required wire contract (code %d)", method, r.f.Error.Code)
+			}
 			return fmt.Errorf("host_rpc_error: %s code %d", method, r.f.Error.Code)
 		}
-		if len(r.f.Result) == 0 {
+		if len(r.f.Result) == 0 || string(r.f.Result) == "null" {
 			return fmt.Errorf("invalid host result")
 		}
 		return json.Unmarshal(r.f.Result, out)
@@ -311,6 +337,9 @@ func (c *Client) StartProbeThread(ctx context.Context, cwd string, mcpConfig map
 		params["config"] = map[string]any{"mcp_servers": mcpConfig}
 	}
 	e := c.call(ctx, "thread/start", params, &out)
+	if e == nil && (out.Thread.ID == "" || out.Thread.Status.Type != "idle") {
+		e = fmt.Errorf("incompatible_profile: probe thread is not observed idle")
+	}
 	return out.Thread, e
 }
 func (c *Client) ReadThread(ctx context.Context, id string) (Thread, error) {
