@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T028 — PGL3-C4 guarded attention continuation delivered.
+Latest recorded turn: T029 — owner selects Codex 0.164.0 and compatible later host support.
 The native trial asks, receives a delayed fixture reply, starts one fresh attempt
 and implements/reports the selected behavior. Leader report consumption and responsive
 coordination remain, alongside native parallel evidence and sustained-hour capacity.
@@ -16,7 +16,8 @@ gantt
     DONE S1 Scope and dependencies :done,s1,2000-01-01,1d
     DONE S2 Shared contract and pilot design :done,s2,after s1,1d
     WAITING S3 Complete single-workflow gates :s3,after s2,1d
-    ACTIVE S6 Project Leader and SAD orchestration :active,s6,after s3,1d
+    ACTIVE S7 Codex host compatibility :active,s7,after s3,1d
+    WAITING S6 Project Leader and SAD orchestration :s6,after s7,1d
     PLANNED S4 Recovery and evidence verification :s4,after s6,1d
     PLANNED S5 Timeline projection :s5,after s4,1d
 ```
@@ -26,6 +27,7 @@ gantt
 | completed | S1 | Recover skills, studies, card dependencies and ownership | Owner request, 2026-10-03 | Assessment below; RGS2 reused |
 | completed | S2 | Design the smallest common routing, run, Session and client contract | Owner continuation, T002 | [PGD1 / PLAN-SDP-0017](../04--Design/SDPTool/ProjectGovernance/Plan.md), contract, acceptance cases and protocol inspection |
 | waiting | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C6 verified; owner reports PGI3-U1 trial performed; native mapping remains unverified; KB052 now prioritized |
+| active | S7 | Codex 0.164.0 and compatible later hosts / PGC1 | Owner T029; KB057 and existing PLAN-SDP-0018 | Contract/preflight delivered; actual-version propagation, range/profile guards and evidence in progress |
 | active | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation, C2a lifecycle, C2b provider checks and C2c decisions and C2d activation/native code trial delivered; PGL3-C2 reports/inbox, C3 attention/replies and C4 guarded continuation delivered; responsive leader and report consumption remain |
 | planned | S4 | Verify interruption, resume, scope change and evidence disposition | S3 candidate | Evidence required before wider use |
 | planned | S5 | Project recorded activity into the KB043 timeline | Reliable S3/S4 capture and selected rendering scope | Full timeline remains deferred |
@@ -35,9 +37,9 @@ gantt
 | Session reference | SESSION-SDP-0007 |
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
-| Snapshot date | 2026-10-21 |
-| Current step | S6 / KB052; PGL3-C4 guarded attention continuation delivered; leader integration pending |
-| Proposed next step | PGL3 report consumption and responsive coordination; capacity/recovery and native parallel evidence; KB054 retains separate-project hub/client handoff |
+| Snapshot date | 2026-10-24 |
+| Current step | S7 / PGC1 host compatibility; contract delivered, adapter implementation in progress |
+| Proposed next step | PGC1 adapter/actual-version changes and compatible-future/refusal evidence, then return to retained PG leader/report and verification gates |
 | Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension; T026 assigns hub/webapp to a separate project and continues local SDP/SDPTool work; T027 continues local attention/replies; T028 continues guarded attention continuation |
 
 ## Goal and ownership
@@ -1348,3 +1350,19 @@ checks pass for 169 relative links, five actual continuation/reply wire objects,
 exact source hashes and canonical ledger byte prefixes. All 176 original lab entries
 are unchanged. PM207 / KB381 and system implementation/verification events are now
 recorded. The owning worktree contains only scoped PG changes for the milestone.
+
+## T029 — 24 October 2026: forward compatibility and PG value/model assessment
+
+- Capture: manual owner-input/work summary; exact host thread/turn IDs unavailable. Owner authorizes Codex 0.164.0 and later support, asks before implementation whether PG is useful, what to improve beyond current plans and whether GPT-6.1 Sol or GPT-6 Astra high should implement it.
+- Recovered active PG goal and completed Session0013/WR2 results. Existing Ponsse pilot/model and MVP1 deferral preserved. No new Session or duplicate implementation plan created; PGC1 is a bounded selected increment under PLAN-SDP-0018.
+- Skills loaded/reused, agent-reported: sdp, change analysis, Architect, planning, Master/Worker, Verifier and OpenAI Docs/model-selection guidance. No automatic routine-run or independent-review claim.
+- Assessment/recommendation: PG is useful if it reduces owner coordination and preserves recoverable, revision-bound work. Main risk is process overhead. Most desired controls are already planned; prioritize one complete simple workflow, clear blocking reasons and manual-capable use. KB058 registers the additional recommendation to assess owner effort/resume overhead; no instrumentation authorized.
+- Model recommendation: GPT-6.1 Sol high for bounded implementation, GPT-6 Astra high for difficult architecture or later independent review; this is workload judgment, not a PG benchmark. Official model pages fetched on 24 October describe Sol as suited to complex coding at lower cost and Astra as the most capable model. No model switch/delegation selected or performed.
+- Preflight: c907e22 clean; one SDP worktree; new isolated equivalent branch sdp/codex-forward-compatibility. Green scoped verdict recorded in preflight-PGC1.json. Actual impact includes host version use in CLI, core observations, controller binding and recovery; changing only the Open version equality would be insufficient.
+- PGC1-A delivered: contract and range/profile choice, actual-version propagation and legacy-history/recovery boundaries. PGC1-B implementation selected and in progress; results will be recorded before return. No full PG readiness, independent approval, merge or release inferred.
+
+### T029 steering — Blueprint purpose and direction
+
+- Owner adds a Blueprint question while PGC1 is active; this steers the same turn rather than canceling compatibility work. The core intent is system orientation plus relevant local NOW/TARGET understanding, reducing expensive exploratory source reading for agents.
+- Current Blueprint source/evidence inspected. Discussion assessment recorded under KB050 and paused Session0008 T016, without starting its pilot or changing the Ponsse/MVP1 deferral. Existing primitives align; the agent recommends a layered system entry, distinct before/after presentation, progressive context and explicit model-code correspondence. Existing synthetic trial is acknowledged; real large-system usefulness remains unproven.
+- PGC1 code work continues; no Blueprint runtime or model edits selected by this question.

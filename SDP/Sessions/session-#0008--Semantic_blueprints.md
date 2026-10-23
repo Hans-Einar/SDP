@@ -476,3 +476,11 @@ Plan0020 remains completed; no product code, release or XFMD work was performed.
 Next active step is Session0011 S1: define the catalogue/JSON invocation contract
 and bounded execution plan. Resume here at S1/BP2-A after that separate goal or
 owner redirection. This is a manual work summary, not an exact transcript.
+
+### T016 — 24 October 2026 owner-intent discussion while execution remains paused
+
+- Owner steering during active PG Session0007 T029 clarifies the purpose: transfer system understanding to agents through broad overview, relevant local context and current/target designs, saving exploratory source reading/context. The owner has not reviewed all implementation details and expects learning through use.
+- Discussion-only recovery: inspected current contract, selection, renderer/analyzer, producer and BPI3-M1 synthetic Worker/Reviewer evidence. Assessment delivered in [Owner-Intent-Assessment](../04--Design/SDPTool/Blueprints/Owner-Intent-Assessment.md). Existing technical direction is aligned; broad orientation, distinct before/after views, progressive delivery and model/code correspondence need explicit attention. Synthetic trial is positive evidence, not large-system efficiency proof.
+- Skills/routines reused, agent-reported: sdp, change analysis and Architect; mandatory Session upkeep. Exact host/turn IDs and routine-run identity unknown. Work summary only, no future final response claimed captured.
+- Card KB050 remains gate-review. No acceptance of the calibration extraction, general Blueprint readiness, new schema or pilot resumption inferred. Session remains paused for execution; current authorized implementation remains PG PGC1. No model/generated output or Blueprint source code changed.
+- Next when separately resumed: review the readable package and these proposals with the owner at the existing BP2-A gate; preserve the existing Ponsse model and MVP1 deferral.

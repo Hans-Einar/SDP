@@ -583,3 +583,14 @@ with native parallel execution. Establish capacity/recovery before sustained-hou
 claims. SAD dispatch/scope closure, PGL4/5 and retained PGI gates remain. No independent
 review, owner acceptance, main integration or release is claimed. Hub/webapp remain
 in the separate project; backlog/onHold dependency scopes are unchanged.
+
+## PGC1 selection — Session0007 T029, 24 October 2026
+
+Owner authorizes Codex 0.164.0 and compatible later versions, not a single-release
+repin. [PGC1 contract/milestones](Codex-Compatibility.md) and KB057 bound this
+compatibility increment. Retain existing BranchPolicy current / CommitPolicy
+milestone. Use isolated equivalent branch sdp/codex-forward-compatibility from
+consolidated c907e22; the historical pilot branch/commits remain preserved in main
+history. No rewriting of earlier branch commitments or source evidence.
+PGC1-A analysis/contract delivered; PGC1-B implementation starts. Later PG/leader,
+independent review and publication gates remain unchanged. No merge/release selected.

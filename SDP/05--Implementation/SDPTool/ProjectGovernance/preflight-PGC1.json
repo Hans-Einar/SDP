@@ -1,0 +1,22 @@
+{
+  "observedAt": "2026-10-23T22:10:45.708406+00:00",
+  "head": "c907e22a4cc7b96fb1cbb8d9a89ef27bffe0a657",
+  "branch": "sdp/codex-forward-compatibility",
+  "worktrees": "worktree /home/warloc/git/SDP\nHEAD c907e22a4cc7b96fb1cbb8d9a89ef27bffe0a657\nbranch refs/heads/sdp/codex-forward-compatibility\n\n",
+  "statusBeforeProductEdits": "?? SDP/05--Implementation/SDPTool/ProjectGovernance/Codex-Compatibility.md\n",
+  "writeScope": [
+    "SDPTool/codexcompat",
+    "SDPTool/governancehost",
+    "SDPTool/governancecontroller",
+    "SDPTool/governance/host.go",
+    "SDPTool/governance/host_test.go",
+    "SDPTool/cmd/sdp-controller",
+    "SDP/05--Implementation/SDPTool/ProjectGovernance",
+    "SDP/Sessions/session-#0007--Project_governance.md",
+    "SDP/KanBan",
+    "SDP/ProjectManagement/Ledger.ndjson",
+    "SDP/Traceability"
+  ],
+  "verdict": "green for selected PGC1 scope",
+  "basis": "Single registered SDP worktree; clean at branch creation from c907e22; no other observed edits. Existing PG and readiness scopes recovered; owner confirms laptop handover. Preserve completed readiness branch and legacy history."
+}

@@ -140,3 +140,14 @@ handles KB051. CardState remains gate-review for the concrete BP2-A pilot; no
 acceptance is implied. ImplementationPlan0020 is completed. Resume via the explicit
 Resume here block in Session0008, then record owner pilot disposition or bounded
 corrections against DesignPlan0001. Do not restart completed implementation phases.
+
+## Owner intent clarification — 2026-10-23T22:14:59.363703+00:00
+
+The owner emphasizes transferring broad system understanding, relevant local
+implementation context and NOW/TARGET design to agents, reducing exploratory source
+reading and context use. Detailed Blueprint choices have not yet been owner-reviewed.
+[Assessment](../../04--Design/SDPTool/Blueprints/Owner-Intent-Assessment.md) maps this
+to existing source/evidence and proposes layered orientation, explicit before/after,
+progressive context and honest model/code correspondence. These are recommendations,
+not new product delivery or accepted pilot feedback. CardState remains gate-review;
+Session0008 implementation remains paused. EVT-KB-SDP-000392.

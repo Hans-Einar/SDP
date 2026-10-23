@@ -185,3 +185,11 @@ report and evidence/publication gates. This is a readiness handoff, not new PG
 implementation, phase selection, native/independent-review acceptance or closure.
 CardState remains in-progress; existing PLAN-SDP-0018 authority is preserved.
 EVT-KB-SDP-000387. MVP1 is deferred; the existing Ponsse pilot model is preserved.
+
+## T029 selected host compatibility — 2026-10-23T22:10:45.708406+00:00
+
+Owner selects [KB057](%23057--Change--Codex-forward-compatibility.md) / PGC1 under
+PLAN-SDP-0018, minimum 0.164.0 and compatible later hosts. This replaces exact
+release admission while retaining observed identity, live wire checks and recovery
+boundaries. PGL3 leader/report work remains open; CardState stays in-progress.
+EVT-KB-SDP-000390.
