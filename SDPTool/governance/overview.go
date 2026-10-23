@@ -69,7 +69,7 @@ func (s *Service) Overview() (Overview, error) {
 		if err != nil {
 			return out, err
 		}
-		c, err := s.Context(r.Selection)
+		c, err := s.runContext(r)
 		switch {
 		case err != nil:
 			v.Coverage = "unavailable"

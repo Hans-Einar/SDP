@@ -151,3 +151,64 @@ func TestCompiledStdioNegotiation(t *testing.T) {
 		t.Fatal("inspection created operational state", e)
 	}
 }
+
+func TestAttentionTransportAndControllerOnlyReply(t *testing.T) {
+	s, _, q := fixture(t)
+	bind(t, s, &q)
+	r, e := s.Start(governance.LocalController(), q)
+	if e != nil {
+		t.Fatal(e)
+	}
+	at, epoch := governancehost.UUID(), governancehost.UUID()
+	record := func(action, kind, status, turn string) {
+		t.Helper()
+		r, e = s.RecordHost(governance.LocalController(), governance.HostRequest{Schema: governance.Schema, ProjectRef: r.ProjectRef, CheckoutID: r.CheckoutID, RunID: r.Run.ID, ExpectedRevision: r.Run.Revision, InputRevision: r.Run.InputRevision, OperationID: governancehost.UUID(), Action: action, AttemptID: at, HostVersion: governancehost.HostVersion, ThreadID: "thread", Observation: governance.Observation{Kind: kind, Epoch: epoch, Status: status, TurnID: turn, ReceivedAt: time.Now().UTC().Format(time.RFC3339Nano)}})
+		if e != nil {
+			t.Fatal(e)
+		}
+	}
+	record("bind", "bound", "idle", "")
+	r, e = s.Transition(governance.LocalController(), governance.TransitionRequest{Schema: governance.Schema, ProjectRef: r.ProjectRef, CheckoutID: r.CheckoutID, OperationID: governancehost.UUID(), RunID: r.Run.ID, ExpectedRevision: r.Run.Revision, InputRevision: r.Run.InputRevision, Action: "start", Reason: "fixture"})
+	if e != nil {
+		t.Fatal(e)
+	}
+	record("observe", "turn.started", "running", "turn")
+	server, e := New(s, r.Run.ID, at, epoch)
+	if e != nil {
+		t.Fatal(e)
+	}
+	client := connect(t, server)
+	inventory, e := client.ListTools(context.Background(), nil)
+	if e != nil || len(inventory.Tools) != 7 {
+		t.Fatal(inventory, e)
+	}
+	for _, tool := range inventory.Tools {
+		if tool.Name == "attention_request" && tool.Annotations.ReadOnlyHint {
+			t.Fatal("write tool marked read-only")
+		}
+		if tool.Name == "attention_read" && !tool.Annotations.ReadOnlyHint {
+			t.Fatal("read tool marked mutable")
+		}
+	}
+	ask := governance.AttentionRequest{Schema: governance.AttentionSchema, ProjectRef: r.ProjectRef, CheckoutID: r.CheckoutID, OperationID: governancehost.UUID(), RunID: r.Run.ID, InputRevision: r.Run.InputRevision, ExpectedRevision: r.Run.Revision, Prompt: "Which wording should be used?", Options: []governance.AttentionOption{{ID: "short", Label: "Short wording"}}, Blocking: true}
+	got := call(t, client, "attention_request", ask, false)
+	b, _ := json.Marshal(got.StructuredContent)
+	if e = json.Unmarshal(b, &r); e != nil {
+		t.Fatal(e)
+	}
+	reply := governance.AttentionDisposition{Schema: governance.AttentionSchema, ProjectRef: r.ProjectRef, CheckoutID: r.CheckoutID, OperationID: governancehost.UUID(), RunID: r.Run.ID, QuestionID: r.Run.Attention[0].ID, Basis: r.Run.Attention[0].Basis}
+	if _, e = client.CallTool(context.Background(), &mcp.CallToolParams{Name: "attention_reply", Arguments: reply}); e == nil {
+		t.Fatal("owner reply exposed")
+	}
+	call(t, client, "attention_read", map[string]any{"runId": governancehost.UUID()}, true)
+	if _, e = s.ReplyAttention(governance.LocalController(), reply, governance.OwnerAttentionInput{Actor: "fixture-owner", Source: "test", OptionID: "short", Text: "Use the short wording."}); e != nil {
+		t.Fatal(e)
+	}
+	call(t, client, "attention_read", map[string]any{"questionId": governancehost.UUID()}, true)
+	read := call(t, client, "attention_read", map[string]any{"questionId": reply.QuestionID}, false)
+	b, _ = json.Marshal(read.StructuredContent)
+	var view governance.AttentionInbox
+	if e = json.Unmarshal(b, &view); e != nil || len(view.Items) != 1 || view.Items[0].Status != "answered" || view.Items[0].Applicability != "current" || view.Items[0].Consumption != "not-tracked" {
+		t.Fatal(view, e)
+	}
+}

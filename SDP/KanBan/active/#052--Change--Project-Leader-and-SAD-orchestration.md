@@ -9,7 +9,7 @@
 | created | 2026-10-09T12:08:50.581137+00:00 |
 | source | Owner Session0011 T004 role definition and T005 KanBan handoff request |
 | Systems | SDPTOOL |
-| next_review | PGL2-C2 disposition, provider and assignment revision gates |
+| next_review | PGL3 report consumption and responsive coordination; capacity/recovery and native parallel evidence; separate hub/webapp handoff in KB054 |
 | PlanId | PLAN-SDP-0018 |
 | tags | project-leader, steering, SAD, master, MCP, app-server, coordination |
 
@@ -98,3 +98,77 @@ exact source/generation checks, local scope refusal, retry recovery and stale
 inspection. [Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C1.md)
 is CLI/service-level with fixture artifacts. PGL2 remains in-progress for actual
 disposition/provider/revision/retirement gates; PGL3–5 and owner acceptance remain.
+
+2026-10-18 / T018: PGL2-C2a delivers stable-ID package revision and terminal
+retirement with preserved receipts and local scope release.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C2a.md)
+records scoped tests and the separate compiled CLI trial. CardState remains
+in-progress; actual disposition/provider checks and PGL3–5 remain unfinished.
+
+2026-10-18 / T020: PGL2-C2b delivers read-only checks against canonical Blueprint
+and live ModelGovernance captures, exact task/scope and preparation revision.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C2b.md)
+records source-drift refusals, compiled CLI/schema checks and the isolated lab preview.
+No owner acceptance is inferred. CardState stays in-progress for trusted disposition,
+dispatch and PGL3–5. EVT-KB-SDP-000372 links this review to the active plan delivery.
+
+2026-10-18 / T022: Owner authorizes continuing while reading the walkthrough.
+PGL2-C2c delivers the local controller decision adapter with immutable revision-bound
+records, supersession and current/stale applicability. [Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C2c.md)
+uses scripted fixture decisions, not actual owner approval. Final conversation/UI and
+same-user identity authentication are not claimed. CardState remains in-progress;
+dispatch prerequisites and PGL3–5 remain. EVT-KB-SDP-000373 records this update.
+
+2026-10-19 / T024: Owner requests continued work toward Session completion.
+[C2d evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C2d.md)
+delivers exact approved Master activation, live run authority and a real isolated Go
+implementation trial. External behavioral tests pass and protected files remain intact.
+Native report submission was refused under never; no complete reporting, acceptance
+or independent review is claimed. Scope closure/replanning, SAD dispatch and PGL3–5
+remain open. CardState stays in-progress. EVT-KB-SDP-000374 records this boundary.
+
+2026-10-19 / continued T024: [PGL3-C1](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C1.md)
+delivers per-run controller isolation with legacy exclusion and process-exit recovery.
+Tests demonstrate independent progress with protocol hosts, not native parallel agents
+or the responsive leader. Report interaction preference is pending; host policy is
+unchanged. CardState remains in-progress. EVT-KB-SDP-000375 records this milestone.
+
+2026-10-19 / T025: Owner chooses automatic reporting and sustained execution within
+authorized assignments, with durable attention requests when input is needed. This
+resolves the reporting preference from T024; it does not bypass a host refusal or
+accept implementation. Local report/inbox/attention contracts continue under this
+card. [KB054](../backlog/%23054--Proposal--PG-attention-and-remote-coordination.md)
+registers the proposed self-hosted multi-machine hub and web/PWA client separately.
+See the [architecture proposal](../../03--Architecture/ProjectGovernance/Attention-and-Remote-Coordination.md).
+CardState stays in-progress; runtime completion/evidence remain unfulfilled.
+
+
+2026-10-19 / T026: Owner separates hub/webapp into another project and continues local
+SDP/SDPTool. [PGL3-C2 evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C2.md)
+records explicit automatic reports and the durable read-only inbox. Final native
+code/report trial passes; first incorrect host-policy mapping is retained as failed
+evidence. Run remains verifying, not accepted. Next: typed attention/reply, leader
+consumption/continuation and native parallel evidence; receipt capacity/recovery must
+support the later multi-hour claim. CardState remains in-progress. KB378 records this
+bounded delivery; KB379 records the separate-project handoff refinement in KB054.
+
+
+2026-10-21 / T027: Owner continues local PG. [PGL3-C3 evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C3.md)
+delivers durable questions, revision-bound attributed replies, withdrawal and per-run
+advancement guards. Agent MCP and compiled CLI evidence pass; the separate lab has
+an open question for owner experimentation. No native attention continuation or
+actual owner acceptance is claimed. Next: leader consumption, guarded continuation,
+capacity/recovery and native parallel evidence. KB380 records this review; CardState
+remains in-progress. Backlog/onHold review retains KB036/037/042/043 dependencies
+and KB054's separate-project boundary; no new card activation or scope expansion.
+
+
+2026-10-21 / T028: [PGL3-C4 evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C4.md)
+delivers guarded current-reply continuation through a fresh attempt in the same run,
+with original policies/skills, durable dispatch claims and a bounded opt-in watcher.
+The native ask/reply/code/report trial and duplicate/stale/uncertain guards pass.
+A report remains verifying; no owner acceptance or full leader is claimed. PM207 /
+KB381 record the milestone. CardState remains in-progress. Next: report consumption,
+responsive coordination, native parallel evidence and capacity/recovery; SAD/PGL4/5
+and retained PGI gates remain. Backlog/onHold review retains KB036/037/042/043 and the
+KB054 separate-project boundary without activating additional work.

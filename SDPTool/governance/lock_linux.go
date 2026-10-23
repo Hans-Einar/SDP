@@ -9,6 +9,14 @@ import (
 )
 
 func lock(dir string) (func(), error) {
+	return fileLock(dir, syscall.LOCK_EX)
+}
+
+func sharedLock(dir string) (func(), error) {
+	return fileLock(dir, syscall.LOCK_SH)
+}
+
+func fileLock(dir string, mode int) (func(), error) {
 	if e := safeAbsolute(dir); e != nil {
 		return nil, e
 	}
@@ -26,7 +34,7 @@ func lock(dir string) (func(), error) {
 	if e != nil {
 		return nil, e
 	}
-	if e = syscall.Flock(int(f.Fd()), syscall.LOCK_EX|syscall.LOCK_NB); e != nil {
+	if e = syscall.Flock(int(f.Fd()), mode|syscall.LOCK_NB); e != nil {
 		f.Close()
 		return nil, fail("busy", "another process owns the checkout state")
 	}

@@ -20,6 +20,9 @@ func (s *Service) authorize(c Caller, schema, project, checkout, operation strin
 	return nil
 }
 func retry(state snapshot, id, digest string) (Result, bool, error) {
+	if _, ok := state.DesignDecisionReceipts[id]; ok {
+		return Result{}, true, fail("idempotency_conflict", "operationId belongs to design decision")
+	}
 	if _, ok := state.PreparationReceipts[id]; ok {
 		return Result{}, true, fail("idempotency_conflict", "operationId belongs to assignment preparation")
 	}
@@ -85,7 +88,7 @@ func (s *Service) Start(caller Caller, q StartRequest) (Result, error) {
 			return out, fail("conflict", "request already has a run; retry the original operation or inspect it")
 		}
 	}
-	if len(state.Prepared) > 0 {
+	if hasPreparedClaim(state) {
 		for _, p := range q.Assignment.WritablePaths {
 			if strings.ContainsAny(p, "*?[]") {
 				return out, fail("conflict", "nonliteral legacy scope requires reconciliation with prepared work")
@@ -143,7 +146,7 @@ func (s *Service) Read(runID string) (Result, error) {
 	if !ok {
 		return out, fail("missing_coverage", "run not found")
 	}
-	c, e := s.Context(r.Selection)
+	c, e := s.runContext(r)
 	if e != nil {
 		return out, e
 	}
@@ -196,10 +199,10 @@ func (s *Service) Transition(caller Caller, q TransitionRequest) (Result, error)
 	if !ok {
 		return out, fail("missing_coverage", "run not found")
 	}
-	if q.ExpectedRevision != r.Revision && !approvedRevision(state, r, caller, q) {
+	if q.ExpectedRevision != r.Revision && !approvedRevision(state, r, caller, q) && !(q.Action == "report" && observedAgentRevision(state, r, caller, q.ExpectedRevision)) {
 		return out, &Error{Code: "stale_revision", Message: "run revision changed", CurrentRevision: r.Revision}
 	}
-	c, e := s.Context(r.Selection)
+	c, e := s.runContext(r)
 	if e != nil {
 		return out, e
 	}
@@ -211,6 +214,9 @@ func (s *Service) Transition(caller Caller, q TransitionRequest) (Result, error)
 	}
 	if !stopping && (c.Revision != r.InputRevision || len(c.Conditions) > 0) {
 		return out, fail("stale_revision", "authority/work changed; reconcile before advancing")
+	}
+	if (q.Action == "report" || q.Action == "start" || q.Action == "resume") && hasBlockingAttention(r) {
+		return out, fail("attention_required", "answer or withdraw blocking questions before advancing this run")
 	}
 	next := ""
 	switch q.Action {
@@ -266,11 +272,11 @@ func (s *Service) Transition(caller Caller, q TransitionRequest) (Result, error)
 	}
 	state.Runs[r.ID] = r
 	state.Receipts[q.OperationID] = receipt{digest, out}
-	latest, e := s.Context(r.Selection)
+	latest, e := s.runContext(r)
 	if e != nil {
 		return Result{}, e
 	}
-	if !stopping && latest.Revision != c.Revision {
+	if !stopping && (latest.Revision != c.Revision || len(latest.Conditions) > 0) {
 		return Result{}, fail("stale_revision", "inputs changed during preparation")
 	}
 	if e = s.save(state, head); e != nil {

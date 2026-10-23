@@ -1,0 +1,432 @@
+{
+  "baseline": "ee16e91635c3c870abb3cc938ebc3459c5ed8758",
+  "observedMain": "5ca0e90f82c5da449d529906b4f753f39a907cb4",
+  "sharedMainAncestor": "e8760d331933361ab631ef0d52c20e87268a22b3",
+  "candidateKind": "baseline plus exact source hashes; evidence precedes milestone commit",
+  "scope": "PGL3-C3 durable local attention/replies; no automatic continuation or native attention claim",
+  "sourceFiles": {
+    "SDPTool/cmd/sdp-controller/attention.go": "7053532342de4620acf797a42604b2ab8bb4196d2c80e01b7d096ec32f94d261",
+    "SDPTool/cmd/sdp-controller/attention_test.go": "4e7fac1ef23f2ab411caa617217e44ad03312fb89f6962cb558b3f20925bcd67",
+    "SDPTool/cmd/sdp-controller/main.go": "04103bd07585646a09642c36ba2f5adea68b9f0a008879b54f9c43a0eadead43",
+    "SDPTool/governance/activation.go": "2f030494e7dd5062092449e3e6db82a4b27e498fa18e4410dd335cb4d7df3175",
+    "SDPTool/governance/attention.go": "23f64651533fb7273ded2ca7dedcb7d664ebd9a3cae7d8ec3a844a976b7a3bb3",
+    "SDPTool/governance/attention_test.go": "7d00c61e63c2bc1598147bc9aad597714aaee1e2adb682b394b0d208d2a5bd0a",
+    "SDPTool/governance/design_decision.go": "cbcbc9ac89cff4bb31638d9b38f10ef66aa7f5f65e5ad22928a180068812cbd9",
+    "SDPTool/governance/host.go": "a445dca700e9f87fc8e29cb9fd33ff8da9d5c88b83f038d94eaf14dfbc659744",
+    "SDPTool/governance/preparation.go": "d225754c7772a835a74a749a487d8aeba3239ed36538f58a896a68bab0d72f19",
+    "SDPTool/governance/preparation_lifecycle.go": "f1c7c0c5ad870856c8dfee08b0a5328ca36b3d69ac38a5d9e45a3264ce9cfb55",
+    "SDPTool/governance/report_revision.go": "f04efdbb6a070cb58a62dc40fc7b29c97c1c9907dd952db482e9f16bcd526554",
+    "SDPTool/governance/run.go": "cbfe714b34a5668c647a2c60f940a641aa9bdc1a2c0335a774844c6e351a7c00",
+    "SDPTool/governance/schema.json": "f4593fc892589f5df267d8337816c6f74fa073ce7002cc66819febbadf280b2e",
+    "SDPTool/governance/store.go": "9857117b6bc421a22a807a1d6338badba2c455c13a7ccecbfa25d6ebde6e4bf2",
+    "SDPTool/governance/types.go": "c942754c62ba608659ad49efbd37423fb9a7bbfa014d15d916b0210d87e3e7e6",
+    "SDPTool/governancecontroller/README.md": "b439532f9929448192255ec12809fffb09b2b149270766a5ab3f1a77eef25cbb",
+    "SDPTool/governancecontroller/attention_test.go": "7de959004ad88ae6bef712f0b70c6cf77009a5a03ca2ed36fee91e113bc4001d",
+    "SDPTool/governancecontroller/cli_test.go": "9c6a20f2d3eb85f2c2fc09d5bfd9154e221008a21157d68decfefaa57595f8e9",
+    "SDPTool/governancecontroller/controller.go": "397434502cfbae802ebc59d52372609299fa3250d9663e42df5eec08c52d5bc6",
+    "SDPTool/governancecontroller/controller_test.go": "6d4562370c92c6e03751818161a44231ccca49dacaa28c4a5d2af8d7dfd468dc",
+    "SDPTool/governancecontroller/reporting_test.go": "c59fb645d6d7bc9110c7b8933e91650b0687c5d58a11172d2a6a1c390b6c7c65",
+    "SDPTool/governancemcp/server.go": "c0610eb6b39cca45a8f6f7b59108bb2b0f53742456eafada0577fcc8090c677d",
+    "SDPTool/governancemcp/server_test.go": "54e4ecf2a025ab4f268d2872d0e1d567402e789d1e3656baa2adc62a707b4081",
+    "SDPTool/labs/project-governance/README.md": "d5fee11835f99838530117c45cf6cf15909b7670d9f1984b38bae7cfc2bb716a",
+    "SDPTool/labs/project-governance/attention_trial.py": "04d4c5631ebda7cda18835336c6694a62be844ba595f036c8e78579e0c601229",
+    "SDPTool/labs/project-governance/attention_view.py": "afc934f57d0706b9cc34554368e1773aaef7da7b2bad729219adae26d5dc2320"
+  },
+  "fileSetDigest": "d64ef4330a8c44ab2f19a3c87cbc6c023f4d60d34f619b6067011194360d36af",
+  "goVersion": "go version go1.27.1 linux/amd64",
+  "checks": {
+    "full-final.log": {
+      "result": "passed",
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprints\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprintstate\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t(cached)\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp\t[no test files]\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdptool\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t18.531s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t17.374s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancehost\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t5.048s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/install\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/model\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/presentation\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/projecthistory\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/tools/profile\t(cached)\n",
+      "sha256": "ca2165ce6ac775fdfc3b0ce7b2d3b65b76785a73ad2a6bfe648550f0d0675148"
+    },
+    "race-final.log": {
+      "result": "passed",
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t140.341s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t102.918s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t7.916s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t1.053s\n",
+      "sha256": "c8315eedc0fc46b11d23684c735abf3c7709d4b3f40d8511046275ab559b2706"
+    },
+    "vet-final.log": {
+      "result": "passed",
+      "output": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "schema-final-tests.log": {
+      "result": "passed",
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t2.498s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t2.248s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t5.297s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t0.017s\n",
+      "sha256": "964fd9c984422a945237d997f5a4239ad5c4f13f020a9cceda2eca189d92ba81"
+    },
+    "lab-final.log": {
+      "result": "passed",
+      "output": "PASS: durable questions/replies, CLI capture/EOF/retry, stale refusal, withdrawal, independent run, old-reader refusal and protected bytes. One open question remains for an owner trial.\n",
+      "sha256": "50c7264a09d68212020b43b8d3da70f570c6b86de275d3c054db116f7861f058"
+    },
+    "management.log": {
+      "result": "passed",
+      "output": "PASS: 67 cards, 45 management records, 4 lineage operations, 622 events; schema/history/metadata/placement/grouping\n",
+      "sha256": "7c3ddbac0227b1f03e21b630e06d235f195c84ec58267eb9827695bc8fa524ca"
+    },
+    "toolkit.log": {
+      "result": "passed",
+      "output": "SDP Toolkit validation passed\n",
+      "sha256": "5e9d1353c22f090c8b066ba39da56ff229fbc1b07a7e12e21bb8ac9ffbb9e3ad"
+    },
+    "integrity": {
+      "result": "passed",
+      "localMarkdownLinks": 162,
+      "canonicalLedgerPrefixesPreserved": true,
+      "attentionWireObjects": 23,
+      "exactSourceHashes": true
+    }
+  },
+  "cliTrial": {
+    "path": "/home/warloc/git/pg_lab/previews/pgl3-c3-final",
+    "evidenceSHA256": "88a84da14ed66f8c6d2227304358abb242ed2af484678a9b7376a93ded20f86b",
+    "controllerSHA256": "093e17715ac500764dfaf999b90c7f49909b7f7814785612ca925b31c5316b4e",
+    "sdptoolSHA256": "283ea5d75f7b0fceae6cc9d8196f8cc603ce8c755e48924cb8828279a648a2dd",
+    "mcpSHA256": "8c283cf46785d996f207419db656e7e68dbf5e13ed819de7b9472e8e813bfd64",
+    "modelSubmitted": false,
+    "scriptedFixtureNotOwnerApproval": true,
+    "protectedFiles": 9
+  },
+  "originalLabEntriesPreserved": 176,
+  "helper": {
+    "path": "/home/warloc/git/pg_lab/attention",
+    "sha256": "f7db84a4a814d0848f72cc0feb5692651d7ae7311920fe4d6d458a612fd2af06"
+  },
+  "limitations": [
+    "No native attention/reply continuation, automatic dispatch or leader consumption",
+    "No independent review or actual owner acceptance",
+    "No native parallel or multi-hour evidence; bounded receipt/state capacity remains",
+    "Hub/webapp belong to separate project; no merge/release"
+  ],
+  "wireEvidence": [
+    {
+      "definition": "AttentionRequest",
+      "value": {
+        "schema": "sdp-governance-attention/1",
+        "projectRef": "trial",
+        "checkoutId": "6e0e73d4-b8cf-4236-a450-3b89253a4b00",
+        "operationId": "0cd52e0f-e5f6-4b08-9f4b-05aa08266331",
+        "runId": "2a99c7fc-afc3-4f9a-898f-e5693a699246",
+        "inputRevision": "d224714412951a617a1f49bec44fdbdf1bb59c6b3ac2687975261fb46a23d640",
+        "expectedRevision": 8,
+        "prompt": "Which output label should this task use?",
+        "blocking": true
+      }
+    },
+    {
+      "definition": "AttentionDisposition",
+      "value": {
+        "schema": "sdp-governance-attention/1",
+        "projectRef": "trial",
+        "checkoutId": "6e0e73d4-b8cf-4236-a450-3b89253a4b00",
+        "operationId": "71585e24-a56d-46e3-9aa2-00189ed6eb1f",
+        "runId": "2a99c7fc-afc3-4f9a-898f-e5693a699246",
+        "questionId": "0cd52e0f-e5f6-4b08-9f4b-05aa08266331",
+        "basis": "649c115233bfb929712fea1237940af1d81ab57c919ffdc421bf17a7248a1b1b"
+      }
+    },
+    {
+      "definition": "AttentionInbox",
+      "value": {
+        "schema": "sdp-governance-attention/1",
+        "projectRef": "trial",
+        "checkoutId": "6e0e73d4-b8cf-4236-a450-3b89253a4b00",
+        "generation": "46ace4a20901347605a9924dd47f0d083d60b1babce27bb3d5fa6f7698a4e1da",
+        "items": [
+          {
+            "runId": "2a99c7fc-afc3-4f9a-898f-e5693a699246",
+            "question": {
+              "id": "0cd52e0f-e5f6-4b08-9f4b-05aa08266331",
+              "basis": "649c115233bfb929712fea1237940af1d81ab57c919ffdc421bf17a7248a1b1b",
+              "inputRevision": "d224714412951a617a1f49bec44fdbdf1bb59c6b3ac2687975261fb46a23d640",
+              "raisedRevision": 11,
+              "raisedAt": "2026-10-20T22:49:54.185103115Z",
+              "origin": "agent",
+              "attemptId": "4cec16fa-1f97-4a60-8b7a-3e4c15d2d48a",
+              "prompt": "Which output label should this task use?",
+              "options": [],
+              "blocking": true,
+              "reply": {
+                "operationId": "71585e24-a56d-46e3-9aa2-00189ed6eb1f",
+                "actor": "fixture-owner",
+                "source": "test",
+                "text": "Use a short label.",
+                "recordedAt": "2026-10-20T22:49:54.225549987Z"
+              }
+            },
+            "status": "answered",
+            "coverage": "known",
+            "applicability": "current",
+            "currentRevision": 13,
+            "consumption": "not-tracked"
+          }
+        ]
+      }
+    },
+    {
+      "definition": "Result",
+      "value": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "attention.reply",
+        "projectRef": "trial",
+        "checkoutId": "6e0e73d4-b8cf-4236-a450-3b89253a4b00",
+        "operationId": "71585e24-a56d-46e3-9aa2-00189ed6eb1f",
+        "run": {
+          "attention": [
+            {
+              "id": "0cd52e0f-e5f6-4b08-9f4b-05aa08266331",
+              "basis": "649c115233bfb929712fea1237940af1d81ab57c919ffdc421bf17a7248a1b1b",
+              "inputRevision": "d224714412951a617a1f49bec44fdbdf1bb59c6b3ac2687975261fb46a23d640",
+              "raisedRevision": 11,
+              "raisedAt": "2026-10-20T22:49:54.185103115Z",
+              "origin": "agent",
+              "attemptId": "4cec16fa-1f97-4a60-8b7a-3e4c15d2d48a",
+              "prompt": "Which output label should this task use?",
+              "options": [],
+              "blocking": true,
+              "reply": {
+                "operationId": "71585e24-a56d-46e3-9aa2-00189ed6eb1f",
+                "actor": "fixture-owner",
+                "source": "test",
+                "text": "Use a short label.",
+                "recordedAt": "2026-10-20T22:49:54.225549987Z"
+              }
+            }
+          ],
+          "inputs": [
+            {
+              "contentOmitted": true,
+              "id": "0bea135a-cf58-4be6-aa5e-d5f1f65eee5b",
+              "kind": "launch",
+              "text": "",
+              "payload": "",
+              "attemptId": "4cec16fa-1f97-4a60-8b7a-3e4c15d2d48a",
+              "epoch": "5a904bd6-5c00-476b-9e2a-08d74dbc00e3",
+              "threadId": "thread",
+              "turnId": "turn",
+              "state": "acknowledged",
+              "receivedAt": "2026-10-20T22:49:54.066843311Z"
+            }
+          ],
+          "attempts": [
+            {
+              "agentEpoch": "5a904bd6-5c00-476b-9e2a-08d74dbc00e3",
+              "lastObservedAt": "2026-10-20T22:49:54.198643868Z",
+              "eventCount": 6,
+              "id": "4cec16fa-1f97-4a60-8b7a-3e4c15d2d48a",
+              "hostVersion": "0.161.0",
+              "threadId": "thread",
+              "turnId": "turn",
+              "inputRevision": "d224714412951a617a1f49bec44fdbdf1bb59c6b3ac2687975261fb46a23d640",
+              "epoch": "5a904bd6-5c00-476b-9e2a-08d74dbc00e3",
+              "status": "completed",
+              "gap": false,
+              "events": []
+            }
+          ],
+          "id": "2a99c7fc-afc3-4f9a-898f-e5693a699246",
+          "revision": 13,
+          "requestId": "a81bf868-1d92-4964-a4a0-8ee0a7623326",
+          "state": "running",
+          "step": "implement",
+          "inputRevision": "d224714412951a617a1f49bec44fdbdf1bb59c6b3ac2687975261fb46a23d640",
+          "selection": {
+            "card": "SDP/KanBan/active/card.md",
+            "plan": "SDP/Maintenance/Plan.md",
+            "session": "SDP/Sessions/session.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "fix fixture",
+            "writablePaths": [
+              "target.txt"
+            ],
+            "excludedPaths": [
+              "unrelated.txt"
+            ]
+          },
+          "routine": {
+            "id": "maintenance",
+            "version": "0.1",
+            "steps": [
+              "implement",
+              "verify",
+              "review",
+              "record"
+            ],
+            "completion": "candidate evidence, applicable independent review and checked publication required"
+          },
+          "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+          "reason": "owner selected fresh bounded Master attempt"
+        },
+        "coverage": "known"
+      }
+    },
+    {
+      "definition": "AttentionRequest",
+      "value": {
+        "schema": "sdp-governance-attention/1",
+        "projectRef": "trial",
+        "checkoutId": "9af0a088-e2d7-45e9-9113-ad6f1b1c88b4",
+        "operationId": "d2228662-c932-4044-862b-27370eda2079",
+        "runId": "5e7bb86f-02a6-42ff-ad3f-88b3dd3460e9",
+        "inputRevision": "22592a3e8fa056dae34d33321060b2e37867a638faf6194552742b9e35243077",
+        "expectedRevision": 8,
+        "prompt": "Which output label should this task use?",
+        "blocking": true
+      }
+    },
+    {
+      "definition": "AttentionDisposition",
+      "value": {
+        "schema": "sdp-governance-attention/1",
+        "projectRef": "trial",
+        "checkoutId": "9af0a088-e2d7-45e9-9113-ad6f1b1c88b4",
+        "operationId": "b85ab2cb-e27e-4717-8334-5eeba8b2d038",
+        "runId": "5e7bb86f-02a6-42ff-ad3f-88b3dd3460e9",
+        "questionId": "d2228662-c932-4044-862b-27370eda2079",
+        "basis": "3c13b0b6227cde08c204c3399b3269ae409cedbabb6a809e932fa2343cca04c0"
+      }
+    },
+    {
+      "definition": "AttentionInbox",
+      "value": {
+        "schema": "sdp-governance-attention/1",
+        "projectRef": "trial",
+        "checkoutId": "9af0a088-e2d7-45e9-9113-ad6f1b1c88b4",
+        "generation": "e35817b37dc4b6c287186e9e367ea2e831b4ff33f87891e059de353b9cda3bb0",
+        "items": [
+          {
+            "runId": "5e7bb86f-02a6-42ff-ad3f-88b3dd3460e9",
+            "question": {
+              "id": "d2228662-c932-4044-862b-27370eda2079",
+              "basis": "3c13b0b6227cde08c204c3399b3269ae409cedbabb6a809e932fa2343cca04c0",
+              "inputRevision": "22592a3e8fa056dae34d33321060b2e37867a638faf6194552742b9e35243077",
+              "raisedRevision": 11,
+              "raisedAt": "2026-10-20T22:49:53.996507541Z",
+              "origin": "agent",
+              "attemptId": "b50a9d42-3f23-484e-a8ab-f3cb122f099a",
+              "prompt": "Which output label should this task use?",
+              "options": [],
+              "blocking": true,
+              "reply": {
+                "operationId": "b85ab2cb-e27e-4717-8334-5eeba8b2d038",
+                "actor": "fixture-owner",
+                "source": "test",
+                "text": "Use a short label.",
+                "recordedAt": "2026-10-20T22:49:54.018153232Z"
+              }
+            },
+            "status": "answered",
+            "coverage": "known",
+            "applicability": "current",
+            "currentRevision": 12,
+            "consumption": "not-tracked"
+          }
+        ]
+      }
+    },
+    {
+      "definition": "Result",
+      "value": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "attention.reply",
+        "projectRef": "trial",
+        "checkoutId": "9af0a088-e2d7-45e9-9113-ad6f1b1c88b4",
+        "operationId": "b85ab2cb-e27e-4717-8334-5eeba8b2d038",
+        "run": {
+          "attention": [
+            {
+              "id": "d2228662-c932-4044-862b-27370eda2079",
+              "basis": "3c13b0b6227cde08c204c3399b3269ae409cedbabb6a809e932fa2343cca04c0",
+              "inputRevision": "22592a3e8fa056dae34d33321060b2e37867a638faf6194552742b9e35243077",
+              "raisedRevision": 11,
+              "raisedAt": "2026-10-20T22:49:53.996507541Z",
+              "origin": "agent",
+              "attemptId": "b50a9d42-3f23-484e-a8ab-f3cb122f099a",
+              "prompt": "Which output label should this task use?",
+              "options": [],
+              "blocking": true,
+              "reply": {
+                "operationId": "b85ab2cb-e27e-4717-8334-5eeba8b2d038",
+                "actor": "fixture-owner",
+                "source": "test",
+                "text": "Use a short label.",
+                "recordedAt": "2026-10-20T22:49:54.018153232Z"
+              }
+            }
+          ],
+          "inputs": [
+            {
+              "contentOmitted": true,
+              "id": "879a20ee-e4dd-4e41-b2a8-dfa502c1ba4c",
+              "kind": "launch",
+              "text": "",
+              "payload": "",
+              "attemptId": "b50a9d42-3f23-484e-a8ab-f3cb122f099a",
+              "epoch": "4ea1c02e-ef26-4af6-ba19-6f873d2fd0b0",
+              "threadId": "thread",
+              "turnId": "turn",
+              "state": "acknowledged",
+              "receivedAt": "2026-10-20T22:49:53.87407301Z"
+            }
+          ],
+          "attempts": [
+            {
+              "agentEpoch": "4ea1c02e-ef26-4af6-ba19-6f873d2fd0b0",
+              "lastObservedAt": "2026-10-20T22:49:53.97477744Z",
+              "eventCount": 5,
+              "id": "b50a9d42-3f23-484e-a8ab-f3cb122f099a",
+              "hostVersion": "0.161.0",
+              "threadId": "thread",
+              "turnId": "turn",
+              "inputRevision": "22592a3e8fa056dae34d33321060b2e37867a638faf6194552742b9e35243077",
+              "epoch": "4ea1c02e-ef26-4af6-ba19-6f873d2fd0b0",
+              "status": "running",
+              "gap": false,
+              "events": []
+            }
+          ],
+          "id": "5e7bb86f-02a6-42ff-ad3f-88b3dd3460e9",
+          "revision": 12,
+          "requestId": "bc58cc13-64c7-4d98-bde7-a1d51bc97a51",
+          "state": "running",
+          "step": "implement",
+          "inputRevision": "22592a3e8fa056dae34d33321060b2e37867a638faf6194552742b9e35243077",
+          "selection": {
+            "card": "SDP/KanBan/active/card.md",
+            "plan": "SDP/Maintenance/Plan.md",
+            "session": "SDP/Sessions/session.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "fix fixture",
+            "writablePaths": [
+              "target.txt"
+            ],
+            "excludedPaths": [
+              "unrelated.txt"
+            ]
+          },
+          "routine": {
+            "id": "maintenance",
+            "version": "0.1",
+            "steps": [
+              "implement",
+              "verify",
+              "review",
+              "record"
+            ],
+            "completion": "candidate evidence, applicable independent review and checked publication required"
+          },
+          "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+          "reason": "owner selected fresh bounded Master attempt"
+        },
+        "coverage": "known"
+      }
+    }
+  ]
+}

@@ -1,0 +1,553 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Read-only provider-backed PG design review basis",
+  "$comment": "Select Request or Result. current means matching provider/preparation revisions and structural scope checks, never owner approval or dispatch permission. Model/Blueprint semantics remain provider-owned.",
+  "$defs": {
+    "Request": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-design-check/1"
+        },
+        "assignmentId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "expectedGeneration": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "blueprintAssignment": {
+          "type": "string",
+          "pattern": "^BPA-[A-Za-z0-9][A-Za-z0-9.-]{0,95}$"
+        },
+        "blueprintEvent": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        }
+      },
+      "required": [
+        "schema",
+        "assignmentId",
+        "expectedRevision",
+        "expectedGeneration",
+        "blueprintAssignment",
+        "blueprintEvent"
+      ]
+    },
+    "Result": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-design-check/1"
+        },
+        "status": {
+          "enum": [
+            "current",
+            "blocked"
+          ]
+        },
+        "generation": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "assignment": {
+          "$ref": "preparation.schema.json#/$defs/LifecycleAssignment"
+        },
+        "provider": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "assignmentId": {
+              "type": "string",
+              "pattern": "^BPA-[A-Za-z0-9][A-Za-z0-9.-]{0,95}$"
+            },
+            "eventId": {
+              "type": "string"
+            },
+            "workState": {
+              "enum": [
+                "draft",
+                "ready",
+                "assigned"
+              ]
+            },
+            "binding": {
+              "type": "object",
+              "properties": {
+                "bundle": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "task": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "system": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "milestone": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "modelArea": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "from": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "to": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "revision": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "retained": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "plan": {
+                  "type": "string",
+                  "pattern": "^PLAN-[A-Z][A-Z0-9]*-[0-9]{4,}$"
+                }
+              },
+              "required": [
+                "bundle",
+                "task",
+                "system",
+                "milestone",
+                "modelArea",
+                "from",
+                "to",
+                "revision",
+                "retained",
+                "plan"
+              ],
+              "additionalProperties": false
+            },
+            "now": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+                },
+                "kind": {
+                  "type": "string"
+                },
+                "head": {
+                  "type": "string"
+                },
+                "metadataDigest": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "sourceDigest": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "preliminary": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "id",
+                "kind",
+                "head",
+                "metadataDigest",
+                "sourceDigest",
+                "preliminary"
+              ]
+            },
+            "target": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+                },
+                "kind": {
+                  "type": "string"
+                },
+                "head": {
+                  "type": "string"
+                },
+                "metadataDigest": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "sourceDigest": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "preliminary": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "id",
+                "kind",
+                "head",
+                "metadataDigest",
+                "sourceDigest",
+                "preliminary"
+              ]
+            },
+            "taskDigest": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "task": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "ID": {
+                  "type": "string"
+                },
+                "Intent": {
+                  "type": "string"
+                },
+                "Context": {
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "Exclude": {
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "Rules": {
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "ID": {
+                            "type": "string"
+                          },
+                          "Source": {
+                            "type": "string"
+                          },
+                          "Fact": {
+                            "type": "string"
+                          },
+                          "Now": {
+                            "type": "boolean"
+                          },
+                          "Target": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "ID",
+                          "Source",
+                          "Fact",
+                          "Now",
+                          "Target"
+                        ]
+                      }
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "AllowedChanges": {
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "Element": {
+                            "type": "string"
+                          },
+                          "Fact": {
+                            "type": "string"
+                          },
+                          "Change": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "Element",
+                          "Fact",
+                          "Change"
+                        ]
+                      }
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "AllowedModelPaths": {
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "AllowedCodePaths": {
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "Protect": {
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "ID": {
+                            "type": "string"
+                          },
+                          "Source": {
+                            "type": "string"
+                          },
+                          "Element": {
+                            "type": "string"
+                          },
+                          "Scope": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "ID",
+                          "Source",
+                          "Element",
+                          "Scope"
+                        ]
+                      }
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "ID",
+                "Intent",
+                "Context",
+                "Exclude",
+                "Rules",
+                "AllowedChanges",
+                "AllowedModelPaths",
+                "AllowedCodePaths",
+                "Protect"
+              ]
+            },
+            "evidenceReadiness": {
+              "type": "string"
+            },
+            "coverage": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "Profile": {
+                  "type": "string"
+                },
+                "Policy": {
+                  "type": "string"
+                },
+                "ModeledClosureComplete": {
+                  "type": "boolean"
+                },
+                "CodeConformance": {
+                  "type": "string"
+                },
+                "RuntimeDependencies": {
+                  "type": "string"
+                },
+                "SDUISemantics": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "Profile",
+                "Policy",
+                "ModeledClosureComplete",
+                "CodeConformance",
+                "RuntimeDependencies",
+                "SDUISemantics"
+              ]
+            },
+            "unknowns": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "Side": {
+                        "type": "string"
+                      },
+                      "Code": {
+                        "type": "string"
+                      },
+                      "Subject": {
+                        "type": "string"
+                      },
+                      "Detail": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "Side",
+                      "Code",
+                      "Subject",
+                      "Detail"
+                    ]
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "assignmentId",
+            "eventId",
+            "workState",
+            "binding",
+            "now",
+            "target",
+            "taskDigest",
+            "task",
+            "evidenceReadiness",
+            "coverage",
+            "unknowns"
+          ]
+        },
+        "reviewRevision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "designAcceptance": {
+          "const": "not-recorded"
+        },
+        "dispatch": {
+          "const": "unavailable"
+        }
+      },
+      "required": [
+        "schema",
+        "status",
+        "generation",
+        "assignment",
+        "conditions",
+        "designAcceptance",
+        "dispatch"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "current"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "provider",
+              "reviewRevision"
+            ],
+            "properties": {
+              "conditions": {
+                "maxItems": 0
+              }
+            }
+          },
+          "else": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "provider"
+                  ]
+                },
+                {
+                  "required": [
+                    "reviewRevision"
+                  ]
+                }
+              ]
+            },
+            "properties": {
+              "conditions": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -126,9 +126,9 @@ and creates a ready trial run. It does not start Codex. The harness source may b
 newer development version than the selected engine; both identities are recorded.
 An interrupted preparation leaves its directory for inspection and refuses reuse.
 
-The general future action catalogue and JSON invoke adapter belong to KB-SDP-053.
-This lab exercises today's commands and does not require that proposal or an XFMD
-change. A long-running owner conversation still needs streaming events and control;
+The action catalogue and JSON invoke adapter belong to KB-SDP-053, now integrated
+on main. This lab uses the standalone PG commands; it does not add PG Actions or
+require an XFMD change. A long-running owner conversation still needs streaming events and control;
 a one-request JSON adapter alone is not that interaction surface.
 
 ## Assignment preparation trial — PGL2-C1
@@ -149,3 +149,173 @@ binary refuses the upgraded store without changing HEAD. Actual requests/results
 are in evidence.json; no model task is submitted and no design acceptance is inferred.
 The source artifacts are fixtures, not ModelGovernance or Blueprint API evidence.
 Existing owner-lab project/runtime and candidate remain untouched.
+
+## Provider-backed design check — PGL2-C2b
+
+Build the development binaries from SDPTool, without replacing installed tools:
+
+```sh
+go build -o /tmp/pg-controller ./cmd/sdp-controller
+go build -o /tmp/pg-sdptool ./cmd/sdptool
+python3 labs/project-governance/design_trial.py --destination /absolute/new-design-trial --controller /tmp/pg-controller --sdptool /tmp/pg-sdptool --source ../experiments/blueprint_mvp1/NOW
+python3 labs/project-governance/design_view.py --preview /absolute/new-design-trial
+```
+
+The separate project uses real ModelGovernance and retained Blueprint services with
+a synthetic assignment. It proves repeatable current checks, uncommitted TARGET
+drift with unchanged metadata, no writes during inspection and exact restoration.
+It leaves TARGET deliberately changed, so the readable view reports blocked.
+Use `--json` on the view for the full result. Each preview retains binaries,
+requests, results and the selected project/runtime. Existing owner trials are untouched.
+
+The underlying command is `sdp-controller assignment design-check --project ROOT
+--state STATE --input REQUEST`. It requires the prepared assignment revision/generation
+and canonical Blueprint assignment/event. Status current means a consistent review
+basis; it never means owner approval or permission to launch. A blocked result is a
+successful inspection with conditions, not a process failure. Invalid requests fail
+as usual. The provider's bounded live-check budget can return unknown and block a
+check in larger projects; this slice preserves that limitation.
+
+## Local owner-input adapter — PGL2-C2c
+
+Use the new development binaries and a prior C2b controller to reproduce the
+compatibility check, always in a new destination:
+
+```sh
+python3 labs/project-governance/decision_trial.py --destination /absolute/new-decision-trial --controller /absolute/new-controller --sdptool /absolute/new-sdptool --source ../experiments/blueprint_mvp1/NOW --old-controller /absolute/c2b-controller
+python3 labs/project-governance/decision_view.py --preview /absolute/new-decision-trial
+```
+
+The trial supplies explicit **fixture-owner** input to the actual controller. It
+checks cancel/EOF, decision capture, immutable retry without another prompt, stale
+TARGET after approval and while waiting for input, superseding decisions and old-reader
+refusal. It leaves a technically current design with a rejected fixture decision.
+No actual owner approval, agent launch or change to an existing trial is implied.
+
+The view is read-only by default. Optional `--decide --owner NAME` starts an input
+interaction in this isolated project. The controller shows the bounded package,
+reads approved/changes-requested/rejected/cancel and a required comment, then rechecks
+the exact review before recording anything. It returns JSON on stdout and prompts
+on stderr. There is no default decision. This is a provisional adapter; normal
+conversation capture and a final client UI are not delivered.
+
+Underlying commands: `assignment design-decide --project ROOT --state STATE --input
+REQUEST --owner NAME` and `assignment design-review --project ROOT --state STATE
+--input CHECK_REQUEST`. The decision request contains the exact C2b check request,
+review revision, checkout/project binding and operation UUID. It contains no actor,
+choice or owner-role claim. The trusted adapter supplies captured input separately.
+Caller authority does not authenticate a human: same-user shell access remains
+outside the boundary. A historical receipt is not fresh acceptance; use design-review
+with the current generation. New decision writes upgrade only that store to 0.4.
+Older readers refuse it; all new writers preserve it. Dispatch remains unavailable.
+
+## Approved implementation execution — PGL2-C2d
+
+Build the development controller, SDPTool and sdp-mcp without replacing installed
+commands. Use a complete Codex 0.161.0 host package (including its execution helper),
+not just the standalone codex executable. The exact host pin remains enforced. A
+managed account must already be available; this trial does not configure accounts.
+
+```sh
+go build -o /tmp/pg-mcp ./cmd/sdp-mcp
+python3 labs/project-governance/activation_trial.py --destination /absolute/new-implementation-trial --controller /absolute/new-controller --sdptool /absolute/new-sdptool --mcp /tmp/pg-mcp --source ../experiments/blueprint_mvp1/NOW --old-controller /absolute/c2c-controller --host /absolute/complete-codex-package/bin/codex --host-kind native
+python3 labs/project-governance/implementation_view.py --preview /absolute/new-implementation-trial
+```
+
+Unlike the read-only previews, this explicitly launches a real model task in a new
+isolated project. It supplies a labelled fixture-owner design decision and fixes a
+small Go Unicode-whitespace bug. The script verifies the bug before execution, then
+checks the resulting behavior with cases outside the agent's writable project, runs
+the project tests and checks protected files. The scripted decision is test authority,
+not actual project-owner acceptance. Provider artifacts are real, but the assignment
+is synthetic; passing this trial does not prove code conformance to a production SDL
+model. An ended host turn without the expected code change fails the trial.
+
+The maintained protocol-fixture mode uses the controller test executable and tests
+transport/guard behavior without model execution. Keep its results separate from a
+native trial. Both modes check immutable activation retry, duplicate-run refusal,
+stale-design launch refusal, duplicate launch refusal and old-reader rejection of
+operational profile 0.5. A failed native run is retained; use a fresh destination for
+a corrected attempt, never silently rerun the same completed attempt.
+
+Underlying operation: `sdp-controller assignment activate --project ROOT --state
+STATE --input REQUEST`. The activation schema references the exact checked package,
+current generation and approved decision operation. It creates a ready implementation
+run. The existing `run` command separately launches that run and rechecks authority.
+Once activated, preparation revision/retirement is refused; scope is retained pending
+an explicit future run closure/replanning workflow. This milestone does not deliver
+SAD launch, concurrent Masters, leader conversation or automatic report delivery.
+
+The installed owner-lab helper `./implementation` reads the separate C2d preview.
+It displays task, run state, host state, changed files and the recorded behavioral
+check. `--json` exposes current run inspection. It starts no agents and records no
+decision. An ended host turn is not a completed or accepted governance assignment.
+
+## Automatic reporting and inbox — PGL3-C2
+
+Use a fresh activation-trial destination and add `--reporting automatic` to the
+native command above. This explicitly selects the supported thread-local policy
+for the assignment's report/fail/scope-change tool. It does not change installed
+host settings. The trial requires an actual report, state `verifying`, exactly one
+inbox message and no observed approval request, in addition to the code/preservation
+checks. A missing report fails this trial. Earlier manual-policy trials remain valid
+historical records with their narrower claims.
+
+```sh
+sdp-controller inbox --project /absolute/new-trial/project --state /absolute/new-trial/runtime/state
+sdp-controller inbox --project /absolute/new-trial/project --state /absolute/new-trial/runtime/state --json
+```
+
+The separate owner-lab `./inbox` helper reads the C2 preview after it is prepared.
+It starts no agent and accepts no work. Reports include the submitted summary and
+revision alongside current state/coverage; they are durable review inputs. There
+is no leader acknowledgement or attention-response interaction in this increment.
+The hub and web application belong to a separate project. Their absence does not
+prevent inspecting this local result.
+
+
+## Local attention questions and replies — PGL3-C3
+
+Build development binaries as above; a fresh destination keeps all earlier trials
+intact. This trial starts no model and uses labelled synthetic controller input.
+
+```sh
+python3 labs/project-governance/attention_trial.py --destination /absolute/new-attention-trial --controller /absolute/new-controller --sdptool /absolute/new-sdptool --old-controller /absolute/c2-controller
+python3 labs/project-governance/attention_view.py --preview /absolute/new-attention-trial
+python3 labs/project-governance/attention_view.py --preview /absolute/new-attention-trial --reply --owner NAME
+```
+
+The trial exercises actual compiled CLI processes: ask, report refusal while waiting,
+another run's progress, EOF/invalid-choice refusal, attributed answer, immutable retry,
+stale authority refusal, explicit withdrawal and old-reader refusal. Protected files
+end byte-identical. It leaves one answered, one withdrawn and one open question.
+The original lab's `./attention` helper selects this separate preview; `--json` lists
+machine data and `--reply --owner NAME` lets the owner try the remaining question.
+No choice is preselected. The controller requires an answer/comment after an optional
+option ID. This stores input only; it does not resume an agent or approve design.
+These facts are distinct from the earlier native implementation/report trial.
+
+## Native attention and continuation — PGL3-C4
+
+The maintained continuation_trial.py creates a new disposable project and explicitly
+runs up to two model attempts through the pinned complete Codex package:
+
+```sh
+python3 labs/project-governance/continuation_trial.py --destination /absolute/new-continuation-trial --controller /absolute/current-controller --sdptool /absolute/current-sdptool --mcp /absolute/current-mcp --host /absolute/complete-codex-package/bin/codex --old-controller /absolute/c3-controller
+```
+
+The first agent must ask a blocking label-prefix question and stop without editing.
+A separate process captures a labelled synthetic reply after waiting; the automatic
+watcher starts one fresh attempt in the same run. The second agent must implement the
+selected prefix, pass project/external tests and report. The script checks original
+bytes before reply, no waiting-state writes, exactly two completed attempts, correlated
+reply dispatch, protected files and old-reader refusal. It retains failed trials;
+never reuse a destination or resend an uncertain request. Synthetic input is not
+actual owner acceptance, and a verifying result is not completed project work.
+
+
+`continuation_view.py --preview /absolute/completed-trial` provides a read-only
+summary of current attempts, the recorded answer and its dispatch, code paths and
+the independently checked result. `--json` exposes the same current run and inbox.
+The local owner-lab `./continuation` selects the verified C4 preview and starts no
+agent. The original `./attention` preview remains separate.

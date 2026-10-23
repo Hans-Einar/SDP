@@ -42,6 +42,8 @@ type PrepareRequest struct {
 type PreparedAssignment struct {
 	ID             string        `json:"id"`
 	Revision       uint64        `json:"revision"`
+	State          string        `json:"state,omitempty"`
+	ChangeReason   string        `json:"changeReason,omitempty"`
 	Role           string        `json:"role"`
 	Selection      Selection     `json:"selection"`
 	Assignment     Assignment    `json:"assignment"`
@@ -146,12 +148,18 @@ func overlaps(a, b string) bool {
 	return a == b || strings.HasPrefix(a, b+"/") || strings.HasPrefix(b, a+"/")
 }
 func scopeConflict(scope []string, state snapshot) string {
+	return scopeConflictExcept(scope, state, "")
+}
+func scopeConflictExcept(scope []string, state snapshot, except string) string {
 	ids := make([]string, 0, len(state.Prepared))
 	for id := range state.Prepared {
 		ids = append(ids, id)
 	}
 	sort.Strings(ids)
 	for _, id := range ids {
+		if id == except || state.Prepared[id].State == "retired" {
+			continue
+		}
 		for _, p := range scope {
 			for _, other := range state.Prepared[id].Assignment.WritablePaths {
 				if overlaps(p, other) {
@@ -248,6 +256,9 @@ func (s *Service) PrepareAssignment(caller Caller, q PrepareRequest) (Preparatio
 		}
 		return old.Result, nil
 	}
+	if _, ok := state.DesignDecisionReceipts[q.OperationID]; ok {
+		return out, fail("idempotency_conflict", "operationId belongs to design decision")
+	}
 	if _, ok := state.Receipts[q.OperationID]; ok {
 		return out, fail("idempotency_conflict", "operationId already belongs to a legacy operation")
 	}
@@ -275,7 +286,9 @@ func (s *Service) PrepareAssignment(caller Caller, q PrepareRequest) (Preparatio
 	if state.PreparationReceipts == nil {
 		state.PreparationReceipts = map[string]preparationReceipt{}
 	}
-	state.Schema = preparationStateSchema
+	if state.Schema == Schema {
+		state.Schema = preparationStateSchema
+	}
 	state.Prepared[id] = prepared
 	state.PreparationReceipts[q.OperationID] = preparationReceipt{Digest: digest, Result: out}
 	if err = s.checkPreparation(q.Role, q.Selection, q.InputRevision, q.Artifacts, q.Assignment); err != nil {
@@ -296,6 +309,9 @@ func (s *Service) InspectAssignments(id string) (Preparations, error) {
 		return out, err
 	}
 	out.Generation = head
+	if state.Schema == preparationLifecycleStateSchema || state.Schema == designDecisionStateSchema || state.Schema == activationStateSchema || attentionProfile(state.Schema) {
+		out.Schema = PreparationLifecycleSchema
+	}
 	out.CheckoutID = state.CheckoutID
 	if id != "" {
 		if _, ok := state.Prepared[id]; !ok {
@@ -312,7 +328,9 @@ func (s *Service) InspectAssignments(id string) (Preparations, error) {
 	for _, key := range ids {
 		p := state.Prepared[key]
 		v := PreparationView{Assignment: p, Readiness: "prepared", Conditions: []string{}, Dispatch: "unavailable", DesignAcceptance: "not-assessed"}
-		if err = s.checkPreparation(p.Role, p.Selection, p.InputRevision, p.Artifacts, p.Assignment); err != nil {
+		if p.State == "retired" {
+			v.Readiness = "retired"
+		} else if err = s.checkPreparation(p.Role, p.Selection, p.InputRevision, p.Artifacts, p.Assignment); err != nil {
 			v.Readiness = "stale"
 			v.Conditions = append(v.Conditions, err.Error())
 		}

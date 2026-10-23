@@ -88,11 +88,13 @@ input remains unresolved. Prepared records can be inspected, but this CLI does n
 yet expose a deliberate discard/reconciliation action. Do not edit the state store
 or create duplicate runs to bypass uncertainty.
 
-A controller lease serializes dispatch and a second lease covers the whole terminal
-session, preventing takeover by another terminal. Core mutation locks remain short
-so assignment-bound MCP calls can proceed. The launch pins source references,
+A controller lease serializes operations on one run and a second lease covers that
+run's terminal session, preventing takeover by another terminal. Distinct runs can
+progress independently with distinct host connections. New per-run leases also hold
+a shared lock on the legacy checkout lease, so an older exclusive controller cannot
+race them. The short exclusive store mutation lock remains shared with MCP. The launch pins source references,
 Session, assignment and sandbox in its payload; after thread binding it requires
-the five assignment-bound MCP tools before starting a turn. The fresh Master is
+the seven assignment-bound MCP tools before starting a turn. The fresh Master is
 instructed to read governing documents and preserve bounds. No native child or
 independent-review provenance is established by that instruction string.
 
@@ -336,3 +338,142 @@ provider validation and actual design approval are separate unfinished gates.
 The [separate preparation trial](../labs/project-governance/README.md#assignment-preparation-trial--pgl2-c1)
 exercises these commands, including old-reader refusal after the explicit store
 profile upgrade. It does not replace the original one-Master owner experiment.
+
+## PGL3-C1 per-run isolation boundary
+
+The control and terminal-session leases now have validated run scope while retaining
+mutual exclusion with legacy checkout-wide controllers. A blocked host call for one
+run no longer holds the other run's control lease. The same-run exclusion, immutable
+input/retry checks and source/scope guards remain. File existence does not indicate
+liveness; process exit releases OS ownership. Read-only observers take no lease.
+
+Service/protocol tests exercise two disjoint runs while one host response waits,
+legacy/new exclusion in both directions, failed-acquisition cleanup and subprocess
+exit. These are not evidence of two real native agents, a responsive Project Leader,
+a report inbox or phase continuation. Existing native reporting under never remains
+refused; this change does not alter host policies or answer approval prompts.
+
+## PGL3-C2 automatic reporting and report inbox
+
+For a **new** authorized launch, add `--reporting automatic`. The default `manual`
+retains the prior policy. Automatic mode sets only the thread-local MCP policy
+`sdp_governance.tools.run_transition.approval_mode = "approve"` and, since PGL3-C3,
+the same policy for `attention_request`; the launch payload
+records the selected mode. `--approvals` and all other tools retain their previous
+behavior. Attach/recover cannot retrofit this launch policy. The tool's capabilities
+remain report/fail/scope-change for the current assignment, not approval or dispatch.
+
+A current agent report can cross only receipt-proven tool/message observations
+with unchanged decision state. Steering, approval requests, disconnect/reconnect,
+lifecycle and source changes still invalidate it. This avoids making a completed
+`run_read` observation invalidate its own next report. Controller CAS stays strict.
+
+```sh
+sdp-controller inbox --project ROOT --state DIR
+sdp-controller inbox --project ROOT --state DIR --run UUID --json
+```
+
+The [inbox schema](../governance/inbox.schema.json) describes a read-only projection
+of immutable report receipts. Operation IDs identify messages; reported revisions
+and text remain historical even if a run later fails or is canceled. Current state
+and source coverage are separate. Exact retries do not duplicate a report. Empty
+inspection creates no store. The generation pins the operational snapshot; filesystem
+coverage is checked separately and is not an atomic snapshot of source files.
+
+This local view includes report text and should be handled as project data. Terminal
+rendering quotes control characters. It does not claim author authentication beyond
+existing local controller/capability binding, remote delivery, leader consumption,
+acceptance or automatic continuation. The current store's 1024-receipt capacity still
+applies; this is not evidence of multi-hour throughput. Structured attention/replies are described below. Hub/web/mobile implementation belongs to a separate
+project under the owner's T026 boundary.
+
+
+## PGL3-C3 durable attention
+
+The bound agent may call `attention_request` with a current run/input revision,
+operation UUID, prompt, up to five options and `blocking`. Use `attention_read`
+with optional `questionId` to read the reply and current applicability. A question
+may cross receipt-proven tool/message observations, with the same strict authority
+checks as reporting. The seven-tool inventory is required at launch; pair this
+controller with the matching MCP binary. Older five-tool binaries are refused.
+No agent tool can answer on behalf of an owner, dispatch work or grant approval.
+
+```sh
+sdp-controller attention list --project ROOT --state DIR
+sdp-controller attention list --project ROOT --state DIR --run UUID --json
+sdp-controller attention request --project ROOT --state DIR --input QUESTION.json
+sdp-controller attention reply --project ROOT --state DIR --input REPLY.json --owner NAME
+sdp-controller attention withdraw --project ROOT --state DIR --input REPLY.json --reason TEXT
+```
+
+The [wire definitions](../governance/schema.json) include AttentionRequest,
+AttentionDisposition and AttentionInbox. Request/disposition JSON never supplies
+owner attribution. Reply separately captures an option ID (blank allows free text)
+and required answer/comment from stdin, then rechecks the exact displayed basis.
+EOF and invalid input write nothing. Exact operation retries recover the immutable
+reply without prompting again; attribution conflicts refuse. This is local trusted
+controller attribution, not authentication of the human behind a shell account.
+Mutations return JSON on stdout; input prompts use stderr.
+
+A blocking unresolved question prevents report/start/resume on that run. It does
+not freeze unrelated runs, or claim to stop arbitrary host file/tool actions. The
+agent is instructed to stop dependent work and return a waiting summary. New owner
+steering, authority changes, lifecycle changes or an observation gap make a question
+stale; ordinary host messages and turn completion do not. Explicit withdrawal retains
+obsolete history. Answering is neither design approval nor expanded scope.
+
+The first question write upgrades only the selected store to operational profile
+0.6. Older readers refuse; preparation, design and activation writers preserve it.
+Limits remain 32 retained questions per run, 4096 prompt/answer bytes, five options,
+1024 operation receipts and 16 MiB state. MCP responses retain the 256 KiB bound;
+use questionId for an individual record when the full history exceeds that bound.
+Current source coverage is checked separately from the pinned store generation.
+No leader consumption acknowledgement, automatic new host turn, multi-hour capacity
+claim, hub or notification delivery is included. Native question/reply continuation
+has not yet been verified; the new mailbox has service, MCP and CLI evidence.
+
+## PGL3-C4 guarded attention continuation
+
+Use `run ... --attention-continuations N` (0..8, default 0) to opt into a bounded
+local watcher. After a clean completed waiting turn it checks stored replies once
+per second without calling a model or appending idle receipts. When all blocking
+questions are resolved and at least one current blocking question is answered, it
+may start a fresh Master thread/attempt in the same authorized run. It stops at the
+configured count or lifetime, on report/failed work, stale authority or unresolved
+outbound delivery. This is not a cross-project scheduler or conversational leader.
+
+A separate `continue` command handles an already completed waiting run after a reply:
+
+```sh
+sdp-controller continue --project ROOT --state DIR --run UUID --codex PINNED_HOST --mcp-binary MATCHING_MCP --sandbox workspace-write --approvals never --reporting automatic
+```
+
+Use exactly the original sandbox and approval/reporting policy. Original owner input
+and skill selections are recovered from the recorded launch; --message and --skill
+are not accepted for continue. A fresh attempt receives the original assignment,
+current context, exact selected reply references and question/reply history. Previous
+attempts remain historical. A reply does not approve design or change scope.
+
+Launch preparation atomically binds the exact question/reply/basis references and
+makes the run ready. Claim rechecks authority before host effects. Source changes,
+open blocking questions, mismatched policy/skills, observation gaps, a non-completed
+prior attempt or unresolved input refuse. Prepared/sending/uncertain inputs are never
+automatically replayed. Existing history recovery may prove an exact accepted send;
+it does not send work again. Prepared-but-unsent recovery is still a manual reconciliation
+gap, not a claim of automatic crash recovery or exactly-once remote execution.
+
+New continuation inputs select operational profile 0.7; all writers preserve it and
+older tools refuse. Attention's consumption field now reports dispatch-prepared,
+dispatch-sending, dispatch-uncertain or dispatch-acknowledged when selected. The last
+means host acknowledgement, not semantic consumption or implementation correctness.
+Original-question applicability may become historical after a fresh attempt starts;
+its immutable reply references remain in the new launch input. Current launch/run
+context still governs execution.
+
+The CLI marks late events from known completed predecessor threads as ignored instead
+of applying them to the fresh attempt. An expired wait retains the clean completed
+attempt and question for a later explicit continuation. Loss during actual execution
+still requires reconciliation. Waiting-controller settings are local and transient;
+reply capture warns that an authorized waiting controller may continue after a reply.
+No global host settings or default automatic behavior changes. Receipt, input, attempt,
+payload and state bounds remain; sustained multi-hour execution is not established.

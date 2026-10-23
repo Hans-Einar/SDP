@@ -51,7 +51,7 @@ type Caller struct {
 func LocalController() Caller { return Caller{controller: true} }
 
 // AssignedAgent is a launch-time capability supplied by a trusted local adapter.
-// Never construct it from model/tool arguments. It grants only report, fail and
+// Never construct it from model/tool arguments. It grants only attention requests, report, fail and
 // scope-change on the selected run, not controller or owner authority.
 func AssignedAgent(runID, attemptID, epoch string) (Caller, error) {
 	if !uuidPattern.MatchString(runID) || !uuidPattern.MatchString(attemptID) || !uuidPattern.MatchString(epoch) {
@@ -144,19 +144,20 @@ type TransitionRequest struct {
 	Reason           string `json:"reason"`
 }
 type Run struct {
-	Inputs        []OwnerInput `json:"inputs,omitempty"`
-	Attempts      []Attempt    `json:"attempts,omitempty"`
-	ID            string       `json:"id"`
-	Revision      uint64       `json:"revision"`
-	RequestID     string       `json:"requestId"`
-	State         string       `json:"state"`
-	Step          string       `json:"step"`
-	InputRevision string       `json:"inputRevision"`
-	Selection     Selection    `json:"selection"`
-	Assignment    Assignment   `json:"assignment"`
-	Routine       Routine      `json:"routine"`
-	RoutineDigest string       `json:"routineDigest"`
-	Reason        string       `json:"reason"`
+	Attention     []AttentionQuestion `json:"attention,omitempty"`
+	Inputs        []OwnerInput        `json:"inputs,omitempty"`
+	Attempts      []Attempt           `json:"attempts,omitempty"`
+	ID            string              `json:"id"`
+	Revision      uint64              `json:"revision"`
+	RequestID     string              `json:"requestId"`
+	State         string              `json:"state"`
+	Step          string              `json:"step"`
+	InputRevision string              `json:"inputRevision"`
+	Selection     Selection           `json:"selection"`
+	Assignment    Assignment          `json:"assignment"`
+	Routine       Routine             `json:"routine"`
+	RoutineDigest string              `json:"routineDigest"`
+	Reason        string              `json:"reason"`
 }
 type Result struct {
 	Schema      string `json:"schema"`

@@ -1,0 +1,333 @@
+{
+  "status": "failed",
+  "hostKind": "native",
+  "modelTaskSubmitted": true,
+  "actualOwnerApproval": false,
+  "runId": "0a70d823-4b50-477a-a028-ea06458b2a0c",
+  "cases": [
+    {
+      "operation": "context",
+      "request": {
+        "card": "SDP/KanBan/active/card.md",
+        "plan": "SDP/Maintenance/Plan.md",
+        "session": "SDP/Sessions/session.md",
+        "authority": "SDP/authority.md",
+        "step": "S1"
+      },
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "context",
+        "projectRef": "pg-continuation-lab",
+        "root": "/home/warloc/git/pg_lab/previews/pgl3-c4/project",
+        "checkoutId": "",
+        "revision": "086ab78d375f80ecdc383ff21fd324c3c2287a5a83444abf1c58a47950e3b913",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "sources": [
+          {
+            "path": "AGENTS.md",
+            "sha256": "d3b60b1c7daf2a21a40bb301226b727afb48661f23d47caa878c84c6bf616d26"
+          },
+          {
+            "path": "SDP/KanBan/active/card.md",
+            "sha256": "88b0f8a6a8072d9a6e8f465a357310933a142ee66475e9462fdd1ae044a91f54"
+          },
+          {
+            "path": "SDP/Maintenance/Plan.md",
+            "sha256": "9e4b058646c84dbfdf480bce1cb1d0d0fa00673a723366e109a8b57e4a728aca"
+          },
+          {
+            "path": "SDP/ProjectManagement/Ledger.ndjson",
+            "sha256": "9a162988f4282daa490ede1ea906e30a9008537c940a0df35e643f573d99f0f5"
+          },
+          {
+            "path": "SDP/SDP-project.manifest.yaml",
+            "sha256": "cdc4ebae44330f97573c5098f3b6e41ca31b6e2c9b24dc3fd49d0819734560f6"
+          },
+          {
+            "path": "SDP/Sessions/session.md",
+            "sha256": "c1a58d09043b88d6ba4cf2d63e311807ced984c2069c3fa658b5429b912cc8e2"
+          },
+          {
+            "path": "SDP/authority.md",
+            "sha256": "fa8a508a45ac5cf392b78b5ee198684a66b7af436d0967b01745720156003362"
+          }
+        ],
+        "coverage": "known",
+        "conditions": [],
+        "cardId": "KB-PGCONT-001",
+        "planId": "MAINT-PGCONT-0001",
+        "sessionId": "SESSION-PGCONT-0001"
+      }
+    },
+    {
+      "operation": "route",
+      "request": {
+        "schema": "sdp-project-governance/0.1",
+        "categories": [
+          "maintenance"
+        ],
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "routineId": "maintenance",
+        "routineVersion": "0.1"
+      },
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "route",
+        "disposition": "matched",
+        "basis": "caller-proposed category; no automatic language classification",
+        "context": {
+          "schema": "sdp-project-governance/0.1",
+          "operation": "context",
+          "projectRef": "pg-continuation-lab",
+          "root": "/home/warloc/git/pg_lab/previews/pgl3-c4/project",
+          "checkoutId": "",
+          "revision": "086ab78d375f80ecdc383ff21fd324c3c2287a5a83444abf1c58a47950e3b913",
+          "selection": {
+            "card": "SDP/KanBan/active/card.md",
+            "plan": "SDP/Maintenance/Plan.md",
+            "session": "SDP/Sessions/session.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "sources": [
+            {
+              "path": "AGENTS.md",
+              "sha256": "d3b60b1c7daf2a21a40bb301226b727afb48661f23d47caa878c84c6bf616d26"
+            },
+            {
+              "path": "SDP/KanBan/active/card.md",
+              "sha256": "88b0f8a6a8072d9a6e8f465a357310933a142ee66475e9462fdd1ae044a91f54"
+            },
+            {
+              "path": "SDP/Maintenance/Plan.md",
+              "sha256": "9e4b058646c84dbfdf480bce1cb1d0d0fa00673a723366e109a8b57e4a728aca"
+            },
+            {
+              "path": "SDP/ProjectManagement/Ledger.ndjson",
+              "sha256": "9a162988f4282daa490ede1ea906e30a9008537c940a0df35e643f573d99f0f5"
+            },
+            {
+              "path": "SDP/SDP-project.manifest.yaml",
+              "sha256": "cdc4ebae44330f97573c5098f3b6e41ca31b6e2c9b24dc3fd49d0819734560f6"
+            },
+            {
+              "path": "SDP/Sessions/session.md",
+              "sha256": "c1a58d09043b88d6ba4cf2d63e311807ced984c2069c3fa658b5429b912cc8e2"
+            },
+            {
+              "path": "SDP/authority.md",
+              "sha256": "fa8a508a45ac5cf392b78b5ee198684a66b7af436d0967b01745720156003362"
+            }
+          ],
+          "coverage": "known",
+          "conditions": [],
+          "cardId": "KB-PGCONT-001",
+          "planId": "MAINT-PGCONT-0001",
+          "sessionId": "SESSION-PGCONT-0001"
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa"
+      }
+    },
+    {
+      "operation": "bind",
+      "request": null,
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "bind",
+        "projectRef": "pg-continuation-lab",
+        "root": "/home/warloc/git/pg_lab/previews/pgl3-c4/project",
+        "checkoutId": "1a48dc62-642e-4055-8994-fdfa45c08056"
+      }
+    },
+    {
+      "operation": "start",
+      "request": {
+        "schema": "sdp-project-governance/0.1",
+        "projectRef": "pg-continuation-lab",
+        "checkoutId": "1a48dc62-642e-4055-8994-fdfa45c08056",
+        "operationId": "256cf753-5a3f-4b45-887e-20523396c68d",
+        "requestId": "d0cb0cf5-43df-4c60-8695-4cd2796bab6f",
+        "inputRevision": "086ab78d375f80ecdc383ff21fd324c3c2287a5a83444abf1c58a47950e3b913",
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "Ask the label-prefix choice, implement it, verify and report",
+          "writablePaths": [
+            "label.go",
+            "label_test.go"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "AGENTS.md",
+            "go.mod",
+            "unrelated.txt"
+          ]
+        }
+      },
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "start",
+        "projectRef": "pg-continuation-lab",
+        "checkoutId": "1a48dc62-642e-4055-8994-fdfa45c08056",
+        "operationId": "256cf753-5a3f-4b45-887e-20523396c68d",
+        "run": {
+          "id": "0a70d823-4b50-477a-a028-ea06458b2a0c",
+          "revision": 1,
+          "requestId": "d0cb0cf5-43df-4c60-8695-4cd2796bab6f",
+          "state": "ready",
+          "step": "implement",
+          "inputRevision": "086ab78d375f80ecdc383ff21fd324c3c2287a5a83444abf1c58a47950e3b913",
+          "selection": {
+            "card": "SDP/KanBan/active/card.md",
+            "plan": "SDP/Maintenance/Plan.md",
+            "session": "SDP/Sessions/session.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Ask the label-prefix choice, implement it, verify and report",
+            "writablePaths": [
+              "label.go",
+              "label_test.go"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "AGENTS.md",
+              "go.mod",
+              "unrelated.txt"
+            ]
+          },
+          "routine": {
+            "id": "maintenance",
+            "version": "0.1",
+            "steps": [
+              "implement",
+              "verify",
+              "review",
+              "record"
+            ],
+            "completion": "candidate evidence, applicable independent review and checked publication required"
+          },
+          "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+          "reason": "coverage resolved; trusted local controller selected bounded work"
+        },
+        "coverage": "known"
+      }
+    }
+  ],
+  "goldenBefore": "FAIL: \"\\t Keep  Case\\u00a0\" -> \"Keep  Case\"; want \"OK: Keep  Case\"\n",
+  "controllerSHA256": "79369b5467caa4fff1d15cb89f7b6ab1d71ce7755fdd1616c14881bd60e856c2",
+  "sdptoolSHA256": "eb58c08a47197b37651b055d0e21f682776d58483789bdb0f44e34dfab313f5a",
+  "mcpSHA256": "43cfc823f3907fd8c4c1e3d03295318726533129e3f982c2ccd1c05db90122bb",
+  "hostBinarySHA256": "9a820c17865fa825d04db416818679a9d63bd72e50835c396f496e5684626c9c",
+  "failure": "Command '['/home/warloc/git/pg_lab/previews/pgl3-c4/sdp-controller', 'attention', 'list', '--project', '/home/warloc/git/pg_lab/previews/pgl3-c4/project', '--state', '/home/warloc/git/pg_lab/previews/pgl3-c4/runtime/state', '--json']' returned non-zero exit status 2.",
+  "finalRun": {
+    "inputs": [
+      {
+        "id": "4ee5183c-7188-4630-8cff-1119636ddaa0",
+        "kind": "launch",
+        "text": "This is an owner-authorized isolated PG attention/continuation test. First inspect context and run. If the launch payload has no attentionReferences, ask exactly one blocking attention_request question with options short (prefix \"OK: \") and detailed (prefix \"Result: \"). Do not edit or report before the answer. Return a waiting summary immediately after the question is stored. On a fresh continuation with attentionReferences, use the selected recorded reply from attentionContext; the earlier question basis becoming historical after a new attempt is expected. Do not ask it again. Implement the selected prefix in Label in label.go, retain Unicode edge trimming, interior whitespace and case; update label_test.go accordingly. Preserve all other files. Run go test ./..., then use run_read and run_transition report with a fresh UUID and current identities. No delegation, network, installations, host config changes, commits or record publication. A report is not owner acceptance.\n",
+        "payload": "{\"approvalMode\":\"never\",\"approvedDesign\":null,\"assignment\":{\"outcome\":\"Ask the label-prefix choice, implement it, verify and report\",\"writablePaths\":[\"label.go\",\"label_test.go\"],\"excludedPaths\":[\"SDP\",\"AGENTS.md\",\"go.mod\",\"unrelated.txt\"]},\"attentionContext\":null,\"attentionReferences\":null,\"context\":{\"schema\":\"sdp-project-governance/0.1\",\"operation\":\"context\",\"projectRef\":\"pg-continuation-lab\",\"root\":\"/home/warloc/git/pg_lab/previews/pgl3-c4/project\",\"checkoutId\":\"1a48dc62-642e-4055-8994-fdfa45c08056\",\"revision\":\"086ab78d375f80ecdc383ff21fd324c3c2287a5a83444abf1c58a47950e3b913\",\"selection\":{\"card\":\"SDP/KanBan/active/card.md\",\"plan\":\"SDP/Maintenance/Plan.md\",\"session\":\"SDP/Sessions/session.md\",\"authority\":\"SDP/authority.md\",\"step\":\"S1\"},\"sources\":[{\"path\":\"AGENTS.md\",\"sha256\":\"d3b60b1c7daf2a21a40bb301226b727afb48661f23d47caa878c84c6bf616d26\"},{\"path\":\"SDP/KanBan/active/card.md\",\"sha256\":\"88b0f8a6a8072d9a6e8f465a357310933a142ee66475e9462fdd1ae044a91f54\"},{\"path\":\"SDP/Maintenance/Plan.md\",\"sha256\":\"9e4b058646c84dbfdf480bce1cb1d0d0fa00673a723366e109a8b57e4a728aca\"},{\"path\":\"SDP/ProjectManagement/Ledger.ndjson\",\"sha256\":\"9a162988f4282daa490ede1ea906e30a9008537c940a0df35e643f573d99f0f5\"},{\"path\":\"SDP/SDP-project.manifest.yaml\",\"sha256\":\"cdc4ebae44330f97573c5098f3b6e41ca31b6e2c9b24dc3fd49d0819734560f6\"},{\"path\":\"SDP/Sessions/session.md\",\"sha256\":\"c1a58d09043b88d6ba4cf2d63e311807ced984c2069c3fa658b5429b912cc8e2\"},{\"path\":\"SDP/authority.md\",\"sha256\":\"fa8a508a45ac5cf392b78b5ee198684a66b7af436d0967b01745720156003362\"}],\"coverage\":\"known\",\"conditions\":[],\"cardId\":\"KB-PGCONT-001\",\"planId\":\"MAINT-PGCONT-0001\",\"sessionId\":\"SESSION-PGCONT-0001\"},\"instructions\":\"You are the fresh Master for one explicitly authorized SDP Maintenance assignment. Read the selected Session, authority, plan, card, AGENTS and relevant SDP skills before acting. Preserve writable/excluded boundaries and unrelated work. Native delegation is not granted by this launch; do not spawn children. Report candidate, tests, remaining gaps and observed outcome. Agent claims do not grant owner approval or independent review. Do not publish canonical management/Session records or mark the work complete; evidence publication is a later controller capability. Use assignment-bound MCP reads, attention questions and report/fail/scope-change only. For input you need, use attention_request with blocking=true, stop dependent work, and read any reply and its current applicability via attention_read. If no reply is available, return a waiting summary; do not poll indefinitely or invent an answer. A reply records input, not authority to change scope.\",\"ownerInput\":\"This is an owner-authorized isolated PG attention/continuation test. First inspect context and run. If the launch payload has no attentionReferences, ask exactly one blocking attention_request question with options short (prefix \\\"OK: \\\") and detailed (prefix \\\"Result: \\\"). Do not edit or report before the answer. Return a waiting summary immediately after the question is stored. On a fresh continuation with attentionReferences, use the selected recorded reply from attentionContext; the earlier question basis becoming historical after a new attempt is expected. Do not ask it again. Implement the selected prefix in Label in label.go, retain Unicode edge trimming, interior whitespace and case; update label_test.go accordingly. Preserve all other files. Run go test ./..., then use run_read and run_transition report with a fresh UUID and current identities. No delegation, network, installations, host config changes, commits or record publication. A report is not owner acceptance.\\n\",\"reportingMode\":\"automatic\",\"runId\":\"0a70d823-4b50-477a-a028-ea06458b2a0c\",\"sandbox\":\"workspace-write\"}",
+        "attemptId": "965ced56-aa8c-4bb5-a114-cef204d80604",
+        "epoch": "cd926f9e-5dbe-450d-bc9f-555bf7a6efcc",
+        "threadId": "",
+        "turnId": "",
+        "state": "sending",
+        "receivedAt": "2026-10-21T00:25:47.730607536Z"
+      }
+    ],
+    "attempts": [
+      {
+        "agentEpoch": "cd926f9e-5dbe-450d-bc9f-555bf7a6efcc",
+        "id": "965ced56-aa8c-4bb5-a114-cef204d80604",
+        "hostVersion": "0.161.0",
+        "threadId": "01a15bd9-920a-78c3-91ce-5769b60bf545",
+        "turnId": "",
+        "inputRevision": "086ab78d375f80ecdc383ff21fd324c3c2287a5a83444abf1c58a47950e3b913",
+        "epoch": "cd926f9e-5dbe-450d-bc9f-555bf7a6efcc",
+        "status": "idle",
+        "gap": false,
+        "events": [
+          {
+            "kind": "bound",
+            "turnId": "",
+            "itemId": "",
+            "phase": "",
+            "text": "",
+            "status": "idle",
+            "epoch": "cd926f9e-5dbe-450d-bc9f-555bf7a6efcc",
+            "receivedAt": "2026-10-21T00:25:48.06913103Z"
+          }
+        ]
+      }
+    ],
+    "id": "0a70d823-4b50-477a-a028-ea06458b2a0c",
+    "revision": 4,
+    "requestId": "d0cb0cf5-43df-4c60-8695-4cd2796bab6f",
+    "state": "ready",
+    "step": "implement",
+    "inputRevision": "086ab78d375f80ecdc383ff21fd324c3c2287a5a83444abf1c58a47950e3b913",
+    "selection": {
+      "card": "SDP/KanBan/active/card.md",
+      "plan": "SDP/Maintenance/Plan.md",
+      "session": "SDP/Sessions/session.md",
+      "authority": "SDP/authority.md",
+      "step": "S1"
+    },
+    "assignment": {
+      "outcome": "Ask the label-prefix choice, implement it, verify and report",
+      "writablePaths": [
+        "label.go",
+        "label_test.go"
+      ],
+      "excludedPaths": [
+        "SDP",
+        "AGENTS.md",
+        "go.mod",
+        "unrelated.txt"
+      ]
+    },
+    "routine": {
+      "id": "maintenance",
+      "version": "0.1",
+      "steps": [
+        "implement",
+        "verify",
+        "review",
+        "record"
+      ],
+      "completion": "candidate evidence, applicable independent review and checked publication required"
+    },
+    "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+    "reason": "coverage resolved; trusted local controller selected bounded work"
+  }
+}

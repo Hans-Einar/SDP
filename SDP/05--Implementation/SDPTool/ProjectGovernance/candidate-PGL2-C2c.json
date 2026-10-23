@@ -1,0 +1,75 @@
+{
+  "baseline": "e25f13c1f8462f3fefa7a2d7a57b706054213f57",
+  "integratedMain": "e8760d331933361ab631ef0d52c20e87268a22b3",
+  "scope": "PGL2-C2c local controller-attributed decisions; dispatch and final conversation/UI remain unfinished",
+  "candidateKind": "baseline plus exact source hashes; evidence precedes milestone commit",
+  "goVersion": "go version go1.27.1 linux/amd64",
+  "sourceFiles": {
+    "SDPTool/cmd/sdp-controller/assignment.go": "6d4f79115a5d27b5879c6b794bb5601a01f6d88593758218e8a39aa348374822",
+    "SDPTool/cmd/sdp-controller/design_decision.go": "2b586a0e6efc2cee27a874b8b9e68abdeff118ae1f9bcf79f3e650040a72ba63",
+    "SDPTool/governance/design_decision.go": "3bbd87c53a5d2299facbbb60ff415112216bd3d6e4271cbdd797c9de06619aea",
+    "SDPTool/governance/design_decision.schema.json": "f49614f45d8350f6eddd42303a0501dc18dc2a85ade99efada8aa78872640c80",
+    "SDPTool/governance/design_decision_test.go": "3d272b698cfdd8493afdf49f57f054240a3ac2e41580a50688cd6c3d9d0820cb",
+    "SDPTool/governance/preparation.go": "3a27cb544c8f880dde854c639d9c8fed961d708290a250be098b91f0e867fc84",
+    "SDPTool/governance/preparation_lifecycle.go": "c5956bf9309928bc4feb96a0b1e3a5da15898d565004694fd1cfea564cbb03df",
+    "SDPTool/governance/run.go": "246945076ae8b755ec5547bd840ed094ef26f84b27a770003882fa3498ecd70e",
+    "SDPTool/governance/store.go": "bd56f159da480f73251d268376043aed153b42e74eac1d2cd1b5af421bf48fea",
+    "SDPTool/labs/project-governance/decision_trial.py": "b3f8cb595ee8ad081494b14f308f9b3cfb82a788d697f6694d7adc9951cbd558",
+    "SDPTool/labs/project-governance/decision_view.py": "5c8889e5ff18bd58c6f376e04e76b55f15b0e148a5b7a6f02e48fd11c3db1a9e"
+  },
+  "fileSetDigest": "b53bfa320aebf59315bc5f763b7e45b690a013a457efa7b6e1a1b7a694b3f547",
+  "controllerSHA256": "16ae1aad721be6fae7f34811f66fb54e9fb264f18eb7c3957b906173ba75f9ec",
+  "sdptoolSHA256": "e0c85064867a19ee1ca9d6d8bfa51f99ae8c7a781295adb055865f3f5b1c9f15",
+  "oldControllerSHA256": "26e32ee4668b91447bd52cbb0499e2250f5c001cecc239a568cec0e4ec265699",
+  "checks": {
+    "race.log": {
+      "result": "passed",
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t33.780s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t31.514s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t5.740s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t1.037s\n",
+      "sha256": "9061af130b39d4ded9004699605752c6a6c5a45380ccee751ef580d1d90aa6ff"
+    },
+    "vet.log": {
+      "result": "passed",
+      "output": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "sdptool-tests.log": {
+      "result": "passed",
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool\t21.971s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprints\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprintstate\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t(cached)\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp\t[no test files]\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdptool\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t14.467s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t15.228s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancehost\t0.069s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t6.752s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/install\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/model\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/presentation\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/projecthistory\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/tools/profile\t(cached)\n",
+      "sha256": "64e2aa73c50919b48db8830d7c0c7a59948d1878e055170f9e5ccccc3812e998"
+    },
+    "schema.log": {
+      "result": "passed",
+      "output": "PASS: 48 actual design wire request/result objects validated; 176 original owner entries preserved\n",
+      "sha256": "d71cbd60930085523cac20d035cfc242219c5d0dd97f785ee6b5485fa0bc0a8f"
+    },
+    "trial-final.log": {
+      "result": "passed",
+      "output": "PASS: real provider/CLI journey, stable review digest, uncommitted TARGET drift, no writes or approval.\nPASS: compiled decision capture, cancel/EOF, immutable retry, stale input, supersession and old-reader refusal.\n",
+      "sha256": "8d328b76b892d70023cc26c6c37b98a5a0b9d2ec2d04e8ae46d45c41ff9eec53"
+    },
+    "management.log": {
+      "result": "passed",
+      "output": "PASS: 66 cards, 45 management records, 4 lineage operations, 610 events; schema/history/metadata/placement/grouping\n",
+      "sha256": "f4c2535e803b259148e2804d74d52b11029354b6a80e41771a4f39d65cc52f04"
+    },
+    "toolkit.log": {
+      "result": "passed",
+      "output": "SDP Toolkit validation passed\n",
+      "sha256": "5e9d1353c22f090c8b066ba39da56ff229fbc1b07a7e12e21bb8ac9ffbb9e3ad"
+    },
+    "integrity": {
+      "result": "passed",
+      "localMarkdownLinks": 112,
+      "canonicalLedgerPrefixesPreserved": true,
+      "maintainedTrialWireObjects": 48
+    }
+  },
+  "trialSHA256": "b2dc41793c780597c036444ce257f6c10815d0e9e622856a4b4e47c51103ac15",
+  "ownerLabEntriesPreserved": 176,
+  "independentReview": false,
+  "providerIntegration": true,
+  "modelTaskSubmitted": false,
+  "actualOwnerApprovalRecorded": false,
+  "scriptedFixtureDecisions": true,
+  "published": false
+}

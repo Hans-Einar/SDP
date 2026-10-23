@@ -1,0 +1,63 @@
+{
+  "baseline": "3f13c39d7d01235ba4990fcce8b46f0c71379071",
+  "integratedMain": "e8760d331933361ab631ef0d52c20e87268a22b3",
+  "scope": "PGL2-C2b read-only provider-backed design review basis; actual owner disposition and dispatch not delivered",
+  "candidateKind": "baseline plus exact source hashes; evidence precedes milestone commit",
+  "goVersion": "go version go1.27.1 linux/amd64",
+  "sourceFiles": {
+    "SDPTool/cmd/sdp-controller/assignment.go": "54a5595638b7d5a4f8530fa563a94152a11bb753b08815166a0a90005824cec3",
+    "SDPTool/governance/design_check.go": "33aa80294fa40e372f01edfd5ce63f15256fdbd74d7e22ccb88a638a732a2094",
+    "SDPTool/governance/design_check.schema.json": "d1571b742c9e93aa6b5d9318bb6966205e9a3df05687d7463a5e76ac24b9c18d",
+    "SDPTool/governance/design_check_test.go": "9cae66150153173af843738c07f58e7cadd5ffc7a55fc8ca3de0fe3186b43397",
+    "SDPTool/labs/project-governance/design_trial.py": "d7d418b3ec5cbe3a3ce498cce1daebc590142d07193f431f0279a13e33ab0e4b",
+    "SDPTool/labs/project-governance/design_view.py": "655b886c6941a7e4ecced1340ef885338843c577477291dbdd0d31abc165e923"
+  },
+  "fileSetDigest": "e176f563d66c128b851a91db6c110e106bda8b874427ae7dd574cb6e32ba1292",
+  "controllerSHA256": "26e32ee4668b91447bd52cbb0499e2250f5c001cecc239a568cec0e4ec265699",
+  "sdptoolSHA256": "1e22f54e3818356b62a570e918a747b44bbfd7912074d4ef0d5492a551d8cba4",
+  "checks": {
+    "race.log": {
+      "result": "passed",
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t17.808s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t(cached)\n",
+      "sha256": "aefdd32ddc57b54d5f00e9865e984dcdd7f1e5f04175d7fa174cb674ecf32bac"
+    },
+    "vet.log": {
+      "result": "passed",
+      "output": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "sdptool-tests.log": {
+      "result": "passed",
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool\t20.803s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprints\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprintstate\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t(cached)\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp\t[no test files]\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdptool\t0.016s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t7.992s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t14.842s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancehost\t0.098s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t5.286s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/install\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/model\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/presentation\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/projecthistory\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/tools/profile\t(cached)\n",
+      "sha256": "2fd45428e9586a282cdf8777eec8c99b04565012debbfcc80ec6ff29d47faae4"
+    },
+    "schema.log": {
+      "result": "passed",
+      "output": "PASS: 8 actual design-check wire request/results validated; 176 original owner entries preserved\n",
+      "sha256": "3546996b78cd7148f3d1397e8095591c4f6ce7c63c8be15ed33f1be3872a7fc4"
+    },
+    "management.log": {
+      "result": "passed",
+      "output": "PASS: 66 cards, 45 management records, 4 lineage operations, 608 events; schema/history/metadata/placement/grouping\n",
+      "sha256": "a5bf35a5ae8d32c12121854deba533c7eb18c7e9df0c265283460b546dd70fcb"
+    },
+    "toolkit.log": {
+      "result": "passed",
+      "output": "SDP Toolkit validation passed\n",
+      "sha256": "5e9d1353c22f090c8b066ba39da56ff229fbc1b07a7e12e21bb8ac9ffbb9e3ad"
+    },
+    "integrity": {
+      "result": "passed",
+      "localMarkdownLinks": 92,
+      "canonicalLedgerPrefixesPreserved": true,
+      "maintainedTrialWireObjects": 8
+    }
+  },
+  "trialSHA256": "837c5e298517ec3528eeaca0279ca4f16ec2dffe3893ba33cd4402c0e0349a3b",
+  "ownerLabEntriesPreserved": 176,
+  "independentReview": false,
+  "providerIntegration": true,
+  "modelTaskSubmitted": false,
+  "ownerApprovalRecorded": false,
+  "published": false
+}

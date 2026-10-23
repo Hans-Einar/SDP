@@ -1,5 +1,8 @@
 # Project Leader and SAD orchestration — KB052
 
+For a readable explanation of current behavior, planned collaboration and owner
+feedback topics, start with the [owner walkthrough](Owner-Walkthrough.md).
+
 Owner direction: Session0007 T014, 2026-10-10, incorporating the
 [revision-bound handoff](Project-Leader-Handoff.md). This refines the earlier
 [PGD1 design](Design.md); it does not claim its new operations already exist.
@@ -20,12 +23,15 @@ feedback, not rejection or acceptance. The old lab demonstrates one Maintenance
 Master and cannot demonstrate the new coordination model. Keep its actual state and
 candidate intact. Do not require further old-lab acceptance before selected KB052 work.
 
-Current runtime has one checkout-local run store, run/attempt/host identities,
+The T014 baseline had one checkout-local run store, run/attempt/host identities,
 controller-only launch, restricted worker MCP, replay receipts, exact skill inputs
-and correlated recovery. Both controller leases are checkout-wide. Master context,
-coverage and routine selection are Maintenance-only; the role validator accepts
-only Master. Simply changing a prompt or launching multiple current controllers
-would not implement the proposed system. No native child mapping is proven.
+and correlated recovery. At that baseline both leases were checkout-wide, context and routine selection
+were Maintenance-only, and the role validator accepted only Master. Subsequent
+PGL2 deliveries add SAD/Master preparation and approved Master implementation;
+PGL3-C1 adds per-run leases and C2 adds automatic reports/read-only inbox. See the
+[current evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C2.md).
+Responsive leader consumption, SAD dispatch and native parallel/child mapping
+remain unproven. Prompt changes alone do not implement those remaining contracts.
 
 ## Selected architecture and alternatives
 
@@ -162,3 +168,356 @@ prepare persists only after the checks above. All responses identify their narro
 preparation boundary. No model/account access occurs. A reproducible separate
 local trial must show SAD and Master preparation, retry after restart, conflicting
 scope refusal and a changed TARGET producing stale inspection.
+
+## PGL2-C2a revision and retirement contract — 2026-10-18
+
+Owner Session0007 T018 selects the PG-local continuation. Reuse the existing
+atomic generation and immutable receipts instead of allocating a replacement ID
+on every edit: an assignment retains its ID, role and selection, with monotonically
+increasing revision. Revision supplies the complete new package, current coverage
+and artifact pins plus a bounded reason. Reject overlapping claims except the
+assignment's own old claim; publish replacement and receipt together. The old scope
+is released only when the new revision is committed. Stale preparations retain claims
+until explicitly revised or retired; source drift is never implicit cancellation.
+
+Retirement is terminal for this prepared identity. The trusted controller supplies
+assignment ID, expected revision/generation and a reason. It can retire stale work
+even when source files or canonical coverage are unavailable: releasing an unlaunched
+claim must not require repairing obsolete inputs. Retirement preserves the last
+package and its receipt history, increments revision and releases the local claim.
+It is not completion, owner acceptance, cancellation of a running agent or deletion.
+New work after retirement needs a new preparation ID. Retained records still count
+toward the existing bounded store capacity; no garbage collection is added.
+
+Both operations require the existing trusted controller/checkout binding; worker
+capabilities cannot invoke them. Expected generation and assignment revision prevent
+lost updates. Exact retries return the original immutable receipt even after later
+revision/retirement; changed content or cross-operation UUID reuse refuses. Receipts
+and generation history retain every prior version. Existing legacy run claims still
+block conflicting replacement; retired preparations no longer block legacy starts.
+
+`assignment revise|retire --input FILE` adds lifecycle wire profile
+`sdp-governance-assignment/2`. First successful lifecycle mutation upgrades only the
+selected store to `sdp-project-governance-state/0.3`; C1 binaries must refuse it.
+New code reads 0.1/0.2/0.3 and never downgrades 0.3 on later preparation or legacy
+writes. C1 prepare/context requests and immutable receipts retain wire profile 1;
+inspection of a 0.3 store uses profile 2 and reports retired records explicitly.
+Older stores remain unchanged by reads. Design acceptance stays not-assessed and
+dispatch stays unavailable. Provider-backed disposition and dispatch remain C2 work.
+
+Verification must cover restart/retry, stale input refresh, atomic scope replacement,
+retirement with missing sources, terminal refusal, concurrent CAS, before/after-HEAD
+fault recovery, binding/worker refusal, profile downgrade prevention, legacy scope
+release and compiled CLI/schema behavior. Use a separate synthetic trial store;
+preserve the owner's existing lab attempts.
+
+## PGL2-C2b provider-backed design check — 2026-10-18
+
+Owner Session0007 T020 continues the plan on integrated Actions main. Before recording
+an owner disposition, establish an exact, reproducible review basis. Existing
+Blueprint readiness is attributed evidence, not owner design approval; reusing it as
+approval would violate the role contract. This slice supplies read-only checks and
+a review digest; actual trusted owner input remains the next C2 increment.
+
+`assignment design-check --input FILE` selects a prepared Master by ID, expected
+revision/generation and a canonical Blueprint assignment ID/event. Resolve the
+binding through the existing `blueprints.AssignmentViews` API and live models through
+`model.Snapshot`. No second provider ledger, copied lifecycle or provider mutation
+is introduced. Keep the provider's existing read budgets and unknown results.
+
+Require the active PG plan to match the binding; the provider assignment must be
+draft, ready or assigned. Hold, executing, review and terminal states require their
+own workflow disposition. The retained bundle must validate and be current. Its
+blueprint.json must be the prepared blueprint pin; NOW/TARGET pins must name each
+resolved artifact's metadata file. Compare full model captures, not metadata alone:
+an uncommitted WORK edit must stale the check even if its metadata file is unchanged.
+The prepared task pin must match the retained task digest. Require passing structural
+constraints and exact literal membership of each PG writable path in the task's
+AllowedCodePaths; do not infer wildcard or directory expansion. This is a conservative
+preflight bound, not a claim of code conformance or complete impact coverage.
+
+Read and check twice, including operational generation, preparation revision and
+canonical coverage. Any observed drift refuses a current result. A successful
+`sdp-governance-design-check/1` response binds the exact prepared package, coverage,
+provider assignment/event/binding, live model captures and task to a reviewRevision.
+Return preliminary/model coverage and provider readiness separately. Blocked checks
+have no reviewRevision. File inspection is optimistic; future disposition/dispatch
+must run the check again. No source locks or global checkout exclusion are implied.
+
+All results say designAcceptance not-recorded and dispatch unavailable. File text,
+Blueprint assessment, frozen model, returned digest or request role cannot establish
+owner approval. This read operation does not upgrade operational storage or change
+the existing preparation inspection/worker MCP contract. A later owner-input increment
+must bind its disposition to this review revision and invalidate it on change.
+
+## PGL2-C2c owner decision records — 2026-10-18
+
+Owner Session0007 T022 authorizes continuation while reading the walkthrough. This
+is implementation authority, not an owner decision on a prepared test assignment.
+Reuse the checkout's atomic generation and immutable operation receipts to record
+approved, changes-requested or rejected against the exact C2b review revision.
+Keep this operational record separate from canonical card/plan lifecycle: neither
+approval nor rejection closes a card, changes a model or starts an agent.
+
+Select a trusted local-controller adapter, consistent with the existing Caller
+boundary. The core receives owner input separately from the package request and
+rejects worker callers. The CLI displays the bounded proposal and captures an
+explicit decision and comment from stdin, with a separately supplied owner label.
+Blank input, EOF and cancel write no decision. No decision is inferred from source
+files, technical readiness, silence or the request's role. Source/actor/comment are
+attributed controller observations, not cryptographic identity verification. Same-user
+shell access remains outside this boundary; an agent with unrestricted shell access
+can invoke local commands. Conversation capture and stronger authentication are not
+claimed. This adapter permits testing without selecting the final conversation/UI.
+
+Store the complete checked review basis and the captured input, timestamp and operation
+identity. A later decision supersedes the effective decision for that assignment;
+immutable receipts preserve earlier decisions. Exact retries return their historical
+receipt, never a renewed acceptance claim. Reusing an ID for changed content or any
+other operation refuses. A retry of the local CLI retrieves a matching receipt before
+prompting, so an uncertain successful write does not ask for another decision.
+
+Before recording, require current generation, preparation revision, exact review digest
+and a current provider check; repeat after collecting input and immediately before
+publication. Failed or stale checks do not upgrade storage. A new read-only design-review
+operation reports the latest recorded decision and its current applicability. It says
+stale if the current checked basis differs or cannot be checked, including retirement.
+Exact source restoration can match again: this checks current facts, not unobserved
+transient file edits. A new preparation revision changes the basis even with equal
+source bytes. Rejection/changes-requested on a current basis supersedes approval.
+
+First successful decision upgrades only its chosen store to profile 0.4. New code
+reads older profiles and preserves 0.4 on every later operation; older binaries refuse
+it. Existing preparation inspection remains explicitly not-assessed; C2b design-check
+retains its technical-only not-recorded result. Use design-review for effective owner
+disposition. No new MCP privileges are exposed, and dispatch remains unavailable
+even for an approved, current package. The external disposition file pin from C1 is
+still a source reference; it cannot substitute for this controller record.
+
+Verification: real provider fixtures, current decision/restart/retry, changed-source
+and preparation invalidation, supersession, worker/identity/collision refusal,
+concurrent decision CAS, before/after-HEAD recovery, stale input while prompting,
+profile preservation and old-reader refusal. Use a separate synthetic lab and label
+its scripted owner input as fixture evidence; never record the actual owner as its
+approver. No broad dispatch or final interaction design is delivered here.
+
+## PGL2-C2d — Activate approved implementation work, 2026-10-19
+
+Owner T024 authorizes continuing the plan toward Session completion. Connect a
+current approved Master preparation to the existing run/controller pipeline; do
+not create a second execution engine or mislabel ImplementationPlan work as
+Maintenance. SAD launch, responsive leader and multi-run control remain subsequent
+orchestration work. This is a runnable boundary, not just another eligibility flag.
+
+The privileged assignment activate operation atomically creates one ready run and
+an immutable preparation-to-run binding. Require exact checkout/generation,
+preparation revision, review revision and current approved decision operation.
+Recheck the actual providers and local scope before publication. Exact retry returns
+the original receipt; another operation cannot create a second run for that identity.
+Preparation cannot be revised or retired after activation: the run owns execution
+and interruption/replanning, and its preparation claim remains held. Do not release
+scope merely because a host becomes idle or a design becomes stale.
+
+Use an explicit implementation routine, with the existing implement/verify/review/
+record progression and evidence gates. Run context resolves ImplementationPlan
+coverage and the bound approved package. Read/status/overview expose stale sources;
+launch, steer, report, resume, retry, bind and reattach reject changed design or a
+superseding decision. Stop/fail/scope-change and host observation bookkeeping remain
+possible after drift. The controller includes the exact approved package in launch
+context and rechecks before host submission. Source checks remain optimistic; this
+is not filesystem locking or a sandbox preventing all writes after a concurrent edit.
+
+Reuse the existing owner run command and restricted worker MCP set. Launch-bound
+context_read resolves the actual run's coverage; general Maintenance route selection
+remains unchanged. No new worker launch or owner-decision privilege is granted.
+Host finish still does not complete the routine or grant independent review.
+
+Successful activation upgrades only its store to 0.5, preserving older profiles and
+0.4 decisions; later writes must not downgrade. The binding stays in operational
+state rather than adding caller-editable authority fields to Run. The additive
+implementation routine is selected only by the new activation entry point; old
+readers refuse the new store. Canonical management/model records remain untouched.
+Local scope checks are not global reservations; the existing manual cross-worktree
+preflight remains required. The checkout-wide controller leases still serialize
+owner control until the PGL3 concurrency contract is delivered.
+
+Verify real provider-created approval through activation and the built controller
+with a protocol fixture, current/stale worker context, drift before launch/steer,
+one-run retry/CAS and uncertain launch recovery. Record actual host trials separately
+from protocol fixtures; fixture-owner decisions are not actual owner acceptance.
+
+## PGL3-C1 — Per-run controller isolation, 2026-10-19
+
+Continue the selected PGL3 execution path by removing the checkout-wide lifetime
+bottleneck without weakening exclusion with existing controllers. New controllers
+hold a shared lock on the existing controller/live-controller lock files, then an
+exclusive per-run lock underneath them. Two disjoint runs can own different hosts;
+two controllers for one run still refuse. Legacy exclusive checkout leases conflict
+with every new shared lease in both acquisition orders. Preserve the short exclusive
+store mutation lock and all source/scope/retry checks. No new operational schema is
+needed because lease layout does not alter stored run meaning or allow old writers
+to race a new active controller.
+
+Use validated existing run IDs before creating per-run directories. A worker caller,
+invalid ID or missing run cannot acquire a lease. If the second lock fails, release
+the shared compatibility lock. Process exit releases both OS locks; directories are
+not liveness records. Read-only observers still acquire no control lease. Distinct
+runs do not share a host connection; the existing host client remains serialized.
+
+This is a prerequisite for the responsive leader and two-Master scenario, not proof
+of either. Verify same-run and legacy/new exclusion in both orders, independent-run
+leases, process-exit release, no stale global lock after partial acquisition, and
+controller integration. Keep automatic report-policy design separate: the actual
+native refusal is retained and the owner's interaction preference is pending.
+
+## T025 — Automatic reporting and attention, 2026-10-19
+
+The owner resolves the T024 reporting question: maximize automatic operation and
+status/result submission within authorized work, targeting projects that run for
+hours. Routine reporting must not require an owner decision on every submission.
+A genuine question, changed scope or reserved decision uses a durable attention
+request. Independent work continues where its authority and dependencies allow it.
+No response or timeout is permission. Host restrictions still need a supported,
+measured integration; this decision does not rewrite the earlier native report refusal.
+
+Continue PGL3 with automatic local reports, correlated inbox and structured attention/
+reply semantics. Retain assigned capabilities, source/revision checks, receipt
+identity, evidence-versus-acceptance distinction and explicit continuation scope.
+Do not implement blanket acceptance of host tool requests as a substitute for the
+bounded report contract.
+
+The owner also requests multi-machine oversight/control and an installable desktop/
+mobile web client. [KB054](../../../KanBan/backlog/%23054--Proposal--PG-attention-and-remote-coordination.md)
+and the [architecture proposal](../../../03--Architecture/ProjectGovernance/Attention-and-Remote-Coordination.md)
+register that extension. Local runtime, proposed self-hosted hub and responsive PWA
+share one message identity and answer disposition. This is proposed architecture,
+not an implemented remote product or revival of obsolete SDP_Analyzer. Select its
+own bounded execution plan after the local contract; retain this plan's existing
+completion boundaries. No production deployment or account changes occur here.
+
+## PGL3-C2 — Automatic report delivery and local inbox (2026-10-19)
+
+New launches may explicitly select automatic reporting. The controller records that
+selection in the launch payload and configures only the assignment-bound
+`sdp_governance.run_transition` tool with `approval_mode = "approve"`. The tool retains
+its truthful write annotation and only report/fail/scope-change capabilities. This
+uses the pinned 0.161.0 host's supported configuration; it does not change global
+approval settings, answer arbitrary approval requests or accept a submitted result.
+Existing launches retain their previous policy unless automatic reporting is selected.
+
+A report submitted from a current running agent may tolerate intervening tool/message
+observations only if every immutable revision proves unchanged decision state. It
+must not skip approval requests, owner inputs, lifecycle transitions, reconnects or
+source/approval drift. Controller calls retain strict revision comparison. Exact
+operation retry remains idempotent.
+
+The local report inbox projects report transition receipts, retaining operation ID,
+reported revision, input revision and text separately from current run state and
+coverage. Reading does not create or mutate state. Reports survive process restart
+and later run transitions; repeated reads/retries do not create duplicate messages.
+This initial view has no consumed/accepted state, leader acknowledgement or automatic
+continuation. Structured attention questions/replies are the next local contract.
+
+T026 owner boundary: the hub, web/mobile application and notification delivery belong
+to a separate project. SDP/SDPTool owns local execution, durable reports and attention,
+and its eventual adapter contract. KB054 retains the external coordination handoff;
+no destination repository or implementation is invented.
+
+Host configuration references: [official MCP configuration](https://learn.chatgpt.com/docs/extend/mcp)
+and [pinned 0.161.0 configuration schema](https://github.com/openai/codex/blob/rust-v0.161.0/codex-rs/core/config.schema.json).
+
+The initial C2 native experiment mapped automatic reporting to host `auto`; the host
+correctly refused the write under `never`. Pinned host implementation distinguishes
+annotation-based `auto` from per-tool `approve`. The owner's T025 automatic reporting
+selection is represented by `approve` for this bound tool only on a fresh launch.
+No rejected operation is replayed, existing attempt policy changed or arbitrary tool
+preapproved. The failed trial remains separate evidence. Source:
+[pinned tool approval semantics](https://github.com/openai/codex/blob/rust-v0.161.0/codex-rs/core/src/mcp_tool_call.rs).
+
+## PGL3-C3 — Durable local questions and attributed replies (2026-10-21)
+
+Owner T027 continues the selected local attention/reply step. Extend the existing
+atomic run store and immutable operation receipts instead of introducing a competing
+mailbox ledger. Explicit question writes select operational profile 0.6; old stores
+remain readable and old readers refuse the extended store. All writers retain 0.6.
+
+A launch-bound agent or controller may ask a question on a running, current run:
+nonempty prompt, zero to five stable option IDs/labels, free text always available,
+and a blocking flag. IDs are operation UUIDs. Questions retain source revision,
+run/attempt binding, creation time and a decision-basis digest. Host observations
+may advance the run revision without invalidating the question; owner steering,
+source/design changes, lifecycle changes and replacement/disconnected attempts do
+invalidate applicability. Sibling questions/replies do not invalidate each other.
+The question/reply is project data, not a design approval or expanded mandate.
+
+Only a trusted controller may attribute a reply captured from its input surface.
+The request names the question and exact basis, never an owner identity. Retain text,
+optional selected option, actor/source, receipt ID and server timestamp. One reply
+per question; exact retries return immutable history, conflicting repeats refuse.
+An answered record is not proof of agent consumption or application. A controller
+may explicitly withdraw an obsolete question with a reason; preserve its history.
+
+Open blocking questions prevent report/start/resume advancement for that run even
+when stale, until answered or explicitly withdrawn. Other runs and stop/fail/scope
+bookkeeping remain available. This is a governance advancement guard, not a claim
+that arbitrary host file/tool execution is forcibly suspended. Agents are instructed
+to stop dependent work and return when waiting; a reply does not automatically start
+another host turn in this increment. Leader consumption/continuation remains next.
+
+Add write-annotated attention_request and read-only attention_read MCP tools,
+restricted to the launch-bound run/attempt. The read returns current applicability,
+not just historical records; optional questionId bounds the result for large histories.
+No owner-reply tool is given to agents. Automatic-mode launches preapprove this bounded reporting tool
+alongside run_transition, retaining all core guards. The controller CLI lists current
+applicability, captures a reply against a displayed question, and supports explicit
+withdrawal. Terminal output quotes project-controlled content; JSON supports local
+clients. No hub, notification transport or new global host configuration is added.
+
+Verification: ask/read/reply across reopen; option/free-text input; idempotency and
+wrong-run/epoch/actor refusal; source, steering and terminal-state staleness; sibling
+independence; two-run progress; report guard; withdrawal; legacy reader refusal and
+all writer profile preservation; real MCP transport and CLI capture. Native question/
+reply continuation and independent review remain distinct unfulfilled evidence.
+
+## PGL3-C4 — Guarded attention continuation (2026-10-21)
+
+T028 continues the authorized local workflow. When a running assignment's latest
+host attempt has completed cleanly while awaiting input, answered current questions
+may select a fresh bounded Master attempt in the same run. Reuse the existing launch
+intent/claim/acknowledgement protocol and fresh thread isolation. Extending an ended
+turn in place would require new host correlation/recovery semantics; a fresh attempt
+fits the existing capability boundary and preserves the prior attempt as history.
+This increment is the controller primitive and optional bounded watcher for future
+Project Leader coordination, not the complete conversational leader.
+
+A trusted continuation selects exact question/reply/basis references, requires all
+blocking questions resolved, unchanged sources/authority, no observation gap, completed
+prior attempt and no unresolved outbound input. Preparation atomically records a new
+launch input and makes this same run ready. Claim rechecks the question's pre-prepare
+basis and current authority before any host effect. Inputs retain immutable references;
+prepared/sending/uncertain requests are never blindly resent. Existing terminal-history
+recovery may prove an accepted send but does not authorize another send.
+
+The fresh payload retains the original owner request, current assignment/context,
+question/reply history and explicit continuation instructions. Sandbox, approval/
+reporting policy and selected skill bytes must match the original launch. Reply input
+is not design approval, scope expansion or acceptance. A report remains verifying and
+cannot trigger this continuation. New questions in a later attempt require new replies.
+
+Operational profile 0.7 adds reply references to launch input; legacy readers refuse
+and every writer preserves it. Attention inspection derives dispatch-prepared/sending/
+uncertain/acknowledged from those inputs. Host acknowledgement is not proof of semantic
+consumption or correct implementation; retain that distinction in views and evidence.
+
+Expose explicit continuation and an opt-in bounded automatic watcher on the local
+controller. Default launch behavior remains unchanged. A watcher stays alive after a
+clean waiting turn, checks for current answers and starts at most its configured number
+of fresh attempts. Waiting does not append receipts or poll a model. It stops on report,
+failure, stale authority, unresolved delivery or lifetime exhaustion. It starts no new
+assignment, grants no native delegation and does not implement the external hub.
+
+Verification: durable exact reply binding; source/steering/stale/duplicate refusals;
+claim before host effects; lost response/crash never causes duplicate launch; unchanged
+policies/skills; native ask, delayed reply, fresh attempt, real code change and report;
+protected files, prior lab and legacy reader refusal. Multi-hour capacity and full
+leader/report consumption, direct SAD dialogue and independent review remain separate.

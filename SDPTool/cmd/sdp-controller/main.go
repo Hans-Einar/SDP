@@ -15,6 +15,20 @@ import (
 )
 
 func main() {
+	if len(os.Args) > 1 && os.Args[1] == "attention" {
+		if e := attentionCommand(os.Args[2:], os.Stdout, os.Stdin, os.Stderr); e != nil {
+			fmt.Fprintln(os.Stderr, e)
+			os.Exit(2)
+		}
+		return
+	}
+	if len(os.Args) > 1 && os.Args[1] == "inbox" {
+		if e := inboxCommand(os.Args[2:], os.Stdout); e != nil {
+			fmt.Fprintln(os.Stderr, e)
+			os.Exit(2)
+		}
+		return
+	}
 	if len(os.Args) > 1 && os.Args[1] == "assignment" {
 		if e := assignmentCommand(os.Args[2:], os.Stdout); e != nil {
 			fmt.Fprintln(os.Stderr, e)
@@ -29,7 +43,7 @@ func main() {
 		}
 		return
 	}
-	if len(os.Args) > 1 && (os.Args[1] == "run" || os.Args[1] == "status" || os.Args[1] == "recover" || os.Args[1] == "attach" || os.Args[1] == "provenance") {
+	if len(os.Args) > 1 && (os.Args[1] == "run" || os.Args[1] == "continue" || os.Args[1] == "status" || os.Args[1] == "recover" || os.Args[1] == "attach" || os.Args[1] == "provenance") {
 		if e := ownerCommand(os.Args[1:]); e != nil {
 			fmt.Fprintln(os.Stderr, e)
 			os.Exit(2)
@@ -37,7 +51,7 @@ func main() {
 		return
 	}
 	if len(os.Args) < 2 || os.Args[1] != "probe" {
-		fmt.Fprintln(os.Stderr, "usage: sdp-controller probe|run|status|recover|attach|provenance|overview|assignment --project ROOT [options]; each command accepts --help")
+		fmt.Fprintln(os.Stderr, "usage: sdp-controller probe|run|continue|status|recover|attach|provenance|overview|inbox|attention|assignment --project ROOT [options]; each command accepts --help")
 		os.Exit(2)
 	}
 	f := flag.NewFlagSet("probe", flag.ExitOnError)

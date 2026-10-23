@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"slices"
+	"strings"
 	"time"
 
 	"github.com/Hans-Einar/SDP/SDPTool/governance"
@@ -23,10 +24,10 @@ type Host interface {
 }
 
 type Controller struct {
-	SkillPaths                                                         []string
-	Service                                                            *governance.Service
-	Host                                                               Host
-	Root, StateDir, MCPBinary, Epoch, Sandbox, Approvals, HostIdentity string
+	SkillPaths                                                                    []string
+	Service                                                                       *governance.Service
+	Host                                                                          Host
+	Root, StateDir, MCPBinary, Epoch, Sandbox, Approvals, Reporting, HostIdentity string
 }
 
 // Retry only bookkeeping rejected before mutation. Never retry a host effect.
@@ -75,14 +76,25 @@ func now() string { return time.Now().UTC().Format(time.RFC3339Nano) }
 
 // Launch consumes a new intent once while holding the controller lease. Failures
 // after claim remain uncertain, even if an RPC may have succeeded. No retry sends.
-func (c *Controller) Launch(ctx context.Context, runID, text string) (result governance.Result, err error) {
-	unlock, e := c.Service.ControllerLease(governance.LocalController())
+func (c *Controller) Launch(ctx context.Context, runID, text string) (governance.Result, error) {
+	return c.launch(ctx, runID, text, false)
+}
+
+func (c *Controller) launch(ctx context.Context, runID, text string, continuing bool) (result governance.Result, err error) {
+	unlock, e := c.Service.RunControllerLease(governance.LocalController(), runID)
 	if e != nil {
 		return result, e
 	}
 	defer unlock()
 	if c.MCPBinary == "" || (c.Sandbox != "read-only" && c.Sandbox != "workspace-write") {
 		return result, fmt.Errorf("explicit MCP executable and sandbox required")
+	}
+	reporting := c.Reporting
+	if reporting == "" {
+		reporting = "manual"
+	}
+	if reporting != "manual" && reporting != "automatic" {
+		return result, fmt.Errorf("unsupported reporting mode")
 	}
 	mode, e := c.Host.AccountMode(ctx)
 	if e != nil {
@@ -95,7 +107,21 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 	if e != nil {
 		return r, e
 	}
-	coverage, e := c.Service.Context(r.Run.Selection)
+	var continuation continuationContext
+	if continuing {
+		continuation, e = c.continuationContext(runID)
+		if e != nil {
+			return r, e
+		}
+		text = continuation.Original.Text
+		copy := *c
+		copy.SkillPaths, e = continuationSkillPaths(c.Root, continuation.Original.Skills)
+		if e != nil {
+			return r, e
+		}
+		c = &copy
+	}
+	coverage, e := c.Service.RunContext(runID)
 	if e != nil {
 		return r, e
 	}
@@ -103,8 +129,22 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 	if e != nil {
 		return r, e
 	}
-	instructions := "You are the fresh Master for one explicitly authorized SDP Maintenance assignment. Read the selected Session, authority, plan, card, AGENTS and relevant SDP skills before acting. Preserve writable/excluded boundaries and unrelated work. Native delegation is not granted by this launch; do not spawn children. Report candidate, tests, remaining gaps and observed outcome. Agent claims do not grant owner approval or independent review. Do not publish canonical management/Session records or mark the work complete; evidence publication is a later controller capability. Use assignment-bound MCP reads and report/fail/scope-change only."
-	payload, e := json.Marshal(map[string]any{"ownerInput": text, "assignment": r.Run.Assignment, "context": coverage, "runId": runID, "instructions": instructions, "sandbox": c.Sandbox, "approvalMode": c.Approvals})
+	instructions := "You are the fresh Master for one explicitly authorized SDP Maintenance assignment. Read the selected Session, authority, plan, card, AGENTS and relevant SDP skills before acting. Preserve writable/excluded boundaries and unrelated work. Native delegation is not granted by this launch; do not spawn children. Report candidate, tests, remaining gaps and observed outcome. Agent claims do not grant owner approval or independent review. Do not publish canonical management/Session records or mark the work complete; evidence publication is a later controller capability. Use assignment-bound MCP reads, attention questions and report/fail/scope-change only. For input you need, use attention_request with blocking=true, stop dependent work, and read any reply and its current applicability via attention_read. If no reply is available, return a waiting summary; do not poll indefinitely or invent an answer. A reply records input, not authority to change scope."
+	approvedDesign, e := c.Service.RunDesign(runID)
+	if e != nil {
+		return r, e
+	}
+	if approvedDesign != nil {
+		instructions = strings.ReplaceAll(instructions, "SDP Maintenance assignment", "SDP implementation assignment")
+		instructions = "You are the Master for the exact approved SDP implementation package. Use the included design basis, task constraints, Session and ImplementationPlan. Do not change NOW/TARGET, broaden scope or treat host completion as approval. " + instructions
+	}
+	if continuing {
+		if !slices.Equal(selected, continuation.Original.Skills) {
+			return r, fmt.Errorf("conflict: continuation skill selection changed")
+		}
+		instructions += " This is a fresh continuation attempt after recorded attention replies. Reuse the original assignment and existing working files. Read attentionContext: it distinguishes historical replies from the exact replies selected by attentionReferences. Do not ask the same resolved question again. Continue only within the original mandate; report or raise a new question when required."
+	}
+	payload, e := json.Marshal(map[string]any{"attentionContext": continuation.History, "attentionReferences": continuation.References, "approvedDesign": approvedDesign, "ownerInput": text, "assignment": r.Run.Assignment, "context": coverage, "runId": runID, "instructions": instructions, "sandbox": c.Sandbox, "approvalMode": c.Approvals, "reportingMode": reporting})
 	if e != nil {
 		return r, e
 	}
@@ -116,7 +156,7 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 		}
 		wireText = markers + "\n" + wireText
 	}
-	v := governance.OwnerInput{Skills: selected, ID: governancehost.UUID(), Kind: "launch", Text: text, Payload: wireText, AttemptID: governancehost.UUID(), Epoch: c.Epoch, ReceivedAt: now()}
+	v := governance.OwnerInput{AttentionReplies: continuation.References, Skills: selected, ID: governancehost.UUID(), Kind: "launch", Text: text, Payload: wireText, AttemptID: governancehost.UUID(), Epoch: c.Epoch, ReceivedAt: now()}
 	if _, e = c.input(runID, "prepare", v); e != nil {
 		return r, e
 	}
@@ -131,6 +171,9 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 		}
 	}()
 	config := map[string]any{"sdp_governance": map[string]any{"command": c.MCPBinary, "args": []string{"--project", c.Root, "--state", c.StateDir, "--run", runID, "--attempt", v.AttemptID, "--epoch", c.Epoch}}}
+	if reporting == "automatic" {
+		config["sdp_governance"].(map[string]any)["tools"] = map[string]any{"run_transition": map[string]any{"approval_mode": "approve"}, "attention_request": map[string]any{"approval_mode": "approve"}}
+	}
 	thread, e := c.Host.StartWorkThread(ctx, c.Root, c.Sandbox, instructions, c.Approvals, config)
 	if e != nil {
 		return r, e
@@ -159,7 +202,7 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 	if e != nil {
 		return r, e
 	}
-	if !slices.Equal(names, []string{"context_read", "events_read", "route_evaluate", "run_read", "run_transition"}) {
+	if !slices.Equal(names, []string{"attention_read", "attention_request", "context_read", "events_read", "route_evaluate", "run_read", "run_transition"}) {
 		return r, fmt.Errorf("assignment-bound MCP tools unavailable")
 	}
 	r, e = c.transition(runID, "start", "owner selected fresh bounded Master attempt")
@@ -167,6 +210,9 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 		return r, e
 	}
 	if e = governance.CheckSkillSnapshots(c.Root, v.Skills); e != nil {
+		return r, e
+	}
+	if e = c.Service.CheckRunReady(runID); e != nil {
 		return r, e
 	}
 	var turn governancehost.Turn
@@ -190,7 +236,7 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 // change stops the routine before attempting a host interrupt; it never expands
 // the existing assignment. Uncertain requests remain visible and are not resent.
 func (c *Controller) Control(ctx context.Context, runID, kind, text string) (result governance.Result, err error) {
-	unlock, e := c.Service.ControllerLease(governance.LocalController())
+	unlock, e := c.Service.RunControllerLease(governance.LocalController(), runID)
 	if e != nil {
 		return result, e
 	}

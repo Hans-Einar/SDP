@@ -1,0 +1,951 @@
+{
+  "status": "passed",
+  "hostKind": "native",
+  "modelTaskSubmitted": true,
+  "actualOwnerApproval": false,
+  "runId": "ace46633-c572-430b-87c6-0a6348257f07",
+  "cases": [
+    {
+      "operation": "context",
+      "request": {
+        "card": "SDP/KanBan/active/card.md",
+        "plan": "SDP/Maintenance/Plan.md",
+        "session": "SDP/Sessions/session.md",
+        "authority": "SDP/authority.md",
+        "step": "S1"
+      },
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "context",
+        "projectRef": "pg-continuation-lab",
+        "root": "/home/warloc/git/pg_lab/previews/pgl3-c4-final/project",
+        "checkoutId": "",
+        "revision": "d676d48071378ac730389afe0c9a2c8238358b22e699c85d24ea141852a8ccc2",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "sources": [
+          {
+            "path": "AGENTS.md",
+            "sha256": "d3b60b1c7daf2a21a40bb301226b727afb48661f23d47caa878c84c6bf616d26"
+          },
+          {
+            "path": "SDP/KanBan/active/card.md",
+            "sha256": "88b0f8a6a8072d9a6e8f465a357310933a142ee66475e9462fdd1ae044a91f54"
+          },
+          {
+            "path": "SDP/Maintenance/Plan.md",
+            "sha256": "9e4b058646c84dbfdf480bce1cb1d0d0fa00673a723366e109a8b57e4a728aca"
+          },
+          {
+            "path": "SDP/ProjectManagement/Ledger.ndjson",
+            "sha256": "9a162988f4282daa490ede1ea906e30a9008537c940a0df35e643f573d99f0f5"
+          },
+          {
+            "path": "SDP/SDP-project.manifest.yaml",
+            "sha256": "cdc4ebae44330f97573c5098f3b6e41ca31b6e2c9b24dc3fd49d0819734560f6"
+          },
+          {
+            "path": "SDP/Sessions/session.md",
+            "sha256": "c1a58d09043b88d6ba4cf2d63e311807ced984c2069c3fa658b5429b912cc8e2"
+          },
+          {
+            "path": "SDP/authority.md",
+            "sha256": "fa8a508a45ac5cf392b78b5ee198684a66b7af436d0967b01745720156003362"
+          }
+        ],
+        "coverage": "known",
+        "conditions": [],
+        "cardId": "KB-PGCONT-001",
+        "planId": "MAINT-PGCONT-0001",
+        "sessionId": "SESSION-PGCONT-0001"
+      }
+    },
+    {
+      "operation": "route",
+      "request": {
+        "schema": "sdp-project-governance/0.1",
+        "categories": [
+          "maintenance"
+        ],
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "routineId": "maintenance",
+        "routineVersion": "0.1"
+      },
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "route",
+        "disposition": "matched",
+        "basis": "caller-proposed category; no automatic language classification",
+        "context": {
+          "schema": "sdp-project-governance/0.1",
+          "operation": "context",
+          "projectRef": "pg-continuation-lab",
+          "root": "/home/warloc/git/pg_lab/previews/pgl3-c4-final/project",
+          "checkoutId": "",
+          "revision": "d676d48071378ac730389afe0c9a2c8238358b22e699c85d24ea141852a8ccc2",
+          "selection": {
+            "card": "SDP/KanBan/active/card.md",
+            "plan": "SDP/Maintenance/Plan.md",
+            "session": "SDP/Sessions/session.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "sources": [
+            {
+              "path": "AGENTS.md",
+              "sha256": "d3b60b1c7daf2a21a40bb301226b727afb48661f23d47caa878c84c6bf616d26"
+            },
+            {
+              "path": "SDP/KanBan/active/card.md",
+              "sha256": "88b0f8a6a8072d9a6e8f465a357310933a142ee66475e9462fdd1ae044a91f54"
+            },
+            {
+              "path": "SDP/Maintenance/Plan.md",
+              "sha256": "9e4b058646c84dbfdf480bce1cb1d0d0fa00673a723366e109a8b57e4a728aca"
+            },
+            {
+              "path": "SDP/ProjectManagement/Ledger.ndjson",
+              "sha256": "9a162988f4282daa490ede1ea906e30a9008537c940a0df35e643f573d99f0f5"
+            },
+            {
+              "path": "SDP/SDP-project.manifest.yaml",
+              "sha256": "cdc4ebae44330f97573c5098f3b6e41ca31b6e2c9b24dc3fd49d0819734560f6"
+            },
+            {
+              "path": "SDP/Sessions/session.md",
+              "sha256": "c1a58d09043b88d6ba4cf2d63e311807ced984c2069c3fa658b5429b912cc8e2"
+            },
+            {
+              "path": "SDP/authority.md",
+              "sha256": "fa8a508a45ac5cf392b78b5ee198684a66b7af436d0967b01745720156003362"
+            }
+          ],
+          "coverage": "known",
+          "conditions": [],
+          "cardId": "KB-PGCONT-001",
+          "planId": "MAINT-PGCONT-0001",
+          "sessionId": "SESSION-PGCONT-0001"
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa"
+      }
+    },
+    {
+      "operation": "bind",
+      "request": null,
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "bind",
+        "projectRef": "pg-continuation-lab",
+        "root": "/home/warloc/git/pg_lab/previews/pgl3-c4-final/project",
+        "checkoutId": "47c87240-bd98-4e02-90c2-48bab99dd28a"
+      }
+    },
+    {
+      "operation": "start",
+      "request": {
+        "schema": "sdp-project-governance/0.1",
+        "projectRef": "pg-continuation-lab",
+        "checkoutId": "47c87240-bd98-4e02-90c2-48bab99dd28a",
+        "operationId": "8fd435fb-6d17-4d4d-a708-524a13afd99f",
+        "requestId": "2fab087f-675a-47d2-9ba8-0cfa0557a7a3",
+        "inputRevision": "d676d48071378ac730389afe0c9a2c8238358b22e699c85d24ea141852a8ccc2",
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "Ask the label-prefix choice, implement it, verify and report",
+          "writablePaths": [
+            "label.go",
+            "label_test.go"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "AGENTS.md",
+            "go.mod",
+            "unrelated.txt"
+          ]
+        }
+      },
+      "response": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "start",
+        "projectRef": "pg-continuation-lab",
+        "checkoutId": "47c87240-bd98-4e02-90c2-48bab99dd28a",
+        "operationId": "8fd435fb-6d17-4d4d-a708-524a13afd99f",
+        "run": {
+          "id": "ace46633-c572-430b-87c6-0a6348257f07",
+          "revision": 1,
+          "requestId": "2fab087f-675a-47d2-9ba8-0cfa0557a7a3",
+          "state": "ready",
+          "step": "implement",
+          "inputRevision": "d676d48071378ac730389afe0c9a2c8238358b22e699c85d24ea141852a8ccc2",
+          "selection": {
+            "card": "SDP/KanBan/active/card.md",
+            "plan": "SDP/Maintenance/Plan.md",
+            "session": "SDP/Sessions/session.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Ask the label-prefix choice, implement it, verify and report",
+            "writablePaths": [
+              "label.go",
+              "label_test.go"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "AGENTS.md",
+              "go.mod",
+              "unrelated.txt"
+            ]
+          },
+          "routine": {
+            "id": "maintenance",
+            "version": "0.1",
+            "steps": [
+              "implement",
+              "verify",
+              "review",
+              "record"
+            ],
+            "completion": "candidate evidence, applicable independent review and checked publication required"
+          },
+          "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+          "reason": "coverage resolved; trusted local controller selected bounded work"
+        },
+        "coverage": "known"
+      }
+    }
+  ],
+  "goldenBefore": "FAIL: \"\\t Keep  Case\\u00a0\" -> \"Keep  Case\"; want \"OK: Keep  Case\"\n",
+  "controllerSHA256": "b49a767dbd9ab76bd7fc9c0e11857ae5a514032f4d9c92a7416840f80835eead",
+  "sdptoolSHA256": "eb58c08a47197b37651b055d0e21f682776d58483789bdb0f44e34dfab313f5a",
+  "mcpSHA256": "43cfc823f3907fd8c4c1e3d03295318726533129e3f982c2ccd1c05db90122bb",
+  "hostBinarySHA256": "9a820c17865fa825d04db416818679a9d63bd72e50835c396f496e5684626c9c",
+  "waitingBeforeReply": {
+    "attempts": 1,
+    "question": {
+      "runId": "ace46633-c572-430b-87c6-0a6348257f07",
+      "question": {
+        "id": "f71c556f-fd9d-4176-ae22-32cec6958fc3",
+        "basis": "ee0652428572d15ebc58e5787519398034884cd7546e891509303f5edf5d264a",
+        "inputRevision": "d676d48071378ac730389afe0c9a2c8238358b22e699c85d24ea141852a8ccc2",
+        "raisedRevision": 20,
+        "raisedAt": "2026-10-21T00:28:51.700159748Z",
+        "origin": "agent",
+        "attemptId": "c7e42143-7c36-4d8c-8c7a-7deeb43aa929",
+        "prompt": "Which prefix should Label use?",
+        "options": [
+          {
+            "id": "short",
+            "label": "short (prefix \"OK: \")"
+          },
+          {
+            "id": "detailed",
+            "label": "detailed (prefix \"Result: \")"
+          }
+        ],
+        "blocking": true
+      },
+      "status": "open",
+      "coverage": "known",
+      "applicability": "current",
+      "currentRevision": 23,
+      "consumption": "not-tracked"
+    },
+    "allProjectBytesUnchanged": true
+  },
+  "replyReceipt": {
+    "schema": "sdp-project-governance/0.1",
+    "operation": "attention.reply",
+    "projectRef": "pg-continuation-lab",
+    "checkoutId": "47c87240-bd98-4e02-90c2-48bab99dd28a",
+    "operationId": "90508b8b-cbac-4b2c-bca2-ed2e0c100fc3",
+    "run": {
+      "attention": [
+        {
+          "id": "f71c556f-fd9d-4176-ae22-32cec6958fc3",
+          "basis": "ee0652428572d15ebc58e5787519398034884cd7546e891509303f5edf5d264a",
+          "inputRevision": "d676d48071378ac730389afe0c9a2c8238358b22e699c85d24ea141852a8ccc2",
+          "raisedRevision": 20,
+          "raisedAt": "2026-10-21T00:28:51.700159748Z",
+          "origin": "agent",
+          "attemptId": "c7e42143-7c36-4d8c-8c7a-7deeb43aa929",
+          "prompt": "Which prefix should Label use?",
+          "options": [
+            {
+              "id": "short",
+              "label": "short (prefix \"OK: \")"
+            },
+            {
+              "id": "detailed",
+              "label": "detailed (prefix \"Result: \")"
+            }
+          ],
+          "blocking": true,
+          "reply": {
+            "operationId": "90508b8b-cbac-4b2c-bca2-ed2e0c100fc3",
+            "actor": "fixture-owner",
+            "source": "local-controller-stdin",
+            "optionId": "short",
+            "text": "Use the prefix OK: followed by the trimmed input. Synthetic trial input only.",
+            "recordedAt": "2026-10-21T00:28:58.279698173Z"
+          }
+        }
+      ],
+      "inputs": [
+        {
+          "contentOmitted": true,
+          "id": "cb267940-e1a8-48d6-aef5-d37d81a8a89f",
+          "kind": "launch",
+          "text": "",
+          "payload": "",
+          "attemptId": "c7e42143-7c36-4d8c-8c7a-7deeb43aa929",
+          "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+          "threadId": "01a15bdb-cd54-74d2-b6e7-8bbfde0101f8",
+          "turnId": "01a15bdb-d047-70c3-9774-953343577df3",
+          "state": "acknowledged",
+          "receivedAt": "2026-10-21T00:28:13.950925563Z"
+        }
+      ],
+      "attempts": [
+        {
+          "agentEpoch": "db091b86-97ec-47ff-b473-af518a08db30",
+          "lastObservedAt": "2026-10-21T00:28:55.093938785Z",
+          "eventCount": 16,
+          "id": "c7e42143-7c36-4d8c-8c7a-7deeb43aa929",
+          "hostVersion": "0.161.0",
+          "threadId": "01a15bdb-cd54-74d2-b6e7-8bbfde0101f8",
+          "turnId": "01a15bdb-d047-70c3-9774-953343577df3",
+          "inputRevision": "d676d48071378ac730389afe0c9a2c8238358b22e699c85d24ea141852a8ccc2",
+          "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+          "status": "completed",
+          "gap": false,
+          "events": []
+        }
+      ],
+      "id": "ace46633-c572-430b-87c6-0a6348257f07",
+      "revision": 24,
+      "requestId": "2fab087f-675a-47d2-9ba8-0cfa0557a7a3",
+      "state": "running",
+      "step": "implement",
+      "inputRevision": "d676d48071378ac730389afe0c9a2c8238358b22e699c85d24ea141852a8ccc2",
+      "selection": {
+        "card": "SDP/KanBan/active/card.md",
+        "plan": "SDP/Maintenance/Plan.md",
+        "session": "SDP/Sessions/session.md",
+        "authority": "SDP/authority.md",
+        "step": "S1"
+      },
+      "assignment": {
+        "outcome": "Ask the label-prefix choice, implement it, verify and report",
+        "writablePaths": [
+          "label.go",
+          "label_test.go"
+        ],
+        "excludedPaths": [
+          "SDP",
+          "AGENTS.md",
+          "go.mod",
+          "unrelated.txt"
+        ]
+      },
+      "routine": {
+        "id": "maintenance",
+        "version": "0.1",
+        "steps": [
+          "implement",
+          "verify",
+          "review",
+          "record"
+        ],
+        "completion": "candidate evidence, applicable independent review and checked publication required"
+      },
+      "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+      "reason": "owner selected fresh bounded Master attempt"
+    },
+    "coverage": "known"
+  },
+  "finalRun": {
+    "attention": [
+      {
+        "id": "f71c556f-fd9d-4176-ae22-32cec6958fc3",
+        "basis": "ee0652428572d15ebc58e5787519398034884cd7546e891509303f5edf5d264a",
+        "inputRevision": "d676d48071378ac730389afe0c9a2c8238358b22e699c85d24ea141852a8ccc2",
+        "raisedRevision": 20,
+        "raisedAt": "2026-10-21T00:28:51.700159748Z",
+        "origin": "agent",
+        "attemptId": "c7e42143-7c36-4d8c-8c7a-7deeb43aa929",
+        "prompt": "Which prefix should Label use?",
+        "options": [
+          {
+            "id": "short",
+            "label": "short (prefix \"OK: \")"
+          },
+          {
+            "id": "detailed",
+            "label": "detailed (prefix \"Result: \")"
+          }
+        ],
+        "blocking": true,
+        "reply": {
+          "operationId": "90508b8b-cbac-4b2c-bca2-ed2e0c100fc3",
+          "actor": "fixture-owner",
+          "source": "local-controller-stdin",
+          "optionId": "short",
+          "text": "Use the prefix OK: followed by the trimmed input. Synthetic trial input only.",
+          "recordedAt": "2026-10-21T00:28:58.279698173Z"
+        }
+      }
+    ],
+    "inputs": [
+      {
+        "id": "cb267940-e1a8-48d6-aef5-d37d81a8a89f",
+        "kind": "launch",
+        "text": "This is an owner-authorized isolated PG attention/continuation test. First inspect context and run. If the launch payload has no attentionReferences, ask exactly one blocking attention_request question with options short (prefix \"OK: \") and detailed (prefix \"Result: \"). Do not edit or report before the answer. Return a waiting summary immediately after the question is stored. On a fresh continuation with attentionReferences, use the selected recorded reply from attentionContext; the earlier question basis becoming historical after a new attempt is expected. Do not ask it again. Implement the selected prefix in Label in label.go, retain Unicode edge trimming, interior whitespace and case; update label_test.go accordingly. Preserve all other files. Run go test ./..., then use run_read and run_transition report with a fresh UUID and current identities. No delegation, network, installations, host config changes, commits or record publication. A report is not owner acceptance.\n",
+        "payload": "{\"approvalMode\":\"never\",\"approvedDesign\":null,\"assignment\":{\"outcome\":\"Ask the label-prefix choice, implement it, verify and report\",\"writablePaths\":[\"label.go\",\"label_test.go\"],\"excludedPaths\":[\"SDP\",\"AGENTS.md\",\"go.mod\",\"unrelated.txt\"]},\"attentionContext\":null,\"attentionReferences\":null,\"context\":{\"schema\":\"sdp-project-governance/0.1\",\"operation\":\"context\",\"projectRef\":\"pg-continuation-lab\",\"root\":\"/home/warloc/git/pg_lab/previews/pgl3-c4-final/project\",\"checkoutId\":\"47c87240-bd98-4e02-90c2-48bab99dd28a\",\"revision\":\"d676d48071378ac730389afe0c9a2c8238358b22e699c85d24ea141852a8ccc2\",\"selection\":{\"card\":\"SDP/KanBan/active/card.md\",\"plan\":\"SDP/Maintenance/Plan.md\",\"session\":\"SDP/Sessions/session.md\",\"authority\":\"SDP/authority.md\",\"step\":\"S1\"},\"sources\":[{\"path\":\"AGENTS.md\",\"sha256\":\"d3b60b1c7daf2a21a40bb301226b727afb48661f23d47caa878c84c6bf616d26\"},{\"path\":\"SDP/KanBan/active/card.md\",\"sha256\":\"88b0f8a6a8072d9a6e8f465a357310933a142ee66475e9462fdd1ae044a91f54\"},{\"path\":\"SDP/Maintenance/Plan.md\",\"sha256\":\"9e4b058646c84dbfdf480bce1cb1d0d0fa00673a723366e109a8b57e4a728aca\"},{\"path\":\"SDP/ProjectManagement/Ledger.ndjson\",\"sha256\":\"9a162988f4282daa490ede1ea906e30a9008537c940a0df35e643f573d99f0f5\"},{\"path\":\"SDP/SDP-project.manifest.yaml\",\"sha256\":\"cdc4ebae44330f97573c5098f3b6e41ca31b6e2c9b24dc3fd49d0819734560f6\"},{\"path\":\"SDP/Sessions/session.md\",\"sha256\":\"c1a58d09043b88d6ba4cf2d63e311807ced984c2069c3fa658b5429b912cc8e2\"},{\"path\":\"SDP/authority.md\",\"sha256\":\"fa8a508a45ac5cf392b78b5ee198684a66b7af436d0967b01745720156003362\"}],\"coverage\":\"known\",\"conditions\":[],\"cardId\":\"KB-PGCONT-001\",\"planId\":\"MAINT-PGCONT-0001\",\"sessionId\":\"SESSION-PGCONT-0001\"},\"instructions\":\"You are the fresh Master for one explicitly authorized SDP Maintenance assignment. Read the selected Session, authority, plan, card, AGENTS and relevant SDP skills before acting. Preserve writable/excluded boundaries and unrelated work. Native delegation is not granted by this launch; do not spawn children. Report candidate, tests, remaining gaps and observed outcome. Agent claims do not grant owner approval or independent review. Do not publish canonical management/Session records or mark the work complete; evidence publication is a later controller capability. Use assignment-bound MCP reads, attention questions and report/fail/scope-change only. For input you need, use attention_request with blocking=true, stop dependent work, and read any reply and its current applicability via attention_read. If no reply is available, return a waiting summary; do not poll indefinitely or invent an answer. A reply records input, not authority to change scope.\",\"ownerInput\":\"This is an owner-authorized isolated PG attention/continuation test. First inspect context and run. If the launch payload has no attentionReferences, ask exactly one blocking attention_request question with options short (prefix \\\"OK: \\\") and detailed (prefix \\\"Result: \\\"). Do not edit or report before the answer. Return a waiting summary immediately after the question is stored. On a fresh continuation with attentionReferences, use the selected recorded reply from attentionContext; the earlier question basis becoming historical after a new attempt is expected. Do not ask it again. Implement the selected prefix in Label in label.go, retain Unicode edge trimming, interior whitespace and case; update label_test.go accordingly. Preserve all other files. Run go test ./..., then use run_read and run_transition report with a fresh UUID and current identities. No delegation, network, installations, host config changes, commits or record publication. A report is not owner acceptance.\\n\",\"reportingMode\":\"automatic\",\"runId\":\"ace46633-c572-430b-87c6-0a6348257f07\",\"sandbox\":\"workspace-write\"}",
+        "attemptId": "c7e42143-7c36-4d8c-8c7a-7deeb43aa929",
+        "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+        "threadId": "01a15bdb-cd54-74d2-b6e7-8bbfde0101f8",
+        "turnId": "01a15bdb-d047-70c3-9774-953343577df3",
+        "state": "acknowledged",
+        "receivedAt": "2026-10-21T00:28:13.950925563Z"
+      },
+      {
+        "attentionReplies": [
+          {
+            "questionId": "f71c556f-fd9d-4176-ae22-32cec6958fc3",
+            "replyOperationId": "90508b8b-cbac-4b2c-bca2-ed2e0c100fc3",
+            "basis": "ee0652428572d15ebc58e5787519398034884cd7546e891509303f5edf5d264a"
+          }
+        ],
+        "id": "e4f0d2ce-a1d5-4899-a5f8-17889222d9f5",
+        "kind": "launch",
+        "text": "This is an owner-authorized isolated PG attention/continuation test. First inspect context and run. If the launch payload has no attentionReferences, ask exactly one blocking attention_request question with options short (prefix \"OK: \") and detailed (prefix \"Result: \"). Do not edit or report before the answer. Return a waiting summary immediately after the question is stored. On a fresh continuation with attentionReferences, use the selected recorded reply from attentionContext; the earlier question basis becoming historical after a new attempt is expected. Do not ask it again. Implement the selected prefix in Label in label.go, retain Unicode edge trimming, interior whitespace and case; update label_test.go accordingly. Preserve all other files. Run go test ./..., then use run_read and run_transition report with a fresh UUID and current identities. No delegation, network, installations, host config changes, commits or record publication. A report is not owner acceptance.\n",
+        "payload": "{\"approvalMode\":\"never\",\"approvedDesign\":null,\"assignment\":{\"outcome\":\"Ask the label-prefix choice, implement it, verify and report\",\"writablePaths\":[\"label.go\",\"label_test.go\"],\"excludedPaths\":[\"SDP\",\"AGENTS.md\",\"go.mod\",\"unrelated.txt\"]},\"attentionContext\":[{\"runId\":\"ace46633-c572-430b-87c6-0a6348257f07\",\"question\":{\"id\":\"f71c556f-fd9d-4176-ae22-32cec6958fc3\",\"basis\":\"ee0652428572d15ebc58e5787519398034884cd7546e891509303f5edf5d264a\",\"inputRevision\":\"d676d48071378ac730389afe0c9a2c8238358b22e699c85d24ea141852a8ccc2\",\"raisedRevision\":20,\"raisedAt\":\"2026-10-21T00:28:51.700159748Z\",\"origin\":\"agent\",\"attemptId\":\"c7e42143-7c36-4d8c-8c7a-7deeb43aa929\",\"prompt\":\"Which prefix should Label use?\",\"options\":[{\"id\":\"short\",\"label\":\"short (prefix \\\"OK: \\\")\"},{\"id\":\"detailed\",\"label\":\"detailed (prefix \\\"Result: \\\")\"}],\"blocking\":true,\"reply\":{\"operationId\":\"90508b8b-cbac-4b2c-bca2-ed2e0c100fc3\",\"actor\":\"fixture-owner\",\"source\":\"local-controller-stdin\",\"optionId\":\"short\",\"text\":\"Use the prefix OK: followed by the trimmed input. Synthetic trial input only.\",\"recordedAt\":\"2026-10-21T00:28:58.279698173Z\"}},\"status\":\"answered\",\"coverage\":\"known\",\"applicability\":\"current\",\"currentRevision\":24,\"consumption\":\"not-tracked\"}],\"attentionReferences\":[{\"questionId\":\"f71c556f-fd9d-4176-ae22-32cec6958fc3\",\"replyOperationId\":\"90508b8b-cbac-4b2c-bca2-ed2e0c100fc3\",\"basis\":\"ee0652428572d15ebc58e5787519398034884cd7546e891509303f5edf5d264a\"}],\"context\":{\"schema\":\"sdp-project-governance/0.1\",\"operation\":\"context\",\"projectRef\":\"pg-continuation-lab\",\"root\":\"/home/warloc/git/pg_lab/previews/pgl3-c4-final/project\",\"checkoutId\":\"47c87240-bd98-4e02-90c2-48bab99dd28a\",\"revision\":\"d676d48071378ac730389afe0c9a2c8238358b22e699c85d24ea141852a8ccc2\",\"selection\":{\"card\":\"SDP/KanBan/active/card.md\",\"plan\":\"SDP/Maintenance/Plan.md\",\"session\":\"SDP/Sessions/session.md\",\"authority\":\"SDP/authority.md\",\"step\":\"S1\"},\"sources\":[{\"path\":\"AGENTS.md\",\"sha256\":\"d3b60b1c7daf2a21a40bb301226b727afb48661f23d47caa878c84c6bf616d26\"},{\"path\":\"SDP/KanBan/active/card.md\",\"sha256\":\"88b0f8a6a8072d9a6e8f465a357310933a142ee66475e9462fdd1ae044a91f54\"},{\"path\":\"SDP/Maintenance/Plan.md\",\"sha256\":\"9e4b058646c84dbfdf480bce1cb1d0d0fa00673a723366e109a8b57e4a728aca\"},{\"path\":\"SDP/ProjectManagement/Ledger.ndjson\",\"sha256\":\"9a162988f4282daa490ede1ea906e30a9008537c940a0df35e643f573d99f0f5\"},{\"path\":\"SDP/SDP-project.manifest.yaml\",\"sha256\":\"cdc4ebae44330f97573c5098f3b6e41ca31b6e2c9b24dc3fd49d0819734560f6\"},{\"path\":\"SDP/Sessions/session.md\",\"sha256\":\"c1a58d09043b88d6ba4cf2d63e311807ced984c2069c3fa658b5429b912cc8e2\"},{\"path\":\"SDP/authority.md\",\"sha256\":\"fa8a508a45ac5cf392b78b5ee198684a66b7af436d0967b01745720156003362\"}],\"coverage\":\"known\",\"conditions\":[],\"cardId\":\"KB-PGCONT-001\",\"planId\":\"MAINT-PGCONT-0001\",\"sessionId\":\"SESSION-PGCONT-0001\"},\"instructions\":\"You are the fresh Master for one explicitly authorized SDP Maintenance assignment. Read the selected Session, authority, plan, card, AGENTS and relevant SDP skills before acting. Preserve writable/excluded boundaries and unrelated work. Native delegation is not granted by this launch; do not spawn children. Report candidate, tests, remaining gaps and observed outcome. Agent claims do not grant owner approval or independent review. Do not publish canonical management/Session records or mark the work complete; evidence publication is a later controller capability. Use assignment-bound MCP reads, attention questions and report/fail/scope-change only. For input you need, use attention_request with blocking=true, stop dependent work, and read any reply and its current applicability via attention_read. If no reply is available, return a waiting summary; do not poll indefinitely or invent an answer. A reply records input, not authority to change scope. This is a fresh continuation attempt after recorded attention replies. Reuse the original assignment and existing working files. Read attentionContext: it distinguishes historical replies from the exact replies selected by attentionReferences. Do not ask the same resolved question again. Continue only within the original mandate; report or raise a new question when required.\",\"ownerInput\":\"This is an owner-authorized isolated PG attention/continuation test. First inspect context and run. If the launch payload has no attentionReferences, ask exactly one blocking attention_request question with options short (prefix \\\"OK: \\\") and detailed (prefix \\\"Result: \\\"). Do not edit or report before the answer. Return a waiting summary immediately after the question is stored. On a fresh continuation with attentionReferences, use the selected recorded reply from attentionContext; the earlier question basis becoming historical after a new attempt is expected. Do not ask it again. Implement the selected prefix in Label in label.go, retain Unicode edge trimming, interior whitespace and case; update label_test.go accordingly. Preserve all other files. Run go test ./..., then use run_read and run_transition report with a fresh UUID and current identities. No delegation, network, installations, host config changes, commits or record publication. A report is not owner acceptance.\\n\",\"reportingMode\":\"automatic\",\"runId\":\"ace46633-c572-430b-87c6-0a6348257f07\",\"sandbox\":\"workspace-write\"}",
+        "attemptId": "a8f19904-9328-43df-81f4-8f049c3dcce8",
+        "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+        "threadId": "01a15bdc-8090-72c2-938c-5a3ae8de319a",
+        "turnId": "01a15bdc-83a5-7331-8509-df9f72a652b7",
+        "state": "acknowledged",
+        "receivedAt": "2026-10-21T00:28:59.771636521Z"
+      }
+    ],
+    "attempts": [
+      {
+        "agentEpoch": "db091b86-97ec-47ff-b473-af518a08db30",
+        "id": "c7e42143-7c36-4d8c-8c7a-7deeb43aa929",
+        "hostVersion": "0.161.0",
+        "threadId": "01a15bdb-cd54-74d2-b6e7-8bbfde0101f8",
+        "turnId": "01a15bdb-d047-70c3-9774-953343577df3",
+        "inputRevision": "d676d48071378ac730389afe0c9a2c8238358b22e699c85d24ea141852a8ccc2",
+        "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+        "status": "completed",
+        "gap": false,
+        "events": [
+          {
+            "kind": "bound",
+            "turnId": "",
+            "itemId": "",
+            "phase": "",
+            "text": "",
+            "status": "idle",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:28:14.313333811Z"
+          },
+          {
+            "kind": "context.observed",
+            "turnId": "",
+            "itemId": "launch",
+            "phase": "",
+            "text": "{\"assignedRole\":\"Master\",\"roleBasis\":\"controller-launch\",\"inputRevision\":\"d676d48071378ac730389afe0c9a2c8238358b22e699c85d24ea141852a8ccc2\",\"sources\":[{\"path\":\"AGENTS.md\",\"sha256\":\"d3b60b1c7daf2a21a40bb301226b727afb48661f23d47caa878c84c6bf616d26\"},{\"path\":\"SDP/KanBan/active/card.md\",\"sha256\":\"88b0f8a6a8072d9a6e8f465a357310933a142ee66475e9462fdd1ae044a91f54\"},{\"path\":\"SDP/Maintenance/Plan.md\",\"sha256\":\"9e4b058646c84dbfdf480bce1cb1d0d0fa00673a723366e109a8b57e4a728aca\"},{\"path\":\"SDP/ProjectManagement/Ledger.ndjson\",\"sha256\":\"9a162988f4282daa490ede1ea906e30a9008537c940a0df35e643f573d99f0f5\"},{\"path\":\"SDP/SDP-project.manifest.yaml\",\"sha256\":\"cdc4ebae44330f97573c5098f3b6e41ca31b6e2c9b24dc3fd49d0819734560f6\"},{\"path\":\"SDP/Sessions/session.md\",\"sha256\":\"c1a58d09043b88d6ba4cf2d63e311807ced984c2069c3fa658b5429b912cc8e2\"},{\"path\":\"SDP/authority.md\",\"sha256\":\"fa8a508a45ac5cf392b78b5ee198684a66b7af436d0967b01745720156003362\"}],\"host\":{\"status\":\"observed\",\"sessionId\":\"01a15bdb-cd54-74d2-b6e7-8bbfde0101f8\",\"parentThreadId\":\"\",\"nativeRole\":\"\",\"source\":\"\\\"vscode\\\"\",\"instructionStatus\":\"observed\",\"instructionSources\":[\"/home/warloc/.codex/AGENTS.md\",\"/home/warloc/git/pg_lab/previews/pgl3-c4-final/project/AGENTS.md\"]},\"skills\":{\"status\":\"observed\",\"useEvidence\":\"not-observed\",\"externalCount\":63,\"errorCount\":0,\"project\":[]}}",
+            "status": "",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:28:14.394898745Z"
+          },
+          {
+            "kind": "turn.started",
+            "turnId": "01a15bdb-d047-70c3-9774-953343577df3",
+            "itemId": "",
+            "phase": "",
+            "text": "",
+            "status": "running",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:28:14.908369626Z"
+          },
+          {
+            "inputDigest": "7085bd0d6e2f8379224fdb03d3f27368da579cb7dc9cc552b2862825b86940b3",
+            "clientId": "cb267940-e1a8-48d6-aef5-d37d81a8a89f",
+            "kind": "userMessage",
+            "turnId": "01a15bdb-d047-70c3-9774-953343577df3",
+            "itemId": "01a15bdb-de4f-7f40-aa3e-abc990efa0d3",
+            "phase": "",
+            "text": "{\"approvalMode\":\"never\",\"approvedDesign\":null,\"assignment\":{\"outcome\":\"Ask the label-prefix choice, implement it, verify and report\",\"writablePaths\":[\"label.go\",\"label_test.go\"],\"excludedPaths\":[\"SDP\",\"AGENTS.md\",\"go.mod\",\"unrelated.txt\"]},\"attentionContext\":null,\"attentionReferences\":null,\"context\":{\"schema\":\"sdp-project-governance/0.1\",\"operation\":\"context\",\"projectRef\":\"pg-continuation-lab\",\"root\":\"/home/warloc/git/pg_lab/previews/pgl3-c4-final/project\",\"checkoutId\":\"47c87240-bd98-4e02-90c2-48bab99dd28a\",\"revision\":\"d676d48071378ac730389afe0c9a2c8238358b22e699c85d24ea141852a8ccc2\",\"selection\":{\"card\":\"SDP/KanBan/active/card.md\",\"plan\":\"SDP/Maintenance/Plan.md\",\"session\":\"SDP/Sessions/session.md\",\"authority\":\"SDP/authority.md\",\"step\":\"S1\"},\"sources\":[{\"path\":\"AGENTS.md\",\"sha256\":\"d3b60b1c7daf2a21a40bb301226b727afb48661f23d47caa878c84c6bf616d26\"},{\"path\":\"SDP/KanBan/active/card.md\",\"sha256\":\"88b0f8a6a8072d9a6e8f465a357310933a142ee66475e9462fdd1ae044a91f54\"},{\"path\":\"SDP/Maintenance/Plan.md\",\"sha256\":\"9e4b058646c84dbfdf480bce1cb1d0d0fa00673a723366e109a8b57e4a728aca\"},{\"path\":\"SDP/ProjectManagement/Ledger.ndjson\",\"sha256\":\"9a162988f4282daa490ede1ea906e30a9008537c940a0df35e643f573d99f0f5\"},{\"path\":\"SDP/SDP-project.manifest.yaml\",\"sha256\":\"cdc4ebae44330f97573c5098f3b6e41ca31b6e2c9b24dc3fd49d0819734560f6\"},{\"path\":\"SDP/Sessions/session.md\",\"sha256\":\"c1a58d09043b88d6ba4cf2d63e311807ced984c2069c3fa658b5429b912cc8e2\"},{\"path\":\"SDP/authority.md\",\"sha256\":\"fa8a508a45ac5cf392b78b5ee198684a66b7af436d0967b01745720156003362\"}],\"coverage\":\"known\",\"conditions\":[],\"cardId\":\"KB-PGCONT-001\",\"planId\":\"MAINT-PGCONT-0001\",\"sessionId\":\"SESSION-PGCONT-0001\"},\"instructions\":\"You are the fresh Master for one explicitly authorized SDP Maintenance assignment. Read the selected Session, authority, plan, card, AGENTS and relevant SDP skills before acting. Preserve writable/excluded boundaries and unrelated work. Native delegation is not granted by this launch; do not spawn children. Report candidate, tests, remaining gaps and observed outcome. Agent claims do not grant owner approval or independent review. Do not publish canonical management/Session records or mark the work complete; evidence publication is a later controller capability. Use assignment-bound MCP reads, attention questions and report/fail/scope-change only. For input you need, use attention_request with blocking=true, stop dependent work, and read any reply and its current applicability via attention_read. If no reply is available, return a waiting summary; do not poll indefinitely or invent an answer. A reply records input, not authority to change scope.\",\"ownerInput\":\"This is an owner-authorized isolated PG attention/continuation test. First inspect context and run. If the launch payload has no attentionReferences, ask exactly one blocking attention_request question with options short (prefix \\\"OK: \\\") and detailed (prefix \\\"Result: \\\"). Do not edit or report before the answer. Return a waiting summary immediately after the question is stored. On a fresh continuation with attentionReferences, use the selected recorded reply from attentionContext; the earlier question basis becoming historical after a new attempt is expected. Do not ask it again. Implement the selected prefix in Label in label.go, retain Unicode edge trimming, interior whitespace and case; update label_test.go accordingly. Preserve all other files. Run go test ./..., then use run_read and run_transition report with a fresh UUID and current identities. No delegation, network, installations, host config changes, commits or record publication. A report is not owner acceptance.\\n\",\"reportingMode\":\"automatic\",\"runId\":\"ace46633-c572-430b-87c6-0a6348257f07\",\"sandbox\":\"workspace-write\"}",
+            "status": "",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:28:18.415820817Z"
+          },
+          {
+            "kind": "agentMessage",
+            "turnId": "01a15bdb-d047-70c3-9774-953343577df3",
+            "itemId": "msg_0b16d98e938db790016ad80724241c8191a62e4acaab66421c",
+            "phase": "commentary",
+            "text": "I\u2019ll read the selected records and run context, then store the required prefix-choice question before editing.\n",
+            "status": "",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:28:20.964256194Z"
+          },
+          {
+            "kind": "tool.completed",
+            "turnId": "01a15bdb-d047-70c3-9774-953343577df3",
+            "itemId": "exec-8e509440-1472-4873-9ff5-88e0b0158f91",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:28:24.415680546Z"
+          },
+          {
+            "kind": "tool.completed",
+            "turnId": "01a15bdb-d047-70c3-9774-953343577df3",
+            "itemId": "exec-6c08aadb-4db1-4d7b-a33a-401d023a1abf",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:28:31.005699734Z"
+          },
+          {
+            "kind": "tool.completed",
+            "turnId": "01a15bdb-d047-70c3-9774-953343577df3",
+            "itemId": "exec-492104e3-4175-4a2b-824e-57eb5308fe92",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:28:31.014765445Z"
+          },
+          {
+            "kind": "tool.completed",
+            "turnId": "01a15bdb-d047-70c3-9774-953343577df3",
+            "itemId": "exec-f4c0bc21-878c-46b5-a991-14ec6c952dc8",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:28:31.387848371Z"
+          },
+          {
+            "kind": "tool.completed",
+            "turnId": "01a15bdb-d047-70c3-9774-953343577df3",
+            "itemId": "exec-ba44dc24-1fa9-48b7-a76f-224cd8717960",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:28:39.324697522Z"
+          },
+          {
+            "kind": "agentMessage",
+            "turnId": "01a15bdb-d047-70c3-9774-953343577df3",
+            "itemId": "msg_0b16d98e938db790016ad8073c3c508191acdacf1cf9422538",
+            "phase": "commentary",
+            "text": "The assignment requires a recorded prefix choice before editing. I\u2019ll store one blocking question and return while it awaits a reply.\n",
+            "status": "",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:28:45.46929356Z"
+          },
+          {
+            "kind": "tool.completed",
+            "turnId": "01a15bdb-d047-70c3-9774-953343577df3",
+            "itemId": "exec-01c147f7-18f0-40a5-b891-b3ba5c1f2eda",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:28:46.920505875Z"
+          },
+          {
+            "kind": "tool.completed",
+            "turnId": "01a15bdb-d047-70c3-9774-953343577df3",
+            "itemId": "exec-ed96c2d2-7aad-444b-ac54-df7e991651a3",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:28:47.256368773Z"
+          },
+          {
+            "kind": "tool.completed",
+            "turnId": "01a15bdb-d047-70c3-9774-953343577df3",
+            "itemId": "exec-69a3b18c-7816-4638-a267-3fae54cc70a2",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:28:51.758179438Z"
+          },
+          {
+            "kind": "agentMessage",
+            "turnId": "01a15bdb-d047-70c3-9774-953343577df3",
+            "itemId": "msg_0b16d98e938db790016ad80745daa08191bb22b666e4957128",
+            "phase": "final_answer",
+            "text": "Stored the required blocking question: short (`\"OK: \"`) or detailed (`\"Result: \"`).\n\nWaiting for the recorded reply, as required by your assignment. No files changed, tests run, or report submitted.",
+            "status": "",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:28:54.986882836Z"
+          },
+          {
+            "kind": "turn.completed",
+            "turnId": "01a15bdb-d047-70c3-9774-953343577df3",
+            "itemId": "",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:28:55.093938785Z"
+          }
+        ]
+      },
+      {
+        "agentEpoch": "db091b86-97ec-47ff-b473-af518a08db30",
+        "id": "a8f19904-9328-43df-81f4-8f049c3dcce8",
+        "hostVersion": "0.161.0",
+        "threadId": "01a15bdc-8090-72c2-938c-5a3ae8de319a",
+        "turnId": "01a15bdc-83a5-7331-8509-df9f72a652b7",
+        "inputRevision": "d676d48071378ac730389afe0c9a2c8238358b22e699c85d24ea141852a8ccc2",
+        "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+        "status": "completed",
+        "gap": false,
+        "events": [
+          {
+            "kind": "bound",
+            "turnId": "",
+            "itemId": "",
+            "phase": "",
+            "text": "",
+            "status": "idle",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:29:00.144349749Z"
+          },
+          {
+            "kind": "context.observed",
+            "turnId": "",
+            "itemId": "launch",
+            "phase": "",
+            "text": "{\"assignedRole\":\"Master\",\"roleBasis\":\"controller-launch\",\"inputRevision\":\"d676d48071378ac730389afe0c9a2c8238358b22e699c85d24ea141852a8ccc2\",\"sources\":[{\"path\":\"AGENTS.md\",\"sha256\":\"d3b60b1c7daf2a21a40bb301226b727afb48661f23d47caa878c84c6bf616d26\"},{\"path\":\"SDP/KanBan/active/card.md\",\"sha256\":\"88b0f8a6a8072d9a6e8f465a357310933a142ee66475e9462fdd1ae044a91f54\"},{\"path\":\"SDP/Maintenance/Plan.md\",\"sha256\":\"9e4b058646c84dbfdf480bce1cb1d0d0fa00673a723366e109a8b57e4a728aca\"},{\"path\":\"SDP/ProjectManagement/Ledger.ndjson\",\"sha256\":\"9a162988f4282daa490ede1ea906e30a9008537c940a0df35e643f573d99f0f5\"},{\"path\":\"SDP/SDP-project.manifest.yaml\",\"sha256\":\"cdc4ebae44330f97573c5098f3b6e41ca31b6e2c9b24dc3fd49d0819734560f6\"},{\"path\":\"SDP/Sessions/session.md\",\"sha256\":\"c1a58d09043b88d6ba4cf2d63e311807ced984c2069c3fa658b5429b912cc8e2\"},{\"path\":\"SDP/authority.md\",\"sha256\":\"fa8a508a45ac5cf392b78b5ee198684a66b7af436d0967b01745720156003362\"}],\"host\":{\"status\":\"observed\",\"sessionId\":\"01a15bdc-8090-72c2-938c-5a3ae8de319a\",\"parentThreadId\":\"\",\"nativeRole\":\"\",\"source\":\"\\\"vscode\\\"\",\"instructionStatus\":\"observed\",\"instructionSources\":[\"/home/warloc/.codex/AGENTS.md\",\"/home/warloc/git/pg_lab/previews/pgl3-c4-final/project/AGENTS.md\"]},\"skills\":{\"status\":\"observed\",\"useEvidence\":\"not-observed\",\"externalCount\":63,\"errorCount\":0,\"project\":[]}}",
+            "status": "",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:29:00.294385117Z"
+          },
+          {
+            "kind": "turn.started",
+            "turnId": "01a15bdc-83a5-7331-8509-df9f72a652b7",
+            "itemId": "",
+            "phase": "",
+            "text": "",
+            "status": "running",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:29:00.75372524Z"
+          },
+          {
+            "inputDigest": "f520550dcaed80eaa422e4829d3c6a96e7b8f594dcc18c3653def9ad8a95a0c5",
+            "clientId": "e4f0d2ce-a1d5-4899-a5f8-17889222d9f5",
+            "kind": "userMessage",
+            "turnId": "01a15bdc-83a5-7331-8509-df9f72a652b7",
+            "itemId": "01a15bdc-8ac8-7843-b603-fdf126db99f5",
+            "phase": "",
+            "text": "{\"approvalMode\":\"never\",\"approvedDesign\":null,\"assignment\":{\"outcome\":\"Ask the label-prefix choice, implement it, verify and report\",\"writablePaths\":[\"label.go\",\"label_test.go\"],\"excludedPaths\":[\"SDP\",\"AGENTS.md\",\"go.mod\",\"unrelated.txt\"]},\"attentionContext\":[{\"runId\":\"ace46633-c572-430b-87c6-0a6348257f07\",\"question\":{\"id\":\"f71c556f-fd9d-4176-ae22-32cec6958fc3\",\"basis\":\"ee0652428572d15ebc58e5787519398034884cd7546e891509303f5edf5d264a\",\"inputRevision\":\"d676d48071378ac730389afe0c9a2c8238358b22e699c85d24ea141852a8ccc2\",\"raisedRevision\":20,\"raisedAt\":\"2026-10-21T00:28:51.700159748Z\",\"origin\":\"agent\",\"attemptId\":\"c7e42143-7c36-4d8c-8c7a-7deeb43aa929\",\"prompt\":\"Which prefix should Label use?\",\"options\":[{\"id\":\"short\",\"label\":\"short (prefix \\\"OK: \\\")\"},{\"id\":\"detailed\",\"label\":\"detailed (prefix \\\"Result: \\\")\"}],\"blocking\":true,\"reply\":{\"operationId\":\"90508b8b-cbac-4b2c-bca2-ed2e0c100fc3\",\"actor\":\"fixture-owner\",\"source\":\"local-controller-stdin\",\"optionId\":\"short\",\"text\":\"Use the prefix OK: followed by the trimmed input. Synthetic trial input only.\",\"recordedAt\":\"2026-10-21T00:28:58.279698173Z\"}},\"status\":\"answered\",\"coverage\":\"known\",\"applicability\":\"current\",\"currentRevision\":24,\"consumption\":\"not-tracked\"}],\"attentionReferences\":[{\"questionId\":\"f71c556f-fd9d-4176-ae22-32cec6958fc3\",\"replyOperationId\":\"90508b8b-cbac-4b2c-bca2-ed2e0c100fc3\",\"basis\":\"ee0652428572d15ebc58e5787519398034884cd7546e891509303f5edf5d264a\"}],\"context\":{\"schema\":\"sdp-project-governance/0.1\",\"operation\":\"context\",\"projectRef\":\"pg-continuation-lab\",\"root\":\"/home/warloc/git/pg_lab/previews/pgl3-c4-final/project\",\"checkoutId\":\"47c87240-bd98-4e02-90c2-48bab99dd28a\",\"revision\":\"d676d48071378ac730389afe0c9a2c8238358b22e699c85d24ea141852a8ccc2\",\"selection\":{\"card\":\"SDP/KanBan/active/card.md\",\"plan\":\"SDP/Maintenance/Plan.md\",\"session\":\"SDP/Sessions/session.md\",\"authority\":\"SDP/authority.md\",\"step\":\"S1\"},\"sources\":[{\"path\":\"AGENTS.md\",\"sha256\":\"d3b60b1c7daf2a21a40bb301226b727afb48661f23d47caa878c84c6bf616d26\"},{\"path\":\"SDP/KanBan/active/card.md\",\"sha256\":\"88b0f8a6a8072d9a6e8f465a357310933a142ee66475e9462fdd1ae044a91f54\"},{\"path\":\"SDP/Maintenance/Plan.md\",\"sha256\":\"9e4b058646c84dbfdf480bce1cb1d0d0fa00673a723366e109a8b57e4a728aca\"},{\"path\":\"SDP/ProjectManagement/Ledger.ndjson\",\"sha256\":\"9a162988f4282daa490ede1ea906e30a9008537c940a0df35e643f573d99f0f5\"},{\"path\":\"SDP/SDP-project.manifest.yaml\",\"sha256\":\"cdc4ebae44330f97573c5098f3b6e41ca31b6e2c9b24dc3fd49d0819734560f6\"},{\"path\":\"SDP/Sessions/session.md\",\"sha256\":\"c1a58d09043b88d6ba4cf2d63e311807ced984c2069c3fa658b5429b912cc8e2\"},{\"path\":\"SDP/authority.md\",\"sha256\":\"fa8a508a45ac5cf392b78b5ee198684a66b7af436d0967b01745720156003362\"}],\"coverage\":\"known\",\"conditions\":[],\"cardId\":\"KB-PGCONT-001\",\"planId\":\"MAINT-PGCONT-0001\",\"sessionId\":\"SESSION-PGCONT-0001\"},\"instructions\":\"You are the fresh Master for one explicitly authorized SDP Maintenance assignment. Read the selected Session, authority, plan, card, AGENTS and relevant SDP skills before acting. Preserve writable/excluded boundaries and unrelated work. Native delegation is not granted by this launch; do not spawn children. Report candidate, tests, remaining gaps and observed outcome. Agent claims do not grant owner approval or independent review. Do not publish canonical management/Session records or mark the work complete; evidence publication is a later controller capability. Use assignment-bound MCP reads, attention questions and report/fail/scope-change only. For input you need, use attention_request with blocking=true, stop dependent work, and read any reply and its current applicability via attention_read. If no reply is available, return a waiting summary; do not poll indefinitely or invent an answer. A reply records input, not authority to change scope. This is a fresh continuation attempt after recorded attention replies. Reuse the original assignment and existing working files. Read attentionContext: it distinguishes historical replies from the exact replies selected by attentionReferences. Do not ask the same resolved question again. Continue only within the original mandate; report or raise a new question when required.\",\"ownerInput\":\"This is an owner-authorized isolated PG attention/continuation test. First inspect context and run. If the launch payload has no attentionReferences, ask exactly one blocking attention_request question with options short (prefix \\\"OK: \\\") and detailed (prefix \\\"Result: \\\"). Do not edit or report before the answer. Return a waiting summary immediately after the question is stored. On a fresh continuation with attentionReferences, use the selected recorded reply from attentionContext; the earlier question basis becoming historical after a new attempt is expected. Do not ask it again. Implement the selected prefix in Label in label.go, retain Unicode edge trimming, interior whitespace and case; update label_test.go accordingly. Preserve all other files. Run go test ./..., then use run_read and run_transition report with a fresh UUID and current identities. No delegation, network, installations, host config changes, commits or record publication. A report is not owner acceptance.\\n\",\"reportingMode\":\"automatic\",\"runId\":\"ace46633-c572-430b-87c6-0a6348257f07\",\"sandbox\":\"workspace-write\"}",
+            "status": "",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:29:02.553648593Z"
+          },
+          {
+            "kind": "agentMessage",
+            "turnId": "01a15bdc-83a5-7331-8509-df9f72a652b7",
+            "itemId": "msg_0998f4314acb44ed016ad8075245d88191a07f48ccb82e0168",
+            "phase": "commentary",
+            "text": "I\u2019ll read the selected SDP records and recorded prefix choice, update the two permitted files, run the tests, and report the result.\n\n",
+            "status": "",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:29:07.503832085Z"
+          },
+          {
+            "kind": "tool.completed",
+            "turnId": "01a15bdc-83a5-7331-8509-df9f72a652b7",
+            "itemId": "exec-afa09417-7736-4642-a548-e3efa3fe6b29",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:29:09.656817151Z"
+          },
+          {
+            "kind": "tool.completed",
+            "turnId": "01a15bdc-83a5-7331-8509-df9f72a652b7",
+            "itemId": "exec-fdce4968-e7ef-47d7-9708-c9a11488ea38",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:29:16.192857937Z"
+          },
+          {
+            "kind": "tool.completed",
+            "turnId": "01a15bdc-83a5-7331-8509-df9f72a652b7",
+            "itemId": "exec-be11fe89-28ad-4358-bb8c-74097d252a26",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:29:16.207885279Z"
+          },
+          {
+            "kind": "tool.completed",
+            "turnId": "01a15bdc-83a5-7331-8509-df9f72a652b7",
+            "itemId": "exec-2f21c36b-60a3-4776-8d54-280836fdae70",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:29:16.22020854Z"
+          },
+          {
+            "kind": "tool.completed",
+            "turnId": "01a15bdc-83a5-7331-8509-df9f72a652b7",
+            "itemId": "exec-496fc1ab-8347-4fbc-a70c-3aaae9daccb7",
+            "phase": "",
+            "text": "",
+            "status": "failed",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:29:16.323136149Z"
+          },
+          {
+            "kind": "tool.completed",
+            "turnId": "01a15bdc-83a5-7331-8509-df9f72a652b7",
+            "itemId": "exec-c297b129-31e5-43b3-a8f2-278a8735bf92",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:29:24.040657315Z"
+          },
+          {
+            "kind": "tool.completed",
+            "turnId": "01a15bdc-83a5-7331-8509-df9f72a652b7",
+            "itemId": "exec-3e890412-a1d8-4aa5-a22f-5014c2565412",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:29:32.410457295Z"
+          },
+          {
+            "kind": "agentMessage",
+            "turnId": "01a15bdc-83a5-7331-8509-df9f72a652b7",
+            "itemId": "msg_0998f4314acb44ed016ad8077281dc81919c1a9c32647fca10",
+            "phase": "commentary",
+            "text": "The selected reply specifies `OK: `. The attention read marks the earlier question basis as stale, which the continuation instructions explicitly expect; the selected reply matches. I\u2019ll use it and test Unicode edge trimming, interior whitespace, and case preservation.\n\n",
+            "status": "",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:29:39.731030785Z"
+          },
+          {
+            "kind": "tool.completed",
+            "turnId": "01a15bdc-83a5-7331-8509-df9f72a652b7",
+            "itemId": "exec-b467f903-c153-4f5b-9e54-b3f8dcf55caf",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:30:07.370289172Z"
+          },
+          {
+            "kind": "tool.completed",
+            "turnId": "01a15bdc-83a5-7331-8509-df9f72a652b7",
+            "itemId": "exec-959ed9ec-cf45-4120-b0bc-2f9e81c517d0",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:30:14.697600979Z"
+          },
+          {
+            "kind": "agentMessage",
+            "turnId": "01a15bdc-83a5-7331-8509-df9f72a652b7",
+            "itemId": "msg_0998f4314acb44ed016ad8079a0ad0819184eb2010e53e9b9f",
+            "phase": "commentary",
+            "text": "`go test ./...` passed. File hashes confirm that only `label.go` and `label_test.go` changed. I\u2019ll submit the candidate report; independent review, owner acceptance, and evidence publication remain outstanding.\n\n",
+            "status": "",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:30:19.142165848Z"
+          },
+          {
+            "kind": "tool.completed",
+            "turnId": "01a15bdc-83a5-7331-8509-df9f72a652b7",
+            "itemId": "exec-146f20d2-1b79-4aa6-8017-246d554c0d05",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:30:20.851181956Z"
+          },
+          {
+            "kind": "tool.completed",
+            "turnId": "01a15bdc-83a5-7331-8509-df9f72a652b7",
+            "itemId": "exec-b04c1222-8714-42b9-92ce-dcb756513da2",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:30:34.244829312Z"
+          },
+          {
+            "kind": "agentMessage",
+            "turnId": "01a15bdc-83a5-7331-8509-df9f72a652b7",
+            "itemId": "msg_0998f4314acb44ed016ad807abed808191b2ec56507b0712cf",
+            "phase": "final_answer",
+            "text": "Implemented the recorded `OK: ` choice, preserving Unicode edge trimming, interior whitespace, and case. Only the two authorized files changed.\n\n`go test ./...` passed with six test cases.\n\nCandidate report recorded; run state is `verifying`. Independent review, owner acceptance, and evidence publication remain outstanding. Work was not marked complete.",
+            "status": "",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:30:37.262830616Z"
+          },
+          {
+            "kind": "turn.completed",
+            "turnId": "01a15bdc-83a5-7331-8509-df9f72a652b7",
+            "itemId": "",
+            "phase": "",
+            "text": "",
+            "status": "completed",
+            "epoch": "db091b86-97ec-47ff-b473-af518a08db30",
+            "receivedAt": "2026-10-21T00:30:37.305720912Z"
+          }
+        ]
+      }
+    ],
+    "id": "ace46633-c572-430b-87c6-0a6348257f07",
+    "revision": 50,
+    "requestId": "2fab087f-675a-47d2-9ba8-0cfa0557a7a3",
+    "state": "verifying",
+    "step": "implement",
+    "inputRevision": "d676d48071378ac730389afe0c9a2c8238358b22e699c85d24ea141852a8ccc2",
+    "selection": {
+      "card": "SDP/KanBan/active/card.md",
+      "plan": "SDP/Maintenance/Plan.md",
+      "session": "SDP/Sessions/session.md",
+      "authority": "SDP/authority.md",
+      "step": "S1"
+    },
+    "assignment": {
+      "outcome": "Ask the label-prefix choice, implement it, verify and report",
+      "writablePaths": [
+        "label.go",
+        "label_test.go"
+      ],
+      "excludedPaths": [
+        "SDP",
+        "AGENTS.md",
+        "go.mod",
+        "unrelated.txt"
+      ]
+    },
+    "routine": {
+      "id": "maintenance",
+      "version": "0.1",
+      "steps": [
+        "implement",
+        "verify",
+        "review",
+        "record"
+      ],
+      "completion": "candidate evidence, applicable independent review and checked publication required"
+    },
+    "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+    "reason": "Candidate implemented within original assignment: Label now returns \"OK: \" + strings.TrimSpace(s). Used exactly selected attention reply 90508b8b-cbac-4b2c-bca2-ed2e0c100fc3 for question f71c556f-fd9d-4176-ae22-32cec6958fc3 (short); attention_read showed answered, dispatch-acknowledged, stale prior-attempt basis, as expressly expected by continuation launch. Read selected authority, Session, plan, card and AGENTS. No relevant SDP skill was available in catalog, tool discovery or local skill locations. Changed only label.go and label_test.go; gofmt applied. Tests: go test ./... passed (ok pgattentionfixture 0.009s) under local Go 1.27.1 with caches in /tmp, GOPROXY=off, GOSUMDB=off, GOTOOLCHAIN=local. Six table cases cover prefix, Unicode edge trimming, interior whitespace, case, Unicode content, empty and whitespace-only input. SHA256 comparison of all project files confirms all other files unchanged, no files added or removed. Candidate hashes: label.go 0f833c5615aa9c4d91d0159089ee5dae016bc16a618e9fb6da7afe3cb17153c4; label_test.go f2f8d4d719e884b9d2368dfc818986f869498dccf4fc6c9479c4466dbc9077c3. Observed outcome: selected short-prefix behavior implemented and tests pass. Remaining gaps: no independent review, owner acceptance or canonical evidence publication; this report does not establish approval or completion. No delegation, network, installations, host configuration changes, commits or canonical record edits. Checkout has no Git repository; preservation verified by file hashes."
+  },
+  "attention": {
+    "schema": "sdp-governance-attention/1",
+    "projectRef": "pg-continuation-lab",
+    "checkoutId": "47c87240-bd98-4e02-90c2-48bab99dd28a",
+    "generation": "67053e43178c0b0973999f71097d0c2002d8af76e69c60b384e42aaacbdfbfa0",
+    "items": [
+      {
+        "runId": "ace46633-c572-430b-87c6-0a6348257f07",
+        "question": {
+          "id": "f71c556f-fd9d-4176-ae22-32cec6958fc3",
+          "basis": "ee0652428572d15ebc58e5787519398034884cd7546e891509303f5edf5d264a",
+          "inputRevision": "d676d48071378ac730389afe0c9a2c8238358b22e699c85d24ea141852a8ccc2",
+          "raisedRevision": 20,
+          "raisedAt": "2026-10-21T00:28:51.700159748Z",
+          "origin": "agent",
+          "attemptId": "c7e42143-7c36-4d8c-8c7a-7deeb43aa929",
+          "prompt": "Which prefix should Label use?",
+          "options": [
+            {
+              "id": "short",
+              "label": "short (prefix \"OK: \")"
+            },
+            {
+              "id": "detailed",
+              "label": "detailed (prefix \"Result: \")"
+            }
+          ],
+          "blocking": true,
+          "reply": {
+            "operationId": "90508b8b-cbac-4b2c-bca2-ed2e0c100fc3",
+            "actor": "fixture-owner",
+            "source": "local-controller-stdin",
+            "optionId": "short",
+            "text": "Use the prefix OK: followed by the trimmed input. Synthetic trial input only.",
+            "recordedAt": "2026-10-21T00:28:58.279698173Z"
+          }
+        },
+        "status": "answered",
+        "coverage": "known",
+        "applicability": "stale",
+        "currentRevision": 50,
+        "consumption": "dispatch-acknowledged"
+      }
+    ]
+  },
+  "controllerExitCode": 0,
+  "changedFiles": [
+    "label.go",
+    "label_test.go"
+  ],
+  "protectedFiles": 9,
+  "goldenAfter": "PASS: selected prefix, Unicode trimming and interior preservation\n",
+  "projectTests": "ok  \tpgattentionfixture\t0.006s\n",
+  "oldReader": {
+    "exitCode": 2,
+    "stderr": "reconciliation_required: invalid_request: json: unknown field \"attentionReplies\"\n"
+  },
+  "controllerTranscriptSHA256": "05e061c5b6219b03fb16942bc789b27e545dce2907e86859bd6d8b1818d2838c"
+}

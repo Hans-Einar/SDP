@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Bounded assignment preparation wire contract",
-  "$comment": "Select a definition. Runtime additionally checks role-specific artifact kinds, source bytes, canonical coverage, authority, literal paths, shared receipt identity and generation CAS. Preparation grants no dispatch or design approval.",
+  "$comment": "Select a definition. Runtime additionally checks role-specific artifact kinds, source bytes, canonical coverage, authority, literal paths, shared receipt identity and generation CAS. Preparation grants no dispatch or design approval. Lifecycle profile 2 preserves identity/role/selection and adds explicit terminal retirement; generation/revision CAS and local claim checks remain runtime obligations. Profile 1 definitions remain unchanged.",
   "$defs": {
     "Selection": {
       "type": "object",
@@ -473,6 +473,389 @@
           "type": "array",
           "items": {
             "$ref": "#/$defs/PreparationView"
+          }
+        }
+      },
+      "required": [
+        "schema",
+        "generation",
+        "checkoutId",
+        "scope",
+        "assignments"
+      ]
+    },
+    "PreparationChange": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-assignment/2"
+        },
+        "projectRef": {
+          "type": "string"
+        },
+        "checkoutId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "operationId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "expectedGeneration": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "assignmentId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        }
+      },
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "operationId",
+        "expectedGeneration",
+        "assignmentId",
+        "expectedRevision",
+        "reason"
+      ]
+    },
+    "RetirePreparationRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-assignment/2"
+        },
+        "projectRef": {
+          "type": "string"
+        },
+        "checkoutId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "operationId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "expectedGeneration": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "assignmentId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        }
+      },
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "operationId",
+        "expectedGeneration",
+        "assignmentId",
+        "expectedRevision",
+        "reason"
+      ]
+    },
+    "RevisePreparationRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-assignment/2"
+        },
+        "projectRef": {
+          "type": "string"
+        },
+        "checkoutId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "operationId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "expectedGeneration": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "assignmentId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "inputRevision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "assignment": {
+          "$ref": "#/$defs/Assignment"
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ArtifactPin"
+          },
+          "minItems": 1,
+          "maxItems": 5
+        },
+        "returnCriteria": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048
+          },
+          "minItems": 1,
+          "maxItems": 16
+        }
+      },
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "operationId",
+        "expectedGeneration",
+        "assignmentId",
+        "expectedRevision",
+        "reason",
+        "inputRevision",
+        "assignment",
+        "artifacts",
+        "returnCriteria"
+      ]
+    },
+    "LifecycleAssignment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "role": {
+          "enum": [
+            "SAD",
+            "Master"
+          ]
+        },
+        "selection": {
+          "$ref": "#/$defs/Selection"
+        },
+        "assignment": {
+          "$ref": "#/$defs/Assignment"
+        },
+        "inputRevision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ArtifactPin"
+          },
+          "minItems": 1,
+          "maxItems": 5
+        },
+        "returnCriteria": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048
+          },
+          "minItems": 1,
+          "maxItems": 16
+        },
+        "state": {
+          "enum": [
+            "prepared",
+            "retired"
+          ]
+        },
+        "changeReason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "role",
+        "selection",
+        "assignment",
+        "inputRevision",
+        "artifacts",
+        "returnCriteria"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "revision": {
+                "const": 1
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "state"
+                  ]
+                },
+                {
+                  "required": [
+                    "changeReason"
+                  ]
+                }
+              ]
+            }
+          },
+          "else": {
+            "required": [
+              "state",
+              "changeReason"
+            ]
+          }
+        }
+      ]
+    },
+    "LifecycleResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-assignment/2"
+        },
+        "operationId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "assignment": {
+          "$ref": "#/$defs/LifecycleAssignment"
+        },
+        "dispatch": {
+          "const": "unavailable"
+        },
+        "designAcceptance": {
+          "const": "not-assessed"
+        }
+      },
+      "required": [
+        "schema",
+        "operationId",
+        "assignment",
+        "dispatch",
+        "designAcceptance"
+      ]
+    },
+    "LifecycleView": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "assignment": {
+          "$ref": "#/$defs/LifecycleAssignment"
+        },
+        "readiness": {
+          "enum": [
+            "prepared",
+            "stale",
+            "retired"
+          ]
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "dispatch": {
+          "const": "unavailable"
+        },
+        "designAcceptance": {
+          "const": "not-assessed"
+        }
+      },
+      "required": [
+        "assignment",
+        "readiness",
+        "conditions",
+        "dispatch",
+        "designAcceptance"
+      ]
+    },
+    "LifecyclePreparations": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-assignment/2"
+        },
+        "generation": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "const": ""
+            }
+          ]
+        },
+        "checkoutId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+            },
+            {
+              "const": ""
+            }
+          ]
+        },
+        "scope": {
+          "const": "selected-checkout-only"
+        },
+        "assignments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LifecycleView"
           }
         }
       },

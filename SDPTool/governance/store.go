@@ -11,15 +11,18 @@ type receipt struct {
 	Result Result `json:"result"`
 }
 type snapshot struct {
-	Prepared            map[string]PreparedAssignment `json:"prepared,omitempty"`
-	PreparationReceipts map[string]preparationReceipt `json:"preparationReceipts,omitempty"`
-	Schema              string                        `json:"schema"`
-	Root                string                        `json:"root"`
-	Project             string                        `json:"project"`
-	CheckoutID          string                        `json:"checkoutId"`
-	Previous            string                        `json:"previous"`
-	Runs                map[string]Run                `json:"runs"`
-	Receipts            map[string]receipt            `json:"receipts"`
+	AssignmentRuns         map[string]AssignmentRun         `json:"assignmentRuns,omitempty"`
+	DesignDecisions        map[string]string                `json:"designDecisions,omitempty"`
+	DesignDecisionReceipts map[string]designDecisionReceipt `json:"designDecisionReceipts,omitempty"`
+	Prepared               map[string]PreparedAssignment    `json:"prepared,omitempty"`
+	PreparationReceipts    map[string]preparationReceipt    `json:"preparationReceipts,omitempty"`
+	Schema                 string                           `json:"schema"`
+	Root                   string                           `json:"root"`
+	Project                string                           `json:"project"`
+	CheckoutID             string                           `json:"checkoutId"`
+	Previous               string                           `json:"previous"`
+	Runs                   map[string]Run                   `json:"runs"`
+	Receipts               map[string]receipt               `json:"receipts"`
 }
 
 func (s *Service) load() (snapshot, string, error) {
@@ -46,17 +49,37 @@ func (s *Service) load() (snapshot, string, error) {
 	if e = decode(b, &state); e != nil {
 		return empty, "", fail("reconciliation_required", e.Error())
 	}
-	if state.Schema != Schema && state.Schema != preparationStateSchema {
+	if state.Schema != Schema && state.Schema != preparationStateSchema && state.Schema != preparationLifecycleStateSchema && state.Schema != designDecisionStateSchema && state.Schema != activationStateSchema && !attentionProfile(state.Schema) {
 		return empty, "", fail("incompatible_profile", "unsupported persisted state")
 	}
-	if (state.Schema == Schema && (state.Prepared != nil || state.PreparationReceipts != nil)) || (state.Schema == preparationStateSchema && (state.Prepared == nil || state.PreparationReceipts == nil)) {
-		return empty, "", fail("incompatible_profile", "assignment preparation requires operational profile 0.2")
+	if (state.Schema == Schema && (state.Prepared != nil || state.PreparationReceipts != nil)) || (state.Schema != Schema && !attentionProfile(state.Schema) && (state.Prepared == nil || state.PreparationReceipts == nil)) || ((state.Prepared == nil) != (state.PreparationReceipts == nil)) {
+		return empty, "", fail("incompatible_profile", "assignment preparation requires operational profile 0.2 through 0.7")
+	}
+	for id, p := range state.Prepared {
+		if p.ID != id || !uuidPattern.MatchString(id) || p.Revision == 0 ||
+			(p.State != "" && p.State != "prepared" && p.State != "retired") ||
+			(p.Revision == 1 && (p.State != "" || p.ChangeReason != "")) ||
+			(p.Revision > 1 && ((state.Schema != preparationLifecycleStateSchema && state.Schema != designDecisionStateSchema && state.Schema != activationStateSchema && !attentionProfile(state.Schema)) || p.State == "" || !validPreparationReason(p.ChangeReason))) {
+			return empty, "", fail("reconciliation_required", "invalid persisted preparation lifecycle")
+		}
 	}
 	if state.Root != s.root || state.Project != s.project {
 		return empty, "", fail("unauthorized", "state belongs to another checkout")
 	}
 	if !uuidPattern.MatchString(state.CheckoutID) || state.Runs == nil || state.Receipts == nil {
 		return empty, "", fail("reconciliation_required", "invalid persisted state")
+	}
+	if err := validateDesignDecisionState(state); err != nil {
+		return empty, "", err
+	}
+	if err := validateAssignmentRuns(state); err != nil {
+		return empty, "", err
+	}
+	if err := validateAttentionState(state); err != nil {
+		return empty, "", err
+	}
+	if err := validateAttentionContinuations(state); err != nil {
+		return empty, "", err
 	}
 	return state, head, nil
 }
