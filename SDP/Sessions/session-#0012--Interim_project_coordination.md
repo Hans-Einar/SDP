@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest local turn: T001, 10 October 2026. Initial overview and prompts delivered as local coordination artifacts; worker handoffs have not been sent. Sequence only; synthetic dates are not estimates.
+Latest local turn: T002, 23 October 2026. Workstation recovery assessment recorded below. Original handoff delivery remains unobserved; current repository consolidation supersedes the old integration baseline. Sequence only; synthetic dates are not estimates.
 
 ```mermaid
 gantt
@@ -72,3 +72,16 @@ This Session is a separate owner coordination goal, not a takeover or continuati
 ## Closeout
 
 Initial inspection and prompt preparation are complete. The broader coordination goal remains active for later owner status requests and worker handoffs. Persisted snapshots are dated observations, not live monitoring.
+
+## T002 — 2026-10-23 workstation recovery and completion strategy
+
+- Capture: manual owner-input and work summary; exact host/turn identifiers unavailable.
+- Owner input: work has moved from an old laptop to this workstation. Recover recent parallel ProjectGovernance, ModelGovernance and XFMD viewpoint work; advise whether one agent should complete SDP so MVP1 development can resume in Ponsse.
+- Loaded skills/routines: sdp entrypoint, sdp-steering, document workflow/source map, Session upkeep, management/plan/KanBan contracts and concurrent-work preflight. No implementation or delegation was requested or performed.
+- Observed baseline: SDP main bfe3b40, clean before this turn, one registered worktree. October 23 consolidation commits preserve multiple prior branches and reconcile restored cards/evidence. XFMD checkout 953d09e was clean. No Ponsse checkout was present among /home/warloc/git entries. Remote/laptop agent activity and dirty files were not observed; local cleanliness does not establish their absence.
+- Inspection: gh sdp SDP discover --json returned valid discovery; this is inventory evidence, not integrated behavior verification. Read owning Sessions0006/0007/0008/0011 and XFMD Session0005, PG implementation plan, current cards and prior coordination overview. No product tests were rerun for this discussion.
+- Findings: ModelGovernance Session0006 goal achieved; Actions Session0011 completed. Blueprint implementation is delivered, but Session0008 remains owner-paused with the MVP1 pilot review pending. PG Session0007 T028 (October 21) leaves report consumption/responsive coordination, native parallel evidence, sustained capacity/recovery and later SAD/verification gates open. XFMD Session0005 selected viewpoint round completed October 19, with release/large-print/remaining-viewpoint work explicitly retained elsewhere. These are recorded delivery claims, not fresh certification of the consolidated workstation candidate.
+- Recommendation, not owner disposition: one accountable completion agent, sequential bounded milestones and separate independent review when needed. Define a Ponsse-ready workflow and verify it on the combined candidate; complete only its actual blockers. Keep broader automation/timeline/remote-hub work outside that gate unless the owner explicitly requires it. Do not silently cancel PG scope or resume the paused blueprint pilot.
+- Scoped preflight verdict: yellow for product implementation because remaining remote/laptop work ownership is unknown. Isolated coordination records only are permitted this turn. New branch sdp/workstation-completion-assessment from the clean main baseline; no product, card state, ledger or worker Session edits.
+- Roadmap reconciliation: S3 remains next for actual ownership/handoff agreement. S4 now has a dated recovery assessment, but combined workflow verification remains outstanding. The October 10 overview is historical; its original remote, branch and next-milestone claims must not be used as current facts.
+- Next: agree a single completion owner and a bounded Ponsse-readiness target, recover actual Ponsse installation/model state, then select/revise an existing plan through the planning routine. No merge, release, owner acceptance or change to existing pause decisions is inferred.
