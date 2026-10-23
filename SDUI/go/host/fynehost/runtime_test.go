@@ -58,7 +58,7 @@ func TestRuntimeReloadNativeDraftFocusAndNoReplay(t *testing.T) {
 	state, _ = s.Widget("page/edit")
 	current := v.View.Controls[state.InstancePath].(*Input)
 	if current.Text != draft || w.Canvas().Focused() != current || calls != 0 {
-		t.Fatal("reload lost state/focus or replayed")
+		t.Fatalf("reload lost state/focus or replayed: text=%q draft=%q focus=%T %p wanted=%p calls=%d sessionFocus=%s", current.Text, draft, w.Canvas().Focused(), w.Canvas().Focused(), current, calls, s.Focused())
 	}
 	old.OnSubmitted(draft)
 	if calls != 0 {

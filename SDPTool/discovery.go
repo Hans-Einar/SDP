@@ -344,7 +344,7 @@ func inspectSource(rel, path string, b []byte, readErr error) SourceInfo {
 			_, err = ui.Normalize(doc)
 		}
 		if err != nil {
-			if x.Profile != "" && x.Profile != "sdui/0.2" {
+			if x.Profile != "" && x.Profile != "sdui/0.2" && x.Profile != "sdui/0.3" {
 				x.State = "unsupported"
 			}
 			x.Diagnostic = err.Error()

@@ -6,6 +6,7 @@
 | --- | --- | --- | --- |
 | KB-SDP-051 | Change | completed | [Discover and run SDUI programs](completed/%23051--Change--Runnable-SDUI-programs.md) |
 | KB-SDUI-006 | Proposal | completed | [Runnable SDL and SDUI widget test project](completed/%23006--SDUI--Proposal--Runnable-widget-test-project.md) |
+| KB-SDUI-005 | Proposal | active | [Combined SDUI preview and launch readiness](active/%23005--SDUI--Proposal--Combined-preview-and-launch-readiness.md) |
 | KB-SDP-050 | Proposal | active | [Semantic blueprints](active/%23050--Proposal--Semantic-blueprints.md) |
 | KB-SDP-049 | Change | completed | [ModelGovernance](completed/%23049--Change--Model-governance.md) |
 | KB-SDP-048 | Proposal | superseded | [Versioned design reviews and blueprint differences](superseded/%23048--Proposal--Versioned-design-reviews-and-blueprint-diffs.md) |
@@ -52,13 +53,13 @@
 | KB-SDP-029 | Proposal | completed | [Typed plans and a shared Planning skill](completed/%23029--Proposal--Typed-plans-and-planning-skill.md) |
 | KB-SDP-030 | Bug | completed | [Restore installation conformance in CI](completed/%23030--Bug--CI-installation-conformance-and-fixtures.md) |
 | KB-SDP-031 | Study | completed | [Study SDL-derived assignment bundles and blueprints](completed/%23031--Study--SDL-assignment-bundles-and-blueprints.md) |
-| KB-SDP-032 | Study | backlog | [Evaluate SDL viewpoints through integrated XFMD navigation](backlog/%23032--Study--Viewpoint-navigation-feedback.md) |
+| KB-SDP-032 | Study | active | [Evaluate SDL viewpoints through integrated XFMD navigation](active/%23032--Study--Viewpoint-navigation-feedback.md) |
 | KB-SDP-033 | Study | completed | [Plan XFMD SDP adoption through gh-sdp and a practical SDL design pilot](completed/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md) |
 | KB-SDP-034 | Bug | completed | [External KanBan references](completed/%23034--Bug--External-KanBan-references.md) |
 | KB-SDP-035 | Proposal | backlog | [Community feedback after an understood internal pilot](backlog/%23035--Proposal--Community-feedback-after-internal-pilot.md) |
 | KB-SDP-036 | Proposal | backlog | [Request classification and mandatory routine selection](backlog/%23036--Proposal--Request-routines-and-process-control.md) |
 | KB-SDP-037 | Proposal | backlog | [Observable routine execution and agent work-package progress](backlog/%23037--Proposal--Observable-routine-state-machine.md) |
-| KB-SDP-038 | Proposal | backlog | [SDP development client using Codex app-server](backlog/%23038--Proposal--Codex-app-server-development-client.md) |
+| KB-SDP-038 | Proposal | active | [SDP development client using Codex app-server](active/%23038--Proposal--Codex-app-server-development-client.md) |
 | KB-SDP-039 | Change | completed | [Ecosystem and system models](completed/%23039--Change--Ecosystem-and-system-models.md) |
 | KB-SDP-040 | Proposal | backlog | [KanBan terminal navigator](backlog/%23040--Proposal--KanBan-TUI.md) |
 | KB-SDP-041 | Study | completed | [XFMD-driven SDL and SDUI gaps](completed/%23041--Study--XFMD-driven-SDL-and-SDUI-gaps.md) |
@@ -67,7 +68,6 @@
 | KB-SDP-042 | Proposal | backlog | [Goal-oriented Sessions and roadmaps](backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md) |
 | KB-SDL-007 | Proposal | completed | [Composable file ASTs and contextual analysis](completed/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md) |
 | KB-SDP-043 | Proposal | backlog | [Event-derived Session timelines](backlog/%23043--Proposal--Event-derived-session-timelines.md) |
-
 | KB-SDL-008 | Study | completed | [SDL Go familiarization and test baseline](completed/%23008--SDL--Study--Go-code-familiarization.md) |
 
 ## Purpose and authority

@@ -290,3 +290,81 @@ filesystem revisions. Existing combined navigation and scan limits still apply.
 Refresh discovers additions, edits, moves and removals. `discover --json` supplies
 this tree to a consumer buffer; `tree` displays it in the console. Viewer-owned
 opening/watching and Session lifecycle/capture/timeline automation are separate.
+
+### SDUI combined preview refinement (XFMD 0.7 producer work)
+
+UIPreview now delegates to SDUI presentation.Combined: nested source composition,
+source/binding table and unchanged static text render. The generated bundle also
+includes source.sdui, the exact input bytes for contextual source-span validation.
+Links use sdui-source://START/END, half-open UTF-8 byte offsets into that snapshot;
+a client must verify the original matches before highlighting. Source profiles
+and discover model/entry identities are unchanged. Existing clients can display
+the Markdown even without supporting this optional contextual link scheme.
+
+The separately bundled SDUI-owned sdui-preview adapter additionally exposes
+sdui-check in the sdptool/0.2 envelope: status prototype/prototype-unbound, original
+source, entry, revision and diagnostic. This is not a new gh sdp command or a
+claim of an SDL-connected Fyne host. XFMD invokes the private adapter; gh sdp
+continues to provide its installed discovery and view facade.
+
+## Viewpoint overview target — N3d additive contract
+
+A viewpoint node may carry `overviewTarget` with the same Target shape as `target`.
+Its presence advertises an implemented aggregate projection, not bulk detail
+selection. In N3d only VP01 advertises this, as select with a producer-owned URI
+containing `projection=overview`, plus the existing exact project/model/revision.
+Consumers pass that URI unchanged. Expansion never selects or renders it. Absence
+means overview unavailable; old consumers may ignore the field and keep their
+existing behavior. A viewpoint's existing target and detail targets are unchanged.
+
+SDL validates this new query value and rejects unsupported viewpoints or combinations
+with focus/diagram/mode/relations/level/non-default traversal filters; it does not
+silently ignore filters. VP01 generates all declared actors/use cases and modeled
+pursues associations, preserving isolated declarations. Functionality realization
+is a separate table; missing relations are gaps, not inferred behavior. Source
+snapshot, freshness, cancellation, publication and resource ownership rules apply.
+No pre/postconditions or scenario sequence is inferred by this overview. The
+complete projection is selected on demand; discovery does not generate its output.
+
+## N3e selection — Session0005 T005, 2026-10-08
+
+Deliver VP07 as a complete logical architecture base (all declared System,
+container and unit nodes, including isolated nodes), overlaid with every Feature
+and its contributing Functionality. Preserve actual contains, owns and
+contributes-to edges, with distinct feature/functionality shapes and relation
+styles. Do not fabricate placement from ownership. The default overview is
+explicitly logical and omits allocation edges; discovery adds one lazy overview
+selection per declared mode. A selected mode includes only its allocated-to
+facts and explicitly reports unallocated contributions. Never union modes.
+Existing feature detail targets remain usable. This uses the N3d typed target;
+no XFMD parser or hardcoded viewpoint list is introduced.
+
+A single union of all allocations is rejected because modes may be incompatible.
+Generating all mode diagrams on activation is rejected in favor of on-demand
+selection. Full structural base means decomposition, not every unrelated
+interface/data/scenario relation. All declaration/relation provenance remains.
+Verify isolation, multiple modes, unallocated/isolated features, empty models,
+old VP01 behavior, actual discovery-to-native selection and real XFMD PDF.
+The current branch/shared-baseline policy from N3d remains; no release/install,
+model edit or broad commit. Exact source links remain N4.
+
+N3e native-profile refinement: use rounded Feature nodes and typed rectangular
+architecture/Functionality nodes. Hexagon/stadium syntax was rejected by the
+existing Flowchart 1 parser during native acceptance; do not expand the consumer
+profile merely for styling. Preserve the failed candidate evidence. The native
+128-node bound also applies; oversized complete graphs fail without truncation.
+
+### N3e overlay refinement after real-model acceptance
+
+The literal realization graph (57 nodes / 137 edges) exceeded the native capture
+budget on the real XFMD model. Replace Functionality nodes/edges in the overview
+with deterministic Feature keys (F01...) annotated on their actual logical owners
+and, for a selected mode only, on explicit allocation containers. The complete
+structural contains graph remains. Unowned/unrealized Features remain standalone
+rounded nodes. The legend maps every key to its declared Feature; a companion
+table retains all contributing functions, owner/allocation and exact proof IDs.
+Diagram Elements retain annotation provenance (Feature, owner/container, role,
+source-fact IDs), and SourceFacts includes these proofs. This is a traceable
+projection, not invented direct SDL relationships. No synthetic edges are added.
+Detailed feature selections retain their explicit graphs. The initial literal
+candidate and timeout are retained; all-mode union remains rejected.

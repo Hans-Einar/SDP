@@ -5,6 +5,7 @@ import "strings"
 type reader struct {
 	tokens       []token
 	source       string
+	profile      string
 	index, nodes int
 }
 
@@ -46,11 +47,13 @@ func Parse(source string) (doc *Document, err error) {
 func (p *reader) document() *Document {
 	start := p.take("ID", "sdui").span
 	v := p.take("NUMBER")
-	if p.source[v.span.Start:v.span.End] != "0.2" {
-		fail("version", "Only exact sdui 0.2 is supported", v.span)
+	version := p.source[v.span.Start:v.span.End]
+	if version != "0.2" && version != "0.3" {
+		fail("version", "Only exact sdui 0.2 and 0.3 are supported", v.span)
 	}
 	p.take(";")
-	d := &Document{Profile: "sdui/0.2"}
+	d := &Document{Profile: "sdui/" + version}
+	p.profile = d.Profile
 	for p.t().value == "ref" {
 		s := p.take("ID").span
 		p.take(":")
@@ -135,7 +138,23 @@ func (p *reader) node(depth int, parent string) *Node {
 			n.Kind = "widget"
 			n.Widget = str(name)
 			n.Arguments = p.arguments()
+			if p.profile == "sdui/0.3" && (name == "slider" || name == "number") {
+				for i := range n.Arguments {
+					a := &n.Arguments[i]
+					if a.Name != nil && member(*a.Name, "min max step value") {
+						if v, ok := a.Value.(Literal); ok && v.Kind == "number" {
+							v.Kind, v.Value = "number-lexeme", p.source[v.Span.Start:v.Span.End]
+							a.Value = v
+						}
+					}
+				}
+			}
 			p.take(")")
+			if p.profile == "sdui/0.3" && p.accept("[") {
+				n.Kind = "composition"
+				n.Rows = p.rows("]", depth, n.Kind)
+				p.take("]")
+			}
 		} else {
 			n.Kind = "use"
 			n.Target = str(name)

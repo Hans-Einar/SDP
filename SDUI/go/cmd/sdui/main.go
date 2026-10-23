@@ -127,7 +127,11 @@ func execute(args []string, stdin io.Reader, stdout, stderr io.Writer) int {
 	}
 	var out []byte
 	if o.format == "ast" {
-		out, e = json.MarshalIndent(map[string]any{"astFormat": "sdui-ast/0.2", "validation": validation, "document": parser.Data(d)}, "", "  ")
+		astFormat, err := parser.ASTFormat(d.Profile)
+		if err != nil {
+			return report(stderr, err, 2)
+		}
+		out, e = json.MarshalIndent(map[string]any{"astFormat": astFormat, "validation": validation, "document": parser.Data(d)}, "", "  ")
 		out = append(out, '\n')
 	} else {
 		if o.syntax {
@@ -150,6 +154,10 @@ func execute(args []string, stdin io.Reader, stdout, stderr io.Writer) int {
 		var text string
 		switch o.format {
 		case "svg":
+			// Reject unsupported source before measurement or provider/resource work.
+			if e = svg.Check(root, svg.Options{}); e != nil {
+				return report(stderr, e, 2)
+			}
 			var box *layout.Box
 			var renderer markdown.Renderer
 			if o.renderer != "" {

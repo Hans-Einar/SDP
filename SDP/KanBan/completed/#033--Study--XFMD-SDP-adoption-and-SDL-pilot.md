@@ -61,7 +61,7 @@ perform live migration or product changes during this intake or main merge.
 
 Depends on main consolidation and coordinates with
 [KB-SDP-031](../completed/%23031--Study--SDL-assignment-bundles-and-blueprints.md),
-[KB-SDP-032](../backlog/%23032--Study--Viewpoint-navigation-feedback.md) and
+[KB-SDP-032](../active/%23032--Study--Viewpoint-navigation-feedback.md) and
 [KB-SDP-018](../canceled/%23018--Study--Toolkit-audit-and-organization.md).
 
 ## Worklog

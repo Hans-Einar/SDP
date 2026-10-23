@@ -45,3 +45,20 @@ and refresh on additions/edits/moves/removal without registration. Missing, empt
 and unavailable directories are distinguishable; symlinks are not followed.
 This is document navigation, not validation or execution of the Session process.
 PLAN-SDP-0015 and the producer contract define the bounded implementation.
+
+## Viewpoint overview — REQ-SDPTOOL-003/004 refinement
+
+XFMD owner feedback in KB-SDP-032 selects an explicit aggregate target distinct
+from tree expansion and detail selection. N3d provides VP01's complete declared
+actor/use-case inventory, including isolated items, with modeled pursues relations
+and separate functionality realization context. An absent producer capability is
+reported as unavailable. Preserve complete-source revision and provenance and
+reject stale/foreign selections before output publication. VP07 and exact-source
+consumer navigation remain later increments of the same cross-project goal.
+
+### REQ-SDPTOOL-003/004 — VP07 scope refinement (N3e)
+
+VP07 overview retains the complete declared logical decomposition and feature
+realization. Default logical scope excludes deployment allocations. Named mode
+selections contain only that mode allocation and explicit missing-placement gaps;
+other modes remain separate on-demand choices. Discovery does not render them.

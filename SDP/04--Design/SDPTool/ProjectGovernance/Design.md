@@ -1,9 +1,16 @@
 # ProjectGovernance — first workflow contract
 
 Design candidate PGD1, owned by [PLAN-SDP-0017](Plan.md). This specifies the bounded
-implementation handoff; no new runtime or installed process schema exists yet.
+implementation handoff. PGI1/PGI2 implement the bounded core/CLI and protocol adapters; the
+complete client workflow and installed process integration remain future work.
 Owner-selected scope and role responsibilities are retained. Storage locations,
 operation names and implementation choices below are the recommended pilot design.
+
+Current implementation details and limits are in the
+[core contract](../../../../SDPTool/governance/README.md) and
+[PGI plan](../../../05--Implementation/SDPTool/ProjectGovernance/Plan.md).
+The application wire schema is local to the PGI pilot; it is not a published Toolkit profile.
+PGD1's original evidence remains historical design/schema-inspection evidence.
 
 ## 1. Outcome and first user journey
 
@@ -262,8 +269,11 @@ record set using current management/traceability rules before reporting success.
 
 Use one controller-owned app-server process over local stdio, explicit selected cwd,
 and version-specific generated protocol bindings. The inspected baseline is
-codex-cli 0.160.0, default schema surface; [Evidence.md](Evidence.md) records its
-limits. Earlier 0.158.0 evidence remains historical. Unsupported versions fail with
+codex-cli 0.160.1 for PGI2, default schema surface, with MCP Go SDK v1.8.0
+and MCP 2025-11-25. [PGI2 evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI2.md)
+records actual initialization/account-mode inspection and ephemeral-thread MCP
+discovery, plus fixture capture/recovery limits. PGD1 [Evidence.md](Evidence.md)
+for 0.160.0 and earlier 0.158.0 evidence remain historical. Unsupported versions fail with
 a compatibility diagnostic until tested. Do not require undocumented experimental
 fields or interpret the documentation's newest example as the installed contract.
 

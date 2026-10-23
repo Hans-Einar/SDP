@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "1.0",
+  "milestone": "PGI1-M1",
+  "baseCommit": "043c59cc50c33d9f2a4e8ba48340984ab5c1bff3",
+  "scope": "Changed SDPTool implementation, schemas, tests and package documentation; other tracked implementation inherited from base",
+  "files": [
+    {
+      "path": "SDPTool/README.md",
+      "sha256": "a44d38969151ae5a41c3977907c1429d81ae1fdc6a80fc6f14f4faeab16816ad"
+    },
+    {
+      "path": "SDPTool/cli.go",
+      "sha256": "6315fb1860fd39992104b0118dd821ba7a806008358e51f7d89d96f1b06c9b01"
+    },
+    {
+      "path": "SDPTool/governance/README.md",
+      "sha256": "d62bb347989848a8ebbcaeb22ca96e478e1b83ed257bbf145fce640bb716eed9"
+    },
+    {
+      "path": "SDPTool/governance/check_schema.py",
+      "sha256": "8f6babe42a29d12829f135d4341a0e99a30d0d9446e51e5873eac4fce7ec0d1f"
+    },
+    {
+      "path": "SDPTool/governance/context.go",
+      "sha256": "c38dd93adeb081bb66a09b5b0349166959c0b3b04fdae7b3b900e3d8982386ec"
+    },
+    {
+      "path": "SDPTool/governance/core_test.go",
+      "sha256": "95214d4645b3d7013c40a64be26ab9cbd3cf5ff4b5be0f3a3056165cc23e0b9e"
+    },
+    {
+      "path": "SDPTool/governance/coverage.go",
+      "sha256": "0740d7d7e143a375badde56d6025121d0694d3efc33537a56d3fa50086873fda"
+    },
+    {
+      "path": "SDPTool/governance/input.go",
+      "sha256": "7619b16531b7413c556fc23adb0938fb8c95d6a2aec7b15a1cbaefefa1fcf13c"
+    },
+    {
+      "path": "SDPTool/governance/lock_linux.go",
+      "sha256": "4d8f10fff319d43c9799991f4b6441a04c79d574bc023c776c9b554acade500d"
+    },
+    {
+      "path": "SDPTool/governance/lock_other.go",
+      "sha256": "59c5feafc9b8c6378c8dd510a3ebeb5b9b232b01349b44b13acfb1d9e6b9a503"
+    },
+    {
+      "path": "SDPTool/governance/paths.go",
+      "sha256": "b61641dff128a4fc89a3a91fa969770a1e3cddc82bc0adff13eaf0f1a27ffd63"
+    },
+    {
+      "path": "SDPTool/governance/run.go",
+      "sha256": "4db3102ff9ddd01bca977b0e9ecc4f12aa8a53485b4b16c187fd334cc95453f1"
+    },
+    {
+      "path": "SDPTool/governance/schema.json",
+      "sha256": "df29675a8df2e02655d432d0c3fbd518b0d201f810abfed24c7dacbeb8ba395a"
+    },
+    {
+      "path": "SDPTool/governance/store.go",
+      "sha256": "4a05d5b09267b03b68551ccf790c61193cd67a912fff379d94f8ec76f6f03934"
+    },
+    {
+      "path": "SDPTool/governance/types.go",
+      "sha256": "3c49ac820f9ea86fe25e5b220ba6051b32c24d0b088e8d2bc3794c7d62139f2d"
+    },
+    {
+      "path": "SDPTool/governance_cli.go",
+      "sha256": "33c7582bebe372ad43b7611b08ab594574984c702e2c595e6bb0fcef55339fe0"
+    },
+    {
+      "path": "SDPTool/governance_cli_test.go",
+      "sha256": "a112b2fff720cafd73deb39648fcdd9759e66e9d85a045b5777bca05c2f96b3a"
+    },
+    {
+      "path": "SDPTool/output_arguments.go",
+      "sha256": "05e8608e057c1a026ee424d54eabe44d02a5ad841f12d650e528c2d78474f841"
+    },
+    {
+      "path": "SDPTool/presentation/presentation.go",
+      "sha256": "04613e6989839553db218c7c76a3e4ae3a31264dc84dfb0d61e4957997bb2a1c"
+    }
+  ],
+  "fileSetDigest": "281359a2233a36b761fa498426333af72204eb9bbf41aa2e5da3c35b65b40e38",
+  "digestEncoding": "SHA-256 of UTF-8 json.dumps(files,separators=(comma,colon)), no newline",
+  "environment": {
+    "go": "go1.27.1 linux/amd64",
+    "goBinary": "/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/bin/go",
+    "GOCACHE": "/tmp/sdp-pgi1-8SeezS/go-cache",
+    "XDG_CACHE_HOME": "/tmp/sdp-pgi1-8SeezS/cache",
+    "XDG_RUNTIME_DIR": "/tmp/sdp-pgi1-8SeezS/runtime",
+    "GOTOOLCHAIN": "local",
+    "GOPROXY": "off"
+  },
+  "checks": [
+    {
+      "command": "go -C SDPTool test -race ./...",
+      "exitCode": 0,
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool\t53.786s\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdptool\t[no test files]\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/install\t74.879s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/model\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/presentation\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/tools/profile\t54.765s\n"
+    },
+    {
+      "command": "go -C SDPTool vet ./...",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "command": "python3 SDPTool/governance/check_schema.py <temporary>/cli-wire-cases.json",
+      "exitCode": 0,
+      "observedWireCases": 21,
+      "captureSHA256": "80431525d04f2b47c904e4471c0dd110ed365a8a4ca999db272d98fc87e63c3f"
+    }
+  ],
+  "earlierEnvironmentFailure": {
+    "command": "go -C SDPTool test -race ./... without temporary XDG overrides",
+    "exitCode": 1,
+    "cause": "Existing preview and installer tests attempted writes under read-only /run/user/1000 and /home/warloc/.cache. Full suite passed with temporary XDG directories; no test assertions or product behavior weakened.",
+    "logSHA256": "fd6feaa663fcb43642c8b4098a4a405bb253bab19257d3397326ffa742554e86"
+  },
+  "limits": [
+    "Core and compiled CLI fixture, not live Codex execution",
+    "Injected interruption around HEAD publication, not physical power loss",
+    "No independent review in this host context",
+    "No publish, merge or release"
+  ]
+}

@@ -247,3 +247,13 @@ Milestone backlog/onHold review retains KB-SDUI-004 backlog, KB-SDUI-005 separat
 gate-review and optional source sets/rich-editor proposals unselected. No new scope.
 
 - 2026-10-08T13:50:20.709403+00:00 — EVT-KB-SDUI-000030: active/in-progress -> completed. WCI4-M2 and full bounded widget inventory verified and independently reviewed at dcf2a741; 28 applicable native workflows, 321 checks, 25 exact terminal results, matching package/protocol/consumer and passing affected suites. No merge/publication.
+
+## Post-delivery shared-tree observation — XFMD Session0005 T005
+
+During VP07 integration, TestSDUIAllFamilyDiscoveryAndSourceDelegation fails because
+UIPreview delegates to presentation.Combined while this test compares against
+presentation.Markdown. Reproduced in an isolated shared-source copy with all N3e
+edits removed. This is a local shared-tree integration finding, not a disposition
+of the separately reviewed WCI4-M2 candidate or a card reopening. Follow up under
+the SDUI integration workstream before claiming the full SDPTool suite green.
+Evidence: file:///home/warloc/git/xfmd-sdl-navigation/SDP/05--Implementation/SDL-Navigation/evidence/N3e-001/producer-baseline-failure.log

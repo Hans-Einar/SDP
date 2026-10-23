@@ -11,7 +11,7 @@ import (
 	"sort"
 )
 
-func uiRoots(source string) (map[string]*ui.Instance, []byte, error) {
+func uiRoots(source, profile string) (map[string]*ui.Instance, []byte, error) {
 	b, e := readSource(source)
 	if e != nil {
 		return nil, nil, e
@@ -20,6 +20,9 @@ func uiRoots(source string) (map[string]*ui.Instance, []byte, error) {
 	if e != nil {
 		return nil, nil, e
 	}
+	if d.Profile != profile {
+		return nil, nil, fmt.Errorf("profile-mismatch: inventory %s, source %s", profile, d.Profile)
+	}
 	roots, e := ui.Normalize(d)
 	return roots, b, e
 }
@@ -27,7 +30,7 @@ func uiRoots(source string) (map[string]*ui.Instance, []byte, error) {
 // UIPreview delegates a static Markdown prototype to SDUI. No widget runtime or
 // browser/native UI implementation is added by this facade.
 func UIPreview(ctx context.Context, p Project, id, entry, output, revision string) (Result, error) {
-	_, source, e := p.model(id, true)
+	model, source, e := p.model(id, true)
 	if e != nil {
 		return Result{}, e
 	}
@@ -37,7 +40,7 @@ func UIPreview(ctx context.Context, p Project, id, entry, output, revision strin
 	if e = outside(output, source); e != nil {
 		return Result{}, failure("output", e)
 	}
-	roots, b, e := uiRoots(source)
+	roots, b, e := uiRoots(source, model.Profile)
 	if e != nil {
 		return Result{}, failure("model", e)
 	}
@@ -62,7 +65,12 @@ func UIPreview(ctx context.Context, p Project, id, entry, output, revision strin
 	if root == nil || root.Kind != "frame" {
 		return Result{}, failure("selection", fmt.Errorf("entry must be a defined frame"))
 	}
-	text, e := presentation.Markdown(root, 160)
+	profile, e := ui.EffectiveProfile(root)
+	if e != nil {
+		return Result{}, failure("model", e)
+	}
+	document, _ := ui.Parse(string(b))
+	text, e := presentation.Combined(root, 160, document)
 	if e != nil {
 		return Result{}, failure("render", e)
 	}
@@ -83,9 +91,10 @@ func UIPreview(ctx context.Context, p Project, id, entry, output, revision strin
 	if e != nil {
 		return Result{}, e
 	}
-	result := Result{Version, "sdui-preview", source, "sdui/0.2", hash, filepath.Join(out, "entry.md"), out, "caller-owned; release after consumer"}
+	result := Result{Version, "sdui-preview", source, profile, hash, filepath.Join(out, "entry.md"), out, "caller-owned; release after consumer"}
 	bundle := &documents.Bundle{Files: map[string][]byte{}, Manifest: documents.Manifest{Version: "sdptool-sdui-markdown/0.1", Revision: hash}}
 	bundle.Put("entry.md", text)
+	bundle.Files["source.sdui"] = b
 	j, _ := json.MarshalIndent(result, "", "  ")
 	bundle.Files["sdptool.json"] = append(j, '\n')
 	bundle.Seal()
@@ -103,7 +112,7 @@ func UINodes(p Project) ([]Node, string, error) {
 		tab.Children = append(tab.Children, key)
 		tab.State = "available"
 		n := Node{ID: key, Kind: "source", Label: m.Source, State: "unsupported"}
-		if m.Profile == "sdui/0.2" {
+		if m.Profile == "sdui/0.2" || m.Profile == "sdui/0.3" {
 			_, source, e := p.model(m.ID, true)
 			if e != nil {
 				n.State = "invalid"
@@ -111,7 +120,7 @@ func UINodes(p Project) ([]Node, string, error) {
 				nodes = append(nodes, n)
 				continue
 			}
-			roots, b, e := uiRoots(source)
+			roots, b, e := uiRoots(source, m.Profile)
 			if e != nil {
 				n.State = "invalid"
 				n.Diagnostic = e.Error()

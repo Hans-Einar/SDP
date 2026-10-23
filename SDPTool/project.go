@@ -196,7 +196,7 @@ func (p Project) model(id string, sdui bool) (Model, string, error) {
 			if sdui {
 				expected = "sdui/0.2"
 			}
-			if m.Profile != expected && (sdui || m.Profile != "design-core/0.6") {
+			if m.Profile != expected && !(sdui && m.Profile == "sdui/0.3") && !(!sdui && m.Profile == "design-core/0.6") {
 				return m, "", failure("unsupported", fmt.Errorf("profile %s", m.Profile))
 			}
 			path, e := resolvePath(p.Root, m.Source)

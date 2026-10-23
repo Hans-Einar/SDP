@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "1.0",
+  "milestone": "PGI2-M1",
+  "hostVersion": "codex-cli 0.160.1",
+  "schemaCommand": "codex app-server generate-json-schema --out DIR",
+  "schemaProfile": "default; experimental API disabled",
+  "schemas": [
+    {
+      "path": "v1/InitializeParams.json",
+      "sha256": "b55124e7c0f36a1789396daa5578217a92be67f053903696236686e59f6f212e"
+    },
+    {
+      "path": "v1/InitializeResponse.json",
+      "sha256": "62ad689c2cb6379913c1d72749cfd8de5089d35760214123518eb92eef11acc9"
+    },
+    {
+      "path": "v2/ThreadStartParams.json",
+      "sha256": "e9c6d3cc18d049bfbc0249add3808fb8e5a27e1a0b5a423767aafbc3859a9428"
+    },
+    {
+      "path": "v2/ThreadReadParams.json",
+      "sha256": "dfe040c6ac71d30795b8be3f3ff232e66f362a37f883b491e5d1ea367f470db4"
+    },
+    {
+      "path": "v2/GetAccountParams.json",
+      "sha256": "30b545275f60975b55bd6fbaafd70f15505801d14168ee82d3931b6e93c78aab"
+    },
+    {
+      "path": "v2/GetAccountResponse.json",
+      "sha256": "c3092dd8e52c2933c5ba5f0bf92377174f65bed627ff4ef5d7c04a189dd34fd1"
+    },
+    {
+      "path": "v2/ListMcpServerStatusParams.json",
+      "sha256": "30b978c6502b37c9f0002aeba241f41c91d4c6adf0f92d89242b62ffde415a2d"
+    },
+    {
+      "path": "v2/ListMcpServerStatusResponse.json",
+      "sha256": "00c56c0faacbd4950b7f446f20b11b8a95456c5108de2f1e7366a1b2e60db8c6"
+    },
+    {
+      "path": "v2/ItemCompletedNotification.json",
+      "sha256": "d04b9153de38cd8302a2a418a44a65e8265d4c7586d46ea2cc801b594c6acf5b"
+    },
+    {
+      "path": "v2/TurnCompletedNotification.json",
+      "sha256": "016870158603b0f84bd9f8f65f927161c9fd5128e5ec632087616462dc44e085"
+    }
+  ],
+  "mcpSDK": {
+    "module": "github.com/modelcontextprotocol/go-sdk",
+    "version": "v1.8.0",
+    "protocol": "2025-11-25"
+  },
+  "probe": {
+    "accountMode": "chatgpt",
+    "ephemeralThread": true,
+    "hostVersion": "0.160.1",
+    "initialized": true,
+    "managedAccount": true,
+    "mcpAuthStatus": "unsupported",
+    "mcpProtocol": "2025-11-25",
+    "mcpSDK": "v1.8.0",
+    "mcpTools": [
+      "context_read",
+      "route_evaluate",
+      "run_read"
+    ],
+    "modelSubmitted": false,
+    "schema": "sdp-host-probe/1",
+    "threadObserved": true
+  },
+  "limitations": [
+    "Initialization, account-mode inspection and idle ephemeral thread only; no model turn or entitlement test.",
+    "MCP unsupported authStatus means local stdio advertises no OAuth; tool discovery succeeded.",
+    "Schema projections and recorded fixtures do not establish live recovery or native child attribution."
+  ]
+}

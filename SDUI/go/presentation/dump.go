@@ -71,22 +71,40 @@ func widths(items []*parser.Instance, available int) ([]int, error) {
 	return sizes, nil
 }
 func widgetText(n *parser.Instance) string {
+	if previewDescription(n) {
+		return "[" + previewText(n) + "]"
+	}
+	if inputDescription(n) {
+		return "[" + inputText(n) + "]"
+	}
+	if scalarDescription(n) {
+		return "[" + scalarText(n) + "]"
+	}
+	if interactionDescription(n) {
+		return "[" + interactionText(n) + "]"
+	}
 	switch n.Widget {
 	case "button":
 		return "[ " + n.Argument("label") + " ]"
 	case "input":
 		return n.Argument("text") + ": [" + n.Argument("value") + "]"
-	default:
+	case "tree", "list":
+		return "[Static " + n.Widget + ": " + n.Argument("label") + " | " + n.Path + " | provider data not supplied]"
+	case "svg":
 		label := n.Argument("label")
 		if label == "" {
 			label = n.Path
 		}
 		return "[SVG plassholder: " + label + "]"
 	}
+	return "" // check rejects unknown kinds before rendering.
 }
 
 // Dump produces a bounded terminal-cell structural preview, not measured GUI geometry.
 func Dump(root *parser.Instance, columns int) (string, error) {
+	if err := check(root); err != nil {
+		return "", err
+	}
 	if columns < 20 || columns > 400 {
 		return "", diagnostic("dump-width", "Columns must be between 20 and 400", root)
 	}
@@ -100,7 +118,9 @@ func Dump(root *parser.Instance, columns int) (string, error) {
 			return nil, diagnostic("dump-space", "Not enough columns", n)
 		}
 		lines := []string{}
-		if n.Kind == "markdown" {
+		if previewDescription(n) {
+			lines = wrapLine(widgetText(n), w)
+		} else if n.Kind == "markdown" {
 			for _, line := range MarkdownLines(n.Text) {
 				lines = append(lines, wrapLine(line, w)...)
 			}
@@ -190,6 +210,41 @@ func Dump(root *parser.Instance, columns int) (string, error) {
 	}
 	for i := range lines {
 		lines[i] = strings.TrimRight(lines[i], " \t\r\n")
+	}
+	panes := []string{}
+	var paneErr error
+	root.Walk(func(n *parser.Instance) {
+		if paneErr == nil && (n.Kind == "composition" || interactionDescription(n) || scalarDescription(n) || inputDescription(n) || previewDescription(n)) {
+			description := paneText(n)
+			if previewDescription(n) {
+				description = previewText(n)
+			}
+			if inputDescription(n) {
+				description = inputText(n)
+			}
+			if scalarDescription(n) {
+				description = scalarText(n)
+			}
+			if interactionDescription(n) {
+				description = interactionText(n)
+			}
+			for _, line := range wrapLine(description, columns) {
+				budget += CellWidth(line)
+				if budget > MaxCells {
+					paneErr = diagnostic("dump-limit", "Pane description exceeds cell budget", n)
+					return
+				}
+				panes = append(panes, line)
+			}
+		}
+	})
+	if paneErr != nil {
+		return "", paneErr
+	}
+	// Include inactive/hidden declarations as static facts, without changing the
+	// existing content renderer's visibility policy or any 0.2 output bytes.
+	if len(panes) > 0 {
+		lines = append(append(panes, ""), lines...)
 	}
 	return fmt.Sprintf("SDUI GUI dump | %s | %d columns | structural preview\n", Safe(root.Path), columns) + strings.Join(lines, "\n") + "\n", nil
 }
