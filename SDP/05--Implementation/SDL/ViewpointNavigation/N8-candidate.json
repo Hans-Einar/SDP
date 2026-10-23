@@ -1,0 +1,55 @@
+{
+  "base": "85d62f24115285984cacc952919c1cf99988857f",
+  "branch": "sdp/xfmd-vp05-overview",
+  "files": {
+    "SDL/go/documents/selection.go": "7303d78a6b3ccf5b3c0ac490879b4aa7176dff3558bf36a13f2e0ec792b49c0b",
+    "SDL/go/viewpoint/mode_overview.go": "33ebbbabb0205003712fb345c64d90d3d8c0965a4e64544c0763aa2197d3234b",
+    "SDL/go/viewpoint/mode_overview_test.go": "43a6d05ff1234615ef59c502fc4764e8035b4d62203d173f6bd00f4bdf3c09c1",
+    "SDL/go/viewpoint/overview.go": "522b4876bbe28fb0690e463def12472ffd28eaaf5bbc236710f076e3661eed4f",
+    "SDL/go/viewpoint/overview_test.go": "4b0367ba8374e562cab6f33c37ca19f2375b8ded8186ade6366a5f1b8833de3f",
+    "SDL/go/viewpoint/query.go": "c6a6a6f20b9ef60c98f6498a3e6b3b86f9e9428980e6bfd42e3f25b93a69142c",
+    "SDPTool/Contract.md": "67d1b59f2fbacb2b650341fa5ed7365b657b4c4ae8bce4ddab4a9cecaac20721",
+    "SDPTool/mode_overview_test.go": "7c407277d3515e33557b820f2e0343834bb4c29e84c7c931420cfbb712352873",
+    "SDPTool/overview_actions_test.go": "718fb798d3b91ad8a61abc67500558a241ffb3e3c1fcb7908389ed9b134e0de5",
+    "SDPTool/overview_test.go": "718805c4872271289092acb097908ca68c5fd6ebbedbb35e0c281af8ab184fa6",
+    "SDPTool/tree.go": "0b3c33cabd86ecfebc2357f4be7c568a3693648601b421ea4d732931e84d9487"
+  },
+  "binary": {
+    "path": "/tmp/xfmd-n8-sdptool",
+    "sha256": "b530a8a168bef69c83d92ad9587b867d3e80f375db5db3c5134e9ad61ca0e6c6"
+  },
+  "consumerTest": {
+    "path": "/home/warloc/git/xfmd-sdl-navigation/tests/gui/SdpOverviewGuiTest.cpp",
+    "sha256": "1b343eb521ded080f054811a555b8d9432f91447787a4ebfd060b115f72e327f"
+  },
+  "nativeTestBinarySha256": "ced06b116566ce09a4f1a3dbb9595483f5cd01d1b3a41ec865735d4d46d27ca1",
+  "consumerBaseEvidence": "../N4-001/candidate.json; product unchanged, native test extended",
+  "artifacts": {
+    "actualMode": "NormalDesktop",
+    "actualCapabilities": 0,
+    "actualDependencies": 0,
+    "actualDiagrams": 0,
+    "actualEmptyStateInPdf": true,
+    "fixtureModes": [
+      "Offline",
+      "Online",
+      "Quiet"
+    ],
+    "fixtureDiagrams": {
+      "Offline": {
+        "nodes": 3,
+        "edges": 1
+      },
+      "Online": {
+        "nodes": 3,
+        "edges": 1
+      },
+      "Quiet": {
+        "nodes": 2,
+        "edges": 0
+      }
+    },
+    "onlinePdfLabelsPresent": true,
+    "sourceSpansInBounds": true
+  }
+}

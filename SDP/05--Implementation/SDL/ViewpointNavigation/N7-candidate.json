@@ -1,0 +1,34 @@
+{
+  "base": "63da7ae1ecc31793a2c82f78415481cf7d24eacc",
+  "branch": "sdp/xfmd-vp04-overview",
+  "files": {
+    "SDL/go/documents/selection.go": "caa12fe02bef08990081f1794a6b1015775443be1f81d5aa14dfdbf903589f9d",
+    "SDL/go/viewpoint/interface_overview.go": "8de1b2378bcdef4edd1320d572ca3185d35a25e4dc4f9d9accb7ab8d70923adc",
+    "SDL/go/viewpoint/interface_overview_test.go": "fc24647302297d77adce2110f52f1e5f81b50f4d757c075318a837929ed4f6c4",
+    "SDL/go/viewpoint/overview.go": "3cd4f421723ca0c9e7bac1b851c40e44827dcc7d2e0be71db684868d4d3b200c",
+    "SDL/go/viewpoint/overview_test.go": "228e496ab4256c1db299a56f921002ef5f587d63c070e5a39d50bcb3ead4e9a1",
+    "SDPTool/Contract.md": "3ba7ab1c1a9b290fa5cd2c364b8b9f9f93fbe27c8e49df23734cde9836278368",
+    "SDPTool/interface_overview_test.go": "ccf65dc3e7fc7109626f41c3c63088b74d8991b956e594b4ba00a5f01aefd395",
+    "SDPTool/overview_actions_test.go": "3626109c4b5dab1852ca20c7fc2442a016555064b67bc7a03bb2691a6df3752a",
+    "SDPTool/overview_test.go": "e8708e782e8fc957ebe0548c2446b8d52e2db38a6e3a121832e0c2bb55420e45"
+  },
+  "binary": {
+    "path": "/tmp/xfmd-n7-sdptool",
+    "sha256": "562b5dc6753ae3c60f59fc50db8e030c53c9308d896fa3f091a54c9f584462d5"
+  },
+  "consumerTest": {
+    "path": "/home/warloc/git/xfmd-sdl-navigation/tests/gui/SdpOverviewGuiTest.cpp",
+    "sha256": "8a7ce516b23e9c1df97017da7dc2b1c7d0e77d325894cc0b219599f35e875837"
+  },
+  "nativeTestBinarySha256": "cf04ed3564c84272cbc848a60af3a3e75aa807410c1bf91e706cf1b4fd32a131",
+  "consumerBaseEvidence": "../N4-001/candidate.json; native product unchanged, native test extended",
+  "actualModel": {
+    "nodes": 26,
+    "interfaces": 14,
+    "consumers": 12,
+    "edges": 24,
+    "sourceFacts": 24,
+    "sourceLinksChecked": 136,
+    "allNodeLabelsInPdf": true
+  }
+}

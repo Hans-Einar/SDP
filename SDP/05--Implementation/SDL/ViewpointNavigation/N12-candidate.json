@@ -1,0 +1,49 @@
+{
+  "base": "6b80b40fb269e29a03dc9761c4facb8473a54f3e",
+  "branch": "sdp/xfmd-vp10-overview",
+  "files": {
+    "SDL/go/documents/encoding_test.go": "fde47a871ac9885b78cb4a70cf2b76a72f7527ae95a1dfbcc06d02e670dc6643",
+    "SDL/go/documents/selection.go": "9f51db12274e57a1dfad880bc7771264e59bc975de47585fb62552e2ed65808b",
+    "SDL/go/viewpoint/encoding_context.go": "104f4732a4047d8dd76286238c069e59c72b123455897609cb2aa82eadf757c0",
+    "SDL/go/viewpoint/encoding_overview.go": "a9374fb7221c1d085241c471038166879a93f779d4706316ee09b2267e020dc3",
+    "SDL/go/viewpoint/encoding_overview_test.go": "fea8f4ac217a67ea1663fdab9de3c6a4fd1af3805f56af75cb18238a51ae4549",
+    "SDL/go/viewpoint/overview.go": "93f9831648150a0671b9840d810f6285914838aabf0769d70d9b820941708758",
+    "SDL/go/viewpoint/overview_test.go": "29a2f73c48932a52b5b526d5aa5b1dd1ad9349f257de835c15b17cadfd7eeff0",
+    "SDPTool/Contract.md": "0ee2598e83159b779c3f3cfc6956eba9251216f2c81005b1db44e59afafd050c",
+    "SDPTool/overview_actions_test.go": "df761fc1b0c16915c0b1fc3477e5c1328f2260de842b2d5da44b168537ff769f",
+    "SDPTool/overview_test.go": "b3565b776371abb79eea4b29a0095b48eeda3d26d13199d0900b6d7150fa74e6"
+  },
+  "binary": {
+    "path": "/tmp/xfmd-n12-sdptool",
+    "sha256": "86dcdea22991103d59cbe486fe3474e723a7e18ca25b0d12ec12445cf5ea4bb7"
+  },
+  "consumerTestFiles": {
+    "tests/gui/SdpOverviewGuiTest.cpp": "fd5ab6e6dbf2e350e5a8b8e0745ff896020f6f2d137ce4b5a189ab8b162af3f1",
+    "tests/gui/OverviewFixture.h": "e56df44a490babaaee5f40c2a5110c845fc49c809fa9115b4b56255c1cca6e25",
+    "tests/gui/SdpChannelOverviewChecks.h": "d9b113195cadbeced9c6cacb239b8f8ff5be1cb8664f0e0fc6aa2a873a6779d4",
+    "tests/gui/SdpDataOverviewChecks.h": "eea5cd5d6bf36c6c8efaaa62ad8bf3b8f5b4a6124641e6e49f8ca3178168a23d",
+    "tests/gui/SdpEncodingOverviewChecks.h": "9f762757d826e33066cf5f13bf8978ea8998dc9ddf8191b7c78eb15cb9da2e77"
+  },
+  "nativeTestBinarySha256": "2d99ea1488e4eaed4ffb0aba1beb70eb337a9b8d62c8f3a46dd845ec96561d5a",
+  "consumerBaseEvidence": "../N4-001/candidate.json; native product unchanged by N12; overview fixture/test extended",
+  "artifacts": {
+    "actualEncodings": 0,
+    "actualVariants": 0,
+    "actualDiagrams": 0,
+    "fixturePackets": 2,
+    "fixtureBitsPerPacket": 29,
+    "fixtureFieldsPerPacket": 3,
+    "fixtureSourceSpansInBounds": 34,
+    "sixPlacementSpansExact": true,
+    "legacyDetailPacketUnchanged": true,
+    "pdfTextContainsAllFieldNames": true,
+    "visualLimitation": "KB020: narrow 1-bit PacketFlag label clipped and adjacent 12/13 boundary labels crowded in native/PDF. Full source-linked register remains readable. PDF text extraction is not proof of visible diagram-label completeness.",
+    "generalVisualAcceptance": false
+  },
+  "limitations": [
+    "No independent review or general visual/large-print acceptance",
+    "KB020 narrow packet label clipping/crowded bit labels reproduced on original details",
+    "KB025 existing whole-root discovery limit; explicit model tree/select used",
+    "No merge/release/install; authored model hold preserved"
+  ]
+}

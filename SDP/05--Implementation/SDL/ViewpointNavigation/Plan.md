@@ -206,3 +206,162 @@ No merge, publication or install follows from this implementation selection.
 [N4](N4.md) records completed selected detail/source transport, full producer and
 native verification, recovered diagram-count behavior and explicit residuals.
 This milestone does not close broader KB032 or integrate/release the producer.
+
+## N5 execution — XFMD Session0007 T001, 2026-10-19
+
+Owner authorizes integrating the existing delivery and continuing to the next
+viewpoint. N3j/N4 merge 5ca0e90 is pushed to main; its tree equals tested fde2239.
+BranchPolicy: sdp/xfmd-vp02-overview from 5ca0e90. CommitPolicy: scoped milestone.
+Select VP02 complete logical structure (System/Container/Unit plus contains),
+including isolated declarations; no allocation/ownership inference. Advertise
+through existing overviewTarget and preserve old roots/parent detail identities.
+Keep a source-linked structural register, explicit empty behavior and query
+filter rejection. No new count-only cap or guessed parent. Production model hold
+remains. Verify full inventory/proofs, composed freshness, Actions/discovery and
+native XFMD/PDF. See N5.md for the design and final evidence. No N5 merge/release
+or installation is selected by the existing-delivery integration authorization.
+
+### N5 outcome
+
+VP02's complete logical overview and source-linked register are implemented and
+verified through producer and native XFMD. See [N5](N5.md) and its candidate record.
+N3j/N4 is on main 5ca0e90; N5 remains its own milestone for later integration.
+Other viewpoints and previously recorded publication/resource obligations remain.
+
+## N6 execution — XFMD Session0007 T002, 2026-10-19
+
+Owner continuation selects VP03 responsibilities and capabilities. BranchPolicy:
+sdp/xfmd-vp03-overview stacked on N5 cdf4437; CommitPolicy: scoped milestone.
+[N6](N6.md) selects the architecture annotation/register projection before code.
+Keep owns, realizes and provides distinct, retain all inventories and proof links,
+and preserve detail views. Concurrent preflight finds no PG/coordination overlap.
+Production models remain held. Verify full modules, native generation/rendering
+and actual XFMD responsibilities without invented capabilities. No merge/release
+or install is authorized by this continuation.
+
+### N6 outcome
+
+VP03 complete architecture annotations and responsibility/capability registers
+are implemented and verified through producer and native XFMD. [N6](N6.md)
+records the exact candidate and evidence. N6 stacks on N5; neither is merged or
+released. Remaining viewpoint/publication work stays open under the same plan.
+
+## N7 selection — Session0007 T003, 2026-10-19
+
+Owner continuation selects VP04 interface consumption. BranchPolicy:
+sdp/xfmd-vp04-overview stacked on N6 63da7ae; CommitPolicy: scoped milestone.
+Complete interface inventory with explicit consumes dependency graph/register,
+no inferred provider/transport/necessity; preserve ordinary VP04 table selection.
+N7 design selects the projection before code, with full producer/native evidence.
+No authored model changes or merge/release/install; broader plan remains active.
+
+### N7 outcome
+
+VP04 complete interface/consumer dependency diagram and source-linked register
+are implemented and verified through producer/native/PDF workflows. [N7](N7.md)
+records candidate, tests and the preserved keyboard semantics. Other viewpoint
+and large-publication obligations remain. N5/N6/N7 are stacked, unmerged candidates.
+
+## N8 selection — Session0007 T004
+
+Owner continuation selects VP05 mode-index and isolated per-mode dependencies.
+BranchPolicy: sdp/xfmd-vp05-overview from N7 85d62f2; milestone commit. N8 design
+precedes code, preserving original details, VP07 overlays and authored models.
+Verify producer/native/PDF workflows and actual XFMD's empty NormalDesktop scope.
+No merge/release/install; broader plan and cards remain active.
+
+### N8 outcome
+
+VP05 index and isolated named-mode overview are implemented and verified through
+producer/native/PDF workflows. [N8](N8.md) retains exact evidence and limitations.
+VP07 and original details are preserved. Broader scope remains; N5–N8 are stacked
+candidates, without merge/release/install.
+
+## N9 selection — Session0007 T005
+
+Owner continuation selects VP06 complete activity decomposition, separate
+dependencies and source-claimed status/commitment registers. BranchPolicy:
+sdp/xfmd-vp06-overview from 3b3d935, milestone commit. N9 design precedes code.
+Verify producer/native/PDF and actual empty XFMD plan; preserve detail identities
+and authored models. No merge/release/install; broader plan remains active.
+
+### N9 outcome
+
+VP06 complete activity decomposition, separate prerequisites and source-claimed
+status/commitment registers are implemented and verified. [N9](N9.md) records
+candidate and evidence. Empty actual XFMD plan is explicit; no implementation
+absence is inferred from missing addresses. N5–N9 remain unmerged candidates.
+Broader scope remains active; VP08 channels/scenario overview is proposed next.
+
+## N10 selection — Session0007 T006, 2026-10-20
+
+Owner continuation selects VP08 mode-index, isolated communication topology and
+scenario registers. N10 design precedes code. BranchPolicy: sdp/xfmd-vp08-overview
+from 76fc87f; scoped milestone commit. Verify producer/native/source/PDF and actual
+XFMD topology while preserving sequence details and authored models. No merge,
+release or install; broader plan stays active. Concurrent preflight finds no current
+PG/coordination overlap; shared history/product scope remains untouched.
+
+### N10 outcome
+
+VP08 index, mode-isolated channel neighborhoods and source-linked participation/
+scenario registers are implemented and verified. [N10](N10.md) records the initial
+union routing failure and selected complete per-channel partition, with native/PDF
+and full producer/consumer evidence. Discovery resource limit is explicitly handed
+off to KB025. N5–N10 remain unmerged; broader plan stays active. VP09 is next.
+
+## N11 selection — Session0007 T007, 2026-10-21
+
+Select VP09 Dataset neighborhoods and complete storage/contract/shape/projection
+registers per N11 design. BranchPolicy: sdp/xfmd-vp09-overview from d677d70;
+scoped milestone commit. Verify producer/native/source/PDF, preserving original
+details and authored models. No scoped PG/coordination overlap. No merge/release/
+install; broader plan remains active.
+
+### N11 outcome
+
+VP09 complete data/storage/contract inventory and Dataset neighborhoods are
+implemented and verified. [N11](N11.md) records source-linked semantics, preserved
+details and actual producer/native/PDF evidence. N5–N11 remain unmerged candidates;
+broader plan stays active. VP10 encodings/packets is next proposed.
+
+## N12 selection — Session0007 T008, 2026-10-21
+
+VP10 Encoding inventory and separate validated packet layouts follow N12 design.
+Branch sdp/xfmd-vp10-overview stacks on 6b80b40; scoped milestone commit.
+No authored model changes or merge/release/install. Broader plan remains active.
+
+### N12 outcome
+
+VP10 complete Encoding/Variant coverage, separate validated packets and source-linked
+field positions are implemented. N12-candidate.json/XFMD N12-001 retain full producer
+suites/vet, 12 consumer checks, native fixture/detail/actual-empty/PDF evidence.
+Existing narrow packet label clipping/crowded boundary labels are retained in KB020;
+source registers preserve complete field names and positions. No native product or
+authored model change, merge/release/install or general visual acceptance. Broader
+plan remains active; VP11 is next. N5–N12 await selected integration.
+
+## N13 selection — Session0007 T009, 2026-10-21
+
+VP11 complete properties, traceability and reported model gaps follow N13 design.
+Branch sdp/xfmd-vp11-overview stacks on f1c3342; scoped milestone commit.
+No authored model changes or merge/release/install. Broader plan remains active.
+
+### N13 outcome
+
+VP11 properties, snapshot counts, cross-viewpoint reported gaps and complete source
+registries are implemented. N13-candidate.json/XFMD N13-001 record full producer
+suites/vet, 12 consumer checks, exact native property-source selection and actual
+312 declarations/1034 facts/195 properties/1346 source spans through native/PDF.
+All catalog overviews have selected candidates; N5–N13 await integration. The
+broader plan/cards remain active for acceptance, publication and retained KB020/
+KB025/KB032 residuals. No native product/authored model change or merge/release/install.
+
+## N15 selection — Session0007 T011
+
+N15a delivers the additive deferred SDL discovery and revision-bound single-model
+tree contract described in N15. N15b integrates native expansion afterward.
+Producer BranchPolicy: `sdp/xfmd-lazy-discovery` stacked on 486b29d; CommitPolicy:
+scoped N15a milestone. Preserve shared dirty trees/history and authored-model hold.
+No merge/release/install. Source/graph/GUI guard removal beyond this model-tree
+boundary remains explicit KB025 work; do not mark the card complete.

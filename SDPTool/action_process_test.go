@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"os/exec"
 	"path/filepath"
+	"reflect"
 	"runtime"
 	"testing"
 )
@@ -17,8 +18,16 @@ func TestCompiledInvocationConsumer(t *testing.T) {
 	root, _ := projectFixture(t)
 	var metadata ActionCatalogue
 	b, e := exec.Command(binary, root, "actions", "--json").Output()
-	if e != nil || json.Unmarshal(b, &metadata) != nil || len(metadata.Actions) != 5 {
+	if e != nil || json.Unmarshal(b, &metadata) != nil {
 		t.Fatalf("catalogue %s %v", b, e)
+	}
+	var ids []string
+	for _, action := range metadata.Actions {
+		ids = append(ids, action.ID)
+	}
+	wantIDs := []string{"blueprint.assess", "blueprint.assignment.apply", "blueprint.assignment.list", "blueprint.generate", "project.discover", "project.model-tree"}
+	if !reflect.DeepEqual(ids, wantIDs) {
+		t.Fatalf("catalogue actions: got %v, want %v", ids, wantIDs)
 	}
 	for _, tc := range []struct {
 		action string

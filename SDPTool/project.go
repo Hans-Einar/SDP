@@ -33,6 +33,7 @@ type Inventory struct {
 	SDUI               []Model `json:"sdui"`
 }
 type Project struct {
+	NavigationMode   string            `json:"navigationMode,omitempty"`
 	Schema           string            `json:"schema"`
 	Operation        string            `json:"operation"`
 	Status           string            `json:"status"`

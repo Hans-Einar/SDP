@@ -1,0 +1,49 @@
+{
+  "base": "3b3d935287ce69c5533aed8a9b1a557f217fe5a5",
+  "branch": "sdp/xfmd-vp06-overview",
+  "files": {
+    "SDL/go/documents/selection.go": "e13add0401f0e3a122f58edbe13d7c80d5f6e0debae471aa58e87f7a3f4f57e0",
+    "SDL/go/viewpoint/activity_context.go": "d3eed61b3e1b59259ba9727828f1a3c25b54c8fbd2210cc1d5c2374227d34cda",
+    "SDL/go/viewpoint/activity_overview.go": "91775301b5a30bb670d351889a7127594d1546be5fea5b8c8eea18ec5101ce72",
+    "SDL/go/viewpoint/activity_overview_test.go": "5fab0f136a406dd51690a39df305d044f6481d9327a224d3e5c50f208a69a567",
+    "SDL/go/viewpoint/overview.go": "8668180c1e080829a61e5cac7490468ba721debb3aaf1e17bcea6ec157c29b24",
+    "SDL/go/viewpoint/overview_test.go": "3ea88f465200c1370a5fc9f72361f81e52d64fe6cdb82228024f54d72af507d9",
+    "SDPTool/Contract.md": "d94f2bec0260d9e2b8c244c4bf722c12eb8f036c01e6ef1d99ce42b871222a7f",
+    "SDPTool/activity_overview_test.go": "bf1bb398196ef017b908fa233ea8f0ad650e2c86f5afc9875e27489390d232e2",
+    "SDPTool/overview_actions_test.go": "795b6b4ad61cc791d399ac0aca626290cd18965533ab9ac4a6325f651b93608b",
+    "SDPTool/overview_test.go": "44d9eebb618735f66ffa2d9f1ac4daa9f3980271f9c0a7c3cdce30668d97afa9"
+  },
+  "binary": {
+    "path": "/tmp/xfmd-n9-sdptool",
+    "sha256": "c93d9d19c20dc5d84a08c13656d24c1ec7e99d3a10cfefa99f3bc6b5ed286dc7"
+  },
+  "consumerTest": {
+    "path": "/home/warloc/git/xfmd-sdl-navigation/tests/gui/SdpOverviewGuiTest.cpp",
+    "sha256": "9826e20d2a496fae1b613b3e4a0031d9bf731f39b53cade0239f63cadb0ecf3f"
+  },
+  "nativeTestBinarySha256": "ec730518ddcf6a8aae047ca5236047639c0566d903b37f35e972082e10fbc218",
+  "consumerBaseEvidence": "../N4-001/candidate.json; product unchanged, native test extended",
+  "artifacts": {
+    "actualActivities": 0,
+    "actualDiagrams": 0,
+    "unaddressedFunctionality": 28,
+    "allUnaddressedNamesInPdf": true,
+    "fixtureDiagrams": [
+      {
+        "nodes": 4,
+        "edges": 2
+      },
+      {
+        "nodes": 4,
+        "edges": 1
+      }
+    ],
+    "fixtureStatusesInPdf": [
+      "planned",
+      "implemented",
+      "verified",
+      "Unspecified"
+    ],
+    "sourceSpansInBounds": 28
+  }
+}

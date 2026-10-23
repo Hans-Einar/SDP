@@ -439,3 +439,150 @@ Pure language output without filesystem binding retains text provenance.
 VP01 focused use cases use actor/ellipse notation with separate realization.
 Only explicit exercises relations attach ordered VP08 scenarios. Missing scenario
 associations and pre/postconditions remain unspecified, never inferred.
+
+## VP02 architecture overview — N5
+
+VP02 additionally advertises the same optional overviewTarget with
+projection=overview. It selects all declared Systems, Containers and Units plus
+all explicit contains facts from the complete checked source graph, including
+isolated roots. A source-linked structural register accompanies the flowchart.
+Empty architecture is explicit. No allocation/ownership/deployment inference;
+no new schema or fixed diagram-count cap. Original VP02 roots/parent detail targets
+remain unchanged. Like VP01, no mode/focus/relation/diagram/traversal filters are
+accepted for this complete overview. Existing sourceLinks/freshness rules apply.
+
+## VP03 responsibilities overview — N6
+
+VP03 advertises the optional overviewTarget using projection=overview. Complete
+System/Container/Unit decomposition carries sorted Rxx responsibility annotations
+on immediate owners, Cxx contribution annotations derived from owns plus realizes,
+and separate Cxx offered-capability annotations from explicit provides. The linked
+register retains every Functionality and Capability; unplaced capabilities remain
+standalone nodes. Realization means contribution, never completeness or verification;
+provides does not imply realizes. Every annotation retains exact supporting facts.
+No feature/allocation inference, schema change or count-only truncation. Empty
+inventories are explicit. Original per-capability/provider detail targets remain
+unchanged; mode/focus/relation/diagram/traversal filters are rejected. Existing
+composed-source snapshots, exact links and freshness rules apply.
+
+## VP04 interface overview — N7
+
+VP04 advertises the optional overviewTarget with projection=overview. It must
+retain every declared interface, every explicit consumes fact and its consumer
+(including Containers). Unconsumed interfaces remain visible. Dashed consumes
+arrows describe design-time use, not observed calls or required availability.
+No provider, Channel, transport, call ordering or mode necessity is inferred.
+Source-linked inventory/register accompanies the unchanged Interface use table.
+Empty inventories are explicit. Other structural units belong to VP02. Existing
+sourceLinks/composed-source freshness rules apply; no schema change or new
+count-only cap. Complete overview rejects mode/focus/relation/diagram/traversal
+filters and preserves ordinary VP04 table selection.
+
+## VP05 mode dependency overview — N8
+
+VP05 overviewTarget without mode returns a declared-mode index, counts and source
+links, never a union dependency graph. Advertise an existing-style overview-mode
+target for every declared mode. With mode, select all Capabilities and the exact
+mode's requires facts/Interfaces. Empty capabilities/requirements are explicit.
+No inheritance, sufficiency, provider, consumption or runtime-flow inference.
+Preserve existing detail IDs, VP07 targets and composed source freshness. Reject
+unknown modes and other partial-overview filters; add no count-only truncation.
+Consumers must retain viewpoint as well as mode when identifying mode rows.
+
+## VP06 delivery-plan overview — N9
+
+Advertise VP06 overviewTarget for all Activities with refines, a separate explicit
+depends-on graph, source-linked status and addresses/owns/delivers/illustrates
+registers. Retain isolated/statusless activities and unaddressed Functionality
+inventory. Implementation status is a source claim, never completion evidence;
+no inherited status/dependencies, scheduling, dates or scenario execution is
+inferred. Empty cases are explicit. Keep existing detail and implementation.md
+behavior; reject partial overview filters, preserve composed-source freshness
+and add no count-only truncation or native/schema changes.
+
+## VP08 communication overview — N10
+
+Advertise an on-demand VP08 overview index and explicit named-mode overview targets.
+The index lists all channels/modes/scenarios without a merged graph. Per-mode output
+retains every channel and only explicit participants of that mode, grouping topology
+edges by channel/participant/role while preserving all supporting source facts and
+individual message bindings. Scenario and MessageSet scope is mode-isolated. Existing
+scenario sequence targets remain unchanged. Empty scope is explicit; no timeline,
+mode inheritance, transport or runtime success is inferred. Composed-source links,
+revision freshness and generic consumer contracts apply unchanged.
+
+The selected mode page partitions topology into one diagram per Channel. Every
+channel neighborhood and supporting uses fact is retained; participants repeated
+across diagrams keep the same declaration identity. This is a semantic partition,
+not a size threshold or truncated graph. It avoids an all-channel union that cannot
+currently be routed within the native renderer budget. Sequence targets and the
+complete source-linked registers remain unchanged.
+
+## VP09 data/storage overview — N11
+
+Advertise a complete on-demand VP09 overview. Partition diagrams by Dataset with
+explicit origin, holders, Database owners and data contracts. Include all data,
+Database, Contract, Variant and Field definitions in source-linked registers,
+including idle/unused definitions; retain explicit shape membership and ternary
+projection/owner proofs. Detail contract diagrams remain independently selectable.
+Do not infer SQL/ER semantics, persistence for Unit-held data, transformations or
+wire encodings. Missing inventories/properties are explicit. Existing source and
+freshness guarantees apply; no silent content truncation or new consumer schema.
+
+## VP10 encoding/packet overview — N12
+
+Advertise complete on-demand VP10 overviewTarget using the existing model/revision/
+URI contract. Generate one separate validated packet per Encoding plus source-linked
+Encoding and ordered field registers (bit offsets/widths, type/presence and header/
+variant owner). Include Variant coverage and explicit missing Encoding/empty states.
+Byte/bit order and closed Contract are source facts; no serialization, inferred
+padding, optional-field layout or union packet. No fixed diagram-count cap. Existing
+detail targets remain unchanged. Complete overview rejects narrowing filters/mode.
+Native product needs no specialized VP10 handling; exact source references use the
+existing sdl-source contract. Source graph freshness applies to every included file.
+
+## VP11 properties/traceability overview — N13
+
+Advertise a complete VP11 overviewTarget through existing model/revision/URI selection.
+It retains every fact and declaration, explicit property assignments and all reported
+gaps across viewpoints, with exact source links and source-file/line context. Counts
+by kind/verb describe only the checked snapshot. Gap origin/code/subject/mode/Feature
+are retained; absence has no invented source span. No combined diagram or inferred
+implementation coverage/default properties. Gap rules are not an exhaustive audit.
+The original ordinary VP11 selection is preserved. Overview rejects narrowing filters
+and mode; empty states are explicit, with no arbitrary inventory cap. Composed source
+freshness applies. XFMD consumes this page through its existing generic navigation.
+
+## Deferred SDL model navigation — N15a
+
+`discover --navigation lazy-sdl --json` and JSON action `project.discover` with
+`{"navigation":"lazy-sdl"}` retain the same source registry, validation and
+non-SDL tabs. Valid SDL source nodes have no graph children yet; they carry
+`childrenDeferred: true` and the existing `target` with operation `tree`, project,
+model and revision. Invalid, unsupported and context-required sources stay visible
+with diagnostics and without actionable deferred children. Top-level
+`navigationMode: "lazy-sdl"` distinguishes this payload from an empty model.
+Default/`--navigation eager` and omitted JSON parameters retain legacy eager output.
+The action catalogue advertises the supported values; unknown values are errors.
+
+`tree --model ID --revision HASH --model-only --json` and JSON action
+`project.model-tree` with required `model` and `revision` return only that model's
+complete SDL Tree rooted at `sdl`. All original node identities, child/reference
+links and detail/overview targets are retained. Missing model/revision is an
+argument error; changed revision (including composed inputs) is `stale`. A client
+must validate project/model/revision before attaching this response beneath its
+source node. Ordinary `tree --model ID` retains its old multi-tab behavior; a
+revision without `--model-only` is rejected rather than silently ignored.
+
+These read-only calls share the existing source/path/model services and use the
+same JSON action/CLI implementation. They do not write an index or generate view
+bundles. Revision describes the loaded snapshot; a later filesystem change still
+requires normal refresh/selection checks. Source validation still scans the area;
+this feature defers model **graph expansion**, not parsing or filesystem discovery.
+No evidence/model directories are hidden. Existing source/filesystem/byte guards,
+per-model graph guards and other tab inventories remain; compact navigation avoids
+the all-model graph sum without claiming unrestricted inventory size. A validated
+source can still report a graph-resource error when explicitly expanded.
+
+Native XFMD integration is N15b and is not delivered by the producer change alone.
+An old client continues to request the compatible eager form until upgraded.

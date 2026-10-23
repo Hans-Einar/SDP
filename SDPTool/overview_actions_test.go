@@ -92,7 +92,7 @@ Display allocated-to Desktop in mode Online.
 		}
 		count++
 	}
-	if count != 3 {
-		t.Fatalf("want VP01, VP07 logical and Online targets, got %d", count)
+	if count != 14 {
+		t.Fatalf("want VP01–VP11 overviews and VP05/VP07/VP08 Online targets, got %d", count)
 	}
 }

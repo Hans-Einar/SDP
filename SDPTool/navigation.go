@@ -9,6 +9,10 @@ import (
 // Navigation keeps optional unavailable services visible instead of claiming
 // that absence means a validated empty system.
 func Navigation(p Project, id string) (Tree, error) {
+	return navigation(p, id, false)
+}
+
+func navigation(p Project, id string, deferredSDL bool) (Tree, error) {
 	if p.Status == "incomplete" {
 		return Tree{}, failure("incomplete", fmt.Errorf("installation has not published navigation; resume its recorded operation"))
 	}
@@ -40,6 +44,10 @@ func Navigation(p Project, id string) (Tree, error) {
 				n.State = info.State
 				n.Diagnostic = info.Diagnostic
 				n.Target = nil
+			} else if deferredSDL && info != nil {
+				n.State = "validated"
+				n.Target.Revision = info.Revision
+				n.ChildrenDeferred = true
 			} else {
 				mt, e := ModelTree(p, m.ID)
 				if e != nil {

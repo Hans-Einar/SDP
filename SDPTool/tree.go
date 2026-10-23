@@ -20,6 +20,7 @@ type Target struct {
 	Revision  string `json:"revision,omitempty"`
 }
 type Node struct {
+	ChildrenDeferred   bool     `json:"childrenDeferred,omitempty"`
 	OverviewTarget     *Target  `json:"overviewTarget,omitempty"`
 	AssignmentID       string   `json:"assignmentId,omitempty"`
 	AssignmentRevision string   `json:"assignmentRevision,omitempty"`
@@ -127,7 +128,7 @@ func modelTree(p Project, m Model, v *viewpoint.Views) (Tree, error) {
 			n.OverviewTarget = target(spec.ID, "", "")
 			n.OverviewTarget.URI += "&projection=overview"
 		}
-		if spec.ID == "VP07" {
+		if spec.ID == "VP07" || spec.ID == "VP05" || spec.ID == "VP08" {
 			for _, name := range names {
 				if v.Kinds[name] != "mode" {
 					continue
@@ -136,7 +137,14 @@ func modelTree(p Project, m Model, v *viewpoint.Views) (Tree, error) {
 				action := target(spec.ID, "", "")
 				action.URI += "&projection=overview&mode=" + url.QueryEscape(name)
 				n.Children = append(n.Children, key)
-				add(Node{ID: key, Kind: "diagram", Label: "Architecture and features — mode " + name, State: "available", Target: action})
+				label := "Architecture and features — mode " + name
+				if spec.ID == "VP05" {
+					label = "Required interfaces — mode " + name
+				}
+				if spec.ID == "VP08" {
+					label = "Channel participation — mode " + name
+				}
+				add(Node{ID: key, Kind: "diagram", Label: label, State: "available", Target: action})
 			}
 		}
 		levels := spec.Levels
