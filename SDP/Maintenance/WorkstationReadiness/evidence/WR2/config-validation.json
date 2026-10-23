@@ -1,0 +1,28 @@
+{
+  "configuration": "SDP/Maintenance/WorkstationReadiness/mcp-readonly.example.toml",
+  "toml": "parsed",
+  "ephemeralCLIOverrides": true,
+  "persistentConfigChanged": false,
+  "exitCode": 0,
+  "server": {
+    "name": "sdp_pg_inspect",
+    "enabled": true,
+    "disabled_reason": null,
+    "transport": {
+      "type": "stdio",
+      "command": "/home/warloc/.cache/sdp-workstation/session0013-WR2/bin/sdp-mcp",
+      "args": [
+        "--project",
+        "/home/warloc/git/SDP",
+        "--state",
+        "/home/warloc/.local/state/sdptool/session0013-inspection"
+      ],
+      "env": null,
+      "env_vars": [],
+      "cwd": "/home/warloc/git/SDP"
+    },
+    "startup_timeout_sec": 20.0,
+    "tool_timeout_sec": 45.0,
+    "auth_status": "unsupported"
+  }
+}

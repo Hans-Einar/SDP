@@ -1,0 +1,32 @@
+{
+  "sourceCandidate": "4174c68",
+  "capturedAt": "2026-10-23T21:56:36.577693+00:00",
+  "filesSHA256": {
+    "README.md": "570b6626af9710164a95075a8dac8754cb288af7af37b521c75b8febd8cc519a",
+    "bind_fixture.go": "df3873fe4f72c47e71113db8fb21d88269bce4eb58043d33fea8b6bd1afdefcb",
+    "bootstrap-race.log": "fbe205c3113d1583644be5a24fa69a1d66342d67ad53ee283a9e457b0f546bbb",
+    "build-current.log": "b3d53e69cb28cf2f59c197e482a546f09092ac251f9ccbe753f0cf7e6d5fae1d",
+    "checks.json": "16a4f13a1c7625e8f400a90b219e7798703243e906d66ec5234bc4a22f018794",
+    "codex-mcp-discovery.json": "8ca07c10f2e30745d4ae478458550977dbf312f7053b326009020548a8676ac7",
+    "codex-mcp-readcalls.json": "303d7b859adfeb9c81ed5a012fa11c26e54e16ac7067a9c8f42c69503272d7cf",
+    "codex_mcp_discovery.py": "a6ac229fb8472b96ffa184d5ea79792cb854d448883c82d1d8b0e3b706974f35",
+    "codex_mcp_readcalls.py": "868366961d64c6c1fd04017bc7ca21f8994eef99d393b4d4075943c4dfa0603a",
+    "config-validation.json": "5da4f16ef008c31a89ed1c6fd2af99f1e9056ceb414c9cfcb079939a5a4fc14b",
+    "mcp-bound-worker.json": "8cf547dcc0e144ae365830f8bc4d050d1a092a3cd35b5d6c653f82b801159e74",
+    "mcp-readonly.json": "956df447e78fed3504a4cc629d2e0f3a1a4fe6787859dcc8d7b1d24d712e866b",
+    "mcp_bound_worker_probe.py": "16b550d19c227fb9a5e3eaed0d1d29697cf77fde31f2001840a79b825bb296b8",
+    "mcp_readonly_probe.py": "851d546251726a3210ae44ba607af479170deb7a1abfc46fd2f5262ed2e796f5",
+    "provider-input-attempts.json": "5e6469c11df6a76b261179db72aaa0d591c8040c8fe446907ea5da7c1b4e6c8a",
+    "provider-trial.json": "9fd39222ad443bd49530164bbded4a9dd35fac2734f20e15eced9c2ff2df2b10",
+    "run_checks.py": "cae37a4a1fa71afe7c48d440fec10a787035e8cdcda4b1941cfe9d11de345398",
+    "runtime-probes.json": "ce9c78cf3b301fa72e473e49bce46f0a59f79a0c8c2d6f718fc2685b18d3d94b",
+    "schema-inventory.json": "1209903faa1673659764e06182490320f58645bf53e22f0cdf108c9e7c850fbd",
+    "sdl-race.log": "98d8032f401d4d91884d4fbd5cae04aa3d1c8b9306450526d66fe8c0a6d28150",
+    "sdptool-race.log": "bc3796418307005e7872f852751e240a90b82128799394620d9f83e22e00668a",
+    "sdui-race.log": "d7b5edf6e91f9b7839a4d908cb18fb0b0034647ffcfd97d33b6c4001e8f43bcc",
+    "toolchain.json": "e26cefdf24fc230cf91b7655068029e07d82ac09cddc31e65488c44810de1c46",
+    "vet-sdl.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "vet-sdptool.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "vet-sdui.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

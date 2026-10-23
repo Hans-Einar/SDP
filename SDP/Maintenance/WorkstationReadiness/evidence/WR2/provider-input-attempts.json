@@ -1,0 +1,20 @@
+[
+  {
+    "source": "SDP/04--Design/SDL/SourceSets/examples/frontend",
+    "destination": "/home/warloc/.cache/sdp-workstation/session0013-WR2/provider-trial",
+    "exitCode": 1,
+    "stage": "blueprint generation",
+    "error": "UNDECLARED_NAME at System.design:3:19: SdlCommandProcess is not declared",
+    "classification": "wrong trial input: historical partial source-set example, not a checked composed System",
+    "treatment": "Retained failed directory. Reused existing checked experiments/blueprint_mvp1/NOW specimen instead; no authored model changed."
+  },
+  {
+    "source": "SDP/SDL/SDL/Frontend",
+    "destination": "/home/warloc/.cache/sdp-workstation/session0013-WR2/provider-trial-complete",
+    "exitCode": 1,
+    "stage": "blueprint generation",
+    "error": "PROFILE: requires checked design-core/0.6 System",
+    "classification": "wrong trial input: valid 0.5 single-file model is outside Blueprint System profile",
+    "treatment": "Retained failed directory; selected the checked 0.6 specimen already used by the existing provider tests."
+  }
+]

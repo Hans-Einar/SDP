@@ -21,13 +21,13 @@ SDP system is the readiness concern. Continue on the existing working branch.
 
 ## Scope and milestones
 
-| Milestone | Observable acceptance | Initial state |
+| Milestone | Observable acceptance | Current result |
 | --- | --- | --- |
-| WR2-M1 / C1 | Pin integrated source; provision compatible isolated toolchain if needed; build current CLI/controller/MCP; verify selected executable and relevant Go/race/vet suites | in-progress |
-| WR2-M2 / C2 | Reconcile current entrypoints and model/Blueprint/PG identity-state responsibilities; correct demonstrated documentation/contract mismatches without speculative refactoring | planned |
-| WR2-M3 / C3 | Exercise integrated provider/assignment/MCP workflow and negative/recovery checks against compiled candidate; distinguish fixtures, real SDK transport and host/native execution; preserve required independent-review boundary | planned |
-| WR2-M4 / revised C4 | Deliver evidence-backed MCP adoption study: usable modes/tools, deployment/configuration, authority, current limitations and smallest implementation sequence for ordinary use | planned |
-| WR2-M5 / C5 | Reconcile Session/cards/plan/evidence; state actual verification gaps and next bounded PG work | planned |
+| WR2-M1 / C1 | Pin integrated source; provision compatible isolated toolchain if needed; build current CLI/controller/MCP; verify selected executable and relevant Go/race/vet suites | delivered; private Go 1.27.1/build and four race suites/three vet checks pass; current controller host refusal retained |
+| WR2-M2 / C2 | Reconcile current entrypoints and model/Blueprint/PG identity-state responsibilities; correct demonstrated documentation/contract mismatches without speculative refactoring | delivered; see result register |
+| WR2-M3 / C3 | Exercise integrated provider/assignment/MCP workflow and negative/recovery checks against compiled candidate; distinguish fixtures, real SDK transport and host/native execution; preserve required independent-review boundary | delivered; see result register |
+| WR2-M4 / revised C4 | Deliver evidence-backed MCP adoption study: usable modes/tools, deployment/configuration, authority, current limitations and smallest implementation sequence for ordinary use | delivered; see result register |
+| WR2-M5 / C5 | Reconcile Session/cards/plan/evidence; state actual verification gaps and next bounded PG work | in-progress; final record/link checks and closeout |
 
 ## Preserved boundaries
 
@@ -69,3 +69,15 @@ reports. No release/installability claim from a local development build.
 
 Updated as milestones complete. The Session roadmap is the cross-work projection;
 this plan owns these bounded milestones. Do not duplicate PG implementation phases.
+
+## WR2-M1–M4 delivered results — T002
+
+[Execution evidence](Execution-Evidence.md) and retained logs identify exact binaries,
+commands and limitations. All four Go module race suites and three vet checks pass.
+The provider/assignment trial, real unbound and bound-worker MCP transport, and
+actual Codex 0.164.0 read calls pass. The pinned PG controller refuses 0.164.0 as
+expected; no native task or independent review is claimed. Current responsibilities
+and stale MCP/action documentation are reconciled without product code changes.
+[MCP adoption study](MCP-Adoption-Study.md) and a validated concrete inspection
+configuration are delivered. WR2-M5 closeout is next; broader PG readiness remains
+open under its existing plan/cards.

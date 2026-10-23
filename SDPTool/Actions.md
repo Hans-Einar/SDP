@@ -21,11 +21,16 @@ Invalid context returns diagnostics and unavailable entries, with exit code 1.
 
 | ID | Behavior | Writes |
 | --- | --- | --- |
-| project.discover | Source-derived project navigation and capabilities | none |
+| project.discover | Source-derived project navigation and capabilities, including optional lazy SDL expansion | none |
+| project.model-tree | Expand one SDL model at its discovered revision | none |
 | blueprint.generate | Preview or immutable retained blueprint from model refs | documents |
 | blueprint.assess | Evaluate pinned evidence; preserve blocked results | none |
 | blueprint.assignment.list | Project-history assignment projection | none |
 | blueprint.assignment.apply | Revision-bound attributed transition | canonical history |
+
+`project.discover` accepts `navigation: "eager"` (default) or `"lazy-sdl"`.
+`project.model-tree` requires the discovered `model` and exact `revision`; stale
+inputs refuse and require refreshed discovery. See the [producer contract](Contract.md#deferred-sdl-model-navigation--n15a).
 
 Only implemented operations are advertised. Install/upgrade, program run and PG
 controller dispatch are still available through their existing interfaces; they

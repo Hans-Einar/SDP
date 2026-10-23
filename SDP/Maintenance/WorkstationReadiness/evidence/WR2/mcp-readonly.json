@@ -1,0 +1,3840 @@
+{
+  "status": "passed",
+  "realStdioServer": true,
+  "modelTaskSubmitted": false,
+  "client": "direct JSON-RPC probe, not a Codex model turn",
+  "toolNames": [
+    "context_read",
+    "route_evaluate",
+    "run_read"
+  ],
+  "stateCreated": false,
+  "frames": [
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "initialize",
+        "params": {
+          "protocolVersion": "2025-11-25",
+          "capabilities": {},
+          "clientInfo": {
+            "name": "WR2-readonly-probe",
+            "version": "1"
+          }
+        }
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "result": {
+          "capabilities": {
+            "logging": {},
+            "tools": {
+              "listChanged": true
+            }
+          },
+          "protocolVersion": "2025-11-25",
+          "serverInfo": {
+            "name": "sdptool-governance",
+            "version": "PGI2"
+          }
+        }
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 2,
+        "method": "tools/list",
+        "params": {}
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 2,
+        "result": {
+          "ttlMs": 0,
+          "cacheScope": "public",
+          "tools": [
+            {
+              "annotations": {
+                "idempotentHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Read project context; never creates work.",
+              "inputSchema": {
+                "$defs": {
+                  "Assignment": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "excludedPaths": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "maxItems": 63,
+                        "type": "array",
+                        "uniqueItems": true
+                      },
+                      "outcome": {
+                        "maxLength": 65536,
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "writablePaths": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "maxItems": 64,
+                        "minItems": 1,
+                        "type": "array",
+                        "uniqueItems": true
+                      }
+                    },
+                    "required": [
+                      "outcome",
+                      "writablePaths"
+                    ],
+                    "type": "object"
+                  },
+                  "Attachment": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "availability": {
+                        "enum": [
+                          "unknown",
+                          "unavailable"
+                        ]
+                      },
+                      "kind": {
+                        "enum": [
+                          "image",
+                          "localImage",
+                          "audio",
+                          "localAudio",
+                          "skill",
+                          "mention"
+                        ]
+                      },
+                      "reference": {
+                        "maxLength": 4096,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "reference",
+                      "availability"
+                    ],
+                    "type": "object"
+                  },
+                  "Attempt": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "agentEpoch": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "epoch": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "eventCount": {
+                        "maximum": 1024,
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "events": {
+                        "items": {
+                          "$ref": "#/$defs/Observation"
+                        },
+                        "maxItems": 1024,
+                        "type": "array"
+                      },
+                      "gap": {
+                        "type": "boolean"
+                      },
+                      "hostIdentity": {
+                        "pattern": "^[0-9a-f]{64}$",
+                        "type": "string"
+                      },
+                      "hostVersion": {
+                        "enum": [
+                          "0.160.1",
+                          "0.161.0"
+                        ]
+                      },
+                      "id": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "inputRevision": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "lastObservedAt": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "enum": [
+                          "idle",
+                          "running",
+                          "completed",
+                          "failed",
+                          "interrupted",
+                          "unknown"
+                        ]
+                      },
+                      "threadId": {
+                        "maxLength": 256,
+                        "type": "string"
+                      },
+                      "turnId": {
+                        "maxLength": 256,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "hostVersion",
+                      "threadId",
+                      "turnId",
+                      "inputRevision",
+                      "epoch",
+                      "status",
+                      "gap",
+                      "events"
+                    ],
+                    "type": "object"
+                  },
+                  "AttentionDisposition": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "basis": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "checkoutId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "operationId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "projectRef": {
+                        "type": "string"
+                      },
+                      "questionId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "runId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-governance-attention/1"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "projectRef",
+                      "checkoutId",
+                      "operationId",
+                      "runId",
+                      "questionId",
+                      "basis"
+                    ],
+                    "type": "object"
+                  },
+                  "AttentionInbox": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "checkoutId": {
+                        "type": "string"
+                      },
+                      "generation": {
+                        "type": "string"
+                      },
+                      "items": {
+                        "items": {
+                          "$ref": "#/$defs/AttentionView"
+                        },
+                        "type": "array"
+                      },
+                      "projectRef": {
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-governance-attention/1"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "projectRef",
+                      "checkoutId",
+                      "generation",
+                      "items"
+                    ],
+                    "type": "object"
+                  },
+                  "AttentionOption": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": {
+                        "maxLength": 64,
+                        "type": "string"
+                      },
+                      "label": {
+                        "maxLength": 1024,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "label"
+                    ],
+                    "type": "object"
+                  },
+                  "AttentionQuestion": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "attemptId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "basis": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "blocking": {
+                        "type": "boolean"
+                      },
+                      "id": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "inputRevision": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "options": {
+                        "items": {
+                          "$ref": "#/$defs/AttentionOption"
+                        },
+                        "maxItems": 5,
+                        "type": "array"
+                      },
+                      "origin": {
+                        "enum": [
+                          "agent",
+                          "controller"
+                        ]
+                      },
+                      "prompt": {
+                        "maxLength": 4096,
+                        "type": "string"
+                      },
+                      "raisedAt": {
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "raisedRevision": {
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "reply": {
+                        "$ref": "#/$defs/AttentionReply"
+                      },
+                      "withdrawal": {
+                        "$ref": "#/$defs/AttentionWithdrawal"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "basis",
+                      "inputRevision",
+                      "raisedRevision",
+                      "raisedAt",
+                      "origin",
+                      "prompt",
+                      "options",
+                      "blocking"
+                    ],
+                    "type": "object"
+                  },
+                  "AttentionReply": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "actor": {
+                        "maxLength": 256,
+                        "type": "string"
+                      },
+                      "operationId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "optionId": {
+                        "maxLength": 64,
+                        "type": "string"
+                      },
+                      "recordedAt": {
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "source": {
+                        "maxLength": 1024,
+                        "type": "string"
+                      },
+                      "text": {
+                        "maxLength": 4096,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "operationId",
+                      "actor",
+                      "source",
+                      "text",
+                      "recordedAt"
+                    ],
+                    "type": "object"
+                  },
+                  "AttentionReplyRef": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "basis": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "questionId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "replyOperationId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "questionId",
+                      "replyOperationId",
+                      "basis"
+                    ],
+                    "type": "object"
+                  },
+                  "AttentionRequest": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "blocking": {
+                        "type": "boolean"
+                      },
+                      "checkoutId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "expectedRevision": {
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "inputRevision": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "operationId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "options": {
+                        "items": {
+                          "$ref": "#/$defs/AttentionOption"
+                        },
+                        "maxItems": 5,
+                        "type": "array"
+                      },
+                      "projectRef": {
+                        "type": "string"
+                      },
+                      "prompt": {
+                        "maxLength": 4096,
+                        "type": "string"
+                      },
+                      "runId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-governance-attention/1"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "projectRef",
+                      "checkoutId",
+                      "operationId",
+                      "runId",
+                      "inputRevision",
+                      "expectedRevision",
+                      "prompt"
+                    ],
+                    "type": "object"
+                  },
+                  "AttentionView": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "applicability": {
+                        "enum": [
+                          "current",
+                          "stale"
+                        ]
+                      },
+                      "consumption": {
+                        "enum": [
+                          "not-tracked",
+                          "dispatch-prepared",
+                          "dispatch-sending",
+                          "dispatch-uncertain",
+                          "dispatch-acknowledged"
+                        ]
+                      },
+                      "coverage": {
+                        "enum": [
+                          "known",
+                          "stale"
+                        ]
+                      },
+                      "currentRevision": {
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "question": {
+                        "$ref": "#/$defs/AttentionQuestion"
+                      },
+                      "runId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "status": {
+                        "enum": [
+                          "open",
+                          "answered",
+                          "withdrawn"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "runId",
+                      "question",
+                      "status",
+                      "coverage",
+                      "applicability",
+                      "currentRevision",
+                      "consumption"
+                    ],
+                    "type": "object"
+                  },
+                  "AttentionWithdrawal": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "operationId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "reason": {
+                        "maxLength": 4096,
+                        "type": "string"
+                      },
+                      "recordedAt": {
+                        "format": "date-time",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "operationId",
+                      "reason",
+                      "recordedAt"
+                    ],
+                    "type": "object"
+                  },
+                  "Binding": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "checkoutId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "operation": {
+                        "const": "bind"
+                      },
+                      "projectRef": {
+                        "type": "string"
+                      },
+                      "root": {
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "operation",
+                      "projectRef",
+                      "root",
+                      "checkoutId"
+                    ],
+                    "type": "object"
+                  },
+                  "Context": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "cardId": {
+                        "type": "string"
+                      },
+                      "checkoutId": {
+                        "anyOf": [
+                          {
+                            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                            "type": "string"
+                          },
+                          {
+                            "const": ""
+                          }
+                        ]
+                      },
+                      "conditions": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "coverage": {
+                        "enum": [
+                          "known",
+                          "unavailable",
+                          "conflict"
+                        ],
+                        "type": "string"
+                      },
+                      "operation": {
+                        "const": "context"
+                      },
+                      "planId": {
+                        "type": "string"
+                      },
+                      "projectRef": {
+                        "type": "string"
+                      },
+                      "revision": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "root": {
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      },
+                      "selection": {
+                        "$ref": "#/$defs/Selection"
+                      },
+                      "sessionId": {
+                        "type": "string"
+                      },
+                      "sources": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "path": {
+                              "type": "string"
+                            },
+                            "sha256": {
+                              "anyOf": [
+                                {
+                                  "pattern": "^[a-f0-9]{64}$",
+                                  "type": "string"
+                                },
+                                {
+                                  "const": "absent"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "path",
+                            "sha256"
+                          ],
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "operation",
+                      "projectRef",
+                      "root",
+                      "checkoutId",
+                      "revision",
+                      "selection",
+                      "sources",
+                      "coverage",
+                      "conditions",
+                      "cardId",
+                      "planId",
+                      "sessionId"
+                    ],
+                    "type": "object"
+                  },
+                  "ContextProvenance": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "assignedRole": {
+                        "const": "Master"
+                      },
+                      "host": {
+                        "$ref": "#/$defs/HostContext"
+                      },
+                      "inputRevision": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "roleBasis": {
+                        "const": "controller-launch"
+                      },
+                      "skills": {
+                        "$ref": "#/$defs/SkillInventory"
+                      },
+                      "sources": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "path": {
+                              "type": "string"
+                            },
+                            "sha256": {
+                              "anyOf": [
+                                {
+                                  "pattern": "^[a-f0-9]{64}$",
+                                  "type": "string"
+                                },
+                                {
+                                  "const": "absent"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "path",
+                            "sha256"
+                          ],
+                          "type": "object"
+                        },
+                        "maxItems": 64,
+                        "type": "array"
+                      }
+                    },
+                    "required": [
+                      "assignedRole",
+                      "roleBasis",
+                      "inputRevision",
+                      "sources",
+                      "host",
+                      "skills"
+                    ],
+                    "type": "object"
+                  },
+                  "Error": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "error": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "code": {
+                            "type": "string"
+                          },
+                          "currentRevision": {
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "message": {
+                            "type": "string"
+                          },
+                          "retryable": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "code",
+                          "message",
+                          "retryable"
+                        ],
+                        "type": "object"
+                      },
+                      "operation": {
+                        "const": "error"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      },
+                      "status": {
+                        "const": "error"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "operation",
+                      "status",
+                      "error"
+                    ],
+                    "type": "object"
+                  },
+                  "EventPage": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "attemptId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "events": {
+                        "items": {
+                          "$ref": "#/$defs/Observation"
+                        },
+                        "maxItems": 256,
+                        "type": "array"
+                      },
+                      "gap": {
+                        "type": "boolean"
+                      },
+                      "nextCursor": {
+                        "maxLength": 1024,
+                        "type": "string"
+                      },
+                      "revision": {
+                        "maximum": 18446744073709552000,
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "runId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "runId",
+                      "attemptId",
+                      "revision",
+                      "events",
+                      "nextCursor",
+                      "gap"
+                    ],
+                    "type": "object"
+                  },
+                  "HostContext": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "instructionSources": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "maxItems": 64,
+                        "type": "array"
+                      },
+                      "instructionStatus": {
+                        "enum": [
+                          "observed",
+                          "unavailable"
+                        ]
+                      },
+                      "nativeRole": {
+                        "type": "string"
+                      },
+                      "parentThreadId": {
+                        "type": "string"
+                      },
+                      "sessionId": {
+                        "type": "string"
+                      },
+                      "source": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "enum": [
+                          "observed",
+                          "unavailable"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "status",
+                      "sessionId",
+                      "parentThreadId",
+                      "nativeRole",
+                      "source",
+                      "instructionStatus",
+                      "instructionSources"
+                    ],
+                    "type": "object"
+                  },
+                  "HostRequest": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "action": {
+                        "enum": [
+                          "bind",
+                          "observe",
+                          "disconnect",
+                          "reconcile",
+                          "reattach"
+                        ]
+                      },
+                      "attemptId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "checkoutId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "expectedRevision": {
+                        "maximum": 18446744073709552000,
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "hostIdentity": {
+                        "pattern": "^[0-9a-f]{64}$",
+                        "type": "string"
+                      },
+                      "hostVersion": {
+                        "enum": [
+                          "0.160.1",
+                          "0.161.0"
+                        ]
+                      },
+                      "inputRevision": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "observation": {
+                        "$ref": "#/$defs/Observation"
+                      },
+                      "operationId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "projectRef": {
+                        "type": "string"
+                      },
+                      "runId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      },
+                      "threadId": {
+                        "maxLength": 256,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "projectRef",
+                      "checkoutId",
+                      "operationId",
+                      "runId",
+                      "expectedRevision",
+                      "inputRevision",
+                      "action",
+                      "attemptId",
+                      "hostVersion",
+                      "threadId",
+                      "observation"
+                    ],
+                    "type": "object"
+                  },
+                  "InputRequest": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "action": {
+                        "enum": [
+                          "prepare",
+                          "claim",
+                          "ack",
+                          "uncertain",
+                          "resolve"
+                        ]
+                      },
+                      "checkoutId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "expectedRevision": {
+                        "maximum": 18446744073709552000,
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "input": {
+                        "$ref": "#/$defs/OwnerInput"
+                      },
+                      "inputRevision": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "operationId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "projectRef": {
+                        "type": "string"
+                      },
+                      "runId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "projectRef",
+                      "checkoutId",
+                      "operationId",
+                      "runId",
+                      "expectedRevision",
+                      "inputRevision",
+                      "action",
+                      "input"
+                    ],
+                    "type": "object"
+                  },
+                  "Observation": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "attachments": {
+                        "items": {
+                          "$ref": "#/$defs/Attachment"
+                        },
+                        "maxItems": 64,
+                        "type": "array"
+                      },
+                      "clientId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "epoch": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "inputDigest": {
+                        "anyOf": [
+                          {
+                            "pattern": "^[a-f0-9]{64}$",
+                            "type": "string"
+                          },
+                          {
+                            "const": "unavailable"
+                          }
+                        ]
+                      },
+                      "itemId": {
+                        "maxLength": 256,
+                        "type": "string"
+                      },
+                      "kind": {
+                        "enum": [
+                          "bound",
+                          "disconnected",
+                          "reconciled",
+                          "turn.started",
+                          "turn.completed",
+                          "userMessage",
+                          "agentMessage",
+                          "tool.completed",
+                          "approval.requested",
+                          "approval.resolved",
+                          "context.observed"
+                        ]
+                      },
+                      "phase": {
+                        "enum": [
+                          "",
+                          "unknown",
+                          "commentary",
+                          "final_answer"
+                        ]
+                      },
+                      "receivedAt": {
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "status": {
+                        "enum": [
+                          "",
+                          "idle",
+                          "running",
+                          "completed",
+                          "failed",
+                          "interrupted",
+                          "unknown",
+                          "declined"
+                        ]
+                      },
+                      "text": {
+                        "maxLength": 65536,
+                        "type": "string"
+                      },
+                      "turnId": {
+                        "maxLength": 256,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "turnId",
+                      "itemId",
+                      "phase",
+                      "text",
+                      "status",
+                      "epoch",
+                      "receivedAt"
+                    ],
+                    "type": "object"
+                  },
+                  "OwnerInput": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "attemptId": {
+                        "type": "string"
+                      },
+                      "attentionReplies": {
+                        "items": {
+                          "$ref": "#/$defs/AttentionReplyRef"
+                        },
+                        "maxItems": 32,
+                        "type": "array"
+                      },
+                      "contentOmitted": {
+                        "type": "boolean"
+                      },
+                      "epoch": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "kind": {
+                        "enum": [
+                          "launch",
+                          "steer",
+                          "interrupt",
+                          "scope-change",
+                          "approval"
+                        ],
+                        "type": "string"
+                      },
+                      "payload": {
+                        "type": "string"
+                      },
+                      "receivedAt": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "items": {
+                          "$ref": "#/$defs/SkillInput"
+                        },
+                        "maxItems": 8,
+                        "type": "array"
+                      },
+                      "state": {
+                        "enum": [
+                          "",
+                          "prepared",
+                          "sending",
+                          "acknowledged",
+                          "uncertain"
+                        ],
+                        "type": "string"
+                      },
+                      "text": {
+                        "type": "string"
+                      },
+                      "threadId": {
+                        "type": "string"
+                      },
+                      "turnId": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "kind",
+                      "text",
+                      "payload",
+                      "attemptId",
+                      "epoch",
+                      "threadId",
+                      "turnId",
+                      "state",
+                      "receivedAt"
+                    ],
+                    "type": "object"
+                  },
+                  "ProvenanceView": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "attemptId": {
+                        "type": "string"
+                      },
+                      "captureEpoch": {
+                        "type": "string"
+                      },
+                      "context": {
+                        "$ref": "#/$defs/ContextProvenance"
+                      },
+                      "currentEpoch": {
+                        "type": "string"
+                      },
+                      "hostVersion": {
+                        "type": "string"
+                      },
+                      "invocation": {
+                        "$ref": "#/$defs/SkillInvocationView"
+                      },
+                      "operation": {
+                        "const": "provenance"
+                      },
+                      "receivedAt": {
+                        "type": "string"
+                      },
+                      "runId": {
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      },
+                      "status": {
+                        "enum": [
+                          "observed",
+                          "unavailable",
+                          "historical-epoch"
+                        ]
+                      },
+                      "threadId": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "operation",
+                      "runId",
+                      "attemptId",
+                      "captureEpoch",
+                      "currentEpoch",
+                      "receivedAt",
+                      "status",
+                      "threadId",
+                      "hostVersion"
+                    ],
+                    "type": "object"
+                  },
+                  "Result": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "checkoutId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "coverage": {
+                        "enum": [
+                          "known",
+                          "stale"
+                        ],
+                        "type": "string"
+                      },
+                      "operation": {
+                        "enum": [
+                          "start",
+                          "read",
+                          "transition",
+                          "host.bind",
+                          "host.observe",
+                          "host.disconnect",
+                          "host.reconcile",
+                          "input.prepare",
+                          "input.claim",
+                          "input.ack",
+                          "input.uncertain",
+                          "input.resolve",
+                          "host.reattach",
+                          "activate",
+                          "attention.request",
+                          "attention.reply",
+                          "attention.withdraw"
+                        ],
+                        "type": "string"
+                      },
+                      "operationId": {
+                        "anyOf": [
+                          {
+                            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                            "type": "string"
+                          },
+                          {
+                            "const": ""
+                          }
+                        ]
+                      },
+                      "projectRef": {
+                        "type": "string"
+                      },
+                      "run": {
+                        "$ref": "#/$defs/Run"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "operation",
+                      "projectRef",
+                      "checkoutId",
+                      "operationId",
+                      "run",
+                      "coverage"
+                    ],
+                    "type": "object"
+                  },
+                  "Route": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "basis": {
+                        "type": "string"
+                      },
+                      "context": {
+                        "$ref": "#/$defs/Context"
+                      },
+                      "disposition": {
+                        "enum": [
+                          "missing",
+                          "ambiguous",
+                          "incompatible",
+                          "unavailable",
+                          "conflict",
+                          "no-work",
+                          "matched"
+                        ],
+                        "type": "string"
+                      },
+                      "operation": {
+                        "const": "route"
+                      },
+                      "routine": {
+                        "$ref": "#/$defs/Routine"
+                      },
+                      "routineDigest": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "operation",
+                      "disposition",
+                      "basis",
+                      "context",
+                      "routine",
+                      "routineDigest"
+                    ],
+                    "type": "object"
+                  },
+                  "RouteRequest": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "categories": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "maxItems": 16,
+                        "minItems": 1,
+                        "type": "array"
+                      },
+                      "inputRevision": {
+                        "anyOf": [
+                          {
+                            "pattern": "^[a-f0-9]{64}$",
+                            "type": "string"
+                          },
+                          {
+                            "const": ""
+                          }
+                        ]
+                      },
+                      "intent": {
+                        "maxLength": 65536,
+                        "type": "string"
+                      },
+                      "routineId": {
+                        "type": "string"
+                      },
+                      "routineVersion": {
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      },
+                      "selection": {
+                        "$ref": "#/$defs/Selection"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "categories"
+                    ],
+                    "type": "object"
+                  },
+                  "Routine": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "completion": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "enum": [
+                          "maintenance",
+                          "implementation"
+                        ]
+                      },
+                      "steps": {
+                        "const": [
+                          "implement",
+                          "verify",
+                          "review",
+                          "record"
+                        ]
+                      },
+                      "version": {
+                        "const": "0.1"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "version",
+                      "steps",
+                      "completion"
+                    ],
+                    "type": "object"
+                  },
+                  "Run": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "assignment": {
+                        "$ref": "#/$defs/Assignment"
+                      },
+                      "attempts": {
+                        "items": {
+                          "$ref": "#/$defs/Attempt"
+                        },
+                        "maxItems": 16,
+                        "type": "array"
+                      },
+                      "attention": {
+                        "items": {
+                          "$ref": "#/$defs/AttentionQuestion"
+                        },
+                        "maxItems": 32,
+                        "type": "array"
+                      },
+                      "id": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "inputRevision": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "inputs": {
+                        "items": {
+                          "$ref": "#/$defs/OwnerInput"
+                        },
+                        "maxItems": 64,
+                        "type": "array"
+                      },
+                      "reason": {
+                        "type": "string"
+                      },
+                      "requestId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "revision": {
+                        "maximum": 18446744073709552000,
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "routine": {
+                        "$ref": "#/$defs/Routine"
+                      },
+                      "routineDigest": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "selection": {
+                        "$ref": "#/$defs/Selection"
+                      },
+                      "state": {
+                        "enum": [
+                          "ready",
+                          "running",
+                          "interrupted",
+                          "verifying",
+                          "failed",
+                          "replan-required",
+                          "canceled"
+                        ],
+                        "type": "string"
+                      },
+                      "step": {
+                        "const": "implement"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "revision",
+                      "requestId",
+                      "state",
+                      "step",
+                      "inputRevision",
+                      "selection",
+                      "assignment",
+                      "routine",
+                      "routineDigest",
+                      "reason"
+                    ],
+                    "type": "object"
+                  },
+                  "Selection": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "authority": {
+                        "type": "string"
+                      },
+                      "card": {
+                        "type": "string"
+                      },
+                      "plan": {
+                        "type": "string"
+                      },
+                      "session": {
+                        "type": "string"
+                      },
+                      "step": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [],
+                    "type": "object"
+                  },
+                  "SkillAvailability": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "digest": {
+                        "type": "string"
+                      },
+                      "enabled": {
+                        "type": "boolean"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "path": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "path",
+                      "enabled",
+                      "digest"
+                    ],
+                    "type": "object"
+                  },
+                  "SkillInput": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "digest": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "name": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$",
+                        "type": "string"
+                      },
+                      "path": {
+                        "maxLength": 4096,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "path",
+                      "digest"
+                    ],
+                    "type": "object"
+                  },
+                  "SkillInventory": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "errorCount": {
+                        "maximum": 4096,
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "externalCount": {
+                        "maximum": 4096,
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "project": {
+                        "items": {
+                          "$ref": "#/$defs/SkillAvailability"
+                        },
+                        "maxItems": 64,
+                        "type": "array"
+                      },
+                      "status": {
+                        "enum": [
+                          "observed",
+                          "unavailable"
+                        ]
+                      },
+                      "useEvidence": {
+                        "const": "not-observed"
+                      }
+                    },
+                    "required": [
+                      "status",
+                      "useEvidence",
+                      "externalCount",
+                      "errorCount",
+                      "project"
+                    ],
+                    "type": "object"
+                  },
+                  "SkillInvocationView": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "acceptance": {
+                        "enum": [
+                          "unconfirmed",
+                          "response-acknowledged",
+                          "host-message-observed"
+                        ]
+                      },
+                      "attemptId": {
+                        "type": "string"
+                      },
+                      "compliance": {
+                        "const": "not-observed"
+                      },
+                      "inputEpoch": {
+                        "type": "string"
+                      },
+                      "inputId": {
+                        "type": "string"
+                      },
+                      "inputState": {
+                        "enum": [
+                          "prepared",
+                          "sending",
+                          "uncertain",
+                          "acknowledged"
+                        ]
+                      },
+                      "skills": {
+                        "items": {
+                          "$ref": "#/$defs/SkillInput"
+                        },
+                        "maxItems": 8,
+                        "minItems": 1,
+                        "type": "array"
+                      },
+                      "turnId": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "inputId",
+                      "inputState",
+                      "inputEpoch",
+                      "turnId",
+                      "acceptance",
+                      "compliance",
+                      "skills",
+                      "attemptId"
+                    ],
+                    "type": "object"
+                  },
+                  "StartRequest": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "assignment": {
+                        "$ref": "#/$defs/Assignment"
+                      },
+                      "checkoutId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "inputRevision": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "operationId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "projectRef": {
+                        "type": "string"
+                      },
+                      "requestId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "routineDigest": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      },
+                      "selection": {
+                        "$ref": "#/$defs/Selection"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "projectRef",
+                      "checkoutId",
+                      "operationId",
+                      "requestId",
+                      "inputRevision",
+                      "routineDigest",
+                      "selection",
+                      "assignment"
+                    ],
+                    "type": "object"
+                  },
+                  "TransitionRequest": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "action": {
+                        "enum": [
+                          "start",
+                          "interrupt",
+                          "resume",
+                          "report",
+                          "fail",
+                          "retry",
+                          "scope-change",
+                          "cancel",
+                          "complete"
+                        ],
+                        "type": "string"
+                      },
+                      "checkoutId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "expectedRevision": {
+                        "maximum": 18446744073709552000,
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "inputRevision": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "operationId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "projectRef": {
+                        "type": "string"
+                      },
+                      "reason": {
+                        "maxLength": 65536,
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "runId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "projectRef",
+                      "checkoutId",
+                      "operationId",
+                      "runId",
+                      "expectedRevision",
+                      "inputRevision",
+                      "action",
+                      "reason"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "additionalProperties": false,
+                "properties": {
+                  "authority": {
+                    "type": "string"
+                  },
+                  "card": {
+                    "type": "string"
+                  },
+                  "plan": {
+                    "type": "string"
+                  },
+                  "session": {
+                    "type": "string"
+                  },
+                  "step": {
+                    "type": "string"
+                  }
+                },
+                "required": [],
+                "type": "object"
+              },
+              "name": "context_read"
+            },
+            {
+              "annotations": {
+                "idempotentHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Evaluate a proposed route without activating work.",
+              "inputSchema": {
+                "$defs": {
+                  "Assignment": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "excludedPaths": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "maxItems": 63,
+                        "type": "array",
+                        "uniqueItems": true
+                      },
+                      "outcome": {
+                        "maxLength": 65536,
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "writablePaths": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "maxItems": 64,
+                        "minItems": 1,
+                        "type": "array",
+                        "uniqueItems": true
+                      }
+                    },
+                    "required": [
+                      "outcome",
+                      "writablePaths"
+                    ],
+                    "type": "object"
+                  },
+                  "Attachment": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "availability": {
+                        "enum": [
+                          "unknown",
+                          "unavailable"
+                        ]
+                      },
+                      "kind": {
+                        "enum": [
+                          "image",
+                          "localImage",
+                          "audio",
+                          "localAudio",
+                          "skill",
+                          "mention"
+                        ]
+                      },
+                      "reference": {
+                        "maxLength": 4096,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "reference",
+                      "availability"
+                    ],
+                    "type": "object"
+                  },
+                  "Attempt": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "agentEpoch": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "epoch": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "eventCount": {
+                        "maximum": 1024,
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "events": {
+                        "items": {
+                          "$ref": "#/$defs/Observation"
+                        },
+                        "maxItems": 1024,
+                        "type": "array"
+                      },
+                      "gap": {
+                        "type": "boolean"
+                      },
+                      "hostIdentity": {
+                        "pattern": "^[0-9a-f]{64}$",
+                        "type": "string"
+                      },
+                      "hostVersion": {
+                        "enum": [
+                          "0.160.1",
+                          "0.161.0"
+                        ]
+                      },
+                      "id": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "inputRevision": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "lastObservedAt": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "enum": [
+                          "idle",
+                          "running",
+                          "completed",
+                          "failed",
+                          "interrupted",
+                          "unknown"
+                        ]
+                      },
+                      "threadId": {
+                        "maxLength": 256,
+                        "type": "string"
+                      },
+                      "turnId": {
+                        "maxLength": 256,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "hostVersion",
+                      "threadId",
+                      "turnId",
+                      "inputRevision",
+                      "epoch",
+                      "status",
+                      "gap",
+                      "events"
+                    ],
+                    "type": "object"
+                  },
+                  "AttentionDisposition": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "basis": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "checkoutId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "operationId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "projectRef": {
+                        "type": "string"
+                      },
+                      "questionId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "runId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-governance-attention/1"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "projectRef",
+                      "checkoutId",
+                      "operationId",
+                      "runId",
+                      "questionId",
+                      "basis"
+                    ],
+                    "type": "object"
+                  },
+                  "AttentionInbox": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "checkoutId": {
+                        "type": "string"
+                      },
+                      "generation": {
+                        "type": "string"
+                      },
+                      "items": {
+                        "items": {
+                          "$ref": "#/$defs/AttentionView"
+                        },
+                        "type": "array"
+                      },
+                      "projectRef": {
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-governance-attention/1"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "projectRef",
+                      "checkoutId",
+                      "generation",
+                      "items"
+                    ],
+                    "type": "object"
+                  },
+                  "AttentionOption": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": {
+                        "maxLength": 64,
+                        "type": "string"
+                      },
+                      "label": {
+                        "maxLength": 1024,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "label"
+                    ],
+                    "type": "object"
+                  },
+                  "AttentionQuestion": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "attemptId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "basis": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "blocking": {
+                        "type": "boolean"
+                      },
+                      "id": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "inputRevision": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "options": {
+                        "items": {
+                          "$ref": "#/$defs/AttentionOption"
+                        },
+                        "maxItems": 5,
+                        "type": "array"
+                      },
+                      "origin": {
+                        "enum": [
+                          "agent",
+                          "controller"
+                        ]
+                      },
+                      "prompt": {
+                        "maxLength": 4096,
+                        "type": "string"
+                      },
+                      "raisedAt": {
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "raisedRevision": {
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "reply": {
+                        "$ref": "#/$defs/AttentionReply"
+                      },
+                      "withdrawal": {
+                        "$ref": "#/$defs/AttentionWithdrawal"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "basis",
+                      "inputRevision",
+                      "raisedRevision",
+                      "raisedAt",
+                      "origin",
+                      "prompt",
+                      "options",
+                      "blocking"
+                    ],
+                    "type": "object"
+                  },
+                  "AttentionReply": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "actor": {
+                        "maxLength": 256,
+                        "type": "string"
+                      },
+                      "operationId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "optionId": {
+                        "maxLength": 64,
+                        "type": "string"
+                      },
+                      "recordedAt": {
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "source": {
+                        "maxLength": 1024,
+                        "type": "string"
+                      },
+                      "text": {
+                        "maxLength": 4096,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "operationId",
+                      "actor",
+                      "source",
+                      "text",
+                      "recordedAt"
+                    ],
+                    "type": "object"
+                  },
+                  "AttentionReplyRef": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "basis": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "questionId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "replyOperationId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "questionId",
+                      "replyOperationId",
+                      "basis"
+                    ],
+                    "type": "object"
+                  },
+                  "AttentionRequest": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "blocking": {
+                        "type": "boolean"
+                      },
+                      "checkoutId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "expectedRevision": {
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "inputRevision": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "operationId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "options": {
+                        "items": {
+                          "$ref": "#/$defs/AttentionOption"
+                        },
+                        "maxItems": 5,
+                        "type": "array"
+                      },
+                      "projectRef": {
+                        "type": "string"
+                      },
+                      "prompt": {
+                        "maxLength": 4096,
+                        "type": "string"
+                      },
+                      "runId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-governance-attention/1"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "projectRef",
+                      "checkoutId",
+                      "operationId",
+                      "runId",
+                      "inputRevision",
+                      "expectedRevision",
+                      "prompt"
+                    ],
+                    "type": "object"
+                  },
+                  "AttentionView": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "applicability": {
+                        "enum": [
+                          "current",
+                          "stale"
+                        ]
+                      },
+                      "consumption": {
+                        "enum": [
+                          "not-tracked",
+                          "dispatch-prepared",
+                          "dispatch-sending",
+                          "dispatch-uncertain",
+                          "dispatch-acknowledged"
+                        ]
+                      },
+                      "coverage": {
+                        "enum": [
+                          "known",
+                          "stale"
+                        ]
+                      },
+                      "currentRevision": {
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "question": {
+                        "$ref": "#/$defs/AttentionQuestion"
+                      },
+                      "runId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "status": {
+                        "enum": [
+                          "open",
+                          "answered",
+                          "withdrawn"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "runId",
+                      "question",
+                      "status",
+                      "coverage",
+                      "applicability",
+                      "currentRevision",
+                      "consumption"
+                    ],
+                    "type": "object"
+                  },
+                  "AttentionWithdrawal": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "operationId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "reason": {
+                        "maxLength": 4096,
+                        "type": "string"
+                      },
+                      "recordedAt": {
+                        "format": "date-time",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "operationId",
+                      "reason",
+                      "recordedAt"
+                    ],
+                    "type": "object"
+                  },
+                  "Binding": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "checkoutId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "operation": {
+                        "const": "bind"
+                      },
+                      "projectRef": {
+                        "type": "string"
+                      },
+                      "root": {
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "operation",
+                      "projectRef",
+                      "root",
+                      "checkoutId"
+                    ],
+                    "type": "object"
+                  },
+                  "Context": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "cardId": {
+                        "type": "string"
+                      },
+                      "checkoutId": {
+                        "anyOf": [
+                          {
+                            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                            "type": "string"
+                          },
+                          {
+                            "const": ""
+                          }
+                        ]
+                      },
+                      "conditions": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "coverage": {
+                        "enum": [
+                          "known",
+                          "unavailable",
+                          "conflict"
+                        ],
+                        "type": "string"
+                      },
+                      "operation": {
+                        "const": "context"
+                      },
+                      "planId": {
+                        "type": "string"
+                      },
+                      "projectRef": {
+                        "type": "string"
+                      },
+                      "revision": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "root": {
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      },
+                      "selection": {
+                        "$ref": "#/$defs/Selection"
+                      },
+                      "sessionId": {
+                        "type": "string"
+                      },
+                      "sources": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "path": {
+                              "type": "string"
+                            },
+                            "sha256": {
+                              "anyOf": [
+                                {
+                                  "pattern": "^[a-f0-9]{64}$",
+                                  "type": "string"
+                                },
+                                {
+                                  "const": "absent"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "path",
+                            "sha256"
+                          ],
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "operation",
+                      "projectRef",
+                      "root",
+                      "checkoutId",
+                      "revision",
+                      "selection",
+                      "sources",
+                      "coverage",
+                      "conditions",
+                      "cardId",
+                      "planId",
+                      "sessionId"
+                    ],
+                    "type": "object"
+                  },
+                  "ContextProvenance": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "assignedRole": {
+                        "const": "Master"
+                      },
+                      "host": {
+                        "$ref": "#/$defs/HostContext"
+                      },
+                      "inputRevision": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "roleBasis": {
+                        "const": "controller-launch"
+                      },
+                      "skills": {
+                        "$ref": "#/$defs/SkillInventory"
+                      },
+                      "sources": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "path": {
+                              "type": "string"
+                            },
+                            "sha256": {
+                              "anyOf": [
+                                {
+                                  "pattern": "^[a-f0-9]{64}$",
+                                  "type": "string"
+                                },
+                                {
+                                  "const": "absent"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "path",
+                            "sha256"
+                          ],
+                          "type": "object"
+                        },
+                        "maxItems": 64,
+                        "type": "array"
+                      }
+                    },
+                    "required": [
+                      "assignedRole",
+                      "roleBasis",
+                      "inputRevision",
+                      "sources",
+                      "host",
+                      "skills"
+                    ],
+                    "type": "object"
+                  },
+                  "Error": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "error": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "code": {
+                            "type": "string"
+                          },
+                          "currentRevision": {
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "message": {
+                            "type": "string"
+                          },
+                          "retryable": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "code",
+                          "message",
+                          "retryable"
+                        ],
+                        "type": "object"
+                      },
+                      "operation": {
+                        "const": "error"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      },
+                      "status": {
+                        "const": "error"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "operation",
+                      "status",
+                      "error"
+                    ],
+                    "type": "object"
+                  },
+                  "EventPage": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "attemptId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "events": {
+                        "items": {
+                          "$ref": "#/$defs/Observation"
+                        },
+                        "maxItems": 256,
+                        "type": "array"
+                      },
+                      "gap": {
+                        "type": "boolean"
+                      },
+                      "nextCursor": {
+                        "maxLength": 1024,
+                        "type": "string"
+                      },
+                      "revision": {
+                        "maximum": 18446744073709552000,
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "runId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "runId",
+                      "attemptId",
+                      "revision",
+                      "events",
+                      "nextCursor",
+                      "gap"
+                    ],
+                    "type": "object"
+                  },
+                  "HostContext": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "instructionSources": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "maxItems": 64,
+                        "type": "array"
+                      },
+                      "instructionStatus": {
+                        "enum": [
+                          "observed",
+                          "unavailable"
+                        ]
+                      },
+                      "nativeRole": {
+                        "type": "string"
+                      },
+                      "parentThreadId": {
+                        "type": "string"
+                      },
+                      "sessionId": {
+                        "type": "string"
+                      },
+                      "source": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "enum": [
+                          "observed",
+                          "unavailable"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "status",
+                      "sessionId",
+                      "parentThreadId",
+                      "nativeRole",
+                      "source",
+                      "instructionStatus",
+                      "instructionSources"
+                    ],
+                    "type": "object"
+                  },
+                  "HostRequest": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "action": {
+                        "enum": [
+                          "bind",
+                          "observe",
+                          "disconnect",
+                          "reconcile",
+                          "reattach"
+                        ]
+                      },
+                      "attemptId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "checkoutId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "expectedRevision": {
+                        "maximum": 18446744073709552000,
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "hostIdentity": {
+                        "pattern": "^[0-9a-f]{64}$",
+                        "type": "string"
+                      },
+                      "hostVersion": {
+                        "enum": [
+                          "0.160.1",
+                          "0.161.0"
+                        ]
+                      },
+                      "inputRevision": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "observation": {
+                        "$ref": "#/$defs/Observation"
+                      },
+                      "operationId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "projectRef": {
+                        "type": "string"
+                      },
+                      "runId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      },
+                      "threadId": {
+                        "maxLength": 256,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "projectRef",
+                      "checkoutId",
+                      "operationId",
+                      "runId",
+                      "expectedRevision",
+                      "inputRevision",
+                      "action",
+                      "attemptId",
+                      "hostVersion",
+                      "threadId",
+                      "observation"
+                    ],
+                    "type": "object"
+                  },
+                  "InputRequest": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "action": {
+                        "enum": [
+                          "prepare",
+                          "claim",
+                          "ack",
+                          "uncertain",
+                          "resolve"
+                        ]
+                      },
+                      "checkoutId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "expectedRevision": {
+                        "maximum": 18446744073709552000,
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "input": {
+                        "$ref": "#/$defs/OwnerInput"
+                      },
+                      "inputRevision": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "operationId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "projectRef": {
+                        "type": "string"
+                      },
+                      "runId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "projectRef",
+                      "checkoutId",
+                      "operationId",
+                      "runId",
+                      "expectedRevision",
+                      "inputRevision",
+                      "action",
+                      "input"
+                    ],
+                    "type": "object"
+                  },
+                  "Observation": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "attachments": {
+                        "items": {
+                          "$ref": "#/$defs/Attachment"
+                        },
+                        "maxItems": 64,
+                        "type": "array"
+                      },
+                      "clientId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "epoch": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "inputDigest": {
+                        "anyOf": [
+                          {
+                            "pattern": "^[a-f0-9]{64}$",
+                            "type": "string"
+                          },
+                          {
+                            "const": "unavailable"
+                          }
+                        ]
+                      },
+                      "itemId": {
+                        "maxLength": 256,
+                        "type": "string"
+                      },
+                      "kind": {
+                        "enum": [
+                          "bound",
+                          "disconnected",
+                          "reconciled",
+                          "turn.started",
+                          "turn.completed",
+                          "userMessage",
+                          "agentMessage",
+                          "tool.completed",
+                          "approval.requested",
+                          "approval.resolved",
+                          "context.observed"
+                        ]
+                      },
+                      "phase": {
+                        "enum": [
+                          "",
+                          "unknown",
+                          "commentary",
+                          "final_answer"
+                        ]
+                      },
+                      "receivedAt": {
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "status": {
+                        "enum": [
+                          "",
+                          "idle",
+                          "running",
+                          "completed",
+                          "failed",
+                          "interrupted",
+                          "unknown",
+                          "declined"
+                        ]
+                      },
+                      "text": {
+                        "maxLength": 65536,
+                        "type": "string"
+                      },
+                      "turnId": {
+                        "maxLength": 256,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "turnId",
+                      "itemId",
+                      "phase",
+                      "text",
+                      "status",
+                      "epoch",
+                      "receivedAt"
+                    ],
+                    "type": "object"
+                  },
+                  "OwnerInput": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "attemptId": {
+                        "type": "string"
+                      },
+                      "attentionReplies": {
+                        "items": {
+                          "$ref": "#/$defs/AttentionReplyRef"
+                        },
+                        "maxItems": 32,
+                        "type": "array"
+                      },
+                      "contentOmitted": {
+                        "type": "boolean"
+                      },
+                      "epoch": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "kind": {
+                        "enum": [
+                          "launch",
+                          "steer",
+                          "interrupt",
+                          "scope-change",
+                          "approval"
+                        ],
+                        "type": "string"
+                      },
+                      "payload": {
+                        "type": "string"
+                      },
+                      "receivedAt": {
+                        "type": "string"
+                      },
+                      "skills": {
+                        "items": {
+                          "$ref": "#/$defs/SkillInput"
+                        },
+                        "maxItems": 8,
+                        "type": "array"
+                      },
+                      "state": {
+                        "enum": [
+                          "",
+                          "prepared",
+                          "sending",
+                          "acknowledged",
+                          "uncertain"
+                        ],
+                        "type": "string"
+                      },
+                      "text": {
+                        "type": "string"
+                      },
+                      "threadId": {
+                        "type": "string"
+                      },
+                      "turnId": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "kind",
+                      "text",
+                      "payload",
+                      "attemptId",
+                      "epoch",
+                      "threadId",
+                      "turnId",
+                      "state",
+                      "receivedAt"
+                    ],
+                    "type": "object"
+                  },
+                  "ProvenanceView": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "attemptId": {
+                        "type": "string"
+                      },
+                      "captureEpoch": {
+                        "type": "string"
+                      },
+                      "context": {
+                        "$ref": "#/$defs/ContextProvenance"
+                      },
+                      "currentEpoch": {
+                        "type": "string"
+                      },
+                      "hostVersion": {
+                        "type": "string"
+                      },
+                      "invocation": {
+                        "$ref": "#/$defs/SkillInvocationView"
+                      },
+                      "operation": {
+                        "const": "provenance"
+                      },
+                      "receivedAt": {
+                        "type": "string"
+                      },
+                      "runId": {
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      },
+                      "status": {
+                        "enum": [
+                          "observed",
+                          "unavailable",
+                          "historical-epoch"
+                        ]
+                      },
+                      "threadId": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "operation",
+                      "runId",
+                      "attemptId",
+                      "captureEpoch",
+                      "currentEpoch",
+                      "receivedAt",
+                      "status",
+                      "threadId",
+                      "hostVersion"
+                    ],
+                    "type": "object"
+                  },
+                  "Result": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "checkoutId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "coverage": {
+                        "enum": [
+                          "known",
+                          "stale"
+                        ],
+                        "type": "string"
+                      },
+                      "operation": {
+                        "enum": [
+                          "start",
+                          "read",
+                          "transition",
+                          "host.bind",
+                          "host.observe",
+                          "host.disconnect",
+                          "host.reconcile",
+                          "input.prepare",
+                          "input.claim",
+                          "input.ack",
+                          "input.uncertain",
+                          "input.resolve",
+                          "host.reattach",
+                          "activate",
+                          "attention.request",
+                          "attention.reply",
+                          "attention.withdraw"
+                        ],
+                        "type": "string"
+                      },
+                      "operationId": {
+                        "anyOf": [
+                          {
+                            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                            "type": "string"
+                          },
+                          {
+                            "const": ""
+                          }
+                        ]
+                      },
+                      "projectRef": {
+                        "type": "string"
+                      },
+                      "run": {
+                        "$ref": "#/$defs/Run"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "operation",
+                      "projectRef",
+                      "checkoutId",
+                      "operationId",
+                      "run",
+                      "coverage"
+                    ],
+                    "type": "object"
+                  },
+                  "Route": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "basis": {
+                        "type": "string"
+                      },
+                      "context": {
+                        "$ref": "#/$defs/Context"
+                      },
+                      "disposition": {
+                        "enum": [
+                          "missing",
+                          "ambiguous",
+                          "incompatible",
+                          "unavailable",
+                          "conflict",
+                          "no-work",
+                          "matched"
+                        ],
+                        "type": "string"
+                      },
+                      "operation": {
+                        "const": "route"
+                      },
+                      "routine": {
+                        "$ref": "#/$defs/Routine"
+                      },
+                      "routineDigest": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "operation",
+                      "disposition",
+                      "basis",
+                      "context",
+                      "routine",
+                      "routineDigest"
+                    ],
+                    "type": "object"
+                  },
+                  "RouteRequest": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "categories": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "maxItems": 16,
+                        "minItems": 1,
+                        "type": "array"
+                      },
+                      "inputRevision": {
+                        "anyOf": [
+                          {
+                            "pattern": "^[a-f0-9]{64}$",
+                            "type": "string"
+                          },
+                          {
+                            "const": ""
+                          }
+                        ]
+                      },
+                      "intent": {
+                        "maxLength": 65536,
+                        "type": "string"
+                      },
+                      "routineId": {
+                        "type": "string"
+                      },
+                      "routineVersion": {
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      },
+                      "selection": {
+                        "$ref": "#/$defs/Selection"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "categories"
+                    ],
+                    "type": "object"
+                  },
+                  "Routine": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "completion": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "enum": [
+                          "maintenance",
+                          "implementation"
+                        ]
+                      },
+                      "steps": {
+                        "const": [
+                          "implement",
+                          "verify",
+                          "review",
+                          "record"
+                        ]
+                      },
+                      "version": {
+                        "const": "0.1"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "version",
+                      "steps",
+                      "completion"
+                    ],
+                    "type": "object"
+                  },
+                  "Run": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "assignment": {
+                        "$ref": "#/$defs/Assignment"
+                      },
+                      "attempts": {
+                        "items": {
+                          "$ref": "#/$defs/Attempt"
+                        },
+                        "maxItems": 16,
+                        "type": "array"
+                      },
+                      "attention": {
+                        "items": {
+                          "$ref": "#/$defs/AttentionQuestion"
+                        },
+                        "maxItems": 32,
+                        "type": "array"
+                      },
+                      "id": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "inputRevision": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "inputs": {
+                        "items": {
+                          "$ref": "#/$defs/OwnerInput"
+                        },
+                        "maxItems": 64,
+                        "type": "array"
+                      },
+                      "reason": {
+                        "type": "string"
+                      },
+                      "requestId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "revision": {
+                        "maximum": 18446744073709552000,
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "routine": {
+                        "$ref": "#/$defs/Routine"
+                      },
+                      "routineDigest": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "selection": {
+                        "$ref": "#/$defs/Selection"
+                      },
+                      "state": {
+                        "enum": [
+                          "ready",
+                          "running",
+                          "interrupted",
+                          "verifying",
+                          "failed",
+                          "replan-required",
+                          "canceled"
+                        ],
+                        "type": "string"
+                      },
+                      "step": {
+                        "const": "implement"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "revision",
+                      "requestId",
+                      "state",
+                      "step",
+                      "inputRevision",
+                      "selection",
+                      "assignment",
+                      "routine",
+                      "routineDigest",
+                      "reason"
+                    ],
+                    "type": "object"
+                  },
+                  "Selection": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "authority": {
+                        "type": "string"
+                      },
+                      "card": {
+                        "type": "string"
+                      },
+                      "plan": {
+                        "type": "string"
+                      },
+                      "session": {
+                        "type": "string"
+                      },
+                      "step": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [],
+                    "type": "object"
+                  },
+                  "SkillAvailability": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "digest": {
+                        "type": "string"
+                      },
+                      "enabled": {
+                        "type": "boolean"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "path": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "path",
+                      "enabled",
+                      "digest"
+                    ],
+                    "type": "object"
+                  },
+                  "SkillInput": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "digest": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "name": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$",
+                        "type": "string"
+                      },
+                      "path": {
+                        "maxLength": 4096,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "path",
+                      "digest"
+                    ],
+                    "type": "object"
+                  },
+                  "SkillInventory": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "errorCount": {
+                        "maximum": 4096,
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "externalCount": {
+                        "maximum": 4096,
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "project": {
+                        "items": {
+                          "$ref": "#/$defs/SkillAvailability"
+                        },
+                        "maxItems": 64,
+                        "type": "array"
+                      },
+                      "status": {
+                        "enum": [
+                          "observed",
+                          "unavailable"
+                        ]
+                      },
+                      "useEvidence": {
+                        "const": "not-observed"
+                      }
+                    },
+                    "required": [
+                      "status",
+                      "useEvidence",
+                      "externalCount",
+                      "errorCount",
+                      "project"
+                    ],
+                    "type": "object"
+                  },
+                  "SkillInvocationView": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "acceptance": {
+                        "enum": [
+                          "unconfirmed",
+                          "response-acknowledged",
+                          "host-message-observed"
+                        ]
+                      },
+                      "attemptId": {
+                        "type": "string"
+                      },
+                      "compliance": {
+                        "const": "not-observed"
+                      },
+                      "inputEpoch": {
+                        "type": "string"
+                      },
+                      "inputId": {
+                        "type": "string"
+                      },
+                      "inputState": {
+                        "enum": [
+                          "prepared",
+                          "sending",
+                          "uncertain",
+                          "acknowledged"
+                        ]
+                      },
+                      "skills": {
+                        "items": {
+                          "$ref": "#/$defs/SkillInput"
+                        },
+                        "maxItems": 8,
+                        "minItems": 1,
+                        "type": "array"
+                      },
+                      "turnId": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "inputId",
+                      "inputState",
+                      "inputEpoch",
+                      "turnId",
+                      "acceptance",
+                      "compliance",
+                      "skills",
+                      "attemptId"
+                    ],
+                    "type": "object"
+                  },
+                  "StartRequest": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "assignment": {
+                        "$ref": "#/$defs/Assignment"
+                      },
+                      "checkoutId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "inputRevision": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "operationId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "projectRef": {
+                        "type": "string"
+                      },
+                      "requestId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "routineDigest": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      },
+                      "selection": {
+                        "$ref": "#/$defs/Selection"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "projectRef",
+                      "checkoutId",
+                      "operationId",
+                      "requestId",
+                      "inputRevision",
+                      "routineDigest",
+                      "selection",
+                      "assignment"
+                    ],
+                    "type": "object"
+                  },
+                  "TransitionRequest": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "action": {
+                        "enum": [
+                          "start",
+                          "interrupt",
+                          "resume",
+                          "report",
+                          "fail",
+                          "retry",
+                          "scope-change",
+                          "cancel",
+                          "complete"
+                        ],
+                        "type": "string"
+                      },
+                      "checkoutId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "expectedRevision": {
+                        "maximum": 18446744073709552000,
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "inputRevision": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      "operationId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "projectRef": {
+                        "type": "string"
+                      },
+                      "reason": {
+                        "maxLength": 65536,
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "runId": {
+                        "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+                        "type": "string"
+                      },
+                      "schema": {
+                        "const": "sdp-project-governance/0.1"
+                      }
+                    },
+                    "required": [
+                      "schema",
+                      "projectRef",
+                      "checkoutId",
+                      "operationId",
+                      "runId",
+                      "expectedRevision",
+                      "inputRevision",
+                      "action",
+                      "reason"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "additionalProperties": false,
+                "properties": {
+                  "categories": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "maxItems": 16,
+                    "minItems": 1,
+                    "type": "array"
+                  },
+                  "inputRevision": {
+                    "anyOf": [
+                      {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "type": "string"
+                      },
+                      {
+                        "const": ""
+                      }
+                    ]
+                  },
+                  "intent": {
+                    "maxLength": 65536,
+                    "type": "string"
+                  },
+                  "routineId": {
+                    "type": "string"
+                  },
+                  "routineVersion": {
+                    "type": "string"
+                  },
+                  "schema": {
+                    "const": "sdp-project-governance/0.1"
+                  },
+                  "selection": {
+                    "$ref": "#/$defs/Selection"
+                  }
+                },
+                "required": [
+                  "schema",
+                  "categories"
+                ],
+                "type": "object"
+              },
+              "name": "route_evaluate"
+            },
+            {
+              "annotations": {
+                "idempotentHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Read only the launch-bound run.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {},
+                "type": "object"
+              },
+              "name": "run_read"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 3,
+        "method": "tools/call",
+        "params": {
+          "name": "context_read",
+          "arguments": {
+            "card": "SDP/KanBan/active/#056--Change--SDP-consolidation-and-PG-MCP-readiness.md",
+            "plan": "SDP/Maintenance/WorkstationReadiness/ExecutionPlan.md",
+            "session": "SDP/Sessions/session-#0013--SDP_consolidation_and_Ponsse_readiness.md",
+            "authority": "SDP/Maintenance/WorkstationReadiness/ExecutionPlan.md",
+            "step": "S5"
+          }
+        }
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 3,
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"schema\":\"sdp-project-governance/0.1\",\"operation\":\"context\",\"projectRef\":\"sdp\",\"root\":\"/home/warloc/git/SDP\",\"checkoutId\":\"\",\"revision\":\"3242186e4571364da23abda7c0d81ccaaa72e4a1385cf8832256e9d67128a312\",\"selection\":{\"card\":\"SDP/KanBan/active/#056--Change--SDP-consolidation-and-PG-MCP-readiness.md\",\"plan\":\"SDP/Maintenance/WorkstationReadiness/ExecutionPlan.md\",\"session\":\"SDP/Sessions/session-#0013--SDP_consolidation_and_Ponsse_readiness.md\",\"authority\":\"SDP/Maintenance/WorkstationReadiness/ExecutionPlan.md\",\"step\":\"S5\"},\"sources\":[{\"path\":\"AGENTS.md\",\"sha256\":\"fb0fdbd1fb1ad894b7e9a5d5a66e33fe3fb2ffb7a2c2ac5be8b763adc244427f\"},{\"path\":\"SDP/KanBan/active/#056--Change--SDP-consolidation-and-PG-MCP-readiness.md\",\"sha256\":\"d6d9a755ec9e40194b14e668084da1fc6e4a17bfb98ccadee21ddb6fae8b1a8d\"},{\"path\":\"SDP/Maintenance/WorkstationReadiness/ExecutionPlan.md\",\"sha256\":\"0d0fa97f9f0a86db195b780c62ce44c1e5d506293f83adc2e98dccda610354a9\"},{\"path\":\"SDP/ProjectManagement/Ledger.ndjson\",\"sha256\":\"45dfe90f21f502b69004cfe1342e46f1430a140eeb13ee1a58d7e16d397db847\"},{\"path\":\"SDP/SDP-project.manifest.yaml\",\"sha256\":\"absent\"},{\"path\":\"SDP/Sessions/session-#0013--SDP_consolidation_and_Ponsse_readiness.md\",\"sha256\":\"76e125dedbe19306fdc50603d4afd1916ba3f477e88baa227d2e77734f6b2f02\"}],\"coverage\":\"known\",\"conditions\":[],\"cardId\":\"KB-SDP-056\",\"planId\":\"MAINT-SDP-0018\",\"sessionId\":\"SESSION-SDP-0013\"}"
+            }
+          ],
+          "structuredContent": {
+            "schema": "sdp-project-governance/0.1",
+            "operation": "context",
+            "projectRef": "sdp",
+            "root": "/home/warloc/git/SDP",
+            "checkoutId": "",
+            "revision": "3242186e4571364da23abda7c0d81ccaaa72e4a1385cf8832256e9d67128a312",
+            "selection": {
+              "card": "SDP/KanBan/active/#056--Change--SDP-consolidation-and-PG-MCP-readiness.md",
+              "plan": "SDP/Maintenance/WorkstationReadiness/ExecutionPlan.md",
+              "session": "SDP/Sessions/session-#0013--SDP_consolidation_and_Ponsse_readiness.md",
+              "authority": "SDP/Maintenance/WorkstationReadiness/ExecutionPlan.md",
+              "step": "S5"
+            },
+            "sources": [
+              {
+                "path": "AGENTS.md",
+                "sha256": "fb0fdbd1fb1ad894b7e9a5d5a66e33fe3fb2ffb7a2c2ac5be8b763adc244427f"
+              },
+              {
+                "path": "SDP/KanBan/active/#056--Change--SDP-consolidation-and-PG-MCP-readiness.md",
+                "sha256": "d6d9a755ec9e40194b14e668084da1fc6e4a17bfb98ccadee21ddb6fae8b1a8d"
+              },
+              {
+                "path": "SDP/Maintenance/WorkstationReadiness/ExecutionPlan.md",
+                "sha256": "0d0fa97f9f0a86db195b780c62ce44c1e5d506293f83adc2e98dccda610354a9"
+              },
+              {
+                "path": "SDP/ProjectManagement/Ledger.ndjson",
+                "sha256": "45dfe90f21f502b69004cfe1342e46f1430a140eeb13ee1a58d7e16d397db847"
+              },
+              {
+                "path": "SDP/SDP-project.manifest.yaml",
+                "sha256": "absent"
+              },
+              {
+                "path": "SDP/Sessions/session-#0013--SDP_consolidation_and_Ponsse_readiness.md",
+                "sha256": "76e125dedbe19306fdc50603d4afd1916ba3f477e88baa227d2e77734f6b2f02"
+              }
+            ],
+            "coverage": "known",
+            "conditions": [],
+            "cardId": "KB-SDP-056",
+            "planId": "MAINT-SDP-0018",
+            "sessionId": "SESSION-SDP-0013"
+          }
+        }
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 4,
+        "method": "tools/call",
+        "params": {
+          "name": "route_evaluate",
+          "arguments": {
+            "schema": "sdp-project-governance/0.1",
+            "categories": [
+              "status"
+            ]
+          }
+        }
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 4,
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"schema\":\"sdp-project-governance/0.1\",\"operation\":\"route\",\"disposition\":\"no-work\",\"basis\":\"caller-proposed category; no automatic language classification\",\"context\":{\"schema\":\"sdp-project-governance/0.1\",\"operation\":\"context\",\"projectRef\":\"sdp\",\"root\":\"/home/warloc/git/SDP\",\"checkoutId\":\"\",\"revision\":\"704940d349627e847eeb73dad9c9bc774bc79d14d5c95bf4666019ab034ac620\",\"selection\":{\"card\":\"\",\"plan\":\"\",\"session\":\"\",\"authority\":\"\",\"step\":\"\"},\"sources\":[{\"path\":\"AGENTS.md\",\"sha256\":\"fb0fdbd1fb1ad894b7e9a5d5a66e33fe3fb2ffb7a2c2ac5be8b763adc244427f\"},{\"path\":\"SDP/ProjectManagement/Ledger.ndjson\",\"sha256\":\"45dfe90f21f502b69004cfe1342e46f1430a140eeb13ee1a58d7e16d397db847\"},{\"path\":\"SDP/SDP-project.manifest.yaml\",\"sha256\":\"absent\"}],\"coverage\":\"known\",\"conditions\":[\"work reference missing\",\"work reference missing\",\"work reference missing\",\"authority reference missing\",\"card identity missing\",\"required plan identity prefix: MAINT-\",\"Session identity missing\",\"card must be ready or in-progress\",\"card must be in active board directory\",\"active MaintenancePlan required\",\"active Session required\",\"Session step is missing\"],\"cardId\":\"\",\"planId\":\"\",\"sessionId\":\"\"},\"routine\":{\"id\":\"maintenance\",\"version\":\"0.1\",\"steps\":[\"implement\",\"verify\",\"review\",\"record\"],\"completion\":\"candidate evidence, applicable independent review and checked publication required\"},\"routineDigest\":\"af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa\"}"
+            }
+          ],
+          "structuredContent": {
+            "schema": "sdp-project-governance/0.1",
+            "operation": "route",
+            "disposition": "no-work",
+            "basis": "caller-proposed category; no automatic language classification",
+            "context": {
+              "schema": "sdp-project-governance/0.1",
+              "operation": "context",
+              "projectRef": "sdp",
+              "root": "/home/warloc/git/SDP",
+              "checkoutId": "",
+              "revision": "704940d349627e847eeb73dad9c9bc774bc79d14d5c95bf4666019ab034ac620",
+              "selection": {
+                "card": "",
+                "plan": "",
+                "session": "",
+                "authority": "",
+                "step": ""
+              },
+              "sources": [
+                {
+                  "path": "AGENTS.md",
+                  "sha256": "fb0fdbd1fb1ad894b7e9a5d5a66e33fe3fb2ffb7a2c2ac5be8b763adc244427f"
+                },
+                {
+                  "path": "SDP/ProjectManagement/Ledger.ndjson",
+                  "sha256": "45dfe90f21f502b69004cfe1342e46f1430a140eeb13ee1a58d7e16d397db847"
+                },
+                {
+                  "path": "SDP/SDP-project.manifest.yaml",
+                  "sha256": "absent"
+                }
+              ],
+              "coverage": "known",
+              "conditions": [
+                "work reference missing",
+                "work reference missing",
+                "work reference missing",
+                "authority reference missing",
+                "card identity missing",
+                "required plan identity prefix: MAINT-",
+                "Session identity missing",
+                "card must be ready or in-progress",
+                "card must be in active board directory",
+                "active MaintenancePlan required",
+                "active Session required",
+                "Session step is missing"
+              ],
+              "cardId": "",
+              "planId": "",
+              "sessionId": ""
+            },
+            "routine": {
+              "id": "maintenance",
+              "version": "0.1",
+              "steps": [
+                "implement",
+                "verify",
+                "review",
+                "record"
+              ],
+              "completion": "candidate evidence, applicable independent review and checked publication required"
+            },
+            "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa"
+          }
+        }
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 5,
+        "method": "tools/call",
+        "params": {
+          "name": "run_read",
+          "arguments": {}
+        }
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 5,
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"error\":{\"code\":\"unauthorized\",\"message\":\"request is outside launch-bound assignment\",\"retryable\":false},\"schema\":\"sdp-project-governance/0.1\"}"
+            }
+          ],
+          "structuredContent": {
+            "error": {
+              "code": "unauthorized",
+              "message": "request is outside launch-bound assignment",
+              "retryable": false
+            },
+            "schema": "sdp-project-governance/0.1"
+          },
+          "isError": true
+        }
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 6,
+        "method": "tools/call",
+        "params": {
+          "name": "run_transition",
+          "arguments": {}
+        }
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": 6,
+        "error": {
+          "code": -32602,
+          "message": "unknown tool \"run_transition\""
+        }
+      }
+    }
+  ],
+  "contextConditions": []
+}

@@ -1,0 +1,11 @@
+# Measured development candidate for Session0013 / WR2.
+# Review and copy through the intended host configuration mechanism when selected.
+# Does not grant run creation, worker dispatch, acceptance or canonical publication.
+[mcp_servers.sdp_pg_inspect]
+command = "/home/warloc/.cache/sdp-workstation/session0013-WR2/bin/sdp-mcp"
+args = ["--project", "/home/warloc/git/SDP", "--state", "/home/warloc/.local/state/sdptool/session0013-inspection"]
+cwd = "/home/warloc/git/SDP"
+enabled_tools = ["context_read", "route_evaluate"]
+startup_timeout_sec = 20
+tool_timeout_sec = 45
+required = true

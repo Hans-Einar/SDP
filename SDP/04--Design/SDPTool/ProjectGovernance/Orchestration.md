@@ -46,8 +46,9 @@ Use logical assignment identity independent of run/attempt/thread. Explicit
 controller-issued capabilities distinguish Project Leader operations from worker
 reports. A payload role string grants nothing. Future dispatch uses expected
 assignment/bundle revisions and stable operation identity; uncertain sends must be
-reconciled against the original attempt before any new launch. Existing worker MCP
-keeps its five restricted operations until a separately tested change is selected.
+reconciled against the original attempt before any new launch. The current worker MCP retains its restricted authority. PGL3-C3 added attention
+read/request to the original five operations; a fully bound worker now has seven
+tools. It still cannot launch, resume, decide acceptance or publish canonical work.
 
 The controller owns durable inbox delivery and per-thread turn serialization.
 Project Leader uses short turns over that state; it is not the event loop. Prioritize
@@ -67,8 +68,13 @@ selected combined baseline before dependent code changes.
 
 Shared cross-worktree claims/IDs need one selected authority, not branch-local
 registries advertised as global exclusion. Until that capability is implemented,
-use the existing manual preflight and explicit coordinator sequencing. The current
-known ID collisions remain integration work; preserving both histories is required.
+use the existing manual preflight and explicit coordinator sequencing. The original branch-local identity collisions were reconciled through the
+Session0011 history import, which preserves exact source histories. That does not
+implement global cross-worktree identity allocation. Current candidates must still
+pass management replay and the concurrent-work preflight.
+
+See the [current state responsibility map](State-Boundaries.md) for provider,
+assignment, run and acceptance boundaries after integration.
 
 ## PGL1: observable work before orchestration
 

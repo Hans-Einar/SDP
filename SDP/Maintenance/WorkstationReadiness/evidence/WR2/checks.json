@@ -1,0 +1,157 @@
+{
+  "candidate": "4174c68f093abfe82dd1a85a787b742e8ec27d9f",
+  "startedSource": "4174c68",
+  "observedAt": "2026-10-23T21:55:26.351173+00:00",
+  "go": "go version go1.27.1 linux/amd64",
+  "checks": [
+    {
+      "label": "build-current",
+      "command": [
+        "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+        "-C",
+        "SDPTool",
+        "build",
+        "-trimpath",
+        "-ldflags",
+        "-X github.com/Hans-Einar/SDP/SDPTool.BuildVersion=development-WR2 -X github.com/Hans-Einar/SDP/SDPTool.BuildRevision=4174c68",
+        "-o",
+        "/home/warloc/.cache/sdp-workstation/session0013-WR2/bin",
+        "./cmd/sdptool",
+        "./cmd/sdp-controller",
+        "./cmd/sdp-mcp"
+      ],
+      "exitCode": 0,
+      "seconds": 11.234,
+      "log": "/home/warloc/.cache/sdp-workstation/session0013-WR2/build-current.log",
+      "logSHA256": "b3d53e69cb28cf2f59c197e482a546f09092ac251f9ccbe753f0cf7e6d5fae1d",
+      "summary": "go: downloading github.com/modelcontextprotocol/go-sdk v1.8.0\ngo: downloading github.com/coder/websocket v1.8.15\ngo: downloading gopkg.in/yaml.v3 v3.0.1\ngo: downloading golang.org/x/text v0.42.0\ngo: downloading github.com/yosida95/uritemplate/v3 v3.0.2\ngo: downloading golang.org/x/oauth2 v0.35.0\ngo: downloading golang.org/x/sync v0.23.0\ngo: downloading github.com/google/jsonschema-go v0.4.3\ngo: downloading golang.org/x/time v0.15.0\ngo: downloading github.com/segmentio/encoding v0.5.4\ngo: downloading github.com/segmentio/asm v1.1.3\ngo: downloading golang.org/x/sys v0.48.0\n"
+    },
+    {
+      "label": "sdptool-race",
+      "command": [
+        "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+        "-C",
+        "SDPTool",
+        "test",
+        "-race",
+        "-count=1",
+        "./..."
+      ],
+      "exitCode": 0,
+      "seconds": 287.914,
+      "log": "/home/warloc/.cache/sdp-workstation/session0013-WR2/sdptool-race.log",
+      "logSHA256": "bc3796418307005e7872f852751e240a90b82128799394620d9f83e22e00668a",
+      "summary": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool\t256.167s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprints\t87.503s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprintstate\t4.267s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t1.065s\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp\t[no test files]\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdptool\t1.058s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t86.370s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t83.392s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancehost\t1.196s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t21.068s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/install\t73.716s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/model\t37.849s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/presentation\t1.047s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/projecthistory\t2.165s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/tools/profile\t51.707s\n"
+    },
+    {
+      "label": "sdl-race",
+      "command": [
+        "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+        "-C",
+        "SDL/go",
+        "test",
+        "-race",
+        "-count=1",
+        "./..."
+      ],
+      "exitCode": 0,
+      "seconds": 400.251,
+      "log": "/home/warloc/.cache/sdp-workstation/session0013-WR2/sdl-race.log",
+      "logSHA256": "98d8032f401d4d91884d4fbd5cae04aa3d1c8b9306450526d66fe8c0a6d28150",
+      "summary": "go: downloading fyne.io/fyne/v2 v2.8.1\ngo: downloading github.com/yuin/goldmark v1.8.2\ngo: downloading golang.org/x/image v0.46.0\ngo: downloading github.com/fyne-io/oksvg v0.2.0\ngo: downloading github.com/srwiley/rasterx v0.0.0-20220730225603-2ab79fcdd4ef\ngo: downloading golang.org/x/net v0.35.0\ngo: downloading github.com/stretchr/testify v1.11.1\ngo: downloading github.com/go-text/typesetting v0.3.4\ngo: downloading github.com/go-text/render v0.2.1\ngo: downloading github.com/jeandeaual/go-locale v0.0.0-20250612000132-0ef82f21eade\ngo: downloading github.com/anthonynsimon/bild v0.14.0\ngo: downloading github.com/nicksnyder/go-i18n/v2 v2.5.1\ngo: downloading github.com/FyshOS/fancyfs v0.0.1\ngo: downloading github.com/mattn/go-runewidth v0.0.24\ngo: downloading github.com/davecgh/go-spew v1.1.1\ngo: downloading github.com/pmezard/go-difflib v1.0.0\ngo: downloading github.com/srwiley/oksvg v0.0.0-20221011165216-be6e8873101c\nok  \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/blueprint\t4.119s\nok  \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/bridge\t5.595s\nok  \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/broker\t1.366s\nok  \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/cmd/sdl\t1.296s\n?   \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/cmd/sdl-compiled\t[no test files]\n?   \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/cmd/sdl-dev\t[no test files]\n?   \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/cmd/sdl-document\t[no test files]\n?   \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/cmd/sdl-gen\t[no test files]\n?   \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/cmd/sdl-simulate\t[no test files]\n?   \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/cmd/sdl-view-request\t[no test files]\n?   \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/cmd/sdl-viewsd\t[no test files]\nok  \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/codegen\t7.277s\nok  \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/devhost\t2.222s\nok  \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/documents\t22.717s\nok  \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/application\t1.109s\nok  \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/collections\t30.026s\nok  \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/commands\t36.145s\n?   \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/generatedmodel\t[no test files]\nok  \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/panes\t55.392s\nok  \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/previews\t167.072s\n?   \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/simulation\t[no test files]\nok  \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/text\t359.793s\nok  \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/values\t108.238s\nok  \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/parser\t9.338s\nok  \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/reader\t1.048s\nok  \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/reload\t1.076s\nok  \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/runtime\t1.104s\nok  \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/snapshot\t5.438s\nok  \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/sourcegraph\t27.669s\n?   \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/sourceinput\t[no test files]\nok  \tgithub.com/Hans-Einar/SDP/SystemDesignLanguage/go/viewpoint\t31.476s\n"
+    },
+    {
+      "label": "sdui-race",
+      "command": [
+        "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+        "-C",
+        "SDUI/go",
+        "test",
+        "-race",
+        "-count=1",
+        "./..."
+      ],
+      "exitCode": 0,
+      "seconds": 210.435,
+      "log": "/home/warloc/.cache/sdp-workstation/session0013-WR2/sdui-race.log",
+      "logSHA256": "d7b5edf6e91f9b7839a4d908cb18fb0b0034647ffcfd97d33b6c4001e8f43bcc",
+      "summary": "go: downloading golang.org/x/image v0.46.0\ngo: downloading fyne.io/fyne/v2 v2.8.1\ngo: downloading github.com/yuin/goldmark v1.8.2\ngo: downloading github.com/fyne-io/oksvg v0.2.0\ngo: downloading github.com/srwiley/rasterx v0.0.0-20220730225603-2ab79fcdd4ef\ngo: downloading golang.org/x/net v0.35.0\ngo: downloading github.com/FyshOS/fancyfs v0.0.1\ngo: downloading github.com/anthonynsimon/bild v0.14.0\ngo: downloading github.com/stretchr/testify v1.11.1\ngo: downloading github.com/go-text/render v0.2.1\ngo: downloading github.com/jeandeaual/go-locale v0.0.0-20250612000132-0ef82f21eade\ngo: downloading github.com/go-text/typesetting v0.3.4\ngo: downloading github.com/nicksnyder/go-i18n/v2 v2.5.1\ngo: downloading github.com/mattn/go-runewidth v0.0.24\ngo: downloading github.com/davecgh/go-spew v1.1.1\ngo: downloading github.com/pmezard/go-difflib v1.0.0\ngo: downloading github.com/clipperhouse/uax29/v2 v2.2.0\ngo: downloading github.com/srwiley/oksvg v0.0.0-20221011165216-be6e8873101c\nok  \tgithub.com/Hans-Einar/SDP/SDUI/go/cmd/sdui\t1.196s\nok  \tgithub.com/Hans-Einar/SDP/SDUI/go/cmd/sdui-preview\t1.148s\nok  \tgithub.com/Hans-Einar/SDP/SDUI/go/codegen\t13.632s\nok  \tgithub.com/Hans-Einar/SDP/SDUI/go/host/fynehost\t168.912s\n?   \tgithub.com/Hans-Einar/SDP/SDUI/go/host/fynehost/admission\t[no test files]\nok  \tgithub.com/Hans-Einar/SDP/SDUI/go/layout\t2.542s\nok  \tgithub.com/Hans-Einar/SDP/SDUI/go/markdown\t69.754s\nok  \tgithub.com/Hans-Einar/SDP/SDUI/go/numeric\t1.084s\nok  \tgithub.com/Hans-Einar/SDP/SDUI/go/parser\t5.089s\nok  \tgithub.com/Hans-Einar/SDP/SDUI/go/preparation\t1.210s\nok  \tgithub.com/Hans-Einar/SDP/SDUI/go/presentation\t1.254s\nok  \tgithub.com/Hans-Einar/SDP/SDUI/go/prototype\t1.125s\nok  \tgithub.com/Hans-Einar/SDP/SDUI/go/reload\t1.084s\nok  \tgithub.com/Hans-Einar/SDP/SDUI/go/runtime\t4.420s\n?   \tgithub.com/Hans-Einar/SDP/SDUI/go/sourcewatch\t[no test files]\nok  \tgithub.com/Hans-Einar/SDP/SDUI/go/svg\t1.197s\n"
+    },
+    {
+      "label": "bootstrap-race",
+      "command": [
+        "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+        "-C",
+        "SDPTool/bootstrap",
+        "test",
+        "-race",
+        "-count=1",
+        "./..."
+      ],
+      "exitCode": 0,
+      "seconds": 1.714,
+      "log": "/home/warloc/.cache/sdp-workstation/session0013-WR2/bootstrap-race.log",
+      "logSHA256": "fbe205c3113d1583644be5a24fa69a1d66342d67ad53ee283a9e457b0f546bbb",
+      "summary": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/bootstrap\t1.189s\n"
+    },
+    {
+      "label": "vet-sdptool",
+      "command": [
+        "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+        "-C",
+        "SDPTool",
+        "vet",
+        "./..."
+      ],
+      "exitCode": 0,
+      "seconds": 1.722,
+      "log": "/home/warloc/.cache/sdp-workstation/session0013-WR2/vet-sdptool.log",
+      "logSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "summary": ""
+    },
+    {
+      "label": "vet-sdl",
+      "command": [
+        "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+        "-C",
+        "SDL/go",
+        "vet",
+        "./..."
+      ],
+      "exitCode": 0,
+      "seconds": 5.806,
+      "log": "/home/warloc/.cache/sdp-workstation/session0013-WR2/vet-sdl.log",
+      "logSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "summary": ""
+    },
+    {
+      "label": "vet-sdui",
+      "command": [
+        "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+        "-C",
+        "SDUI/go",
+        "vet",
+        "./..."
+      ],
+      "exitCode": 0,
+      "seconds": 0.598,
+      "log": "/home/warloc/.cache/sdp-workstation/session0013-WR2/vet-sdui.log",
+      "logSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "summary": ""
+    }
+  ],
+  "binaries": {
+    "sdptool": {
+      "path": "/home/warloc/.cache/sdp-workstation/session0013-WR2/bin/sdptool",
+      "sha256": "4debf2ed171a0b50fbc67aa93b88d2f70a8559b4efaa2e09bb3063acf80b4dc3"
+    },
+    "sdp-controller": {
+      "path": "/home/warloc/.cache/sdp-workstation/session0013-WR2/bin/sdp-controller",
+      "sha256": "be864fafea3f0ff560ec868704acbce699b99bb3eefbe75aec4cf08166d0bc17"
+    },
+    "sdp-mcp": {
+      "path": "/home/warloc/.cache/sdp-workstation/session0013-WR2/bin/sdp-mcp",
+      "sha256": "6f476c7dec7c530499c948c1c7ecfbf8f58b741a1574bb107cd34679eda16563"
+    }
+  }
+}

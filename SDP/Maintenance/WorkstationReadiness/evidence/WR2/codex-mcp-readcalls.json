@@ -1,0 +1,31 @@
+{
+  "probe": "independent read-only Codex MCP discovery, not the pinned PG controller",
+  "hostVersion": "0.164.0",
+  "modelTaskSubmitted": false,
+  "persistentConfigChanged": false,
+  "accountRead": false,
+  "userAgent": "wr2_discovery/0.164.0 (AlmaLinux 10.2.0; x86_64) kitty (wr2_discovery; 1)",
+  "threadID": "01a16abf-fbe1-7c03-9334-2dc4fcb37db4",
+  "threadStatus": {
+    "type": "idle"
+  },
+  "tools": [
+    "context_read",
+    "route_evaluate",
+    "run_read"
+  ],
+  "contextConditions": [],
+  "contextRevision": "3242186e4571364da23abda7c0d81ccaaa72e4a1385cf8832256e9d67128a312",
+  "routeDisposition": "no-work",
+  "unboundRunRefused": true,
+  "status": "passed",
+  "stateCreated": false,
+  "methods": [
+    "initialize",
+    "thread/start",
+    "mcpServerStatus/list",
+    "mcpServer/tool/call",
+    "mcpServer/tool/call",
+    "mcpServer/tool/call"
+  ]
+}

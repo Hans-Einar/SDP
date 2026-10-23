@@ -1,0 +1,16 @@
+{
+  "observedAt": "2026-10-23T21:52:55.242938+00:00",
+  "head": "4174c68f093abfe82dd1a85a787b742e8ec27d9f",
+  "statusBefore": "",
+  "worktrees": "worktree /home/warloc/git/SDP\nHEAD 4174c68f093abfe82dd1a85a787b742e8ec27d9f\nbranch refs/heads/sdp/workstation-completion-assessment\n\n",
+  "writePaths": [
+    "SDPTool/Actions.md",
+    "SDPTool/governancemcp/README.md",
+    "SDPTool/governance/README.md",
+    "SDP/04--Design/SDPTool/ProjectGovernance/Orchestration.md",
+    "SDP/04--Design/SDPTool/ProjectGovernance/State-Boundaries.md"
+  ],
+  "verdict": "green for scoped current documentation corrections; product Go sources unchanged",
+  "ownership": "Owner Session0013 T002 selects consolidation. PG/XFMD records retain feature authority. No observed competing dirty files.",
+  "reason": "MCP README omits two implemented attention tools; Actions omits implemented model-tree action; Orchestration preserves old five-tool statement as current. Add responsibility map from current providers, without changing state ownership."
+}

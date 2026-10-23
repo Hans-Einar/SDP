@@ -10,6 +10,12 @@ and bounded observed attempt recovery. The [owner controller candidate](../gover
 input and bounded submission; live PGI3 verification remains open. Automatic Session
 journaling and the delivery gate remain later increments.
 
+Current integrated-state responsibilities and the distinction between legacy
+Maintenance routing, prepared design packages and execution runs are summarized
+in the [state responsibility map](../../SDP/04--Design/SDPTool/ProjectGovernance/State-Boundaries.md).
+For the measured workstation and MCP adoption limits, see the
+[adoption study](../../SDP/Maintenance/WorkstationReadiness/MCP-Adoption-Study.md).
+
 ## Inspect and select work
 
 ```sh

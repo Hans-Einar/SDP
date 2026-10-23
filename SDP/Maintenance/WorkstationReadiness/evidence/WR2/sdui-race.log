@@ -1,0 +1,34 @@
+go: downloading golang.org/x/image v0.46.0
+go: downloading fyne.io/fyne/v2 v2.8.1
+go: downloading github.com/yuin/goldmark v1.8.2
+go: downloading github.com/fyne-io/oksvg v0.2.0
+go: downloading github.com/srwiley/rasterx v0.0.0-20220730225603-2ab79fcdd4ef
+go: downloading golang.org/x/net v0.35.0
+go: downloading github.com/FyshOS/fancyfs v0.0.1
+go: downloading github.com/anthonynsimon/bild v0.14.0
+go: downloading github.com/stretchr/testify v1.11.1
+go: downloading github.com/go-text/render v0.2.1
+go: downloading github.com/jeandeaual/go-locale v0.0.0-20250612000132-0ef82f21eade
+go: downloading github.com/go-text/typesetting v0.3.4
+go: downloading github.com/nicksnyder/go-i18n/v2 v2.5.1
+go: downloading github.com/mattn/go-runewidth v0.0.24
+go: downloading github.com/davecgh/go-spew v1.1.1
+go: downloading github.com/pmezard/go-difflib v1.0.0
+go: downloading github.com/clipperhouse/uax29/v2 v2.2.0
+go: downloading github.com/srwiley/oksvg v0.0.0-20221011165216-be6e8873101c
+ok  	github.com/Hans-Einar/SDP/SDUI/go/cmd/sdui	1.196s
+ok  	github.com/Hans-Einar/SDP/SDUI/go/cmd/sdui-preview	1.148s
+ok  	github.com/Hans-Einar/SDP/SDUI/go/codegen	13.632s
+ok  	github.com/Hans-Einar/SDP/SDUI/go/host/fynehost	168.912s
+?   	github.com/Hans-Einar/SDP/SDUI/go/host/fynehost/admission	[no test files]
+ok  	github.com/Hans-Einar/SDP/SDUI/go/layout	2.542s
+ok  	github.com/Hans-Einar/SDP/SDUI/go/markdown	69.754s
+ok  	github.com/Hans-Einar/SDP/SDUI/go/numeric	1.084s
+ok  	github.com/Hans-Einar/SDP/SDUI/go/parser	5.089s
+ok  	github.com/Hans-Einar/SDP/SDUI/go/preparation	1.210s
+ok  	github.com/Hans-Einar/SDP/SDUI/go/presentation	1.254s
+ok  	github.com/Hans-Einar/SDP/SDUI/go/prototype	1.125s
+ok  	github.com/Hans-Einar/SDP/SDUI/go/reload	1.084s
+ok  	github.com/Hans-Einar/SDP/SDUI/go/runtime	4.420s
+?   	github.com/Hans-Einar/SDP/SDUI/go/sourcewatch	[no test files]
+ok  	github.com/Hans-Einar/SDP/SDUI/go/svg	1.197s

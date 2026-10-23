@@ -1,5 +1,14 @@
 # SDP status and consolidation study — 23 October 2026
 
+Current follow-up — Session0013 T002: the authorized WR2 round now has a private
+Go 1.27.1 build and passing integrated Go/race/vet checks. Local read-only MCP use
+is demonstrated through Codex 0.164.0; the execution controller remains pinned to
+0.161.0 and refuses that host. See [execution evidence](Execution-Evidence.md) and
+[the MCP adoption study](MCP-Adoption-Study.md). Original findings below retain
+their initial observation boundary; F01/F02 now have a working isolated development
+candidate rather than a stable installation/release. MVP1 is deferred and its
+existing Ponsse pilot model is preserved.
+
 ## Conclusion and evidence boundary
 
 The available evidence supports consolidation around one accountable completion

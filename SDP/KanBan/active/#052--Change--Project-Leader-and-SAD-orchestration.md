@@ -172,3 +172,16 @@ KB381 record the milestone. CardState remains in-progress. Next: report consumpt
 responsive coordination, native parallel evidence and capacity/recovery; SAD/PGL4/5
 and retained PGI gates remain. Backlog/onHold review retains KB036/037/042/043 and the
 KB054 separate-project boundary without activating additional work.
+
+## Session0013 consolidation/MCP handoff — 2026-10-23T21:58:09.203458+00:00
+
+WR2 verifies the consolidated source with passing Go race/vet checks and actual
+read-only Codex 0.164.0 MCP calls. Current sdp-controller refuses that host because
+it requires 0.161.0. Worker MCP still has restricted seven-tool scope; no leader
+control API or report-consumption loop is inferred.
+[MCP adoption study](../../Maintenance/WorkstationReadiness/MCP-Adoption-Study.md)
+recommends a measured current-host compatibility increment, then trusted leader/
+report and evidence/publication gates. This is a readiness handoff, not new PG
+implementation, phase selection, native/independent-review acceptance or closure.
+CardState remains in-progress; existing PLAN-SDP-0018 authority is preserved.
+EVT-KB-SDP-000387. MVP1 is deferred; the existing Ponsse pilot model is preserved.

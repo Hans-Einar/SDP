@@ -19,14 +19,17 @@ The SDK owns negotiation/framing; the shared governance core owns decisions.
 | run_read | Empty object | Read the launcher-selected run; cannot select another run |
 | events_read | cursor, limit (1–256) | Read a page for the launch-bound attempt; cursor pins run revision |
 | run_transition | Core TransitionRequest | Only report, fail and scope-change for the assigned run/attempt |
+| attention_read | Optional questionId | Read questions, attributed replies and applicability for the assigned run |
+| attention_request | Core AttentionRequest | Ask a durable question; blocking questions prevent advancement |
 
 Without `--run`, only the first three tools are registered; run_read refuses.
 With `--run UUID`, context/route selection must match that run and run_read works.
-Mutating access and events_read additionally require the trusted controller's
+The four remaining tools, including read-only attention/events, additionally require the trusted controller's
 `--attempt UUID --epoch UUID` launch binding. Each mutation verifies the latest
 persisted attempt and epoch. A disconnected or superseded binding refuses, even
 if its payload names the right run. Argument text cannot grant controller rights.
-Native child/reviewer attribution and actual launches remain PGI3/PGI5 work.
+The fully bound worker exposes seven tools. Native child/reviewer attribution
+remains unverified; the separate controller owns bounded launches.
 
 No tools expose checkout binding, run creation, resume, completion, owner decisions,
 host-observation writes, shell execution or arbitrary project publication. A local
@@ -52,3 +55,17 @@ approval. Brief checkout-lock contention retries the unchanged tool request and
 operation ID (at most 100 attempts, 20 ms delays), respecting MCP cancellation.
 Stale revisions, changed arguments and semantic refusals are not automatically
 retried. Host approval never grants controller-only actions.
+
+## Current adoption boundary
+
+A static project-bound MCP connection supports inspection; it cannot create or
+launch work. A fully bound worker connection is issued by the trusted controller
+for a specific run, attempt and epoch. Do not copy those dynamic bindings into a
+permanent Project Leader configuration or add controller operations to this worker
+surface. Owner/controller decisions and worker reports have different authority.
+
+The [state responsibility map](../../SDP/04--Design/SDPTool/ProjectGovernance/State-Boundaries.md)
+explains those distinctions. The current
+[MCP adoption study](../../SDP/Maintenance/WorkstationReadiness/MCP-Adoption-Study.md)
+records actual workstation capability, configuration and host compatibility limits.
+The documentation correction adds no tools or runtime behavior.
