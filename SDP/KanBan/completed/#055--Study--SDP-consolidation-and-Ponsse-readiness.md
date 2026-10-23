@@ -5,7 +5,7 @@
 | id | KB-SDP-055 |
 | project | SDP |
 | type | Study |
-| CardState | gate-review |
+| CardState | completed |
 | created | 2026-10-23T20:24:49.528062+00:00 |
 | source | Owner request 2026-10-23; SESSION-SDP-0013 T001 |
 | Systems | SDPTOOL, SDL, SDUI, ProjectGovernance |
@@ -46,3 +46,11 @@ it must not remain active solely to track later implementation.
 | Time | Actor / event | Work and outcome | Remaining work |
 | --- | --- | --- | --- |
 | 2026-10-23T20:24:49.528062+00:00 | Codex; EVT-KB-SDP-000383 | Registered owner-authorized study and delivered baseline checks, recommendations and Session roadmap; gate-review for concrete artifacts. | Owner disposition and bounded execution selection; no product acceptance inferred. |
+
+## Owner disposition — Session0013 T002
+
+Study/roadmap accepted as the execution basis with C4 replaced by MCP adoption
+study. MVP1 pilot deferred; existing Ponsse pilot model acknowledged. Bounded Study
+complete; [KB056](../active/%23056--Change--SDP-consolidation-and-PG-MCP-readiness.md)
+and [WR2](../../Maintenance/WorkstationReadiness/ExecutionPlan.md) own the successor.
+No broader product acceptance or pause removal is inferred.

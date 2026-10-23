@@ -148,3 +148,10 @@ work, protected model/source behavior, reproducible blueprint context, explicit
 assignment/evidence/review disposition and one successful real MVP1 workflow.
 Backlog emptiness, universal diagram coverage, a remote hub and fully automatic
 Session capture are not proposed acceptance criteria.
+
+## Owner revision — Session0013 T002
+
+The owner authorizes executing C1–C5 with C4 replaced by a study of starting
+ProjectGovernance use through MCP. The MVP1 pilot is deferred; a pilot model already
+exists in Ponsse. Earlier proposed pilot/new-model dependencies above are superseded
+for this Session. [WR2](ExecutionPlan.md) owns execution and the revised result.

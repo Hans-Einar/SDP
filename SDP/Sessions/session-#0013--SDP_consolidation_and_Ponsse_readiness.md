@@ -2,8 +2,8 @@
 
 ## Session roadmap
 
-Latest turn T001, 23 October 2026. Status study and proposed route delivered;
-next is owner disposition of the readiness target. Sequence only; synthetic dates
+Latest turn T002, 23 October 2026. Owner authorizes execution with C4 replaced
+by a ProjectGovernance MCP adoption study; MVP1 pilot deferred. Sequence only; synthetic dates
 are display slots, not estimates or promised durations.
 
 ```mermaid
@@ -14,12 +14,12 @@ gantt
     DONE S1 Recover integrated status :done,s1,2000-01-01,1d
     DONE S2 Study and change recommendations :done,s2,after s1,1d
     DONE S3 Prepare bounded execution roadmap :done,s3,after s2,1d
-    NEXT S4 Owner disposition and selection :s4,after s3,1d
-    section Proposed execution
-    PLANNED S5 Candidate and environment C1 :s5,after s4,1d
+    DONE S4 Owner disposition and selection :done,s4,after s3,1d
+    section Authorized execution
+    ACTIVE S5 Candidate and environment C1 :active,s5,after s4,1d
     PLANNED S6 Authority and handoffs C2 :s6,after s5,1d
     PLANNED S7 Integrated workflow C3 :s7,after s6,1d
-    PLANNED S8 Ponsse MVP1 pilot C4 :s8,after s7,1d
+    PLANNED S8 PG MCP adoption study C4 :s8,after s7,1d
     PLANNED S9 Readiness closeout C5 :s9,after s8,1d
 ```
 
@@ -28,22 +28,22 @@ gantt
 | completed | S1 | Recover integrated source, records and owner correction; WR1-M1 | Owner study request; laptop handover confirmed | Snapshot, management/import checks; source and engine pins. |
 | completed | S2 | Study status, boundaries and suspected duplication; WR1-M2 | S1; analysis authorized | Study findings F01–F08; no semantic duplicate implementation established. |
 | completed | S3 | Propose consolidation and readiness sequence; WR1-M2 | S2; planning authorized | C1–C5 and alternatives in Study; execution is proposed. |
-| next | S4 | Record owner disposition; WR1-M3 | Concrete study available for review | Pending: readiness target, one completion owner and selected route; preserve existing pauses. |
-| planned | S5 | Reproduce candidate and selected engine; C1 | S4 selection, scoped preflight and appropriate execution plan | Pending: compatible toolchain, current engine identity, Go/race/vet and regression evidence. |
+| completed | S4 | Record owner disposition; WR1-M3 | Owner T002 authorizes execution | WR2 selected; C4 becomes MCP adoption study; MVP1 pilot deferred. |
+| on-going | S5 | Reproduce candidate and selected engine; C1 | S4 selection, scoped preflight and appropriate execution plan | Pending: compatible toolchain, current engine identity, Go/race/vet and regression evidence. |
 | planned | S6 | Consolidate authority, identity/state mapping and handoffs; C2 | S5 and bounded owning plans | Pending: current entrypoints; actual conflicts fixed or explicitly deferred. |
 | planned | S7 | Integrated workflow trial; C3 | S6 and chosen manual/PG execution boundary | Pending: real candidate flow, drift/refusal/recovery and independent review evidence. |
-| planned | S8 | Inspect actual Ponsse state and perform selected MVP1 pilot; C4 | S7, actual consuming-project access and scoped authority | Pending: real repository/profile/model facts and useful bounded MVP1 result. |
-| planned | S9 | Close readiness round and hand back to MVP1; C5 | S8 evidence and actual disposition | Pending: accepted outcome, remaining cards and any separately authorized release/upgrade. |
+| planned | S8 | Study starting ProjectGovernance use through MCP; revised C4 / WR2-M4 | Owner T002; S7 evidence | Pending: actual MCP capabilities, configuration, limits and implementation sequence; existing Ponsse pilot model preserved. |
+| planned | S9 | Close consolidation/MCP readiness round; C5 | S8 evidence | Pending: truthful result, remaining PG work and recommended next bounded increment; MVP1 remains deferred. |
 
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0013 |
 | Status | active |
-| Primary card | [KB-SDP-055](../KanBan/active/%23055--Study--SDP-consolidation-and-Ponsse-readiness.md) |
+| Primary card | [KB-SDP-056](../KanBan/active/%23056--Change--SDP-consolidation-and-PG-MCP-readiness.md); predecessor KB055 completed |
 | Snapshot date | 2026-10-23 |
-| Current step | S4; study and roadmap delivered |
-| Proposed next step | Owner disposition of the proposed readiness target and route |
-| Execution authority | Owner requests new Session, status study, proposed changes and Session plan; product execution not selected by this request |
+| Current step | S5 / WR2-M1 candidate and environment |
+| Proposed next step | Complete candidate checks, consolidate current boundaries, then integrated workflow and MCP adoption study |
+| Execution authority | T002 authorizes executing the Session plan with C4 replaced by PG MCP adoption study; no MVP1 pilot |
 | BranchPolicy | current; sdp/workstation-completion-assessment |
 | CommitPolicy | milestone |
 
@@ -52,7 +52,7 @@ gantt
 Establish a reliable status and a bounded path from the consolidated SDP project
 to normal MVP1 work in Ponsse. The authorized current delivery is the study and
 plan, including investigation of unclear or potentially duplicated implementation.
-Execution steps S5–S9 are proposed future scope, not already authorized milestones.
+Owner T002 selects S5–S9 for WR2 execution, replacing S8 with the MCP adoption study.
 Do not require all SDP backlog work to finish unless the owner selects that target.
 
 The owner confirms complete laptop handover. No laptop recovery step is included.
@@ -81,8 +81,8 @@ existing PG/Blueprint/XFMD Sessions continue to own their scopes and pause decis
 
 | Ref | Plan | Document readiness | Lifecycle | Outcome |
 | --- | --- | --- | --- | --- |
-| P1 | [MAINT-SDP-0017 — WR1](../Maintenance/WorkstationReadiness/Plan.md) | on-going | active | Study and roadmap delivered; disposition next. |
-| P2 | C1–C5 execution ownership | planned; no IDs allocated | Not selected | Reuse existing plans where scope fits, select bounded successors where necessary after S4. |
+| P1 | [MAINT-SDP-0017 — WR1](../Maintenance/WorkstationReadiness/Plan.md) | completed | completed | Study/roadmap delivered and selected with T002 revision. |
+| P2 | [MAINT-SDP-0018 — WR2](../Maintenance/WorkstationReadiness/ExecutionPlan.md) | on-going | active | Authorized candidate/consolidation/workflow checks and revised MCP adoption study. |
 
 The Session is the cross-work roadmap, not a second detailed implementation plan.
 
@@ -113,3 +113,11 @@ The Session is the cross-work roadmap, not a second detailed implementation plan
 
 Study and planning artifacts are delivered for review. Session remains active.
 Ponsse readiness, product implementation and independent review are not claimed.
+
+### T002 — 2026-10-23 execute consolidation and study PG MCP adoption
+
+- Owner input, manual summary: asks how far PG has progressed and whether it can be used; authorizes executing the Session plan with the MVP1 pilot replaced by a study of beginning PG use through MCP. A pilot model already exists in Ponsse; MVP1 waits for the broader SDP system.
+- Disposition: WR1 complete; KB055 completed with KB056/MAINT-SDP-0018 as successor. S4 complete; S5 started. S8 replaces Ponsse trial, and no new Ponsse model or application changes are selected.
+- Skills loaded/reused, agent-reported: sdp, planning, Master/Worker, Architect and Verifier, plus OpenAI Docs for current MCP host configuration. No independent review or automatic routine-run identity claimed. No sub-agent authorized/spawned.
+- Preflight: f8110e9 clean, one SDP worktree; main is ancestor; owner confirms full handover. Green for bounded WR2 records/docs and isolated build/verification artifacts. Product changes require a fresh exact write-set check. No live competing edits observed.
+- Work in progress: compatible toolchain discovery/provisioning, current binary build and meaningful candidate checks. Current Codex CLI is 0.164.0, later than the previously verified PG host version. Further outcomes and next step will be recorded before return.

@@ -4,7 +4,7 @@
 | --- | --- |
 | id | MAINT-SDP-0017 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | MaintenancePlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -66,5 +66,14 @@ Baseline checks: management replay, import verifier, six management tests,
 Toolkit validator and 85 Toolkit tests pass. Snapshot states their boundary.
 Verify new links/JSON, management registration, preserved ledger prefix and
 whitespace before commit. No new implementation tests are needed for these docs.
-WR1 remains active for WR1-M3; KB055 is gate-review for this concrete study.
+WR1-M3 is now complete by the owner disposition below; KB055 closes with its execution successor.
 The broader Session remains active until its selected readiness scope is disposed.
+
+## WR1-M3 disposition — Session0013 T002
+
+Owner authorizes proceeding with the recommended route, replacing the Ponsse MVP1
+pilot with a ProjectGovernance MCP adoption study. The Ponsse pilot model already
+exists; MVP1 application work is deferred. WR1 study/planning outcome is complete.
+[MAINT-SDP-0018](ExecutionPlan.md) and KB056 own authorized consolidation/verification
+and the revised study. This does not accept PG product implementation or the paused
+Blueprint pilot. Earlier future-tense sections above describe the original boundary.
