@@ -17,7 +17,9 @@ Deliver one useful owner-to-agent Maintenance workflow through a local Codex cli
 shared SDPTool process core and agent adapter. Restore the same Session after an
 interrupted attempt and return candidate-bound evidence with a truthful disposition.
 The owner continuation on 2026-10-06 selects PGI1-M1 from this handoff. The plan
-is active. The owner continuation on 2026-10-07 selects PGI2-M1; PGI3 is selected by the next owner continuation; PGI4–PGI5 remain planned.
+is active. The owner continuation on 2026-10-07 selects PGI2-M1; PGI3 was selected by the next owner continuation. Subsequent owner continuations
+activated PGI4 and PGL; PGI5 integrated verification remains open. The current tables
+and T038 completion checkpoints supersede earlier next-step forecasts.
 
 The [design](../../../04--Design/SDPTool/ProjectGovernance/Design.md),
 [acceptance cases](../../../04--Design/SDPTool/ProjectGovernance/Acceptance.md) and
@@ -96,6 +98,12 @@ verification distinguishes unit fixtures, protocol probes and real host executio
 Completion requires all selected milestone evidence and explicit remaining-card
 dispositions. A passing pilot may leave broader KB036/037/038/042 capability scope
 in backlog. No card is closed merely because this plan is complete.
+
+## Completion roadmap
+
+The [T038 completion checkpoints](#pg-completion-checkpoints--t038) consolidate the
+remaining PGI/PGL work into one ordered route with explicit exit conditions. They
+are planning checkpoints in this same plan, not replacement plans or delivered work.
 
 ## Current result
 
@@ -830,3 +838,203 @@ Next is guarded run completion and canonical work disposition using published
 candidate/review facts, without confusing publication with owner acceptance or
 closing broader cards. Retain orchestration and independent PGI5 gates. Backlog/
 onHold reviewed: no new prerequisite from Blueprint expansion, timeline or hub.
+
+
+## PG completion checkpoints — T038
+
+Owner asks for a detailed route to finish PG. Baseline is b26340a, with PGI4-C3
+bounded publication delivered. This turn plans and records the remaining work;
+it does not implement these checkpoints or claim new test results. Existing
+implementation authority persists; deployment/merge/release permissions remain
+separate. BranchPolicy current and CommitPolicy milestone are unchanged.
+
+### Completion definition and scope
+
+The selected local PG workflow is finished when the owner can give work to Project
+Leader, receive responsive coordination, use SAD/SDL design when relevant, authorize
+bounded implementation, obtain testing and independent-context review, return
+findings for rework, and record the correct completion/remaining-work disposition.
+This must survive interruption and practical sustained use without duplicate work,
+lost history, stale design authorization or manual copying between agent chats.
+
+Current foundation: core/CLI/MCP, bounded assignment activation, questions/replies,
+report delivery/acknowledgement, serialized leader delivery, exact candidate evidence,
+native separate-context review and checked six-file result publication. These are
+real increments, but their combination is not yet a complete accepted workflow.
+In particular, complete still refuses; leader notices do not implement the full
+trusted scheduling/continuation policy; SAD dispatch and the owner-facing integrated
+workflow remain incomplete. Do not report a percentage from the count of increments.
+
+| Checkpoint | Existing scope | Dependency | Current status |
+| --- | --- | --- | --- |
+| PGF1 Final work disposition | PGI4; PG-A06/07/09/13/16 | C3 | next; implementation required |
+| PGF2 Leader-directed execution and continuation | PGL2/PGL3; handoff scenarios 1/3/4 | PGF1 | partial foundation; implementation and native evidence required |
+| PGF3 SDL design handoff and replan | PGL2/PGL4; scenario 2, PG-A05/07/17 | PGF2 | partial preparation/provider guards; integrated SAD flow required |
+| PGF4 Usable owner conversation and overview | PGL4; scenarios 4/5 | PGF2/3 | existing inspection/console; integrated workflow required |
+| PGF5 Recovery across the complete workflow | PGI3/PGI5/PGL5; PG-A08/09/11/12/13/14 | PGF1–4 | bounded cases delivered; active-host/full-flow gaps remain |
+| PGF6 Capacity and host compatibility | PGL3/PGL5; PG-A15/18 | PGF5 | limits explicit; sustained operation/rollover not proven |
+| PGF7 Native integrated acceptance in pg_lab | PGI5/PGL5; PG-A01–18 and handoff 1–5 | PGF1–6 | not verified as one final candidate |
+| PGF8 Independent product review and owner trial | PGI5/PGL4/PGL5 | PGF7 | PG implementation review and final owner workflow feedback open |
+| PGF9 Scope disposition and development closeout | Session S3/S4/S6; handoff 6 | PGF8, explicit remote-Steering disposition | planned; no merge/release authority inferred |
+
+### PGF1 — Final work disposition
+
+Implement the guarded path from a verified/published result to completed routine
+work. Resolve the fact that publication changes canonical input bytes: an original
+review becoming historical must not block legitimate closure or authorize unrelated
+new work. Keep candidate/test/review/publication identity pinned through that path.
+Update only the milestones, cards, plans and Session steps actually satisfied;
+retain broader work as active with named remaining scope. Support rework/successor
+work without deleting old completion evidence. Record actual owner acceptance only
+where required and actually supplied.
+
+Exit: a small real assignment reaches a consistent terminal disposition across
+runtime and canonical records. Missing evidence, changed candidate, wrong authority
+and partial publication refuse. Interrupted closure/retry does not duplicate events
+or leave a falsely completed projection. A completed subtask cannot close a broader
+card/Session. Preserve original journal and ledger bytes.
+
+### PGF2 — Leader-directed execution and continuation
+
+Connect leader proposals to bounded controller-owned prepare/start/continue/stop
+operations with scope and authority checks. Existing coordinator read/acknowledgement
+capability does not confer those privileges. Carry reports, review results, questions
+and owner steering through one durable coordination flow. Advance authorized phases
+without unnecessary repeated permission requests; hold genuine design/scope gates.
+Release or revise completed/retired scope claims safely, retaining the same Session
+for continued work. Keep local and cross-worktree claim guarantees explicit.
+
+Exit: two actual disjoint Masters progress while Project Leader remains responsive;
+a conflicting third assignment is refused or queued with a reason. Phase completion
+becomes idle and then continues only under current authority. A delayed report or
+repeat delivery cannot override newer owner steering or start work twice. Until a
+stronger shared allocator exists, concurrent-work preflight remains required.
+
+### PGF3 — SDL design handoff and replan
+
+Finish SAD dispatch using existing SDL, ModelGovernance and Blueprint services.
+Exercise NOW -> WORK/TARGET -> validated views/Blueprint -> revision-bound owner
+disposition -> Master assignment. Give the implementation agent both broad system
+orientation and the relevant NOW/TARGET details. Keep design revision, task revision,
+owned paths and return conditions bound together. Owner feedback received directly
+by SAD/Master must reach Project Leader and the same durable work records.
+
+Exit: an actual SDL design change in pg_lab produces a usable bounded implementation
+handoff. A later TARGET/task/protected-boundary change invalidates the affected
+handoff before dependent continuation, preserves unaffected work, and follows an
+explicit replan/review path. No Blueprint redesign, code-derived context, runtime
+snapshots or new SDL profile is required by this checkpoint.
+
+### PGF4 — Usable owner conversation and overview
+
+Join the existing local controller/console and inspection functions into a clear
+supported entry path. Present work, assigned role, Session/phase, running/idle/waiting
+status, questions, next action and evidence/review/publication/disposition separately.
+Show observed tools/child mappings and explicit stale/unknown values. Support direct
+SAD/Master dialogue without losing the leader overview or relevant feedback. Keep
+revision hashes and JSON as inspection details, not routine owner interaction.
+
+Exit: the owner can start/resume work, ask for status, answer a question, inspect a
+proposal, give feedback and see the consequence without constructing JSON or copying
+messages between chats. No unselected GUI framework, Codex fork or remote hub is a
+prerequisite; use the existing client unless a concrete usability gap requires a
+recorded scoped design choice.
+
+### PGF5 — Complete-workflow recovery
+
+Test observer closure, controller/process loss, an actually active host turn,
+unknown thread/turn creation, lost responses, queued owner input, review interruption,
+partial canonical publication and closure. Recover the exact mapped work or expose
+an actionable unresolved state. Preserve queued messages and distinguish gaps from
+observed activity. A restart must not implicitly expand scope or replay a model send.
+
+Exit: each recovery case has exact-candidate evidence and a documented supported
+recovery action. Core crash fixtures supplement real host recovery; completed-history
+replay alone does not establish active-turn recovery. Unrelated dirty files, earlier
+history and other assignments remain intact. Store backup/restore requirements are
+explicit; Git documents alone are not claimed to restore an in-flight runtime.
+
+### PGF6 — Sustained operation and compatible hosts
+
+Resolve finite-store limits before claiming everyday unattended operation. Current
+examples include 16 leader dispatches, 64 queued owner messages, 256 leader receipts,
+1024 general receipts and a 16 MiB store. Select a bounded archive/rotation/compaction
+policy that preserves retry identity, historical evidence and pending work; raising
+limits alone does not prove long-term operation. Verify restart around that boundary.
+
+Keep stable Codex 0.164.0 as the minimum and compatible later releases capability-
+checked. Test the minimum, available selected later host versions, unsupported host
+responses and strict same-attempt version recovery. Do not promise compatibility
+with every unknown future host or change global host settings as part of a test.
+
+Exit: define and record a representative multi-hour workload and event volume before
+running it; demonstrate that it crosses current short-trial boundaries without lost
+reports, exhausted queues or corruption. Use accelerated boundary/retry tests as well
+as an actual sustained workflow. Record duration, load, limits and recovery results.
+
+### PGF7 — Final native integration in pg_lab
+
+Run the final combined candidate through a plain Maintenance task and an SDL-based
+design/implementation task. Include positive completion, deliberate failed review
+and repair, scope feedback, delayed owner response, two disjoint Masters, conflict
+refusal and interruption/recovery. Validate both runtime and canonical work states.
+Use one final acceptance matrix for PG-A01–18 and handoff scenarios 1–5, with case,
+implementation/evidence source, candidate and limitations. Reuse valid lower-level
+evidence; rerun scenarios whose affected candidate or contract changed.
+
+Exit: the combined flow passes at the stated workflow level. Distinguish actual
+native reviewer/worker observations from fixtures and attributed external tests.
+There is no Ponsse MVP1 pilot in this checkpoint; pg_lab remains the authorized lab.
+
+### PGF8 — Independent review and owner trial
+
+Review PG itself in an implementation-independent context, following the governing
+intent, design and final acceptance matrix. Testing that PG can launch a reviewer
+is not an independent review of PG's implementation. Arrange that context under
+then-applicable delegation authority; keep the gate open if independence is absent.
+Fix blocking findings and repeat affected verification/review on the changed basis.
+
+Prepare a concise owner walkthrough of normal operation, a question/decision, a
+rejected or stale design, recovery, and the final work disposition. Capture actual
+owner observations and consequential corrections. The reported earlier development
+trial is retained but does not substitute for feedback on the completed workflow.
+
+Exit: required independent findings are disposed with evidence and the owner can
+assess a concrete working result. Do not invent owner feedback or acceptance.
+
+### PGF9 — Scope disposition and development closeout
+
+Reconcile PGI/PGL milestones, Session S3/S4/S6 and KB038/052 with the final evidence.
+Broader KB036/037/042/043 work remains explicitly listed, not implicitly delivered.
+Update maintained current instructions/walkthrough and remove contradictory current
+status statements while retaining historical evidence. Prepare a reproducible local
+build/start/recovery handoff and the combined PR under existing authority.
+
+The selected handoff still includes revision-bound remote Steering with honest
+committed-versus-dirty visibility (scenario 6). The separate remote hub project does
+not automatically cancel this requirement. Demonstrate the selected online host
+integration, or obtain and record an explicit owner disposition to transfer/defer it
+before claiming that full handoff complete. This decision can be prepared while the
+local implementation proceeds; it is not a reason to block unrelated PGF1–8 work.
+
+Exit: every selected requirement is delivered/verified or explicitly dispositioned;
+no active card is kept merely as a pointer to a successor, and no unfinished broad
+capability is closed. Distinguish development-ready local PG from merged/released
+or installed PG. Merge, release and consuming-project installation remain separately
+scoped actions. The existing Ponsse model and deferred MVP1 pilot stay untouched.
+
+### Execution discipline and remaining decisions
+
+Use one accountable implementation agent and sequential checkpoints. Native agents
+inside pg_lab are product tests, not parallel implementation owners. Independent
+review is a distinct role/context. Before each implementation checkpoint refresh
+concurrent-work preflight; at delivery update this plan, Session and evidence,
+commit the bounded outcome and push under existing authority. New gaps must map to
+an existing acceptance requirement or be registered separately before expanding scope.
+
+The remaining design choices include closure versus successor-work semantics,
+trusted leader operations, supported owner-dialogue surface and store rollover.
+Resolve them from existing authority at their checkpoint; do not silently reduce
+scope or ask the owner to approve routine implementation choices. Actual owner
+design/acceptance input and the remote-Steering disposition cannot be fabricated.
+No calendar promise or percentage is inferred from current component tests.

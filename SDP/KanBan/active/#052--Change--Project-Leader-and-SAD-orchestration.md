@@ -286,3 +286,13 @@ fixture is synthetic; earlier native reviews are inspected read-only.
 [Session0007 T037](../../Sessions/session-%230007--Project_governance.md) retain limits.
 CardState remains in-progress: final run/lifecycle disposition, retained orchestration
 and independent integrated verification still require delivery. No broader closeout.
+
+
+### T038 — Completion plan consolidated
+
+Owner requests a detailed completion plan. PLAN-SDP-0018 now maps remaining PGI/PGL
+work to PGF1–9 with dependencies and exit conditions: final disposition, leader
+execution, SDL handoff, owner dialogue, recovery/capacity, native integration,
+independent review and scope closeout. Remote Steering needs verification or explicit
+owner disposition; broader deferred capabilities are not silently included or closed.
+CardState remains in-progress. This is planning, not a new implementation delivery.

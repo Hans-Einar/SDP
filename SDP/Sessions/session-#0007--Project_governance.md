@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T037 — PGI4-C3 checked result publication/recovery and review coordination verified.
+Latest recorded turn: T038 — detailed PG completion checkpoints recorded; implementation remains at PGI4-C3.
 The native trial asks, receives a delayed fixture reply, starts one fresh attempt
 and implements/reports the selected behavior. Local acknowledgement, coordination and
 serialized leader delivery are implemented. C8 native single-worker/leader and completed
@@ -44,7 +44,7 @@ gantt
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-24 |
 | Current step | S3/S6 active: PGI4-C3 checked bounded result publication/recovery and review notices delivered; final run/lifecycle disposition and orchestration/integrated gates remain |
-| Proposed next step | PGI4 guarded run completion and canonical work disposition using published results; retain two-Master/active-host, SAD/owner, capacity and independent integrated verification. SDL-only scope; KB059 onHold |
+| Proposed next step | PGF1 final work disposition, then PGF2–9 in the same plan: orchestration, SDL handoff, owner dialogue, recovery/capacity, native integration, independent review and explicit scope closeout. SDL-only; MVP1 deferred |
 | Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension; T026 assigns hub/webapp to a separate project and continues local SDP/SDPTool work; T027 continues local attention/replies; T028 continues guarded attention continuation; T029 selects stable Codex >=0.164.0 and compatible later hosts, preserving other scopes |
 
 ## Goal and ownership
@@ -85,7 +85,7 @@ No card is merged, split or closed merely to group this workstream.
 | --- | --- | --- | --- | --- |
 | P0 | [PLAN-SDP-0007](../02--Requirements/RoutineGovernance/StudyPlan.md) | completed | completed | Reused RGS2 study; not reopened |
 | P1 | [PLAN-SDP-0017](../04--Design/SDPTool/ProjectGovernance/Plan.md) | completed | completed | S2 contract, inspection and implementation handoff |
-| P2 | [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | in progress | active | PGI1/PGI2 delivered; PGI3 in progress, PGI4/PGI5 planned |
+| P2 | [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | in progress | active | PGI4-C3 latest delivery; T038 PGF1–9 maps remaining PGI/PGL requirements and closeout |
 
 ## Dependency assessment and recommended first delivery
 
@@ -1843,3 +1843,34 @@ push after final record/hash/link validation.
 
 Final T037 validation passes: 18 source hashes, 32 artifact hashes, 288 relative
 links, 73 cards/47 management records/669 events, Toolkit and whitespace checks.
+
+
+## T038 — Detailed plan to complete PG
+
+- Owner asks for a detailed completion plan. This is planning/document maintenance,
+  not another implementation or native-model trial. Baseline b26340a is clean and
+  pushed; the current plan/Session and PG-A01–18 plus six handoff scenarios were read.
+- Loaded/reused SDP, document workflow, Planning and its plan contract; followed
+  Session upkeep and shared-management/KanBan history rules. No helper delegation.
+- Added PGF1–9 completion checkpoints inside PLAN-SDP-0018, preserving its existing
+  identity, branch/commit policy, PGI/PGL history and execution authority. Each
+  checkpoint records scope, dependency and observable exit conditions.
+- Remaining substantial work includes final disposition, trusted leader-controlled
+  execution/continuation, SAD/SDL integration and owner dialogue. Complete-workflow
+  recovery, sustained capacity, final native integration, independent review of PG
+  itself and owner trial remain real gates; no percentage or completion date inferred.
+- Explicitly retain remote-Steering scenario 6 for verification or actual owner
+  disposition. The separate hub does not silently remove it. Broader routine/timeline
+  work, code/runtime context expansion, release/installation and Ponsse MVP1 remain
+  outside this local completion implementation scope or separately gated.
+- One accountable implementation agent and sequential checkpoints are recommended;
+  lab agents test the product, independent review remains separate. No new product
+  tests or review/acceptance claims. Updated plan/card projections and management
+  history only; no duplicate system Traceability event for planning.
+- Next: PGF1 when implementation resumes, following fresh concurrent-work preflight.
+  This is the work summary, not an already captured final-response transcript.
+
+T038 checks: management replay (73 cards, 47 records, 672 events), Toolkit validation
+and whitespace checks pass; the prior management ledger prefix is preserved.
+Product code is unchanged. Preparing the planning milestone commit and authorized
+phase push; no merge, release or new implementation is selected by this turn.
