@@ -8,7 +8,7 @@
 | CardState | backlog |
 | created | 2026-09-28T00:04:17.612149+00:00 |
 | source | Owner conversation 2026-09-28: MCP-connected state machine and live side-by-side process visualization |
-| next_review | Select the bounded successor DesignPlan from the completed RGS2 synthesis |
+| next_review | Resolve Session0007 T040 Session/KanBan execution boundary against existing PGF checkpoints; broader capability remains backlog |
 | tags | workflow, state-machine, MCP, observability, terminal, blueprints |
 | Systems | SDPTOOL, SDL |
 | PlanId | PLAN-SDP-0007 |
@@ -255,3 +255,15 @@ The shared pilot covers a bounded contribution; broader card acceptance remains
 open. ModelGovernance continues independently.
 
 2026-10-03T21:14:27.153979+00:00: EVT-KB-SDP-000290 — Link PGD1 shared ProjectGovernance contract and Session0007; retain backlog state and this card's remaining capability scope.
+
+
+### T040 — Session execution and KanBan governance discussion
+
+Owner asks for programmatic card maintenance/transitions, resumable Session workflow
+instances and common Project Leader/MCP plus owner/CLI access and activity insight.
+[Current evidence and proposed boundary](../../04--Design/SDPTool/ProjectGovernance/Orchestration.md#t040--discussion-executable-session-workflows-and-kanban-governance)
+compare existing run state/publication with missing full Session and card lifecycle
+execution. Recommend extending the shared core with checked KanBan effects and
+versioned Session bindings, retaining authored plans, canonical management history
+and role authority. Exact format and operation semantics remain discussion proposals.
+Broader capability remains backlog; its existing bounded PG contributions are not a complete Session engine.

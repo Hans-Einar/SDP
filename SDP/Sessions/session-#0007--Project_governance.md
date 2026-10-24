@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T039 — owner requires mandatory work admission, SDL lifecycle and conflict supervision; runtime implementation remains at PGI4-C3.
+Latest recorded turn: T040 — discussed executable Session workflows and KanBan governance; runtime implementation remains at PGI4-C3.
 The native trial asks, receives a delayed fixture reply, starts one fresh attempt
 and implements/reports the selected behavior. Local acknowledgement, coordination and
 serialized leader delivery are implemented. C8 native single-worker/leader and completed
@@ -44,7 +44,7 @@ gantt
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-24 |
 | Current step | S3/S6 active: PGI4-C3 checked bounded result publication/recovery and review notices delivered; final run/lifecycle disposition and orchestration/integrated gates remain |
-| Proposed next step | PGF1 with refreshed preflight and required SDL WORK/design preparation before product edits; then PGF2–9 with T039 mandatory governance gates in the same plan: orchestration, SDL handoff, owner dialogue, recovery/capacity, native integration, independent review and explicit scope closeout. SDL-only; MVP1 deferred |
+| Proposed next step | Resolve T040 Session execution/KanBan transition design with the owner before dependent PGF1 work; retain refreshed preflight and required SDL WORK, then PGF2–9 with T039 gates: orchestration, SDL handoff, owner dialogue, recovery/capacity, native integration, independent review and explicit scope closeout. SDL-only; MVP1 deferred |
 | Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension; T026 assigns hub/webapp to a separate project and continues local SDP/SDPTool work; T027 continues local attention/replies; T028 continues guarded attention continuation; T029 selects stable Codex >=0.164.0 and compatible later hosts, preserving other scopes |
 
 ## Goal and ownership
@@ -1942,3 +1942,41 @@ PM225 and KB412–413 record management progress; a separate system design event
 records the owner requirement amendment without claiming runtime delivery.
 Preparing the scoped T039 milestone commit and authorized phase push; no merge,
 software release, model promotion or external installation performed.
+
+
+## T040 — KanBan governance and executable Session discussion
+
+- Owner input (summary): card creation is insufficient; PG should require correct
+  updates, states and moves throughout the treating Session. Discuss resumable
+  state-machine instances for Master work, with Project Leader and owner CLI
+  entrypoints plus activity/tool visibility. Owner explicitly requests discussion
+  of current design versus their intent, not immediate implementation.
+- Read-only baseline 851001f7fa6c5123e1b56e5b90b1e697dd4b2c57 is clean/pushed;
+  one known worktree. Recovered T039, current work/authority and KB037's original
+  state-machine request. Only existing analysis/card/Session/history records change;
+  no product scope, SDL models, lab state or other workstream is mutated.
+- Loaded SDP, Change Analysis, Architect, shared document workflow/source map and
+  current KanBan/Session/management contracts. No helper delegation or new role
+  impersonation. This input fits current PG goal; reuse Session0007 and KB052,
+  linking KB037's broader existing capability rather than registering a duplicate.
+- Inspected actual KanBan reader, shell list helper, run transitions, context pins,
+  publication builder and controller/MCP surfaces. Existing durable state, checked
+  result publication and observation are substantial foundations. Full Session
+  execution, general card move/state transactions and common privileged leader/
+  owner action parity are not implemented by those surfaces. Complete still refuses.
+- Appended T040 evidence/alternatives/recommendation in Orchestration.md: shared PG
+  core, versioned structured execution bindings, checked KanBan effects, distinct
+  Session/run/host/card states, common role-bound entrypoints, explicit drift and
+  retry recovery. Keep canonical card/plan history and authored Session narratives;
+  do not turn free-form Markdown or the leader's memory into execution authority.
+- Recommendations remain proposals, including serialization and semantic operation
+  design. No new workflow schema, daemon, model language or expanded implementation
+  is selected. T039 requirements remain in force. No lifecycle/card state changes.
+- Next: discuss the concrete transition/ownership boundary with the owner before
+  dependent implementation; map the agreed result to existing PGF checkpoints and
+  prepare required SDL WORK. This is the work summary, not a captured final response.
+
+T040 checks pass: management replay (73 cards, 47 records, 677 events), Toolkit
+validation, 138 relative links, preserved historical management-ledger prefix and
+whitespace checks. Product/model code is unchanged; no runtime tests claimed.
+Preparing the discussion-record milestone commit and authorized phase push only.

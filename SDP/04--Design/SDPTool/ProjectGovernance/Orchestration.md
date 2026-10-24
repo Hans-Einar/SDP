@@ -737,3 +737,133 @@ PGF7 verifies the combined native workflow. Before dependent runtime changes,
 prepare the corresponding SDL WORK under this rule; existing coarse model coverage
 must be inspected, not assumed sufficient. This requirement/skill-maintenance turn
 is not evidence of that SDL handoff or runtime implementation.
+
+
+## T040 — Discussion: executable Session workflows and KanBan governance
+
+Owner Session0007 T040 asks how current PG relates to durable state machines that
+supervise Session work, require correct card updates/moves, survive interruption,
+and accept Project Leader/MCP and owner/CLI interaction with tool/activity insight.
+This is an analysis and recommendation for discussion, not adoption of a new Session
+schema or authorization to implement a generic workflow interpreter. KB052 owns the
+current PG integration; KB037 already records the broader state-machine capability.
+The T039 mandatory governance requirements remain selected.
+
+### Observed baseline at 851001f
+
+- [KanBan reader](../../../../SDPTool/kanban.go) builds navigable card/status nodes
+  and checks CardState/folder/history consistency; the shell `kanban status|state`
+  helper lists/groups cards. The canonical KanBan guide still prescribes manual
+  update/move/history/link maintenance. No general checked card-lifecycle mutation
+  API was found in those surfaces. One shared board has status directories; this
+  discussion does not require a new board per Session.
+- [Run core](../../../../SDPTool/governance/run.go) already implements durable,
+  revision-checked start/interruption/resume/report/retry/scope-change transitions.
+  Complete still refuses. The pinned bounded Maintenance routine is not execution
+  of every authored Session roadmap step or arbitrary Markdown instructions.
+- [Publication](../../../../SDPTool/governance/publication_records.go) builds checked
+  result additions to Session/card/plan and histories. Its recoverable file intents
+  preserve preimages, but deliberately retain card/plan/Session lifecycle and paths.
+  This is a usable foundation for reliable effects, not implemented card movement.
+- [Controller](../../../../SDPTool/governancecontroller/README.md) supplies overview,
+  coordination/watch, questions/replies and bounded host dispatch/recovery/attach.
+  Observations describe retained host/tool events with explicit freshness limits;
+  they are not a universal observer of arbitrary external work or private reasoning.
+- [MCP](../../../../SDPTool/governancemcp/README.md) uses the shared core with restricted
+  worker operations and separate coordinator read/acknowledgement. The coordinator
+  does not currently have the full owner/controller launch/resume capability.
+- [Context](../../../../SDPTool/governance/context.go) pins selected documents and
+  canonical management history. Current conservative invalidation on ledger changes
+  must be reconciled before routine card updates can advance a long Session; blindly
+  accepting any new input digest would erase the existing stale-authority protection.
+- The [Session contract](../../../Sessions/README.md) remains an authored goal,
+  roadmap and journal; operational state is local and checkout-bound. A Git checkout
+  of Session Markdown alone cannot recover live host identities and pending effects.
+
+### Recommended ownership and execution model — proposed
+
+Extend the existing shared PG core rather than build a second engine or use the
+Project Leader conversation as the persistent scheduler. Keep four meanings distinct:
+
+1. Session/plan defines the goal, selected cards, step dependencies and acceptance.
+2. A versioned workflow definition specifies allowed transitions, checks and effects.
+3. A durable workflow instance binds that definition to one Session/step/assignment,
+   remembers current state, evidence, pending actions and revisions, and survives
+   replacement of any agent conversation. Multiple bounded instances can coexist.
+4. Host attempts execute individual assignments; tool/activity observations and
+   unknown execution state are distinct from business progress and card lifecycle.
+
+Do not interpret free-form Markdown as executable instructions or create a second
+editable roadmap that competes with it. Prefer a small explicitly structured,
+validated execution binding to the existing Session/plan and selected versioned
+routines. Exact serialization/location and revision/adoption policy remain design
+choices. Authored narrative stays authored; runtime views should be generated or
+clearly labeled projections. A plan edit needs explicit reconciliation to the running
+instance, not silent rebinding or a new engine on every resume. Reuse existing
+management history as the canonical card/plan history and the operational store for
+execution; define effects between them instead of making two stores own CardState.
+
+### Checked KanBan effects — proposed
+
+Offer semantic lifecycle operations through a shared service: select work, begin
+assignment, record progress/evidence, submit a concrete owner gate, rework, defer,
+complete and explicitly reopen/transfer. These are operation concepts, not installed
+CLI commands. Each checks current card/revision, coverage, authority, evidence and
+remaining scope; then updates prose/worklog, CardState, physical location, index,
+links and canonical ledger through one recoverable operation identity.
+
+The engine should perform required record effects as part of a valid transition,
+or leave the transition visibly pending/blocked; it must not merely remind an agent
+to edit files. Cross-file effects need durable intent, preimage checks and recovery,
+not a claim that several filesystem renames form one atomic transaction. Do not
+launch dependent work until required effects are committed/reconciled. Scope claims
+must account for shared ledgers/links and other Session writers.
+
+Selection normally means active/ready; actual assignment work means in-progress.
+A phase result updates progress without necessarily moving the card. gate-review
+means a concrete owner review, not every automated reviewer turn. completed requires
+all of that card's selected outcome, required evidence and model release/disposition.
+A run crash does not mean onHold or cancellation; unfinished work retains its actual
+management state. A card shared across phases/Sessions cannot close when only one
+contribution finishes. Keep waiting-for-input, verification and host interruption
+in execution state instead of inventing a CardState for every runtime condition.
+
+Manual edits remain possible in Git projects. Detect them as revision drift, explain
+what changed and reconcile explicitly; never silently overwrite them or advertise
+filesystem-wide enforcement against arbitrary same-user shell writes.
+
+### Shared entrypoints and resume — proposed
+
+Owner CLI and Project Leader MCP must act on the same instance/revision and command
+rules through role-appropriate capabilities. An observer reads the same events and
+state; closing it does not stop the workflow. Leader requests may propose actions,
+while the core validates prerequisites and the trusted controller performs host
+launch/reconnect. CLI access is not a second engine or an approval bypass. A shared
+long-lived local service is an option for scheduling, but a new daemon/database is
+not assumed necessary before evaluating the existing store/controller loop.
+
+Resume must load the existing instance and pinned workflow version, reconcile pending
+file/host effects, verify project/model/plan revisions and scope claims, locate the
+existing host attempt, then report runnable versus waiting/conflict/unknown. Never
+start another Master merely because a response or observer was lost. Give an owner
+an inspectable next action; an unmet design/review/release gate remains a gate from
+CLI too. Cross-machine recovery additionally needs an explicit portable operational
+handoff; repository documents alone are insufficient.
+
+### Bounded follow-up and acceptance proposal
+
+First agree the owner-facing transition table and map each transition to existing
+PGF1/2/3/5/7. Then prepare SDL WORK for the selected design, extend the current core
+and checked publication effects, and expose the same guarded actions through the
+owner CLI and appropriately privileged leader adapter. Avoid a general-purpose
+workflow language or all-routine-family expansion before one complete path works.
+
+In pg_lab, prove one card from selection through progress, failed review/rework,
+required model release and completion; force interruption between card move/history
+writes and before/after host launch. Resume from owner CLI while the leader is absent,
+then reconnect the leader to the same instance without duplicate launch or events.
+Include a shared-card partial result, external card edit, concurrent Session conflict,
+a routine version change and an unrelated ledger append. Observe real tool activity
+with source/freshness; reject attempts to bypass gates through either entrypoint.
+These are proposed acceptance additions; none is claimed tested or selected by this
+analysis. Resolve this boundary with the owner before dependent implementation.

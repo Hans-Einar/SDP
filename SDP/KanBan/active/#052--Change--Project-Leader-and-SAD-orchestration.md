@@ -319,3 +319,15 @@ Canonical Project Leader skill 1.1.0 and development distribution inventory now
 state the detailed mandatory routine. This is requirement/skill maintenance;
 runtime guards and native compliance evidence remain open. CardState remains
 in-progress; next is PGF1 with refreshed preflight and required SDL design preparation.
+
+
+### T040 — Session execution and KanBan governance discussion
+
+Owner asks for programmatic card maintenance/transitions, resumable Session workflow
+instances and common Project Leader/MCP plus owner/CLI access and activity insight.
+[Current evidence and proposed boundary](../../04--Design/SDPTool/ProjectGovernance/Orchestration.md#t040--discussion-executable-session-workflows-and-kanban-governance)
+compare existing run state/publication with missing full Session and card lifecycle
+execution. Recommend extending the shared core with checked KanBan effects and
+versioned Session bindings, retaining authored plans, canonical management history
+and role authority. Exact format and operation semantics remain discussion proposals.
+Current PG integration remains active; no new runtime implementation was selected.
