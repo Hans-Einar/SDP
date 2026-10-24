@@ -372,7 +372,8 @@
             "session-start",
             "session-progress",
             "session-verify",
-            "session-review"
+            "session-review",
+            "session-dispose"
           ]
         },
         "operationId": {
@@ -488,7 +489,8 @@
                   "implementation",
                   "verification",
                   "review",
-                  "disposition"
+                  "disposition",
+                  "done"
                 ]
               },
               "holds": {
@@ -523,6 +525,18 @@
               "reviewId": {
                 "type": "string",
                 "format": "uuid"
+              },
+              "dispositionId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "cardDispositions": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/cardDisposition"
+                },
+                "minItems": 1,
+                "maxItems": 16
               }
             }
           },
@@ -540,7 +554,8 @@
               "session-start",
               "session-progress",
               "session-verify",
-              "session-review"
+              "session-review",
+              "session-dispose"
             ]
           }
         },
@@ -1169,6 +1184,133 @@
           "type": "integer",
           "minimum": 1,
           "maximum": 18446744073709551615
+        }
+      }
+    },
+    "cardDisposition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "outcome",
+        "summary"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^KB-[A-Z][A-Z0-9]*-[0-9]{3,}$"
+        },
+        "outcome": {
+          "enum": [
+            "completed",
+            "contribution-completed"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "remaining": {
+          "type": "string",
+          "maxLength": 4096
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "outcome": {
+                "const": "contribution-completed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "remaining": {
+                "minLength": 1
+              }
+            },
+            "required": [
+              "remaining"
+            ]
+          },
+          "else": {
+            "properties": {
+              "remaining": {
+                "const": ""
+              }
+            }
+          }
+        }
+      ]
+    },
+    "disposeRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "operationId",
+        "instanceId",
+        "expectedRevision",
+        "reason",
+        "expectedRunRevision",
+        "resultId",
+        "system",
+        "cards"
+      ],
+      "properties": {
+        "schema": {
+          "const": "sdp-session-execution/0.1"
+        },
+        "projectRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "checkoutId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "operationId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "instanceId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 18446744073709551615
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "expectedRunRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 18446744073709551615
+        },
+        "resultId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "system": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9]{0,31}$"
+        },
+        "cards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/cardDisposition"
+          },
+          "minItems": 1,
+          "maxItems": 16
         }
       }
     }

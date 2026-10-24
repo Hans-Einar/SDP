@@ -1090,7 +1090,7 @@ policy. This turn delivers design/model preparation, not a runtime milestone.
 | Increment | Checkpoint mapping | Runnable outcome and exit evidence | Dependency/status |
 | --- | --- | --- | --- |
 | PGF1-C1 Session binding and durable instance | PGF1 foundation; PGF2 admission | Adopt a covered manual Session explicitly, read its selected steps/stages/holds, recover the same instance and reject stale/unsupported/cyclic bindings. Pin routine version and authority; leave legacy runs unchanged. New incomplete paths refuse action rather than simulate delivery | delivered T042 at bounded C1 scope; core, CLI/JSON, recovery and pg_lab evidence pass; later activation/leader/model gates remain |
-| PGF1-C2 Checked lifecycle effects and disposition | PGF1; PG-A25/27/28 | Use existing publication machinery for select/start/progress and eligible no-design closeout, including real card moves, metadata/history/links and partial-contribution handling. Reconcile own effects/unrelated ledger additions without weakening coverage. Crash matrix and shared writer/ID contention pass | in-progress; C2a selection/effects delivered T043; C2b1 assessment delivered T044; C2b2 no-design start/progress delivered T045; C2c1 verification/review gates delivered T046; C2c2 actual disposition/rework/dependencies/claim release remain |
+| PGF1-C2 Checked lifecycle effects and disposition | PGF1; PG-A25/27/28 | Use existing publication machinery for select/start/progress and eligible no-design closeout, including real card moves, metadata/history/links and partial-contribution handling. Reconcile own effects/unrelated ledger additions without weakening coverage. Crash matrix and shared writer/ID contention pass | in-progress; C2a selection/effects delivered T043; C2b1 assessment delivered T044; C2b2 no-design start/progress delivered T045; C2c1 verification/review gates delivered T046; C2c2a selected-step disposition/claim release delivered T047; owner decisions, rework/dependencies/replan and overall closure remain |
 | PGF2-C1 Common owner/leader Session operations | PGF2/4; PG-A26/29/30 | CLI and explicitly privileged leader adapter use the same core/instance/receipts. Controller dispatch follows committed record effects; leader-free owner resume and later leader reconnect neither duplicate work nor bypass authority | C1/C2; implementation/native evidence required |
 | PGF3-C1 Design and model-release workflow | PGF3; PG-A21/22/23/25 | SDL WORK, required Blueprint, design handoff, code verification/rework and exact accepted model release participate in Session gates. Combine compatible model WORKs, refresh affected evidence and refuse unresolved model release at closure | common Session operations; implementation/native evidence required |
 | PGF5-C1 Full recovery across effects and attempts | PGF5; PG-A27/28/29 | Recover at each canonical/model/host boundary; preserve pending work, external edits and whole-card scope. Different routine versions and legacy profiles stay explicit | prior functional increments; evidence required |
@@ -1225,3 +1225,30 @@ stages never mark cards or Sessions complete. Keep model-release and PGF2–9 ob
 unchanged; refresh preflight and scoped Blueprint before that next product increment.
 KB038/052 stay in-progress. Backlog/onHold review retains KB036/037/042, paused KB050
 and SDL-only KB059 deferral. No Ponsse/MVP1, merge, install or software release selected.
+
+
+### T047 — C2c2a checked selected-step disposition and claim release
+
+The no-design path can now dispose a verified/reviewed selected step where owner
+acceptance is explicitly not required. Ordered card outcomes distinguish whole-card
+completion from contributions with remaining scope. Whole-card moves include checked
+metadata/history/selected links/index updates. Immutable disposition and system
+verification evidence publish before scope release and Run completion. Plan/Session
+remain active; selected-step done is not overall closeout.
+
+The existing canonical publisher retains pre/postimage recovery and a transaction
+reservation through operational commitment. Current legacy claim admission honors
+that reservation. Required owner acceptance, stale evidence, conflicting card scope,
+outside references, occupied destinations and external edits refuse. Retained-state
+validation recomputes exact effects and handles malformed history without panic.
+[Evidence](Evidence-PGF1-C2c2a.md) records candidate, every-effect recovery, strict wire,
+compiled pg_lab and compatibility probes. Final full SDPTool race/vet validation passes.
+
+C2 remains in-progress. Next C2c2 work is trusted owner decisions/gate handling,
+failed-result rework, dependency progression/replan and explicit plan/Session closure.
+Then PGF2 common privileged leader operations and PGF3 SDL WORK/model handoff/release
+retain their gates. Refresh preflight and scoped Blueprint before product changes.
+Backlog/onHold review retains KB036/037/042, separately paused KB050 and SDL-only KB059;
+KB038/052 stay in-progress and MVP1/Ponsse stays deferred. BranchPolicy current /
+CommitPolicy milestone remain; no merge, installation, model/software release or
+independent PG review is implied.

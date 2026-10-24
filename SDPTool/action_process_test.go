@@ -25,7 +25,7 @@ func TestCompiledInvocationConsumer(t *testing.T) {
 	for _, action := range metadata.Actions {
 		ids = append(ids, action.ID)
 	}
-	wantIDs := []string{"blueprint.assess", "blueprint.assignment.apply", "blueprint.assignment.list", "blueprint.generate", "governance.session.adopt", "governance.session.assess", "governance.session.context", "governance.session.definition", "governance.session.list", "governance.session.progress", "governance.session.read", "governance.session.resume", "governance.session.review", "governance.session.select", "governance.session.start", "governance.session.verify", "project.discover", "project.model-tree"}
+	wantIDs := []string{"blueprint.assess", "blueprint.assignment.apply", "blueprint.assignment.list", "blueprint.generate", "governance.session.adopt", "governance.session.assess", "governance.session.context", "governance.session.definition", "governance.session.dispose", "governance.session.list", "governance.session.progress", "governance.session.read", "governance.session.resume", "governance.session.review", "governance.session.select", "governance.session.start", "governance.session.verify", "project.discover", "project.model-tree"}
 	if !reflect.DeepEqual(ids, wantIDs) {
 		t.Fatalf("catalogue actions: got %v, want %v", ids, wantIDs)
 	}

@@ -113,6 +113,9 @@ func (s *Service) load() (snapshot, string, error) {
 	if e := validateSessionState(state); e != nil {
 		return empty, "", e
 	}
+	if e := validateSessionDispositions(state); e != nil {
+		return empty, "", e
+	}
 	return state, head, nil
 }
 func syncDir(path string) error {

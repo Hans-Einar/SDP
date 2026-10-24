@@ -1,0 +1,712 @@
+[
+  {
+    "definition": "mutation",
+    "value": {
+      "recordEffects": "prepared",
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-dispose",
+      "operationId": "5bbf9808-4e62-4752-8ac2-d2014f948a0a",
+      "instanceId": "74253303-70af-4b2b-8477-6edcd733a96c",
+      "revision": 15,
+      "registration": "committed"
+    }
+  },
+  {
+    "definition": "mutation",
+    "value": {
+      "recordEffects": "prepared",
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-dispose",
+      "operationId": "5bbf9808-4e62-4752-8ac2-d2014f948a0a",
+      "instanceId": "74253303-70af-4b2b-8477-6edcd733a96c",
+      "revision": 15,
+      "registration": "committed"
+    }
+  },
+  {
+    "definition": "view",
+    "value": {
+      "binding": {
+        "schema": "sdp-session-execution/0.1",
+        "session": {
+          "id": "SESSION-TEST-0001",
+          "path": "SDP/Sessions/session.md"
+        },
+        "plan": {
+          "id": "PLAN-SDP-0001",
+          "path": "SDP/Maintenance/Plan.md"
+        },
+        "authority": "SDP/authority.md",
+        "workflow": {
+          "id": "session-lifecycle",
+          "version": "0.1",
+          "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1"
+        },
+        "steps": [
+          {
+            "id": "S1",
+            "milestone": "M1",
+            "cards": [
+              {
+                "id": "KB-SDP-001",
+                "coverage": "contribution"
+              },
+              {
+                "id": "KB-SDP-002",
+                "coverage": "whole"
+              }
+            ],
+            "dependsOn": [],
+            "writablePaths": [
+              "target.txt"
+            ],
+            "protectedPaths": [
+              "unrelated.txt"
+            ],
+            "review": "independent",
+            "ownerAcceptance": "not-required"
+          }
+        ]
+      },
+      "recordEffects": "prepared",
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-read",
+      "instanceId": "74253303-70af-4b2b-8477-6edcd733a96c",
+      "revision": 15,
+      "sessionId": "SESSION-TEST-0001",
+      "planId": "PLAN-SDP-0001",
+      "workflow": {
+        "id": "session-lifecycle",
+        "version": "0.1",
+        "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1"
+      },
+      "registration": "committed",
+      "coverage": "stale-or-unavailable",
+      "conditions": [
+        "reconciliation_required: Session record effects pending"
+      ],
+      "steps": [
+        {
+          "dispositionId": "5bbf9808-4e62-4752-8ac2-d2014f948a0a",
+          "verificationEvidence": "725ab1df-3e0c-44ef-9c32-3f30fe56dd00",
+          "reviewId": "95357b46-cfdb-4eee-b3f8-879ced11bdcc",
+          "runId": "32f698de-a2ca-4d09-80f1-98252856b36e",
+          "runState": "verifying",
+          "progressEvidence": "725ab1df-3e0c-44ef-9c32-3f30fe56dd00",
+          "assessment": {
+            "operationId": "cdcf5c02-d54f-4864-b980-aeb1aa70cf95",
+            "recordPath": "SDP/Sessions/execution/assessments/cdcf5c02-d54f-4864-b980-aeb1aa70cf95.json",
+            "designImpact": "unchanged",
+            "blueprint": {
+              "requirement": "not-required",
+              "rationale": "No model or implementation contract changes in this documentation-only fixture"
+            },
+            "reason": "Assess the selected documentation correction with explicit impact criteria",
+            "criteria": [
+              {
+                "domain": "contracts",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "data-model",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "responsibilities",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "state-flow",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "interfaces",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "persistence",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "deployment",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              }
+            ],
+            "evidence": [
+              {
+                "path": "evidence/design-scope.md",
+                "sha256": "6bbfa38ae969e5671186facb86c8f3b828c757badb32201385370708eb7a5716"
+              }
+            ],
+            "skills": [
+              {
+                "name": "sdp-project-leader",
+                "path": "/home/warloc/git/pg_lab/session-c2c2a-disposition/Skills/sdp-project-leader/SKILL.md",
+                "digest": "8f903093e51638d6c1013b9ca3e51f0054f0a6a3173b686fd348b1ce794701ee"
+              },
+              {
+                "name": "sdp-change-analysis",
+                "path": "/home/warloc/git/pg_lab/session-c2c2a-disposition/Skills/sdp-change-analysis/SKILL.md",
+                "digest": "0d55a9e318494eb8406721f428fd43f408bee32f7068d22f428a1c1c69db339a"
+              }
+            ]
+          },
+          "selected": true,
+          "id": "S1",
+          "stage": "disposition",
+          "holds": [
+            "reconciliation_required: Session record effects pending",
+            "disposition effects pending; run and claim not yet committed"
+          ]
+        }
+      ],
+      "nextActions": [
+        "session-read",
+        "session-resume"
+      ],
+      "hostExecution": "completed"
+    }
+  },
+  {
+    "definition": "view",
+    "value": {
+      "binding": {
+        "schema": "sdp-session-execution/0.1",
+        "session": {
+          "id": "SESSION-TEST-0001",
+          "path": "SDP/Sessions/session.md"
+        },
+        "plan": {
+          "id": "PLAN-SDP-0001",
+          "path": "SDP/Maintenance/Plan.md"
+        },
+        "authority": "SDP/authority.md",
+        "workflow": {
+          "id": "session-lifecycle",
+          "version": "0.1",
+          "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1"
+        },
+        "steps": [
+          {
+            "id": "S1",
+            "milestone": "M1",
+            "cards": [
+              {
+                "id": "KB-SDP-001",
+                "coverage": "contribution"
+              },
+              {
+                "id": "KB-SDP-002",
+                "coverage": "whole"
+              }
+            ],
+            "dependsOn": [],
+            "writablePaths": [
+              "target.txt"
+            ],
+            "protectedPaths": [
+              "unrelated.txt"
+            ],
+            "review": "independent",
+            "ownerAcceptance": "not-required"
+          }
+        ]
+      },
+      "recordEffects": "prepared",
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-read",
+      "instanceId": "74253303-70af-4b2b-8477-6edcd733a96c",
+      "revision": 15,
+      "sessionId": "SESSION-TEST-0001",
+      "planId": "PLAN-SDP-0001",
+      "workflow": {
+        "id": "session-lifecycle",
+        "version": "0.1",
+        "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1"
+      },
+      "registration": "committed",
+      "coverage": "stale-or-unavailable",
+      "conditions": [
+        "reconciliation_required: Session record effects pending"
+      ],
+      "steps": [
+        {
+          "dispositionId": "5bbf9808-4e62-4752-8ac2-d2014f948a0a",
+          "verificationEvidence": "725ab1df-3e0c-44ef-9c32-3f30fe56dd00",
+          "reviewId": "95357b46-cfdb-4eee-b3f8-879ced11bdcc",
+          "runId": "32f698de-a2ca-4d09-80f1-98252856b36e",
+          "runState": "verifying",
+          "progressEvidence": "725ab1df-3e0c-44ef-9c32-3f30fe56dd00",
+          "assessment": {
+            "operationId": "cdcf5c02-d54f-4864-b980-aeb1aa70cf95",
+            "recordPath": "SDP/Sessions/execution/assessments/cdcf5c02-d54f-4864-b980-aeb1aa70cf95.json",
+            "designImpact": "unchanged",
+            "blueprint": {
+              "requirement": "not-required",
+              "rationale": "No model or implementation contract changes in this documentation-only fixture"
+            },
+            "reason": "Assess the selected documentation correction with explicit impact criteria",
+            "criteria": [
+              {
+                "domain": "contracts",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "data-model",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "responsibilities",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "state-flow",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "interfaces",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "persistence",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "deployment",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              }
+            ],
+            "evidence": [
+              {
+                "path": "evidence/design-scope.md",
+                "sha256": "6bbfa38ae969e5671186facb86c8f3b828c757badb32201385370708eb7a5716"
+              }
+            ],
+            "skills": [
+              {
+                "name": "sdp-project-leader",
+                "path": "/home/warloc/git/pg_lab/session-c2c2a-disposition/Skills/sdp-project-leader/SKILL.md",
+                "digest": "8f903093e51638d6c1013b9ca3e51f0054f0a6a3173b686fd348b1ce794701ee"
+              },
+              {
+                "name": "sdp-change-analysis",
+                "path": "/home/warloc/git/pg_lab/session-c2c2a-disposition/Skills/sdp-change-analysis/SKILL.md",
+                "digest": "0d55a9e318494eb8406721f428fd43f408bee32f7068d22f428a1c1c69db339a"
+              }
+            ]
+          },
+          "selected": true,
+          "id": "S1",
+          "stage": "disposition",
+          "holds": [
+            "reconciliation_required: Session record effects pending",
+            "disposition effects pending; run and claim not yet committed"
+          ]
+        }
+      ],
+      "nextActions": [
+        "session-read",
+        "session-resume"
+      ],
+      "hostExecution": "completed"
+    }
+  },
+  {
+    "definition": "mutation",
+    "value": {
+      "recordEffects": "committed",
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-resume",
+      "operationId": "301ebc0d-fbad-4cab-80dd-a5bf24bbb81e",
+      "instanceId": "74253303-70af-4b2b-8477-6edcd733a96c",
+      "revision": 16,
+      "registration": "committed"
+    }
+  },
+  {
+    "definition": "view",
+    "value": {
+      "binding": {
+        "schema": "sdp-session-execution/0.1",
+        "session": {
+          "id": "SESSION-TEST-0001",
+          "path": "SDP/Sessions/session.md"
+        },
+        "plan": {
+          "id": "PLAN-SDP-0001",
+          "path": "SDP/Maintenance/Plan.md"
+        },
+        "authority": "SDP/authority.md",
+        "workflow": {
+          "id": "session-lifecycle",
+          "version": "0.1",
+          "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1"
+        },
+        "steps": [
+          {
+            "id": "S1",
+            "milestone": "M1",
+            "cards": [
+              {
+                "id": "KB-SDP-001",
+                "coverage": "contribution"
+              },
+              {
+                "id": "KB-SDP-002",
+                "coverage": "whole"
+              }
+            ],
+            "dependsOn": [],
+            "writablePaths": [
+              "target.txt"
+            ],
+            "protectedPaths": [
+              "unrelated.txt"
+            ],
+            "review": "independent",
+            "ownerAcceptance": "not-required"
+          }
+        ]
+      },
+      "recordEffects": "committed",
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-read",
+      "instanceId": "74253303-70af-4b2b-8477-6edcd733a96c",
+      "revision": 16,
+      "sessionId": "SESSION-TEST-0001",
+      "planId": "PLAN-SDP-0001",
+      "workflow": {
+        "id": "session-lifecycle",
+        "version": "0.1",
+        "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1"
+      },
+      "registration": "committed",
+      "coverage": "current",
+      "conditions": [],
+      "steps": [
+        {
+          "dispositionId": "5bbf9808-4e62-4752-8ac2-d2014f948a0a",
+          "cardDispositions": [
+            {
+              "id": "KB-SDP-001",
+              "outcome": "contribution-completed",
+              "summary": "Selected synthetic fixture outcome verified",
+              "remaining": "Other planned contributions remain open"
+            },
+            {
+              "id": "KB-SDP-002",
+              "outcome": "completed",
+              "summary": "Selected synthetic fixture outcome verified",
+              "remaining": ""
+            }
+          ],
+          "verificationEvidence": "725ab1df-3e0c-44ef-9c32-3f30fe56dd00",
+          "reviewId": "95357b46-cfdb-4eee-b3f8-879ced11bdcc",
+          "runId": "32f698de-a2ca-4d09-80f1-98252856b36e",
+          "runState": "completed",
+          "progressEvidence": "725ab1df-3e0c-44ef-9c32-3f30fe56dd00",
+          "assessment": {
+            "operationId": "cdcf5c02-d54f-4864-b980-aeb1aa70cf95",
+            "recordPath": "SDP/Sessions/execution/assessments/cdcf5c02-d54f-4864-b980-aeb1aa70cf95.json",
+            "designImpact": "unchanged",
+            "blueprint": {
+              "requirement": "not-required",
+              "rationale": "No model or implementation contract changes in this documentation-only fixture"
+            },
+            "reason": "Assess the selected documentation correction with explicit impact criteria",
+            "criteria": [
+              {
+                "domain": "contracts",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "data-model",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "responsibilities",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "state-flow",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "interfaces",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "persistence",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "deployment",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              }
+            ],
+            "evidence": [
+              {
+                "path": "evidence/design-scope.md",
+                "sha256": "6bbfa38ae969e5671186facb86c8f3b828c757badb32201385370708eb7a5716"
+              }
+            ],
+            "skills": [
+              {
+                "name": "sdp-project-leader",
+                "path": "/home/warloc/git/pg_lab/session-c2c2a-disposition/Skills/sdp-project-leader/SKILL.md",
+                "digest": "8f903093e51638d6c1013b9ca3e51f0054f0a6a3173b686fd348b1ce794701ee"
+              },
+              {
+                "name": "sdp-change-analysis",
+                "path": "/home/warloc/git/pg_lab/session-c2c2a-disposition/Skills/sdp-change-analysis/SKILL.md",
+                "digest": "0d55a9e318494eb8406721f428fd43f408bee32f7068d22f428a1c1c69db339a"
+              }
+            ]
+          },
+          "selected": true,
+          "id": "S1",
+          "stage": "done",
+          "holds": [
+            "selected step completed; plan/Session closure and other steps remain separate"
+          ]
+        }
+      ],
+      "nextActions": [
+        "session-read",
+        "session-resume"
+      ],
+      "hostExecution": "completed"
+    }
+  },
+  {
+    "definition": "list",
+    "value": {
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-list",
+      "generation": "9c537416d4653f3626f6495d58cc6e164e2db5150a6041dd49509ea8f8a22972",
+      "instances": [
+        {
+          "binding": {
+            "schema": "sdp-session-execution/0.1",
+            "session": {
+              "id": "SESSION-TEST-0001",
+              "path": "SDP/Sessions/session.md"
+            },
+            "plan": {
+              "id": "PLAN-SDP-0001",
+              "path": "SDP/Maintenance/Plan.md"
+            },
+            "authority": "SDP/authority.md",
+            "workflow": {
+              "id": "session-lifecycle",
+              "version": "0.1",
+              "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1"
+            },
+            "steps": [
+              {
+                "id": "S1",
+                "milestone": "M1",
+                "cards": [
+                  {
+                    "id": "KB-SDP-001",
+                    "coverage": "contribution"
+                  },
+                  {
+                    "id": "KB-SDP-002",
+                    "coverage": "whole"
+                  }
+                ],
+                "dependsOn": [],
+                "writablePaths": [
+                  "target.txt"
+                ],
+                "protectedPaths": [
+                  "unrelated.txt"
+                ],
+                "review": "independent",
+                "ownerAcceptance": "not-required"
+              }
+            ]
+          },
+          "recordEffects": "committed",
+          "schema": "sdp-session-execution/0.1",
+          "operation": "session-read",
+          "instanceId": "74253303-70af-4b2b-8477-6edcd733a96c",
+          "revision": 16,
+          "sessionId": "SESSION-TEST-0001",
+          "planId": "PLAN-SDP-0001",
+          "workflow": {
+            "id": "session-lifecycle",
+            "version": "0.1",
+            "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1"
+          },
+          "registration": "committed",
+          "coverage": "current",
+          "conditions": [],
+          "steps": [
+            {
+              "dispositionId": "5bbf9808-4e62-4752-8ac2-d2014f948a0a",
+              "cardDispositions": [
+                {
+                  "id": "KB-SDP-001",
+                  "outcome": "contribution-completed",
+                  "summary": "Selected synthetic fixture outcome verified",
+                  "remaining": "Other planned contributions remain open"
+                },
+                {
+                  "id": "KB-SDP-002",
+                  "outcome": "completed",
+                  "summary": "Selected synthetic fixture outcome verified",
+                  "remaining": ""
+                }
+              ],
+              "verificationEvidence": "725ab1df-3e0c-44ef-9c32-3f30fe56dd00",
+              "reviewId": "95357b46-cfdb-4eee-b3f8-879ced11bdcc",
+              "runId": "32f698de-a2ca-4d09-80f1-98252856b36e",
+              "runState": "completed",
+              "progressEvidence": "725ab1df-3e0c-44ef-9c32-3f30fe56dd00",
+              "assessment": {
+                "operationId": "cdcf5c02-d54f-4864-b980-aeb1aa70cf95",
+                "recordPath": "SDP/Sessions/execution/assessments/cdcf5c02-d54f-4864-b980-aeb1aa70cf95.json",
+                "designImpact": "unchanged",
+                "blueprint": {
+                  "requirement": "not-required",
+                  "rationale": "No model or implementation contract changes in this documentation-only fixture"
+                },
+                "reason": "Assess the selected documentation correction with explicit impact criteria",
+                "criteria": [
+                  {
+                    "domain": "contracts",
+                    "impact": "unchanged",
+                    "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+                  },
+                  {
+                    "domain": "data-model",
+                    "impact": "unchanged",
+                    "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+                  },
+                  {
+                    "domain": "responsibilities",
+                    "impact": "unchanged",
+                    "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+                  },
+                  {
+                    "domain": "state-flow",
+                    "impact": "unchanged",
+                    "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+                  },
+                  {
+                    "domain": "interfaces",
+                    "impact": "unchanged",
+                    "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+                  },
+                  {
+                    "domain": "persistence",
+                    "impact": "unchanged",
+                    "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+                  },
+                  {
+                    "domain": "deployment",
+                    "impact": "unchanged",
+                    "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+                  }
+                ],
+                "evidence": [
+                  {
+                    "path": "evidence/design-scope.md",
+                    "sha256": "6bbfa38ae969e5671186facb86c8f3b828c757badb32201385370708eb7a5716"
+                  }
+                ],
+                "skills": [
+                  {
+                    "name": "sdp-project-leader",
+                    "path": "/home/warloc/git/pg_lab/session-c2c2a-disposition/Skills/sdp-project-leader/SKILL.md",
+                    "digest": "8f903093e51638d6c1013b9ca3e51f0054f0a6a3173b686fd348b1ce794701ee"
+                  },
+                  {
+                    "name": "sdp-change-analysis",
+                    "path": "/home/warloc/git/pg_lab/session-c2c2a-disposition/Skills/sdp-change-analysis/SKILL.md",
+                    "digest": "0d55a9e318494eb8406721f428fd43f408bee32f7068d22f428a1c1c69db339a"
+                  }
+                ]
+              },
+              "selected": true,
+              "id": "S1",
+              "stage": "done",
+              "holds": [
+                "selected step completed; plan/Session closure and other steps remain separate"
+              ]
+            }
+          ],
+          "nextActions": [
+            "session-read",
+            "session-resume"
+          ],
+          "hostExecution": "completed"
+        }
+      ]
+    }
+  },
+  {
+    "definition": "disposeRequest",
+    "value": {
+      "schema": "sdp-session-execution/0.1",
+      "projectRef": "trial",
+      "checkoutId": "df85a16e-5795-4550-9d03-222ea13098ee",
+      "operationId": "5bbf9808-4e62-4752-8ac2-d2014f948a0a",
+      "instanceId": "74253303-70af-4b2b-8477-6edcd733a96c",
+      "expectedRevision": 14,
+      "expectedRunRevision": 6,
+      "resultId": "4b606cb6-a395-45c0-85b9-fcc6219d529f",
+      "system": "SDPTOOL",
+      "reason": "Publish the verified selected outcome and release its claim",
+      "cards": [
+        {
+          "id": "KB-SDP-001",
+          "outcome": "contribution-completed",
+          "summary": "Selected synthetic fixture outcome verified",
+          "remaining": "Other planned contributions remain open"
+        },
+        {
+          "id": "KB-SDP-002",
+          "outcome": "completed",
+          "summary": "Selected synthetic fixture outcome verified",
+          "remaining": ""
+        }
+      ]
+    }
+  },
+  {
+    "definition": "resumeRequest",
+    "value": {
+      "schema": "sdp-session-execution/0.1",
+      "projectRef": "trial",
+      "checkoutId": "df85a16e-5795-4550-9d03-222ea13098ee",
+      "operationId": "301ebc0d-fbad-4cab-80dd-a5bf24bbb81e",
+      "instanceId": "74253303-70af-4b2b-8477-6edcd733a96c",
+      "expectedRevision": 15,
+      "reason": "Commit exact disposition effects"
+    }
+  }
+]

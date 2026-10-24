@@ -373,3 +373,31 @@ WORK :00002 remains TARGET; model review/integration/release is still required.
 [Evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2c1.md)
 records actual scope and limits; synthetic review observations are not independent
 PG review or native whole-workflow acceptance.
+
+
+## T047 implementation boundary — PGF1-C2c2a
+
+`dispose-work` now has a bounded no-design, owner-acceptance-not-required path.
+Exact committed verification/review, current candidate and run revision, and absence
+of outstanding host input/attention are prerequisites. The controller submits all
+ordered card outcomes: whole completion or a completed contribution with explicit
+remaining work. Another bound step retaining a whole card's scope blocks its closeout.
+Required owner acceptance refuses until the trusted decision adapter is implemented.
+
+Preparation retains only named selected preimage bodies and a deterministic effect
+plan. Retained-state validation recomputes those effects. Resume uses the existing
+publisher to journal selected records, move eligible whole cards, update metadata/
+selected links/index, append management history and separate system evidence, and
+remove source cards/claim last. The pending canonical reservation remains until
+operational commitment; current legacy claim checks honor that reservation too.
+External edits hold recovery without overwriting bytes. Same-operation retry cannot
+repeat committed effects. This does not arbitrate manual writers or old executables.
+
+Profile 0.18 retains the disposition. Only commitment completes the Run and selected
+step. Plan/Session stay active; owner decisions, failed-result rework, dependencies/
+replan and explicit overall closure remain later C2c2 work. Full workflow delivery,
+SDL handoff/model acceptance/release and privileged leader integration remain open.
+The existing WORK :00002 target already describes this responsibility; no model
+source is relabeled accepted or released by implementing this subset.
+[Evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2c2a.md)
+records the actual candidate, fault matrix and compiled lab trial.

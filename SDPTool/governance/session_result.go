@@ -8,8 +8,11 @@ import (
 
 const sessionResultStateSchema = "sdp-project-governance-state/0.17"
 
+func sessionResultProfile(schema string) bool {
+	return schema == sessionResultStateSchema || schema == sessionDispositionStateSchema
+}
 func sessionWorkProfile(schema string) bool {
-	return schema == sessionWorkStateSchema || schema == sessionResultStateSchema
+	return schema == sessionWorkStateSchema || sessionResultProfile(schema)
 }
 
 func (s *Service) VerifySession(c Caller, q SessionWorkRequest) (SessionMutationResult, error) {

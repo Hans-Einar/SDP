@@ -9,7 +9,7 @@
 | created | 2026-10-09T12:08:50.581137+00:00 |
 | source | Owner Session0011 T004 role definition and T005 KanBan handoff request |
 | Systems | SDPTOOL |
-| next_review | C2b design assessment/no-design start/progress, then C2c evidence-bound disposition and remaining PG gates |
+| next_review | C2c2 owner decisions, failed-result rework, dependencies/replan and overall closure, then PGF2/3 leader/model gates |
 | PlanId | PLAN-SDP-0018 |
 | tags | project-leader, steering, SAD, master, MCP, app-server, coordination |
 
@@ -405,3 +405,25 @@ PG review. [Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidenc
 records final candidate and checks. C2c2 owns actual disposition, owner decisions,
 rework/dependencies and claim release; later leader/model/release gates remain open.
 EVT-KB-SDP-000428 records this unchanged-lifecycle work review.
+
+
+## T047 — Checked selected-step disposition
+
+2026-10-25 / Session0007 T047: C2c2a completes an eligible no-design step after exact
+current verification/review where owner acceptance is explicitly not required.
+Whole-card completion moves records/metadata/selected links/index; contributions stay
+active with explicit remaining work. Canonical disposition and management/system
+evidence precede claim release and Run completion. Plan/Session closure is separate.
+Required owner decisions, external edits and overlapping scope continue to hold work.
+
+Final race/vet, every-effect recovery, malformed-state/currentness/authority checks
+and compiled pg_lab evidence pass. All 264 earlier lab paths are preserved; the
+final executable replays completed receipts without changing state or fixture bytes.
+Synthetic report/test/review observations do not prove native execution or independent
+PG review. [Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2c2a.md)
+records exact candidate identities, corrections and limits.
+
+This card remains in-progress for owner decisions, failed-result rework, dependency
+progression/replan, overall closure and privileged leader/model gates. Existing WORK
+:00002 remains TARGET, not accepted/released. Backlog/onHold review preserves the
+related deferred cards; KB050/Session0008 is separately paused and MVP1 is deferred.

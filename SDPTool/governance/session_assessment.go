@@ -60,6 +60,9 @@ func sessionEffectsProfile(schema string) bool {
 	return schema == sessionEffectsStateSchema || sessionAssessmentProfile(schema)
 }
 func sessionLatestEffects(i SessionInstance) *SessionRecordEffects {
+	if i.Disposition != nil {
+		return &i.Disposition.Effects
+	}
 	if len(i.Work) > 0 {
 		return &i.Work[len(i.Work)-1].Effects
 	}
@@ -72,6 +75,9 @@ func sessionLatestEffects(i SessionInstance) *SessionRecordEffects {
 	return nil
 }
 func (s *Service) sessionPendingOwner(i SessionInstance) string {
+	if i.Disposition != nil {
+		return s.state + "\n" + i.Disposition.Request.OperationID + "\n"
+	}
 	if len(i.Work) > 0 {
 		return s.state + "\n" + i.Work[len(i.Work)-1].Request.OperationID + "\n"
 	}

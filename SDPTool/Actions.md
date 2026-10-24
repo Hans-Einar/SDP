@@ -39,6 +39,7 @@ Invalid context returns diagnostics and unavailable entries, with exit code 1.
 | governance.session.progress | Prepare candidate-bound report progress for verification | operational state |
 | governance.session.verify | Prepare exact passing test intake for Session review | operational state |
 | governance.session.review | Prepare exact observed passing review intake for disposition | operational state |
+| governance.session.dispose | Prepare checked selected-step/card completion and claim release | operational state |
 
 `project.discover` accepts `navigation: "eager"` (default) or `"lazy-sdl"`.
 `project.model-tree` requires the discovered `model` and exact `revision`; stale

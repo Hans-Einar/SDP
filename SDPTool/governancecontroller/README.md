@@ -767,3 +767,19 @@ fresh-thread, observation and retry ownership. `session-review` consumes the exa
 terminal passing review through trusted CLI/JSON and prepares canonical records;
 resume commits disposition-stage visibility. Neither operation completes the card
 or supplies owner acceptance. Existing Maintenance/Blueprint reviews are unchanged.
+
+
+## Selected-step completion — PGF1-C2c2a
+
+After exact verification/review intake commits, trusted local CLI/JSON
+`session-dispose` prepares per-card disposition and `session-resume` commits it.
+The controller does not launch another host turn for this operation. Current evidence,
+exact run revision and no outstanding host input/attention are required. Completion
+is available only when the selected binding does not require owner acceptance.
+See the [request and recovery contract](../governance/README.md#selected-step-disposition--pgf1-c2c2a).
+
+The existing Run becomes completed only after canonical whole/contribution outcomes,
+result evidence and claim release commit. The Session view exposes `done` for that
+step, not overall plan/Session closure. Restricted MCP cannot supply controller
+privileges. Owner-decision handling, failed-result rework, subsequent-step selection,
+privileged leader orchestration and design/model gates remain separate work.

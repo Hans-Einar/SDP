@@ -1,0 +1,25 @@
+{
+  "baseline": "e377d88327842a083ceca304570bfe5600c47747",
+  "identity": "Uncommitted product/test/schema candidate; maintained documents finalized after product tests.",
+  "files": {
+    "SDPTool/action_invoke.go": "6d95b3110686c29713c3e98b945ab56e695444c63899514c783977c7beae0c3d",
+    "SDPTool/action_process_test.go": "281b1d62ea46fbfac06a9122430fddcded837e82779bae01193c2ddb585cda94",
+    "SDPTool/action_sessions.go": "f604b57c8fd8994341f0c0f797b72cd21da7e58fe228699ab70a7a7117aacbcb",
+    "SDPTool/governance/session.go": "c7fe405146e75ae38c3f3b40fd0bc5692f9a016703064d59996b2cea546cfbb7",
+    "SDPTool/governance/session.schema.json": "ac1dcc7a5ee99be75c2a88ef65b75d7a861313dce5b7b059106817191239291d",
+    "SDPTool/governance/session_assessment.go": "d157da573321baef265c0c35f9622efd345b50ff492427ca1638d704be5cdb84",
+    "SDPTool/governance/session_disposition.go": "22cbb12f4b0166037cd5e587fa2545626b1212f7f4d201e02f1d5b7d6222d6db",
+    "SDPTool/governance/session_disposition_cli_test.go": "b04bd01a2d6eb809821e2bbcc72efc7b7247a4d6c302e2f2de1c9f40294ce6c1",
+    "SDPTool/governance/session_disposition_test.go": "3da97705e38c4e03bc739052ace263db17236261443694af0807fbe06cfa7e46",
+    "SDPTool/governance/session_result.go": "1b5433c85d899dcafadee049443776737171d32689c5eb0f45a489e8281c584f",
+    "SDPTool/governance/session_work.go": "944bc2fb290a8d93c47bc83ce7757aaa835176021c1b0fbc8e5c2dd64820c653",
+    "SDPTool/governance/store.go": "a854cb943863591a909e475313855cfaab2ecb5e8be4cf8966706c33026427aa",
+    "SDPTool/governance_cli.go": "a9ba7c998b55157439d5423034fd4749ee186225044616b22f7e92242c7115e1",
+    "SDPTool/presentation/presentation.go": "9260acb8dfb4b0115242c9d1d49240218dd87d37e3b79add79225fbb9e24b2b6",
+    "SDPTool/session_actions_test.go": "ad5853116db28cd6fda6631a8977405231be74dcc64ed405b8015983e8121720"
+  },
+  "binary": {
+    "path": "/home/warloc/.cache/sdp-workstation/PGF1-C2c2a/bin/sdptool",
+    "sha256": "e0ad6f218b27817d43f438ab915c58813997d95453318f06ee5aeb2ab80f94c5"
+  }
+}

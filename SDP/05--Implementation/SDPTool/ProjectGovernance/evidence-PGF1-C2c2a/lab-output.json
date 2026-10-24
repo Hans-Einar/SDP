@@ -1,0 +1,4 @@
+{
+  "exitCode": 0,
+  "stdout": "=== RUN   TestSessionDispositionCompiledJourney\n    session_disposition_cli_test.go:97: PASS: 9 observed Session wire objects\n        \n--- PASS: TestSessionDispositionCompiledJourney (9.49s)\nPASS\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t10.503s\n"
+}

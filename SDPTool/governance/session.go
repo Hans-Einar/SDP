@@ -83,6 +83,7 @@ type SessionResumeRequest struct {
 	Reason           string `json:"reason"`
 }
 type SessionInstance struct {
+	Disposition  *SessionDisposition `json:"disposition,omitempty"`
 	Work         []SessionWork       `json:"work,omitempty"`
 	Assessments  []SessionAssessment `json:"assessments,omitempty"`
 	Selection    *SessionSelection   `json:"selection,omitempty"`
@@ -103,16 +104,18 @@ type SessionMutationResult struct {
 	Registration  string `json:"registration"`
 }
 type SessionStepView struct {
-	VerificationEvidence string                 `json:"verificationEvidence,omitempty"`
-	ReviewID             string                 `json:"reviewId,omitempty"`
-	RunID                string                 `json:"runId,omitempty"`
-	RunState             string                 `json:"runState,omitempty"`
-	ProgressEvidence     string                 `json:"progressEvidence,omitempty"`
-	Assessment           *SessionAssessmentView `json:"assessment,omitempty"`
-	Selected             bool                   `json:"selected,omitempty"`
-	ID                   string                 `json:"id"`
-	Stage                string                 `json:"stage"`
-	Holds                []string               `json:"holds"`
+	DispositionID        string                   `json:"dispositionId,omitempty"`
+	CardDispositions     []SessionCardDisposition `json:"cardDispositions,omitempty"`
+	VerificationEvidence string                   `json:"verificationEvidence,omitempty"`
+	ReviewID             string                   `json:"reviewId,omitempty"`
+	RunID                string                   `json:"runId,omitempty"`
+	RunState             string                   `json:"runState,omitempty"`
+	ProgressEvidence     string                   `json:"progressEvidence,omitempty"`
+	Assessment           *SessionAssessmentView   `json:"assessment,omitempty"`
+	Selected             bool                     `json:"selected,omitempty"`
+	ID                   string                   `json:"id"`
+	Stage                string                   `json:"stage"`
+	Holds                []string                 `json:"holds"`
 }
 type SessionView struct {
 	Binding       *SessionBinding    `json:"binding,omitempty"`
@@ -538,7 +541,11 @@ func (s *Service) ResumeSession(c Caller, q SessionResumeRequest) (SessionMutati
 	if len(encoded) > maxState-8192 {
 		return SessionMutationResult{}, fail("limit", "insufficient receipt capacity before effects")
 	}
-	if len(i.Work) > 0 && sessionLatestEffects(i).Status == "prepared" {
+	if i.Disposition != nil && i.Disposition.Effects.Status == "prepared" {
+		if e = s.applySessionDisposition(&st, &i, tx); e != nil {
+			return SessionMutationResult{}, e
+		}
+	} else if len(i.Work) > 0 && sessionLatestEffects(i).Status == "prepared" {
 		if e = s.applySessionWork(&st, &i, tx); e != nil {
 			return SessionMutationResult{}, e
 		}
@@ -649,6 +656,7 @@ func (s *Service) sessionView(i SessionInstance, st snapshot) SessionView {
 			}
 		}
 		s.projectSessionWork(i, st, &v, &sv)
+		s.projectSessionDisposition(i, st, &v, &sv)
 		v.Steps = append(v.Steps, sv)
 	}
 	return v
@@ -740,7 +748,7 @@ func validateSessionState(st snapshot) error {
 			continue
 		}
 		i, ok := st.Sessions[v.InstanceID]
-		if !ok || !uuidPattern.MatchString(id) || id != v.OperationID || v.Schema != SessionSchema || v.Revision == 0 || v.Revision > i.Revision || !digestPattern.MatchString(r.Digest) || r.Result.ProjectRef != st.Project || r.Result.CheckoutID != st.CheckoutID || r.Result.OperationID != id || r.Result.Schema != Schema || !slices.Contains([]string{"session-adopt", "session-resume", "session-select", "session-assess", "session-start", "session-progress", "session-verify", "session-review"}, v.Operation) || r.Result.Operation != strings.Replace(v.Operation, "-", ".", 1) || (v.Operation == "session-adopt" && (v.InstanceID != id || v.Registration != "pending")) || (v.Operation == "session-resume" && (v.Revision < 2 || v.Registration != "committed")) {
+		if !ok || !uuidPattern.MatchString(id) || id != v.OperationID || v.Schema != SessionSchema || v.Revision == 0 || v.Revision > i.Revision || !digestPattern.MatchString(r.Digest) || r.Result.ProjectRef != st.Project || r.Result.CheckoutID != st.CheckoutID || r.Result.OperationID != id || r.Result.Schema != Schema || !slices.Contains([]string{"session-adopt", "session-resume", "session-select", "session-assess", "session-start", "session-progress", "session-verify", "session-review", "session-dispose"}, v.Operation) || r.Result.Operation != strings.Replace(v.Operation, "-", ".", 1) || (v.Operation == "session-adopt" && (v.InstanceID != id || v.Registration != "pending")) || (v.Operation == "session-resume" && (v.Revision < 2 || v.Registration != "committed")) {
 			return fail("reconciliation_required", "invalid Session receipt")
 		}
 		if revisions[v.InstanceID][v.Revision] {

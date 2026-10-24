@@ -1,0 +1,21 @@
+{
+  "candidateFiles": 15,
+  "sourceAndBinaryHashesMatch": true,
+  "executableSourcesIdenticalToFullRaceCandidate": true,
+  "maintainedRelativeLinksChecked": 343,
+  "allLinksResolve": true,
+  "blueprintArtifactsAndSDLHashesMatch": true,
+  "ledgerPrefixes": {
+    "SDP/ProjectManagement/Ledger.ndjson": {
+      "originalBytesUnchanged": true,
+      "originalSHA256": "df94150b7a6768fea9de63edbeb1872abd4a369d27a095e377a872f903cbb1d6",
+      "appendedEvents": 3
+    },
+    "SDP/Traceability/Ledger.ndjson": {
+      "originalBytesUnchanged": true,
+      "originalSHA256": "80958b0099b01f7d74dd22d986f8157c8e9c76cc393f990601b2800639be8f61",
+      "appendedEvents": 1
+    }
+  },
+  "diffCheck": true
+}

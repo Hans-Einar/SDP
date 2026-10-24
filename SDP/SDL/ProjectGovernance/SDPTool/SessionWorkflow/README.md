@@ -128,3 +128,15 @@ Aggregate SessionWorkflowDelivery remains planned until the remaining runtime,
 independent review and model integration/release obligations are met.
 [Evidence](../../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2c1.md)
 retains exact code/model identities and the test boundary.
+
+
+## T047 implementation mapping — PGF1-C2c2a
+
+The existing CheckWholeCardDisposition target now has checked selected-step effects
+for the no-design, owner-acceptance-not-required route: whole-card completion versus
+contribution remaining scope, result publication and claim release before operational
+completion. The scoped Blueprint constrains this subset; WORK :00002 sources remain
+unchanged. SessionWorkflowDelivery remains planned: owner decisions, rework/dependency
+progression, overall closure, leader/model handoff and acceptance/release are open.
+[Evidence](../../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2c2a.md)
+distinguishes synthetic report/review fixtures from native or independent PG review.

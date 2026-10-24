@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T046 — PGF1-C2c1 candidate-bound verification/review gates delivered. C2c2 actual disposition/rework/dependencies/claim release and later leader/model gates remain.
+Latest recorded turn: T047 — PGF1-C2c2a selected-step disposition/card effects/claim release delivered. Owner decisions, rework/dependencies/replan, overall closure and later leader/model gates remain.
 The native trial asks, receives a delayed fixture reply, starts one fresh attempt
 and implements/reports the selected behavior. Local acknowledgement, coordination and
 serialized leader delivery are implemented. C8 native single-worker/leader and completed
@@ -31,7 +31,7 @@ gantt
 | --- | --- | --- | --- | --- |
 | completed | S1 | Recover skills, studies, card dependencies and ownership | Owner request, 2026-10-03 | Assessment below; RGS2 reused |
 | completed | S2 | Design the smallest common routing, run, Session and client contract | Owner continuation, T002 | [PGD1 / PLAN-SDP-0017](../04--Design/SDPTool/ProjectGovernance/Plan.md), contract, acceptance cases and protocol inspection |
-| on-going | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C6 verified; owner reports PGI3-U1 trial performed; native mapping remains unverified; PGI4-C1 evidence/rework, C2 native review and C3 checked result publication delivered; final disposition and integrated gates remain; PGF1-C1 binding/registration delivered in T042; C2a checked selection/ready-card effects delivered in T043; C2b1 design admission delivered in T044; C2b2 no-design start/progress delivered in T045; C2c1 verification/review gates delivered T046 |
+| on-going | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C6 verified; owner reports PGI3-U1 trial performed; native mapping remains unverified; PGI4-C1 evidence/rework, C2 native review and C3 checked result publication delivered; final disposition and integrated gates remain; PGF1-C1 binding/registration delivered in T042; C2a checked selection/ready-card effects delivered in T043; C2b1 design admission delivered in T044; C2b2 no-design start/progress delivered in T045; C2c1 verification/review gates delivered T046; C2c2a selected-step disposition/claim release delivered T047 |
 | completed | S7 | Codex 0.164.0 and compatible later hosts / PGC1 | Owner T029; KB057 and existing PLAN-SDP-0018 | 98b449c range/identity/recovery checks, full race/vet, 60 schema cases and real no-model 0.164.0 controller/MCP probe pass; full native/review gates remain |
 | on-going | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation, C2a lifecycle, C2b provider checks and C2c decisions and C2d activation/native code trial delivered; PGL3-C2 reports/inbox, C3 attention/replies and C4 guarded continuation delivered; C5 acknowledgement, C6 console/MCP and C7 serialized leader delivery/recovery and C8 native bounded workflow and C3 review/publication coordination delivered; final disposition, parallel/capacity and independent review gates remain |
 | planned | S4 | Verify interruption, resume, scope change and evidence disposition | S3 candidate | Evidence required before wider use |
@@ -43,8 +43,8 @@ gantt
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-25 |
-| Current step | S3/S6 active: PGF1-C2c1 verification/review intake delivered; actual disposition, owner decisions, rework/dependencies, privileged leader operations and model gates remain |
-| Proposed next step | Implement C2c2 owner decisions, checked whole/contribution disposition, rework/dependencies and claim release/replan, then PGF2–9 under T039/T041 gates: orchestration, SDL handoff, owner dialogue, recovery/capacity, native integration, independent review and explicit scope closeout. SDL-only; MVP1 deferred |
+| Current step | S3/S6 active: PGF1-C2c2a selected-step/card disposition and claim release delivered. Owner decisions, rework/dependencies, overall closure, privileged leader operations and model gates remain |
+| Proposed next step | Finish C2c2 owner decisions, failed-result rework, dependencies/replan and explicit plan/Session closure, then PGF2–9 under T039/T041 gates: orchestration, SDL handoff, owner dialogue, recovery/capacity, native integration, independent review and explicit scope closeout. SDL-only; MVP1 deferred |
 | Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension; T026 assigns hub/webapp to a separate project and continues local SDP/SDPTool work; T027 continues local attention/replies; T028 continues guarded attention continuation; T029 selects stable Codex >=0.164.0 and compatible later hosts, preserving other scopes |
 
 ## Goal and ownership
@@ -2407,3 +2407,81 @@ validation reports 73 cards, 47 records and 696 events; Toolkit validation passe
 Lab 92d97a7 is clean/pushed. Preparing scoped milestone commit and phase push.
 C2c1 is delivered at verification/review scope; C2c2 and full PG/model acceptance
 remain open. No independent product review or release is asserted.
+
+
+## T047 — Checked step disposition and claim release
+
+Owner continues PG. Scoped preflight: clean/pushed sdp/codex-forward-compatibility
+at e377d88327842a083ceca304570bfe5600c47747, one local worktree. Committed governance
+changes since main belong to this Session; no competing local writer or ID collision
+observed. KB038/052 remain in-progress; KB050/Session0008 stays separately paused.
+pg_lab is clean at 92d97a7. Unobserved remote work remains outside coverage. Green for
+Session disposition/effects, run terminal projection, CLI/actions/schema/tests and
+linked records. No Ponsse, host settings or separate Blueprint feature scope selected.
+
+C2c2a implements no-design selected-step disposition with explicit whole/contribution
+outcomes, current committed verification/review, canonical result publication and
+scope-claim release. Required owner acceptance continues to refuse until its trusted
+adapter exists; no caller-provided approval shortcut. Whole cards may complete only
+when no other bound step retains their scope; contributions remain active with
+explicit remaining work. Plan/Session closure and subsequent step selection remain
+separate operations. Reuse checked effects: create destination, preserve history,
+rewrite supported selected links/index, remove source/claim last, then commit run
+completion and done-stage visibility. Pending reservations block cooperating writers
+until the operational commit; arbitrary shell and old binaries remain outside scope.
+
+Reuse existing WORK :00002/CheckWholeCardDisposition and prepare a scoped Blueprint
+before edits. SDP/Master/Architect/Worker plus reused Planning/Verifier/Traceability
+and document routines govern this checkpoint. No delegation, independent product
+review, model acceptance or release is claimed. Remaining C2c2 work is owner decisions,
+failed-result rework, dependencies/replan and explicit plan/Session closure.
+
+
+### T047 work summary
+
+- Owner continuation selects the existing bounded C2c2a assignment. Required owner
+  decisions are not inferred from this implementation authorization. SDP/Master/
+  Architect/Worker and Planning/Verifier/Traceability/document routines were loaded
+  or reused; no delegation or independent product review occurred.
+- The selected no-design step can now complete after current exact verification and
+  required review, only when owner acceptance is explicitly not required. Whole cards
+  move to completed; contributions stay in-progress with explicit remaining scope.
+  Plan/Session stay active. Canonical disposition, management/system evidence and
+  claim removal precede Run completion; the shared reservation protects partial writes.
+- Tests exercise refusal, stored tampering, lost preparation replies, every effect,
+  operational publication and external edits. A fixture missing its second-step heading
+  was corrected without weakening admission. Inspection found a malformed-history
+  panic path; the guarded type check and regression are included in the final candidate.
+  The initial race run was interrupted, then restarted; the final full race suite passes.
+- The compiled lab journey reaches step done / Run completed at instance revision 16.
+  One card completes, one remains an explicit contribution, and no claim/reservation
+  remains. All 264 prior lab paths are unchanged; a9b4960 is pushed on
+  test/pgf1-c2c2a-disposition. Report/test/review observations are synthetic inputs.
+  Final binary replay/read preserves the same receipts, HEAD and fixture bytes.
+  The new executable reads 0.17 unchanged; the old reader refuses 0.18 unchanged.
+- Scoped Blueprint constraints and unchanged SDL WORK :00002 validation pass. The
+  aggregate SessionWorkflowDelivery target and model integration/acceptance/release
+  remain open. S3/S6 and KB038/052 stay active/in-progress. KB036/037/042, paused
+  KB050/Session0008 and SDL-only KB059 keep their existing dispositions; MVP1 is deferred.
+- Next: remaining C2c2 owner decision/gate flow, failed-result rework, dependencies/
+  replan and explicit overall closure, then the selected PGF2–9 gates. This summary
+  records actual work, not an already captured final response. Final validation and
+  scoped milestone commit/phase push remain before reporting this checkpoint delivered.
+  [Evidence](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2c2a.md).
+
+
+T047 final product checks pass: full SDPTool race suite (exit 0), vet, defensive
+malformed-history regression, compiled CLI journey and final durable-store replay.
+Candidate/source/model hashes match. C2c2a is delivered at the selected-step scope;
+canonical document validation and scoped milestone commit/phase push complete the
+handoff. The remaining C2c2 and PGF2–9 gates are still open. No full PG acceptance,
+independent review or release is asserted.
+
+
+T047 final document checks pass: 73 cards, 47 management records and 699 events;
+Toolkit validation, maintained relative links, candidate/model hashes and preserved
+ledger prefixes pass. A final schema-only alignment permits omitted/empty remaining
+work for whole-card completion while requiring nonempty contribution remaining work;
+six boundary cases and both lab captures pass. Executable sources/binary match the
+full race candidate. Preparing the scoped milestone commit and authorized phase push;
+lab a9b4960 is clean/pushed. Full PG, native integration and model acceptance remain open.

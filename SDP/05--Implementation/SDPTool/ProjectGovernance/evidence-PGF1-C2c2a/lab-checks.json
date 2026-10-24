@@ -1,0 +1,37 @@
+{
+  "root": "/home/warloc/git/pg_lab/session-c2c2a-disposition",
+  "state": "/home/warloc/.cache/sdp-workstation/PGF1-C2c2a/lab-state",
+  "priorHead": "92d97a7215c7d9e90c6036ff4fbb2b23331a6dae",
+  "priorTrackedPathsUnchanged": 264,
+  "wireObjects": 9,
+  "instanceRevision": 16,
+  "stage": "done",
+  "runState": "completed",
+  "cardDispositions": [
+    {
+      "id": "KB-SDP-001",
+      "outcome": "contribution-completed",
+      "summary": "Selected synthetic fixture outcome verified",
+      "remaining": "Other planned contributions remain open"
+    },
+    {
+      "id": "KB-SDP-002",
+      "outcome": "completed",
+      "summary": "Selected synthetic fixture outcome verified",
+      "remaining": ""
+    }
+  ],
+  "pendingReservation": false,
+  "scopeClaimsRemaining": 0,
+  "branch": "test/pgf1-c2c2a-disposition",
+  "limits": [
+    "Actual compiled CLI processes; synthetic report/test/review observations",
+    "No native execution, independent PG review or owner acceptance"
+  ],
+  "commit": "a9b4960b80cf45aa1d928d3a75301d0ffd6cb0fb",
+  "initialJourneyCandidate": "lab-candidate.json",
+  "finalCandidate": "candidate.json",
+  "finalReadRetryWireObjects": 4,
+  "finalReadRetryHeadAndFixtureUnchanged": true,
+  "pushed": true
+}

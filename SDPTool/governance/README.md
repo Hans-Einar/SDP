@@ -639,8 +639,8 @@ pre/postimage recovery, reservations and input coverage apply, including unrelat
 validated ledger appends. Full binding, run state, progress evidence and actual host
 execution are separate view fields. Generic rework, further advance/relaunch after
 progress and legacy single-card result publication cannot bypass the pending Session
-disposition. C2c must add verified whole/contribution disposition, rework/dependencies
-and claim release/replan; design/model release, privileged leader integration, native
+disposition. The C2c2a operation below adds bounded whole/contribution disposition
+and claim release. Rework/dependencies and replan remain; design/model release, privileged leader integration, native
 whole-workflow trials and independent review remain required.
 
 
@@ -683,8 +683,54 @@ one verify and one review intake after the existing start/progress pair. Existin
 Where binding review is explicitly not-required, committed verification exposes
 disposition without inventing a review. A required owner decision remains a visible
 hold; this increment cannot record owner acceptance or create a gate-review request.
-Cards, plan and Session remain active, claims remain held and generic completion
-stays blocked. C2c2 must provide checked whole/contribution disposition, owner-decision
-handling, rework/dependency progression and claim release/replan. Design-changing work
+These intake operations leave cards, plan and Session active and claims held; generic
+completion stays blocked. The C2c2a operation below handles eligible selected-step
+disposition. Owner decisions, rework/dependency progression and replan remain. Design-changing work
 still requires PGF3. This checkpoint uses synthetic review observations in tests;
 independent PG review and native whole-workflow acceptance remain unfulfilled.
+
+
+## Selected-step disposition — PGF1-C2c2a
+
+`session-dispose --input disposition.json` prepares completion of the selected
+no-design step. It requires current committed verification and the exact committed
+review where the binding requires independent review. The selected binding must
+explicitly say owner acceptance is not required. A caller cannot provide an approval
+flag to bypass an owner decision. Outstanding host input/attention, contradictory
+results or changed run/candidate/test/skill/canonical inputs hold completion.
+
+The request uses `schema`, `projectRef`, `checkoutId`, `operationId`, `instanceId`,
+`expectedRevision`, `expectedRunRevision`, `reason`, `resultId`, `system` and `cards`.
+`resultId` is the committed review operation, or verification operation when review
+is not required. `system` is the affected uppercase traceability namespace (for
+example `SDPTOOL`). Each card supplies `id`, `outcome`, `summary`, `remaining`, in
+selected binding order. Whole coverage requires `completed` and omitted or empty `remaining`;
+contribution coverage requires `contribution-completed` and explicit remaining work.
+A whole card referenced by another bound step cannot complete through this bounded
+operation. The trusted JSON action is `governance.session.dispose`; restricted
+leader/worker MCP gains no authority.
+
+Preparation saves exact preimages and deterministic postimages in operational
+profile 0.18. `session-resume` publishes the immutable disposition at
+`SDP/Sessions/execution/dispositions/<operation-id>.json`, selected Session/plan/card
+journals, management events and a separate Traceability evidence event. Whole cards
+move from active to completed with metadata, supported selected links and board
+index updates. Contributions stay active/in-progress with their remaining work.
+References from unselected documents, ambiguous links and destination collisions
+refuse instead of silently changing other work. Original ledger bytes are preserved.
+
+The existing publisher applies creations/updates before removals, checks exact
+pre/postimages and candidate evidence throughout, and retains a shared reservation
+until the operational head commits. The scope claim is the final removal. Current
+legacy admission checks also observe the pending reservation, so a partially removed
+claim does not imply completed disposition. Manual writers and older binaries are
+outside this cooperative guarantee. Recovery resumes the same effects; external
+edits are preserved and require reconciliation. Identical retries return historical
+receipts; inspect current state separately.
+
+Only the committed result makes the Run completed and the selected step `done`.
+Plan and Session remain active: explicit plan/Session closure, subsequent step
+selection/dependencies, failed-result rework and required owner decisions are later
+C2c2 work. No host launch or model release occurs. Retained snapshots are validated
+against the same deterministic transformation used for preparation. Older supported
+stores remain readable without migration; old readers refuse profile 0.18.

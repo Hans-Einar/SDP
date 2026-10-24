@@ -1,0 +1,86 @@
+{
+  "candidate": "candidate.json",
+  "environment": {
+    "go": "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+    "GOTOOLCHAIN": "local",
+    "GOCACHE": "/home/warloc/.cache/sdp-workstation/gocache",
+    "GOMODCACHE": "/home/warloc/.cache/sdp-workstation/gomodcache"
+  },
+  "checks": [
+    {
+      "command": "go -C SDPTool test -race -timeout 15m ./...",
+      "log": "race.log",
+      "exitCode": 0,
+      "result": "passed",
+      "candidate": "race-candidate.json"
+    },
+    {
+      "command": "go -C SDPTool vet ./...",
+      "exitCode": 0,
+      "log": "vet.log"
+    },
+    {
+      "command": "go -C SDPTool test ./governance -run ^TestSessionDispositionTamper$ -count=1",
+      "exitCode": 0,
+      "observation": "Includes malformed retained history payload regression on final candidate"
+    },
+    {
+      "command": "go -C SDPTool test -race ./governance -run ^TestSessionDispositionCompiledJourney$ -count=1 -v (explicit PG_DISPOSE_LAB_ROOT/STATE/BINARY)",
+      "exitCode": 0,
+      "candidate": "lab-candidate.json",
+      "output": "lab-output.json"
+    },
+    {
+      "command": "final compiled binary retries exact completed lab operations and reads/list; schema checks capture",
+      "exitCode": 0,
+      "output": "final-lab-wire.json",
+      "observation": "Four wire objects; operational HEAD and all fixture bytes unchanged"
+    },
+    {
+      "command": "sdl check WORK--SessionLifecycle/System.design",
+      "exitCode": 0,
+      "output": "sdl-check.json"
+    },
+    {
+      "command": "Final executable reads prior 0.17 store; old executable refuses 0.18; both heads unchanged",
+      "result": "passed",
+      "outputs": [
+        "predecessor-read.json",
+        "old-reader.json"
+      ]
+    },
+    {
+      "command": "Final schema boundary cases and all captured initial/final lab wire objects",
+      "exitCode": 0,
+      "observation": "Six card outcome boundaries; whole remaining may be omitted/empty, contribution remaining must be present/nonempty. No executable source changes after full race."
+    },
+    {
+      "command": "python3 SDP/ProjectManagement/validate.py",
+      "exitCode": 0,
+      "log": "management.log",
+      "observation": "73 cards, 47 management records, 699 events"
+    },
+    {
+      "command": "python3 Toolkit/scripts/validate_sdp.py --base-ref main",
+      "exitCode": 0,
+      "log": "toolkit.log"
+    },
+    {
+      "command": "Final candidate/binary/model hashes, maintained links, original ledger prefixes and git diff --check",
+      "exitCode": 0,
+      "output": "final-checks.json"
+    }
+  ],
+  "limits": [
+    "Selected no-design step where owner acceptance is explicitly not required",
+    "Required owner decisions, failed-result rework, dependency progression/replan and explicit plan/Session closure remain",
+    "Synthetic report/test/review observations, not native execution or independent PG review",
+    "No owner acceptance, model/software release, merge or installation"
+  ],
+  "developmentCorrections": [
+    "Second-step fixture initially omitted its Session heading; admission correctly refused. Added the authored heading; whole-card overlap refusal then passed.",
+    "Inspection found an unchecked history-payload type assertion in retained disposition validation. Replaced it with controlled refusal and added malformed-history regression. Interrupted the initial race run (exit 143; race-interrupted.log) and restarted the full suite on the final candidate.",
+    "Initial durable lab journey used lab-candidate.json before the defensive validation correction. The final executable replays historical receipts and reads the same durable store unchanged; final full-suite compiled journey also exercises a fresh fixture.",
+    "Final wire-contract inspection aligned the schema with the existing core: remaining is optional/empty for a completed whole card, but mandatory/nonempty for a contribution. This schema-only correction follows the full race run; race-candidate.json pins that earlier schema, all Go sources and the executable remain identical. Six schema boundaries and both lab captures validate against the final schema."
+  ]
+}

@@ -464,6 +464,9 @@ func (s *Service) prepareSessionWork(c Caller, kind string, q SessionWorkRequest
 	if !ok || i.Selection == nil || len(i.Assessments) == 0 {
 		return SessionMutationResult{}, fail("missing_coverage", "assessed selected Session required")
 	}
+	if i.Disposition != nil {
+		return SessionMutationResult{}, fail("conflict", "Session disposition already prepared")
+	}
 	if i.Revision != q.ExpectedRevision {
 		return SessionMutationResult{}, fail("stale_revision", "Session revision changed")
 	}
@@ -535,8 +538,10 @@ func (s *Service) prepareSessionWork(c Caller, kind string, q SessionWorkRequest
 	i.Revision++
 	st.Sessions[i.ID] = i
 	if kind == "verify" || kind == "review" {
-		st.Schema = sessionResultStateSchema
-	} else if st.Schema != sessionResultStateSchema {
+		if st.Schema != sessionDispositionStateSchema {
+			st.Schema = sessionResultStateSchema
+		}
+	} else if !sessionResultProfile(st.Schema) {
 		st.Schema = sessionWorkStateSchema
 	}
 	out := SessionMutationResult{Schema: SessionSchema, Operation: "session-" + kind, OperationID: q.OperationID, InstanceID: i.ID, Revision: i.Revision, Registration: "committed", RecordEffects: "prepared"}
@@ -634,7 +639,7 @@ func validateSessionWork(st snapshot) error {
 		if len(i.Work) == 0 {
 			continue
 		}
-		if !sessionWorkProfile(st.Schema) || len(i.Work) > 4 || (len(i.Work) > 2 && st.Schema != sessionResultStateSchema) || len(i.Assessments) == 0 || i.Selection == nil || !i.Registered {
+		if !sessionWorkProfile(st.Schema) || len(i.Work) > 4 || (len(i.Work) > 2 && !sessionResultProfile(st.Schema)) || len(i.Assessments) == 0 || i.Selection == nil || !i.Registered {
 			return fail("reconciliation_required", "invalid Session work owner/profile")
 		}
 		a := i.Assessments[len(i.Assessments)-1]
@@ -789,6 +794,9 @@ func validateSessionWork(st snapshot) error {
 // Current legacy admission/dispatch also observes persistent Session scope claims.
 // This is an optimistic cooperative check, not interception of external writers.
 func (s *Service) checkExternalSessionClaims(a Assignment) error {
+	if _, e := readFile(filepath.Join(s.root, managementLedger)+".pg-pending", 8192); !os.IsNotExist(e) {
+		return fail("reconciliation_required", "canonical transaction pending; scope release is not committed")
+	}
 	entries, _ := os.ReadDir(filepath.Join(s.root, "SDP/Sessions/execution/claims"))
 	if len(entries) > 0 {
 		for _, p := range append(append([]string{}, a.WritablePaths...), a.ExcludedPaths...) {

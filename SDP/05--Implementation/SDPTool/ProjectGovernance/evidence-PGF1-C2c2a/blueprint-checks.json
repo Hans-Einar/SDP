@@ -1,0 +1,23 @@
+{
+  "revision": "683b351e8bec404e426515fa158dab7eaccbdc8746469d430f9742cb8622d77b",
+  "status": "diagnostic-preview",
+  "ConstraintsPass": true,
+  "files": {
+    "assignment.json": "f212cfe9508d4f159649dc8f7db0c6fe3147c5fd29656232d4fe04e66dedc050",
+    "blueprint.json": "e7981a2cc1c43016ae79330a539aa5068dd2731a7845842b02e8fa318efc79ef",
+    "changes.md": "b6c43ea5f4ef8ef1412cde900215cd51452462aea89ad4a82f8bb2c72a8ec197",
+    "changes.mmd": "0d4b20f27eafadd396ac63776d11969e69912502052e0a4ee72e7433c3c18390",
+    "context.md": "f144e79061256e1e1fc511dcb57394e2c6b30fa8402b686d00b9b06d98d60860",
+    "context.mmd": "4abe54c5a21779ae31758cfa2f2ef6d53a88f75d218be9c64c5cf6dee76a45de",
+    "evidence.md": "b2aaeec660ef9caab675ae6a7b790ac1121ef93089ee87369f40dcaeb29fa023",
+    "index.md": "9f8667985d5650841843221a9d870dd1625846f6d38637e43576e5fb78f9852e",
+    "manifest.json": "4fd89ebd0b63c3e9575bd2faffcdbc33a46f8b415a57e4841e4bfd3c19b86ad8",
+    "obligations.md": "da5de7d99ae3ea8c4e12985fa4f4e4fc221bad9e70073082d87035bed0948e9e",
+    "sources/NOW/Foundation.design": "c6c35abbb8efd6f742e35ec052d349e2033f4fcdf616a5d30ff355f58f237725",
+    "sources/NOW/System.design": "40707572c01915eeb46f1c9a80254ed0129b534b07b70b750c1ef7d89860b87b",
+    "sources/TARGET/Contracts.design": "b6f367149d229c7a09d3bae67677b77db7a79a3dbc230794bae254b8f6e36072",
+    "sources/TARGET/Foundation.design": "b705dc3815ba8075001dbf2e4dbb46152b74abe1c6c8d85d89f968edddbd9edc",
+    "sources/TARGET/System.design": "835abf7be06461e0dbcb2ad73c9250c9b5af2ca1924ec7e4ac0d6caac1076871",
+    "sources/TARGET/Workflow.design": "cca9cf67c5a6e03fcacaaaa9036c5268ed6f03b41ef082f15cf4548e961b8d38"
+  }
+}

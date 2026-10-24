@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/home/warloc/.cache/sdp-workstation/PGF1-C2c1/bin/sdptool",
+    "/home/warloc/git/pg_lab/session-c2c2a-disposition",
+    "governance",
+    "session-list",
+    "--state",
+    "/home/warloc/.cache/sdp-workstation/PGF1-C2c2a/lab-state",
+    "--json"
+  ],
+  "exitCode": 2,
+  "headUnchanged": true,
+  "headSHA256": "ba231a4fd46d0cbade409e0384e269aa5539593831afa19f9f29273a0c934d47",
+  "stdout": "",
+  "stderr": "{\"error\":{\"code\":\"reconciliation_required\",\"message\":\"invalid_request: json: unknown field \\\"disposition\\\"\",\"retryable\":false},\"operation\":\"error\",\"schema\":\"sdp-project-governance/0.1\",\"status\":\"error\"}\n"
+}
