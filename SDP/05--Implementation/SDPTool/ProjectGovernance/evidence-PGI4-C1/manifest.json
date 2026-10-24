@@ -1,0 +1,28 @@
+{
+  "artifacts": {
+    "README.md": "944b24d39b0ac6efcfae1b4b1e342e9ddc92ef119f5e5dd6d631de00d38345c3",
+    "candidate.json": "1a922b8ca8bade1ea59a6f741daa7f094b05c2a7f0deb4d53a5add57850b4ab6",
+    "checks.json": "903f52fb576c238cad53dd1be9a9cac414cb140fa0d82b47f584011fe97d48e2",
+    "checks.py": "3ace0614c297e5488fd70cccf6a18c87c5d4d3d0b3b571ae81adbfca0f6d80ff",
+    "cli-wire.json": "eb3a11c8093b7afdf53468c01f2dc0806ce430c22004c2b1071157462024597f",
+    "core-wire.json": "faa6504180c790d07a47366ed0c6b2dd1afc1fb548773eba422950fe578e49ba",
+    "final_checks.py": "cafe55670f2fe5d3303f9ba37ca5e2d13bcc2b33e12289390146cb39ab604441",
+    "lab-commands.json": "855902f6dd9d85409335ad09ff4ea5e6d7712ee7de93c89fd4b4af5536b7864d",
+    "lab-delivery.json": "d8c286c1dbdd3977438ec24fe897acab755abcb932ef8d17efb62bd67fefb3fa",
+    "lab-summary.json": "aa545d4c7bfab91816e431f556d3bd0f8c74f189d61e7403be84f1da5ca27dcd",
+    "lab-wire.json": "5b7256934d80cdc16223f021ab002e36251fd7f51d0514d9fc5f5cdede19dce4",
+    "lab_trial.py": "ef3ca24ba1e908f6cac26a1f01fa92185ab50132657e222682bbe30b10ca9d87",
+    "preliminary/README.md": "324782037666f4f09b072b07fe7d3bbbecbf45c2577f177cbe8f3c935c806c86",
+    "preliminary/checks.json": "3b6102b43c5f46b450cd2b6827b72128550acbb1dc354a3baa56f1ee706e5b78",
+    "preliminary/cli-wire.json": "9e98a31ffcf00a985f2cbead7c885d33eaaeace46eb1c99b27eb4196c0b85cef",
+    "preliminary/core-wire.json": "ff14acbc3ab858c0a3d7c6a4f6175fa693a6e9911e0c29f212d4852921206513",
+    "preliminary/lab-commands.json": "76947f8e65b2b2243006a5616830f42320e47dc870ade5d0285c83dfd124bbc7",
+    "preliminary/lab-summary.json": "4aab33e4486fb36fc28855fda358926e37ab47cc5a8fa88d3dbd79f218232d67",
+    "preliminary/lab-wire.json": "2cc41bb09399940aa8fb5004938a5d4b0c79eeb56c45b40c44368713725783ce",
+    "preliminary/sdptool-race.log": "9eb8a5d878490c069c0ab0234c720e3a330fe72f3cecae683521e7a0381096c1",
+    "preliminary/sdptool-vet.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "schema-checks.json": "8b6839c5be4ec1e3b1a949a9cc9ad0ef3e129e96ec414a3c3006aa1a6c16247d",
+    "sdptool-race.log": "a4474fa612778cc2436906f610bb492137147a31a112a5b39cd91d0e0e5788c6",
+    "sdptool-vet.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

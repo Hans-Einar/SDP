@@ -396,7 +396,9 @@ func (s *Service) LeaderWrite(c Caller, q LeaderRequest) (LeaderResult, error) {
 	}
 	l.Revision++
 	state.Leader = &l
-	state.Schema = leaderStateSchema
+	if state.Schema != evidenceStateSchema {
+		state.Schema = leaderStateSchema
+	}
 	if state.LeaderReceipts == nil {
 		state.LeaderReceipts = map[string]leaderReceipt{}
 	}
@@ -407,10 +409,13 @@ func (s *Service) LeaderWrite(c Caller, q LeaderRequest) (LeaderResult, error) {
 	return out, nil
 }
 func validateLeaderState(state snapshot) error {
-	if state.Schema != leaderStateSchema {
+	if state.Schema != leaderStateSchema && state.Schema != evidenceStateSchema {
 		if state.Leader != nil || len(state.LeaderReceipts) > 0 {
 			return fail("incompatible_profile", "leader records require operational profile 0.9")
 		}
+		return nil
+	}
+	if state.Schema == evidenceStateSchema && state.Leader == nil && len(state.LeaderReceipts) == 0 {
 		return nil
 	}
 	if state.Leader == nil || state.Leader.Revision == 0 || len(state.Leader.Messages) > 64 || len(state.Leader.Dispatches) > 16 || len(state.LeaderReceipts) == 0 || len(state.LeaderReceipts) > 256 {

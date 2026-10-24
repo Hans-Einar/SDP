@@ -256,7 +256,7 @@ func (s *Service) Transition(caller Caller, q TransitionRequest) (Result, error)
 			next = "canceled"
 		}
 	case "complete":
-		return out, fail("evidence_missing", "PGI1 does not accept delivery evidence or owner/reviewer dispositions; completion is unavailable")
+		return out, fail("evidence_missing", "completion requires independently verified review and checked publication; attached evidence alone cannot complete work")
 	default:
 		return out, fail("invalid_request", "unsupported routine action")
 	}

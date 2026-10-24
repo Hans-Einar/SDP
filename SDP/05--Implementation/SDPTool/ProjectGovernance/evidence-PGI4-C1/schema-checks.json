@@ -1,0 +1,21 @@
+{
+  "schema": "SDPTool/governance/schema.json",
+  "definitionReferences": "resolved",
+  "results": [
+    {
+      "file": "core-wire.json",
+      "cases": 6,
+      "result": "passed"
+    },
+    {
+      "file": "cli-wire.json",
+      "cases": 7,
+      "result": "passed"
+    },
+    {
+      "file": "lab-wire.json",
+      "cases": 17,
+      "result": "passed"
+    }
+  ]
+}

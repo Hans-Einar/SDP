@@ -1,0 +1,2105 @@
+[
+  {
+    "definition": "Candidate",
+    "value": {
+      "schema": "sdp-governance-evidence/1",
+      "projectRef": "pg-owner-lab",
+      "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+      "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+      "writablePaths": [
+        "format.go",
+        "format_test.go"
+      ],
+      "excludedPaths": [
+        "SDP",
+        "Skills",
+        "AGENTS.md",
+        "go.mod",
+        "normalize.go",
+        "normalize_test.go",
+        "unrelated.txt"
+      ],
+      "dependencies": [
+        "cmd",
+        "go.mod",
+        "normalize.go",
+        "normalize_test.go"
+      ],
+      "entries": [
+        {
+          "path": "cmd",
+          "kind": "directory",
+          "sha256": "",
+          "executable": false
+        },
+        {
+          "path": "cmd/label",
+          "kind": "directory",
+          "sha256": "",
+          "executable": false
+        },
+        {
+          "path": "cmd/label/main.go",
+          "kind": "file",
+          "sha256": "cf5ac6b38047c307a6d7da52d76b858ad7ea8854bae919477b2a3ec14add6c91",
+          "executable": false
+        },
+        {
+          "path": "format.go",
+          "kind": "file",
+          "sha256": "863625be1fe85c0208b5b45a1e4a00c3c06d16bf3b28d9059caf65848c53cbd7",
+          "executable": false
+        },
+        {
+          "path": "format_test.go",
+          "kind": "file",
+          "sha256": "e1ae8342fe73b9d48b0f04ebd1fed011f5667510ca30f858e5cbb2b2fb18c980",
+          "executable": false
+        },
+        {
+          "path": "go.mod",
+          "kind": "file",
+          "sha256": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+          "executable": false
+        },
+        {
+          "path": "normalize.go",
+          "kind": "file",
+          "sha256": "6cd9379fdc90e80e1d45f871ca0cb7a4612fc7172fee86a4ebfb38b245b5b1a0",
+          "executable": false
+        },
+        {
+          "path": "normalize_test.go",
+          "kind": "file",
+          "sha256": "7c61c8c67f992cb7e37106a53afe0b725093457ff97336696cde7fb65d16ba73",
+          "executable": false
+        }
+      ],
+      "digest": "a2cdd97d18d61a92e64bd562b29ad85044263f0bc700e5f76f7bf62c97ec71e6"
+    }
+  },
+  {
+    "definition": "EvidenceView",
+    "value": {
+      "schema": "sdp-governance-evidence/1",
+      "projectRef": "pg-owner-lab",
+      "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+      "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "revision": 24,
+      "state": "verifying",
+      "items": [],
+      "limitations": [
+        "controller-attributed claims; test execution not observed by PG",
+        "review independence unverified",
+        "checked publication and completion unavailable"
+      ]
+    }
+  },
+  {
+    "definition": "EvidenceRequest",
+    "value": {
+      "schema": "sdp-governance-evidence/1",
+      "projectRef": "pg-owner-lab",
+      "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+      "operationId": "d38f2408-285c-4501-bfb4-8a16c3553934",
+      "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "expectedRevision": 24,
+      "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+      "reportId": "dabffc1f-9e82-48a1-beaa-dd8973e924db",
+      "candidate": {
+        "schema": "sdp-governance-evidence/1",
+        "projectRef": "pg-owner-lab",
+        "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+        "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+        "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+        "writablePaths": [
+          "format.go",
+          "format_test.go"
+        ],
+        "excludedPaths": [
+          "SDP",
+          "Skills",
+          "AGENTS.md",
+          "go.mod",
+          "normalize.go",
+          "normalize_test.go",
+          "unrelated.txt"
+        ],
+        "dependencies": [
+          "cmd",
+          "go.mod",
+          "normalize.go",
+          "normalize_test.go"
+        ],
+        "entries": [
+          {
+            "path": "cmd",
+            "kind": "directory",
+            "sha256": "",
+            "executable": false
+          },
+          {
+            "path": "cmd/label",
+            "kind": "directory",
+            "sha256": "",
+            "executable": false
+          },
+          {
+            "path": "cmd/label/main.go",
+            "kind": "file",
+            "sha256": "cf5ac6b38047c307a6d7da52d76b858ad7ea8854bae919477b2a3ec14add6c91",
+            "executable": false
+          },
+          {
+            "path": "format.go",
+            "kind": "file",
+            "sha256": "863625be1fe85c0208b5b45a1e4a00c3c06d16bf3b28d9059caf65848c53cbd7",
+            "executable": false
+          },
+          {
+            "path": "format_test.go",
+            "kind": "file",
+            "sha256": "e1ae8342fe73b9d48b0f04ebd1fed011f5667510ca30f858e5cbb2b2fb18c980",
+            "executable": false
+          },
+          {
+            "path": "go.mod",
+            "kind": "file",
+            "sha256": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+            "executable": false
+          },
+          {
+            "path": "normalize.go",
+            "kind": "file",
+            "sha256": "6cd9379fdc90e80e1d45f871ca0cb7a4612fc7172fee86a4ebfb38b245b5b1a0",
+            "executable": false
+          },
+          {
+            "path": "normalize_test.go",
+            "kind": "file",
+            "sha256": "7c61c8c67f992cb7e37106a53afe0b725093457ff97336696cde7fb65d16ba73",
+            "executable": false
+          }
+        ],
+        "digest": "a2cdd97d18d61a92e64bd562b29ad85044263f0bc700e5f76f7bf62c97ec71e6"
+      },
+      "kind": "test",
+      "verdict": "passed",
+      "issuer": "PGI4-C1 external Go verifier",
+      "note": "External Go test result. Failed case is a deliberate trial fault, not an original C8 defect. No independent review claim.",
+      "artifact": {
+        "path": "evidence/PGI4-C1/passed.log",
+        "sha256": "1c36faa3ba6a6470009a0f042a464e80cebb740e32699f5ac5ba0cbd95bceafc"
+      }
+    }
+  },
+  {
+    "definition": "Result",
+    "value": {
+      "evidence": {
+        "request": {
+          "schema": "sdp-governance-evidence/1",
+          "projectRef": "pg-owner-lab",
+          "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+          "operationId": "d38f2408-285c-4501-bfb4-8a16c3553934",
+          "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+          "expectedRevision": 24,
+          "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+          "reportId": "dabffc1f-9e82-48a1-beaa-dd8973e924db",
+          "candidate": {
+            "schema": "sdp-governance-evidence/1",
+            "projectRef": "pg-owner-lab",
+            "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+            "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+            "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+            "writablePaths": [
+              "format.go",
+              "format_test.go"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "Skills",
+              "AGENTS.md",
+              "go.mod",
+              "normalize.go",
+              "normalize_test.go",
+              "unrelated.txt"
+            ],
+            "dependencies": [
+              "cmd",
+              "go.mod",
+              "normalize.go",
+              "normalize_test.go"
+            ],
+            "entries": [
+              {
+                "path": "cmd",
+                "kind": "directory",
+                "sha256": "",
+                "executable": false
+              },
+              {
+                "path": "cmd/label",
+                "kind": "directory",
+                "sha256": "",
+                "executable": false
+              },
+              {
+                "path": "cmd/label/main.go",
+                "kind": "file",
+                "sha256": "cf5ac6b38047c307a6d7da52d76b858ad7ea8854bae919477b2a3ec14add6c91",
+                "executable": false
+              },
+              {
+                "path": "format.go",
+                "kind": "file",
+                "sha256": "863625be1fe85c0208b5b45a1e4a00c3c06d16bf3b28d9059caf65848c53cbd7",
+                "executable": false
+              },
+              {
+                "path": "format_test.go",
+                "kind": "file",
+                "sha256": "e1ae8342fe73b9d48b0f04ebd1fed011f5667510ca30f858e5cbb2b2fb18c980",
+                "executable": false
+              },
+              {
+                "path": "go.mod",
+                "kind": "file",
+                "sha256": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+                "executable": false
+              },
+              {
+                "path": "normalize.go",
+                "kind": "file",
+                "sha256": "6cd9379fdc90e80e1d45f871ca0cb7a4612fc7172fee86a4ebfb38b245b5b1a0",
+                "executable": false
+              },
+              {
+                "path": "normalize_test.go",
+                "kind": "file",
+                "sha256": "7c61c8c67f992cb7e37106a53afe0b725093457ff97336696cde7fb65d16ba73",
+                "executable": false
+              }
+            ],
+            "digest": "a2cdd97d18d61a92e64bd562b29ad85044263f0bc700e5f76f7bf62c97ec71e6"
+          },
+          "kind": "test",
+          "verdict": "passed",
+          "issuer": "PGI4-C1 external Go verifier",
+          "note": "External Go test result. Failed case is a deliberate trial fault, not an original C8 defect. No independent review claim.",
+          "artifact": {
+            "path": "evidence/PGI4-C1/passed.log",
+            "sha256": "1c36faa3ba6a6470009a0f042a464e80cebb740e32699f5ac5ba0cbd95bceafc"
+          }
+        },
+        "recordedAt": "2026-10-24T10:16:51.47924936Z",
+        "provenance": "controller-attributed"
+      },
+      "schema": "sdp-project-governance/0.1",
+      "operation": "evidence.attach",
+      "projectRef": "pg-owner-lab",
+      "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+      "operationId": "d38f2408-285c-4501-bfb4-8a16c3553934",
+      "run": {
+        "inputs": [
+          {
+            "contentOmitted": true,
+            "id": "4bae5a3f-1584-4b92-a795-479fe2c5a8ec",
+            "kind": "launch",
+            "text": "",
+            "payload": "",
+            "attemptId": "450e0fa0-9684-4f6b-990b-bc17a5daa979",
+            "epoch": "d7bf788c-f37b-4de7-8ec5-a2c3d65ee610",
+            "threadId": "01a16d18-462e-7631-a8fe-b3b4ff6d97c1",
+            "turnId": "01a16d18-467a-7070-ae9d-a12429c85f9c",
+            "state": "acknowledged",
+            "receivedAt": "2026-10-24T08:47:49.773398274Z"
+          }
+        ],
+        "attempts": [
+          {
+            "agentEpoch": "d7bf788c-f37b-4de7-8ec5-a2c3d65ee610",
+            "lastObservedAt": "2026-10-24T08:48:49.841135961Z",
+            "eventCount": 17,
+            "id": "450e0fa0-9684-4f6b-990b-bc17a5daa979",
+            "hostVersion": "0.164.0",
+            "threadId": "01a16d18-462e-7631-a8fe-b3b4ff6d97c1",
+            "turnId": "01a16d18-467a-7070-ae9d-a12429c85f9c",
+            "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+            "epoch": "d7bf788c-f37b-4de7-8ec5-a2c3d65ee610",
+            "status": "completed",
+            "gap": false,
+            "events": []
+          }
+        ],
+        "id": "be00db9f-4e12-4d8e-8728-9fa367450065",
+        "revision": 24,
+        "requestId": "2a37d96c-0716-46aa-8036-bb162923c6a6",
+        "state": "verifying",
+        "step": "implement",
+        "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+        "selection": {
+          "card": "SDP/KanBan/active/leader-trial.md",
+          "plan": "SDP/Maintenance/LeaderTrial/Plan.md",
+          "session": "SDP/Sessions/leader-trial.md",
+          "authority": "SDP/leader-trial-authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "Implement and test FormatLabel in the native PG lab, then report for Project Leader processing",
+          "writablePaths": [
+            "format.go",
+            "format_test.go"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "Skills",
+            "AGENTS.md",
+            "go.mod",
+            "normalize.go",
+            "normalize_test.go",
+            "unrelated.txt"
+          ]
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "reason": "Implemented MAINT-PGLAB-0002 M1 / SESSION-PGLAB-0002 S1 / KB-PGLAB-002 under SDP/leader-trial-authority.md. Candidate is uncommitted HEAD f66e65ec522ed19c8dc31c4216bf28697cada2f0 plus new format.go (SHA256 863625be1fe85c0208b5b45a1e4a00c3c06d16bf3b28d9059caf65848c53cbd7) and format_test.go (SHA256 e1ae8342fe73b9d48b0f04ebd1fed011f5667510ca30f858e5cbb2b2fb18c980). FormatLabel calls NormalizeLabel(input), returns empty for empty normalized input, otherwise prefix + ': ' + normalized input. Ten table-driven cases cover empty/ASCII and Unicode whitespace-only input, ASCII and Unicode boundaries, interior tabs/whitespace and case, non-whitespace Unicode boundaries, empty prefix, and exact prefix bytes including NUL/invalid UTF-8. Go go1.27.1 linux/amd64; GOCACHE=/tmp/pg-lab-go-cache go test ./... passed (pgi3pilot ok, cmd/label has no test files); gofmt applied and git diff --check passed. Same-context source inspection only. Initial working tree clean; final git status shows only the two permitted new files, all tracked files unchanged. No delegation, dependency changes, host setting changes, commits, canonical record writes or publication. No observed implementation gaps; existing behavioral authority remains accurate. Remaining gates: external coordinator verification, applicable independent review, Project Leader report processing, controller evidence publication and any required owner disposition. Proposed next phase is verify. Report is implementation evidence, not independent approval, owner acceptance or completion."
+      },
+      "coverage": "known"
+    }
+  },
+  {
+    "definition": "EvidenceView",
+    "value": {
+      "schema": "sdp-governance-evidence/1",
+      "projectRef": "pg-owner-lab",
+      "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+      "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "revision": 24,
+      "state": "verifying",
+      "items": [
+        {
+          "record": {
+            "request": {
+              "schema": "sdp-governance-evidence/1",
+              "projectRef": "pg-owner-lab",
+              "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+              "operationId": "d38f2408-285c-4501-bfb4-8a16c3553934",
+              "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+              "expectedRevision": 24,
+              "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+              "reportId": "dabffc1f-9e82-48a1-beaa-dd8973e924db",
+              "candidate": {
+                "schema": "sdp-governance-evidence/1",
+                "projectRef": "pg-owner-lab",
+                "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+                "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+                "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+                "writablePaths": [
+                  "format.go",
+                  "format_test.go"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "Skills",
+                  "AGENTS.md",
+                  "go.mod",
+                  "normalize.go",
+                  "normalize_test.go",
+                  "unrelated.txt"
+                ],
+                "dependencies": [
+                  "cmd",
+                  "go.mod",
+                  "normalize.go",
+                  "normalize_test.go"
+                ],
+                "entries": [
+                  {
+                    "path": "cmd",
+                    "kind": "directory",
+                    "sha256": "",
+                    "executable": false
+                  },
+                  {
+                    "path": "cmd/label",
+                    "kind": "directory",
+                    "sha256": "",
+                    "executable": false
+                  },
+                  {
+                    "path": "cmd/label/main.go",
+                    "kind": "file",
+                    "sha256": "cf5ac6b38047c307a6d7da52d76b858ad7ea8854bae919477b2a3ec14add6c91",
+                    "executable": false
+                  },
+                  {
+                    "path": "format.go",
+                    "kind": "file",
+                    "sha256": "863625be1fe85c0208b5b45a1e4a00c3c06d16bf3b28d9059caf65848c53cbd7",
+                    "executable": false
+                  },
+                  {
+                    "path": "format_test.go",
+                    "kind": "file",
+                    "sha256": "e1ae8342fe73b9d48b0f04ebd1fed011f5667510ca30f858e5cbb2b2fb18c980",
+                    "executable": false
+                  },
+                  {
+                    "path": "go.mod",
+                    "kind": "file",
+                    "sha256": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+                    "executable": false
+                  },
+                  {
+                    "path": "normalize.go",
+                    "kind": "file",
+                    "sha256": "6cd9379fdc90e80e1d45f871ca0cb7a4612fc7172fee86a4ebfb38b245b5b1a0",
+                    "executable": false
+                  },
+                  {
+                    "path": "normalize_test.go",
+                    "kind": "file",
+                    "sha256": "7c61c8c67f992cb7e37106a53afe0b725093457ff97336696cde7fb65d16ba73",
+                    "executable": false
+                  }
+                ],
+                "digest": "a2cdd97d18d61a92e64bd562b29ad85044263f0bc700e5f76f7bf62c97ec71e6"
+              },
+              "kind": "test",
+              "verdict": "passed",
+              "issuer": "PGI4-C1 external Go verifier",
+              "note": "External Go test result. Failed case is a deliberate trial fault, not an original C8 defect. No independent review claim.",
+              "artifact": {
+                "path": "evidence/PGI4-C1/passed.log",
+                "sha256": "1c36faa3ba6a6470009a0f042a464e80cebb740e32699f5ac5ba0cbd95bceafc"
+              }
+            },
+            "recordedAt": "2026-10-24T10:16:51.47924936Z",
+            "provenance": "controller-attributed"
+          },
+          "candidateCurrent": true,
+          "artifactCurrent": true,
+          "reportCurrent": true,
+          "applicable": true,
+          "conditions": []
+        }
+      ],
+      "limitations": [
+        "controller-attributed claims; test execution not observed by PG",
+        "review independence unverified",
+        "checked publication and completion unavailable"
+      ]
+    }
+  },
+  {
+    "definition": "EvidenceView",
+    "value": {
+      "schema": "sdp-governance-evidence/1",
+      "projectRef": "pg-owner-lab",
+      "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+      "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "revision": 24,
+      "state": "verifying",
+      "items": [
+        {
+          "record": {
+            "request": {
+              "schema": "sdp-governance-evidence/1",
+              "projectRef": "pg-owner-lab",
+              "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+              "operationId": "d38f2408-285c-4501-bfb4-8a16c3553934",
+              "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+              "expectedRevision": 24,
+              "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+              "reportId": "dabffc1f-9e82-48a1-beaa-dd8973e924db",
+              "candidate": {
+                "schema": "sdp-governance-evidence/1",
+                "projectRef": "pg-owner-lab",
+                "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+                "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+                "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+                "writablePaths": [
+                  "format.go",
+                  "format_test.go"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "Skills",
+                  "AGENTS.md",
+                  "go.mod",
+                  "normalize.go",
+                  "normalize_test.go",
+                  "unrelated.txt"
+                ],
+                "dependencies": [
+                  "cmd",
+                  "go.mod",
+                  "normalize.go",
+                  "normalize_test.go"
+                ],
+                "entries": [
+                  {
+                    "path": "cmd",
+                    "kind": "directory",
+                    "sha256": "",
+                    "executable": false
+                  },
+                  {
+                    "path": "cmd/label",
+                    "kind": "directory",
+                    "sha256": "",
+                    "executable": false
+                  },
+                  {
+                    "path": "cmd/label/main.go",
+                    "kind": "file",
+                    "sha256": "cf5ac6b38047c307a6d7da52d76b858ad7ea8854bae919477b2a3ec14add6c91",
+                    "executable": false
+                  },
+                  {
+                    "path": "format.go",
+                    "kind": "file",
+                    "sha256": "863625be1fe85c0208b5b45a1e4a00c3c06d16bf3b28d9059caf65848c53cbd7",
+                    "executable": false
+                  },
+                  {
+                    "path": "format_test.go",
+                    "kind": "file",
+                    "sha256": "e1ae8342fe73b9d48b0f04ebd1fed011f5667510ca30f858e5cbb2b2fb18c980",
+                    "executable": false
+                  },
+                  {
+                    "path": "go.mod",
+                    "kind": "file",
+                    "sha256": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+                    "executable": false
+                  },
+                  {
+                    "path": "normalize.go",
+                    "kind": "file",
+                    "sha256": "6cd9379fdc90e80e1d45f871ca0cb7a4612fc7172fee86a4ebfb38b245b5b1a0",
+                    "executable": false
+                  },
+                  {
+                    "path": "normalize_test.go",
+                    "kind": "file",
+                    "sha256": "7c61c8c67f992cb7e37106a53afe0b725093457ff97336696cde7fb65d16ba73",
+                    "executable": false
+                  }
+                ],
+                "digest": "a2cdd97d18d61a92e64bd562b29ad85044263f0bc700e5f76f7bf62c97ec71e6"
+              },
+              "kind": "test",
+              "verdict": "passed",
+              "issuer": "PGI4-C1 external Go verifier",
+              "note": "External Go test result. Failed case is a deliberate trial fault, not an original C8 defect. No independent review claim.",
+              "artifact": {
+                "path": "evidence/PGI4-C1/passed.log",
+                "sha256": "1c36faa3ba6a6470009a0f042a464e80cebb740e32699f5ac5ba0cbd95bceafc"
+              }
+            },
+            "recordedAt": "2026-10-24T10:16:51.47924936Z",
+            "provenance": "controller-attributed"
+          },
+          "candidateCurrent": true,
+          "artifactCurrent": true,
+          "reportCurrent": true,
+          "applicable": true,
+          "conditions": []
+        }
+      ],
+      "limitations": [
+        "controller-attributed claims; test execution not observed by PG",
+        "review independence unverified",
+        "checked publication and completion unavailable"
+      ]
+    }
+  },
+  {
+    "definition": "EvidenceView",
+    "value": {
+      "schema": "sdp-governance-evidence/1",
+      "projectRef": "pg-owner-lab",
+      "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+      "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "revision": 24,
+      "state": "verifying",
+      "items": [
+        {
+          "record": {
+            "request": {
+              "schema": "sdp-governance-evidence/1",
+              "projectRef": "pg-owner-lab",
+              "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+              "operationId": "d38f2408-285c-4501-bfb4-8a16c3553934",
+              "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+              "expectedRevision": 24,
+              "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+              "reportId": "dabffc1f-9e82-48a1-beaa-dd8973e924db",
+              "candidate": {
+                "schema": "sdp-governance-evidence/1",
+                "projectRef": "pg-owner-lab",
+                "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+                "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+                "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+                "writablePaths": [
+                  "format.go",
+                  "format_test.go"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "Skills",
+                  "AGENTS.md",
+                  "go.mod",
+                  "normalize.go",
+                  "normalize_test.go",
+                  "unrelated.txt"
+                ],
+                "dependencies": [
+                  "cmd",
+                  "go.mod",
+                  "normalize.go",
+                  "normalize_test.go"
+                ],
+                "entries": [
+                  {
+                    "path": "cmd",
+                    "kind": "directory",
+                    "sha256": "",
+                    "executable": false
+                  },
+                  {
+                    "path": "cmd/label",
+                    "kind": "directory",
+                    "sha256": "",
+                    "executable": false
+                  },
+                  {
+                    "path": "cmd/label/main.go",
+                    "kind": "file",
+                    "sha256": "cf5ac6b38047c307a6d7da52d76b858ad7ea8854bae919477b2a3ec14add6c91",
+                    "executable": false
+                  },
+                  {
+                    "path": "format.go",
+                    "kind": "file",
+                    "sha256": "863625be1fe85c0208b5b45a1e4a00c3c06d16bf3b28d9059caf65848c53cbd7",
+                    "executable": false
+                  },
+                  {
+                    "path": "format_test.go",
+                    "kind": "file",
+                    "sha256": "e1ae8342fe73b9d48b0f04ebd1fed011f5667510ca30f858e5cbb2b2fb18c980",
+                    "executable": false
+                  },
+                  {
+                    "path": "go.mod",
+                    "kind": "file",
+                    "sha256": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+                    "executable": false
+                  },
+                  {
+                    "path": "normalize.go",
+                    "kind": "file",
+                    "sha256": "6cd9379fdc90e80e1d45f871ca0cb7a4612fc7172fee86a4ebfb38b245b5b1a0",
+                    "executable": false
+                  },
+                  {
+                    "path": "normalize_test.go",
+                    "kind": "file",
+                    "sha256": "7c61c8c67f992cb7e37106a53afe0b725093457ff97336696cde7fb65d16ba73",
+                    "executable": false
+                  }
+                ],
+                "digest": "a2cdd97d18d61a92e64bd562b29ad85044263f0bc700e5f76f7bf62c97ec71e6"
+              },
+              "kind": "test",
+              "verdict": "passed",
+              "issuer": "PGI4-C1 external Go verifier",
+              "note": "External Go test result. Failed case is a deliberate trial fault, not an original C8 defect. No independent review claim.",
+              "artifact": {
+                "path": "evidence/PGI4-C1/passed.log",
+                "sha256": "1c36faa3ba6a6470009a0f042a464e80cebb740e32699f5ac5ba0cbd95bceafc"
+              }
+            },
+            "recordedAt": "2026-10-24T10:16:51.47924936Z",
+            "provenance": "controller-attributed"
+          },
+          "candidateCurrent": false,
+          "artifactCurrent": true,
+          "reportCurrent": true,
+          "applicable": false,
+          "conditions": [
+            "candidate changed or unavailable"
+          ]
+        }
+      ],
+      "limitations": [
+        "controller-attributed claims; test execution not observed by PG",
+        "review independence unverified",
+        "checked publication and completion unavailable"
+      ]
+    }
+  },
+  {
+    "definition": "Result",
+    "value": {
+      "evidence": {
+        "request": {
+          "schema": "sdp-governance-evidence/1",
+          "projectRef": "pg-owner-lab",
+          "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+          "operationId": "d38f2408-285c-4501-bfb4-8a16c3553934",
+          "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+          "expectedRevision": 24,
+          "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+          "reportId": "dabffc1f-9e82-48a1-beaa-dd8973e924db",
+          "candidate": {
+            "schema": "sdp-governance-evidence/1",
+            "projectRef": "pg-owner-lab",
+            "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+            "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+            "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+            "writablePaths": [
+              "format.go",
+              "format_test.go"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "Skills",
+              "AGENTS.md",
+              "go.mod",
+              "normalize.go",
+              "normalize_test.go",
+              "unrelated.txt"
+            ],
+            "dependencies": [
+              "cmd",
+              "go.mod",
+              "normalize.go",
+              "normalize_test.go"
+            ],
+            "entries": [
+              {
+                "path": "cmd",
+                "kind": "directory",
+                "sha256": "",
+                "executable": false
+              },
+              {
+                "path": "cmd/label",
+                "kind": "directory",
+                "sha256": "",
+                "executable": false
+              },
+              {
+                "path": "cmd/label/main.go",
+                "kind": "file",
+                "sha256": "cf5ac6b38047c307a6d7da52d76b858ad7ea8854bae919477b2a3ec14add6c91",
+                "executable": false
+              },
+              {
+                "path": "format.go",
+                "kind": "file",
+                "sha256": "863625be1fe85c0208b5b45a1e4a00c3c06d16bf3b28d9059caf65848c53cbd7",
+                "executable": false
+              },
+              {
+                "path": "format_test.go",
+                "kind": "file",
+                "sha256": "e1ae8342fe73b9d48b0f04ebd1fed011f5667510ca30f858e5cbb2b2fb18c980",
+                "executable": false
+              },
+              {
+                "path": "go.mod",
+                "kind": "file",
+                "sha256": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+                "executable": false
+              },
+              {
+                "path": "normalize.go",
+                "kind": "file",
+                "sha256": "6cd9379fdc90e80e1d45f871ca0cb7a4612fc7172fee86a4ebfb38b245b5b1a0",
+                "executable": false
+              },
+              {
+                "path": "normalize_test.go",
+                "kind": "file",
+                "sha256": "7c61c8c67f992cb7e37106a53afe0b725093457ff97336696cde7fb65d16ba73",
+                "executable": false
+              }
+            ],
+            "digest": "a2cdd97d18d61a92e64bd562b29ad85044263f0bc700e5f76f7bf62c97ec71e6"
+          },
+          "kind": "test",
+          "verdict": "passed",
+          "issuer": "PGI4-C1 external Go verifier",
+          "note": "External Go test result. Failed case is a deliberate trial fault, not an original C8 defect. No independent review claim.",
+          "artifact": {
+            "path": "evidence/PGI4-C1/passed.log",
+            "sha256": "1c36faa3ba6a6470009a0f042a464e80cebb740e32699f5ac5ba0cbd95bceafc"
+          }
+        },
+        "recordedAt": "2026-10-24T10:16:51.47924936Z",
+        "provenance": "controller-attributed"
+      },
+      "schema": "sdp-project-governance/0.1",
+      "operation": "evidence.attach",
+      "projectRef": "pg-owner-lab",
+      "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+      "operationId": "d38f2408-285c-4501-bfb4-8a16c3553934",
+      "run": {
+        "inputs": [
+          {
+            "contentOmitted": true,
+            "id": "4bae5a3f-1584-4b92-a795-479fe2c5a8ec",
+            "kind": "launch",
+            "text": "",
+            "payload": "",
+            "attemptId": "450e0fa0-9684-4f6b-990b-bc17a5daa979",
+            "epoch": "d7bf788c-f37b-4de7-8ec5-a2c3d65ee610",
+            "threadId": "01a16d18-462e-7631-a8fe-b3b4ff6d97c1",
+            "turnId": "01a16d18-467a-7070-ae9d-a12429c85f9c",
+            "state": "acknowledged",
+            "receivedAt": "2026-10-24T08:47:49.773398274Z"
+          }
+        ],
+        "attempts": [
+          {
+            "agentEpoch": "d7bf788c-f37b-4de7-8ec5-a2c3d65ee610",
+            "lastObservedAt": "2026-10-24T08:48:49.841135961Z",
+            "eventCount": 17,
+            "id": "450e0fa0-9684-4f6b-990b-bc17a5daa979",
+            "hostVersion": "0.164.0",
+            "threadId": "01a16d18-462e-7631-a8fe-b3b4ff6d97c1",
+            "turnId": "01a16d18-467a-7070-ae9d-a12429c85f9c",
+            "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+            "epoch": "d7bf788c-f37b-4de7-8ec5-a2c3d65ee610",
+            "status": "completed",
+            "gap": false,
+            "events": []
+          }
+        ],
+        "id": "be00db9f-4e12-4d8e-8728-9fa367450065",
+        "revision": 24,
+        "requestId": "2a37d96c-0716-46aa-8036-bb162923c6a6",
+        "state": "verifying",
+        "step": "implement",
+        "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+        "selection": {
+          "card": "SDP/KanBan/active/leader-trial.md",
+          "plan": "SDP/Maintenance/LeaderTrial/Plan.md",
+          "session": "SDP/Sessions/leader-trial.md",
+          "authority": "SDP/leader-trial-authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "Implement and test FormatLabel in the native PG lab, then report for Project Leader processing",
+          "writablePaths": [
+            "format.go",
+            "format_test.go"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "Skills",
+            "AGENTS.md",
+            "go.mod",
+            "normalize.go",
+            "normalize_test.go",
+            "unrelated.txt"
+          ]
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "reason": "Implemented MAINT-PGLAB-0002 M1 / SESSION-PGLAB-0002 S1 / KB-PGLAB-002 under SDP/leader-trial-authority.md. Candidate is uncommitted HEAD f66e65ec522ed19c8dc31c4216bf28697cada2f0 plus new format.go (SHA256 863625be1fe85c0208b5b45a1e4a00c3c06d16bf3b28d9059caf65848c53cbd7) and format_test.go (SHA256 e1ae8342fe73b9d48b0f04ebd1fed011f5667510ca30f858e5cbb2b2fb18c980). FormatLabel calls NormalizeLabel(input), returns empty for empty normalized input, otherwise prefix + ': ' + normalized input. Ten table-driven cases cover empty/ASCII and Unicode whitespace-only input, ASCII and Unicode boundaries, interior tabs/whitespace and case, non-whitespace Unicode boundaries, empty prefix, and exact prefix bytes including NUL/invalid UTF-8. Go go1.27.1 linux/amd64; GOCACHE=/tmp/pg-lab-go-cache go test ./... passed (pgi3pilot ok, cmd/label has no test files); gofmt applied and git diff --check passed. Same-context source inspection only. Initial working tree clean; final git status shows only the two permitted new files, all tracked files unchanged. No delegation, dependency changes, host setting changes, commits, canonical record writes or publication. No observed implementation gaps; existing behavioral authority remains accurate. Remaining gates: external coordinator verification, applicable independent review, Project Leader report processing, controller evidence publication and any required owner disposition. Proposed next phase is verify. Report is implementation evidence, not independent approval, owner acceptance or completion."
+      },
+      "coverage": "known"
+    }
+  },
+  {
+    "definition": "Candidate",
+    "value": {
+      "schema": "sdp-governance-evidence/1",
+      "projectRef": "pg-owner-lab",
+      "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+      "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+      "writablePaths": [
+        "format.go",
+        "format_test.go"
+      ],
+      "excludedPaths": [
+        "SDP",
+        "Skills",
+        "AGENTS.md",
+        "go.mod",
+        "normalize.go",
+        "normalize_test.go",
+        "unrelated.txt"
+      ],
+      "dependencies": [
+        "cmd",
+        "go.mod",
+        "normalize.go",
+        "normalize_test.go"
+      ],
+      "entries": [
+        {
+          "path": "cmd",
+          "kind": "directory",
+          "sha256": "",
+          "executable": false
+        },
+        {
+          "path": "cmd/label",
+          "kind": "directory",
+          "sha256": "",
+          "executable": false
+        },
+        {
+          "path": "cmd/label/main.go",
+          "kind": "file",
+          "sha256": "cf5ac6b38047c307a6d7da52d76b858ad7ea8854bae919477b2a3ec14add6c91",
+          "executable": false
+        },
+        {
+          "path": "format.go",
+          "kind": "file",
+          "sha256": "20c3dec901b739f931f8373fc45d61ae7fa68bb0e7ee3f7da600287050cc2412",
+          "executable": false
+        },
+        {
+          "path": "format_test.go",
+          "kind": "file",
+          "sha256": "e1ae8342fe73b9d48b0f04ebd1fed011f5667510ca30f858e5cbb2b2fb18c980",
+          "executable": false
+        },
+        {
+          "path": "go.mod",
+          "kind": "file",
+          "sha256": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+          "executable": false
+        },
+        {
+          "path": "normalize.go",
+          "kind": "file",
+          "sha256": "6cd9379fdc90e80e1d45f871ca0cb7a4612fc7172fee86a4ebfb38b245b5b1a0",
+          "executable": false
+        },
+        {
+          "path": "normalize_test.go",
+          "kind": "file",
+          "sha256": "7c61c8c67f992cb7e37106a53afe0b725093457ff97336696cde7fb65d16ba73",
+          "executable": false
+        }
+      ],
+      "digest": "92462d551a0a999f7bf13658683344fdfbdc7d5749c3ba585744bd71a1b868d6"
+    }
+  },
+  {
+    "definition": "EvidenceView",
+    "value": {
+      "schema": "sdp-governance-evidence/1",
+      "projectRef": "pg-owner-lab",
+      "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+      "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "revision": 24,
+      "state": "verifying",
+      "items": [
+        {
+          "record": {
+            "request": {
+              "schema": "sdp-governance-evidence/1",
+              "projectRef": "pg-owner-lab",
+              "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+              "operationId": "d38f2408-285c-4501-bfb4-8a16c3553934",
+              "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+              "expectedRevision": 24,
+              "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+              "reportId": "dabffc1f-9e82-48a1-beaa-dd8973e924db",
+              "candidate": {
+                "schema": "sdp-governance-evidence/1",
+                "projectRef": "pg-owner-lab",
+                "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+                "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+                "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+                "writablePaths": [
+                  "format.go",
+                  "format_test.go"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "Skills",
+                  "AGENTS.md",
+                  "go.mod",
+                  "normalize.go",
+                  "normalize_test.go",
+                  "unrelated.txt"
+                ],
+                "dependencies": [
+                  "cmd",
+                  "go.mod",
+                  "normalize.go",
+                  "normalize_test.go"
+                ],
+                "entries": [
+                  {
+                    "path": "cmd",
+                    "kind": "directory",
+                    "sha256": "",
+                    "executable": false
+                  },
+                  {
+                    "path": "cmd/label",
+                    "kind": "directory",
+                    "sha256": "",
+                    "executable": false
+                  },
+                  {
+                    "path": "cmd/label/main.go",
+                    "kind": "file",
+                    "sha256": "cf5ac6b38047c307a6d7da52d76b858ad7ea8854bae919477b2a3ec14add6c91",
+                    "executable": false
+                  },
+                  {
+                    "path": "format.go",
+                    "kind": "file",
+                    "sha256": "863625be1fe85c0208b5b45a1e4a00c3c06d16bf3b28d9059caf65848c53cbd7",
+                    "executable": false
+                  },
+                  {
+                    "path": "format_test.go",
+                    "kind": "file",
+                    "sha256": "e1ae8342fe73b9d48b0f04ebd1fed011f5667510ca30f858e5cbb2b2fb18c980",
+                    "executable": false
+                  },
+                  {
+                    "path": "go.mod",
+                    "kind": "file",
+                    "sha256": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+                    "executable": false
+                  },
+                  {
+                    "path": "normalize.go",
+                    "kind": "file",
+                    "sha256": "6cd9379fdc90e80e1d45f871ca0cb7a4612fc7172fee86a4ebfb38b245b5b1a0",
+                    "executable": false
+                  },
+                  {
+                    "path": "normalize_test.go",
+                    "kind": "file",
+                    "sha256": "7c61c8c67f992cb7e37106a53afe0b725093457ff97336696cde7fb65d16ba73",
+                    "executable": false
+                  }
+                ],
+                "digest": "a2cdd97d18d61a92e64bd562b29ad85044263f0bc700e5f76f7bf62c97ec71e6"
+              },
+              "kind": "test",
+              "verdict": "passed",
+              "issuer": "PGI4-C1 external Go verifier",
+              "note": "External Go test result. Failed case is a deliberate trial fault, not an original C8 defect. No independent review claim.",
+              "artifact": {
+                "path": "evidence/PGI4-C1/passed.log",
+                "sha256": "1c36faa3ba6a6470009a0f042a464e80cebb740e32699f5ac5ba0cbd95bceafc"
+              }
+            },
+            "recordedAt": "2026-10-24T10:16:51.47924936Z",
+            "provenance": "controller-attributed"
+          },
+          "candidateCurrent": false,
+          "artifactCurrent": true,
+          "reportCurrent": true,
+          "applicable": false,
+          "conditions": [
+            "candidate changed or unavailable"
+          ]
+        }
+      ],
+      "limitations": [
+        "controller-attributed claims; test execution not observed by PG",
+        "review independence unverified",
+        "checked publication and completion unavailable"
+      ]
+    }
+  },
+  {
+    "definition": "EvidenceRequest",
+    "value": {
+      "schema": "sdp-governance-evidence/1",
+      "projectRef": "pg-owner-lab",
+      "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+      "operationId": "74949978-b933-41e6-bc77-9a6476c95f70",
+      "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "expectedRevision": 24,
+      "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+      "reportId": "dabffc1f-9e82-48a1-beaa-dd8973e924db",
+      "candidate": {
+        "schema": "sdp-governance-evidence/1",
+        "projectRef": "pg-owner-lab",
+        "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+        "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+        "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+        "writablePaths": [
+          "format.go",
+          "format_test.go"
+        ],
+        "excludedPaths": [
+          "SDP",
+          "Skills",
+          "AGENTS.md",
+          "go.mod",
+          "normalize.go",
+          "normalize_test.go",
+          "unrelated.txt"
+        ],
+        "dependencies": [
+          "cmd",
+          "go.mod",
+          "normalize.go",
+          "normalize_test.go"
+        ],
+        "entries": [
+          {
+            "path": "cmd",
+            "kind": "directory",
+            "sha256": "",
+            "executable": false
+          },
+          {
+            "path": "cmd/label",
+            "kind": "directory",
+            "sha256": "",
+            "executable": false
+          },
+          {
+            "path": "cmd/label/main.go",
+            "kind": "file",
+            "sha256": "cf5ac6b38047c307a6d7da52d76b858ad7ea8854bae919477b2a3ec14add6c91",
+            "executable": false
+          },
+          {
+            "path": "format.go",
+            "kind": "file",
+            "sha256": "20c3dec901b739f931f8373fc45d61ae7fa68bb0e7ee3f7da600287050cc2412",
+            "executable": false
+          },
+          {
+            "path": "format_test.go",
+            "kind": "file",
+            "sha256": "e1ae8342fe73b9d48b0f04ebd1fed011f5667510ca30f858e5cbb2b2fb18c980",
+            "executable": false
+          },
+          {
+            "path": "go.mod",
+            "kind": "file",
+            "sha256": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+            "executable": false
+          },
+          {
+            "path": "normalize.go",
+            "kind": "file",
+            "sha256": "6cd9379fdc90e80e1d45f871ca0cb7a4612fc7172fee86a4ebfb38b245b5b1a0",
+            "executable": false
+          },
+          {
+            "path": "normalize_test.go",
+            "kind": "file",
+            "sha256": "7c61c8c67f992cb7e37106a53afe0b725093457ff97336696cde7fb65d16ba73",
+            "executable": false
+          }
+        ],
+        "digest": "92462d551a0a999f7bf13658683344fdfbdc7d5749c3ba585744bd71a1b868d6"
+      },
+      "kind": "test",
+      "verdict": "failed",
+      "issuer": "PGI4-C1 external Go verifier",
+      "note": "External Go test result. Failed case is a deliberate trial fault, not an original C8 defect. No independent review claim.",
+      "artifact": {
+        "path": "evidence/PGI4-C1/deliberate-failure.log",
+        "sha256": "841e1e1de71ebe53a03b41063402126c3bc6f700f07ce400a716d5ae81450d62"
+      }
+    }
+  },
+  {
+    "definition": "Result",
+    "value": {
+      "evidence": {
+        "request": {
+          "schema": "sdp-governance-evidence/1",
+          "projectRef": "pg-owner-lab",
+          "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+          "operationId": "74949978-b933-41e6-bc77-9a6476c95f70",
+          "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+          "expectedRevision": 24,
+          "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+          "reportId": "dabffc1f-9e82-48a1-beaa-dd8973e924db",
+          "candidate": {
+            "schema": "sdp-governance-evidence/1",
+            "projectRef": "pg-owner-lab",
+            "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+            "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+            "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+            "writablePaths": [
+              "format.go",
+              "format_test.go"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "Skills",
+              "AGENTS.md",
+              "go.mod",
+              "normalize.go",
+              "normalize_test.go",
+              "unrelated.txt"
+            ],
+            "dependencies": [
+              "cmd",
+              "go.mod",
+              "normalize.go",
+              "normalize_test.go"
+            ],
+            "entries": [
+              {
+                "path": "cmd",
+                "kind": "directory",
+                "sha256": "",
+                "executable": false
+              },
+              {
+                "path": "cmd/label",
+                "kind": "directory",
+                "sha256": "",
+                "executable": false
+              },
+              {
+                "path": "cmd/label/main.go",
+                "kind": "file",
+                "sha256": "cf5ac6b38047c307a6d7da52d76b858ad7ea8854bae919477b2a3ec14add6c91",
+                "executable": false
+              },
+              {
+                "path": "format.go",
+                "kind": "file",
+                "sha256": "20c3dec901b739f931f8373fc45d61ae7fa68bb0e7ee3f7da600287050cc2412",
+                "executable": false
+              },
+              {
+                "path": "format_test.go",
+                "kind": "file",
+                "sha256": "e1ae8342fe73b9d48b0f04ebd1fed011f5667510ca30f858e5cbb2b2fb18c980",
+                "executable": false
+              },
+              {
+                "path": "go.mod",
+                "kind": "file",
+                "sha256": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+                "executable": false
+              },
+              {
+                "path": "normalize.go",
+                "kind": "file",
+                "sha256": "6cd9379fdc90e80e1d45f871ca0cb7a4612fc7172fee86a4ebfb38b245b5b1a0",
+                "executable": false
+              },
+              {
+                "path": "normalize_test.go",
+                "kind": "file",
+                "sha256": "7c61c8c67f992cb7e37106a53afe0b725093457ff97336696cde7fb65d16ba73",
+                "executable": false
+              }
+            ],
+            "digest": "92462d551a0a999f7bf13658683344fdfbdc7d5749c3ba585744bd71a1b868d6"
+          },
+          "kind": "test",
+          "verdict": "failed",
+          "issuer": "PGI4-C1 external Go verifier",
+          "note": "External Go test result. Failed case is a deliberate trial fault, not an original C8 defect. No independent review claim.",
+          "artifact": {
+            "path": "evidence/PGI4-C1/deliberate-failure.log",
+            "sha256": "841e1e1de71ebe53a03b41063402126c3bc6f700f07ce400a716d5ae81450d62"
+          }
+        },
+        "recordedAt": "2026-10-24T10:16:51.758359747Z",
+        "provenance": "controller-attributed"
+      },
+      "schema": "sdp-project-governance/0.1",
+      "operation": "evidence.attach",
+      "projectRef": "pg-owner-lab",
+      "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+      "operationId": "74949978-b933-41e6-bc77-9a6476c95f70",
+      "run": {
+        "inputs": [
+          {
+            "contentOmitted": true,
+            "id": "4bae5a3f-1584-4b92-a795-479fe2c5a8ec",
+            "kind": "launch",
+            "text": "",
+            "payload": "",
+            "attemptId": "450e0fa0-9684-4f6b-990b-bc17a5daa979",
+            "epoch": "d7bf788c-f37b-4de7-8ec5-a2c3d65ee610",
+            "threadId": "01a16d18-462e-7631-a8fe-b3b4ff6d97c1",
+            "turnId": "01a16d18-467a-7070-ae9d-a12429c85f9c",
+            "state": "acknowledged",
+            "receivedAt": "2026-10-24T08:47:49.773398274Z"
+          }
+        ],
+        "attempts": [
+          {
+            "agentEpoch": "d7bf788c-f37b-4de7-8ec5-a2c3d65ee610",
+            "lastObservedAt": "2026-10-24T08:48:49.841135961Z",
+            "eventCount": 17,
+            "id": "450e0fa0-9684-4f6b-990b-bc17a5daa979",
+            "hostVersion": "0.164.0",
+            "threadId": "01a16d18-462e-7631-a8fe-b3b4ff6d97c1",
+            "turnId": "01a16d18-467a-7070-ae9d-a12429c85f9c",
+            "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+            "epoch": "d7bf788c-f37b-4de7-8ec5-a2c3d65ee610",
+            "status": "completed",
+            "gap": false,
+            "events": []
+          }
+        ],
+        "id": "be00db9f-4e12-4d8e-8728-9fa367450065",
+        "revision": 24,
+        "requestId": "2a37d96c-0716-46aa-8036-bb162923c6a6",
+        "state": "verifying",
+        "step": "implement",
+        "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+        "selection": {
+          "card": "SDP/KanBan/active/leader-trial.md",
+          "plan": "SDP/Maintenance/LeaderTrial/Plan.md",
+          "session": "SDP/Sessions/leader-trial.md",
+          "authority": "SDP/leader-trial-authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "Implement and test FormatLabel in the native PG lab, then report for Project Leader processing",
+          "writablePaths": [
+            "format.go",
+            "format_test.go"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "Skills",
+            "AGENTS.md",
+            "go.mod",
+            "normalize.go",
+            "normalize_test.go",
+            "unrelated.txt"
+          ]
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "reason": "Implemented MAINT-PGLAB-0002 M1 / SESSION-PGLAB-0002 S1 / KB-PGLAB-002 under SDP/leader-trial-authority.md. Candidate is uncommitted HEAD f66e65ec522ed19c8dc31c4216bf28697cada2f0 plus new format.go (SHA256 863625be1fe85c0208b5b45a1e4a00c3c06d16bf3b28d9059caf65848c53cbd7) and format_test.go (SHA256 e1ae8342fe73b9d48b0f04ebd1fed011f5667510ca30f858e5cbb2b2fb18c980). FormatLabel calls NormalizeLabel(input), returns empty for empty normalized input, otherwise prefix + ': ' + normalized input. Ten table-driven cases cover empty/ASCII and Unicode whitespace-only input, ASCII and Unicode boundaries, interior tabs/whitespace and case, non-whitespace Unicode boundaries, empty prefix, and exact prefix bytes including NUL/invalid UTF-8. Go go1.27.1 linux/amd64; GOCACHE=/tmp/pg-lab-go-cache go test ./... passed (pgi3pilot ok, cmd/label has no test files); gofmt applied and git diff --check passed. Same-context source inspection only. Initial working tree clean; final git status shows only the two permitted new files, all tracked files unchanged. No delegation, dependency changes, host setting changes, commits, canonical record writes or publication. No observed implementation gaps; existing behavioral authority remains accurate. Remaining gates: external coordinator verification, applicable independent review, Project Leader report processing, controller evidence publication and any required owner disposition. Proposed next phase is verify. Report is implementation evidence, not independent approval, owner acceptance or completion."
+      },
+      "coverage": "known"
+    }
+  },
+  {
+    "definition": "EvidenceView",
+    "value": {
+      "schema": "sdp-governance-evidence/1",
+      "projectRef": "pg-owner-lab",
+      "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+      "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "revision": 24,
+      "state": "verifying",
+      "items": [
+        {
+          "record": {
+            "request": {
+              "schema": "sdp-governance-evidence/1",
+              "projectRef": "pg-owner-lab",
+              "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+              "operationId": "d38f2408-285c-4501-bfb4-8a16c3553934",
+              "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+              "expectedRevision": 24,
+              "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+              "reportId": "dabffc1f-9e82-48a1-beaa-dd8973e924db",
+              "candidate": {
+                "schema": "sdp-governance-evidence/1",
+                "projectRef": "pg-owner-lab",
+                "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+                "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+                "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+                "writablePaths": [
+                  "format.go",
+                  "format_test.go"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "Skills",
+                  "AGENTS.md",
+                  "go.mod",
+                  "normalize.go",
+                  "normalize_test.go",
+                  "unrelated.txt"
+                ],
+                "dependencies": [
+                  "cmd",
+                  "go.mod",
+                  "normalize.go",
+                  "normalize_test.go"
+                ],
+                "entries": [
+                  {
+                    "path": "cmd",
+                    "kind": "directory",
+                    "sha256": "",
+                    "executable": false
+                  },
+                  {
+                    "path": "cmd/label",
+                    "kind": "directory",
+                    "sha256": "",
+                    "executable": false
+                  },
+                  {
+                    "path": "cmd/label/main.go",
+                    "kind": "file",
+                    "sha256": "cf5ac6b38047c307a6d7da52d76b858ad7ea8854bae919477b2a3ec14add6c91",
+                    "executable": false
+                  },
+                  {
+                    "path": "format.go",
+                    "kind": "file",
+                    "sha256": "863625be1fe85c0208b5b45a1e4a00c3c06d16bf3b28d9059caf65848c53cbd7",
+                    "executable": false
+                  },
+                  {
+                    "path": "format_test.go",
+                    "kind": "file",
+                    "sha256": "e1ae8342fe73b9d48b0f04ebd1fed011f5667510ca30f858e5cbb2b2fb18c980",
+                    "executable": false
+                  },
+                  {
+                    "path": "go.mod",
+                    "kind": "file",
+                    "sha256": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+                    "executable": false
+                  },
+                  {
+                    "path": "normalize.go",
+                    "kind": "file",
+                    "sha256": "6cd9379fdc90e80e1d45f871ca0cb7a4612fc7172fee86a4ebfb38b245b5b1a0",
+                    "executable": false
+                  },
+                  {
+                    "path": "normalize_test.go",
+                    "kind": "file",
+                    "sha256": "7c61c8c67f992cb7e37106a53afe0b725093457ff97336696cde7fb65d16ba73",
+                    "executable": false
+                  }
+                ],
+                "digest": "a2cdd97d18d61a92e64bd562b29ad85044263f0bc700e5f76f7bf62c97ec71e6"
+              },
+              "kind": "test",
+              "verdict": "passed",
+              "issuer": "PGI4-C1 external Go verifier",
+              "note": "External Go test result. Failed case is a deliberate trial fault, not an original C8 defect. No independent review claim.",
+              "artifact": {
+                "path": "evidence/PGI4-C1/passed.log",
+                "sha256": "1c36faa3ba6a6470009a0f042a464e80cebb740e32699f5ac5ba0cbd95bceafc"
+              }
+            },
+            "recordedAt": "2026-10-24T10:16:51.47924936Z",
+            "provenance": "controller-attributed"
+          },
+          "candidateCurrent": false,
+          "artifactCurrent": true,
+          "reportCurrent": true,
+          "applicable": false,
+          "conditions": [
+            "candidate changed or unavailable"
+          ]
+        },
+        {
+          "record": {
+            "request": {
+              "schema": "sdp-governance-evidence/1",
+              "projectRef": "pg-owner-lab",
+              "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+              "operationId": "74949978-b933-41e6-bc77-9a6476c95f70",
+              "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+              "expectedRevision": 24,
+              "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+              "reportId": "dabffc1f-9e82-48a1-beaa-dd8973e924db",
+              "candidate": {
+                "schema": "sdp-governance-evidence/1",
+                "projectRef": "pg-owner-lab",
+                "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+                "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+                "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+                "writablePaths": [
+                  "format.go",
+                  "format_test.go"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "Skills",
+                  "AGENTS.md",
+                  "go.mod",
+                  "normalize.go",
+                  "normalize_test.go",
+                  "unrelated.txt"
+                ],
+                "dependencies": [
+                  "cmd",
+                  "go.mod",
+                  "normalize.go",
+                  "normalize_test.go"
+                ],
+                "entries": [
+                  {
+                    "path": "cmd",
+                    "kind": "directory",
+                    "sha256": "",
+                    "executable": false
+                  },
+                  {
+                    "path": "cmd/label",
+                    "kind": "directory",
+                    "sha256": "",
+                    "executable": false
+                  },
+                  {
+                    "path": "cmd/label/main.go",
+                    "kind": "file",
+                    "sha256": "cf5ac6b38047c307a6d7da52d76b858ad7ea8854bae919477b2a3ec14add6c91",
+                    "executable": false
+                  },
+                  {
+                    "path": "format.go",
+                    "kind": "file",
+                    "sha256": "20c3dec901b739f931f8373fc45d61ae7fa68bb0e7ee3f7da600287050cc2412",
+                    "executable": false
+                  },
+                  {
+                    "path": "format_test.go",
+                    "kind": "file",
+                    "sha256": "e1ae8342fe73b9d48b0f04ebd1fed011f5667510ca30f858e5cbb2b2fb18c980",
+                    "executable": false
+                  },
+                  {
+                    "path": "go.mod",
+                    "kind": "file",
+                    "sha256": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+                    "executable": false
+                  },
+                  {
+                    "path": "normalize.go",
+                    "kind": "file",
+                    "sha256": "6cd9379fdc90e80e1d45f871ca0cb7a4612fc7172fee86a4ebfb38b245b5b1a0",
+                    "executable": false
+                  },
+                  {
+                    "path": "normalize_test.go",
+                    "kind": "file",
+                    "sha256": "7c61c8c67f992cb7e37106a53afe0b725093457ff97336696cde7fb65d16ba73",
+                    "executable": false
+                  }
+                ],
+                "digest": "92462d551a0a999f7bf13658683344fdfbdc7d5749c3ba585744bd71a1b868d6"
+              },
+              "kind": "test",
+              "verdict": "failed",
+              "issuer": "PGI4-C1 external Go verifier",
+              "note": "External Go test result. Failed case is a deliberate trial fault, not an original C8 defect. No independent review claim.",
+              "artifact": {
+                "path": "evidence/PGI4-C1/deliberate-failure.log",
+                "sha256": "841e1e1de71ebe53a03b41063402126c3bc6f700f07ce400a716d5ae81450d62"
+              }
+            },
+            "recordedAt": "2026-10-24T10:16:51.758359747Z",
+            "provenance": "controller-attributed"
+          },
+          "candidateCurrent": true,
+          "artifactCurrent": true,
+          "reportCurrent": true,
+          "applicable": true,
+          "conditions": []
+        }
+      ],
+      "limitations": [
+        "controller-attributed claims; test execution not observed by PG",
+        "review independence unverified",
+        "checked publication and completion unavailable"
+      ]
+    }
+  },
+  {
+    "definition": "EvidenceReworkRequest",
+    "value": {
+      "schema": "sdp-governance-evidence/1",
+      "projectRef": "pg-owner-lab",
+      "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+      "operationId": "ebf6d5fa-de7d-4113-b3ae-ef5347e3e5c2",
+      "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "expectedRevision": 24,
+      "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+      "evidenceId": "74949978-b933-41e6-bc77-9a6476c95f70",
+      "reason": "Trial: return the deliberately broken separator to bounded rework; coordinator restores source after observing the transition."
+    }
+  },
+  {
+    "definition": "Result",
+    "value": {
+      "evidenceRework": {
+        "schema": "sdp-governance-evidence/1",
+        "projectRef": "pg-owner-lab",
+        "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+        "operationId": "ebf6d5fa-de7d-4113-b3ae-ef5347e3e5c2",
+        "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+        "expectedRevision": 24,
+        "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+        "evidenceId": "74949978-b933-41e6-bc77-9a6476c95f70",
+        "reason": "Trial: return the deliberately broken separator to bounded rework; coordinator restores source after observing the transition."
+      },
+      "schema": "sdp-project-governance/0.1",
+      "operation": "evidence.rework",
+      "projectRef": "pg-owner-lab",
+      "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+      "operationId": "ebf6d5fa-de7d-4113-b3ae-ef5347e3e5c2",
+      "run": {
+        "inputs": [
+          {
+            "contentOmitted": true,
+            "id": "4bae5a3f-1584-4b92-a795-479fe2c5a8ec",
+            "kind": "launch",
+            "text": "",
+            "payload": "",
+            "attemptId": "450e0fa0-9684-4f6b-990b-bc17a5daa979",
+            "epoch": "d7bf788c-f37b-4de7-8ec5-a2c3d65ee610",
+            "threadId": "01a16d18-462e-7631-a8fe-b3b4ff6d97c1",
+            "turnId": "01a16d18-467a-7070-ae9d-a12429c85f9c",
+            "state": "acknowledged",
+            "receivedAt": "2026-10-24T08:47:49.773398274Z"
+          }
+        ],
+        "attempts": [
+          {
+            "agentEpoch": "9c32886b-e057-496f-a49c-a6a7bfe40e4b",
+            "lastObservedAt": "2026-10-24T08:48:49.841135961Z",
+            "eventCount": 17,
+            "id": "450e0fa0-9684-4f6b-990b-bc17a5daa979",
+            "hostVersion": "0.164.0",
+            "threadId": "01a16d18-462e-7631-a8fe-b3b4ff6d97c1",
+            "turnId": "01a16d18-467a-7070-ae9d-a12429c85f9c",
+            "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+            "epoch": "d7bf788c-f37b-4de7-8ec5-a2c3d65ee610",
+            "status": "completed",
+            "gap": false,
+            "events": []
+          }
+        ],
+        "id": "be00db9f-4e12-4d8e-8728-9fa367450065",
+        "revision": 25,
+        "requestId": "2a37d96c-0716-46aa-8036-bb162923c6a6",
+        "state": "ready",
+        "step": "implement",
+        "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+        "selection": {
+          "card": "SDP/KanBan/active/leader-trial.md",
+          "plan": "SDP/Maintenance/LeaderTrial/Plan.md",
+          "session": "SDP/Sessions/leader-trial.md",
+          "authority": "SDP/leader-trial-authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "Implement and test FormatLabel in the native PG lab, then report for Project Leader processing",
+          "writablePaths": [
+            "format.go",
+            "format_test.go"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "Skills",
+            "AGENTS.md",
+            "go.mod",
+            "normalize.go",
+            "normalize_test.go",
+            "unrelated.txt"
+          ]
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "reason": "Trial: return the deliberately broken separator to bounded rework; coordinator restores source after observing the transition."
+      },
+      "coverage": "known"
+    }
+  },
+  {
+    "definition": "Result",
+    "value": {
+      "evidenceRework": {
+        "schema": "sdp-governance-evidence/1",
+        "projectRef": "pg-owner-lab",
+        "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+        "operationId": "ebf6d5fa-de7d-4113-b3ae-ef5347e3e5c2",
+        "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+        "expectedRevision": 24,
+        "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+        "evidenceId": "74949978-b933-41e6-bc77-9a6476c95f70",
+        "reason": "Trial: return the deliberately broken separator to bounded rework; coordinator restores source after observing the transition."
+      },
+      "schema": "sdp-project-governance/0.1",
+      "operation": "evidence.rework",
+      "projectRef": "pg-owner-lab",
+      "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+      "operationId": "ebf6d5fa-de7d-4113-b3ae-ef5347e3e5c2",
+      "run": {
+        "inputs": [
+          {
+            "contentOmitted": true,
+            "id": "4bae5a3f-1584-4b92-a795-479fe2c5a8ec",
+            "kind": "launch",
+            "text": "",
+            "payload": "",
+            "attemptId": "450e0fa0-9684-4f6b-990b-bc17a5daa979",
+            "epoch": "d7bf788c-f37b-4de7-8ec5-a2c3d65ee610",
+            "threadId": "01a16d18-462e-7631-a8fe-b3b4ff6d97c1",
+            "turnId": "01a16d18-467a-7070-ae9d-a12429c85f9c",
+            "state": "acknowledged",
+            "receivedAt": "2026-10-24T08:47:49.773398274Z"
+          }
+        ],
+        "attempts": [
+          {
+            "agentEpoch": "9c32886b-e057-496f-a49c-a6a7bfe40e4b",
+            "lastObservedAt": "2026-10-24T08:48:49.841135961Z",
+            "eventCount": 17,
+            "id": "450e0fa0-9684-4f6b-990b-bc17a5daa979",
+            "hostVersion": "0.164.0",
+            "threadId": "01a16d18-462e-7631-a8fe-b3b4ff6d97c1",
+            "turnId": "01a16d18-467a-7070-ae9d-a12429c85f9c",
+            "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+            "epoch": "d7bf788c-f37b-4de7-8ec5-a2c3d65ee610",
+            "status": "completed",
+            "gap": false,
+            "events": []
+          }
+        ],
+        "id": "be00db9f-4e12-4d8e-8728-9fa367450065",
+        "revision": 25,
+        "requestId": "2a37d96c-0716-46aa-8036-bb162923c6a6",
+        "state": "ready",
+        "step": "implement",
+        "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+        "selection": {
+          "card": "SDP/KanBan/active/leader-trial.md",
+          "plan": "SDP/Maintenance/LeaderTrial/Plan.md",
+          "session": "SDP/Sessions/leader-trial.md",
+          "authority": "SDP/leader-trial-authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "Implement and test FormatLabel in the native PG lab, then report for Project Leader processing",
+          "writablePaths": [
+            "format.go",
+            "format_test.go"
+          ],
+          "excludedPaths": [
+            "SDP",
+            "Skills",
+            "AGENTS.md",
+            "go.mod",
+            "normalize.go",
+            "normalize_test.go",
+            "unrelated.txt"
+          ]
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "reason": "Trial: return the deliberately broken separator to bounded rework; coordinator restores source after observing the transition."
+      },
+      "coverage": "known"
+    }
+  },
+  {
+    "definition": "EvidenceView",
+    "value": {
+      "schema": "sdp-governance-evidence/1",
+      "projectRef": "pg-owner-lab",
+      "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+      "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "revision": 25,
+      "state": "ready",
+      "items": [
+        {
+          "record": {
+            "request": {
+              "schema": "sdp-governance-evidence/1",
+              "projectRef": "pg-owner-lab",
+              "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+              "operationId": "d38f2408-285c-4501-bfb4-8a16c3553934",
+              "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+              "expectedRevision": 24,
+              "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+              "reportId": "dabffc1f-9e82-48a1-beaa-dd8973e924db",
+              "candidate": {
+                "schema": "sdp-governance-evidence/1",
+                "projectRef": "pg-owner-lab",
+                "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+                "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+                "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+                "writablePaths": [
+                  "format.go",
+                  "format_test.go"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "Skills",
+                  "AGENTS.md",
+                  "go.mod",
+                  "normalize.go",
+                  "normalize_test.go",
+                  "unrelated.txt"
+                ],
+                "dependencies": [
+                  "cmd",
+                  "go.mod",
+                  "normalize.go",
+                  "normalize_test.go"
+                ],
+                "entries": [
+                  {
+                    "path": "cmd",
+                    "kind": "directory",
+                    "sha256": "",
+                    "executable": false
+                  },
+                  {
+                    "path": "cmd/label",
+                    "kind": "directory",
+                    "sha256": "",
+                    "executable": false
+                  },
+                  {
+                    "path": "cmd/label/main.go",
+                    "kind": "file",
+                    "sha256": "cf5ac6b38047c307a6d7da52d76b858ad7ea8854bae919477b2a3ec14add6c91",
+                    "executable": false
+                  },
+                  {
+                    "path": "format.go",
+                    "kind": "file",
+                    "sha256": "863625be1fe85c0208b5b45a1e4a00c3c06d16bf3b28d9059caf65848c53cbd7",
+                    "executable": false
+                  },
+                  {
+                    "path": "format_test.go",
+                    "kind": "file",
+                    "sha256": "e1ae8342fe73b9d48b0f04ebd1fed011f5667510ca30f858e5cbb2b2fb18c980",
+                    "executable": false
+                  },
+                  {
+                    "path": "go.mod",
+                    "kind": "file",
+                    "sha256": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+                    "executable": false
+                  },
+                  {
+                    "path": "normalize.go",
+                    "kind": "file",
+                    "sha256": "6cd9379fdc90e80e1d45f871ca0cb7a4612fc7172fee86a4ebfb38b245b5b1a0",
+                    "executable": false
+                  },
+                  {
+                    "path": "normalize_test.go",
+                    "kind": "file",
+                    "sha256": "7c61c8c67f992cb7e37106a53afe0b725093457ff97336696cde7fb65d16ba73",
+                    "executable": false
+                  }
+                ],
+                "digest": "a2cdd97d18d61a92e64bd562b29ad85044263f0bc700e5f76f7bf62c97ec71e6"
+              },
+              "kind": "test",
+              "verdict": "passed",
+              "issuer": "PGI4-C1 external Go verifier",
+              "note": "External Go test result. Failed case is a deliberate trial fault, not an original C8 defect. No independent review claim.",
+              "artifact": {
+                "path": "evidence/PGI4-C1/passed.log",
+                "sha256": "1c36faa3ba6a6470009a0f042a464e80cebb740e32699f5ac5ba0cbd95bceafc"
+              }
+            },
+            "recordedAt": "2026-10-24T10:16:51.47924936Z",
+            "provenance": "controller-attributed"
+          },
+          "candidateCurrent": true,
+          "artifactCurrent": true,
+          "reportCurrent": false,
+          "applicable": false,
+          "conditions": [
+            "report no longer awaiting this verification"
+          ]
+        },
+        {
+          "record": {
+            "request": {
+              "schema": "sdp-governance-evidence/1",
+              "projectRef": "pg-owner-lab",
+              "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+              "operationId": "74949978-b933-41e6-bc77-9a6476c95f70",
+              "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+              "expectedRevision": 24,
+              "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+              "reportId": "dabffc1f-9e82-48a1-beaa-dd8973e924db",
+              "candidate": {
+                "schema": "sdp-governance-evidence/1",
+                "projectRef": "pg-owner-lab",
+                "checkoutId": "e499e843-c777-40ae-a90c-f4e4836af842",
+                "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+                "inputRevision": "73390a48f39fd65e6d0d428df1fcb3f3d61f9ed7de82818968308b2629c703f9",
+                "writablePaths": [
+                  "format.go",
+                  "format_test.go"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "Skills",
+                  "AGENTS.md",
+                  "go.mod",
+                  "normalize.go",
+                  "normalize_test.go",
+                  "unrelated.txt"
+                ],
+                "dependencies": [
+                  "cmd",
+                  "go.mod",
+                  "normalize.go",
+                  "normalize_test.go"
+                ],
+                "entries": [
+                  {
+                    "path": "cmd",
+                    "kind": "directory",
+                    "sha256": "",
+                    "executable": false
+                  },
+                  {
+                    "path": "cmd/label",
+                    "kind": "directory",
+                    "sha256": "",
+                    "executable": false
+                  },
+                  {
+                    "path": "cmd/label/main.go",
+                    "kind": "file",
+                    "sha256": "cf5ac6b38047c307a6d7da52d76b858ad7ea8854bae919477b2a3ec14add6c91",
+                    "executable": false
+                  },
+                  {
+                    "path": "format.go",
+                    "kind": "file",
+                    "sha256": "20c3dec901b739f931f8373fc45d61ae7fa68bb0e7ee3f7da600287050cc2412",
+                    "executable": false
+                  },
+                  {
+                    "path": "format_test.go",
+                    "kind": "file",
+                    "sha256": "e1ae8342fe73b9d48b0f04ebd1fed011f5667510ca30f858e5cbb2b2fb18c980",
+                    "executable": false
+                  },
+                  {
+                    "path": "go.mod",
+                    "kind": "file",
+                    "sha256": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+                    "executable": false
+                  },
+                  {
+                    "path": "normalize.go",
+                    "kind": "file",
+                    "sha256": "6cd9379fdc90e80e1d45f871ca0cb7a4612fc7172fee86a4ebfb38b245b5b1a0",
+                    "executable": false
+                  },
+                  {
+                    "path": "normalize_test.go",
+                    "kind": "file",
+                    "sha256": "7c61c8c67f992cb7e37106a53afe0b725093457ff97336696cde7fb65d16ba73",
+                    "executable": false
+                  }
+                ],
+                "digest": "92462d551a0a999f7bf13658683344fdfbdc7d5749c3ba585744bd71a1b868d6"
+              },
+              "kind": "test",
+              "verdict": "failed",
+              "issuer": "PGI4-C1 external Go verifier",
+              "note": "External Go test result. Failed case is a deliberate trial fault, not an original C8 defect. No independent review claim.",
+              "artifact": {
+                "path": "evidence/PGI4-C1/deliberate-failure.log",
+                "sha256": "841e1e1de71ebe53a03b41063402126c3bc6f700f07ce400a716d5ae81450d62"
+              }
+            },
+            "recordedAt": "2026-10-24T10:16:51.758359747Z",
+            "provenance": "controller-attributed"
+          },
+          "candidateCurrent": false,
+          "artifactCurrent": true,
+          "reportCurrent": false,
+          "applicable": false,
+          "conditions": [
+            "candidate changed or unavailable",
+            "report no longer awaiting this verification"
+          ]
+        }
+      ],
+      "limitations": [
+        "controller-attributed claims; test execution not observed by PG",
+        "review independence unverified",
+        "checked publication and completion unavailable"
+      ]
+    }
+  }
+]

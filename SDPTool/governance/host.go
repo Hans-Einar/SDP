@@ -62,7 +62,7 @@ type HostRequest struct {
 	Observation      Observation `json:"observation"`
 }
 
-// CapabilityEpoch preserves legacy state decoding; only trusted host operations change it.
+// CapabilityEpoch preserves legacy state decoding; only trusted host operations or failed-evidence rework change it.
 func (a Attempt) CapabilityEpoch() string {
 	if a.AgentEpoch != "" {
 		return a.AgentEpoch

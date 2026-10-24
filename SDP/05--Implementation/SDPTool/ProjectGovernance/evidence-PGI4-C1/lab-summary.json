@@ -1,0 +1,53 @@
+{
+  "labBaseline": "73ccee5c876eccefd27f8c1f0d07705cf1b9f725",
+  "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+  "originalStateHead": "a6db29e0f60ebe1b70762c474346af462ce493913faf8da14b6008fa4228b87f",
+  "originalStatePreserved": true,
+  "stateFork": "/home/warloc/.cache/sdp-workstation/PGI4-C1/lab-state-final",
+  "binary": "/home/warloc/.cache/sdp-workstation/PGI4-C1/bin/sdp-controller",
+  "binarySHA256": "1ec4e8a8b3dc8651f434e5154314d58a7c18dbcc24280f63e09877d43d326f64",
+  "candidateBefore": "30bb557a31b03481c9c4ebd8eb0b819eba5b3f1ab44c0b4ef572aa2dfd74d5c8",
+  "candidateFault": "f757bffe9993102c51d4e6072b2599259bcc4188a945f9850085dab4e5164a6f",
+  "passed": {
+    "command": [
+      "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+      "test",
+      "-count=1",
+      "./..."
+    ],
+    "exitCode": 0,
+    "artifact": "evidence/PGI4-C1/passed-final.log",
+    "sha256": "7344abfed3bd9fbd24a8b8670bd5454f8ca4d1917ee9962adffd43a766efe810"
+  },
+  "deliberateFailure": {
+    "command": [
+      "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+      "test",
+      "-count=1",
+      "./..."
+    ],
+    "exitCode": 1,
+    "artifact": "evidence/PGI4-C1/deliberate-failure-final.log",
+    "sha256": "567fbee12363f99ad2d7b582f2890e92143d63df28c57644b079d852b3d7a799"
+  },
+  "restored": {
+    "command": [
+      "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+      "test",
+      "-count=1",
+      "./..."
+    ],
+    "exitCode": 0,
+    "artifact": "evidence/PGI4-C1/restored-final.log",
+    "sha256": "1c36faa3ba6a6470009a0f042a464e80cebb740e32699f5ac5ba0cbd95bceafc"
+  },
+  "preservedBaselineFiles": 43,
+  "finalState": "ready",
+  "evidenceRecords": 2,
+  "newModelTurns": 0,
+  "oldReaderRefused": {
+    "exitCode": 2,
+    "diagnostic": "reconciliation_required: invalid_request: json: unknown field \"evidenceRework\""
+  },
+  "limits": "External tests on C8 native implementation; state fork is a test, not canonical disposition, independent review or publication."
+}

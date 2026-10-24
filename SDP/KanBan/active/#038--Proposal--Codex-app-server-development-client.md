@@ -353,3 +353,15 @@ remains in-progress; this is a concrete feedback checkpoint, not completed PG sc
 after reported lab use. PLAN-SDP-0018 retains existing PGI evidence gaps and adds
 PGL increments. PGL1 registered-work inspection is delivered; new Project Leader/SAD
 orchestration owns the next route. No owner acceptance or full PGI closure is implied.
+
+
+2026-10-24, T035 / EVT-KB-SDP-000404: [PGI4-C1 evidence and rework](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI4-C1.md)
+implements exact candidate capture, attributed artifact receipts, current/historical
+applicability and controller-only failed-evidence rework. Final full SDPTool race/vet,
+30 wire schemas and the compiled pg_lab pass/fault/fail/rework/restore trial pass.
+The original C8 native state and all 43 baseline regular files remain preserved.
+Same Session continues; old agent capability is revoked on rework. No attachment
+establishes independent review, and completion/publication remain unavailable.
+CardState stays in-progress. Next: retained review/publication contract and evidence,
+with SAD/owner, parallel/active-host/capacity and integrated verification still open.
+Backlog/onHold reviewed; no Blueprint restart, Ponsse, hub, merge or release selected.

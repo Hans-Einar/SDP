@@ -509,7 +509,9 @@
             "attention.request",
             "attention.reply",
             "attention.withdraw",
-            "report.acknowledge"
+            "report.acknowledge",
+            "evidence.attach",
+            "evidence.rework"
           ]
         },
         "projectRef": {
@@ -542,6 +544,12 @@
         },
         "reportAcknowledgement": {
           "$ref": "#/$defs/ReportAcknowledgement"
+        },
+        "evidence": {
+          "$ref": "#/$defs/EvidenceRecord"
+        },
+        "evidenceRework": {
+          "$ref": "#/$defs/EvidenceReworkRequest"
         }
       },
       "required": [
@@ -571,6 +579,48 @@
             "not": {
               "required": [
                 "reportAcknowledgement"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "operation": {
+                "const": "evidence.attach"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "evidence"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "evidence"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "operation": {
+                "const": "evidence.rework"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "evidenceRework"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "evidenceRework"
               ]
             }
           }
@@ -1885,6 +1935,398 @@
           "maximum": 50
         }
       }
+    },
+    "CandidateEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "kind": {
+          "enum": [
+            "file",
+            "directory",
+            "missing"
+          ]
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "const": ""
+            }
+          ]
+        },
+        "executable": {
+          "type": "integer",
+          "enum": [
+            0,
+            1,
+            8,
+            9,
+            64,
+            65,
+            72,
+            73
+          ]
+        }
+      },
+      "required": [
+        "path",
+        "kind",
+        "sha256",
+        "executable"
+      ]
+    },
+    "Candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-evidence/1"
+        },
+        "projectRef": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "checkoutId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "runId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "inputRevision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "writablePaths": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "maxItems": 64
+        },
+        "excludedPaths": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "maxItems": 64
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "maxItems": 64
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CandidateEntry"
+          },
+          "maxItems": 512
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "runId",
+        "inputRevision",
+        "writablePaths",
+        "excludedPaths",
+        "dependencies",
+        "entries",
+        "digest"
+      ]
+    },
+    "EvidenceRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-evidence/1"
+        },
+        "projectRef": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "checkoutId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "operationId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "runId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "inputRevision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "reportId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "candidate": {
+          "$ref": "#/$defs/Candidate"
+        },
+        "kind": {
+          "enum": [
+            "claim",
+            "test",
+            "review"
+          ]
+        },
+        "verdict": {
+          "enum": [
+            "passed",
+            "failed",
+            "inconclusive"
+          ]
+        },
+        "issuer": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "artifact": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ]
+        }
+      },
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "operationId",
+        "runId",
+        "expectedRevision",
+        "inputRevision",
+        "reportId",
+        "candidate",
+        "kind",
+        "verdict",
+        "issuer",
+        "note",
+        "artifact"
+      ]
+    },
+    "EvidenceReworkRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-evidence/1"
+        },
+        "projectRef": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "checkoutId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "operationId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "runId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "inputRevision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "evidenceId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        }
+      },
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "operationId",
+        "runId",
+        "expectedRevision",
+        "inputRevision",
+        "evidenceId",
+        "reason"
+      ]
+    },
+    "EvidenceRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "request": {
+          "$ref": "#/$defs/EvidenceRequest"
+        },
+        "recordedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "provenance": {
+          "const": "controller-attributed"
+        }
+      },
+      "required": [
+        "request",
+        "recordedAt",
+        "provenance"
+      ]
+    },
+    "EvidenceItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "record": {
+          "$ref": "#/$defs/EvidenceRecord"
+        },
+        "candidateCurrent": {
+          "type": "boolean"
+        },
+        "artifactCurrent": {
+          "type": "boolean"
+        },
+        "reportCurrent": {
+          "type": "boolean"
+        },
+        "applicable": {
+          "type": "boolean"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "maxItems": 4
+        }
+      },
+      "required": [
+        "record",
+        "candidateCurrent",
+        "artifactCurrent",
+        "reportCurrent",
+        "applicable",
+        "conditions"
+      ]
+    },
+    "EvidenceView": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-evidence/1"
+        },
+        "projectRef": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "checkoutId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "runId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "state": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/EvidenceItem"
+          },
+          "maxItems": 16
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "maxItems": 8
+        }
+      },
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "runId",
+        "revision",
+        "state",
+        "items",
+        "limitations"
+      ]
     }
   }
 }

@@ -248,3 +248,15 @@ report receipt and two exact recovery cases. Corrected safely unsent bound-threa
 restart; affected race/vet and 11 native schema checks pass. CardState remains
 in-progress for retained parallel/active-host, SAD/scope, capacity/review/publication
 gates. No owner acceptance, independent review, merge/release or Ponsse work.
+
+
+2026-10-24, T035 / EVT-KB-SDP-000405: [PGI4-C1 evidence and rework](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI4-C1.md)
+implements exact candidate capture, attributed artifact receipts, current/historical
+applicability and controller-only failed-evidence rework. Final full SDPTool race/vet,
+30 wire schemas and the compiled pg_lab pass/fault/fail/rework/restore trial pass.
+The original C8 native state and all 43 baseline regular files remain preserved.
+Same Session continues; old agent capability is revoked on rework. No attachment
+establishes independent review, and completion/publication remain unavailable.
+CardState stays in-progress. Next: retained review/publication contract and evidence,
+with SAD/owner, parallel/active-host/capacity and integrated verification still open.
+Backlog/onHold reviewed; no Blueprint restart, Ponsse, hub, merge or release selected.

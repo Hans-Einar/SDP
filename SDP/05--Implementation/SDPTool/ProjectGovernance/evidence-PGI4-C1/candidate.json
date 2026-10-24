@@ -1,0 +1,23 @@
+{
+  "productBaseline": "090fb7fd5c82321cd1493f3743caad3d0831f361",
+  "identity": "baseline plus exact changed source hashes; uncommitted candidate, not a final commit claim",
+  "sourceFiles": {
+    "SDPTool/cmd/sdp-controller/evidence.go": "43db63d76505675ee8828cdcb653ef74e9486f6081b957789b2df3116699208a",
+    "SDPTool/cmd/sdp-controller/main.go": "9bf478330e20b859bbd3dd54f88e4a81434f6cbc0104d1212451bee2cf70362a",
+    "SDPTool/governance/attention_continuation.go": "cfcd060c8d21a6f3c7ca29ea9b5660db0303a705140779ef24feabf00846fee8",
+    "SDPTool/governance/candidate.go": "5bf661afc121c96c7bcff08d674691eb7736209cfcddce1c2d4eafe7f67ae606",
+    "SDPTool/governance/evidence.go": "55102b7e3bb3440af9e12e6ee2a0951f96b5597ecc85717812ce61860ba3b064",
+    "SDPTool/governance/evidence_test.go": "4d134f9b6b8e7f4b251645c55052457e0af79fa73e528f6f7037c96fca650daf",
+    "SDPTool/governance/host.go": "54920a3c90e0a1ea1bec640785114a10e4c07b831041eb6191f97b201d3bc21b",
+    "SDPTool/governance/leader.go": "570952675a76a74afb953a03747b305ab267164e36256fb57efae575e31c5376",
+    "SDPTool/governance/report_acknowledgement.go": "f5011fd93abf3c7d2d14a80de54414e2e9363475e94f06b2354d347ead2092d5",
+    "SDPTool/governance/run.go": "9a0892f2fbd834bed1460c7fbf19084f0c02d6d4ca934c3b3e6776082f3cb68a",
+    "SDPTool/governance/schema.json": "92931a52eccee40ccf7ba842a44346af813a8c99e47f103bf91056f4397dae35",
+    "SDPTool/governance/store.go": "5ce3100a2c615d3bfa6fd6d939b657b4bc686ffcb010185b58d203255a75d07f",
+    "SDPTool/governance/types.go": "2ebc1607d95d1f7e99e1cf2555aeec0363156b1ff6e4bcd36c7588db4534647b",
+    "SDPTool/governancecontroller/evidence_cli_test.go": "dcc24faab3c9e66f764d1d85c4e4d515117ba4bbe55dff2c2648473d102b7deb"
+  },
+  "goVersion": "go version go1.27.1 linux/amd64",
+  "binarySHA256": "1ec4e8a8b3dc8651f434e5154314d58a7c18dbcc24280f63e09877d43d326f64",
+  "labBaseline": "73ccee5c876eccefd27f8c1f0d07705cf1b9f725"
+}

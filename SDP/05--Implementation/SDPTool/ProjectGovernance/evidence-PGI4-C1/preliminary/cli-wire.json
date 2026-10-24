@@ -1,0 +1,380 @@
+[
+  {
+    "definition": "Candidate",
+    "value": {
+      "schema": "sdp-governance-evidence/1",
+      "projectRef": "trial",
+      "checkoutId": "b55d59cd-030d-488d-a391-e4cf02e7769e",
+      "runId": "f02785e6-54aa-4f39-b0c2-b64b227a994c",
+      "inputRevision": "ce5ca92e895e35668fc987e9f0c91f58ac9023ebf4ac4b423ce7c2684c2f50c7",
+      "writablePaths": [
+        "target.txt"
+      ],
+      "excludedPaths": [
+        "unrelated.txt"
+      ],
+      "dependencies": [],
+      "entries": [
+        {
+          "path": "target.txt",
+          "kind": "missing",
+          "sha256": "",
+          "executable": false
+        }
+      ],
+      "digest": "3d383575da92f04f1d0046566f904ccfc6ac90472ff388a68faf88f278c41789"
+    }
+  },
+  {
+    "definition": "EvidenceRequest",
+    "value": {
+      "schema": "sdp-governance-evidence/1",
+      "projectRef": "trial",
+      "checkoutId": "b55d59cd-030d-488d-a391-e4cf02e7769e",
+      "operationId": "2913e894-198f-4273-a996-165402ff9c87",
+      "runId": "f02785e6-54aa-4f39-b0c2-b64b227a994c",
+      "expectedRevision": 3,
+      "inputRevision": "ce5ca92e895e35668fc987e9f0c91f58ac9023ebf4ac4b423ce7c2684c2f50c7",
+      "reportId": "a89765a6-8187-4c24-9747-f5d308a341fd",
+      "candidate": {
+        "schema": "sdp-governance-evidence/1",
+        "projectRef": "trial",
+        "checkoutId": "b55d59cd-030d-488d-a391-e4cf02e7769e",
+        "runId": "f02785e6-54aa-4f39-b0c2-b64b227a994c",
+        "inputRevision": "ce5ca92e895e35668fc987e9f0c91f58ac9023ebf4ac4b423ce7c2684c2f50c7",
+        "writablePaths": [
+          "target.txt"
+        ],
+        "excludedPaths": [
+          "unrelated.txt"
+        ],
+        "dependencies": [],
+        "entries": [
+          {
+            "path": "target.txt",
+            "kind": "missing",
+            "sha256": "",
+            "executable": false
+          }
+        ],
+        "digest": "3d383575da92f04f1d0046566f904ccfc6ac90472ff388a68faf88f278c41789"
+      },
+      "kind": "test",
+      "verdict": "failed",
+      "issuer": "compiled fixture",
+      "note": "external test result",
+      "artifact": {
+        "path": "verification.log",
+        "sha256": "f40482e1918256465d4ab41e7abbc520795ffe198ae353e939d9bc039a23e7fb"
+      }
+    }
+  },
+  {
+    "definition": "Result",
+    "value": {
+      "checkoutId": "b55d59cd-030d-488d-a391-e4cf02e7769e",
+      "coverage": "known",
+      "evidence": {
+        "provenance": "controller-attributed",
+        "recordedAt": "2026-10-24T10:16:41.142764039Z",
+        "request": {
+          "artifact": {
+            "path": "verification.log",
+            "sha256": "f40482e1918256465d4ab41e7abbc520795ffe198ae353e939d9bc039a23e7fb"
+          },
+          "candidate": {
+            "checkoutId": "b55d59cd-030d-488d-a391-e4cf02e7769e",
+            "dependencies": [],
+            "digest": "3d383575da92f04f1d0046566f904ccfc6ac90472ff388a68faf88f278c41789",
+            "entries": [
+              {
+                "executable": false,
+                "kind": "missing",
+                "path": "target.txt",
+                "sha256": ""
+              }
+            ],
+            "excludedPaths": [
+              "unrelated.txt"
+            ],
+            "inputRevision": "ce5ca92e895e35668fc987e9f0c91f58ac9023ebf4ac4b423ce7c2684c2f50c7",
+            "projectRef": "trial",
+            "runId": "f02785e6-54aa-4f39-b0c2-b64b227a994c",
+            "schema": "sdp-governance-evidence/1",
+            "writablePaths": [
+              "target.txt"
+            ]
+          },
+          "checkoutId": "b55d59cd-030d-488d-a391-e4cf02e7769e",
+          "expectedRevision": 3,
+          "inputRevision": "ce5ca92e895e35668fc987e9f0c91f58ac9023ebf4ac4b423ce7c2684c2f50c7",
+          "issuer": "compiled fixture",
+          "kind": "test",
+          "note": "external test result",
+          "operationId": "2913e894-198f-4273-a996-165402ff9c87",
+          "projectRef": "trial",
+          "reportId": "a89765a6-8187-4c24-9747-f5d308a341fd",
+          "runId": "f02785e6-54aa-4f39-b0c2-b64b227a994c",
+          "schema": "sdp-governance-evidence/1",
+          "verdict": "failed"
+        }
+      },
+      "operation": "evidence.attach",
+      "operationId": "2913e894-198f-4273-a996-165402ff9c87",
+      "projectRef": "trial",
+      "run": {
+        "assignment": {
+          "excludedPaths": [
+            "unrelated.txt"
+          ],
+          "outcome": "fix fixture",
+          "writablePaths": [
+            "target.txt"
+          ]
+        },
+        "id": "f02785e6-54aa-4f39-b0c2-b64b227a994c",
+        "inputRevision": "ce5ca92e895e35668fc987e9f0c91f58ac9023ebf4ac4b423ce7c2684c2f50c7",
+        "reason": "compiled evidence fixture",
+        "requestId": "f9dce3bc-f5fc-4842-9786-a12a494033cd",
+        "revision": 3,
+        "routine": {
+          "completion": "candidate evidence, applicable independent review and checked publication required",
+          "id": "maintenance",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "version": "0.1"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "selection": {
+          "authority": "SDP/authority.md",
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "step": "S1"
+        },
+        "state": "verifying",
+        "step": "implement"
+      },
+      "schema": "sdp-project-governance/0.1"
+    }
+  },
+  {
+    "definition": "EvidenceView",
+    "value": {
+      "schema": "sdp-governance-evidence/1",
+      "projectRef": "trial",
+      "checkoutId": "b55d59cd-030d-488d-a391-e4cf02e7769e",
+      "runId": "f02785e6-54aa-4f39-b0c2-b64b227a994c",
+      "revision": 3,
+      "state": "verifying",
+      "items": [
+        {
+          "record": {
+            "request": {
+              "schema": "sdp-governance-evidence/1",
+              "projectRef": "trial",
+              "checkoutId": "b55d59cd-030d-488d-a391-e4cf02e7769e",
+              "operationId": "2913e894-198f-4273-a996-165402ff9c87",
+              "runId": "f02785e6-54aa-4f39-b0c2-b64b227a994c",
+              "expectedRevision": 3,
+              "inputRevision": "ce5ca92e895e35668fc987e9f0c91f58ac9023ebf4ac4b423ce7c2684c2f50c7",
+              "reportId": "a89765a6-8187-4c24-9747-f5d308a341fd",
+              "candidate": {
+                "schema": "sdp-governance-evidence/1",
+                "projectRef": "trial",
+                "checkoutId": "b55d59cd-030d-488d-a391-e4cf02e7769e",
+                "runId": "f02785e6-54aa-4f39-b0c2-b64b227a994c",
+                "inputRevision": "ce5ca92e895e35668fc987e9f0c91f58ac9023ebf4ac4b423ce7c2684c2f50c7",
+                "writablePaths": [
+                  "target.txt"
+                ],
+                "excludedPaths": [
+                  "unrelated.txt"
+                ],
+                "dependencies": [],
+                "entries": [
+                  {
+                    "path": "target.txt",
+                    "kind": "missing",
+                    "sha256": "",
+                    "executable": false
+                  }
+                ],
+                "digest": "3d383575da92f04f1d0046566f904ccfc6ac90472ff388a68faf88f278c41789"
+              },
+              "kind": "test",
+              "verdict": "failed",
+              "issuer": "compiled fixture",
+              "note": "external test result",
+              "artifact": {
+                "path": "verification.log",
+                "sha256": "f40482e1918256465d4ab41e7abbc520795ffe198ae353e939d9bc039a23e7fb"
+              }
+            },
+            "recordedAt": "2026-10-24T10:16:41.142764039Z",
+            "provenance": "controller-attributed"
+          },
+          "candidateCurrent": true,
+          "artifactCurrent": true,
+          "reportCurrent": true,
+          "applicable": true,
+          "conditions": []
+        }
+      ],
+      "limitations": [
+        "controller-attributed claims; test execution not observed by PG",
+        "review independence unverified",
+        "checked publication and completion unavailable"
+      ]
+    }
+  },
+  {
+    "definition": "EvidenceReworkRequest",
+    "value": {
+      "schema": "sdp-governance-evidence/1",
+      "projectRef": "trial",
+      "checkoutId": "b55d59cd-030d-488d-a391-e4cf02e7769e",
+      "operationId": "00d836a7-96ff-4ded-bae6-4d8583326df7",
+      "runId": "f02785e6-54aa-4f39-b0c2-b64b227a994c",
+      "expectedRevision": 3,
+      "inputRevision": "ce5ca92e895e35668fc987e9f0c91f58ac9023ebf4ac4b423ce7c2684c2f50c7",
+      "evidenceId": "2913e894-198f-4273-a996-165402ff9c87",
+      "reason": "fix the failed case"
+    }
+  },
+  {
+    "definition": "Result",
+    "value": {
+      "evidenceRework": {
+        "schema": "sdp-governance-evidence/1",
+        "projectRef": "trial",
+        "checkoutId": "b55d59cd-030d-488d-a391-e4cf02e7769e",
+        "operationId": "00d836a7-96ff-4ded-bae6-4d8583326df7",
+        "runId": "f02785e6-54aa-4f39-b0c2-b64b227a994c",
+        "expectedRevision": 3,
+        "inputRevision": "ce5ca92e895e35668fc987e9f0c91f58ac9023ebf4ac4b423ce7c2684c2f50c7",
+        "evidenceId": "2913e894-198f-4273-a996-165402ff9c87",
+        "reason": "fix the failed case"
+      },
+      "schema": "sdp-project-governance/0.1",
+      "operation": "evidence.rework",
+      "projectRef": "trial",
+      "checkoutId": "b55d59cd-030d-488d-a391-e4cf02e7769e",
+      "operationId": "00d836a7-96ff-4ded-bae6-4d8583326df7",
+      "run": {
+        "id": "f02785e6-54aa-4f39-b0c2-b64b227a994c",
+        "revision": 4,
+        "requestId": "f9dce3bc-f5fc-4842-9786-a12a494033cd",
+        "state": "ready",
+        "step": "implement",
+        "inputRevision": "ce5ca92e895e35668fc987e9f0c91f58ac9023ebf4ac4b423ce7c2684c2f50c7",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "fix fixture",
+          "writablePaths": [
+            "target.txt"
+          ],
+          "excludedPaths": [
+            "unrelated.txt"
+          ]
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "reason": "fix the failed case"
+      },
+      "coverage": "known"
+    }
+  },
+  {
+    "definition": "EvidenceView",
+    "value": {
+      "schema": "sdp-governance-evidence/1",
+      "projectRef": "trial",
+      "checkoutId": "b55d59cd-030d-488d-a391-e4cf02e7769e",
+      "runId": "f02785e6-54aa-4f39-b0c2-b64b227a994c",
+      "revision": 4,
+      "state": "ready",
+      "items": [
+        {
+          "record": {
+            "request": {
+              "schema": "sdp-governance-evidence/1",
+              "projectRef": "trial",
+              "checkoutId": "b55d59cd-030d-488d-a391-e4cf02e7769e",
+              "operationId": "2913e894-198f-4273-a996-165402ff9c87",
+              "runId": "f02785e6-54aa-4f39-b0c2-b64b227a994c",
+              "expectedRevision": 3,
+              "inputRevision": "ce5ca92e895e35668fc987e9f0c91f58ac9023ebf4ac4b423ce7c2684c2f50c7",
+              "reportId": "a89765a6-8187-4c24-9747-f5d308a341fd",
+              "candidate": {
+                "schema": "sdp-governance-evidence/1",
+                "projectRef": "trial",
+                "checkoutId": "b55d59cd-030d-488d-a391-e4cf02e7769e",
+                "runId": "f02785e6-54aa-4f39-b0c2-b64b227a994c",
+                "inputRevision": "ce5ca92e895e35668fc987e9f0c91f58ac9023ebf4ac4b423ce7c2684c2f50c7",
+                "writablePaths": [
+                  "target.txt"
+                ],
+                "excludedPaths": [
+                  "unrelated.txt"
+                ],
+                "dependencies": [],
+                "entries": [
+                  {
+                    "path": "target.txt",
+                    "kind": "missing",
+                    "sha256": "",
+                    "executable": false
+                  }
+                ],
+                "digest": "3d383575da92f04f1d0046566f904ccfc6ac90472ff388a68faf88f278c41789"
+              },
+              "kind": "test",
+              "verdict": "failed",
+              "issuer": "compiled fixture",
+              "note": "external test result",
+              "artifact": {
+                "path": "verification.log",
+                "sha256": "f40482e1918256465d4ab41e7abbc520795ffe198ae353e939d9bc039a23e7fb"
+              }
+            },
+            "recordedAt": "2026-10-24T10:16:41.142764039Z",
+            "provenance": "controller-attributed"
+          },
+          "candidateCurrent": true,
+          "artifactCurrent": true,
+          "reportCurrent": false,
+          "applicable": false,
+          "conditions": [
+            "report no longer awaiting this verification"
+          ]
+        }
+      ],
+      "limitations": [
+        "controller-attributed claims; test execution not observed by PG",
+        "review independence unverified",
+        "checked publication and completion unavailable"
+      ]
+    }
+  }
+]

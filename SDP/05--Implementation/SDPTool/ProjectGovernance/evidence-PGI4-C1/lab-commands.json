@@ -1,0 +1,169 @@
+[
+  {
+    "args": [
+      "evidence",
+      "capture",
+      "--run",
+      "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "--dependency",
+      "go.mod",
+      "--dependency",
+      "normalize.go",
+      "--dependency",
+      "normalize_test.go",
+      "--dependency",
+      "cmd"
+    ],
+    "exitCode": 0
+  },
+  {
+    "args": [
+      "evidence",
+      "inspect",
+      "--run",
+      "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "--json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "args": [
+      "inbox",
+      "--run",
+      "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "--json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "args": [
+      "evidence",
+      "attach",
+      "--input",
+      "/home/warloc/.cache/sdp-workstation/PGI4-C1/request-4e4f0e8f-3f3d-4770-a63f-bb3af7695210.json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "args": [
+      "evidence",
+      "inspect",
+      "--run",
+      "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "--json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "args": [
+      "evidence",
+      "inspect",
+      "--run",
+      "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "--json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "args": [
+      "evidence",
+      "inspect",
+      "--run",
+      "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "--json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "args": [
+      "evidence",
+      "attach",
+      "--input",
+      "/home/warloc/.cache/sdp-workstation/PGI4-C1/request-4e4f0e8f-3f3d-4770-a63f-bb3af7695210.json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "args": [
+      "evidence",
+      "capture",
+      "--run",
+      "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "--dependency",
+      "go.mod",
+      "--dependency",
+      "normalize.go",
+      "--dependency",
+      "normalize_test.go",
+      "--dependency",
+      "cmd"
+    ],
+    "exitCode": 0
+  },
+  {
+    "args": [
+      "evidence",
+      "inspect",
+      "--run",
+      "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "--json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "args": [
+      "inbox",
+      "--run",
+      "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "--json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "args": [
+      "evidence",
+      "attach",
+      "--input",
+      "/home/warloc/.cache/sdp-workstation/PGI4-C1/request-614dece6-045c-4081-81d4-dc0ec67a223a.json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "args": [
+      "evidence",
+      "inspect",
+      "--run",
+      "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "--json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "args": [
+      "evidence",
+      "rework",
+      "--input",
+      "/home/warloc/.cache/sdp-workstation/PGI4-C1/rework.json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "args": [
+      "evidence",
+      "rework",
+      "--input",
+      "/home/warloc/.cache/sdp-workstation/PGI4-C1/rework.json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "args": [
+      "evidence",
+      "inspect",
+      "--run",
+      "be00db9f-4e12-4d8e-8728-9fa367450065",
+      "--json"
+    ],
+    "exitCode": 0
+  }
+]

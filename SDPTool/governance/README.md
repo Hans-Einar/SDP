@@ -93,7 +93,7 @@ assignment boundaries; PGI1 neither executes changes nor intercepts shell access
 `step` stays `implement`: `report` means an implementation result needs checking,
 not that the verify/review/record steps ran. Resume preserves run, assignment and
 Session identity. It does not represent reconnection to a host attempt. Replanning,
-evidence submission and further routine steps belong to later PGI milestones.
+PGI4-C1 adds the controller-only evidence and failed-evidence rework operations described below. Independent review, checked publication and completion remain later gates.
 The serialized definition and digest stay pinned on each run.
 
 ## Authority, consistency and recovery
@@ -306,3 +306,38 @@ are required to resolve uncertain sends; dispatch completion is delivery, not ap
 See [controller usage and bounds](../governancecontroller/README.md#serialized-project-leader-turns--pgl3-c7)
 and the separate output-only [leader schema](leader.schema.json). The worker MCP
 input descriptions do not acquire leader-only definitions or capabilities.
+
+
+## Candidate evidence and rework — operational profile 0.10
+
+`CaptureCandidate` reads a run's literal writable scope plus explicit read-only
+dependencies, excluding unselected write-excluded paths. The sorted inventory pins
+file bytes, exact executable bits, directory membership and absent roots alongside
+checkout/run/authority identity. No Git commit, model or file mutation is required.
+Dependencies do not grant write authority; their completeness is not inferred.
+Hidden components, symlinks, globs and special files refuse. Limits are 64 dependency
+paths, 512 entries, 4 MiB/file and 32 MiB total file content.
+
+`AttachEvidence` is a trusted-controller operation. It pins the latest report, run
+revision, captured candidate and the digest of an external artifact (up to 4 MiB,
+outside candidate scope). Types are claim/test/review; verdicts are passed/failed/
+inconclusive. These are controller-attributed records, not observed test execution
+or authenticated independent review. Attachment preserves run state/revision.
+
+`Evidence` exposes history and separately checks candidate, artifact, report and
+authority applicability. Source drift does not erase a receipt; exact retries
+return the original result. Read projections detect operational generation changes.
+External writers must remain quiescent for coherent filesystem inspection; no
+filesystem-wide transaction is promised. At most 16 evidence records per run fit
+within existing 1024 receipt/16 MiB snapshot bounds.
+
+`ReworkEvidence` accepts only a current failed test/review on a verifying run. It
+requires current authority, no blocking attention, terminal observed attempts with
+no gaps and no unresolved controller inputs. It returns the same assignment/Session
+to ready, preserves report/evidence history and rotates the prior agent capability.
+A fresh attempt must carry further agent work. Completion still refuses.
+
+Profile 0.10 is selected only by attachment; existing current writers preserve it.
+Earlier binaries refuse rather than dropping evidence. The common wire schema's
+Candidate/EvidenceRequest/EvidenceReworkRequest/EvidenceView/Result definitions
+cover the CLI. Existing worker/coordinator MCP tool authority is unchanged.

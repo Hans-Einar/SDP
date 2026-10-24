@@ -1,0 +1,1 @@
+Preliminary passing CLI trial, before exact executable-bit representation and read-generation rechecks. The final trial is in the parent directory and uses a separate state fork. The original native state remains unchanged.

@@ -641,3 +641,34 @@ launch through a wrapper passing `--disable apps --disable remote_plugin --disab
 multi_agent` to Codex. These are process-local restrictions, not global config edits
 or a larger transport allowance. A real 0.164.0 native trial with gpt-6-astra/high
 verified report acknowledgement and both terminal-read and lost-start-response recovery.
+
+
+## PGI4-C1: candidate evidence and failed verification
+
+```sh
+sdp-controller evidence capture --project ROOT --state DIR --run UUID --dependency go.mod
+sdp-controller evidence attach --project ROOT --state DIR --input evidence-request.json
+sdp-controller evidence inspect --project ROOT --state DIR --run UUID
+sdp-controller evidence inspect --project ROOT --state DIR --run UUID --json
+sdp-controller evidence rework --project ROOT --state DIR --input rework-request.json
+```
+
+Capture is read-only JSON; repeat `--dependency` for relevant read-only inputs beyond
+the writable scope. Run external checks against that candidate and retain their
+artifact outside its inventory. `EvidenceRequest` in the [application schema](../governance/schema.json)
+contains exact project/checkout/run/input identity, expected run revision, reportId,
+Candidate, kind, verdict, issuer, note and artifact path/SHA256. Capture and attachment
+do not execute commands or infer dependency completeness. Unrelated unselected paths
+do not invalidate evidence, but explicit dependencies and inventory membership do.
+
+Attachment is a controller-attributed claim. Review prose cannot establish independent
+review, and passed tests cannot complete work. Inspection preserves original receipts
+and exposes current candidate/artifact/report/authority applicability. Exact retry
+returns the original receipt even after later drift.
+
+`EvidenceReworkRequest` selects a current failed test/review receipt with evidenceId,
+expected revision, input revision and reason. It returns verifying work to ready only
+after host/input uncertainty and blocking attention have been resolved. Old agent
+capabilities are revoked; the same Session continues through a fresh launch.
+Operational profile 0.10 preserves existing data; older readers refuse it. This
+command does not publish Session/card/plan records, impersonate the owner or accept work.

@@ -1,6 +1,6 @@
 # Current model, Blueprint and ProjectGovernance state responsibilities
 
-Session0013 / WR2-M2, updated by Session0007 T032 on 24 October 2026. This explains existing implemented boundaries;
+Session0013 / WR2-M2, updated by Session0007 T035 on 24 October 2026. This explains existing implemented boundaries;
 it does not merge their state machines or add new authority. The
 [orchestration design](Orchestration.md), [PG design](Design.md),
 [model design](../ModelGovernance/Design.md) and
@@ -20,7 +20,8 @@ it does not merge their state machines or add new authority. The
 | Worker report / report receipt | restricted governance MCP run_transition; report inbox projection | Report moves work to verifying. PGL3-C5 permits a trusted-controller acknowledgement of exact report processing; this leaves the run unchanged and is not reviewed delivery or owner acceptance. |
 | Owner questions, replies and continuation references | governance attention/continuation services; trusted reply adapter | Durable attributed input, applicability and guarded fresh attempt. Answer acknowledgement is not approval of implementation or another phase. |
 | Combined coordination view and console | governance/coordination.go plus controller/MCP adapters | Read-only paged projection of registered work. Explicit coordinator MCP adds C5 acknowledgement only; terminal owner replies retain C3 attribution. No native leader wake-up or new acceptance authority. |
-| Project Leader delivery | governance/leader.go, governancecontroller/leader.go and host adapter | Profile 0.9 operational owner queue and one active decision dispatch. Persistent effect claims and exact mapped history recovery; no assignment acceptance, owner impersonation or prose-to-action execution. Native leader trial and capacity/compaction remain gates. |
+| Project Leader delivery | governance/leader.go, governancecontroller/leader.go and host adapter | Profile 0.9 operational owner queue and one active decision dispatch. Persistent effect claims and exact mapped history recovery; no assignment acceptance, owner impersonation or prose-to-action execution. C8 verifies a bounded native leader/worker trial; parallel, active-host and capacity/compaction gates remain. |
+| Candidate evidence and rework | governance/candidate.go and evidence.go; profile 0.10 operational receipts | Exact selected bytes and attributed external artifact. Current applicability is separate from historical result. Failed current test/review may return work to ready; no independent review or canonical publication implied. |
 | Card/typed-plan lifecycle and Session roadmap | canonical ProjectManagement ledger, current records and authored Session | Canonical project work disposition. Private PG operational state does not automatically publish a completed card/Session. |
 
 The private store and canonical project history deliberately hold different facts.
@@ -55,6 +56,9 @@ recovery tests on the consolidated candidate. Its fixtures are not native agent
 execution or independent review. The [execution evidence](../../../Maintenance/WorkstationReadiness/Execution-Evidence.md)
 and [MCP adoption study](../../../Maintenance/WorkstationReadiness/MCP-Adoption-Study.md)
 record the exact result. PGC1 subsequently delivers bounded host compatibility and
-PGL3-C5 adds report acknowledgement. Responsive leader processing, SAD dispatch,
-capacity/recovery and canonical evidence/publication gates remain with PLAN-SDP-0018.
+PGL3-C5 adds report acknowledgement; C6/C7 implement coordination and serialized
+leader delivery, and C8 verifies the bounded native workflow. PGI4-C1 adds exact
+candidate evidence, historical/current inspection and guarded rework. SAD dispatch,
+parallel/active-host/capacity, independent review and canonical publication remain
+with PLAN-SDP-0018.
 No broad code refactor is selected without a demonstrated conflicting rule.

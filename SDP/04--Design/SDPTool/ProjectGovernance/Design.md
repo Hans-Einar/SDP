@@ -561,3 +561,47 @@ Verify malformed/missing selections, drift, duplicate/changed content and exact
 lost-response recovery; test real skill-equipped Maintenance with explicit report
 approval and preserved fixture files. Retain actual protocol and workflow evidence,
 including a deliberate response-loss trial without resubmission.
+
+## PGI4-C1 — Candidate-bound evidence and rework, T035
+
+Refines existing PG-A06/07/08/16/17/18 within the selected completion route.
+A report is a claim awaiting verification. The trusted local controller may capture
+an exact source inventory and attach an attributed test, review or general claim;
+an attachment is not proof that PG executed a test or observed an independent reviewer.
+
+Use the existing atomic store/receipt namespace (operational profile 0.10), rather
+than a second evidence ledger or Git HEAD as a proxy for dirty source bytes. Old
+readers refuse the new profile; every current writer preserves later data. No
+canonical project records are published in this increment.
+
+Candidate capture is read-only and bound to checkout, run, input revision, exact
+writable/excluded paths and explicitly selected additional dependency paths. Literal
+files/directories only; no globs, symlinks, hidden components or special files.
+Sorted inventory records files, executable bits, directories and missing roots.
+Directory membership changes, missing/new/deleted files and relevant executable-bit
+changes invalidate the digest. Unselected excluded work does not participate. Explicit read-only dependencies
+may include write-excluded files (for example go.mod); this grants no write authority. Bounds: 64 dependencies, 512
+inventory entries, 4 MiB/file, 32 MiB total content, 4096 bytes/path. Capture does not
+infer that the selected dependency list covers every possible behavioral influence.
+It observes the filesystem; external writers must be quiescent for a coherent
+snapshot. Repeated capture before attachment detects observed drift, not atomic
+filesystem isolation.
+
+Attachment pins the latest exact report, run revision, authority/input revision,
+candidate inventory and a project-relative artifact path/digest. The artifact must
+be outside the inventory scope. Capture it before attaching; PG rechecks source and
+artifact bytes before atomic publication. Retain at most 16 evidence receipts/run,
+within the existing 1024 receipt/16 MiB store bounds. Exact retries return the original
+receipt even after later drift; read projection separately reports current status.
+Attribution is controller-supplied, never authenticated human or native reviewer
+identity. Review independence remains unverified regardless of artifact prose.
+
+Read projection keeps all historical records and separates current candidate,
+artifact, authority and report applicability. A source change invalidates current
+use without deleting the original result. Evidence attachment does not advance or
+accept work. Failed current test/review evidence can support controller-only rework
+from verifying to ready, preserving the same Session and original report/evidence.
+Rework requires no open blocking attention, no uncertain input and no active/unknown
+host attempt. Old agent capabilities cannot submit another report after rework;
+subsequent work requires a fresh attempt. Completion still refuses until required
+review and checked publication exist. Agent/coordinator MCP authority is unchanged.

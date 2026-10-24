@@ -296,3 +296,18 @@ has explicit capacity limits and no compaction yet. This delivery is verified wi
 compiled command/protocol fixtures, not a native leader conversation trial. See
 [usage](../../../../SDPTool/governancecontroller/README.md#serialized-project-leader-turns--pgl3-c7)
 and [evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C7.md).
+
+
+## Candidate evidence and correction (PGI4-C1)
+
+After a worker reports, the controller can capture the exact relevant source files
+and attach the result of external verification. Inspection shows whether those
+files, the evidence artifact, the report and the authority still match. Unselected
+unrelated edits do not discard the result; relevant edits make its current use stale.
+A current failed test/review can send the assignment back to ready for a fresh attempt
+in the same Session. The original result remains in history.
+
+In pg_lab, run `./pg evidence`. This reads the separate evidence trial without
+launching a model. It deliberately tested a source fault and then restored the
+original files; the original native trial remains untouched. Review independence,
+canonical publication and final acceptance remain separate unfinished gates.

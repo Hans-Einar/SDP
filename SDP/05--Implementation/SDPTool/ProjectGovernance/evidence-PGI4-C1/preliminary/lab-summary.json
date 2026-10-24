@@ -1,0 +1,53 @@
+{
+  "labBaseline": "73ccee5c876eccefd27f8c1f0d07705cf1b9f725",
+  "runId": "be00db9f-4e12-4d8e-8728-9fa367450065",
+  "originalStateHead": "a6db29e0f60ebe1b70762c474346af462ce493913faf8da14b6008fa4228b87f",
+  "originalStatePreserved": true,
+  "stateFork": "/home/warloc/.cache/sdp-workstation/PGI4-C1/lab-state",
+  "binary": "/home/warloc/.cache/sdp-workstation/PGI4-C1/bin/sdp-controller",
+  "binarySHA256": "dc5f637ce68c6c2e7727df9d88406cd521aa9373cd1d2045c5c77245c1f74f3d",
+  "candidateBefore": "a2cdd97d18d61a92e64bd562b29ad85044263f0bc700e5f76f7bf62c97ec71e6",
+  "candidateFault": "92462d551a0a999f7bf13658683344fdfbdc7d5749c3ba585744bd71a1b868d6",
+  "passed": {
+    "command": [
+      "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+      "test",
+      "-count=1",
+      "./..."
+    ],
+    "exitCode": 0,
+    "artifact": "evidence/PGI4-C1/passed.log",
+    "sha256": "1c36faa3ba6a6470009a0f042a464e80cebb740e32699f5ac5ba0cbd95bceafc"
+  },
+  "deliberateFailure": {
+    "command": [
+      "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+      "test",
+      "-count=1",
+      "./..."
+    ],
+    "exitCode": 1,
+    "artifact": "evidence/PGI4-C1/deliberate-failure.log",
+    "sha256": "841e1e1de71ebe53a03b41063402126c3bc6f700f07ce400a716d5ae81450d62"
+  },
+  "restored": {
+    "command": [
+      "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+      "test",
+      "-count=1",
+      "./..."
+    ],
+    "exitCode": 0,
+    "artifact": "evidence/PGI4-C1/restored.log",
+    "sha256": "1c36faa3ba6a6470009a0f042a464e80cebb740e32699f5ac5ba0cbd95bceafc"
+  },
+  "preservedBaselineFiles": 43,
+  "finalState": "ready",
+  "evidenceRecords": 2,
+  "newModelTurns": 0,
+  "oldReaderRefused": {
+    "exitCode": 2,
+    "diagnostic": "reconciliation_required: invalid_request: json: unknown field \"evidence\""
+  },
+  "limits": "External tests on C8 native implementation; state fork is a test, not canonical disposition, independent review or publication."
+}
