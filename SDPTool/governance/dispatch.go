@@ -146,6 +146,9 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 			}
 		}
 		if v.Kind == "launch" {
+			if e := checkSessionLaunchSkills(state, r, v.Skills); e != nil {
+				return Result{}, e
+			}
 			if len(r.Attempts) > 0 {
 				a := r.Attempts[len(r.Attempts)-1]
 				if a.Status != "completed" && a.Status != "failed" && a.Status != "interrupted" {

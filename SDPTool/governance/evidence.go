@@ -248,6 +248,9 @@ func (s *Service) ReworkEvidence(caller Caller, q EvidenceReworkRequest) (Result
 	if r.Revision != q.ExpectedRevision || r.InputRevision != q.InputRevision {
 		return Result{}, fail("stale_revision", "run or inputs changed")
 	}
+	if i, ok := sessionRunBinding(state, r.ID); ok && len(i.Work) > 1 {
+		return Result{}, fail("conflict", "Session progress/rework reconciliation is not implemented")
+	}
 	v := state.Receipts[q.EvidenceID].Result.Evidence
 	if v == nil || v.Request.RunID != r.ID || v.Request.Verdict != "failed" || v.Request.Kind == "claim" {
 		return Result{}, fail("evidence_missing", "failed test or review evidence required")

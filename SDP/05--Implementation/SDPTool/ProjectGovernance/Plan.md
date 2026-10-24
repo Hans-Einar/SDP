@@ -1090,7 +1090,7 @@ policy. This turn delivers design/model preparation, not a runtime milestone.
 | Increment | Checkpoint mapping | Runnable outcome and exit evidence | Dependency/status |
 | --- | --- | --- | --- |
 | PGF1-C1 Session binding and durable instance | PGF1 foundation; PGF2 admission | Adopt a covered manual Session explicitly, read its selected steps/stages/holds, recover the same instance and reject stale/unsupported/cyclic bindings. Pin routine version and authority; leave legacy runs unchanged. New incomplete paths refuse action rather than simulate delivery | delivered T042 at bounded C1 scope; core, CLI/JSON, recovery and pg_lab evidence pass; later activation/leader/model gates remain |
-| PGF1-C2 Checked lifecycle effects and disposition | PGF1; PG-A25/27/28 | Use existing publication machinery for select/start/progress and eligible no-design closeout, including real card moves, metadata/history/links and partial-contribution handling. Reconcile own effects/unrelated ledger additions without weakening coverage. Crash matrix and shared writer/ID contention pass | in-progress; C2a selection/effects delivered T043; C2b1 assessment delivered T044; C2b2 start/progress and C2c verified disposition remain |
+| PGF1-C2 Checked lifecycle effects and disposition | PGF1; PG-A25/27/28 | Use existing publication machinery for select/start/progress and eligible no-design closeout, including real card moves, metadata/history/links and partial-contribution handling. Reconcile own effects/unrelated ledger additions without weakening coverage. Crash matrix and shared writer/ID contention pass | in-progress; C2a selection/effects delivered T043; C2b1 assessment delivered T044; C2b2 no-design start/progress delivered T045; C2c verified disposition remains |
 | PGF2-C1 Common owner/leader Session operations | PGF2/4; PG-A26/29/30 | CLI and explicitly privileged leader adapter use the same core/instance/receipts. Controller dispatch follows committed record effects; leader-free owner resume and later leader reconnect neither duplicate work nor bypass authority | C1/C2; implementation/native evidence required |
 | PGF3-C1 Design and model-release workflow | PGF3; PG-A21/22/23/25 | SDL WORK, required Blueprint, design handoff, code verification/rework and exact accepted model release participate in Session gates. Combine compatible model WORKs, refresh affected evidence and refuse unresolved model release at closure | common Session operations; implementation/native evidence required |
 | PGF5-C1 Full recovery across effects and attempts | PGF5; PG-A27/28/29 | Recover at each canonical/model/host boundary; preserve pending work, external edits and whole-card scope. Different routine versions and legacy profiles stay explicit | prior functional increments; evidence required |
@@ -1178,3 +1178,29 @@ No native host launch, independent product review, owner acceptance or model/sof
 release is claimed by assessment. Review of backlog/onHold retains broader
 KB036/037/042, separate paused KB050 and SDL-only KB059 deferral; no new scope is
 activated. KB038/052 and this plan stay in-progress/active.
+
+
+### T045 — C2b2 Session-bound start/progress delivered; C2c next
+
+C2b2 connects exact Session/step/assessment identity to the existing run/controller.
+Start commits every selected card as in-progress before one ready run is created;
+explicit host launch follows separately with pinned Master/Worker skills and the
+full card/contribution binding. Assigned report/current candidate evidence then
+permits progress to verification. Unknown/design-changing work retains PGF3 gates.
+[Evidence](Evidence-PGF1-C2b2.md) owns exact candidate, recovery/tamper/strict-wire,
+multi-card ImplementationPlan and compiled CLI/controller protocol results. Lab
+commit f3b50f8 is pushed with all 206 earlier tracked paths unchanged. No native
+Codex run, independent product review or acceptance is inferred from this trial.
+
+C2b is delivered at this bounded no-design checkpoint. C2 and PGF1 remain in-progress.
+Next C2c must consume exact candidate-bound verification/review, dispose whole cards
+versus bounded contributions correctly, support explicit rework/dependency progression
+and release/replan claims with recovery. Current generic single-card publication and
+further post-progress advance cannot bypass that missing Session gate. Preserve the
+existing independent review and owner-acceptance requirements. PGF2–9 and model
+integration/release retain all earlier obligations; do not close design-changing work
+through the no-design route. Refresh preflight and scoped Blueprint before C2c edits.
+
+Backlog/onHold review retains KB036/037/042, separate paused KB050 and SDL-only KB059
+deferral. KB038/052 stay in-progress for the remaining goal. Current branch/milestone
+commit policy and phase-push authority remain; no merge, installation or release.

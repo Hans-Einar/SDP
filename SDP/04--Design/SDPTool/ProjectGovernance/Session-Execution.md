@@ -3,7 +3,7 @@
 Owner Session0007 T041 accepts the T040 direction and selects its concretization.
 This is the bounded design for PLAN-SDP-0018 / KB052, linked to KB038 and KB037.
 It specifies the target behavior; runtime now includes the bounded C1, C2a and
-C2b1 subsets described below. Full lifecycle delivery remains open.
+C2b1/C2b2 subsets described below. Full lifecycle delivery remains open.
 [Orchestration](Orchestration.md) retains role/event behavior and T039 mandatory
 admission/model rules. [Acceptance](Acceptance.md) owns the test case register.
 The [SDL concern](../../../SDL/ProjectGovernance/SDPTool/SessionWorkflow/README.md)
@@ -308,3 +308,38 @@ Legacy Maintenance and approved-Blueprint run contexts have their own validation
 relabelling them would bypass those checks. No second execution engine or fabricated
 run report is introduced. C2c owns verified disposition/dependencies/claim release;
 PGF2/3 retain privileged leader and model handoff/release gates.
+
+
+## T045 implementation boundary — PGF1-C2b2
+
+Start/progress now implement the bounded no-design path through the existing
+run/attempt/controller, not a second execution engine. An immutable start records
+exact Session/step/assessment identity, outcome and Master/Worker skill snapshots.
+Resume commits all selected cards as in-progress and creates one ready run atomically
+with operational start commitment, after canonical effects. Explicit controller launch
+happens later; committed intent does not prove host execution. The full binding keeps
+whole/contribution coverage for MaintenancePlan and ImplementationPlan alike.
+
+The run input revision is stable across its own canonical journals, while current
+Session coverage independently validates pinned inputs and unrelated ledger appends.
+Existing run scope, report capability, host intent/recovery and evidence ownership
+apply. Current legacy admission/dispatch checks persistent claims optimistically;
+manual writers/older binaries and universal cross-store arbitration remain outside
+coverage. Writable scope cannot overlap pinned governance records or required skills.
+
+Progress pins the exact assigned report, run revision, evidence artifact and candidate.
+Every effect rechecks that basis. Unknown host outcomes or outstanding attention/input
+hold progress; committed progress enters verification and keeps cards in-progress.
+It does not accept the implementation or complete a contribution/card. Existing
+single-card result publication and further advance/relaunch/rework cannot bypass
+future Session disposition. Stopping operations remain available.
+
+Operational profile 0.16 and the two trusted-controller CLI/JSON actions reuse the
+existing effect publisher and receipts; old readers refuse. The current bound is
+one start and one progress for one selected step. Rework/dependency progression,
+whole/contribution disposition and claim release/replan remain C2c. Changed/unknown
+design and required/unknown Blueprint cannot use this start path; PGF3 must implement
+WORK/model handoff and release gates. PGF2 retains privileged leader orchestration.
+[Evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2b2.md)
+records fault, candidate drift, strict wire, multi-card and actual-controller protocol
+tests. No native model execution, independent review or release is asserted.

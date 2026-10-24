@@ -463,3 +463,15 @@ records the exact candidate, actual CLI/lab journey and final checks. C2b2 recor
 start/progress, C2c verified disposition and privileged leader/model gates remain.
 No native skill-consumption, independent review, owner acceptance or release claim.
 EVT-KB-SDP-000423 records this unchanged-lifecycle work review.
+
+
+2026-10-24 / Session0007 T045: PGF1-C2b2 delivers no-design Session start/progress
+through the existing run/controller. Canonical in-progress records precede one ready
+run; assigned report/current candidate evidence permits verification-stage progress.
+All selected cards/contributions and exact required skill snapshots remain bound.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2b2.md)
+records full race/vet, fault/tamper/multi-card tests and the actual CLI/controller
+protocol trial in pg_lab. No native Codex/model execution or independent PG review.
+CardState remains in-progress: next C2c owns verified disposition, rework/dependencies
+and claim release/replan; privileged leader/model gates and release remain open.
+EVT-KB-SDP-000425 records this unchanged-lifecycle work review.

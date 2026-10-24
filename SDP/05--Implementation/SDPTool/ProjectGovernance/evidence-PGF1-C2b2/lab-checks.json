@@ -1,0 +1,17 @@
+{
+  "root": "/home/warloc/git/pg_lab/session-c2b2-work",
+  "state": "/home/warloc/.cache/sdp-workstation/PGF1-C2b2/lab-state",
+  "priorHead": "eda3df86e17433192f5ed93b520c6ea5f45637b5",
+  "priorTrackedPathsUnchanged": 206,
+  "wireObjects": 14,
+  "stage": "verification",
+  "hostExecution": "completed",
+  "runId": "af30d567-10c7-43d4-9373-313582fc5a23",
+  "pendingReservation": false,
+  "limits": [
+    "Deterministic host protocol fixture, not native Codex execution",
+    "Synthetic skills and candidate evidence, not independent review or owner acceptance"
+  ],
+  "commit": "f3b50f875e3b36f3847a66bda73f3777516a9f5d",
+  "branch": "test/pgf1-c2b2-work"
+}

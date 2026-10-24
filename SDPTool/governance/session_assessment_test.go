@@ -11,8 +11,11 @@ import (
 )
 
 func assessmentFixture(t *testing.T, root, state string, scopes ...string) (*Service, SessionAssessRequest) {
+	return assessmentConfigured(t, root, state, nil, scopes...)
+}
+func assessmentConfigured(t *testing.T, root, state string, configure sessionTestConfig, scopes ...string) (*Service, SessionAssessRequest) {
 	t.Helper()
-	s, selectQ := selectionFixture(t, root, state, scopes...)
+	s, selectQ := selectionConfigured(t, root, state, configure, scopes...)
 	selected, e := s.SelectSession(LocalController(), selectQ)
 	if e != nil {
 		t.Fatal(e)

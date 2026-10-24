@@ -504,7 +504,8 @@ Unsupported references outside the selected card/plan/Session/index set refuse t
 move before effects; arbitrary historical documents are not silently rewritten.
 A committed selection has `recordEffects: committed` and `selected: true` on its
 step. Selection alone stays at admission; explicit assessment is described below.
-Execution/completion remain unavailable. A gate-review card cannot be taken over
+Execution requires the later assessment/start operations below; completion remains
+unavailable. A gate-review card cannot be taken over
 by this operation.
 
 Operational profile 0.14 stores exact preimages/postimages and selection coverage.
@@ -525,8 +526,8 @@ increment does not rebase a pending intent. Rebind/replan remains later work.
 
 Selection publishes a scope claim under SDP/Sessions/execution/claims. Other current
 selectors refuse overlapping writer/reader scope, card, Session or plan claims;
-a second store cannot register the same selected Session. This is coordination of
-Session selectors, not interception of every legacy run, shell or other checkout.
+a second store cannot register the same selected Session. C2b2 also checks these claims in current legacy admission/dispatch. This is
+cooperative coordination, not interception of arbitrary shell writers or other checkouts.
 C2a permits one dependency-free selected step per instance. Claims persist without
 expiry until later verified disposition/replan support; do not delete them to bypass
 ownership. Limits: 128 claims, 128 effects/4 MiB content and 4096 reference-scan
@@ -581,6 +582,63 @@ reservation. Even a historical resume retry cannot clear a newer pending reserva
 Existing 0.13/0.14 stores remain readable and gain 0.15 only on assessment. Older
 executables refuse a 0.15 store. The workflow definition/digest stays pinned. CLI
 and action schemas expose committed assessment, stage and holds. Existing run/attempt
-ownership remains unchanged; C2b2 must integrate recorded start/progress with that
-engine before Session execution is usable. C2c disposition and PGF2/PGF3 leader/model
+ownership remains unchanged; C2b2 integrates recorded start/progress as described
+below. C2c disposition and PGF2/PGF3 leader/model
 gates, independent review and whole-workflow acceptance remain open.
+
+
+## Session-bound start and progress — PGF1-C2b2
+
+`session-start --input start.json` prepares a selected, assessed assignment.
+`session-resume` commits every selected card as in-progress, journals the Session
+and plan, appends canonical history and creates exactly one ready run in the same
+operational commit. No run exists while start effects are pending. Launch is still
+an explicit operation of the existing controller; no host call runs under the
+canonical writer lock. Whole cards and bounded contributions retain their distinct
+binding and all selected cards are included in controller context.
+
+Start uses schema/projectRef/checkoutId/operationId/instanceId/expectedRevision/reason,
+plus the exact latest `assessmentId`, an `outcome`, and `skills` snapshots containing
+sdp-master and sdp-worker. Each snapshot uses the existing SkillInput name, absolute
+canonical project-local SKILL.md path and digest. The controller launch must supply
+those same snapshots through its existing skill-input mechanism. Use the returned
+step `runId` for existing run inspection, launch, reports and candidate evidence.
+The run identity is the start operation ID; the `session-implementation` routine
+uses the existing run/attempt engine with an immutable Session binding. It does not
+relax legacy Maintenance or approved-Blueprint admission.
+
+Only all-unchanged design criteria with Blueprint explicitly not-required may start.
+Unknown/changed design and required/unknown Blueprint remain held for PGF3. Start
+refuses stale assessment, changed skill/evidence/selected record pins, overlapping
+current run/prepared scopes, and writes overlapping its own pinned governance input.
+Current legacy admission/dispatch observes persistent Session claims optimistically;
+this is not a universal cross-store or filesystem lock. Nonliteral conflicting
+scopes require reconciliation. Claims still have no automatic expiry/release.
+
+After the assigned run reports, capture candidate evidence using the existing
+controller evidence API. `session-progress --input progress.json` takes the common
+identity/revision/reason fields plus `evidenceId` and `expectedRunRevision`. It
+requires that run's latest assigned report, exact evidence receipt/artifact/candidate,
+known terminal host attempts and no unresolved outbound input or blocking attention.
+A local controller cannot impersonate the assigned report. Preparation and each
+canonical effect recheck the candidate. Resume commits progress and exposes the
+verification business stage; cards remain in-progress. Test results can be failed:
+submission for verification is not a passed review, acceptance or completion.
+
+The JSON actions are `governance.session.start` and `governance.session.progress`,
+using requestFile/state and separate trusted-controller attribution. Restricted
+worker/leader MCP does not gain these controller actions. The strict wire decoder
+rejects cross-verb fields, even empty ones. Identical retries return historical
+receipts; inspect current state with session-read. Uncertain host sends remain
+unknown and are not automatically repeated.
+
+Operational profile 0.16 adds one start and one progress intent per instance;
+older stores remain readable and older executables refuse the new store. Immutable
+canonical records live in `SDP/Sessions/execution/work/<operation-id>.json`. Existing
+pre/postimage recovery, reservations and input coverage apply, including unrelated
+validated ledger appends. Full binding, run state, progress evidence and actual host
+execution are separate view fields. Generic rework, further advance/relaunch after
+progress and legacy single-card result publication cannot bypass the pending Session
+disposition. C2c must add verified whole/contribution disposition, rework/dependencies
+and claim release/replan; design/model release, privileged leader integration, native
+whole-workflow trials and independent review remain required.

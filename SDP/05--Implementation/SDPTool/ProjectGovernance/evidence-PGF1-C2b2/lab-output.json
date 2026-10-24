@@ -1,0 +1,5 @@
+{
+  "exitCode": 0,
+  "stdout": "=== RUN   TestSessionWorkCompiledJourney\n    session_work_cli_test.go:120: PASS: 14 observed Session wire objects\n        \n--- PASS: TestSessionWorkCompiledJourney (4.12s)\nPASS\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t5.132s\n",
+  "test": "TestSessionWorkCompiledJourney, race enabled; actual compiled CLI/controller with deterministic protocol host, no native model"
+}

@@ -75,6 +75,9 @@ func (s *Service) Start(caller Caller, q StartRequest) (Result, error) {
 	if len(state.Receipts) >= 1024 || len(state.Runs) >= 128 {
 		return out, fail("limit", "pilot state capacity reached; retain historical receipts")
 	}
+	if e = s.checkExternalSessionClaims(q.Assignment); e != nil {
+		return out, e
+	}
 	routine := Maintenance()
 	if q.RoutineDigest != routine.Digest() {
 		return out, fail("incompatible_profile", "routine definition does not match installed version")
@@ -205,6 +208,9 @@ func (s *Service) Transition(caller Caller, q TransitionRequest) (Result, error)
 	if !ok {
 		return out, fail("missing_coverage", "run not found")
 	}
+	if r.Routine.ID == SessionImplementation().ID && caller.controller && q.Action == "report" {
+		return out, fail("unauthorized", "Session progress requires the assigned agent report")
+	}
 	if q.ExpectedRevision != r.Revision && !approvedRevision(state, r, caller, q) && !(q.Action == "report" && observedAgentRevision(state, r, caller, q.ExpectedRevision)) {
 		return out, &Error{Code: "stale_revision", Message: "run revision changed", CurrentRevision: r.Revision}
 	}
@@ -215,6 +221,9 @@ func (s *Service) Transition(caller Caller, q TransitionRequest) (Result, error)
 	// Cancellation/interruption/scope notices must remain possible after authority
 	// input drift; advancing work requires the pinned current coverage.
 	stopping := q.Action == "interrupt" || q.Action == "cancel" || q.Action == "scope-change" || q.Action == "fail"
+	if i, ok := sessionRunBinding(state, r.ID); ok && len(i.Work) > 1 && !stopping {
+		return out, fail("conflict", "Session progress must be reconciled before advancing the run")
+	}
 	if q.InputRevision != r.InputRevision {
 		return out, fail("stale_revision", "request does not identify run inputs")
 	}

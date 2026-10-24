@@ -57,9 +57,12 @@ type SessionAssessmentView struct {
 var sessionDesignDomains = []string{"contracts", "data-model", "responsibilities", "state-flow", "interfaces", "persistence", "deployment"}
 
 func sessionEffectsProfile(schema string) bool {
-	return schema == sessionEffectsStateSchema || schema == sessionAssessmentStateSchema
+	return schema == sessionEffectsStateSchema || sessionAssessmentProfile(schema)
 }
 func sessionLatestEffects(i SessionInstance) *SessionRecordEffects {
+	if len(i.Work) > 0 {
+		return &i.Work[len(i.Work)-1].Effects
+	}
 	if len(i.Assessments) > 0 {
 		return &i.Assessments[len(i.Assessments)-1].Effects
 	}
@@ -69,6 +72,9 @@ func sessionLatestEffects(i SessionInstance) *SessionRecordEffects {
 	return nil
 }
 func (s *Service) sessionPendingOwner(i SessionInstance) string {
+	if len(i.Work) > 0 {
+		return s.state + "\n" + i.Work[len(i.Work)-1].Request.OperationID + "\n"
+	}
 	if len(i.Assessments) > 0 {
 		return s.state + "\n" + i.Assessments[len(i.Assessments)-1].Request.OperationID + "\n"
 	}
@@ -365,7 +371,7 @@ func (s *Service) AssessSession(c Caller, q SessionAssessRequest) (SessionMutati
 	if i.Revision != q.ExpectedRevision {
 		return SessionMutationResult{}, fail("stale_revision", "Session revision changed")
 	}
-	if !i.Registered || i.Selection == nil || i.Selection.Status != "committed" || selectedSessionStep(i).ID != q.StepID {
+	if len(i.Work) > 0 || !i.Registered || i.Selection == nil || i.Selection.Status != "committed" || selectedSessionStep(i).ID != q.StepID {
 		return SessionMutationResult{}, fail("conflict", "committed selected step required")
 	}
 	if len(i.Assessments) >= maxSessionAssessments || i.Revision == ^uint64(0) || len(st.Receipts) >= 1024 {
@@ -384,7 +390,9 @@ func (s *Service) AssessSession(c Caller, q SessionAssessRequest) (SessionMutati
 	i.Assessments = append(i.Assessments, a)
 	i.Revision++
 	st.Sessions[i.ID] = i
-	st.Schema = sessionAssessmentStateSchema
+	if st.Schema != sessionWorkStateSchema {
+		st.Schema = sessionAssessmentStateSchema
+	}
 	out := SessionMutationResult{Schema: SessionSchema, Operation: "session-assess", OperationID: q.OperationID, InstanceID: i.ID, Revision: i.Revision, Registration: "committed", RecordEffects: "prepared"}
 	st.Receipts[q.OperationID] = receipt{requestDigest(q), Result{Schema: Schema, Operation: "session.assess", OperationID: q.OperationID, ProjectRef: s.project, CheckoutID: st.CheckoutID, Session: &out}}
 	if e = s.save(st, head); e != nil {
@@ -399,7 +407,7 @@ func validateSessionAssessments(st snapshot) error {
 		if len(i.Assessments) == 0 {
 			continue
 		}
-		if st.Schema != sessionAssessmentStateSchema || !i.Registered || i.Selection == nil || i.Selection.Status != "committed" || len(i.Assessments) > maxSessionAssessments {
+		if !sessionAssessmentProfile(st.Schema) || !i.Registered || i.Selection == nil || i.Selection.Status != "committed" || len(i.Assessments) > maxSessionAssessments {
 			return fail("reconciliation_required", "invalid assessment owner/profile")
 		}
 		previous := i.Selection.SessionRecordEffects

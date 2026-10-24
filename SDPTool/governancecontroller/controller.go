@@ -142,6 +142,14 @@ func (c *Controller) launch(ctx context.Context, runID, text string, continuing 
 	if e != nil {
 		return r, e
 	}
+	sessionWork, e := c.Service.RunSession(runID)
+	if e != nil {
+		return r, e
+	}
+	if sessionWork != nil {
+		instructions = strings.ReplaceAll(instructions, "SDP Maintenance assignment", "SDP Session assignment")
+		instructions += " Use the exact Session step and every selected card contribution in sessionWork. The explicit no-design assessment does not authorize design changes: report scope-change if implementation requires a design change."
+	}
 	if approvedDesign != nil {
 		instructions = strings.ReplaceAll(instructions, "SDP Maintenance assignment", "SDP implementation assignment")
 		instructions = "You are the Master for the exact approved SDP implementation package. Use the included design basis, task constraints, Session and ImplementationPlan. Do not change NOW/TARGET, broaden scope or treat host completion as approval. " + instructions
@@ -152,7 +160,7 @@ func (c *Controller) launch(ctx context.Context, runID, text string, continuing 
 		}
 		instructions += " This is a fresh continuation attempt after recorded attention replies. Reuse the original assignment and existing working files. Read attentionContext: it distinguishes historical replies from the exact replies selected by attentionReferences. Do not ask the same resolved question again. Continue only within the original mandate; report or raise a new question when required."
 	}
-	payload, e := json.Marshal(map[string]any{"attentionContext": continuation.History, "attentionReferences": continuation.References, "approvedDesign": approvedDesign, "ownerInput": text, "assignment": r.Run.Assignment, "context": coverage, "runId": runID, "instructions": instructions, "sandbox": c.Sandbox, "approvalMode": c.Approvals, "reportingMode": reporting})
+	payload, e := json.Marshal(map[string]any{"sessionWork": sessionWork, "attentionContext": continuation.History, "attentionReferences": continuation.References, "approvedDesign": approvedDesign, "ownerInput": text, "assignment": r.Run.Assignment, "context": coverage, "runId": runID, "instructions": instructions, "sandbox": c.Sandbox, "approvalMode": c.Approvals, "reportingMode": reporting})
 	if e != nil {
 		return r, e
 	}

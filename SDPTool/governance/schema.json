@@ -222,7 +222,8 @@
         "id": {
           "enum": [
             "maintenance",
-            "implementation"
+            "implementation",
+            "session-implementation"
           ]
         },
         "version": {

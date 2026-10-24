@@ -81,6 +81,9 @@ func (s *Service) ActivateAssignment(caller Caller, q ActivationRequest) (Result
 		return out, fail("stale_revision", "activation requires the current approved decision on this exact package")
 	}
 	p := review.Check.Assignment
+	if e := s.checkExternalSessionClaims(p.Assignment); e != nil {
+		return out, e
+	}
 	if why := scopeConflictExcept(p.Assignment.WritablePaths, state, p.ID); why != "" {
 		return out, fail("conflict", why)
 	}
@@ -136,8 +139,17 @@ func (s *Service) RunContext(runID string) (Context, error) {
 	return s.runContext(r)
 }
 func (s *Service) runContext(r Run) (Context, error) {
+	if r.Routine.ID == SessionImplementation().ID {
+		return s.sessionRunContext(r)
+	}
 	if r.Routine.ID == "maintenance" {
-		return s.Context(r.Selection)
+		c, e := s.Context(r.Selection)
+		if e == nil {
+			if conflict := s.checkExternalSessionClaims(r.Assignment); conflict != nil {
+				c.Conditions = append(c.Conditions, conflict.Error())
+			}
+		}
+		return c, e
 	}
 	c, err := s.contextFor(r.Selection, []string{"ImplementationPlan"}, "PLAN-")
 	if err != nil {
@@ -161,6 +173,9 @@ func (s *Service) runContext(r Run) (Context, error) {
 		c.Coverage = "stale"
 		c.Conditions = append(c.Conditions, "bound design decision is no longer current and approved")
 		c.Conditions = append(c.Conditions, review.Check.Conditions...)
+	}
+	if e := s.checkExternalSessionClaims(r.Assignment); e != nil {
+		c.Conditions = append(c.Conditions, e.Error())
 	}
 	return c, nil
 }
@@ -205,7 +220,7 @@ func validateAssignmentRuns(state snapshot) error {
 		seen[b.RunID] = true
 	}
 	for id, r := range state.Runs {
-		if r.Routine.ID != "maintenance" && (!seen[id] || r.Routine.ID != "implementation") {
+		if r.Routine.ID != SessionImplementation().ID && r.Routine.ID != "maintenance" && (!seen[id] || r.Routine.ID != "implementation") {
 			return fail("reconciliation_required", "unsupported or unbound run routine")
 		}
 	}

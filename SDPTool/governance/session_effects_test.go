@@ -12,7 +12,12 @@ import (
 	"github.com/Hans-Einar/SDP/SDPTool/projecthistory"
 )
 
+type sessionTestConfig func(*testing.T, *Service, *SessionBinding)
+
 func selectionFixture(t *testing.T, root, state string, scopes ...string) (*Service, SessionSelectRequest) {
+	return selectionConfigured(t, root, state, nil, scopes...)
+}
+func selectionConfigured(t *testing.T, root, state string, configure sessionTestConfig, scopes ...string) (*Service, SessionSelectRequest) {
 	t.Helper()
 	s, c, q := sessionFixtureAt(t, root, state)
 	// Rebuild the disposable authored fixture before adoption, preserving all history.
@@ -45,6 +50,11 @@ func selectionFixture(t *testing.T, root, state string, scopes ...string) (*Serv
 	evidenceFile(t, s, managementLedger, string(raw))
 	if len(scopes) > 0 {
 		c.Binding.Steps[0].WritablePaths = scopes
+		raw, _ := json.Marshal(c.Binding)
+		evidenceFile(t, s, q.BindingPath, string(raw))
+	}
+	if configure != nil {
+		configure(t, s, &c.Binding)
 		raw, _ := json.Marshal(c.Binding)
 		evidenceFile(t, s, q.BindingPath, string(raw))
 	}

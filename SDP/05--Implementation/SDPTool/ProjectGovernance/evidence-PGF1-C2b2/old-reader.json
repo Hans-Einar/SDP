@@ -1,0 +1,7 @@
+{
+  "reader": "PGF1-C2b1 operational profile 0.15 executable",
+  "exitCode": 2,
+  "stdout": "",
+  "stderr": "{\"error\":{\"code\":\"reconciliation_required\",\"message\":\"invalid_request: json: unknown field \\\"work\\\"\",\"retryable\":false},\"operation\":\"error\",\"schema\":\"sdp-project-governance/0.1\",\"status\":\"error\"}\n",
+  "headUnchanged": true
+}

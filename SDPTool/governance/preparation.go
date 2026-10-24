@@ -274,6 +274,9 @@ func (s *Service) PrepareAssignment(caller Caller, q PrepareRequest) (Preparatio
 	if err = s.checkPreparation(q.Role, q.Selection, q.InputRevision, q.Artifacts, q.Assignment); err != nil {
 		return out, err
 	}
+	if e := s.checkExternalSessionClaims(q.Assignment); e != nil {
+		return out, e
+	}
 	if why := scopeConflict(q.Assignment.WritablePaths, state); why != "" {
 		return out, fail("conflict", why)
 	}

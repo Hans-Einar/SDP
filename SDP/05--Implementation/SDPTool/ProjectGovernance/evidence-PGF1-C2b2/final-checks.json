@@ -1,0 +1,22 @@
+{
+  "sourceHashes": 25,
+  "binaryHash": true,
+  "maintainedRelativeLinks": 328,
+  "originalLedgerPrefixes": {
+    "SDP/ProjectManagement/Ledger.ndjson": {
+      "bytes": 466374,
+      "sha256": "ec7e9a28346c23d7caba2a74f5849dddc5dc19b74ea848fe5f2f5b7c64e584cf",
+      "preserved": true
+    },
+    "SDP/Traceability/Ledger.ndjson": {
+      "bytes": 134080,
+      "sha256": "0a729bca19013a8b7149b37effd14fc1082f9ff28b6ef777f401fb87e09314cf",
+      "preserved": true
+    }
+  },
+  "racePackageResults": {
+    "testedPass": 15,
+    "noTests": 1,
+    "allExpectedPackagesPresent": true
+  }
+}

@@ -735,3 +735,23 @@ whole-work completion and owner acceptance are not inferred. Coordination CLI/MC
 and the leader loop now expose compact review/publication notices through their
 existing channels. A current publication can retain a historical original review
 because publication changed the canonical input bytes; these are separate facts.
+
+
+## Session-bound implementation — PGF1-C2b2
+
+A committed no-design Session start supplies a ready `session-implementation` run
+through the existing controller launch interface. Canonical cards are in-progress
+before this run becomes launchable. Launch requires the exact Master/Worker skill
+snapshots recorded by start, using the same skill arguments and host checks as other
+runs. The payload's `sessionWork` contains the full Session binding, selected step,
+all cards/contributions, holds and current run projection. It is not a second host
+scheduler or permission to broaden scope. Report scope-change if design work becomes
+necessary; the current Session start route only admits explicit no-design work.
+
+Existing outbound-intent persistence, lease, host observations, report capability,
+attention and candidate/evidence mechanisms remain authoritative. A lost start reply
+leaves unknown host execution and cannot trigger an automatic duplicate start.
+Session progress consumes the assigned report/current candidate and advances only
+to verification. Legacy result publication is refused for Session runs until checked
+Session disposition is implemented. C2b2 controller tests use a deterministic protocol
+host, not a new native Codex/model execution or independent product review.

@@ -210,7 +210,10 @@ bounded execution, steering, observed review and checked result publication.
 PGF1-C2a Session selection prepares and commits ready-card/plan/history effects.
 PGF1-C2b1 records revision-bound design/Blueprint assessment with checked recovery.
 Unknown impact holds admission; changed design requires SDL WORK/design handoff.
-Session start/progress remains unimplemented; no agent launch or completion is implied.
+PGF1-C2b2 binds no-design start/progress to the existing run/controller. Start commits
+in-progress records before creating one ready run; explicit controller launch remains
+separate. Progress consumes its assigned report/current candidate evidence and enters
+verification. Checked Session completion and design-changing dispatch remain open.
 Full lifecycle/model gates, integrated verification and independent product review
 remain in PLAN-SDP-0018. Development-source availability does not imply a published
 installer or consuming-project installation.

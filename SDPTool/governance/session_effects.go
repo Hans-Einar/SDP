@@ -467,7 +467,7 @@ func (s *Service) SelectSession(c Caller, q SessionSelectRequest) (SessionMutati
 	i.Selection = &selection
 	i.Revision++
 	st.Sessions[i.ID] = i
-	if st.Schema != sessionAssessmentStateSchema {
+	if !sessionAssessmentProfile(st.Schema) {
 		st.Schema = sessionEffectsStateSchema
 	}
 	out := SessionMutationResult{Schema: SessionSchema, Operation: "session-select", OperationID: q.OperationID, InstanceID: i.ID, Revision: i.Revision, Registration: "committed", RecordEffects: "prepared"}
@@ -491,8 +491,13 @@ func (s *Service) applySessionSelection(i *SessionInstance, tx *projecthistory.T
 	return s.applySessionRecordEffects(&p.SessionRecordEffects, tx, s.sessionEffectOwner(*i), "session-selection")
 }
 
-func (s *Service) applySessionRecordEffects(p *SessionRecordEffects, tx *projecthistory.Transaction, owner, faultPrefix string) error {
+func (s *Service) applySessionRecordEffects(p *SessionRecordEffects, tx *projecthistory.Transaction, owner, faultPrefix string, check ...func() error) error {
 	intent := Publication{Inputs: p.Inputs, Changes: p.Changes}
+	for _, f := range check {
+		if e := f(); e != nil {
+			return e
+		}
+	}
 	if e := tx.Check(owner); e != nil {
 		return e
 	}
@@ -511,6 +516,11 @@ func (s *Service) applySessionRecordEffects(p *SessionRecordEffects, tx *project
 		}
 	}
 	for j, ch := range p.Changes {
+		for _, f := range check {
+			if e := f(); e != nil {
+				return e
+			}
+		}
 		if e := s.publicationInputs(intent, true); e != nil {
 			return e
 		}
@@ -540,6 +550,11 @@ func (s *Service) applySessionRecordEffects(p *SessionRecordEffects, tx *project
 	}
 	if _, e := s.publicationFiles(); e != nil {
 		return e
+	}
+	for _, f := range check {
+		if e := f(); e != nil {
+			return e
+		}
 	}
 	p.Status = "committed"
 	return nil

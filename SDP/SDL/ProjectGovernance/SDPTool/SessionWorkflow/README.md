@@ -98,3 +98,20 @@ not an accepted NOW, independent review or model release. SessionWorkflowDeliver
 stays planned until run integration, design/model handoff and verified disposition
 are delivered. [Evidence](../../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2b1.md)
 records the bounded candidate and remaining obligations.
+
+
+## T045 start/progress mapping
+
+PGF1-C2b2 implements the no-design subset of AdvanceWorkflowStage and
+DispatchAfterCommittedEffects through the existing run/controller foundation.
+Canonical in-progress records precede ready-run creation; current assigned report
+and candidate evidence precede verification-stage commitment. Required skill snapshots
+and the full selected-card/contribution binding follow controller context. Unknown or
+design-changing work retains RequireDesignWork/PGF3 gates.
+
+WORK--SessionLifecycle :00002 remains unchanged TARGET. The scoped preliminary
+Blueprint passes constraints; this does not accept the observed baseline or release
+the model. Aggregate SessionWorkflowDelivery remains planned while disposition,
+model handoff/release, integrated native validation and independent review are open.
+[Evidence](../../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2b2.md)
+identifies the exact candidate, model validation and implementation limits.
