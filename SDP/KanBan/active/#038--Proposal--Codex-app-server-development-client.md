@@ -8,7 +8,7 @@
 | CardState | in-progress |
 | created | 2026-09-28T15:10:13.034937+00:00 |
 | source | Owner conversation 2026-09-28: register app-server-based system development and assess SDPTool MCP |
-| next_review | PGF1-C2 checked card lifecycle effects and scoped reconciliation, then shared leader dispatch/model/recovery gates |
+| next_review | C2b design assessment/no-design start/progress, then C2c evidence-bound disposition and remaining PG gates |
 | tags | codex, app-server, client, MCP, supervision, blueprints, observability |
 | Systems | SDPTOOL |
 | PlanId | PLAN-SDP-0018 |
@@ -437,3 +437,18 @@ records source identity and limits. The aggregate model target and independent
 product review/release obligations remain open. No host dispatch or lifecycle
 completion is implied. CardState stays in-progress for the substantial remaining
 outcome; next is PGF1-C2 actual card effects and scoped reconciliation.
+
+
+### T043 — Checked ready-card selection and recovery
+
+PGF1-C2a delivers real queued/backlog-to-active/ready card moves and planned-plan
+activation with journals, current links/index and append-only history. Prepared
+record effects are applied by resume; partial moves recover without duplicate
+transitions. Current cooperating PG/history/Blueprint writers honor a durable
+reservation, and selected work claims reject conflicting Session scope. Valid
+unrelated history is reconciled after commit; selected changes hold continuation.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2a.md)
+records final candidate checks and the isolated pg_lab trial. CardState remains
+in-progress: start/progress, verified disposition, common leader/model gates and
+independent review remain. Next is C2b; selection alone launches no agent and
+completes no card or Session.

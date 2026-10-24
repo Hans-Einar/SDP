@@ -28,7 +28,7 @@ func TestSessionActionsReadAndAuthority(t *testing.T) {
 			t.Fatalf("%s: %+v %s", op, r, errs.String())
 		}
 	}
-	for _, op := range []string{"adopt", "resume"} {
+	for _, op := range []string{"adopt", "resume", "select"} {
 		raw := requestBytes(t, root, "governance.session."+op, SessionActionInput{State: state, RequestFile: "absent.json"})
 		for _, caller := range []ActionCaller{{}, {Principal: blueprintstate.Principal{Actor: "agent", Authority: "assignee"}}, {Principal: blueprintstate.Principal{Authority: "controller"}}} {
 			r := Invoke(context.Background(), bytes.NewReader(raw), caller)

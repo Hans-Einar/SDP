@@ -1,0 +1,5 @@
+{
+  "stdout": "=== RUN   TestSessionSelectionCompiledJourney\n    session_effects_cli_test.go:111: PASS: 8 observed Session wire objects\n        \n--- PASS: TestSessionSelectionCompiledJourney (0.44s)\nPASS\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t0.446s\n",
+  "sha256": "9c70af72af0d167aad01b8288f2ccd4bb123f55d3db6507c61544f77f7ac6159",
+  "exitCode": 0
+}

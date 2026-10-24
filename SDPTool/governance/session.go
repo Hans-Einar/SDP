@@ -83,6 +83,7 @@ type SessionResumeRequest struct {
 	Reason           string `json:"reason"`
 }
 type SessionInstance struct {
+	Selection    *SessionSelection `json:"selection,omitempty"`
 	ID           string            `json:"id"`
 	Revision     uint64            `json:"revision"`
 	Context      SessionContext    `json:"context"`
@@ -91,19 +92,22 @@ type SessionInstance struct {
 	Registered   bool              `json:"registered"`
 }
 type SessionMutationResult struct {
-	Schema       string `json:"schema"`
-	Operation    string `json:"operation"`
-	OperationID  string `json:"operationId"`
-	InstanceID   string `json:"instanceId"`
-	Revision     uint64 `json:"revision"`
-	Registration string `json:"registration"`
+	RecordEffects string `json:"recordEffects,omitempty"`
+	Schema        string `json:"schema"`
+	Operation     string `json:"operation"`
+	OperationID   string `json:"operationId"`
+	InstanceID    string `json:"instanceId"`
+	Revision      uint64 `json:"revision"`
+	Registration  string `json:"registration"`
 }
 type SessionStepView struct {
-	ID    string   `json:"id"`
-	Stage string   `json:"stage"`
-	Holds []string `json:"holds"`
+	Selected bool     `json:"selected,omitempty"`
+	ID       string   `json:"id"`
+	Stage    string   `json:"stage"`
+	Holds    []string `json:"holds"`
 }
 type SessionView struct {
+	RecordEffects string             `json:"recordEffects,omitempty"`
 	Schema        string             `json:"schema"`
 	Operation     string             `json:"operation"`
 	InstanceID    string             `json:"instanceId"`
@@ -357,6 +361,9 @@ func sessionRegistration(i SessionInstance) string {
 	return "pending"
 }
 func (s *Service) sessionCurrent(i SessionInstance) error {
+	if i.Selection != nil {
+		return s.selectionCoverage(i)
+	}
 	if _, e := s.publicationFiles(); e != nil {
 		return e
 	}
@@ -453,8 +460,10 @@ func (s *Service) AdoptSession(c Caller, q SessionAdoptRequest) (SessionMutation
 		st.Sessions = map[string]SessionInstance{}
 	}
 	st.Sessions[i.ID] = i
-	st.Schema = sessionStateSchema
-	out := SessionMutationResult{SessionSchema, "session-adopt", q.OperationID, i.ID, i.Revision, "pending"}
+	if st.Schema != sessionEffectsStateSchema {
+		st.Schema = sessionStateSchema
+	}
+	out := SessionMutationResult{Schema: SessionSchema, Operation: "session-adopt", OperationID: q.OperationID, InstanceID: i.ID, Revision: i.Revision, Registration: "pending"}
 	st.Receipts[q.OperationID] = receipt{requestDigest(q), Result{Schema: Schema, Operation: "session.adopt", OperationID: q.OperationID, ProjectRef: s.project, CheckoutID: st.CheckoutID, Session: &out}}
 	if e = s.save(st, head); e != nil {
 		return SessionMutationResult{}, e
@@ -471,7 +480,7 @@ func (s *Service) ResumeSession(c Caller, q SessionResumeRequest) (SessionMutati
 	if !uuidPattern.MatchString(q.InstanceID) || q.ExpectedRevision == 0 || !validLeaderText(q.Reason, 2048) {
 		return SessionMutationResult{}, fail("invalid_request", "instance, revision and reason required")
 	}
-	unlock, e := lock(s.state)
+	dir, tx, unlock, e := s.lockRecordWriter()
 	if e != nil {
 		return SessionMutationResult{}, e
 	}
@@ -484,6 +493,13 @@ func (s *Service) ResumeSession(c Caller, q SessionResumeRequest) (SessionMutati
 		return SessionMutationResult{}, e
 	}
 	if r, ok, e := sessionRetry(st, q.OperationID, requestDigest(q)); ok {
+		if e == nil {
+			if instance, ok := st.Sessions[q.InstanceID]; ok && instance.Selection != nil && instance.Selection.Status == "committed" {
+				if err := tx.Release(s.sessionEffectOwner(instance)); err != nil {
+					return SessionMutationResult{}, err
+				}
+			}
+		}
 		return r, e
 	}
 	i, ok := st.Sessions[q.InstanceID]
@@ -496,25 +512,34 @@ func (s *Service) ResumeSession(c Caller, q SessionResumeRequest) (SessionMutati
 	if i.Revision == ^uint64(0) || len(st.Receipts) >= 1024 {
 		return SessionMutationResult{}, fail("limit", "Session revision or receipts exhausted")
 	}
-	dir, e := s.publicationLockDir()
-	if e != nil {
-		return SessionMutationResult{}, e
-	}
-	unlockProject, e := lock(dir)
-	if e != nil {
-		return SessionMutationResult{}, e
-	}
-	defer unlockProject()
 	if _, e = readFile(filepath.Join(dir, "pending"), 8192); !os.IsNotExist(e) {
 		if e != nil {
 			return SessionMutationResult{}, e
 		}
 		return SessionMutationResult{}, fail("reconciliation_required", "another canonical publication is pending")
 	}
-	if e = s.sessionCurrent(i); e != nil {
+	owner := ""
+	if i.Selection != nil {
+		owner = s.sessionEffectOwner(i)
+	}
+	if e = tx.Check(owner); e != nil {
+		return SessionMutationResult{}, e
+	}
+	encoded, _ := json.Marshal(st)
+	if len(encoded) > maxState-8192 {
+		return SessionMutationResult{}, fail("limit", "insufficient receipt capacity before effects")
+	}
+	if i.Selection != nil && i.Selection.Status == "prepared" {
+		if e = s.applySessionSelection(&i, tx); e != nil {
+			return SessionMutationResult{}, e
+		}
+	} else if e = s.sessionCurrent(i); e != nil {
 		return SessionMutationResult{}, e
 	}
 	if !i.Registered {
+		if e = s.registrationUnclaimed(i); e != nil {
+			return SessionMutationResult{}, e
+		}
 		if e = s.applyPublicationFile(i.Registration); e != nil {
 			return SessionMutationResult{}, e
 		}
@@ -528,12 +553,32 @@ func (s *Service) ResumeSession(c Caller, q SessionResumeRequest) (SessionMutati
 	if e = s.sessionCurrent(i); e != nil {
 		return SessionMutationResult{}, e
 	}
+	if i.Selection != nil {
+		ledger, e := readFile(filepath.Join(s.root, managementLedger), maxState)
+		if e != nil {
+			return SessionMutationResult{}, e
+		}
+		for n, src := range i.Selection.Coverage {
+			if src.Path == managementLedger {
+				i.Selection.Coverage[n].SHA256 = hash(ledger)
+			}
+		}
+		i.Selection.LedgerBytes = len(ledger)
+	}
 	i.Revision++
 	st.Sessions[i.ID] = i
-	out := SessionMutationResult{SessionSchema, "session-resume", q.OperationID, i.ID, i.Revision, "committed"}
+	out := SessionMutationResult{Schema: SessionSchema, Operation: "session-resume", OperationID: q.OperationID, InstanceID: i.ID, Revision: i.Revision, Registration: "committed"}
+	if i.Selection != nil {
+		out.RecordEffects = i.Selection.Status
+	}
 	st.Receipts[q.OperationID] = receipt{requestDigest(q), Result{Schema: Schema, Operation: "session.resume", OperationID: q.OperationID, ProjectRef: s.project, CheckoutID: st.CheckoutID, Session: &out}}
 	if e = s.save(st, head); e != nil {
 		return SessionMutationResult{}, e
+	}
+	if i.Selection != nil {
+		if e = tx.Release(s.sessionEffectOwner(i)); e != nil {
+			return SessionMutationResult{}, e
+		}
 	}
 	return out, nil
 }
@@ -544,6 +589,14 @@ func (s *Service) sessionView(i SessionInstance) SessionView {
 		v.Conditions = append(v.Conditions, e.Error())
 		v.NextActions = []string{"session-read"}
 	}
+	if i.Selection != nil {
+		v.RecordEffects = i.Selection.Status
+		if i.Selection.Status == "prepared" {
+			v.NextActions = []string{"session-read", "session-resume"}
+		}
+	} else if i.Registered && v.Coverage == "current" {
+		v.NextActions = append(v.NextActions, "session-select")
+	}
 	for _, step := range i.Context.Binding.Steps {
 		holds := []string{"step activation is not implemented in this increment"}
 		if !i.Registered {
@@ -553,7 +606,11 @@ func (s *Service) sessionView(i SessionInstance) SessionView {
 			holds = append(holds, "predecessor steps not completed")
 		}
 		holds = append(holds, v.Conditions...)
-		v.Steps = append(v.Steps, SessionStepView{step.ID, "admission", holds})
+		selected := i.Selection != nil && i.Selection.Status == "committed" && i.Selection.Request.StepID == step.ID
+		if selected {
+			holds[0] = "design assessment is required before execution"
+		}
+		v.Steps = append(v.Steps, SessionStepView{ID: step.ID, Stage: "admission", Holds: holds, Selected: selected})
 	}
 	return v
 }
@@ -588,7 +645,7 @@ func (s *Service) ListSessions() (SessionList, error) {
 	return out, nil
 }
 func validateSessionState(st snapshot) error {
-	if st.Schema != sessionStateSchema {
+	if !sessionProfile(st.Schema) {
 		if st.Sessions != nil {
 			return fail("incompatible_profile", "Sessions require profile 0.13")
 		}
@@ -644,7 +701,7 @@ func validateSessionState(st snapshot) error {
 			continue
 		}
 		i, ok := st.Sessions[v.InstanceID]
-		if !ok || !uuidPattern.MatchString(id) || id != v.OperationID || v.Schema != SessionSchema || v.Revision == 0 || v.Revision > i.Revision || !digestPattern.MatchString(r.Digest) || r.Result.ProjectRef != st.Project || r.Result.CheckoutID != st.CheckoutID || r.Result.OperationID != id || r.Result.Schema != Schema || !slices.Contains([]string{"session-adopt", "session-resume"}, v.Operation) || r.Result.Operation != strings.Replace(v.Operation, "-", ".", 1) || (v.Operation == "session-adopt" && (v.InstanceID != id || v.Registration != "pending")) || (v.Operation == "session-resume" && (v.Revision < 2 || v.Registration != "committed")) {
+		if !ok || !uuidPattern.MatchString(id) || id != v.OperationID || v.Schema != SessionSchema || v.Revision == 0 || v.Revision > i.Revision || !digestPattern.MatchString(r.Digest) || r.Result.ProjectRef != st.Project || r.Result.CheckoutID != st.CheckoutID || r.Result.OperationID != id || r.Result.Schema != Schema || !slices.Contains([]string{"session-adopt", "session-resume", "session-select"}, v.Operation) || r.Result.Operation != strings.Replace(v.Operation, "-", ".", 1) || (v.Operation == "session-adopt" && (v.InstanceID != id || v.Registration != "pending")) || (v.Operation == "session-resume" && (v.Revision < 2 || v.Registration != "committed")) {
 			return fail("reconciliation_required", "invalid Session receipt")
 		}
 		if revisions[v.InstanceID][v.Revision] {

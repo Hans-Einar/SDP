@@ -179,7 +179,7 @@ func (s *Service) PreparePublication(c Caller, q PublicationRequest) (Publicatio
 		return PublicationView{}, e
 	}
 	p.Digest = publicationDigest(p)
-	if st.Schema != sessionStateSchema {
+	if !sessionProfile(st.Schema) {
 		st.Schema = publicationStateSchema
 	}
 	if st.Publications == nil {
@@ -280,7 +280,7 @@ func (s *Service) ApplyPublication(c Caller, id string) (PublicationView, error)
 	if !uuidPattern.MatchString(id) {
 		return PublicationView{}, fail("invalid_request", "publication UUID required")
 	}
-	unlock, e := lock(s.state)
+	dir, tx, unlock, e := s.lockRecordWriter()
 	if e != nil {
 		return PublicationView{}, e
 	}
@@ -293,15 +293,9 @@ func (s *Service) ApplyPublication(c Caller, id string) (PublicationView, error)
 	if !ok {
 		return PublicationView{}, fail("missing_coverage", "publication absent")
 	}
-	dir, e := s.publicationLockDir()
-	if e != nil {
+	if e = tx.Check(s.state + "\n" + id + "\n"); e != nil {
 		return PublicationView{}, e
 	}
-	unlockProject, e := lock(dir)
-	if e != nil {
-		return PublicationView{}, e
-	}
-	defer unlockProject()
 	marker := filepath.Join(dir, "pending")
 	identity := s.state + "\n" + id + "\n"
 	held, e := readFile(marker, 8192)
@@ -312,6 +306,9 @@ func (s *Service) ApplyPublication(c Caller, id string) (PublicationView, error)
 		return PublicationView{}, fail("reconciliation_required", "another PG store has pending project publication")
 	}
 	if p.Status == "published" {
+		if e = tx.Release(identity); e != nil {
+			return PublicationView{}, e
+		}
 		if string(held) == identity {
 			if e = os.Remove(marker); e != nil {
 				return PublicationView{}, e
@@ -344,6 +341,9 @@ func (s *Service) ApplyPublication(c Caller, id string) (PublicationView, error)
 	}
 	// Claim project scope before making intent active. A lost response may leave the
 	// marker, but this exact proposal can always reclaim it; another store cannot.
+	if e = tx.Reserve(identity); e != nil {
+		return PublicationView{}, e
+	}
 	if held == nil {
 		if e = writeNew(marker, []byte(identity)); e != nil {
 			return PublicationView{}, e
@@ -411,13 +411,16 @@ func (s *Service) ApplyPublication(c Caller, id string) (PublicationView, error)
 	if e = syncDir(dir); e != nil {
 		return PublicationView{}, e
 	}
+	if e = tx.Release(identity); e != nil {
+		return PublicationView{}, e
+	}
 	return s.publicationView(st, p), nil
 }
 func (s *Service) AbandonPublication(c Caller, id string) (PublicationView, error) {
 	if !c.controller {
 		return PublicationView{}, fail("unauthorized", "controller required")
 	}
-	unlock, e := lock(s.state)
+	dir, tx, unlock, e := s.lockRecordWriter()
 	if e != nil {
 		return PublicationView{}, e
 	}
@@ -433,15 +436,10 @@ func (s *Service) AbandonPublication(c Caller, id string) (PublicationView, erro
 	if p.Status != "prepared" && p.Status != "abandoned" {
 		return PublicationView{}, fail("reconciliation_required", "only an unapplied proposal can be abandoned")
 	}
-	dir, e := s.publicationLockDir()
-	if e != nil {
+	identity := s.state + "\n" + id + "\n"
+	if e = tx.Check(identity); e != nil {
 		return PublicationView{}, e
 	}
-	u, e := lock(dir)
-	if e != nil {
-		return PublicationView{}, e
-	}
-	defer u()
 	b, e := readFile(filepath.Join(dir, "pending"), 8192)
 	if e == nil && string(b) == s.state+"\n"+id+"\n" {
 		// Durable state is still prepared/abandoned, so no project file effect
@@ -463,6 +461,9 @@ func (s *Service) AbandonPublication(c Caller, id string) (PublicationView, erro
 			return PublicationView{}, e
 		}
 	}
+	if e = tx.Release(identity); e != nil {
+		return PublicationView{}, e
+	}
 	return s.publicationView(st, p), nil
 }
 func (s *Service) applyPublicationFile(c PublicationChange) error {
@@ -479,6 +480,15 @@ func (s *Service) applyPublicationFile(c PublicationChange) error {
 	}
 	if actual != c.Before {
 		return fail("reconciliation_required", "record preimage conflict: "+c.Path)
+	}
+	if c.After == "absent" {
+		if c.Content != "" || actual == "absent" {
+			return fail("conflict", "invalid removal effect")
+		}
+		if e = os.Remove(path); e != nil {
+			return e
+		}
+		return syncDir(filepath.Dir(path))
 	}
 	if e = mkdirDurable(filepath.Dir(path)); e != nil {
 		return e
@@ -590,5 +600,5 @@ func validatePublicationState(st snapshot) error {
 }
 
 func publicationProfile(schema string) bool {
-	return schema == publicationStateSchema || schema == sessionStateSchema
+	return schema == publicationStateSchema || sessionProfile(schema)
 }

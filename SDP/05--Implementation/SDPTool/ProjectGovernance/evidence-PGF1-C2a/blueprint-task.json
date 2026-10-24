@@ -1,0 +1,1636 @@
+{
+  "ID": "PGF1-C2a",
+  "Intent": "Implement checked Session step selection, canonical ready-card moves, planned-plan activation and durable recovery/scoped reconciliation. Full target is context; no design acceptance, agent launch or completion.",
+  "Context": [
+    "SDPTool/unit/SessionCoordinator",
+    "SDPTool/unit/RunRepository"
+  ],
+  "Exclude": [],
+  "AllowedChanges": [
+    {
+      "Element": "SDPTool/activity/SessionWorkflowDelivery",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/capability/GovernedSessionLifecycle",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/channel/CanonicalEffects",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/channel/HostActions",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/channel/WorkflowCommands",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/contract/CanonicalEffectsProtocol",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/contract/EffectRequest",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/contract/EffectResult",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/contract/HostActionsProtocol",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/contract/HostRequest",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/contract/HostResult",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/contract/WorkflowCommand",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/contract/WorkflowCommandsProtocol",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/contract/WorkflowResult",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/feature/SessionExecution",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/EffectRequestIntent",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/EffectRequestPostconditions",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/EffectRequestPreimages",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/EffectResultDisposition",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/EffectResultIntent",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/HostRequestAssignment",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/HostRequestDispatch",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/HostRequestExpectedAttempt",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/HostResultAttempt",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/HostResultObservedStatus",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/WorkflowCommandAction",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/WorkflowCommandBasis",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/WorkflowCommandExpectedRevision",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/WorkflowCommandInstance",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/WorkflowCommandOperation",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/WorkflowResultHolds",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/WorkflowResultNextActions",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/WorkflowResultReceipt",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/WorkflowResultRevision",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/WorkflowResultStage",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/AdoptSessionBinding",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/AdvanceWorkflowStage",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/ApplyCheckedRecordEffects",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/CheckModelRelease",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/CheckWholeCardDisposition",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/DispatchAfterCommittedEffects",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/PersistSessionInstance",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/PlanCardLifecycleEffects",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/ProjectStageAndObservedActivity",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/ReconcileCoverage",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/ReconcileExistingAttempt",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/RecoverPendingEffects",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/RequireDesignWork",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/SelectCoveredStep",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/interface/BlueprintEvidenceLibrary",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/interface/ModelGovernanceLibrary",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/interface/SessionWorkflowService",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/interface/TrustedHostController",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/ApplyRecordIntent",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/HostAttemptObserved",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/RecordsCommitted",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/RecordsConflicted",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/RequestHostContinuation",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/RequestWorkflowChange",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/WorkflowAdvanced",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/WorkflowBlocked",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/scenario/LeaderUsesSameWorkflowBoundary",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/scenario/OwnerReconcilesExistingAttempt",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/scenario/OwnerRecoveryDetectsRecordConflict",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/scenario/OwnerStartsAfterRecordsCommit",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/unit/CanonicalEffectPublisher",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/unit/ExternalLeaderMcp",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/unit/ExternalOwnerCli",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/unit/HostActionGateway",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/unit/KanBanTransitionPlanner",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/unit/ModelGateAdapter",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/unit/ObservationProjector",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/unit/SessionCoordinator",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/usecase/ExecuteCardDerivedSession",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/usecase/ResumeSessionWithoutLeader",
+      "Fact": "",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostActionGateway owns DispatchAfterCommittedEffects.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ApplyRecordIntent upholds EffectRequest.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SdpToolHost contains KanBanTransitionPlanner.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerStartsAfterRecordsCommit has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowResult has-field WorkflowResultNextActions.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowCommandsProtocol permits WorkflowBlocked.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerReconcilesExistingAttempt illustrates SessionWorkflowDelivery.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerRecoveryDetectsRecordConflict has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SdpToolHost provides GovernedSessionLifecycle.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostRequestExpectedAttempt has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "RecordsConflicted replies-to ApplyRecordIntent.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowCommandAction has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowCommandOperation has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowResultHolds has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowCommand has-field WorkflowCommandBasis.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostRequestDispatch has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "LeaderUsesSameWorkflowBoundary exercises ExecuteCardDerivedSession.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "EffectRequest has-field EffectRequestPreimages.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SdpToolHost contains SessionCoordinator.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionWorkflowDelivery addresses SelectCoveredStep.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SdpToolHost contains ObservationProjector.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowCommandExpectedRevision has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "CanonicalEffects upholds CanonicalEffectsProtocol.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "EffectResultIntent has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "PersistSessionInstance realizes GovernedSessionLifecycle.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "EffectRequestIntent has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ExternalOwnerCli uses WorkflowCommands as sender of RequestWorkflowChange in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "AdoptSessionBinding contributes-to SessionExecution.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "DispatchAfterCommittedEffects contributes-to SessionExecution.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostRequestExpectedAttempt has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "PersistSessionInstance contributes-to SessionExecution.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "PlanCardLifecycleEffects contributes-to SessionExecution.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "EffectResultDisposition has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostAttemptObserved upholds HostResult.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ApplyRecordIntent has message-kind = request.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionWorkflowDelivery addresses ReconcileCoverage.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ReconcileCoverage realizes GovernedSessionLifecycle.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowCommandBasis has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionCoordinator owns ReconcileCoverage.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowCommandBasis has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "EffectResultDisposition has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerRecoveryDetectsRecordConflict step 1 sends RequestWorkflowChange from ExternalOwnerCli to SessionCoordinator via WorkflowCommands.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionExecution supports ExecuteCardDerivedSession.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionCoordinator uses HostActions as sender of RequestHostContinuation in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ObservationProjector owns ProjectStageAndObservedActivity.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowCommandsProtocol permits WorkflowAdvanced.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostResultAttempt has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "CheckWholeCardDisposition allocated-to SdpToolHost in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ExternalOwnerCli consumes SessionWorkflowService.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionCoordinator uses WorkflowCommands as sender of WorkflowBlocked in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowAdvanced replies-to RequestWorkflowChange.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SdpToolHost contains HostActionGateway.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "RecoverPendingEffects realizes GovernedSessionLifecycle.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ExternalOwnerCli uses WorkflowCommands as receiver of WorkflowBlocked in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "EffectResult has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerReconcilesExistingAttempt step 3 sends HostAttemptObserved from HostActionGateway to SessionCoordinator via HostActions reply-to 2.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "RecoverPendingEffects contributes-to SessionExecution.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionCoordinator uses CanonicalEffects as receiver of RecordsCommitted in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerStartsAfterRecordsCommit illustrates SessionWorkflowDelivery.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "KanBanTransitionPlanner owns CheckWholeCardDisposition.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "AdvanceWorkflowStage contributes-to SessionExecution.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionWorkflowDelivery addresses CheckModelRelease.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ModelGateAdapter consumes BlueprintEvidenceLibrary.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostRequest has-field HostRequestExpectedAttempt.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "PersistSessionInstance allocated-to SdpToolHost in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowResultReceipt has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ApplyCheckedRecordEffects contributes-to SessionExecution.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "CanonicalEffectPublisher consumes CanonicalProjectHistoryLibrary.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionWorkflowDelivery addresses DispatchAfterCommittedEffects.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "EffectResult has-field EffectResultDisposition.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "RequestWorkflowChange upholds WorkflowCommand.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "CanonicalEffectsProtocol has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "EffectRequestPreimages has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionWorkflowDelivery addresses ProjectStageAndObservedActivity.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostActionGateway uses HostActions as receiver of RequestHostContinuation in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowAdvanced upholds WorkflowResult.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostRequest has-field HostRequestDispatch.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "CheckModelRelease realizes GovernedSessionLifecycle.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerStartsAfterRecordsCommit step 4 sends RequestHostContinuation from SessionCoordinator to HostActionGateway via HostActions.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "PlanCardLifecycleEffects allocated-to SdpToolHost in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerRecoveryDetectsRecordConflict exercises ResumeSessionWithoutLeader.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostAttemptObserved replies-to RequestHostContinuation.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ModelGateAdapter consumes ModelGovernanceLibrary.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "RequestHostContinuation upholds HostRequest.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ProjectStageAndObservedActivity contributes-to SessionExecution.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "PlanCardLifecycleEffects realizes GovernedSessionLifecycle.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowCommands upholds WorkflowCommandsProtocol.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "CheckWholeCardDisposition contributes-to SessionExecution.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "KanBanTransitionPlanner owns PlanCardLifecycleEffects.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerStartsAfterRecordsCommit step 3 sends RecordsCommitted from CanonicalEffectPublisher to SessionCoordinator via CanonicalEffects reply-to 2.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "RequestWorkflowChange has message-kind = request.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowCommandInstance has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "CanonicalEffectPublisher owns ApplyCheckedRecordEffects.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "CheckWholeCardDisposition realizes GovernedSessionLifecycle.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionCoordinator owns AdvanceWorkflowStage.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ApplyCheckedRecordEffects realizes GovernedSessionLifecycle.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ProjectStageAndObservedActivity allocated-to SdpToolHost in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "RecordsConflicted has message-kind = result.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostResult has-field HostResultObservedStatus.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerReconcilesExistingAttempt exercises ResumeSessionWithoutLeader.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerReconcilesExistingAttempt runs-in RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ReconcileExistingAttempt realizes GovernedSessionLifecycle.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ReconcileExistingAttempt contributes-to SessionExecution.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ReconcileCoverage allocated-to SdpToolHost in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ReconcileCoverage contributes-to SessionExecution.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowResult has-field WorkflowResultReceipt.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "CanonicalEffectPublisher uses CanonicalEffects as sender of RecordsConflicted in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionWorkflowDelivery addresses RequireDesignWork.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "EffectRequest has-field EffectRequestPostconditions.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionCoordinator uses CanonicalEffects as receiver of RecordsConflicted in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "EffectResult has-field EffectResultIntent.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionCoordinator uses HostActions as receiver of HostAttemptObserved in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "EffectRequest has-field EffectRequestIntent.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowResultReceipt has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerRecoveryDetectsRecordConflict illustrates SessionWorkflowDelivery.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionWorkflowDelivery addresses ApplyCheckedRecordEffects.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SdpToolHost contains ModelGateAdapter.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowCommand has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowCommandInstance has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionCoordinator uses WorkflowCommands as receiver of RequestWorkflowChange in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "DispatchAfterCommittedEffects realizes GovernedSessionLifecycle.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostActionGateway consumes TrustedHostController.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowResultHolds has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionWorkflowDelivery addresses RecoverPendingEffects.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostActionGateway uses HostActions as sender of HostAttemptObserved in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SdpToolHost contains CanonicalEffectPublisher.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionWorkflowDelivery addresses AdoptSessionBinding.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostResultAttempt has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ModelGateAdapter owns CheckModelRelease.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostActionsProtocol permits RequestHostContinuation.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostAttemptObserved has message-kind = result.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "CheckModelRelease contributes-to SessionExecution.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowCommand has-field WorkflowCommandExpectedRevision.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "CanonicalEffectPublisher uses CanonicalEffects as sender of RecordsCommitted in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostActions upholds HostActionsProtocol.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "AdvanceWorkflowStage realizes GovernedSessionLifecycle.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionExecution supports ResumeSessionWithoutLeader.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowResultNextActions has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "EffectRequestIntent has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SelectCoveredStep allocated-to SdpToolHost in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ExternalLeaderMcp consumes SessionWorkflowService.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostRequestAssignment has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowBlocked replies-to RequestWorkflowChange.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowBlocked upholds WorkflowResult.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowResultStage has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerReconcilesExistingAttempt step 2 sends RequestHostContinuation from SessionCoordinator to HostActionGateway via HostActions.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ModelGateAdapter owns RequireDesignWork.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowCommandAction has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "RunRepository owns PersistSessionInstance.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowCommandsProtocol has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerRecoveryDetectsRecordConflict runs-in RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "EffectRequestPreimages has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowResult has-field WorkflowResultHolds.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "RequireDesignWork realizes GovernedSessionLifecycle.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "LeaderUsesSameWorkflowBoundary illustrates SessionWorkflowDelivery.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "RecordsCommitted replies-to ApplyRecordIntent.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowResult has-field WorkflowResultStage.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerStartsAfterRecordsCommit exercises ExecuteCardDerivedSession.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "LeaderUsesSameWorkflowBoundary has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ExternalLeaderMcp uses WorkflowCommands as sender of RequestWorkflowChange in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostRequestAssignment has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "RecordsCommitted upholds EffectResult.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "RequestHostContinuation has message-kind = request.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionWorkflowDelivery addresses AdvanceWorkflowStage.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "AdoptSessionBinding realizes GovernedSessionLifecycle.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowCommand has-field WorkflowCommandAction.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionWorkflowDelivery addresses ReconcileExistingAttempt.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ApplyCheckedRecordEffects allocated-to SdpToolHost in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionWorkflowDelivery addresses PersistSessionInstance.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowCommand has-field WorkflowCommandInstance.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowResultNextActions has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "GovernedSessionLifecycle requires CanonicalProjectHistoryLibrary in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerStartsAfterRecordsCommit step 5 sends HostAttemptObserved from HostActionGateway to SessionCoordinator via HostActions reply-to 4.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowCommandOperation has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "EffectResultIntent has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerStartsAfterRecordsCommit runs-in RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowBlocked has message-kind = result.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ProjectStageAndObservedActivity realizes GovernedSessionLifecycle.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "RequireDesignWork contributes-to SessionExecution.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "RecordsCommitted has message-kind = result.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionCoordinator owns SelectCoveredStep.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowCommand has-field WorkflowCommandOperation.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SelectCoveredStep realizes GovernedSessionLifecycle.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionWorkflowDelivery addresses CheckWholeCardDisposition.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "CanonicalEffectPublisher owns RecoverPendingEffects.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowAdvanced has message-kind = result.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostActionsProtocol has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "GovernedSessionLifecycle requires TrustedHostController in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "DispatchAfterCommittedEffects allocated-to SdpToolHost in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "AdoptSessionBinding allocated-to SdpToolHost in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerReconcilesExistingAttempt step 1 sends RequestWorkflowChange from ExternalOwnerCli to SessionCoordinator via WorkflowCommands.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "LeaderUsesSameWorkflowBoundary step 2 sends WorkflowBlocked from SessionCoordinator to ExternalLeaderMcp via WorkflowCommands reply-to 1.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ProjectOwner pursues ResumeSessionWithoutLeader.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerReconcilesExistingAttempt has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerStartsAfterRecordsCommit step 6 sends WorkflowAdvanced from SessionCoordinator to ExternalOwnerCli via WorkflowCommands reply-to 1.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostActionGateway owns ReconcileExistingAttempt.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ProjectOwner pursues ExecuteCardDerivedSession.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "LeaderUsesSameWorkflowBoundary runs-in RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionCoordinator owns AdoptSessionBinding.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostResult has-field HostResultAttempt.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionWorkflowDelivery has implementation-status = planned.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerRecoveryDetectsRecordConflict step 2 sends ApplyRecordIntent from SessionCoordinator to CanonicalEffectPublisher via CanonicalEffects.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowCommandExpectedRevision has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerReconcilesExistingAttempt step 4 sends WorkflowAdvanced from SessionCoordinator to ExternalOwnerCli via WorkflowCommands reply-to 1.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerRecoveryDetectsRecordConflict step 3 sends RecordsConflicted from CanonicalEffectPublisher to SessionCoordinator via CanonicalEffects reply-to 2.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostRequest has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionCoordinator uses WorkflowCommands as sender of WorkflowAdvanced in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionCoordinator uses CanonicalEffects as sender of ApplyRecordIntent in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "AdvanceWorkflowStage allocated-to SdpToolHost in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerRecoveryDetectsRecordConflict step 4 sends WorkflowBlocked from SessionCoordinator to ExternalOwnerCli via WorkflowCommands reply-to 1.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostResult has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionWorkflowDelivery addresses PlanCardLifecycleEffects.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowResult has-field WorkflowResultRevision.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "LeaderUsesSameWorkflowBoundary step 1 sends RequestWorkflowChange from ExternalLeaderMcp to SessionCoordinator via WorkflowCommands.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostResultObservedStatus has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ExternalLeaderMcp uses WorkflowCommands as receiver of WorkflowAdvanced in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SessionWorkflowDelivery delivers SessionExecution.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostRequest has-field HostRequestAssignment.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "EffectRequest has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "CanonicalEffectsProtocol permits ApplyRecordIntent.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerStartsAfterRecordsCommit step 2 sends ApplyRecordIntent from SessionCoordinator to CanonicalEffectPublisher via CanonicalEffects.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "OwnerStartsAfterRecordsCommit step 1 sends RequestWorkflowChange from ExternalOwnerCli to SessionCoordinator via WorkflowCommands.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowResultStage has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "CanonicalEffectsProtocol permits RecordsCommitted.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "CanonicalEffectPublisher uses CanonicalEffects as receiver of ApplyRecordIntent in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowResultRevision has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ReconcileExistingAttempt allocated-to SdpToolHost in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostResultObservedStatus has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostActionsProtocol permits HostAttemptObserved.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "SelectCoveredStep contributes-to SessionExecution.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowCommandsProtocol permits RequestWorkflowChange.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "RecoverPendingEffects allocated-to SdpToolHost in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ExternalLeaderMcp uses WorkflowCommands as receiver of WorkflowBlocked in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "EffectRequestPostconditions has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowResult has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "WorkflowResultRevision has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "RequireDesignWork allocated-to SdpToolHost in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "CanonicalEffectsProtocol permits RecordsConflicted.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "ExternalOwnerCli uses WorkflowCommands as receiver of WorkflowAdvanced in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "CheckModelRelease allocated-to SdpToolHost in mode RoutineHandling.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "RecordsConflicted upholds EffectResult.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "EffectRequestPostconditions has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Element": "",
+      "Fact": "HostRequestDispatch has presence = required.",
+      "Change": "added"
+    }
+  ],
+  "AllowedModelPaths": [
+    "System.design",
+    "Foundation.design",
+    "Workflow.design",
+    "Contracts.design"
+  ],
+  "AllowedCodePaths": [
+    "SDPTool/governance",
+    "SDPTool/governance_cli.go",
+    "SDPTool/action_sessions.go",
+    "SDPTool/action_registry.go",
+    "SDPTool/presentation",
+    "SDPTool/session_actions_test.go",
+    "SDPTool/action_invoke.go",
+    "SDPTool/action_process_test.go",
+    "SDPTool/projecthistory",
+    "SDPTool/governance_cli_test.go"
+  ],
+  "Rules": [
+    {
+      "ID": "preserve-foundation",
+      "Source": "T041 and T042 owner continuation",
+      "Fact": "ExistingRunFoundation has implementation-status = implemented.",
+      "Now": true,
+      "Target": true
+    },
+    {
+      "ID": "future-work-remains-planned",
+      "Source": "PGF1-C1 boundary",
+      "Fact": "SessionWorkflowDelivery has implementation-status = planned.",
+      "Now": false,
+      "Target": true
+    }
+  ],
+  "Protect": []
+}

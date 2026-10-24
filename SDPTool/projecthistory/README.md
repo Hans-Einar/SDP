@@ -50,3 +50,19 @@ Tests include the actual historical envelope set, preserved bytes/permissions,
 retry after later events, CAS/conflicts, concurrent writers, process exits before
 and after rename/sync, cross-process lock contention, malicious paths, capacity
 and malformed streams. No test writes the repository's actual history.
+
+## Cooperating multi-record transactions
+
+`BeginTransaction(ledgerPath)` takes the same nonblocking canonical lock as Append.
+A caller can Reserve an opaque owner identity, Close across an interrupted process,
+then reacquire and Release only that identity. The reservation is atomically
+published as Ledger.ndjson.pg-pending and remains durable until release. Append and
+Read refuse while it is present; Blueprint history uses those same boundaries.
+This prevents current cooperating appenders from observing/publishing through a
+partially applied PG record transaction. Direct file readers, manual writers and
+older binaries do not acquire this contract automatically.
+
+PG takes project coordination, canonical history, then operational state locks.
+Its durable intent owns exact effects and recovery; this package does not infer
+card semantics, repair external edits or treat reservation release as acceptance.
+A pending marker is recovery information, not a disposable lock file.

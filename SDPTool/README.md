@@ -202,12 +202,13 @@ boundaries, lifecycle documentation and development-version testing.
 
 `sdptool governance` provides inspection and durable Maintenance runs through the
 [shared core](governance/README.md), plus explicit Session binding, registration
-recovery and stage/hold inspection. The [MCP adapter](governancemcp/README.md) and
+recovery, checked ready-card selection and stage/hold inspection. The [MCP adapter](governancemcp/README.md) and
 [app-server adapter](governancehost/README.md) support the separately built sdp-mcp
 and sdp-controller. The [owner controller](governancecontroller/README.md) adds
 bounded execution, steering, observed review and checked result publication.
 
-PGF1-C1 Session commands register work but do not activate cards or launch agents.
+PGF1-C2a Session selection prepares and commits ready-card/plan/history effects.
+It preserves admission holds until design assessment; no agent launch or completion.
 Full lifecycle/model gates, integrated verification and independent product review
 remain in PLAN-SDP-0018. Development-source availability does not imply a published
 installer or consuming-project installation.

@@ -27,7 +27,7 @@ func Default() Registry {
 	for _, op := range []string{"context", "route", "bind", "start", "read", "transition", "error"} {
 		r[Key{"sdp-project-governance/0.1", op}] = fields
 	}
-	for _, op := range []string{"session-definition", "session-context", "session-adopt", "session-resume", "session-read", "session-list"} {
+	for _, op := range []string{"session-definition", "session-context", "session-adopt", "session-resume", "session-read", "session-list", "session-select"} {
 		r[Key{"sdp-session-execution/0.1", op}] = fields
 	}
 	for _, op := range []string{"create", "status", "history", "commit", "restore", "merge", "recover", "snapshot"} {

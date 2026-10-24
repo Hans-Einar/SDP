@@ -72,3 +72,17 @@ A separate phase-scoped diagnostic Blueprint now passes its explicit constraints
 Its preliminary status and observed comparison baseline are retained; this is
 same-context scope checking, not independent review or accepted NOW evidence.
 The whole-workflow model review/integration/release obligation remains open.
+
+
+## T043 checked selection mapping
+
+PGF1-C2a implements a bounded SelectCoveredStep/PlanCardLifecycleEffects path through
+SessionCoordinator and CanonicalEffectPublisher, with persistent intent/recovery in
+RunRepository. Scoped claim checks and canonical history coordination participate
+in that selection. The [evidence](../../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2a.md)
+retains code/test identity and limitations. No model source semantics changed;
+WORK :00002 remains the supplied TARGET and validates unchanged. The aggregate
+SessionWorkflowDelivery remains planned because design/dispatch/verification/model
+release and complete disposition are not delivered. The scoped diagnostic Blueprint
+was generated before implementation and its constraints pass; independent product
+review and accepted model release remain unfulfilled gates.

@@ -362,7 +362,7 @@ func validateReviewState(state snapshot) error {
 		}
 		return nil
 	}
-	if (state.Schema != sessionStateSchema && len(state.Reviews) == 0) || len(state.Reviews) > 64 {
+	if (!sessionProfile(state.Schema) && len(state.Reviews) == 0) || len(state.Reviews) > 64 {
 		return fail("reconciliation_required", "invalid review collection")
 	}
 	counts, active := map[string]int{}, map[string]int{}

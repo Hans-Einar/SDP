@@ -484,3 +484,50 @@ Tests cover strict decoding, DAG/version/record guards, stale revisions, retry a
 crash recovery, untouched legacy records, actual subprocess CLI/JSON parity, schema
 captures and a disposable pg_lab fixture. Full lifecycle/model/host recovery,
 privileged leader MCP, independent product review and owner trial remain open.
+
+## Checked step selection — PGF1-C2a
+
+After registration, `session-select --input selection.json` prepares one selected
+step and its canonical record effects. The request contains schema, projectRef,
+checkoutId, a fresh operationId, instanceId, expectedRevision, stepId and reason.
+The `governance.session.select` invocation action takes requestFile/state and
+requires separate trusted controller attribution. Its result explicitly reports
+`recordEffects: prepared`; no card has moved yet. Inspect with session-read, then
+session-resume at the returned revision to apply the exact recorded effects.
+Identical-operation retries return the original receipt, including its historical
+prepared status; read reports current effects/status.
+
+Selection moves backlog/queued cards to active/ready and activates a planned plan.
+It preserves already ready/in-progress cards, records whole/contribution scope and
+updates worklogs, current selected-document links, board index and canonical history.
+Unsupported references outside the selected card/plan/Session/index set refuse the
+move before effects; arbitrary historical documents are not silently rewritten.
+A committed selection has `recordEffects: committed` and `selected: true` on its
+step. The stage remains admission: design assessment, execution and completion
+remain unavailable. A gate-review card cannot be taken over by this operation.
+
+Operational profile 0.14 stores exact preimages/postimages and selection coverage.
+The shared canonical ledger lock coordinates current PG publication, Session effects
+and projecthistory/Blueprint appenders. A durable Ledger.ndjson.pg-pending marker
+blocks cooperating readers/appenders across an interruption. Recovery compares both
+move paths and resumes each exact effect. Source removal follows destination creation;
+all canonical postconditions must validate before the instance advances. Do not
+remove the marker to bypass a conflict. Shell editors and older independent binaries
+are outside this coordination protocol; external edits are detected optimistically,
+not protected by an operating-system transaction.
+
+After committed selection, a validated append-only unrelated ledger change can be
+observed and checkpointed without accepting edits to selected documents. A changed
+selected subject/reference, a changed historical prefix or new Blueprint history
+holds continuation. Prepared effects still require their full exact input set; this
+increment does not rebase a pending intent. Rebind/replan remains later work.
+
+Selection publishes a scope claim under SDP/Sessions/execution/claims. Other current
+selectors refuse overlapping writer/reader scope, card, Session or plan claims;
+a second store cannot register the same selected Session. This is coordination of
+Session selectors, not interception of every legacy run, shell or other checkout.
+C2a permits one dependency-free selected step per instance. Claims persist without
+expiry until later verified disposition/replan support; do not delete them to bypass
+ownership. Limits: 128 claims, 128 effects/4 MiB content and 4096 reference-scan
+Markdown files, in addition to existing store limits. This is a development checkpoint,
+not the full C2 start/progress/disposition engine or privileged leader MCP integration.

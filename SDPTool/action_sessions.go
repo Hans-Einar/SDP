@@ -73,12 +73,16 @@ func sessionActions() []actionSpec {
 			return sessionActionCall(ctx, c, "session-read", q.State, "", q.Instance, false)
 		}),
 	}
-	for _, op := range []string{"context", "adopt", "resume"} {
+	for _, op := range []string{"context", "adopt", "resume", "select"} {
 		mutation := "none"
 		desc := "Read and validate the binding and canonical coverage."
 		if op == "adopt" {
 			mutation = "state"
 			desc = "Persist adoption intent; no card activation or agent dispatch."
+		}
+		if op == "select" {
+			mutation = "state"
+			desc = "Prepare checked Session step selection and ready-card effects."
 		}
 		if op == "resume" {
 			mutation = "documents"

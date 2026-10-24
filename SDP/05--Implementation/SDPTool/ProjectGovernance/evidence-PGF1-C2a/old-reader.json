@@ -1,0 +1,15 @@
+{
+  "readerSHA256": "be54d88daf6cbbdb8fa41e0121a637e1539866091759cad1414ab37fe94d4bc5",
+  "exitCode": 2,
+  "error": {
+    "error": {
+      "code": "reconciliation_required",
+      "message": "invalid_request: json: unknown field \"selection\"",
+      "retryable": false
+    },
+    "operation": "error",
+    "schema": "sdp-project-governance/0.1",
+    "status": "error"
+  },
+  "stateHeadUnchanged": true
+}

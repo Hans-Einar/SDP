@@ -366,7 +366,8 @@
         "operation": {
           "enum": [
             "session-adopt",
-            "session-resume"
+            "session-resume",
+            "session-select"
           ]
         },
         "operationId": {
@@ -385,6 +386,12 @@
         "registration": {
           "enum": [
             "pending",
+            "committed"
+          ]
+        },
+        "recordEffects": {
+          "enum": [
+            "prepared",
             "committed"
           ]
         }
@@ -478,6 +485,9 @@
                   "type": "string",
                   "minLength": 1
                 }
+              },
+              "selected": {
+                "type": "boolean"
               }
             }
           },
@@ -489,12 +499,19 @@
           "items": {
             "enum": [
               "session-read",
-              "session-resume"
+              "session-resume",
+              "session-select"
             ]
           }
         },
         "hostExecution": {
           "const": "not-dispatched"
+        },
+        "recordEffects": {
+          "enum": [
+            "prepared",
+            "committed"
+          ]
         }
       }
     },
@@ -574,6 +591,55 @@
         "digest": {
           "type": "string",
           "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "selectRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "operationId",
+        "instanceId",
+        "expectedRevision",
+        "reason",
+        "stepId"
+      ],
+      "properties": {
+        "schema": {
+          "const": "sdp-session-execution/0.1"
+        },
+        "projectRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "checkoutId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "operationId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "instanceId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 18446744073709551615
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "stepId": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
         }
       }
     }

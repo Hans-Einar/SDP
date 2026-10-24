@@ -1,0 +1,59 @@
+{
+  "candidate": "candidate.json",
+  "environment": {
+    "go": "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+    "GOTOOLCHAIN": "local",
+    "GOCACHE": "/home/warloc/.cache/sdp-workstation/gocache",
+    "GOMODCACHE": "/home/warloc/.cache/sdp-workstation/gomodcache"
+  },
+  "checks": [
+    {
+      "command": "go -C SDPTool test -race ./...",
+      "exitCode": 0,
+      "log": "race.log"
+    },
+    {
+      "command": "go -C SDPTool vet ./...",
+      "exitCode": 0,
+      "log": "vet.log"
+    },
+    {
+      "command": "go -C SDPTool test ./governance -run ^TestSessionSelection -count=1",
+      "exitCode": 0,
+      "log": "focused.log"
+    },
+    {
+      "command": "go -C SDPTool test ./governance -run ^TestSessionSelectionCompiledJourney$ -count=1 -v (explicit final lab environment)",
+      "exitCode": 0,
+      "log": "lab-output.json"
+    },
+    {
+      "command": "sdl check WORK--SessionLifecycle/System.design",
+      "exitCode": 0,
+      "output": "sdl-check.json"
+    },
+    {
+      "command": "python3 SDP/ProjectManagement/validate.py",
+      "exitCode": 0,
+      "log": "management.log"
+    },
+    {
+      "command": "python3 Toolkit/scripts/validate_sdp.py --base-ref main",
+      "exitCode": 0,
+      "log": "toolkit.log"
+    },
+    {
+      "command": "final source SHA-256, relative Markdown links and unchanged ledger prefixes",
+      "exitCode": 0,
+      "candidateFiles": 17,
+      "relativeLinks": 300
+    }
+  ],
+  "limits": [
+    "C2a selection only; C2 remains in-progress",
+    "No agent dispatch, independent product review, owner acceptance or release",
+    "One dependency-free selection per instance; claim release/replan later",
+    "Current cooperating canonical writers only; not manual/legacy-client interception"
+  ],
+  "preliminary": "Initial passing race/lab runs preceded the outgoing-link correction; final checks above use the corrected candidate."
+}

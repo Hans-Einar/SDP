@@ -239,3 +239,38 @@ checked separately from request fields. Existing restricted leader MCP remains
 unchanged; common privileged leader commands and dispatch are still PGF2 work.
 See the [implementation evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C1.md)
 for candidate identity, tests and explicit outstanding gates.
+
+
+## T043 implementation boundary — PGF1-C2a
+
+The first C2 checkpoint implements select-step and durable canonical effects, with
+one dependency-free selection per instance. C2's remaining start/progress/disposition
+and dependency completion are explicit follow-ons. Selection stays at admission;
+there is no no-design shortcut to execution or completion. Existing WORK :00002
+covers SessionCoordinator, CanonicalEffectPublisher and RunRepository ownership.
+
+Selected backlog/queued cards move to active/ready; active ready/in-progress cards
+retain state. Planned plans become active. A typed intent pins all canonical inputs,
+exact destination/source effects, index/current links, journals and allocated events.
+Prepare increments instance revision but does not apply records; resume applies and
+validates them before committing selection. Whole/contribution coverage is retained.
+
+Current PG writers and projecthistory/Blueprint history now share the canonical
+ledger lock and durable transaction reservation. Lock order is project coordination,
+canonical history, then operational store, with no host wait. Legacy PG publication
+keeps its existing private pending marker for recovery compatibility and also uses
+the canonical reservation. Direct manual writers and older independent processes
+remain outside this contract; no universal write interception is claimed.
+
+Move references are bounded to selected cards, plan, Session and board index. Other
+references or unsupported syntax refuse before effects, avoiding unapproved edits
+to historical records. A selected scope claim serializes conflicting Session/card/
+plan or writer/reader selections across current stores. Claim release and broader
+legacy-run admission remain future gates. A new store cannot register a Session
+already selected elsewhere. Claims do not expire merely because an agent exits.
+
+After committed selection, exact historical-prefix plus unrelated validated ledger
+appends are reconciled; selected-document/subject changes and new Blueprint events
+hold. Prepared effects retain exact all-input preconditions and cannot be silently
+rebased. [Evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2a.md)
+records bounded verification and remaining C2/PGF2–9 obligations.

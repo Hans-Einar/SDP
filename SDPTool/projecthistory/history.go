@@ -190,12 +190,22 @@ func Validate(data []byte) error {
 }
 
 func Read(path string) (Snapshot, error) {
+	if pending, e := pendingOwner(path); e != nil {
+		return Snapshot{}, e
+	} else if pending != "" {
+		return Snapshot{}, ErrBusy
+	}
 	data, err := readBytes(path)
 	if err != nil {
 		return Snapshot{}, err
 	}
 	if _, err = validate(data); err != nil {
 		return Snapshot{}, err
+	}
+	if pending, e := pendingOwner(path); e != nil {
+		return Snapshot{}, e
+	} else if pending != "" {
+		return Snapshot{}, ErrBusy
 	}
 	return Snapshot{Bytes: data, Revision: hash(data)}, nil
 }
@@ -227,6 +237,11 @@ func appendEvent(path, expectedRevision string, event []byte, fault func(string)
 		return result, err
 	}
 	defer unlock()
+	if pending, e := pendingOwner(path); e != nil {
+		return result, e
+	} else if pending != "" {
+		return result, ErrBusy
+	}
 	original, err := readBytes(path)
 	if err != nil {
 		return result, err

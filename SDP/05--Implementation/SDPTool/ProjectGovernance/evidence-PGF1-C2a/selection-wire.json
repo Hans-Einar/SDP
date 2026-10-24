@@ -1,0 +1,177 @@
+[
+  {
+    "definition": "mutation",
+    "value": {
+      "recordEffects": "prepared",
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-select",
+      "operationId": "fa577521-464d-4c84-b847-55a15d83985c",
+      "instanceId": "d94f5499-13f5-4444-8569-c498fcb2dc9a",
+      "revision": 3,
+      "registration": "committed"
+    }
+  },
+  {
+    "definition": "view",
+    "value": {
+      "recordEffects": "prepared",
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-read",
+      "instanceId": "d94f5499-13f5-4444-8569-c498fcb2dc9a",
+      "revision": 3,
+      "sessionId": "SESSION-TEST-0001",
+      "planId": "MAINT-SDP-0001",
+      "workflow": {
+        "id": "session-lifecycle",
+        "version": "0.1",
+        "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1"
+      },
+      "registration": "committed",
+      "coverage": "stale-or-unavailable",
+      "conditions": [
+        "reconciliation_required: Session record effects pending"
+      ],
+      "steps": [
+        {
+          "id": "S1",
+          "stage": "admission",
+          "holds": [
+            "step activation is not implemented in this increment",
+            "reconciliation_required: Session record effects pending"
+          ]
+        }
+      ],
+      "nextActions": [
+        "session-read",
+        "session-resume"
+      ],
+      "hostExecution": "not-dispatched"
+    }
+  },
+  {
+    "definition": "mutation",
+    "value": {
+      "recordEffects": "committed",
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-resume",
+      "operationId": "79526430-3ebb-469c-9fce-3a7ddb060582",
+      "instanceId": "d94f5499-13f5-4444-8569-c498fcb2dc9a",
+      "revision": 4,
+      "registration": "committed"
+    }
+  },
+  {
+    "definition": "mutation",
+    "value": {
+      "recordEffects": "committed",
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-resume",
+      "operationId": "79526430-3ebb-469c-9fce-3a7ddb060582",
+      "instanceId": "d94f5499-13f5-4444-8569-c498fcb2dc9a",
+      "revision": 4,
+      "registration": "committed"
+    }
+  },
+  {
+    "definition": "view",
+    "value": {
+      "recordEffects": "committed",
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-read",
+      "instanceId": "d94f5499-13f5-4444-8569-c498fcb2dc9a",
+      "revision": 4,
+      "sessionId": "SESSION-TEST-0001",
+      "planId": "MAINT-SDP-0001",
+      "workflow": {
+        "id": "session-lifecycle",
+        "version": "0.1",
+        "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1"
+      },
+      "registration": "committed",
+      "coverage": "current",
+      "conditions": [],
+      "steps": [
+        {
+          "selected": true,
+          "id": "S1",
+          "stage": "admission",
+          "holds": [
+            "design assessment is required before execution"
+          ]
+        }
+      ],
+      "nextActions": [
+        "session-read",
+        "session-resume"
+      ],
+      "hostExecution": "not-dispatched"
+    }
+  },
+  {
+    "definition": "list",
+    "value": {
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-list",
+      "generation": "6eaf42c68db35651780a5c207295624f4dfdca0c9cd8e9217ff1ba5d68bcc54c",
+      "instances": [
+        {
+          "recordEffects": "committed",
+          "schema": "sdp-session-execution/0.1",
+          "operation": "session-read",
+          "instanceId": "d94f5499-13f5-4444-8569-c498fcb2dc9a",
+          "revision": 4,
+          "sessionId": "SESSION-TEST-0001",
+          "planId": "MAINT-SDP-0001",
+          "workflow": {
+            "id": "session-lifecycle",
+            "version": "0.1",
+            "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1"
+          },
+          "registration": "committed",
+          "coverage": "current",
+          "conditions": [],
+          "steps": [
+            {
+              "selected": true,
+              "id": "S1",
+              "stage": "admission",
+              "holds": [
+                "design assessment is required before execution"
+              ]
+            }
+          ],
+          "nextActions": [
+            "session-read",
+            "session-resume"
+          ],
+          "hostExecution": "not-dispatched"
+        }
+      ]
+    }
+  },
+  {
+    "definition": "selectRequest",
+    "value": {
+      "schema": "sdp-session-execution/0.1",
+      "projectRef": "trial",
+      "checkoutId": "db938867-76c0-4acf-9dca-1f930a7840a7",
+      "operationId": "fa577521-464d-4c84-b847-55a15d83985c",
+      "instanceId": "d94f5499-13f5-4444-8569-c498fcb2dc9a",
+      "expectedRevision": 2,
+      "stepId": "S1",
+      "reason": "Owner selects the fixture step"
+    }
+  },
+  {
+    "definition": "resumeRequest",
+    "value": {
+      "schema": "sdp-session-execution/0.1",
+      "projectRef": "trial",
+      "checkoutId": "db938867-76c0-4acf-9dca-1f930a7840a7",
+      "operationId": "79526430-3ebb-469c-9fce-3a7ddb060582",
+      "instanceId": "d94f5499-13f5-4444-8569-c498fcb2dc9a",
+      "expectedRevision": 3,
+      "reason": "Apply recorded selection effects"
+    }
+  }
+]

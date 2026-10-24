@@ -1,0 +1,20 @@
+{
+  "fixture": "/home/warloc/git/pg_lab/session-c2a-final",
+  "state": "/home/warloc/.cache/sdp-workstation/PGF1-C2a/lab-state-final",
+  "instanceId": "d94f5499-13f5-4444-8569-c498fcb2dc9a",
+  "revision": 4,
+  "operationId": "fa577521-464d-4c84-b847-55a15d83985c",
+  "recordEffects": "committed",
+  "effectCount": 7,
+  "preservedPriorTrackedPaths": 125,
+  "head": "6eaf42c68db35651780a5c207295624f4dfdca0c9cd8e9217ff1ba5d68bcc54c",
+  "historyEvents": 4,
+  "pendingMarkerAbsent": true,
+  "selectedCardState": "ready",
+  "selectedPlanState": "active",
+  "outgoingSiblingParentAndSelfLinks": "passed",
+  "nativeModelCalls": 0,
+  "note": "Final compiled CLI/invocation replay; fixture setup is synthetic. Preliminary fixture session-c2a is retained separately.",
+  "commit": "927e7955f751bdb70d9431ae0a26e95b7a18ad55",
+  "branch": "test/pgf1-c2a-selection"
+}
