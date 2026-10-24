@@ -629,3 +629,15 @@ reconciliation; do not discard it to hide uncertain work. Schemas are in
 fixtures verify this increment; native leader execution and independent review remain
 separate gates. Proposed launches, approvals and canonical publication are not executed
 from leader prose.
+
+C8 native verification found that an unsent bound thread need not survive its owned
+host process. A fresh `LeaderController` safely supersedes bound work it did not open,
+then reselects the same pending input in a new thread. Sending/running work is always
+recovered against its original mapping, never replaced. This needs no store migration.
+
+On hosts with Apps enabled, the unfiltered tool catalogue may also exceed the 1 MiB
+transport bound before exclusive-inventory refusal. For the isolated native lab,
+launch through a wrapper passing `--disable apps --disable remote_plugin --disable
+multi_agent` to Codex. These are process-local restrictions, not global config edits
+or a larger transport allowance. A real 0.164.0 native trial with gpt-6-astra/high
+verified report acknowledgement and both terminal-read and lost-start-response recovery.

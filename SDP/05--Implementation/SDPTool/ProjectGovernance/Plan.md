@@ -302,7 +302,7 @@ sequenced with those workstreams rather than copied into a second engine.
 | --- | --- | --- | --- |
 | PGL1 | Readable/JSON overview of all registered work from existing operational state; lab inspection without launching work | Scenario 5 subset; empty store, multiple runs, stale records, historical host/skill/tool facts, no writes | delivered; [bounded evidence](Evidence-PGL1.md) |
 | PGL2 | Prepare and inspect distinct SAD/implementation assignments; stale design or conflicting scope refuses dispatch eligibility | Scenario 2 guards; current authority, exact bundle revisions, explicit cross-worktree claim boundary, retry/CAS tests | in-progress; [C1 preparation delivered](Evidence-PGL2-C1.md), [C2a revision/retirement delivered](Evidence-PGL2-C2a.md), [C2b provider checks delivered](Evidence-PGL2-C2b.md), [C2c local decision adapter delivered](Evidence-PGL2-C2c.md), [C2d activation and native code trial delivered](Evidence-PGL2-C2d.md); reporting/coordination remain PGL3 |
-| PGL3 | Responsive Project Leader plus two bounded Masters through the trusted controller; durable report inbox and same-Session phase continuation | Scenarios 1, 3, 4; real host execution, no duplicate launch after uncertain reply, delayed report versus new steering | in-progress; [C1 per-run isolation delivered](Evidence-PGL3-C1.md), [C2 automatic reports and read-only inbox delivered](Evidence-PGL3-C2.md), [C3 durable attention/replies delivered](Evidence-PGL3-C3.md); C4 continuation, C5 acknowledgement, C6 console/MCP and [C7 serialized leader delivery/recovery](Evidence-PGL3-C7.md) delivered at bounded evidence scope; native leader/parallel and whole-workflow gates remain |
+| PGL3 | Responsive Project Leader plus two bounded Masters through the trusted controller; durable report inbox and same-Session phase continuation | Scenarios 1, 3, 4; real host execution, no duplicate launch after uncertain reply, delayed report versus new steering | in-progress; [C1 per-run isolation delivered](Evidence-PGL3-C1.md), [C2 automatic reports and read-only inbox delivered](Evidence-PGL3-C2.md), [C3 durable attention/replies delivered](Evidence-PGL3-C3.md); C4 continuation, C5 acknowledgement, C6 console/MCP and [C7 serialized leader delivery/recovery](Evidence-PGL3-C7.md) delivered at bounded evidence scope; [C8 native bounded leader/worker and completed-history recovery](Evidence-PGL3-C8.md) pass; parallel and whole-workflow gates remain |
 | PGL4 | Direct SAD/Master conversation and project panel; revision-bound ModelGovernance/Blueprint handoff | Scenarios 2, 5; real TARGET change stales dependent implementation; roles/tools/children/freshness evidence; owner development trial | planned |
 | PGL5 | Integrated recovery/evidence review and revision-bound remote Steering package | All six scenarios; independent review and selected online-host evidence; PGI4/5 obligations retained | planned |
 
@@ -711,3 +711,30 @@ compaction, recovery/review and canonical publication gates. Bounded limits and
 unmapped thread-start recovery remain explicit. Backlog/onHold review preserves
 KB036/037/042/043/054/058, SDL-only KB059 deferral, Blueprint pause and Ponsse MVP1
 deferral. Current-branch/milestone policy remains; no merge or release.
+
+
+## PGL3-C8 selection — T034
+
+Owner explicitly selects actual-model testing in /home/warloc/git/pg_lab and
+authorizes its extension into a useful PG fixture. Keep the SDP current/milestone
+policy; create a lab test branch from its clean main. Exercise native leader input,
+actual bounded worker/report delivery, owner enqueue during work and mapped recovery.
+Retain failures and fix scoped implementation defects without weakening the C7
+identity/authority guards. No production owner acceptance, independent-review claim
+or release is implied. See [preflight](preflight-PGL3-C8.json).
+
+
+## PGL3-C8 result — T034
+
+[Native evidence](Evidence-PGL3-C8.md) passes for three real leader turns and one
+bounded worker in pg_lab, queued owner input, coordinator report acknowledgement and
+two exact completed-history recoveries without resubmission. Native Codex 0.164.0
+reports gpt-6-astra/high. External/project behavior checks, affected race/vet and
+11 native output/context schemas pass. Corrected unsent-bound restart under C7's
+existing safe-supersession boundary; source/binary identity and failed runs retained.
+
+The isolated process disables unrelated Apps/plugins/delegation; global settings
+are unchanged. The worker run remains verifying; the lab coverage is intentionally
+pinned. Parent remains active for two-Master execution, active-host recovery,
+SAD/scope closure, sustained capacity/compaction, independent review and canonical
+publication. No merge/release, production owner acceptance or full PG readiness.

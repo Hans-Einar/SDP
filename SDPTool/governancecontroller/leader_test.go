@@ -197,3 +197,26 @@ func TestLeaderRecoveryExactHistoryRefusals(t *testing.T) {
 func (h *leaderHost) CoordinatorTools(ctx context.Context, thread string) ([]string, string, error) {
 	return h.MCPTools(ctx, "sdp_governance", thread)
 }
+
+func TestLeaderRestartSupersedesOnlyUnsentBoundThread(t *testing.T) {
+	c, h := leaderSetup(t)
+	stepLeader(t, c)
+	first := stepLeader(t, c)
+	restarted := *c
+	restarted.localThreads = nil
+	v := stepLeader(t, &restarted)
+	if v.Leader.Dispatches[0].State != "superseded" || h.sends != 0 {
+		t.Fatal(v)
+	}
+	v = stepLeader(t, &restarted)
+	if v.Leader.Dispatches[1].MessageIDs[0] != first.Leader.Dispatches[0].MessageIDs[0] {
+		t.Fatal("lost queued input")
+	}
+	stepLeader(t, &restarted)
+	stepLeader(t, &restarted)
+	restarted.localThreads = nil
+	v = stepLeader(t, &restarted)
+	if v.Leader.Dispatches[1].State != "completed" || h.sends != 1 {
+		t.Fatal("replaced sent turn", v)
+	}
+}

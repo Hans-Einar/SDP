@@ -1,0 +1,11 @@
+{
+  "messageOperationId": "24b5e460-54a2-43e2-af1f-891e7fdc6b15",
+  "snapshotsAtMessageRevision": [
+    {
+      "generation": "b6d0d0f232d84bd25ce4c9c5b59d485bbe2dec12ec2d6797808fdeefb21c8402",
+      "leaderRevision": 11,
+      "dispatchId": "770630ca-ca95-4c97-8a21-d17557ff901a",
+      "stateAtEnqueue": "running"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "observedAt": "2026-10-24T08:43:16.767313+00:00",
+  "sdp": {
+    "head": "df5728aff607d1c1a5b5ec964f95a4d2f57f0e7e",
+    "branch": "sdp/codex-forward-compatibility",
+    "status": "",
+    "worktrees": "worktree /home/warloc/git/SDP\nHEAD df5728aff607d1c1a5b5ec964f95a4d2f57f0e7e\nbranch refs/heads/sdp/codex-forward-compatibility"
+  },
+  "lab": {
+    "root": "/home/warloc/git/pg_lab",
+    "head": "def5edf48587842a080dba6129cbc20ca3a8a6a5",
+    "branch": "main",
+    "status": "",
+    "worktrees": "worktree /home/warloc/git/pg_lab\nHEAD def5edf48587842a080dba6129cbc20ca3a8a6a5\nbranch refs/heads/main"
+  },
+  "authority": "Owner T034 explicitly authorizes actual-model PG testing in ~/git/pg_lab and any lab extensions needed. Supersedes its old two-file pilot restriction for the test coordinator, not arbitrary worker scope.",
+  "owners": "Session0007/PLAN-SDP-0018/KB052 owns SDP; historical pg_lab pilot has no dirty work. One active test coordinator observed; remote activity not inferred absent.",
+  "scope": [
+    "pg_lab test branch, instructions/skills/coverage and bounded native test code",
+    "SDP native trial harness/evidence and existing Session/plan/card records",
+    "PG host/controller defects found in the trial under existing design, with targeted regression checks"
+  ],
+  "identities": "Retain PG records; new lab MAINT-PGLAB-0002/KB-PGLAB-002/SESSION-PGLAB-0002; canonical events after PM219/KB402. No observed collision.",
+  "verdict": "green",
+  "constraints": "Only test-purpose native agents through the product; no helper-agent delegation, release/merge, Ponsse work or Blueprint resumption."
+}

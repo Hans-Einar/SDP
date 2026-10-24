@@ -1,0 +1,68 @@
+[
+  {
+    "object": "leader-view",
+    "schema": "leader.schema.json",
+    "definition": "LeaderView",
+    "passed": true
+  },
+  {
+    "object": "context bf693ac6-6cf3-441a-bdfe-76d73c3e4745",
+    "schema": "leader.schema.json",
+    "definition": "LeaderContext",
+    "passed": true
+  },
+  {
+    "object": "context 770630ca-ca95-4c97-8a21-d17557ff901a",
+    "schema": "leader.schema.json",
+    "definition": "LeaderContext",
+    "passed": true
+  },
+  {
+    "object": "context bd32129b-b470-434d-ad37-44fcda1ea184",
+    "schema": "leader.schema.json",
+    "definition": "LeaderContext",
+    "passed": true
+  },
+  {
+    "object": "context 01f0a4a9-bd86-43ec-a7b7-cdb33971cc65",
+    "schema": "leader.schema.json",
+    "definition": "LeaderContext",
+    "passed": true
+  },
+  {
+    "object": "run",
+    "schema": "schema.json",
+    "definition": "Result",
+    "passed": true
+  },
+  {
+    "object": "overview",
+    "schema": "overview.schema.json",
+    "definition": "",
+    "passed": true
+  },
+  {
+    "object": "report-inbox",
+    "schema": "inbox.schema.json",
+    "definition": "",
+    "passed": true
+  },
+  {
+    "object": "leader-enqueue-1.json",
+    "schema": "leader.schema.json",
+    "definition": "LeaderResult",
+    "passed": true
+  },
+  {
+    "object": "leader-enqueue-2.json",
+    "schema": "leader.schema.json",
+    "definition": "LeaderResult",
+    "passed": true
+  },
+  {
+    "object": "leader-enqueue-3.json",
+    "schema": "leader.schema.json",
+    "definition": "LeaderResult",
+    "passed": true
+  }
+]

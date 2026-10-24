@@ -2,11 +2,12 @@
 
 ## Session roadmap
 
-Latest recorded turn: T033 — PGL3-C7 serialized leader delivery and mapped recovery delivered at compiled protocol scope.
+Latest recorded turn: T034 — bounded native leader/worker and lost-response recovery passed in pg_lab; unsent-bound restart corrected.
 The native trial asks, receives a delayed fixture reply, starts one fresh attempt
 and implements/reports the selected behavior. Local acknowledgement, coordination and
-serialized leader delivery are implemented. Native leader/parallel evidence, sustained-hour
-capacity, independent review and canonical evidence publication remain.
+serialized leader delivery are implemented. C8 native single-worker/leader and completed
+history recovery pass. Parallel evidence, sustained-hour capacity, active-host recovery,
+independent review and canonical evidence publication remain.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
 
 ```mermaid
@@ -29,7 +30,7 @@ gantt
 | completed | S2 | Design the smallest common routing, run, Session and client contract | Owner continuation, T002 | [PGD1 / PLAN-SDP-0017](../04--Design/SDPTool/ProjectGovernance/Plan.md), contract, acceptance cases and protocol inspection |
 | waiting | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C6 verified; owner reports PGI3-U1 trial performed; native mapping remains unverified; KB052 now prioritized |
 | completed | S7 | Codex 0.164.0 and compatible later hosts / PGC1 | Owner T029; KB057 and existing PLAN-SDP-0018 | 98b449c range/identity/recovery checks, full race/vet, 60 schema cases and real no-model 0.164.0 controller/MCP probe pass; full native/review gates remain |
-| on-going | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation, C2a lifecycle, C2b provider checks and C2c decisions and C2d activation/native code trial delivered; PGL3-C2 reports/inbox, C3 attention/replies and C4 guarded continuation delivered; C5 acknowledgement, C6 console/MCP and C7 serialized leader delivery/recovery delivered; native leader and whole-workflow gates remain |
+| on-going | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation, C2a lifecycle, C2b provider checks and C2c decisions and C2d activation/native code trial delivered; PGL3-C2 reports/inbox, C3 attention/replies and C4 guarded continuation delivered; C5 acknowledgement, C6 console/MCP and C7 serialized leader delivery/recovery and C8 native bounded workflow delivered; parallel/capacity/review/publication gates remain |
 | planned | S4 | Verify interruption, resume, scope change and evidence disposition | S3 candidate | Evidence required before wider use |
 | planned | S5 | Project recorded activity into the KB043 timeline | Reliable S3/S4 capture and selected rendering scope | Full timeline remains deferred |
 
@@ -39,8 +40,8 @@ gantt
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-24 |
-| Current step | S6 active: PGL3-C7 serialized leader delivery/recovery delivered at protocol scope; native and whole-workflow gates remain |
-| Proposed next step | Native leader/worker workflow validation with retained recovery, SAD/scope, capacity, review and publication gates. SDL-only scope; KB059 onHold |
+| Current step | S6 active: PGL3-C8 native leader/worker report and exact recovery pass; retained whole-workflow gates remain |
+| Proposed next step | Retained two-Master/active-host recovery, SAD/scope, capacity/compaction, independent review and publication gates. SDL-only scope; KB059 onHold |
 | Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension; T026 assigns hub/webapp to a separate project and continues local SDP/SDPTool work; T027 continues local attention/replies; T028 continues guarded attention continuation; T029 selects stable Codex >=0.164.0 and compatible later hosts, preserving other scopes |
 
 ## Goal and ownership
@@ -1569,3 +1570,75 @@ Management replay reports 73 cards, 47 records and 658 events; Toolkit and white
 validation pass. Matching private controller/MCP binaries are built in the workstation
 cache; shared stores require consistent profile-0.9 binaries. Preparing the scoped
 milestone commit and authorized branch push; no merge, release or full PG acceptance.
+
+
+## T034 — 24 October 2026: native trial in pg_lab
+
+- Owner authorizes testing against ~/git/pg_lab and any extension of that project
+  needed for the trial. This explicitly selects the actual-model test proposed
+  after C7; the prior protocol-only execution restriction does not carry forward.
+- Recovered clean df5728a and pg_lab def5edf on main. The lab's old AGENTS two-file
+  restriction is superseded for the coordinator by this owner instruction; test
+  agents still receive bounded roles and paths. Preserve the original pilot history.
+- Loaded/reused SDP/document workflow, Master, Planning and Verifier. Select PGL3-C8
+  native leader/worker report handling, queued input and mapped recovery. Use current
+  managed-account Codex 0.164.0 and existing gpt-6-astra/high configuration.
+- [Preflight](../05--Implementation/SDPTool/ProjectGovernance/preflight-PGL3-C8.json)
+  is green for lab preparation and scoped PG defects found by the trial. No helper
+  agents, full PG acceptance, merge/release, Blueprint restart or Ponsse work selected.
+
+### T034 native findings before correction
+
+- Original C7 launch reaches bound but no turn/start: inherited host inventory
+  exceeds the 1 MiB transport limit. Retain the failed attempt; verify an isolated
+  process with Apps/remote plugins/delegation disabled, without global edits.
+- Restart of a bound, never-sent thread cannot assume that native Codex still has
+  that thread loaded. The C7 protocol fixture did. Select safe supersession of
+  unsent bound work on a new controller instance; keep pending input and create a
+  fresh thread. Sending/running uncertainty still cannot be superseded or resent.
+- These are C7 launch/recovery obligations inside KB052, not a new product scope.
+  Worker skill loaded for scoped fixes; native launch remains owner-authorized.
+
+
+### T034 work summary
+
+- Owner path confirmation resolved to /home/warloc/git/pg_lab. Prepared a dedicated
+  test branch from def5edf, retained the earlier normalization pilot and pinned a new
+  bounded formatting fixture at f66e65e. Updated lab instructions/skills under the
+  explicit owner extension authority; native agents retained restricted scopes.
+- Actual Codex 0.164.0 / gpt-6-astra high completed three leader turns and one worker.
+  Worker added FormatLabel and tests in the two allowed files and reported through
+  MCP. Project tests plus five external behavior cases pass; 38 baseline regular
+  files were unchanged during native execution. No helper-agent delegation.
+- Immutable operational generations prove L2 was enqueued during the first leader
+  turn. The next native leader read/acknowledged exactly one worker report through
+  coordinator MCP. The run remains verifying, with no owner acceptance or advancement.
+- Two real transport failures were injected: completed history response withheld,
+  and turn/start response withheld until native completion. New processes recovered
+  the exact original turns via initialize/thread-read only; no turn/thread restart.
+  This does not prove reattachment to a model still active after host death.
+- Default Apps inventory exposed 307 extra tools and exceeded the bounded frame.
+  Process-local isolation supplied only two PG tools, without global config edits.
+  OpenAI Docs was consulted for feature overrides alongside actual local CLI evidence.
+- Corrected the C7 unsent-bound lifetime assumption: new controller instances safely
+  supersede bound threads they did not create; sending/running still require exact
+  recovery. Targeted regression and affected race/vet pass; unchanged core uses C7
+  full-suite evidence. Eleven native wire/context schemas and mapping checks pass.
+- [Evidence](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C8.md)
+  records real IDs/hashes/results and limitations. Lab ./pg status|leader|reports is
+  read-only; pinned fixture records retain current operational inspection. Added
+  maintained native transport fault proxy and updated design/plan/card/docs.
+- Loaded/reused SDP, document workflow, Master, Planning, Worker, Verifier and
+  Traceability; OpenAI Docs for host troubleshooting. No independent review claim.
+- S6/PLAN-SDP-0018/KB052 remain active for two-Master and active-host recovery,
+  SAD/scope closure, capacity/compaction, independent review and canonical publication.
+  Backlog/onHold scope, SDL-only direction, Blueprint pause and Ponsse deferral remain.
+  This is the work summary, not an already captured final response.
+
+
+T034 final checks: affected controller/host/command race and vet pass; eleven native
+output/context schema checks and exact mapping/no-resend assertions pass. Management
+replay reports 73 cards, 47 records and 660 events; Toolkit and whitespace checks pass.
+Lab result is committed at 73ccee5 on test/pgl3-c8-native-leader, with current coverage
+and read-only helper inspection verified. Preparing scoped SDP commit and branch
+pushes; no merge/release or broader PG acceptance.

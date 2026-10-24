@@ -1,0 +1,32 @@
+[
+  {
+    "name": "affected-race",
+    "command": [
+      "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+      "-C",
+      "SDPTool",
+      "test",
+      "-race",
+      "-count=1",
+      "./governancecontroller",
+      "./governancehost",
+      "./cmd/sdp-controller"
+    ],
+    "exitCode": 0,
+    "seconds": 56.18
+  },
+  {
+    "name": "affected-vet",
+    "command": [
+      "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+      "-C",
+      "SDPTool",
+      "vet",
+      "./governancecontroller",
+      "./governancehost",
+      "./cmd/sdp-controller"
+    ],
+    "exitCode": 0,
+    "seconds": 0.18
+  }
+]

@@ -322,3 +322,35 @@ summary of current attempts, the recorded answer and its dispatch, code paths an
 the independently checked result. `--json` exposes the same current run and inbox.
 The local owner-lab `./continuation` selects the verified C4 preview and starts no
 agent. The original `./attention` preview remains separate.
+
+## Native leader recovery — PGL3-C8
+
+The owner-authorized `/home/warloc/git/pg_lab` test branch retains the original
+normalization pilot and adds a bounded FormatLabel assignment. Operational state
+and binaries are separate in `/home/warloc/.cache/sdp-workstation/PGL3-C8`.
+The canonical result is [Evidence-PGL3-C8.md](../../../SDP/05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C8.md).
+Use the lab's `./pg status`, `./pg leader` and `./pg reports` for read-only inspection.
+The fixture's coverage records stay pinned to preserve inspection/recovery; they
+are test records, not a declaration that production work was accepted.
+
+`native_host_proxy.py` forwards actual Codex traffic without changing model content.
+It records only allowlisted method/identity/size/tool-name metadata. Set
+`PG_LAB_PROTOCOL_LOG` to a private log path. It disables Apps, remote plugins and
+native delegation for that process, retaining the existing managed-account setup.
+`PG_LAB_CODEX` may select the actual executable. It supports two explicit fault modes:
+
+- `PG_LAB_FAULT_MODE=terminal-read`: withhold the first completed thread/read response
+  and close transport, leaving a mapped running dispatch for exact recovery.
+- `PG_LAB_FAULT_MODE=turn-start`: withhold the turn/start response, wait for that real
+  turn's completion notification, then close transport. The core remains sending
+  with no turn ID; recovery must find the unique original input in history.
+
+Both require `PG_LAB_FAULT_MARKER` pointing to a nonexistent private marker. A marker
+prevents repeated injection. Restart the same `leader run` against the same store,
+coordinator, host version and MCP path with the fault option omitted. Do not alter
+state, recreate runs or resend messages to manufacture success. Completed history is
+used to avoid leaving a model task running during the deliberate disconnect. These
+cases prove process recovery of completed native work, not attachment to a model
+still executing after its host process dies. No authentication or raw reasoning/tool
+payloads are retained by the proxy. It is test infrastructure, not a replacement PG
+controller or an independently trusted reviewer.

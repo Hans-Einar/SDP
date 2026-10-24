@@ -1,0 +1,56 @@
+[
+  {
+    "isolated": false,
+    "method": "initialize",
+    "bytes": 201,
+    "error": null
+  },
+  {
+    "isolated": false,
+    "method": "thread/start",
+    "bytes": 1279,
+    "error": null
+  },
+  {
+    "isolated": false,
+    "method": "mcpServerStatus/list",
+    "bytes": 1163770,
+    "error": null,
+    "servers": [
+      {
+        "name": "codex_apps",
+        "tools": 307
+      },
+      {
+        "name": "sdp_governance",
+        "tools": 2
+      }
+    ],
+    "nextCursor": null
+  },
+  {
+    "isolated": true,
+    "method": "initialize",
+    "bytes": 201,
+    "error": null
+  },
+  {
+    "isolated": true,
+    "method": "thread/start",
+    "bytes": 1279,
+    "error": null
+  },
+  {
+    "isolated": true,
+    "method": "mcpServerStatus/list",
+    "bytes": 51041,
+    "error": null,
+    "servers": [
+      {
+        "name": "sdp_governance",
+        "tools": 2
+      }
+    ],
+    "nextCursor": null
+  }
+]

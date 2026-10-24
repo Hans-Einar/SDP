@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /home/warloc/.local/bin/codex --disable apps --disable multi_agent --disable remote_plugin "$@"

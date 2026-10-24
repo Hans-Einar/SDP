@@ -1,0 +1,1 @@
+Synthetic test-owner message L3 for native uncertain-send recovery. Read coordination_read and return L3 plus the FormatLabel run ID and its current report acknowledgement/verification state. Do not acknowledge again, approve, edit, launch or publish. Return a short status.

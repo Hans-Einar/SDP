@@ -1,0 +1,62 @@
+{"direction": "request", "method": "initialize"}
+{"direction": "response", "method": "initialize", "bytes": 192}
+{"direction": "request", "method": "account/read"}
+{"direction": "response", "method": "account/read", "bytes": 292}
+{"direction": "request", "method": "skills/list"}
+{"direction": "response", "method": "skills/list", "bytes": 10199}
+{"direction": "request", "method": "thread/start", "sandbox": "read-only", "approvalPolicy": "never"}
+{"direction": "response", "method": "thread/start", "bytes": 1388, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "idle"}}, "turns": [], "model": "gpt-6-astra", "reasoningEffort": "high"}
+{"direction": "request", "method": "account/read"}
+{"direction": "response", "method": "account/read", "bytes": 292}
+{"direction": "request", "method": "mcpServerStatus/list", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "mcpServerStatus/list", "bytes": 51041, "servers": [{"name": "sdp_governance", "tools": ["coordination_read", "report_acknowledge"]}], "nextCursor": null}
+{"direction": "request", "method": "turn/start", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "clientUserMessageId": "bd32129b-b470-434d-ad37-44fcda1ea184"}
+{"direction": "response", "method": "turn/start", "bytes": 249, "turn": {"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress"}}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 8274, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 8274, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 8275, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 8601, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 8601, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 26679, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 26679, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 36532, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 36532, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 36532, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 36640, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 37135, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 37135, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 37135, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 37135, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 37135, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 37135, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 37135, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 47539, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 47539, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 47539, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 47539, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 47539, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "active", "activeFlags": []}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "inProgress", "itemsView": "full"}]}
+{"direction": "request", "method": "thread/read", "threadId": "01a16d19-6db9-7703-84e7-d6ff50f28d1f"}
+{"direction": "response", "method": "thread/read", "bytes": 48127, "thread": {"id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "idle"}}, "turns": [{"id": "01a16d19-71af-7fc3-b189-cc26ba2df76b", "status": "completed", "itemsView": "full"}]}

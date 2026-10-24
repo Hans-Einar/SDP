@@ -9,7 +9,7 @@
 | created | 2026-10-09T12:08:50.581137+00:00 |
 | source | Owner Session0011 T004 role definition and T005 KanBan handoff request |
 | Systems | SDPTOOL |
-| next_review | Native leader/worker workflow after PGL3-C7 protocol delivery; retained SAD/scope, capacity/recovery, review and publication gates |
+| next_review | After C8 native bounded workflow: two-Master/active-host recovery, SAD/scope, capacity/compaction, review and publication gates |
 | PlanId | PLAN-SDP-0018 |
 | tags | project-leader, steering, SAD, master, MCP, app-server, coordination |
 
@@ -233,3 +233,18 @@ CardState remains in-progress: native leader/worker workflow, SAD/scope closure,
 capacity/compaction, independent review and canonical publication remain. No native
 model or subagent launch in this increment, and no full PG acceptance. SDL-only,
 Blueprint pause and Ponsse deferral remain. EVT-KB-SDP-000402 records this review.
+
+
+T034 native trial findings: inherited Apps inventory exceeds the bounded host frame,
+and an unsubmitted bound thread is not loaded after controller restart. The test
+uses process-local tool isolation; correct unsent-bound restart by safe supersession
+under C7, preserving input and the no-resend guard for sending/running states.
+Native evidence and final disposition follow in PGL3-C8.
+
+
+2026-10-24, T034 / EVT-KB-SDP-000403: [PGL3-C8 native evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C8.md)
+passes in owner-authorized pg_lab: three leader turns, one worker, owner enqueue,
+report receipt and two exact recovery cases. Corrected safely unsent bound-thread
+restart; affected race/vet and 11 native schema checks pass. CardState remains
+in-progress for retained parallel/active-host, SAD/scope, capacity/review/publication
+gates. No owner acceptance, independent review, merge/release or Ponsse work.

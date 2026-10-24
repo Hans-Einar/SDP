@@ -655,3 +655,19 @@ visible answers at most 64 KiB. Fit messages in original order before notices.
 Normalize only notice fingerprints; retain actionable current revisions in payloads.
 No compaction/reset path or sustained-hours readiness is implied. See the
 [controller contract](../../../../SDPTool/governancecontroller/README.md#serialized-project-leader-turns--pgl3-c7).
+
+### C8 native refinement — unsent thread lifetime
+
+An owned native host does not necessarily retain an unsubmitted thread across
+process restart. C7's recorded-host fixture did not exercise that lifetime. A new
+controller instance therefore supersedes a bound thread it did not create locally;
+the durable send claim is absent, so pending input can safely select a fresh thread.
+Opening uncertainty still refuses, while sending/running always recover exactly in
+the original mapping. This implements the existing safe-unsent-replacement boundary
+without adding reset authority or widening the store profile.
+
+The lab uses process-local Codex Apps/remote-plugin/multi-agent restrictions. The
+native default Apps catalogue exceeded the existing 1 MiB frame limit and exposed
+an extra server; the exclusive MCP guard and bounded transport remain intact.
+A restricted launch supplied exactly the two coordinator tools. No global config
+was edited and no native test agent was granted delegation.

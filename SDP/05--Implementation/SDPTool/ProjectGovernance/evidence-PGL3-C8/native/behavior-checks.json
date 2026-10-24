@@ -1,0 +1,27 @@
+[
+  {
+    "name": "external",
+    "command": [
+      "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+      "run",
+      "."
+    ],
+    "cwd": "/home/warloc/.cache/sdp-workstation/PGL3-C8/external-verification",
+    "exitCode": 0,
+    "stdout": "PASS: five external behavior cases\n",
+    "stderr": ""
+  },
+  {
+    "name": "project",
+    "command": [
+      "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+      "test",
+      "-count=1",
+      "./..."
+    ],
+    "cwd": "/home/warloc/git/pg_lab",
+    "exitCode": 0,
+    "stdout": "ok  \tpgi3pilot\t0.001s\n?   \tpgi3pilot/cmd/label\t[no test files]\n",
+    "stderr": ""
+  }
+]

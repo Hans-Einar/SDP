@@ -1,0 +1,23 @@
+{
+  "fault": "terminal-read-response-withheld",
+  "observation": {
+    "direction": "response",
+    "method": "thread/read",
+    "bytes": 48127,
+    "thread": {
+      "id": "01a16d19-6db9-7703-84e7-d6ff50f28d1f",
+      "cwd": "/home/warloc/git/pg_lab",
+      "cliVersion": "0.164.0",
+      "status": {
+        "type": "idle"
+      }
+    },
+    "turns": [
+      {
+        "id": "01a16d19-71af-7fc3-b189-cc26ba2df76b",
+        "status": "completed",
+        "itemsView": "full"
+      }
+    ]
+  }
+}

@@ -25,6 +25,7 @@ type LeaderController struct {
 	Host                                   LeaderHost
 	Root, StateDir, MCPBinary, Coordinator string
 	SkillPaths                             []string
+	localThreads                           map[string]bool
 }
 
 // LeaderMessage enqueues trusted local input independently of the leader lease.
@@ -145,9 +146,23 @@ func (c *LeaderController) Step(ctx context.Context) (governance.LeaderView, err
 			return view, fmt.Errorf("reconciliation_required: created leader thread mapping unavailable")
 		}
 		e = write(governance.LeaderRequest{Action: "bind", ThreadID: thread.ID})
+		if e == nil {
+			if c.localThreads == nil {
+				c.localThreads = map[string]bool{}
+			}
+			c.localThreads[thread.ID] = true
+		}
 	case "opening":
 		return view, fmt.Errorf("reconciliation_required: leader thread creation response unresolved; no replacement")
 	case "bound":
+		// A native unsubmitted thread need not survive the owned host process.
+		// Its durable send claim is absent, so preserve input and reselect safely.
+		if !c.localThreads[d.ThreadID] {
+			if e = write(governance.LeaderRequest{Action: "supersede"}); e != nil {
+				return view, e
+			}
+			return c.Service.LeaderRead()
+		}
 		mode, err := c.Host.AccountMode(ctx)
 		if err != nil {
 			return view, err

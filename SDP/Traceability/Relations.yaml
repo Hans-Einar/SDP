@@ -240,6 +240,13 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-PGL3-C8:
+    status: passed-bounded-native-leader-workflow
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C8.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-052
+    design: SDPTOOL-DES-0001
+    note: Actual 0.164.0 gpt-6-astra/high leader and worker, queued input, report receipt and two exact recoveries; independent review and whole-PG gates remain.
   SDPTOOL-VER-PGL3-C7:
     status: passed-bounded-leader-protocol-workflow
     path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C7.md

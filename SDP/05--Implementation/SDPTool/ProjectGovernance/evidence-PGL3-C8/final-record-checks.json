@@ -1,0 +1,31 @@
+{
+  "sourceFilesMatched": 3,
+  "artifactsMatched": 46,
+  "relativeLinks": 200,
+  "ledgerPrefixes": {
+    "SDP/ProjectManagement/Ledger.ndjson": {
+      "bytes": 439972,
+      "sha256": "37ba4f5cc516683b6712a66887ddb75c3219fd1ad993632b226e0ece671c20d9",
+      "preserved": true
+    },
+    "SDP/Traceability/Ledger.ndjson": {
+      "bytes": 124271,
+      "sha256": "608db86d4bc777a7a04a46778da00d327f8ee108857e52aea45813207e6b854f",
+      "preserved": true
+    }
+  },
+  "checks": {
+    "management": {
+      "exitCode": 0,
+      "output": "PASS: 73 cards, 47 management records, 4 lineage operations, 660 events; schema/history/metadata/placement/grouping\n"
+    },
+    "toolkit": {
+      "exitCode": 0,
+      "output": "SDP Toolkit validation passed\n"
+    },
+    "whitespace": {
+      "exitCode": 0,
+      "output": ""
+    }
+  }
+}

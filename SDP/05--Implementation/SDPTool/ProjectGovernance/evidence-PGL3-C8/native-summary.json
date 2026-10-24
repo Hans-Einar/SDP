@@ -1,0 +1,45 @@
+{
+  "observedAt": "2026-10-24T08:52:19.135255+00:00",
+  "status": "passed-bounded-native-workflow",
+  "host": "0.164.0",
+  "model": "gpt-6-astra",
+  "reasoningEffort": "high",
+  "labRoot": "/home/warloc/git/pg_lab",
+  "labBaseline": "f66e65ec522ed19c8dc31c4216bf28697cada2f0",
+  "productBaseline": "df5728aff607d1c1a5b5ec964f95a4d2f57f0e7e",
+  "sourceFiles": {
+    "SDPTool/governancecontroller/leader.go": "68cba292bd46dcd0a9136d2ed8d28085355b85c0b4b7c963d5ad33ec218e4800",
+    "SDPTool/governancecontroller/leader_test.go": "852154b07086fbacbf65be3bc6c04020ac662a79800ae31d5d27c62592d622e9",
+    "SDPTool/labs/project-governance/native_host_proxy.py": "ae27105d3baeca1edbfc9b3e26f420c2d8506a503f8a81a3e166819bf6106e9b"
+  },
+  "binaries": {
+    "sdp-mcp": "fbb480724c3952f52ae00e3501115ed38364d519acf295ca6a77cb838b0ffaf8",
+    "sdptool": "058430a2f37691a907315b1af5e098bbf8e12bd4e375183617dacc6c73f3b2f6",
+    "sdp-controller": "e56ebf7da78a7c5d2dee117560dbbc7c18fec75da2347ac1a454e56a3fa98324"
+  },
+  "nativeCompletedLeaderTurns": 3,
+  "nativeCompletedWorkerTurns": 1,
+  "supersededUnsentThreads": 1,
+  "actualOwnerAcceptance": false,
+  "independentReview": false,
+  "workerRun": "be00db9f-4e12-4d8e-8728-9fa367450065",
+  "workerState": "verifying",
+  "reportAcknowledgements": 1,
+  "protectedFiles": 38,
+  "workerFiles": {
+    "format.go": "863625be1fe85c0208b5b45a1e4a00c3c06d16bf3b28d9059caf65848c53cbd7",
+    "format_test.go": "e1ae8342fe73b9d48b0f04ebd1fed011f5667510ca30f858e5cbb2b2fb18c980"
+  },
+  "faultRecoveryRequests": [
+    "initialize",
+    "thread/read"
+  ],
+  "globalHostConfigurationChanged": false,
+  "limitations": [
+    "bounded single-worker/leader workflow, not sustained-hours capacity",
+    "faults injected only after actual model completion; active-turn host-loss recovery is not proved",
+    "full SAD/scope, independent review and canonical publication gates remain"
+  ],
+  "labResultCommit": "73ccee5c876eccefd27f8c1f0d07705cf1b9f725",
+  "labBranch": "test/pgl3-c8-native-leader"
+}
