@@ -1,0 +1,119 @@
+language design-core version 0.6.
+functionality AdoptSessionBinding.
+functionality AdvanceWorkflowStage.
+functionality ApplyCheckedRecordEffects.
+interface BlueprintEvidenceLibrary.
+unit CanonicalEffectPublisher.
+functionality CheckModelRelease.
+functionality CheckWholeCardDisposition.
+functionality DispatchAfterCommittedEffects.
+usecase ExecuteCardDerivedSession.
+capability GovernedSessionLifecycle.
+unit HostActionGateway.
+unit KanBanTransitionPlanner.
+unit ModelGateAdapter.
+interface ModelGovernanceLibrary.
+unit ObservationProjector.
+functionality PersistSessionInstance.
+functionality PlanCardLifecycleEffects.
+functionality ProjectStageAndObservedActivity.
+functionality ReconcileCoverage.
+functionality ReconcileExistingAttempt.
+functionality RecoverPendingEffects.
+functionality RequireDesignWork.
+usecase ResumeSessionWithoutLeader.
+functionality SelectCoveredStep.
+unit SessionCoordinator.
+feature SessionExecution.
+activity SessionWorkflowDelivery.
+interface SessionWorkflowService.
+interface TrustedHostController.
+AdoptSessionBinding allocated-to SdpToolHost in mode RoutineHandling.
+AdoptSessionBinding contributes-to SessionExecution.
+AdoptSessionBinding realizes GovernedSessionLifecycle.
+AdvanceWorkflowStage allocated-to SdpToolHost in mode RoutineHandling.
+AdvanceWorkflowStage contributes-to SessionExecution.
+AdvanceWorkflowStage realizes GovernedSessionLifecycle.
+ApplyCheckedRecordEffects allocated-to SdpToolHost in mode RoutineHandling.
+ApplyCheckedRecordEffects contributes-to SessionExecution.
+ApplyCheckedRecordEffects realizes GovernedSessionLifecycle.
+CanonicalEffectPublisher consumes CanonicalProjectHistoryLibrary.
+CanonicalEffectPublisher owns ApplyCheckedRecordEffects.
+CanonicalEffectPublisher owns RecoverPendingEffects.
+CheckModelRelease allocated-to SdpToolHost in mode RoutineHandling.
+CheckModelRelease contributes-to SessionExecution.
+CheckModelRelease realizes GovernedSessionLifecycle.
+CheckWholeCardDisposition allocated-to SdpToolHost in mode RoutineHandling.
+CheckWholeCardDisposition contributes-to SessionExecution.
+CheckWholeCardDisposition realizes GovernedSessionLifecycle.
+DispatchAfterCommittedEffects allocated-to SdpToolHost in mode RoutineHandling.
+DispatchAfterCommittedEffects contributes-to SessionExecution.
+DispatchAfterCommittedEffects realizes GovernedSessionLifecycle.
+GovernedSessionLifecycle requires CanonicalProjectHistoryLibrary in mode RoutineHandling.
+GovernedSessionLifecycle requires TrustedHostController in mode RoutineHandling.
+HostActionGateway consumes TrustedHostController.
+HostActionGateway owns DispatchAfterCommittedEffects.
+HostActionGateway owns ReconcileExistingAttempt.
+KanBanTransitionPlanner owns CheckWholeCardDisposition.
+KanBanTransitionPlanner owns PlanCardLifecycleEffects.
+ModelGateAdapter consumes BlueprintEvidenceLibrary.
+ModelGateAdapter consumes ModelGovernanceLibrary.
+ModelGateAdapter owns CheckModelRelease.
+ModelGateAdapter owns RequireDesignWork.
+ObservationProjector owns ProjectStageAndObservedActivity.
+PersistSessionInstance allocated-to SdpToolHost in mode RoutineHandling.
+PersistSessionInstance contributes-to SessionExecution.
+PersistSessionInstance realizes GovernedSessionLifecycle.
+PlanCardLifecycleEffects allocated-to SdpToolHost in mode RoutineHandling.
+PlanCardLifecycleEffects contributes-to SessionExecution.
+PlanCardLifecycleEffects realizes GovernedSessionLifecycle.
+ProjectOwner pursues ExecuteCardDerivedSession.
+ProjectOwner pursues ResumeSessionWithoutLeader.
+ProjectStageAndObservedActivity allocated-to SdpToolHost in mode RoutineHandling.
+ProjectStageAndObservedActivity contributes-to SessionExecution.
+ProjectStageAndObservedActivity realizes GovernedSessionLifecycle.
+ReconcileCoverage allocated-to SdpToolHost in mode RoutineHandling.
+ReconcileCoverage contributes-to SessionExecution.
+ReconcileCoverage realizes GovernedSessionLifecycle.
+ReconcileExistingAttempt allocated-to SdpToolHost in mode RoutineHandling.
+ReconcileExistingAttempt contributes-to SessionExecution.
+ReconcileExistingAttempt realizes GovernedSessionLifecycle.
+RecoverPendingEffects allocated-to SdpToolHost in mode RoutineHandling.
+RecoverPendingEffects contributes-to SessionExecution.
+RecoverPendingEffects realizes GovernedSessionLifecycle.
+RequireDesignWork allocated-to SdpToolHost in mode RoutineHandling.
+RequireDesignWork contributes-to SessionExecution.
+RequireDesignWork realizes GovernedSessionLifecycle.
+RunRepository owns PersistSessionInstance.
+SdpToolHost contains CanonicalEffectPublisher.
+SdpToolHost contains HostActionGateway.
+SdpToolHost contains KanBanTransitionPlanner.
+SdpToolHost contains ModelGateAdapter.
+SdpToolHost contains ObservationProjector.
+SdpToolHost contains SessionCoordinator.
+SdpToolHost provides GovernedSessionLifecycle.
+SelectCoveredStep allocated-to SdpToolHost in mode RoutineHandling.
+SelectCoveredStep contributes-to SessionExecution.
+SelectCoveredStep realizes GovernedSessionLifecycle.
+SessionCoordinator owns AdoptSessionBinding.
+SessionCoordinator owns AdvanceWorkflowStage.
+SessionCoordinator owns ReconcileCoverage.
+SessionCoordinator owns SelectCoveredStep.
+SessionExecution supports ExecuteCardDerivedSession.
+SessionExecution supports ResumeSessionWithoutLeader.
+SessionWorkflowDelivery addresses AdoptSessionBinding.
+SessionWorkflowDelivery addresses AdvanceWorkflowStage.
+SessionWorkflowDelivery addresses ApplyCheckedRecordEffects.
+SessionWorkflowDelivery addresses CheckModelRelease.
+SessionWorkflowDelivery addresses CheckWholeCardDisposition.
+SessionWorkflowDelivery addresses DispatchAfterCommittedEffects.
+SessionWorkflowDelivery addresses PersistSessionInstance.
+SessionWorkflowDelivery addresses PlanCardLifecycleEffects.
+SessionWorkflowDelivery addresses ProjectStageAndObservedActivity.
+SessionWorkflowDelivery addresses ReconcileCoverage.
+SessionWorkflowDelivery addresses ReconcileExistingAttempt.
+SessionWorkflowDelivery addresses RecoverPendingEffects.
+SessionWorkflowDelivery addresses RequireDesignWork.
+SessionWorkflowDelivery addresses SelectCoveredStep.
+SessionWorkflowDelivery delivers SessionExecution.
+SessionWorkflowDelivery has implementation-status = planned.

@@ -1,0 +1,16 @@
+author: warloc
+artifactName: SessionLifecycle
+id: 29973936-d34d-4751-b15a-66c2d0f64a2b:00002
+parents:
+    - 29973936-d34d-4751-b15a-66c2d0f64a2b:00001
+kind: commit
+message: 'T041: model Session workflow ownership, checked effects and recovery boundaries'
+recordedAt: "2026-10-24T18:32:24.643663595Z"
+sourceDigest: d647838cf92b693ed23bb15c04e4f37c24e3bdc7efb00caac7f0b5a75260fd61
+inventory:
+    Contracts.design: b6f367149d229c7a09d3bae67677b77db7a79a3dbc230794bae254b8f6e36072
+    Foundation.design: b705dc3815ba8075001dbf2e4dbb46152b74abe1c6c8d85d89f968edddbd9edc
+    System.design: 835abf7be06461e0dbcb2ad73c9250c9b5af2ca1924ec7e4ac0d6caac1076871
+    Workflow.design: cca9cf67c5a6e03fcacaaaa9036c5268ed6f03b41ef082f15cf4548e961b8d38
+deleted: []
+payload: .commits/#00002

@@ -40,6 +40,21 @@ These are acceptance specifications, not passing tests or delivered guards.
 | PG-A23 Model release before closeout | KB052; owner T039; PG-A16 | Finish implementation with unreleased WORK: implementation progress may publish but whole-assignment completion refuses. Validate merged WORK, freeze exact CANDIDATE, obtain required actual acceptance and promote RELEASE with code evidence/predecessor. Changed candidate, competing accepted head, pending conflicts or model-only evidence cannot satisfy implementation completion. Interrupted promotion/closeout recovers without duplicate release/events; explicit owner transfer retains successor and incomplete scope. |
 | PG-A24 Mandatory skill and observable checks | KB052; owner T039 | Start/resume Project Leader with missing/unreadable/incompatible required skill: dependent dispatch refuses. Native evidence identifies the supplied skill version, host acknowledgment where available and actual admission/supervision/closeout decisions. A discoverable file or claimed skill use alone cannot pass the case; skill instructions alone do not prove runtime guards. |
 
+## T041 Session execution and KanBan integration cases
+
+Owner T041 selects concretization of the T040 recommendation.
+[Session execution contract](Session-Execution.md) defines the target behavior.
+These cases extend the integrated acceptance boundary; none is a passed runtime test.
+
+| Case | Governing source | Trigger and required observable result |
+| --- | --- | --- |
+| PG-A25 Complete card lifecycle | T041; PG-A19/20/23 | In pg_lab select a card-derived Session/plan, execute design and implementation, fail/rework/review, release the model and dispose work. Card metadata/path/worklog/index/links/history agree after each committed transition. A phase report or contribution never closes a broader card. A no-design task follows its explicit shorter path. |
+| PG-A26 Common entrypoints | T041; PG-A10/13/24 | Owner CLI resumes an existing instance with Project Leader absent, then leader reconnects. Both see the same revision, holds, receipts and next actions. Old/stale requests refuse; worker or leader cannot impersonate owner acceptance. No duplicate Session, Master or host turn; unsupported operations remain explicit. |
+| PG-A27 Durable effect boundaries | T041; PG-A08/09/11/23 | Interrupt after intent, between card destination/source/history updates, after canonical commit before runtime receipt, during model promotion and around uncertain host launch. Reconcile exact pre/postimages and mapped effects; preserve external edits/unrelated files, original history and pending work. No dependent launch before record effects commit, and no duplicate release/events. |
+| PG-A28 Scope-aware coverage | T041; PG-A05/07/22 | Own committed progress and unrelated valid ledger append preserve authorized continuation after checked refresh. Selected task/plan/model/authority edits, changed membership, semantic overlap or shared-writer collision block only affected work until explicit replan/rebind. Corrupt history and manually changed selected prose cannot silently acquire new authority. |
+| PG-A29 Pinned workflow and adoption | T041; PG-A10/15/18 | New binding validates IDs/dependencies/coverage and rejects cycles, unknown fields and unsupported versions. Existing manual Sessions and legacy runs are unchanged. Resume pins original definition/digest; upgrade/migration is explicit and preserves receipts. A successor after terminal disposition cannot reuse old acceptance for changed work. |
+| PG-A30 Truthful runtime and card views | T041; PG-A12/14/16 | Observe stage, card state, host/tool evidence and pending effects independently. Closing watch does not stop work. Interrupted/unknown host does not automatically pause/cancel a card; automated review does not invent owner gate-review; full completion waits for all selected obligations. Cooperating readers expose pending transactions; uninstrumented activity stays unknown. |
+
 ## Evidence ladder
 
 1. Pure-core state/fixture tests establish guards, persistence and replay only.

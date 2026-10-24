@@ -1,0 +1,49 @@
+language design-core version 0.6.
+capability BoundedGovernedWork.
+feature BoundedRunControl.
+interface CanonicalProjectHistoryLibrary.
+functionality CheckBoundedRunTransition.
+unit CheckedResultPublisher.
+unit ContextFacade.
+activity ExistingRunFoundation.
+database OperationalRunStore.
+functionality PersistRunReceipt.
+actor ProjectOwner.
+functionality PublishBoundedResult.
+usecase RecoverBoundedWork.
+functionality ResolveExistingWork.
+unit RoutineCoordinator.
+mode RoutineHandling.
+unit RunRepository.
+container SdpToolHost.
+BoundedRunControl supports RecoverBoundedWork.
+CheckBoundedRunTransition allocated-to SdpToolHost in mode RoutineHandling.
+CheckBoundedRunTransition contributes-to BoundedRunControl.
+CheckBoundedRunTransition realizes BoundedGovernedWork.
+CheckedResultPublisher consumes CanonicalProjectHistoryLibrary.
+CheckedResultPublisher owns PublishBoundedResult.
+ContextFacade owns ResolveExistingWork.
+ExistingRunFoundation addresses CheckBoundedRunTransition.
+ExistingRunFoundation addresses PersistRunReceipt.
+ExistingRunFoundation addresses PublishBoundedResult.
+ExistingRunFoundation addresses ResolveExistingWork.
+ExistingRunFoundation delivers BoundedRunControl.
+ExistingRunFoundation has implementation-status = implemented.
+PersistRunReceipt allocated-to SdpToolHost in mode RoutineHandling.
+PersistRunReceipt contributes-to BoundedRunControl.
+PersistRunReceipt realizes BoundedGovernedWork.
+ProjectOwner pursues RecoverBoundedWork.
+PublishBoundedResult allocated-to SdpToolHost in mode RoutineHandling.
+PublishBoundedResult contributes-to BoundedRunControl.
+PublishBoundedResult realizes BoundedGovernedWork.
+ResolveExistingWork allocated-to SdpToolHost in mode RoutineHandling.
+ResolveExistingWork contributes-to BoundedRunControl.
+ResolveExistingWork realizes BoundedGovernedWork.
+RoutineCoordinator owns CheckBoundedRunTransition.
+RunRepository owns OperationalRunStore.
+RunRepository owns PersistRunReceipt.
+SdpToolHost contains CheckedResultPublisher.
+SdpToolHost contains ContextFacade.
+SdpToolHost contains RoutineCoordinator.
+SdpToolHost contains RunRepository.
+SdpToolHost provides BoundedGovernedWork.

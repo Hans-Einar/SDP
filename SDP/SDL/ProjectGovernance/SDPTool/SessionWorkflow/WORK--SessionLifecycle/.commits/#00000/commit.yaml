@@ -1,0 +1,11 @@
+author: warloc
+artifactName: SessionLifecycle
+id: 29973936-d34d-4751-b15a-66c2d0f64a2b:00000
+parents: []
+kind: baseline
+message: WORK baseline
+recordedAt: "2026-10-24T18:27:40.786513437Z"
+sourceDigest: 4585f3ebe7e43550a374592cb06f5148d1d09a27601439b90a8daf263120561c
+inventory: {}
+deleted: []
+payload: .commits/#00000

@@ -63,7 +63,7 @@ do not turn a self-check into an independent review by changing its label.
 | PGI3-M1 Owner workflow | Minimal terminal client recovers Session, submits/steers work, presents route/status and launches the authorized fresh Master with bounded context; applicable child/review mapping is observed | PG-A02/04/05/11/12/13/15; managed account mode and one useful bounded task | in-progress; C6 explicit skill input/correlation verified; native child/review mapping remains unverified |
 | PGI3-U1 Owner development trial | Owner can inspect current work and exercise the candidate before further feature expansion | Identified local engine, runnable trial, actual owner feedback and expectation/design reconciliation | owner reports trial performed; detailed acceptance unrecorded; KB052 now selected |
 | PGI4-M1 Evidence and reconciliation | Candidate-bound evidence, review/rework and checked publication produce one durable Session outcome and correct card/plan disposition | PG-A06/07/09/13/16/17; crash and concurrent-change fixtures | in-progress; C1 evidence/rework, C2 observed review and C3 checked result publication/leader notices delivered; final run/lifecycle disposition remains |
-| PGI5-M1 Integrated verification | The same isolated task survives observer close, interruption/recovery and scope correction with unrelated work preserved | All PG-A01–24 at their stated level; independent review and exact-candidate evidence | planned |
+| PGI5-M1 Integrated verification | The same isolated task survives observer close, interruption/recovery and scope correction with unrelated work preserved | All PG-A01–30 at their stated level; independent review and exact-candidate evidence | planned |
 
 Each milestone is runnable at its stated boundary; no phase claims the whole client
 is delivered because a library or mock passes. Core work can proceed with protocol
@@ -876,7 +876,7 @@ workflow remain incomplete. Do not report a percentage from the count of increme
 | PGF4 Usable owner conversation and overview | PGL4; scenarios 4/5 | PGF2/3 | existing inspection/console; integrated workflow required |
 | PGF5 Recovery across the complete workflow | PGI3/PGI5/PGL5; PG-A08/09/11/12/13/14 | PGF1–4 | bounded cases delivered; active-host/full-flow gaps remain |
 | PGF6 Capacity and host compatibility | PGL3/PGL5; PG-A15/18 | PGF5 | limits explicit; sustained operation/rollover not proven |
-| PGF7 Native integrated acceptance in pg_lab | PGI5/PGL5; PG-A01–24 and handoff 1–5 | PGF1–6 | not verified as one final candidate |
+| PGF7 Native integrated acceptance in pg_lab | PGI5/PGL5; PG-A01–30 and handoff 1–5 | PGF1–6 | not verified as one final candidate |
 | PGF8 Independent product review and owner trial | PGI5/PGL4/PGL5 | PGF7 | PG implementation review and final owner workflow feedback open |
 | PGF9 Scope disposition and development closeout | Session S3/S4/S6; handoff 6 | PGF8, explicit remote-Steering disposition | planned; no merge/release authority inferred |
 
@@ -1001,7 +1001,7 @@ Include the T039 negative paths: unrelated suggestion during active work, missin
 Session/plan chain, small design-changing fix without WORK, justified Blueprint
 omission, model/code/shared-plan overlap and code done with model release pending.
 Verify real Project Leader skill use and behavior, not only an injected file.
-Use one final acceptance matrix for PG-A01–24 and handoff scenarios 1–5, with case,
+Use one final acceptance matrix for PG-A01–30 and handoff scenarios 1–5, with case,
 implementation/evidence source, candidate and limitations. Reuse valid lower-level
 evidence; rerun scenarios whose affected candidate or contract changed.
 
@@ -1077,3 +1077,35 @@ PGF8 reviews the mandatory gates; PGF9 cannot close design-changing scope with a
 forgotten model release. Model release is part of this selected workflow and is
 separate from this plan's excluded software publication/installation work. The
 existing ModelGovernance acceptance/merge contracts remain authoritative.
+
+
+### T041 — Concrete Session execution delivery order
+
+Owner selects the T040 direction and its concretization. The
+[Session execution contract](../../../04--Design/SDPTool/ProjectGovernance/Session-Execution.md),
+[SDL WORK/evidence](../../../04--Design/SDPTool/ProjectGovernance/Evidence-T041.md)
+and PG-A25–30 now govern the bounded extension. Keep this plan, branch and milestone
+policy. This turn delivers design/model preparation, not a runtime milestone.
+
+| Increment | Checkpoint mapping | Runnable outcome and exit evidence | Dependency/status |
+| --- | --- | --- | --- |
+| PGF1-C1 Session binding and durable instance | PGF1 foundation; PGF2 admission | Adopt a covered manual Session explicitly, read its selected steps/stages/holds, recover the same instance and reject stale/unsupported/cyclic bindings. Pin routine version and authority; leave legacy runs unchanged. New incomplete paths refuse action rather than simulate delivery | next; selected design prepared, runtime unimplemented |
+| PGF1-C2 Checked lifecycle effects and disposition | PGF1; PG-A25/27/28 | Use existing publication machinery for select/start/progress and eligible no-design closeout, including real card moves, metadata/history/links and partial-contribution handling. Reconcile own effects/unrelated ledger additions without weakening coverage. Crash matrix and shared writer/ID contention pass | C1; implementation required |
+| PGF2-C1 Common owner/leader Session operations | PGF2/4; PG-A26/29/30 | CLI and explicitly privileged leader adapter use the same core/instance/receipts. Controller dispatch follows committed record effects; leader-free owner resume and later leader reconnect neither duplicate work nor bypass authority | C1/C2; implementation/native evidence required |
+| PGF3-C1 Design and model-release workflow | PGF3; PG-A21/22/23/25 | SDL WORK, required Blueprint, design handoff, code verification/rework and exact accepted model release participate in Session gates. Combine compatible model WORKs, refresh affected evidence and refuse unresolved model release at closure | common Session operations; implementation/native evidence required |
+| PGF5-C1 Full recovery across effects and attempts | PGF5; PG-A27/28/29 | Recover at each canonical/model/host boundary; preserve pending work, external edits and whole-card scope. Different routine versions and legacy profiles stay explicit | prior functional increments; evidence required |
+| PGF7-C1 Integrated Session/KanBan lab | PGF7/8; PG-A01–30 | Same final candidate completes the card-to-Session workflow with deliberate rework, interruption and CLI takeover, plus no-design and shared-card cases. Independent product review and owner trial remain separate gates | PGF5/6 and all selected functional scope |
+
+These increments make the internal sequence concrete; PGF4 usability, PGF6 capacity
+and PGF8/9 review/closeout retain their obligations. PGF1-C2 must refuse design-changing
+completion until PGF3 provides verified model disposition. Work may advance through
+supported checkpoints without claiming the entire engine delivered.
+
+Model-release obligation: WORK--SessionLifecycle in the new SessionWorkflow concern
+area is mutable TARGET, not accepted NOW. Its frozen observed baseline is only a
+source-evidence comparison. Before implementation handoff, constrain the relevant
+Blueprint changes and obtain required exact-revision review/disposition. Through
+implementation reconcile/update this same WORK, validate integrated design, freeze
+CANDIDATE and release under actual ModelGovernance acceptance with code evidence.
+No release is selected merely to finish this design turn; the obligation remains
+visible until implemented work and model disposition satisfy it.

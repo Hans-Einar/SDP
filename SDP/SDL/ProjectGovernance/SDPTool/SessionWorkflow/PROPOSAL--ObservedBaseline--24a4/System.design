@@ -1,0 +1,4 @@
+language design-core version 0.6.
+system SDPTool.
+includes "Foundation.design".
+SDPTool contains SdpToolHost.

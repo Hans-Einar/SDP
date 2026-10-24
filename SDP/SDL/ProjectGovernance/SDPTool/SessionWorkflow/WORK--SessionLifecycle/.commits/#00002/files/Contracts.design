@@ -1,0 +1,201 @@
+language design-core version 0.6.
+message ApplyRecordIntent.
+channel CanonicalEffects.
+contract CanonicalEffectsProtocol.
+contract EffectRequest.
+field EffectRequestIntent.
+field EffectRequestPostconditions.
+field EffectRequestPreimages.
+contract EffectResult.
+field EffectResultDisposition.
+field EffectResultIntent.
+unit ExternalLeaderMcp.
+unit ExternalOwnerCli.
+channel HostActions.
+contract HostActionsProtocol.
+message HostAttemptObserved.
+contract HostRequest.
+field HostRequestAssignment.
+field HostRequestDispatch.
+field HostRequestExpectedAttempt.
+contract HostResult.
+field HostResultAttempt.
+field HostResultObservedStatus.
+scenario LeaderUsesSameWorkflowBoundary.
+scenario OwnerReconcilesExistingAttempt.
+scenario OwnerRecoveryDetectsRecordConflict.
+scenario OwnerStartsAfterRecordsCommit.
+message RecordsCommitted.
+message RecordsConflicted.
+message RequestHostContinuation.
+message RequestWorkflowChange.
+message WorkflowAdvanced.
+message WorkflowBlocked.
+contract WorkflowCommand.
+field WorkflowCommandAction.
+field WorkflowCommandBasis.
+field WorkflowCommandExpectedRevision.
+field WorkflowCommandInstance.
+field WorkflowCommandOperation.
+channel WorkflowCommands.
+contract WorkflowCommandsProtocol.
+contract WorkflowResult.
+field WorkflowResultHolds.
+field WorkflowResultNextActions.
+field WorkflowResultReceipt.
+field WorkflowResultRevision.
+field WorkflowResultStage.
+ApplyRecordIntent has message-kind = request.
+ApplyRecordIntent upholds EffectRequest.
+CanonicalEffectPublisher uses CanonicalEffects as receiver of ApplyRecordIntent in mode RoutineHandling.
+CanonicalEffectPublisher uses CanonicalEffects as sender of RecordsCommitted in mode RoutineHandling.
+CanonicalEffectPublisher uses CanonicalEffects as sender of RecordsConflicted in mode RoutineHandling.
+CanonicalEffects upholds CanonicalEffectsProtocol.
+CanonicalEffectsProtocol has completeness = closed.
+CanonicalEffectsProtocol permits ApplyRecordIntent.
+CanonicalEffectsProtocol permits RecordsCommitted.
+CanonicalEffectsProtocol permits RecordsConflicted.
+EffectRequest has completeness = closed.
+EffectRequest has-field EffectRequestIntent.
+EffectRequest has-field EffectRequestPostconditions.
+EffectRequest has-field EffectRequestPreimages.
+EffectRequestIntent has presence = required.
+EffectRequestIntent has value-type = text.
+EffectRequestPostconditions has presence = required.
+EffectRequestPostconditions has value-type = text.
+EffectRequestPreimages has presence = required.
+EffectRequestPreimages has value-type = text.
+EffectResult has completeness = closed.
+EffectResult has-field EffectResultDisposition.
+EffectResult has-field EffectResultIntent.
+EffectResultDisposition has presence = required.
+EffectResultDisposition has value-type = text.
+EffectResultIntent has presence = required.
+EffectResultIntent has value-type = text.
+ExternalLeaderMcp consumes SessionWorkflowService.
+ExternalLeaderMcp uses WorkflowCommands as receiver of WorkflowAdvanced in mode RoutineHandling.
+ExternalLeaderMcp uses WorkflowCommands as receiver of WorkflowBlocked in mode RoutineHandling.
+ExternalLeaderMcp uses WorkflowCommands as sender of RequestWorkflowChange in mode RoutineHandling.
+ExternalOwnerCli consumes SessionWorkflowService.
+ExternalOwnerCli uses WorkflowCommands as receiver of WorkflowAdvanced in mode RoutineHandling.
+ExternalOwnerCli uses WorkflowCommands as receiver of WorkflowBlocked in mode RoutineHandling.
+ExternalOwnerCli uses WorkflowCommands as sender of RequestWorkflowChange in mode RoutineHandling.
+HostActionGateway uses HostActions as receiver of RequestHostContinuation in mode RoutineHandling.
+HostActionGateway uses HostActions as sender of HostAttemptObserved in mode RoutineHandling.
+HostActions upholds HostActionsProtocol.
+HostActionsProtocol has completeness = closed.
+HostActionsProtocol permits HostAttemptObserved.
+HostActionsProtocol permits RequestHostContinuation.
+HostAttemptObserved has message-kind = result.
+HostAttemptObserved replies-to RequestHostContinuation.
+HostAttemptObserved upholds HostResult.
+HostRequest has completeness = closed.
+HostRequest has-field HostRequestAssignment.
+HostRequest has-field HostRequestDispatch.
+HostRequest has-field HostRequestExpectedAttempt.
+HostRequestAssignment has presence = required.
+HostRequestAssignment has value-type = text.
+HostRequestDispatch has presence = required.
+HostRequestDispatch has value-type = text.
+HostRequestExpectedAttempt has presence = required.
+HostRequestExpectedAttempt has value-type = text.
+HostResult has completeness = closed.
+HostResult has-field HostResultAttempt.
+HostResult has-field HostResultObservedStatus.
+HostResultAttempt has presence = required.
+HostResultAttempt has value-type = text.
+HostResultObservedStatus has presence = required.
+HostResultObservedStatus has value-type = text.
+LeaderUsesSameWorkflowBoundary exercises ExecuteCardDerivedSession.
+LeaderUsesSameWorkflowBoundary has completeness = closed.
+LeaderUsesSameWorkflowBoundary illustrates SessionWorkflowDelivery.
+LeaderUsesSameWorkflowBoundary runs-in RoutineHandling.
+LeaderUsesSameWorkflowBoundary step 1 sends RequestWorkflowChange from ExternalLeaderMcp to SessionCoordinator via WorkflowCommands.
+LeaderUsesSameWorkflowBoundary step 2 sends WorkflowBlocked from SessionCoordinator to ExternalLeaderMcp via WorkflowCommands reply-to 1.
+OwnerReconcilesExistingAttempt exercises ResumeSessionWithoutLeader.
+OwnerReconcilesExistingAttempt has completeness = closed.
+OwnerReconcilesExistingAttempt illustrates SessionWorkflowDelivery.
+OwnerReconcilesExistingAttempt runs-in RoutineHandling.
+OwnerReconcilesExistingAttempt step 1 sends RequestWorkflowChange from ExternalOwnerCli to SessionCoordinator via WorkflowCommands.
+OwnerReconcilesExistingAttempt step 2 sends RequestHostContinuation from SessionCoordinator to HostActionGateway via HostActions.
+OwnerReconcilesExistingAttempt step 3 sends HostAttemptObserved from HostActionGateway to SessionCoordinator via HostActions reply-to 2.
+OwnerReconcilesExistingAttempt step 4 sends WorkflowAdvanced from SessionCoordinator to ExternalOwnerCli via WorkflowCommands reply-to 1.
+OwnerRecoveryDetectsRecordConflict exercises ResumeSessionWithoutLeader.
+OwnerRecoveryDetectsRecordConflict has completeness = closed.
+OwnerRecoveryDetectsRecordConflict illustrates SessionWorkflowDelivery.
+OwnerRecoveryDetectsRecordConflict runs-in RoutineHandling.
+OwnerRecoveryDetectsRecordConflict step 1 sends RequestWorkflowChange from ExternalOwnerCli to SessionCoordinator via WorkflowCommands.
+OwnerRecoveryDetectsRecordConflict step 2 sends ApplyRecordIntent from SessionCoordinator to CanonicalEffectPublisher via CanonicalEffects.
+OwnerRecoveryDetectsRecordConflict step 3 sends RecordsConflicted from CanonicalEffectPublisher to SessionCoordinator via CanonicalEffects reply-to 2.
+OwnerRecoveryDetectsRecordConflict step 4 sends WorkflowBlocked from SessionCoordinator to ExternalOwnerCli via WorkflowCommands reply-to 1.
+OwnerStartsAfterRecordsCommit exercises ExecuteCardDerivedSession.
+OwnerStartsAfterRecordsCommit has completeness = closed.
+OwnerStartsAfterRecordsCommit illustrates SessionWorkflowDelivery.
+OwnerStartsAfterRecordsCommit runs-in RoutineHandling.
+OwnerStartsAfterRecordsCommit step 1 sends RequestWorkflowChange from ExternalOwnerCli to SessionCoordinator via WorkflowCommands.
+OwnerStartsAfterRecordsCommit step 2 sends ApplyRecordIntent from SessionCoordinator to CanonicalEffectPublisher via CanonicalEffects.
+OwnerStartsAfterRecordsCommit step 3 sends RecordsCommitted from CanonicalEffectPublisher to SessionCoordinator via CanonicalEffects reply-to 2.
+OwnerStartsAfterRecordsCommit step 4 sends RequestHostContinuation from SessionCoordinator to HostActionGateway via HostActions.
+OwnerStartsAfterRecordsCommit step 5 sends HostAttemptObserved from HostActionGateway to SessionCoordinator via HostActions reply-to 4.
+OwnerStartsAfterRecordsCommit step 6 sends WorkflowAdvanced from SessionCoordinator to ExternalOwnerCli via WorkflowCommands reply-to 1.
+RecordsCommitted has message-kind = result.
+RecordsCommitted replies-to ApplyRecordIntent.
+RecordsCommitted upholds EffectResult.
+RecordsConflicted has message-kind = result.
+RecordsConflicted replies-to ApplyRecordIntent.
+RecordsConflicted upholds EffectResult.
+RequestHostContinuation has message-kind = request.
+RequestHostContinuation upholds HostRequest.
+RequestWorkflowChange has message-kind = request.
+RequestWorkflowChange upholds WorkflowCommand.
+SessionCoordinator uses CanonicalEffects as receiver of RecordsCommitted in mode RoutineHandling.
+SessionCoordinator uses CanonicalEffects as receiver of RecordsConflicted in mode RoutineHandling.
+SessionCoordinator uses CanonicalEffects as sender of ApplyRecordIntent in mode RoutineHandling.
+SessionCoordinator uses HostActions as receiver of HostAttemptObserved in mode RoutineHandling.
+SessionCoordinator uses HostActions as sender of RequestHostContinuation in mode RoutineHandling.
+SessionCoordinator uses WorkflowCommands as receiver of RequestWorkflowChange in mode RoutineHandling.
+SessionCoordinator uses WorkflowCommands as sender of WorkflowAdvanced in mode RoutineHandling.
+SessionCoordinator uses WorkflowCommands as sender of WorkflowBlocked in mode RoutineHandling.
+WorkflowAdvanced has message-kind = result.
+WorkflowAdvanced replies-to RequestWorkflowChange.
+WorkflowAdvanced upholds WorkflowResult.
+WorkflowBlocked has message-kind = result.
+WorkflowBlocked replies-to RequestWorkflowChange.
+WorkflowBlocked upholds WorkflowResult.
+WorkflowCommand has completeness = closed.
+WorkflowCommand has-field WorkflowCommandAction.
+WorkflowCommand has-field WorkflowCommandBasis.
+WorkflowCommand has-field WorkflowCommandExpectedRevision.
+WorkflowCommand has-field WorkflowCommandInstance.
+WorkflowCommand has-field WorkflowCommandOperation.
+WorkflowCommandAction has presence = required.
+WorkflowCommandAction has value-type = text.
+WorkflowCommandBasis has presence = required.
+WorkflowCommandBasis has value-type = text.
+WorkflowCommandExpectedRevision has presence = required.
+WorkflowCommandExpectedRevision has value-type = text.
+WorkflowCommandInstance has presence = required.
+WorkflowCommandInstance has value-type = text.
+WorkflowCommandOperation has presence = required.
+WorkflowCommandOperation has value-type = text.
+WorkflowCommands upholds WorkflowCommandsProtocol.
+WorkflowCommandsProtocol has completeness = closed.
+WorkflowCommandsProtocol permits RequestWorkflowChange.
+WorkflowCommandsProtocol permits WorkflowAdvanced.
+WorkflowCommandsProtocol permits WorkflowBlocked.
+WorkflowResult has completeness = closed.
+WorkflowResult has-field WorkflowResultHolds.
+WorkflowResult has-field WorkflowResultNextActions.
+WorkflowResult has-field WorkflowResultReceipt.
+WorkflowResult has-field WorkflowResultRevision.
+WorkflowResult has-field WorkflowResultStage.
+WorkflowResultHolds has presence = required.
+WorkflowResultHolds has value-type = text.
+WorkflowResultNextActions has presence = required.
+WorkflowResultNextActions has value-type = text.
+WorkflowResultReceipt has presence = required.
+WorkflowResultReceipt has value-type = text.
+WorkflowResultRevision has presence = required.
+WorkflowResultRevision has value-type = text.
+WorkflowResultStage has presence = required.
+WorkflowResultStage has value-type = text.

@@ -1,0 +1,14 @@
+author: warloc
+artifactName: SessionLifecycle
+id: 29973936-d34d-4751-b15a-66c2d0f64a2b:00001
+parents:
+    - 29973936-d34d-4751-b15a-66c2d0f64a2b:00000
+kind: commit
+message: 'T041: capture bounded existing PG foundation from 7850fdf'
+recordedAt: "2026-10-24T18:31:16.292593239Z"
+sourceDigest: 339cd8889e0217e43118ccf57d1fda85de8508219054962bf628656a258944b9
+inventory:
+    Foundation.design: c6c35abbb8efd6f742e35ec052d349e2033f4fcdf616a5d30ff355f58f237725
+    System.design: 40707572c01915eeb46f1c9a80254ed0129b534b07b70b750c1ef7d89860b87b
+deleted: []
+payload: .commits/#00001

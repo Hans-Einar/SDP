@@ -23,6 +23,10 @@ card-derived Session/plan coverage, SDL WORK for design changes, supervised
 integration and model-release disposition before whole-assignment closeout. The original single-Maintenance journey below
 is retained as a foundation, not the complete new operating model.
 
+Owner T041 selects the [Session execution contract](Session-Execution.md) as the
+concrete extension of this bounded pilot. Existing run/host behavior remains the
+foundation; the new Session binding and KanBan lifecycle effects are not yet shipped.
+
 ## 1. Outcome and first user journey
 
 The owner opens an explicitly selected project and its existing Session, submits

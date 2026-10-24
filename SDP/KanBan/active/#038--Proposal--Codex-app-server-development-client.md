@@ -413,3 +413,15 @@ Canonical Project Leader skill 1.1.0 and development distribution inventory now
 state the detailed mandatory routine. This is requirement/skill maintenance;
 runtime guards and native compliance evidence remain open. CardState remains
 in-progress; next is PGF1 with refreshed preflight and required SDL design preparation.
+
+
+### T041 — Selected Session/KanBan workflow concretization
+
+Owner accepts the T040 direction and selects its bounded design. The
+[Session execution contract](../../04--Design/SDPTool/ProjectGovernance/Session-Execution.md)
+defines instance/binding ownership, stage transitions, mandatory card effects,
+coverage/replan, shared CLI/MCP authority and recovery. SDL WORK and diagnostic
+Blueprint validation are recorded in [evidence](../../04--Design/SDPTool/ProjectGovernance/Evidence-T041.md).
+PG-A25–30 and PLAN-SDP-0018 PGF1-C1 onward define the implementation sequence.
+This is design preparation; runtime acceptance and model release remain open.
+Existing CardState is unchanged; broader KB037 scope is not activated wholesale.

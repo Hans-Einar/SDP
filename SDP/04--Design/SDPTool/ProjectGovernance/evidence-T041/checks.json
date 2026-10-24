@@ -1,0 +1,32 @@
+[
+  {
+    "name": "model-status",
+    "command": [
+      "/tmp/sdp-t041-sdptool",
+      "SDP/SDL/ProjectGovernance/SDPTool/SessionWorkflow",
+      "model",
+      "status",
+      "work:SessionLifecycle",
+      "--json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "name": "model-history",
+    "command": [
+      "/tmp/sdp-t041-sdptool",
+      "SDP/SDL/ProjectGovernance/SDPTool/SessionWorkflow",
+      "model",
+      "history",
+      "work:SessionLifecycle",
+      "--json"
+    ],
+    "exitCode": 0
+  },
+  {
+    "name": "source-and-generated-hashes",
+    "result": "pass",
+    "sourceCount": 4,
+    "generatedCount": 107
+  }
+]

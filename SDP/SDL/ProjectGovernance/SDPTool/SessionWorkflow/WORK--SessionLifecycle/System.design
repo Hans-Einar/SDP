@@ -1,0 +1,6 @@
+language design-core version 0.6.
+system SDPTool.
+includes "Contracts.design".
+includes "Foundation.design".
+includes "Workflow.design".
+SDPTool contains SdpToolHost.

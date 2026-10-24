@@ -133,3 +133,13 @@ one bounded local request and one response. They are units in SdpToolHost, not
 new runtime containers. CLI and invocation reuse the same domain handlers. Trusted
 assignment principal remains outside JSON input. The [Actions contract](../../../04--Design/SDPTool/Actions/Contract.md)
 selects the bounded protocol and leaves host scheduling/MCP to their own systems.
+
+
+## Session execution concern — T041
+
+[SessionWorkflow](SessionWorkflow/README.md) holds an explicit initial ModelGovernance
+WORK for the selected Session/KanBan execution design. It is a bounded detail view
+of the same SDPTool/SdpToolHost, preserving this coarse model and the separate
+ModelGovernance concern. Its frozen observed baseline supports diagnostic comparison;
+no accepted release or runtime implementation of the target is claimed. Follow that
+README for validated source, generated views, evidence and pending model release.

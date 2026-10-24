@@ -1,0 +1,49 @@
+language design-core version 0.6.
+container SdpToolHost.
+unit ContextFacade.
+unit RoutineCoordinator.
+unit RunRepository.
+unit CheckedResultPublisher.
+database OperationalRunStore.
+interface CanonicalProjectHistoryLibrary.
+capability BoundedGovernedWork.
+feature BoundedRunControl.
+usecase RecoverBoundedWork.
+actor ProjectOwner.
+mode RoutineHandling.
+activity ExistingRunFoundation.
+functionality ResolveExistingWork.
+functionality CheckBoundedRunTransition.
+functionality PersistRunReceipt.
+functionality PublishBoundedResult.
+SdpToolHost contains ContextFacade.
+SdpToolHost contains RoutineCoordinator.
+SdpToolHost contains RunRepository.
+SdpToolHost contains CheckedResultPublisher.
+SdpToolHost provides BoundedGovernedWork.
+RunRepository owns OperationalRunStore.
+CheckedResultPublisher consumes CanonicalProjectHistoryLibrary.
+ProjectOwner pursues RecoverBoundedWork.
+BoundedRunControl supports RecoverBoundedWork.
+ExistingRunFoundation delivers BoundedRunControl.
+ExistingRunFoundation has implementation-status = implemented.
+ContextFacade owns ResolveExistingWork.
+ResolveExistingWork allocated-to SdpToolHost in mode RoutineHandling.
+ResolveExistingWork contributes-to BoundedRunControl.
+ResolveExistingWork realizes BoundedGovernedWork.
+ExistingRunFoundation addresses ResolveExistingWork.
+RoutineCoordinator owns CheckBoundedRunTransition.
+CheckBoundedRunTransition allocated-to SdpToolHost in mode RoutineHandling.
+CheckBoundedRunTransition contributes-to BoundedRunControl.
+CheckBoundedRunTransition realizes BoundedGovernedWork.
+ExistingRunFoundation addresses CheckBoundedRunTransition.
+RunRepository owns PersistRunReceipt.
+PersistRunReceipt allocated-to SdpToolHost in mode RoutineHandling.
+PersistRunReceipt contributes-to BoundedRunControl.
+PersistRunReceipt realizes BoundedGovernedWork.
+ExistingRunFoundation addresses PersistRunReceipt.
+CheckedResultPublisher owns PublishBoundedResult.
+PublishBoundedResult allocated-to SdpToolHost in mode RoutineHandling.
+PublishBoundedResult contributes-to BoundedRunControl.
+PublishBoundedResult realizes BoundedGovernedWork.
+ExistingRunFoundation addresses PublishBoundedResult.

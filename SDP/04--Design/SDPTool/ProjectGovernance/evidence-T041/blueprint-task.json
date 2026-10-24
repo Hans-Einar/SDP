@@ -1,0 +1,22 @@
+{
+  "ID": "PG-T041-session-lifecycle",
+  "Intent": "Inspect the bounded existing PG foundation against the selected Session execution and checked KanBan target. Diagnostic design context; phase-specific permissions and review remain required before implementation handoff.",
+  "Context": [
+    "SDPTool/unit/SessionCoordinator"
+  ],
+  "Exclude": [],
+  "Rules": [],
+  "AllowedChanges": [],
+  "AllowedModelPaths": [
+    "System.design",
+    "Foundation.design",
+    "Workflow.design",
+    "Contracts.design"
+  ],
+  "AllowedCodePaths": [
+    "SDPTool/governance",
+    "SDPTool/governancecontroller",
+    "SDPTool/governancemcp"
+  ],
+  "Protect": []
+}

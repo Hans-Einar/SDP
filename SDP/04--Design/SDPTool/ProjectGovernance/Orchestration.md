@@ -867,3 +867,14 @@ a routine version change and an unrelated ledger append. Observe real tool activ
 with source/freshness; reject attempts to bypass gates through either entrypoint.
 These are proposed acceptance additions; none is claimed tested or selected by this
 analysis. Resolve this boundary with the owner before dependent implementation.
+
+
+## T041 — Selected concretization
+
+Owner T041 accepts the T040 recommendation and selects the bounded design in
+[Session execution and checked KanBan lifecycle](Session-Execution.md). It specifies
+state ownership, the execution binding, semantic transitions and required effects,
+coverage reconciliation, common role-bound entrypoints and recovery. PG-A25–30 and
+PLAN-SDP-0018 carry its delivery gates. The initial SDL WORK and diagnostic Blueprint
+are recorded in [T041 evidence](Evidence-T041.md). This supersedes T040's pending
+choice of direction; exact runtime delivery and independent review remain open.

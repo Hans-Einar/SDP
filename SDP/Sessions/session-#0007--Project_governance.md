@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T040 — discussed executable Session workflows and KanBan governance; runtime implementation remains at PGI4-C3.
+Latest recorded turn: T041 — owner selects concretization of Session execution and KanBan governance; validated SDL WORK and concrete transition/implementation contract recorded; runtime remains at PGI4-C3.
 The native trial asks, receives a delayed fixture reply, starts one fresh attempt
 and implements/reports the selected behavior. Local acknowledgement, coordination and
 serialized leader delivery are implemented. C8 native single-worker/leader and completed
@@ -44,7 +44,7 @@ gantt
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-24 |
 | Current step | S3/S6 active: PGI4-C3 checked bounded result publication/recovery and review notices delivered; final run/lifecycle disposition and orchestration/integrated gates remain |
-| Proposed next step | Resolve T040 Session execution/KanBan transition design with the owner before dependent PGF1 work; retain refreshed preflight and required SDL WORK, then PGF2–9 with T039 gates: orchestration, SDL handoff, owner dialogue, recovery/capacity, native integration, independent review and explicit scope closeout. SDL-only; MVP1 deferred |
+| Proposed next step | Prepare scoped Blueprint/review for PGF1-C1 Session binding and durable instance from T041 SDL WORK, then checked lifecycle effects and PGF2–9 under T039/T041 gates: orchestration, SDL handoff, owner dialogue, recovery/capacity, native integration, independent review and explicit scope closeout. SDL-only; MVP1 deferred |
 | Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension; T026 assigns hub/webapp to a separate project and continues local SDP/SDPTool work; T027 continues local attention/replies; T028 continues guarded attention continuation; T029 selects stable Codex >=0.164.0 and compatible later hosts, preserving other scopes |
 
 ## Goal and ownership
@@ -1980,3 +1980,67 @@ T040 checks pass: management replay (73 cards, 47 records, 677 events), Toolkit
 validation, 138 relative links, preserved historical management-ledger prefix and
 whitespace checks. Product/model code is unchanged; no runtime tests claimed.
 Preparing the discussion-record milestone commit and authorized phase push only.
+
+
+## T041 — Concrete Session execution and KanBan design
+
+Owner accepts the T040 recommendation and asks to proceed with concretization.
+Select a bounded design/planning delivery inside KB052/KB038 and PLAN-SDP-0018,
+with KB037's broader scope retained. Deliver a precise transition/effect contract,
+entrypoint/recovery behavior, SDL WORK and acceptance/implementation mapping.
+This request does not require implementing the runtime during design preparation.
+
+### Concurrent-work preflight
+
+Baseline 7850fdfb83d3590eab843f85d2e3ba7ffc68b652, clean and tracking origin on
+sdp/codex-forward-compatibility. One known worktree. Inspected committed changes
+since main, current active cards, Session0007, paused Session0008 and Session0012's
+coordination scope. No competing local SDL edits; existing coarse System.design and
+ModelGovernance concern remain authoritative at their scopes. KB052 owns this work;
+KB050/Session0008 and other product areas are not taken over. Remote unobserved work
+is outside coverage, not assumed absent.
+
+Green for an explicit new bounded SessionWorkflow model area under
+SDP/SDL/ProjectGovernance/SDPTool, created with ModelGovernance initial WORK because
+no accepted model release exists in that area; no existing source migration or
+release is implied. Also green for PG design/acceptance/plan, linked cards, this
+Session and canonical histories. Shared ledgers have one local writer this turn;
+new event IDs will be checked before append. No product code, host settings, lab
+execution, Ponsse or other-workstream edits selected. Recheck on scope/head change.
+
+
+### T041 work summary
+
+- Loaded/reused SDP, Architect, Planning/plan contract, Traceability, document
+  workflow and SDL source/profile rules. T040 analysis reused after source refresh.
+  Preflight recorded above; no helper agents or independent review claimed.
+- Selected extension preserves one core/controller and canonical management history.
+  Wrote Session-Execution.md with stage/effect table, binding location/fields,
+  distinct holds/host/card state, cross-file intent recovery, common adapter authority,
+  own-effect/unrelated-ledger reconciliation and explicit routine-version adoption.
+- Added PG-A25–30 and concrete increments PGF1-C1/C2, PGF2-C1, PGF3-C1,
+  PGF5-C1 and PGF7-C1 inside PLAN-SDP-0018; no replacement plan or new Session.
+- Created ModelGovernance WORK 29973936-d34d-4751-b15a-66c2d0f64a2b in the new
+  SessionWorkflow concern, preserving existing models. Frozen observed proposal is
+  comparison evidence, not accepted NOW. Final head :00002 validates as canonical
+  design-core/0.6; all new workflow activities remain planned.
+- Built existing tools with cached Go 1.27.1 after the plain PATH lacked go.
+  Generated static views and diagnostic Blueprint. Exact artifact/source/tool hashes
+  are in Evidence-T041.md. Blueprint constraints intentionally do not pass without
+  phase-specific permissions; no assignment readiness or implementation acceptance.
+- Four model journals are done and retained locally; tracked model checkpoints and
+  frozen provenance retain portable history. Local operation backups are ignored,
+  not deleted. No pending operation is concealed, no target release performed.
+- The model's supported structure/scenarios do not execute state predicates. No new
+  SDL grammar, product code, lab agent trial, external install, merge or software
+  release. PG implementation remains C3; T039/T041 runtime gates remain open.
+- Next: scoped Blueprint/review for PGF1-C1, then implementation under the recorded
+  authority. Keep WORK current and its final integration/CANDIDATE/RELEASE obligation
+  visible through closeout. This is the work summary, not a captured final response.
+
+T041 final record checks pass: 73 cards, 47 management records, 681 events; Toolkit
+validation; 318 relative links; original management/Traceability ledger prefixes;
+source hashes; all model journals done; whitespace checks. Model validation and
+107 generated-file hashes are pinned in Evidence-T041. No runtime code changes or
+runtime acceptance tests. Preparing the scoped design/model milestone commit and
+existing authorized phase push; no merge or release.

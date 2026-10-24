@@ -331,3 +331,15 @@ execution. Recommend extending the shared core with checked KanBan effects and
 versioned Session bindings, retaining authored plans, canonical management history
 and role authority. Exact format and operation semantics remain discussion proposals.
 Current PG integration remains active; no new runtime implementation was selected.
+
+
+### T041 — Selected Session/KanBan workflow concretization
+
+Owner accepts the T040 direction and selects its bounded design. The
+[Session execution contract](../../04--Design/SDPTool/ProjectGovernance/Session-Execution.md)
+defines instance/binding ownership, stage transitions, mandatory card effects,
+coverage/replan, shared CLI/MCP authority and recovery. SDL WORK and diagnostic
+Blueprint validation are recorded in [evidence](../../04--Design/SDPTool/ProjectGovernance/Evidence-T041.md).
+PG-A25–30 and PLAN-SDP-0018 PGF1-C1 onward define the implementation sequence.
+This is design preparation; runtime acceptance and model release remain open.
+Existing CardState is unchanged; broader KB037 scope is not activated wholesale.
