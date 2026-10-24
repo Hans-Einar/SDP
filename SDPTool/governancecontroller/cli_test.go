@@ -20,6 +20,10 @@ import (
 // TestMain supplies a recorded fake app-server subprocess only for this test.
 // It never invokes Codex or a model, and never represents independent review.
 func TestMain(m *testing.M) {
+	if os.Getenv("SDP_PGL3_C7_HOST") != "" {
+		leaderProtocolFixture()
+		return
+	}
 	if os.Getenv("SDP_PGI3_FAKE_HOST") == "1" {
 		version := governancehost.HostVersion
 		if future := os.Getenv("SDP_PGC1_FAKE_HOST_VERSION"); future != "" {

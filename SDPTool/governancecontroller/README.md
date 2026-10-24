@@ -560,6 +560,72 @@ observer and does not terminate workers. No lease or state lock is held while
 waiting. Replies and acknowledgements use the existing atomic store and are visible
 after restart; snapshots alone do not create or consume records.
 
-This is an intermediate local interface. It launches no model, interprets no
-free-text approval and does not implement native Project Leader wake-up/turn
-scheduling. Its optional owner reply is attributed input, not design approval.
+The coordination console itself launches no model and interprets no free-text
+approval. Explicit leader dispatch is a separate command described below. Its
+optional attention reply is attributed input, not design approval.
+
+## Serialized Project Leader turns — PGL3-C7
+
+```sh
+sdp-controller leader inspect --project ROOT --state DIR
+sdp-controller leader message --project ROOT --state DIR --owner OWNER --operation UUID --input message.txt
+sdp-controller leader run --project ROOT --state DIR --coordinator project-leader --mcp-binary /absolute/sdp-mcp --skill Skills/sdp/SKILL.md --skill Skills/sdp-project-leader/SKILL.md --max-turns 1 --timeout 5m
+```
+
+`inspect` returns JSON without creating state or opening a host. `message` reads an
+attributed UTF-8 file of at most 4096 bytes, establishing the checkout binding when
+needed. Supply a version-4 UUID and reuse the same UUID/actor/text for retries.
+Changing that input under the same UUID refuses. Enqueue does not launch a model,
+create a work assignment or grant owner approval. State is private and outside ROOT.
+
+`run` explicitly enables decision turns using managed-account Codex >=0.164.0 within
+the supported wire profile. Repeat `--skill` for 1..8 project-relative skills; the
+host must observe them enabled and their local bytes must match before submission.
+Each decision uses a fresh persistent read-only thread with approval policy `never`.
+Only the two coordinator MCP tools are allowed: the complete thread inventory must
+contain exactly that server, with no pagination or inherited servers. Configure an
+isolated host accordingly; refusal does not change global host settings. This checks
+MCP tools, not whether a model actually follows its supplied role/skills.
+
+The controller polls at `--interval` (default 1s, minimum 100ms), emits changed JSON
+views and exits after `--max-turns` terminal turns (default 1, range 1..16). Timeout
+(default 5m, maximum 30m) or interruption stops this local loop and leaves durable
+state for inspection/recovery. It does not prove or request remote turn termination.
+Keep the same coordinator, MCP path and host version to recover a mapped dispatch.
+Host history must prove the exact unique client message, text/skills, thread and cwd.
+An uncertain thread/start with no mapped identity requires reconciliation; no automatic
+replacement or reset exists. Missing/conflicting/partial turn history also refuses
+without resending. A terminal host answer releases the slot, never accepts SDP work.
+
+A project-wide `coordinate --watch --owner OWNER` console can enqueue while a leader
+runs in another process. It requires an already bound store and accepts:
+
+```json
+{"action":"message","message":{"operationId":"00000000-0000-4000-8000-000000000001","text":"Please review the pending report."}}
+```
+
+Use a new UUID for each new message. The console supplies actor/source and emits a
+`leader-message` event with a `leader` receipt. Run-filtered consoles refuse project
+leader messages. Leader answers are available from `leader run` or `leader inspect`;
+the coordination projection still concerns registered assignments/reports/questions.
+
+There is one active dispatch per store and a separate leader lease. Workers and
+owner enqueue remain independent. Before sending, new owner input or changed selected
+notice/skill facts supersede a safely unsent preparation. Pending messages precede
+notices; delivered notice keys do not repeatedly wake the leader merely because a
+report remains verifying. Delivery does not imply semantic consumption or acknowledgement.
+
+Use matching profile-0.9 controller and MCP binaries for every process sharing this
+store; older running servers refuse after its first leader write. Keep preview state
+separate from stores still used by older installations.
+
+Operational profile 0.9 retains at most 64 owner messages, 16 dispatches and 256
+receipts. A payload contains at most eight messages/eight notices within 64 KiB;
+visible answers are bounded to 64 KiB. These are lifetime bounds for this store,
+including superseded preparations. Reaching a bound refuses further writes; no
+compaction or sustained-hours capacity guarantee is implemented. Preserve state for
+reconciliation; do not discard it to hide uncertain work. Schemas are in
+[leader.schema.json](../governance/leader.schema.json). Protocol/compiled-command
+fixtures verify this increment; native leader execution and independent review remain
+separate gates. Proposed launches, approvals and canonical publication are not executed
+from leader prose.

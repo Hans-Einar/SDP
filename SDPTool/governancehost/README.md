@@ -128,3 +128,12 @@ skill name/path/order. The adapter fingerprints only the lossless supported subs
 normalizing absent/empty text_elements. Unknown fields/content and nonempty elements
 cannot prove correlation. Exact acceptance establishes input identity, not consumed
 skill bytes or procedural compliance. No native child dispatch is introduced.
+
+PGL3-C7 reuses the existing thread/skill-turn protocol for short serialized leader
+turns. `LeaderObservation` requires the recorded host version, thread ID, cwd and
+exact unique client-message/content/skill correlation across full history. Only
+visible completed agent messages enter the bounded answer; private reasoning and
+raw tool output are excluded. `CoordinatorTools` inspects the unfiltered inventory
+and refuses extra servers or pagination before submission. Missing evidence stays
+unresolved; these operations never resend a turn. Recorded protocol tests do not
+establish native leader availability or skill compliance on an untested host.

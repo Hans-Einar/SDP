@@ -94,6 +94,9 @@ func (s *Service) DesignDecisionReceipt(caller Caller, q DesignDecisionRequest) 
 	return findDesignDecision(state, q)
 }
 func findDesignDecision(state snapshot, q DesignDecisionRequest) (*DesignDecisionResult, error) {
+	if _, ok := state.LeaderReceipts[q.OperationID]; ok {
+		return nil, fail("idempotency_conflict", "operationId belongs to leader delivery")
+	}
 	if _, ok := state.Receipts[q.OperationID]; ok {
 		return nil, fail("idempotency_conflict", "operationId belongs to legacy operation")
 	}

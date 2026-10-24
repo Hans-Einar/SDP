@@ -240,6 +240,13 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-PGL3-C7:
+    status: passed-bounded-leader-protocol-workflow
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C7.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-052
+    design: SDPTOOL-DES-0001
+    note: Full affected race/vet, compiled restart/lost-response workflow, old-reader refusal and 20 output/context schemas; native leader, capacity and independent review remain open.
   SDPTOOL-VER-PGL3-C6:
     status: passed-bounded-local-coordination
     path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C6.md

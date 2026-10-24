@@ -1,0 +1,382 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Bounded Project Leader delivery views and results",
+  "description": "Output-only schemas; byte bounds and transition/identity guards are also enforced by the core. Skill inputs establish requested delivery, not compliance.",
+  "$defs": {
+    "LeaderMessageInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "actor": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        }
+      },
+      "required": [
+        "actor",
+        "source",
+        "text"
+      ]
+    },
+    "LeaderMessage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "input": {
+          "$ref": "#/$defs/LeaderMessageInput"
+        },
+        "recordedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "input",
+        "recordedAt"
+      ]
+    },
+    "LeaderConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "coordinator": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "hostVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "mcpBinary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "instructions": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "$ref": "schema.json#/$defs/SkillInput"
+          },
+          "maxItems": 8,
+          "minItems": 1
+        }
+      },
+      "required": [
+        "coordinator",
+        "hostVersion",
+        "mcpBinary",
+        "instructions",
+        "skills"
+      ]
+    },
+    "LeaderDispatch": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "state": {
+          "enum": [
+            "prepared",
+            "opening",
+            "bound",
+            "sending",
+            "running",
+            "completed",
+            "failed",
+            "interrupted",
+            "superseded"
+          ]
+        },
+        "config": {
+          "$ref": "#/$defs/LeaderConfig"
+        },
+        "messageIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "maxItems": 8,
+          "minItems": 0
+        },
+        "noticeKeys": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "maxItems": 8,
+          "minItems": 0
+        },
+        "inputHead": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "const": ""
+            }
+          ]
+        },
+        "payload": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 65536
+        },
+        "threadId": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 256
+        },
+        "turnId": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 256
+        },
+        "answer": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 65536
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "state",
+        "config",
+        "messageIds",
+        "noticeKeys",
+        "inputHead",
+        "payload",
+        "threadId",
+        "turnId",
+        "answer",
+        "updatedAt"
+      ]
+    },
+    "LeaderState": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LeaderMessage"
+          },
+          "maxItems": 64,
+          "minItems": 0
+        },
+        "dispatches": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LeaderDispatch"
+          },
+          "maxItems": 16,
+          "minItems": 0
+        }
+      },
+      "required": [
+        "revision",
+        "messages",
+        "dispatches"
+      ]
+    },
+    "LeaderView": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-leader/1"
+        },
+        "projectRef": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "checkoutId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "const": ""
+            }
+          ]
+        },
+        "leader": {
+          "$ref": "#/$defs/LeaderState"
+        }
+      },
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "leader"
+      ]
+    },
+    "LeaderResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-leader/1"
+        },
+        "operationId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "action": {
+          "enum": [
+            "message",
+            "prepare",
+            "open",
+            "bind",
+            "send",
+            "observe",
+            "supersede"
+          ]
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "message": {
+          "$ref": "#/$defs/LeaderMessage"
+        },
+        "dispatch": {
+          "$ref": "#/$defs/LeaderDispatch"
+        }
+      },
+      "required": [
+        "schema",
+        "operationId",
+        "action",
+        "revision"
+      ],
+      "oneOf": [
+        {
+          "properties": {
+            "action": {
+              "const": "message"
+            }
+          },
+          "required": [
+            "message"
+          ],
+          "not": {
+            "required": [
+              "dispatch"
+            ]
+          }
+        },
+        {
+          "properties": {
+            "action": {
+              "enum": [
+                "prepare",
+                "open",
+                "bind",
+                "send",
+                "observe",
+                "supersede"
+              ]
+            }
+          },
+          "required": [
+            "dispatch"
+          ],
+          "not": {
+            "required": [
+              "message"
+            ]
+          }
+        }
+      ]
+    },
+    "LeaderContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-leader-context/1"
+        },
+        "project": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "ownerMessages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LeaderMessage"
+          },
+          "maxItems": 8,
+          "minItems": 0
+        },
+        "notices": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "key": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "item": {
+                "$ref": "coordination.schema.json#/$defs/CoordinationItem"
+              }
+            },
+            "required": [
+              "key",
+              "item"
+            ]
+          },
+          "maxItems": 8,
+          "minItems": 0
+        }
+      },
+      "required": [
+        "schema",
+        "project",
+        "ownerMessages",
+        "notices"
+      ]
+    }
+  }
+}

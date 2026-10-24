@@ -286,3 +286,23 @@ one operational generation, stable item IDs, prioritized bounded pages and a
 content-bound cursor. It is read-only; it adds no store profile or lifecycle.
 [Coordinator MCP](../governancemcp/README.md#explicit-coordinator-adapter--pgl3-c6)
 and the controller console reuse this projection and existing guarded writes.
+
+## Project Leader delivery — operational profile 0.9
+
+PGL3-C7 adds attributed owner messages and serialized decision dispatches to the
+same immutable-generation store. Leader delivery receipts share the global operation
+ID namespace, use their own monotonic revision and never mutate assignment state.
+An enqueue uses expectedRevision=0 and stable operation/content retry; other writes
+use leader revision CAS. Reads never upgrade the profile. Explicit leader writes
+select 0.9; preparation, attention, continuation and acknowledgement preserve it.
+Older readers refuse. Historical report receipts and earlier profiles remain readable.
+
+A separate leader lease serializes external effects while owner messages and worker
+controllers remain usable. Durable prepared/opening/bound/sending/running boundaries
+precede host effects. Only prepared/bound may supersede. Config, selected skills,
+message IDs, notice keys and exact payload are retained. Unique observed host inputs
+are required to resolve uncertain sends; dispatch completion is delivery, not approval.
+
+See [controller usage and bounds](../governancecontroller/README.md#serialized-project-leader-turns--pgl3-c7)
+and the separate output-only [leader schema](leader.schema.json). The worker MCP
+input descriptions do not acquire leader-only definitions or capabilities.

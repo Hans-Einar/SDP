@@ -302,7 +302,7 @@ sequenced with those workstreams rather than copied into a second engine.
 | --- | --- | --- | --- |
 | PGL1 | Readable/JSON overview of all registered work from existing operational state; lab inspection without launching work | Scenario 5 subset; empty store, multiple runs, stale records, historical host/skill/tool facts, no writes | delivered; [bounded evidence](Evidence-PGL1.md) |
 | PGL2 | Prepare and inspect distinct SAD/implementation assignments; stale design or conflicting scope refuses dispatch eligibility | Scenario 2 guards; current authority, exact bundle revisions, explicit cross-worktree claim boundary, retry/CAS tests | in-progress; [C1 preparation delivered](Evidence-PGL2-C1.md), [C2a revision/retirement delivered](Evidence-PGL2-C2a.md), [C2b provider checks delivered](Evidence-PGL2-C2b.md), [C2c local decision adapter delivered](Evidence-PGL2-C2c.md), [C2d activation and native code trial delivered](Evidence-PGL2-C2d.md); reporting/coordination remain PGL3 |
-| PGL3 | Responsive Project Leader plus two bounded Masters through the trusted controller; durable report inbox and same-Session phase continuation | Scenarios 1, 3, 4; real host execution, no duplicate launch after uncertain reply, delayed report versus new steering | in-progress; [C1 per-run isolation delivered](Evidence-PGL3-C1.md), [C2 automatic reports and read-only inbox delivered](Evidence-PGL3-C2.md), [C3 durable attention/replies delivered](Evidence-PGL3-C3.md); leader consumption/continuation and native attention/parallel evidence pending |
+| PGL3 | Responsive Project Leader plus two bounded Masters through the trusted controller; durable report inbox and same-Session phase continuation | Scenarios 1, 3, 4; real host execution, no duplicate launch after uncertain reply, delayed report versus new steering | in-progress; [C1 per-run isolation delivered](Evidence-PGL3-C1.md), [C2 automatic reports and read-only inbox delivered](Evidence-PGL3-C2.md), [C3 durable attention/replies delivered](Evidence-PGL3-C3.md); C4 continuation, C5 acknowledgement, C6 console/MCP and [C7 serialized leader delivery/recovery](Evidence-PGL3-C7.md) delivered at bounded evidence scope; native leader/parallel and whole-workflow gates remain |
 | PGL4 | Direct SAD/Master conversation and project panel; revision-bound ModelGovernance/Blueprint handoff | Scenarios 2, 5; real TARGET change stales dependent implementation; roles/tools/children/freshness evidence; owner development trial | planned |
 | PGL5 | Integrated recovery/evidence review and revision-bound remote Steering package | All six scenarios; independent review and selected online-host evidence; PGI4/5 obligations retained | planned |
 
@@ -682,3 +682,32 @@ capacity, independent review and canonical evidence/publication gates. Manual
 Sessions without registered runs remain outside the operational view. Broader
 KB036/037/042/043, external hub KB054 and metrics KB058 stay in backlog; KB059 stays
 onHold under SDL-only scope. Blueprint pause and Ponsse MVP1 deferral remain.
+
+
+## PGL3-C7 selection — T033
+
+Owner continues. Implement serialized short Project Leader turns and durable owner/
+notice delivery under the existing PGL3 contract, with mapped lost-response recovery.
+Use [design](../../../04--Design/SDPTool/ProjectGovernance/Orchestration.md#pgl3-c7--serialized-project-leader-wake-up-and-mapped-recovery-2026-10-24)
+and [preflight](preflight-PGL3-C7.json). Existing current/milestone policy remains.
+One active leader dispatch, explicit launch policy/skills, unchanged worker rights,
+no prose-to-action execution. Operational profile changes preserve earlier facts.
+Verify service and compiled protocol workflows; no native model/subagent launch or
+independent-review claim in this execution. Retain whole-PG publication/review gates.
+
+
+## PGL3-C7 result — T033
+
+[Evidence](Evidence-PGL3-C7.md) records durable owner/notice delivery, one active
+leader decision dispatch, explicit restricted skill/MCP launch and exact mapped
+recovery without resend. Full SDPTool race/vet, compiled controller protocol restart,
+owner input during uncertainty, actual prior-reader refusal and 20 output/context
+schema checks pass. Profile 0.9 preserves earlier worker/report capabilities.
+Private candidate binaries do not change the stable installation or global config.
+
+No native model task, independent review or full PG acceptance is claimed. Next is
+native leader/worker workflow evidence, followed by retained SAD/scope, capacity/
+compaction, recovery/review and canonical publication gates. Bounded limits and
+unmapped thread-start recovery remain explicit. Backlog/onHold review preserves
+KB036/037/042/043/054/058, SDL-only KB059 deferral, Blueprint pause and Ponsse MVP1
+deferral. Current-branch/milestone policy remains; no merge or release.

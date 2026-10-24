@@ -57,7 +57,7 @@ func (s *Service) ReportInbox(runID string) (ReportInbox, error) {
 			acknowledgements[a.Request.ReportID] = receipt.Result
 		}
 	}
-	if state.Schema == reportAcknowledgementStateSchema {
+	if len(acknowledgements) > 0 {
 		out.Schema = "sdp-governance-inbox/2"
 		out.Consumption = "acknowledgement-recorded-separately"
 	}

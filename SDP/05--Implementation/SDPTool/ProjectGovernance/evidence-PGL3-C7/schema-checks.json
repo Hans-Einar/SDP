@@ -1,0 +1,122 @@
+[
+  {
+    "object": "completed.json:0",
+    "schema": "leader.schema.json",
+    "definition": "LeaderView",
+    "passed": true
+  },
+  {
+    "object": "completed.json:0 payload 0",
+    "schema": "leader.schema.json",
+    "definition": "LeaderContext",
+    "passed": true
+  },
+  {
+    "object": "console.ndjson:0",
+    "schema": "coordination.schema.json",
+    "definition": "CoordinationEvent",
+    "passed": true
+  },
+  {
+    "object": "console.ndjson:1",
+    "schema": "coordination.schema.json",
+    "definition": "CoordinationEvent",
+    "passed": true
+  },
+  {
+    "object": "empty.json:0",
+    "schema": "leader.schema.json",
+    "definition": "LeaderView",
+    "passed": true
+  },
+  {
+    "object": "message.json:0",
+    "schema": "leader.schema.json",
+    "definition": "LeaderResult",
+    "passed": true
+  },
+  {
+    "object": "next.ndjson:0",
+    "schema": "leader.schema.json",
+    "definition": "LeaderView",
+    "passed": true
+  },
+  {
+    "object": "next.ndjson:0 payload 0",
+    "schema": "leader.schema.json",
+    "definition": "LeaderContext",
+    "passed": true
+  },
+  {
+    "object": "next.ndjson:0 payload 1",
+    "schema": "leader.schema.json",
+    "definition": "LeaderContext",
+    "passed": true
+  },
+  {
+    "object": "next.ndjson:1",
+    "schema": "leader.schema.json",
+    "definition": "LeaderView",
+    "passed": true
+  },
+  {
+    "object": "next.ndjson:1 payload 0",
+    "schema": "leader.schema.json",
+    "definition": "LeaderContext",
+    "passed": true
+  },
+  {
+    "object": "next.ndjson:1 payload 1",
+    "schema": "leader.schema.json",
+    "definition": "LeaderContext",
+    "passed": true
+  },
+  {
+    "object": "next.ndjson:2",
+    "schema": "leader.schema.json",
+    "definition": "LeaderView",
+    "passed": true
+  },
+  {
+    "object": "next.ndjson:2 payload 0",
+    "schema": "leader.schema.json",
+    "definition": "LeaderContext",
+    "passed": true
+  },
+  {
+    "object": "next.ndjson:2 payload 1",
+    "schema": "leader.schema.json",
+    "definition": "LeaderContext",
+    "passed": true
+  },
+  {
+    "object": "next.ndjson:3",
+    "schema": "leader.schema.json",
+    "definition": "LeaderView",
+    "passed": true
+  },
+  {
+    "object": "next.ndjson:3 payload 0",
+    "schema": "leader.schema.json",
+    "definition": "LeaderContext",
+    "passed": true
+  },
+  {
+    "object": "next.ndjson:3 payload 1",
+    "schema": "leader.schema.json",
+    "definition": "LeaderContext",
+    "passed": true
+  },
+  {
+    "object": "recovered.ndjson:0",
+    "schema": "leader.schema.json",
+    "definition": "LeaderView",
+    "passed": true
+  },
+  {
+    "object": "recovered.ndjson:0 payload 0",
+    "schema": "leader.schema.json",
+    "definition": "LeaderContext",
+    "passed": true
+  }
+]

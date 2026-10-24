@@ -279,3 +279,20 @@ Project Leader wake-up or the final conversation UI. See the
 [console instructions](../../../../SDPTool/governancecontroller/README.md#coordination-console--pgl3-c6)
 and [MCP launch instructions](../../../../SDPTool/governancemcp/README.md#explicit-coordinator-adapter--pgl3-c6).
 Use binaries built from this candidate; the stable installation is unchanged.
+
+## Short Project Leader decision turns — PGL3-C7
+
+The local controller now has an explicit `leader message` queue and bounded
+`leader run` loop. The owner may enqueue while a turn runs, including through the
+project-wide coordination console. Each short turn receives pending owner messages
+before report/question notices, using selected project skills and coordinator MCP.
+The resulting proposal is available from run output or `leader inspect`. It is not
+automatically translated into work launches, owner approval or canonical publication.
+
+A lost submission response remains attached to the original thread. Restart can
+recover only with exact full-history correlation; it does not submit a replacement.
+An unmapped thread-creation response remains a reconciliation gap. Retained state
+has explicit capacity limits and no compaction yet. This delivery is verified with
+compiled command/protocol fixtures, not a native leader conversation trial. See
+[usage](../../../../SDPTool/governancecontroller/README.md#serialized-project-leader-turns--pgl3-c7)
+and [evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C7.md).

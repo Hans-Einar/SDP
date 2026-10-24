@@ -356,6 +356,14 @@ func (c *Client) ReadThread(ctx context.Context, id string) (Thread, error) {
 // MCPTools reports only the named probe server's tool names and auth status.
 // No account configuration or other server details leave the adapter.
 func (c *Client) MCPTools(ctx context.Context, name, threadID string) ([]string, string, error) {
+	return c.mcpTools(ctx, name, threadID, false)
+}
+
+// CoordinatorTools refuses other MCP tools and incomplete inventory before leader submission.
+func (c *Client) CoordinatorTools(ctx context.Context, threadID string) ([]string, string, error) {
+	return c.mcpTools(ctx, "sdp_governance", threadID, true)
+}
+func (c *Client) mcpTools(ctx context.Context, name, threadID string, exclusive bool) ([]string, string, error) {
 	var out struct {
 		Data []struct {
 			Name       string                     `json:"name"`
@@ -364,9 +372,18 @@ func (c *Client) MCPTools(ctx context.Context, name, threadID string) ([]string,
 		} `json:"data"`
 		NextCursor *string `json:"nextCursor"`
 	}
-	e := c.call(ctx, "mcpServerStatus/list", map[string]any{"limit": 64, "serverName": name, "threadId": threadID}, &out)
+	params := map[string]any{"limit": 64, "threadId": threadID}
+	if !exclusive {
+		params["serverName"] = name
+	}
+	e := c.call(ctx, "mcpServerStatus/list", params, &out)
 	if e != nil {
 		return nil, "", e
+	}
+	if exclusive {
+		if out.NextCursor != nil || len(out.Data) != 1 || out.Data[0].Name != name {
+			return nil, "", fmt.Errorf("incompatible_profile: exclusive coordinator MCP inventory unavailable")
+		}
 	}
 	for _, v := range out.Data {
 		if v.Name == name {

@@ -103,7 +103,9 @@ func (s *Service) AcknowledgeReport(caller Caller, q ReportAcknowledgementReques
 	out := Result{Schema: Schema, Operation: "report.acknowledge", OperationID: q.OperationID, ProjectRef: s.project,
 		CheckoutID: state.CheckoutID, Run: summarizeRun(r), Coverage: "known",
 		ReportAcknowledgement: &ReportAcknowledgement{Request: q, RecordedAt: time.Now().UTC().Format(time.RFC3339Nano)}}
-	state.Schema = reportAcknowledgementStateSchema
+	if state.Schema != leaderStateSchema {
+		state.Schema = reportAcknowledgementStateSchema
+	}
 	state.Receipts[q.OperationID] = receipt{Digest: digest, Result: out}
 	// As with other operations, source coverage is checked again before atomic
 	// publication, but external filesystem edits are not locked by the run store.
@@ -130,7 +132,7 @@ func validateReportAcknowledgements(state snapshot) error {
 		q := a.Request
 		_, timeErr := time.Parse(time.RFC3339Nano, a.RecordedAt)
 		r, exists := state.Runs[q.RunID]
-		if state.Schema != reportAcknowledgementStateSchema || !validReportAcknowledgement(q) || timeErr != nil ||
+		if !reportProfile(state.Schema) || !validReportAcknowledgement(q) || timeErr != nil ||
 			q.ProjectRef != state.Project || q.CheckoutID != state.CheckoutID || id != q.OperationID || v.OperationID != id ||
 			v.Schema != Schema || v.Operation != "report.acknowledge" || v.ProjectRef != state.Project || v.CheckoutID != state.CheckoutID ||
 			v.Coverage != "known" || receipt.Digest != requestDigest(q) || !reportMatches(state, q) || seen[q.ReportID] ||

@@ -11,6 +11,8 @@ type receipt struct {
 	Result Result `json:"result"`
 }
 type snapshot struct {
+	Leader                 *LeaderState                     `json:"leader,omitempty"`
+	LeaderReceipts         map[string]leaderReceipt         `json:"leaderReceipts,omitempty"`
 	AssignmentRuns         map[string]AssignmentRun         `json:"assignmentRuns,omitempty"`
 	DesignDecisions        map[string]string                `json:"designDecisions,omitempty"`
 	DesignDecisionReceipts map[string]designDecisionReceipt `json:"designDecisionReceipts,omitempty"`
@@ -53,7 +55,7 @@ func (s *Service) load() (snapshot, string, error) {
 		return empty, "", fail("incompatible_profile", "unsupported persisted state")
 	}
 	if (state.Schema == Schema && (state.Prepared != nil || state.PreparationReceipts != nil)) || (state.Schema != Schema && !attentionProfile(state.Schema) && (state.Prepared == nil || state.PreparationReceipts == nil)) || ((state.Prepared == nil) != (state.PreparationReceipts == nil)) {
-		return empty, "", fail("incompatible_profile", "assignment preparation requires operational profile 0.2 through 0.8")
+		return empty, "", fail("incompatible_profile", "assignment preparation requires operational profile 0.2 through 0.9")
 	}
 	for id, p := range state.Prepared {
 		if p.ID != id || !uuidPattern.MatchString(id) || p.Revision == 0 ||
@@ -83,6 +85,9 @@ func (s *Service) load() (snapshot, string, error) {
 	}
 	if err := validateReportAcknowledgements(state); err != nil {
 		return empty, "", err
+	}
+	if e := validateLeaderState(state); e != nil {
+		return empty, "", e
 	}
 	return state, head, nil
 }

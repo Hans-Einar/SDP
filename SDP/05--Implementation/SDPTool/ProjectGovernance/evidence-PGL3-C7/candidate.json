@@ -1,0 +1,30 @@
+{
+  "baseline": "dca5c4cea87d386bc60f7690fabe9fc0b28a72a5",
+  "description": "Uncommitted PGL3-C7 source/test/schema candidate, validated before milestone commit",
+  "files": {
+    "SDPTool/cmd/sdp-controller/coordination.go": "e56d3fb9bfefc6a03b9f325296990713cae9ee8239e9afd5cf813b0d13004bc2",
+    "SDPTool/cmd/sdp-controller/leader.go": "a967c6d43128582a0add1ed582938c2c2a1f04113a986fdb02b9982a1a94b5fc",
+    "SDPTool/cmd/sdp-controller/main.go": "39195ba462d6942b974b8f6b0b3dd1a1434a8285f00a6b1279fe67833d74146e",
+    "SDPTool/governance/attention.go": "1a6360761a8689d2d433e9cfa6e5b2b5f24ea118f3a0b01d0363ce1a47e3e698",
+    "SDPTool/governance/attention_continuation.go": "c35bf0a72fc83b8066190519c6c2ea7b845a991a4691126cfde1e15a39610dfe",
+    "SDPTool/governance/coordination.schema.json": "d902dbae891fe5b9f2f6f384616930170eb80d6151dc75346f13356a9ce88675",
+    "SDPTool/governance/design_decision.go": "470698dbc574d4fa691e3213ba8a752e9d5f7b26f002b2474de8c3bb9aaa5e63",
+    "SDPTool/governance/dispatch.go": "fc53c30cecefdb118225d0c521a99a3f687c3d9e8a89a4aea5a011c931c3b4a2",
+    "SDPTool/governance/inbox.go": "afb07688a2ffca0b74543bb7e50cf3c23c9b6d68a029c8ab57990d101355c92d",
+    "SDPTool/governance/leader.go": "f044a5386a622896d6df67b616d3fd7d9c7aea001b57eee99539d14c06041b95",
+    "SDPTool/governance/leader.schema.json": "5e930ca0b75a59bb7f575d4fbf8920eab2280f52a8054b76ce806fa9814e9903",
+    "SDPTool/governance/leader_test.go": "9498f02bccce26f491155bc35975dca1aae785a12ee9d7e3674cf017b6566e6a",
+    "SDPTool/governance/preparation.go": "f1ba346ba71f71db4df3fd35833c4743500059c89a247dcdec9a2f0dbc55c723",
+    "SDPTool/governance/preparation_lifecycle.go": "2e9d72519eefc3e9de63f6ed579a08addded6e384593fbc9e5724094245ddadc",
+    "SDPTool/governance/report_acknowledgement.go": "b3a696fc269f43623f5c40a30f0354c5467d69172ea65cd0c0232395b0a4a029",
+    "SDPTool/governance/run.go": "814044a031c80035fe03a13ff88c1b4b20608004379645261bfd74151762a828",
+    "SDPTool/governance/store.go": "21c65ae292022a42cf3dbbcdd545f764efbfdedec289112252434ef2818305c9",
+    "SDPTool/governancecontroller/cli_test.go": "0a2d72074ccc968cff827e8104f9c333648b6dfe0cf07bf25145afd696d8b5cd",
+    "SDPTool/governancecontroller/leader.go": "5f1956e99b6b283af01c43a12dcb3f86882aff6942789df86afea03956956b7b",
+    "SDPTool/governancecontroller/leader_cli_test.go": "11135c95280eff36d1d9108f82cf718618fce1afdd3f46c10d1f6fbb65c0f7b6",
+    "SDPTool/governancecontroller/leader_test.go": "7473078aba29686b0cc39c445be4e773cd8968655e832cbbc6a1e88f56d56a74",
+    "SDPTool/governancehost/client.go": "47dfb96d966ae69fd182fc7ccb74daad6fd9c11ab67d4014bc13e5da236a398c",
+    "SDPTool/governancehost/leader.go": "60d07092b9f8b374b74c2d54946456cff57c2b421e02829772cd0e313e2e59cb",
+    "SDPTool/governancehost/leader_test.go": "7c08cbf6f018c48e95859de62cac267749a268c9bd5bdb1bd6da93bcda0d8c0b"
+  }
+}

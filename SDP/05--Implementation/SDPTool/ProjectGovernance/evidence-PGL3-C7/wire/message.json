@@ -1,0 +1,1 @@
+{"schema":"sdp-governance-leader/1","operationId":"d02d92bc-7d04-4e17-95e4-21aa5ac4c5b4","action":"message","revision":1,"message":{"id":"d02d92bc-7d04-4e17-95e4-21aa5ac4c5b4","input":{"actor":"owner","source":"sdp-controller leader message","text":"Review current registered work"},"recordedAt":"2026-10-24T08:23:59.473258562Z"}}

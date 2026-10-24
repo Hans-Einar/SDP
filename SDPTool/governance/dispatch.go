@@ -157,7 +157,7 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 					return Result{}, e
 				}
 				r.State = "ready"
-				if state.Schema != reportAcknowledgementStateSchema {
+				if !reportProfile(state.Schema) {
 					state.Schema = attentionContinuationStateSchema
 				}
 			}

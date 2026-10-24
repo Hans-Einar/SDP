@@ -114,6 +114,9 @@ func (s *Service) changePreparation(caller Caller, q PreparationChange, request 
 	if _, ok := state.DesignDecisionReceipts[q.OperationID]; ok {
 		return out, fail("idempotency_conflict", "operationId belongs to design decision")
 	}
+	if _, ok := state.LeaderReceipts[q.OperationID]; ok {
+		return out, fail("idempotency_conflict", "operationId belongs to leader delivery")
+	}
 	if _, ok := state.Receipts[q.OperationID]; ok {
 		return out, fail("idempotency_conflict", "operationId belongs to a legacy operation")
 	}

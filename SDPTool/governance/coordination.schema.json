@@ -181,7 +181,8 @@
           "enum": [
             "snapshot",
             "result",
-            "error"
+            "error",
+            "leader-message"
           ]
         },
         "view": {
@@ -192,6 +193,9 @@
         },
         "error": {
           "$ref": "schema.json#/$defs/Error/properties/error"
+        },
+        "leader": {
+          "$ref": "leader.schema.json#/$defs/LeaderResult"
         }
       },
       "required": [
@@ -219,6 +223,11 @@
                 "required": [
                   "error"
                 ]
+              },
+              {
+                "required": [
+                  "leader"
+                ]
               }
             ]
           }
@@ -243,6 +252,11 @@
                 "required": [
                   "error"
                 ]
+              },
+              {
+                "required": [
+                  "leader"
+                ]
               }
             ]
           }
@@ -266,6 +280,40 @@
               {
                 "required": [
                   "result"
+                ]
+              },
+              {
+                "required": [
+                  "leader"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "kind": {
+              "const": "leader-message"
+            }
+          },
+          "required": [
+            "leader"
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "view"
+                ]
+              },
+              {
+                "required": [
+                  "result"
+                ]
+              },
+              {
+                "required": [
+                  "error"
                 ]
               }
             ]

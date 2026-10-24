@@ -14,9 +14,15 @@ import (
 
 	"github.com/Hans-Einar/SDP/SDPTool"
 	"github.com/Hans-Einar/SDP/SDPTool/governance"
+	"github.com/Hans-Einar/SDP/SDPTool/governancecontroller"
 )
 
+type coordinationMessage struct {
+	OperationID string `json:"operationId"`
+	Text        string `json:"text"`
+}
 type coordinationCommand struct {
+	Message         *coordinationMessage                     `json:"message,omitempty"`
 	Action          string                                   `json:"action"`
 	Acknowledgement *governance.ReportAcknowledgementRequest `json:"acknowledgement,omitempty"`
 	Disposition     *governance.AttentionDisposition         `json:"disposition,omitempty"`
@@ -31,6 +37,7 @@ type coordinationInput struct {
 	Err     error
 }
 type coordinationEvent struct {
+	Leader *governance.LeaderResult     `json:"leader,omitempty"`
 	Schema string                       `json:"schema"`
 	Kind   string                       `json:"kind"`
 	View   *governance.CoordinationView `json:"view,omitempty"`
@@ -113,6 +120,9 @@ func applyCoordinationCommand(s *governance.Service, q governance.CoordinationRe
 	invalid := func() (*governance.Result, error) {
 		return nil, &governance.Error{Code: "invalid_request", Message: "use refresh, quit, exact acknowledge, or exact reply input"}
 	}
+	if v.Message != nil {
+		return invalid()
+	}
 	switch v.Action {
 	case "refresh", "quit":
 		if v.Acknowledgement != nil || v.Disposition != nil || v.Reply != nil {
@@ -155,6 +165,10 @@ func watchCoordination(ctx context.Context, s *governance.Service, q governance.
 			_, e := fmt.Fprintf(out, "Coordination error %q: %q\n", v.Error.Code, v.Error.Message)
 			return e
 		}
+		if v.Leader != nil {
+			_, e := fmt.Fprintf(out, "Queued owner message %q for the Project Leader\n", v.Leader.OperationID)
+			return e
+		}
 		_, e := fmt.Fprintf(out, "Recorded %q operation %q; run %q remains %q\n", v.Result.Operation, v.Result.OperationID, v.Result.Run.ID, v.Result.Run.State)
 		return e
 	}
@@ -185,6 +199,20 @@ func watchCoordination(ctx context.Context, s *governance.Service, q governance.
 	process := func(v coordinationInput) (bool, error) {
 		if v.Err != nil {
 			return false, reportError(v.Err)
+		}
+		if v.Command.Action == "message" {
+			cmd := v.Command
+			if owner == "" || q.RunID != "" {
+				return false, reportError(&governance.Error{Code: "unauthorized", Message: "leader messages require project-wide console and owner attribution"})
+			}
+			if cmd.Message == nil || cmd.Acknowledgement != nil || cmd.Disposition != nil || cmd.Reply != nil {
+				return false, reportError(&governance.Error{Code: "invalid_request", Message: "message requires operationId and text only"})
+			}
+			r, e := governancecontroller.LeaderMessage(s, cmd.Message.OperationID, owner, "sdp-controller coordinate stdin", cmd.Message.Text)
+			if e != nil {
+				return false, reportError(e)
+			}
+			return false, emit(coordinationEvent{Kind: "leader-message", Leader: &r})
 		}
 		result, e := applyCoordinationCommand(s, q, coordinator, owner, v.Command)
 		if e != nil {

@@ -599,3 +599,59 @@ conversation scheduler or a native wake-up guarantee. Verify actual compiled CLI
 and stdio MCP, independent worker progress during watch, replies/acknowledgements,
 restart, pagination/stale refusals and authority separation. Full native leader
 turn scheduling, uncertainty recovery and independent review remain required later.
+
+
+## PGL3-C7 — Serialized Project Leader wake-up and mapped recovery (2026-10-24)
+
+Use the existing atomic checkout store and host client. Add bounded durable owner
+messages and leader dispatch receipts in operational profile 0.9, preserving all
+older profiles and refusing old readers after the first explicit leader write.
+These are operational delivery facts, not a second management ledger or acceptance.
+One active leader dispatch per store; worker run/controller leases remain independent.
+
+A short decision turn uses a fresh persistent thread with read-only sandbox, never
+approval policy, explicit selected project skill inputs and C6 coordinator MCP only.
+The launcher supplies coordinator identity, verified host version and selected skills.
+The controller injects bounded pending owner messages before report/question notices.
+Stable notice keys exclude polling timestamps and observation counters. Handled keys
+are not requeued merely because a report remains verifying. Delivery is not semantic
+consumption, acknowledgement or acceptance; the leader may use C5 acknowledgement.
+The controller cannot execute a proposed worker launch or owner decision from prose.
+
+Persist prepare, opening-thread, bound-thread and sending-turn intent before each
+external effect. New owner input or changed selected notice/skill basis invalidates
+an unsent preparation; supersede only prepared/bound work, then reselect pending
+inputs. Never automatically replace opening/sending/running uncertainty. A missing
+thread/start response remains unresolved because the thread is unmapped. For a
+mapped thread, recovery requires the same host version, project cwd and exactly
+one matching client message ID plus exact input/skill digest in complete history.
+Missing, duplicated or conflicting acceptance refuses; an empty/idle thread is not
+permission to resend. Capture only visible completed messages, never private reasoning.
+A completed/failed/interrupted host turn releases the leader slot, not assignment
+acceptance. Reports and owner messages arriving during it remain pending.
+
+Bound state and turn counts explicitly; no sustained-hours capacity claim. Owner
+messages use trusted local attribution; model tools cannot impersonate the owner.
+Inspect/status and message enqueue do not launch a model. An explicit leader run
+command enables bounded dispatch/polling; queued input takes precedence over new
+report work. Preserve the local coordination console and worker capabilities.
+
+Verify with service and actual compiled command/protocol fixtures: serialization,
+owner input during active work, restart, exactly correlated lost-response recovery,
+no resend after ambiguous send, stale unsent supersession, profile coexistence and
+old-reader refusal. Native host scheduling remains unverified until an authorized
+native trial; role skill input does not establish procedural compliance or review.
+
+C7 implementation refinements: owner enqueue uses stable operation/content identity
+with expectedRevision=0; leader transitions use CAS. This lets a local sender retry
+without retaining a moving queue revision. Store and effect leases remain separate.
+The exact host MCP inventory must contain only the coordinator server; other inherited
+servers or an incomplete page refuse before turn submission. No global config edits.
+
+Limits are 64 retained messages, 16 retained dispatches and 256 leader receipts,
+including superseded preparations. Each dispatch selects up to eight messages and
+eight notices within 64 KiB of encoded JSON; message text is at most 4096 bytes and
+visible answers at most 64 KiB. Fit messages in original order before notices.
+Normalize only notice fingerprints; retain actionable current revisions in payloads.
+No compaction/reset path or sustained-hours readiness is implied. See the
+[controller contract](../../../../SDPTool/governancecontroller/README.md#serialized-project-leader-turns--pgl3-c7).

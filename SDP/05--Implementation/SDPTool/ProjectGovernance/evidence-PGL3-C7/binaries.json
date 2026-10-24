@@ -1,0 +1,16 @@
+{
+  "controller": {
+    "path": "/home/warloc/.cache/sdp-workstation/PGL3-C7/bin/sdp-controller",
+    "sha256": "5ca3884b564a7e36d6bfd0cfa6386186f70502529134dc2a1a520e5f29b14ca9"
+  },
+  "previousReader": {
+    "path": "/home/warloc/.cache/sdp-workstation/PGL3-C6/bin/sdp-controller",
+    "sha256": "c77999b37e0039195a9b86ae89c630e484319db83dc177402836dd97314ed421",
+    "origin": "retained PGL3-C6 private binary; baseline dca5c4c"
+  },
+  "stableInstallationChanged": false,
+  "mcp": {
+    "path": "/home/warloc/.cache/sdp-workstation/PGL3-C7/bin/sdp-mcp",
+    "sha256": "fbb480724c3952f52ae00e3501115ed38364d519acf295ca6a77cb838b0ffaf8"
+  }
+}

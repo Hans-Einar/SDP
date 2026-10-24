@@ -9,7 +9,7 @@
 | created | 2026-10-09T12:08:50.581137+00:00 |
 | source | Owner Session0011 T004 role definition and T005 KanBan handoff request |
 | Systems | SDPTOOL |
-| next_review | AI Project Leader turn scheduling after PGL3-C6 local console/MCP; retained native workflow, capacity/recovery and evidence gates |
+| next_review | Native leader/worker workflow after PGL3-C7 protocol delivery; retained SAD/scope, capacity/recovery, review and publication gates |
 | PlanId | PLAN-SDP-0018 |
 | tags | project-leader, steering, SAD, master, MCP, app-server, coordination |
 
@@ -223,3 +223,13 @@ pass; see [evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence
 CardState remains in-progress for AI leader scheduling and the parent plan's native,
 review/recovery/publication gates. No model/subagent launch, stable/global config
 change, Blueprint resumption or Ponsse work. EVT-KB-SDP-000401 records this boundary.
+
+
+2026-10-24, Session0007 T033: PGL3-C7 delivers durable owner-message/notice dispatch,
+serialized short leader turns and exact mapped lost-response recovery. Full affected
+race/vet, compiled CLI/protocol restart and 20 output/context schemas pass; previous
+C6 binary refuses profile 0.9. See [evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C7.md).
+CardState remains in-progress: native leader/worker workflow, SAD/scope closure,
+capacity/compaction, independent review and canonical publication remain. No native
+model or subagent launch in this increment, and no full PG acceptance. SDL-only,
+Blueprint pause and Ponsse deferral remain. EVT-KB-SDP-000402 records this review.
