@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T041 — owner selects concretization of Session execution and KanBan governance; validated SDL WORK and concrete transition/implementation contract recorded; runtime remains at PGI4-C3.
+Latest recorded turn: T042 — PGF1-C1 durable Session binding, inspection and registration recovery delivered; full race/vet and actual-process pg_lab checks pass. Automatic card effects and shared leader dispatch remain next.
 The native trial asks, receives a delayed fixture reply, starts one fresh attempt
 and implements/reports the selected behavior. Local acknowledgement, coordination and
 serialized leader delivery are implemented. C8 native single-worker/leader and completed
@@ -31,7 +31,7 @@ gantt
 | --- | --- | --- | --- | --- |
 | completed | S1 | Recover skills, studies, card dependencies and ownership | Owner request, 2026-10-03 | Assessment below; RGS2 reused |
 | completed | S2 | Design the smallest common routing, run, Session and client contract | Owner continuation, T002 | [PGD1 / PLAN-SDP-0017](../04--Design/SDPTool/ProjectGovernance/Plan.md), contract, acceptance cases and protocol inspection |
-| on-going | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C6 verified; owner reports PGI3-U1 trial performed; native mapping remains unverified; PGI4-C1 evidence/rework, C2 native review and C3 checked result publication delivered; final disposition and integrated gates remain |
+| on-going | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C6 verified; owner reports PGI3-U1 trial performed; native mapping remains unverified; PGI4-C1 evidence/rework, C2 native review and C3 checked result publication delivered; final disposition and integrated gates remain; PGF1-C1 binding/registration delivered in T042 |
 | completed | S7 | Codex 0.164.0 and compatible later hosts / PGC1 | Owner T029; KB057 and existing PLAN-SDP-0018 | 98b449c range/identity/recovery checks, full race/vet, 60 schema cases and real no-model 0.164.0 controller/MCP probe pass; full native/review gates remain |
 | on-going | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation, C2a lifecycle, C2b provider checks and C2c decisions and C2d activation/native code trial delivered; PGL3-C2 reports/inbox, C3 attention/replies and C4 guarded continuation delivered; C5 acknowledgement, C6 console/MCP and C7 serialized leader delivery/recovery and C8 native bounded workflow and C3 review/publication coordination delivered; final disposition, parallel/capacity and independent review gates remain |
 | planned | S4 | Verify interruption, resume, scope change and evidence disposition | S3 candidate | Evidence required before wider use |
@@ -43,8 +43,8 @@ gantt
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-24 |
-| Current step | S3/S6 active: PGI4-C3 checked bounded result publication/recovery and review notices delivered; final run/lifecycle disposition and orchestration/integrated gates remain |
-| Proposed next step | Prepare scoped Blueprint/review for PGF1-C1 Session binding and durable instance from T041 SDL WORK, then checked lifecycle effects and PGF2–9 under T039/T041 gates: orchestration, SDL handoff, owner dialogue, recovery/capacity, native integration, independent review and explicit scope closeout. SDL-only; MVP1 deferred |
+| Current step | S3/S6 active: PGF1-C1 durable Session binding and registration recovery delivered; card lifecycle, leader dispatch, model gates and integrated disposition remain |
+| Proposed next step | Implement PGF1-C2 checked card lifecycle effects and scoped reconciliation, then PGF2–9 under T039/T041 gates: orchestration, SDL handoff, owner dialogue, recovery/capacity, native integration, independent review and explicit scope closeout. SDL-only; MVP1 deferred |
 | Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension; T026 assigns hub/webapp to a separate project and continues local SDP/SDPTool work; T027 continues local attention/replies; T028 continues guarded attention continuation; T029 selects stable Codex >=0.164.0 and compatible later hosts, preserving other scopes |
 
 ## Goal and ownership
@@ -2044,3 +2044,72 @@ source hashes; all model journals done; whitespace checks. Model validation and
 107 generated-file hashes are pinned in Evidence-T041. No runtime code changes or
 runtime acceptance tests. Preparing the scoped design/model milestone commit and
 existing authorized phase push; no merge or release.
+
+
+## T042 — Implement Session binding and durable instance
+
+Owner authorizes continued autonomous progress through the selected plan in this
+turn. Select PGF1-C1 with the T041 design and existing SDL WORK. This continuation
+is actual implementation authority for that supplied design, not independent review
+or permission to publish/merge. Keep unfinished integration/release gates explicit.
+
+Preflight: 0457a2742ad3c56fe5b330d6c1884ab4e6512039 on
+sdp/codex-forward-compatibility is clean/pushed; one known worktree. Relevant committed
+PG and model history since main, active KB038/052, paused KB050/Session0008 and
+Session0012 coordination were recovered. pg_lab is clean/pushed on
+ test/pgi4-c3-publication and permits bounded disposable trials. No other local
+writer or identity collision observed; remote unobserved work remains outside
+coverage. Green for governance core/store/schema, CLI/action/presentation adapters,
+focused tests and current model/plan/evidence; lab gets a new isolated fixture and
+branch. No takeover of Blueprint implementation, Ponsse or host configuration.
+
+C1 boundary: explicit typed Session binding, canonical record coverage, version-pinned
+instance, read/list and durable resume/registration recovery. Reuse the store and
+checked publication primitive; do not launch hosts or claim general card transitions.
+New pending paths refuse advancement; PGF1-C2 owns card moves and scoped ledger
+reconciliation. Independent product review remains a later unfulfilled gate.
+
+
+### T042 work summary
+
+- Recovered the same active Session/plan and recorded preflight before product edits.
+  Loaded/reused SDP, Master, Worker, Verifier, Traceability, Planning/plan contract,
+  document workflow and SDL source rules. One accountable agent; no delegation or
+  independent review claimed. Owner T042 continuation supplies implementation
+  authority; no extra approval requested for bounded reversible work.
+- Implemented PGF1-C1 strict binding validation, canonical coverage, version-pinned
+  profile 0.13 instance, prepared registration journal, same-operation receipts and
+  durable resume. Read/list expose actual admission holds. Six CLI/JSON actions share
+  the service, with trusted mutation authority; restricted leader MCP is unchanged.
+- Fixed an adapter authority restriction found by the tests. Extended the existing
+  action catalogue expectation by six operations without removing prior coverage.
+  Full SDPTool race suite and vet pass on the final source; no product code edits
+  followed those checks. Source hashes and exact lab/tool results are in
+  [Evidence-PGF1-C1](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C1.md).
+- Ran fresh-process CLI adoption/inspection/resume/retries and JSON invocation in
+  isolated pg_lab/session-c1. Thirteen wire objects validate. Deliberate authority
+  drift refuses without state change or overwrite; old executable refuses profile
+  0.13. All 110 prior tracked paths are unchanged. Existing fixture review is
+  synthetic protocol setup, not a new native model/reviewer run.
+- Scoped diagnostic Blueprint constraints pass. It was generated during this turn's
+  implementation and regenerated for final adapter scope, not a previously completed
+  independent handoff. WORK :00002 remains validated TARGET; whole Session workflow
+  activity remains planned because C1 implements only a subset. Required model
+  integration/CANDIDATE/RELEASE and independent product review remain open.
+- Reconciled plan/card/design/core documentation. KB038/052 remain in-progress for
+  their broader remaining outcomes. Backlog/onHold review retains KB036/037/042,
+  separate KB050 and SDL-only KB059 disposition; no new scope selected.
+- C1 deliberately retains whole-ledger invalidation and local-store uniqueness.
+  Resume currently recovers registration/coverage, not host execution. Next is
+  PGF1-C2 checked lifecycle/card effects and scoped reconciliation, followed by
+  common privileged leader operations and model/host gates. Ponsse/MVP1 stays deferred.
+- This is a work summary, not a captured final response. Final canonical/link/hash
+  checks, scoped milestone commit and authorized phase pushes complete this delivery;
+  no merge, software release, installation or owner acceptance is claimed.
+
+
+T042 final checks pass: 73 cards, 47 management records, 684 management events;
+Toolkit validation; original management/Traceability prefixes; tested source hashes
+and maintained relative links. pg_lab trial commit 2926b0a is pushed on
+ test/pgf1-c1-session. Preparing the scoped SDP milestone commit and authorized push;
+no product changes after the final race/vet checks.

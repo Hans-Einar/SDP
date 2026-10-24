@@ -1,0 +1,331 @@
+[
+  {
+    "definition": "definition",
+    "value": {
+      "definition": {
+        "id": "session-lifecycle",
+        "version": "0.1",
+        "steps": [
+          "admission",
+          "design",
+          "implementation",
+          "verification",
+          "review",
+          "model-release",
+          "disposition",
+          "done"
+        ],
+        "completion": "checked records, candidate evidence, required review and model release; no host-turn implied completion"
+      },
+      "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1",
+      "operation": "session-definition",
+      "schema": "sdp-session-execution/0.1"
+    }
+  },
+  {
+    "definition": "context",
+    "value": {
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-context",
+      "projectRef": "trial",
+      "checkoutId": "d0425a5b-be7e-4cd6-be36-d21c6727a7fd",
+      "bindingPath": "SDP/Sessions/execution/SESSION-TEST-0001.json",
+      "bindingDigest": "2a8a5df812ab1bff4bbf8ceed150aa9a70a290fe14056c51c0d31dd791053b63",
+      "binding": {
+        "schema": "sdp-session-execution/0.1",
+        "session": {
+          "id": "SESSION-TEST-0001",
+          "path": "SDP/Sessions/session.md"
+        },
+        "plan": {
+          "id": "MAINT-SDP-0001",
+          "path": "SDP/Maintenance/Plan.md"
+        },
+        "authority": "SDP/authority.md",
+        "workflow": {
+          "id": "session-lifecycle",
+          "version": "0.1",
+          "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1"
+        },
+        "steps": [
+          {
+            "id": "S1",
+            "milestone": "M1",
+            "cards": [
+              {
+                "id": "KB-SDP-001",
+                "coverage": "whole"
+              }
+            ],
+            "dependsOn": [],
+            "writablePaths": [
+              "target.txt"
+            ],
+            "protectedPaths": [
+              "unrelated.txt"
+            ],
+            "review": "independent",
+            "ownerAcceptance": "not-required"
+          }
+        ]
+      },
+      "inputRevision": "71d8f2b59a61e1a0f6a3e6ea02ad2aec0f38a0ab818d1270f91e5f26bb5f6e4f",
+      "sources": [
+        {
+          "path": "AGENTS.md",
+          "sha256": "21dc4fa0e2f816775618ac9f6e1abe043782ee48030c10d3eacb441d9efe9595"
+        },
+        {
+          "path": "SDP/KanBan/active/#001--Change--fixture.md",
+          "sha256": "52ef95606b0c56bd17e4e079cfbeaa0f4026709c7d77a198441a19bde871148a"
+        },
+        {
+          "path": "SDP/Maintenance/Plan.md",
+          "sha256": "b2a3e9ae1e4d03c861fd239ca04e6996e71d4e55938b504a6ccbea3ae275e68d"
+        },
+        {
+          "path": "SDP/ProjectManagement/Ledger.ndjson",
+          "sha256": "8c2516834619040e39b76bbe3dbd0817d4ca7d4d5615045fd958012a9e5645e9"
+        },
+        {
+          "path": "SDP/SDP-project.manifest.yaml",
+          "sha256": "bf1d21be9fe885671ddcc461769e0496e3dd528c3c5dd1536a29d1e926b9296f"
+        },
+        {
+          "path": "SDP/Sessions/execution/SESSION-TEST-0001.json",
+          "sha256": "2a8a5df812ab1bff4bbf8ceed150aa9a70a290fe14056c51c0d31dd791053b63"
+        },
+        {
+          "path": "SDP/Sessions/session.md",
+          "sha256": "529d65d809aad98c95351ea4a74dafe94d592a8c881795a407918b9c930dc415"
+        },
+        {
+          "path": "SDP/authority.md",
+          "sha256": "178357325133c7c4d3f83e42c528218edf12efd545b6992a6dd8e7b7871bc2ad"
+        }
+      ]
+    }
+  },
+  {
+    "definition": "mutation",
+    "value": {
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-adopt",
+      "operationId": "f85deaea-1493-4820-a476-c79291ab0257",
+      "instanceId": "f85deaea-1493-4820-a476-c79291ab0257",
+      "revision": 1,
+      "registration": "pending"
+    }
+  },
+  {
+    "definition": "mutation",
+    "value": {
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-adopt",
+      "operationId": "f85deaea-1493-4820-a476-c79291ab0257",
+      "instanceId": "f85deaea-1493-4820-a476-c79291ab0257",
+      "revision": 1,
+      "registration": "pending"
+    }
+  },
+  {
+    "definition": "view",
+    "value": {
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-read",
+      "instanceId": "f85deaea-1493-4820-a476-c79291ab0257",
+      "revision": 1,
+      "sessionId": "SESSION-TEST-0001",
+      "planId": "MAINT-SDP-0001",
+      "workflow": {
+        "id": "session-lifecycle",
+        "version": "0.1",
+        "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1"
+      },
+      "registration": "pending",
+      "coverage": "current",
+      "conditions": [],
+      "steps": [
+        {
+          "id": "S1",
+          "stage": "admission",
+          "holds": [
+            "step activation is not implemented in this increment",
+            "Session registration pending"
+          ]
+        }
+      ],
+      "nextActions": [
+        "session-read",
+        "session-resume"
+      ],
+      "hostExecution": "not-dispatched"
+    }
+  },
+  {
+    "definition": "mutation",
+    "value": {
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-resume",
+      "operationId": "847d80c6-4ac3-41f1-8b35-e344d4b6c1a2",
+      "instanceId": "f85deaea-1493-4820-a476-c79291ab0257",
+      "revision": 2,
+      "registration": "committed"
+    }
+  },
+  {
+    "definition": "mutation",
+    "value": {
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-resume",
+      "operationId": "847d80c6-4ac3-41f1-8b35-e344d4b6c1a2",
+      "instanceId": "f85deaea-1493-4820-a476-c79291ab0257",
+      "revision": 2,
+      "registration": "committed"
+    }
+  },
+  {
+    "definition": "view",
+    "value": {
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-read",
+      "instanceId": "f85deaea-1493-4820-a476-c79291ab0257",
+      "revision": 2,
+      "sessionId": "SESSION-TEST-0001",
+      "planId": "MAINT-SDP-0001",
+      "workflow": {
+        "id": "session-lifecycle",
+        "version": "0.1",
+        "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1"
+      },
+      "registration": "committed",
+      "coverage": "current",
+      "conditions": [],
+      "steps": [
+        {
+          "id": "S1",
+          "stage": "admission",
+          "holds": [
+            "step activation is not implemented in this increment"
+          ]
+        }
+      ],
+      "nextActions": [
+        "session-read",
+        "session-resume"
+      ],
+      "hostExecution": "not-dispatched"
+    }
+  },
+  {
+    "definition": "list",
+    "value": {
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-list",
+      "generation": "0bd9bfd9266d6ecbde9e961789e14d8cb66e008df4200ecf9790cef8da73dee9",
+      "instances": [
+        {
+          "schema": "sdp-session-execution/0.1",
+          "operation": "session-read",
+          "instanceId": "f85deaea-1493-4820-a476-c79291ab0257",
+          "revision": 2,
+          "sessionId": "SESSION-TEST-0001",
+          "planId": "MAINT-SDP-0001",
+          "workflow": {
+            "id": "session-lifecycle",
+            "version": "0.1",
+            "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1"
+          },
+          "registration": "committed",
+          "coverage": "current",
+          "conditions": [],
+          "steps": [
+            {
+              "id": "S1",
+              "stage": "admission",
+              "holds": [
+                "step activation is not implemented in this increment"
+              ]
+            }
+          ],
+          "nextActions": [
+            "session-read",
+            "session-resume"
+          ],
+          "hostExecution": "not-dispatched"
+        }
+      ]
+    }
+  },
+  {
+    "definition": "binding",
+    "value": {
+      "schema": "sdp-session-execution/0.1",
+      "session": {
+        "id": "SESSION-TEST-0001",
+        "path": "SDP/Sessions/session.md"
+      },
+      "plan": {
+        "id": "MAINT-SDP-0001",
+        "path": "SDP/Maintenance/Plan.md"
+      },
+      "authority": "SDP/authority.md",
+      "workflow": {
+        "id": "session-lifecycle",
+        "version": "0.1",
+        "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1"
+      },
+      "steps": [
+        {
+          "id": "S1",
+          "milestone": "M1",
+          "cards": [
+            {
+              "id": "KB-SDP-001",
+              "coverage": "whole"
+            }
+          ],
+          "dependsOn": [],
+          "writablePaths": [
+            "target.txt"
+          ],
+          "protectedPaths": [
+            "unrelated.txt"
+          ],
+          "review": "independent",
+          "ownerAcceptance": "not-required"
+        }
+      ]
+    }
+  },
+  {
+    "definition": "adoptRequest",
+    "value": {
+      "schema": "sdp-session-execution/0.1",
+      "projectRef": "trial",
+      "checkoutId": "d0425a5b-be7e-4cd6-be36-d21c6727a7fd",
+      "operationId": "f85deaea-1493-4820-a476-c79291ab0257",
+      "bindingPath": "SDP/Sessions/execution/SESSION-TEST-0001.json",
+      "inputRevision": "71d8f2b59a61e1a0f6a3e6ea02ad2aec0f38a0ab818d1270f91e5f26bb5f6e4f",
+      "reason": "Owner-selected test Session"
+    }
+  },
+  {
+    "definition": "resumeRequest",
+    "value": {
+      "schema": "sdp-session-execution/0.1",
+      "projectRef": "trial",
+      "checkoutId": "d0425a5b-be7e-4cd6-be36-d21c6727a7fd",
+      "operationId": "847d80c6-4ac3-41f1-8b35-e344d4b6c1a2",
+      "instanceId": "f85deaea-1493-4820-a476-c79291ab0257",
+      "expectedRevision": 1,
+      "reason": "Recover recorded Session"
+    }
+  },
+  {
+    "definition": "contextRequest",
+    "value": {
+      "bindingPath": "SDP/Sessions/execution/SESSION-TEST-0001.json"
+    }
+  }
+]

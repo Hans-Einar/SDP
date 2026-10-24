@@ -7,8 +7,9 @@ transitions. Linux supports mutation; other platforms explicitly refuse writes.
 The CLI and [MCP adapter](../governancemcp/README.md) use the same core.
 The [app-server adapter](../governancehost/README.md) supplies protocol inspection
 and bounded observed attempt recovery. The [owner controller candidate](../governancecontroller/README.md) adds durable
-input and bounded submission; live PGI3 verification remains open. Automatic Session
-journaling and the delivery gate remain later increments.
+input and bounded submission; full PGI3 verification remains open. Bounded result
+publication and Session registration are described below; final lifecycle disposition
+remains a later increment.
 
 Current integrated-state responsibilities and the distinction between legacy
 Maintenance routing, prepared design packages and execution runs are summarized
@@ -426,3 +427,60 @@ context provenance and publication status/current applicability; full findings r
 in `ReviewRead` and published evidence. Terminal review notices enter the existing
 serialized leader delivery, with content-key deduplication and renewed delivery when
 applicability changes. The coordinator MCP capabilities are unchanged.
+
+## Session instances — PGF1-C1
+
+The additive `sdp-session-execution/0.1` contract binds an existing active Session
+and live typed plan to selected steps and source cards. It stores a version-pinned
+instance in operational profile 0.13; old runs remain intact. This increment
+registers and inspects work. Every step stays at `admission` with an explicit
+activation hold. It does not start agents, move cards or complete a Session.
+
+Create `SDP/Sessions/execution/<SESSION-ID>.json` and link it from the authored
+Session. Use [session.schema.json](session.schema.json) for the exact wire shapes.
+A binding supplies Session and plan `{id,path}`, an authority document path,
+workflow `{id,version,digest}`, and steps with IDs, existing plan milestones,
+`cards: [{id,coverage}]`, `dependsOn`, literal `writablePaths`/`protectedPaths`,
+`review` and `ownerAcceptance` policies. The current workflow is read from
+`session-definition`; do not invent or automatically upgrade its digest.
+
+```sh
+sdptool /path/to/project governance session-definition --json
+sdptool /path/to/project governance bind --state /private/state/checkout --json
+sdptool /path/to/project governance session-context --state /private/state/checkout --input context.json --json
+sdptool /path/to/project governance session-adopt --state /private/state/checkout --input adopt.json --json
+sdptool /path/to/project governance session-read --state /private/state/checkout --instance INSTANCE_UUID --json
+sdptool /path/to/project governance session-resume --state /private/state/checkout --input resume.json --json
+sdptool /path/to/project governance session-list --state /private/state/checkout --json
+```
+
+`context.json` contains `bindingPath`. Adoption takes schema, projectRef,
+checkoutId, a fresh UUID operationId, bindingPath, the observed inputRevision and
+reason. Resume takes schema, projectRef, checkoutId, a new operationId, instanceId,
+expectedRevision and reason. Retry the same request/operationId after a lost reply;
+a different request under that ID is refused. Adoption returns revision 1 and
+`registration: pending`; resume appends the exact registration journal and returns
+revision 2/committed. Further resumes only checkpoint current coverage. They do not
+reattach to a host or advance workflow stages.
+
+The six corresponding `governance.session.*` JSON invocation actions share this
+core/CLI boundary. Context/adopt/resume parameters use `requestFile`, plus optional
+`state`; read takes `instance`, list takes optional `state`. Relative invocation
+paths resolve from the project. Writes require a trusted injected controller
+principal; local `invoke` can attribute it with `--as ACTOR --authority controller`.
+This is local account authority, not owner acceptance. These actions are not added
+to the restricted coordinator MCP capability set in this increment.
+
+Coverage includes canonical cards/plan/Session/authority, binding, instructions,
+manifest and the complete management ledger. C1 conservatively blocks resume on
+any changed ledger, even an unrelated append; scoped reconciliation belongs to C2.
+Only the exact own registration postimage is recoverable automatically. External
+edits are preserved and reported as stale coverage. One instance per Session is
+enforced in the selected local store, not across all clones or arbitrary stores.
+Limits are 64 KiB binding, 32 steps, 16 cards per step/64 distinct cards, 32 instances
+and the existing shared 1024-receipt capacity. Old readers refuse profile 0.13.
+
+Tests cover strict decoding, DAG/version/record guards, stale revisions, retry and
+crash recovery, untouched legacy records, actual subprocess CLI/JSON parity, schema
+captures and a disposable pg_lab fixture. Full lifecycle/model/host recovery,
+privileged leader MCP, independent product review and owner trial remain open.

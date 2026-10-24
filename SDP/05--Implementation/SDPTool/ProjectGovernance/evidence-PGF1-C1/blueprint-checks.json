@@ -1,0 +1,11 @@
+{
+  "revision": "66990e264a4f2dfbcc23441e51d5cf69465c72e3d6e1f89b4b1ada1e0f373157",
+  "status": "diagnostic-preview",
+  "ConstraintsPass": true,
+  "note": "Diagnostic baseline; same-context constraint inspection only. No independent approval. Full generated obligations are reproducible from the pinned task/model and hashed bundle.",
+  "obligationCount": 320,
+  "obligationsArtifact": {
+    "path": "/tmp/sdp-pgf1-c1-final-blueprint/blueprint.json",
+    "sha256": "a6818becfd953b4a147bd57cc03a0ec3e0cf0e30c2181d45c8f1a8f143caa60d"
+  }
+}

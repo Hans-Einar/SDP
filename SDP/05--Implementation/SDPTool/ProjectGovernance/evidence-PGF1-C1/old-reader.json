@@ -1,0 +1,15 @@
+{
+  "exit": 2,
+  "error": {
+    "error": {
+      "code": "reconciliation_required",
+      "message": "invalid_request: json: unknown field \"sessions\"",
+      "retryable": false
+    },
+    "operation": "error",
+    "schema": "sdp-project-governance/0.1",
+    "status": "error"
+  },
+  "stateHeadUnchanged": true,
+  "readerSHA256": "e4bf5fdb160d59932ac4af8348fd1cbf0fc9d85338b570d448f4d0a27ce53a8f"
+}

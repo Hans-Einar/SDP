@@ -1,0 +1,6 @@
+{
+  "encoding": "utf-8",
+  "stdout": "=== RUN   TestSessionCompiledJourney\n    session_cli_test.go:118: PASS: 13 observed Session wire objects\n        \n--- PASS: TestSessionCompiledJourney (0.45s)\nPASS\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t0.457s\n",
+  "sha256": "22604ae289e313eeb66a4c4fb9ea68848eadfc020bd53ea9d486fc6ec00ef881",
+  "exitCode": 0
+}

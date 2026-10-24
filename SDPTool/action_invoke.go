@@ -111,8 +111,8 @@ func Invoke(ctx context.Context, in io.Reader, caller ActionCaller) InvokeRespon
 	if err != nil {
 		return invokeFailure(r, 2, "invalid-parameters", err)
 	}
-	if req.Action != "blueprint.assignment.apply" && (caller.Principal.Actor != "" || caller.Principal.Authority != "") {
-		return invokeFailure(r, 2, "invalid-parameters", fmt.Errorf("caller attribution applies only to assignment mutation"))
+	if req.Action != "blueprint.assignment.apply" && req.Action != "governance.session.adopt" && req.Action != "governance.session.resume" && (caller.Principal.Actor != "" || caller.Principal.Authority != "") {
+		return invokeFailure(r, 2, "invalid-parameters", fmt.Errorf("caller attribution applies only to assignment or Session mutation"))
 	}
 	c, err := resolveActionContext(req.Context.Project, caller)
 	if err != nil {

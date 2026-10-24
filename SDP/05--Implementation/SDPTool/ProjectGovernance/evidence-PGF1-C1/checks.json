@@ -1,0 +1,61 @@
+{
+  "candidate": "candidate.json",
+  "environment": {
+    "GOTOOLCHAIN": "local",
+    "GOCACHE": "/home/warloc/.cache/sdp-workstation/gocache",
+    "GOMODCACHE": "/home/warloc/.cache/sdp-workstation/gomodcache",
+    "go": "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go"
+  },
+  "checks": [
+    {
+      "command": "go -C SDPTool test -race ./...",
+      "exitCode": 0,
+      "log": "race.log"
+    },
+    {
+      "command": "go -C SDPTool vet ./...",
+      "exitCode": 0,
+      "log": "vet.log"
+    },
+    {
+      "command": "go -C SDPTool test ./governance ./ -run TestSession|TestCompiledInvocationConsumer -count=1",
+      "exitCode": 0,
+      "log": "adapter-tests.log",
+      "note": "Focused check before final stricter stale-publication test assertion; final race suite includes that assertion."
+    },
+    {
+      "command": "go -C SDPTool test ./governance -run ^TestSessionCompiledJourney$ -count=1 -v (explicit lab environment)",
+      "exitCode": 0,
+      "log": "lab-output.json"
+    },
+    {
+      "command": "sdl check WORK--SessionLifecycle/System.design",
+      "exitCode": 0,
+      "output": "sdl-check.json"
+    },
+    {
+      "command": "python3 SDP/ProjectManagement/validate.py",
+      "exitCode": 0,
+      "log": "management.log"
+    },
+    {
+      "command": "python3 Toolkit/scripts/validate_sdp.py --base-ref main",
+      "exitCode": 0,
+      "log": "toolkit.log"
+    },
+    {
+      "command": "relative Markdown links in maintained changed documents; source SHA-256 and historical ledger prefixes",
+      "exitCode": 0,
+      "relativeLinks": 295
+    }
+  ],
+  "notClaimed": [
+    "native model execution",
+    "independent PG product review",
+    "owner acceptance",
+    "automatic card lifecycle",
+    "model release",
+    "merge or software release"
+  ],
+  "expectationChange": "Action catalogue adds six Session operations; all six prior action IDs remain expected."
+}

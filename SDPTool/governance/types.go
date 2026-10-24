@@ -160,6 +160,7 @@ type Run struct {
 	Reason        string              `json:"reason"`
 }
 type Result struct {
+	Session               *SessionMutationResult `json:"session,omitempty"`
 	PublicationID         string                 `json:"publicationId,omitempty"`
 	Review                *Review                `json:"review,omitempty"`
 	Evidence              *EvidenceRecord        `json:"evidence,omitempty"`

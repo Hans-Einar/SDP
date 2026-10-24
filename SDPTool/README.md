@@ -200,15 +200,17 @@ See [XFMD blueprint integration](XFMD-Blueprint-Integration.md) for current CLI/
 boundaries, lifecycle documentation and development-version testing.
 ## ProjectGovernance pilot
 
-`sdptool governance` provides read-only context/routing and a guarded local
-Maintenance run through the [shared core](governance/README.md). Its explicit
-binding, durable receipts and revision checks support interruption/retry without
-changing canonical project records. PGI2 adds a local
-[MCP adapter](governancemcp/README.md) and [app-server protocol adapter](governancehost/README.md),
-with separately built sdp-mcp and sdp-controller probe commands. The [owner controller candidate](governancecontroller/README.md) adds explicit
-run/status/recover commands, durable input and bounded steering. PGI3 live execution
-remains unverified; candidate-evidence publication remains later work in
-PLAN-SDP-0018. These commands are not yet part of a published installer.
+`sdptool governance` provides inspection and durable Maintenance runs through the
+[shared core](governance/README.md), plus explicit Session binding, registration
+recovery and stage/hold inspection. The [MCP adapter](governancemcp/README.md) and
+[app-server adapter](governancehost/README.md) support the separately built sdp-mcp
+and sdp-controller. The [owner controller](governancecontroller/README.md) adds
+bounded execution, steering, observed review and checked result publication.
+
+PGF1-C1 Session commands register work but do not activate cards or launch agents.
+Full lifecycle/model gates, integrated verification and independent product review
+remain in PLAN-SDP-0018. Development-source availability does not imply a published
+installer or consuming-project installation.
 
 
 ## Discoverable operations and JSON requests
@@ -216,4 +218,4 @@ PLAN-SDP-0018. These commands are not yet part of a published installer.
 Use `sdptool actions --json` to discover supported operations and
 `sdptool invoke --request -` for one JSON request on stdin. Human CLI commands
 remain available. [Actions.md](Actions.md) documents schemas, local attribution,
-path bases, nonzero JSON results and the current five-operation scope.
+path bases, nonzero JSON results and the current operation catalogue.

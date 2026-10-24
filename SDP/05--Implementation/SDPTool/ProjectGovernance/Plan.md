@@ -1089,7 +1089,7 @@ policy. This turn delivers design/model preparation, not a runtime milestone.
 
 | Increment | Checkpoint mapping | Runnable outcome and exit evidence | Dependency/status |
 | --- | --- | --- | --- |
-| PGF1-C1 Session binding and durable instance | PGF1 foundation; PGF2 admission | Adopt a covered manual Session explicitly, read its selected steps/stages/holds, recover the same instance and reject stale/unsupported/cyclic bindings. Pin routine version and authority; leave legacy runs unchanged. New incomplete paths refuse action rather than simulate delivery | next; selected design prepared, runtime unimplemented |
+| PGF1-C1 Session binding and durable instance | PGF1 foundation; PGF2 admission | Adopt a covered manual Session explicitly, read its selected steps/stages/holds, recover the same instance and reject stale/unsupported/cyclic bindings. Pin routine version and authority; leave legacy runs unchanged. New incomplete paths refuse action rather than simulate delivery | delivered T042 at bounded C1 scope; core, CLI/JSON, recovery and pg_lab evidence pass; later activation/leader/model gates remain |
 | PGF1-C2 Checked lifecycle effects and disposition | PGF1; PG-A25/27/28 | Use existing publication machinery for select/start/progress and eligible no-design closeout, including real card moves, metadata/history/links and partial-contribution handling. Reconcile own effects/unrelated ledger additions without weakening coverage. Crash matrix and shared writer/ID contention pass | C1; implementation required |
 | PGF2-C1 Common owner/leader Session operations | PGF2/4; PG-A26/29/30 | CLI and explicitly privileged leader adapter use the same core/instance/receipts. Controller dispatch follows committed record effects; leader-free owner resume and later leader reconnect neither duplicate work nor bypass authority | C1/C2; implementation/native evidence required |
 | PGF3-C1 Design and model-release workflow | PGF3; PG-A21/22/23/25 | SDL WORK, required Blueprint, design handoff, code verification/rework and exact accepted model release participate in Session gates. Combine compatible model WORKs, refresh affected evidence and refuse unresolved model release at closure | common Session operations; implementation/native evidence required |
@@ -1109,3 +1109,25 @@ implementation reconcile/update this same WORK, validate integrated design, free
 CANDIDATE and release under actual ModelGovernance acceptance with code evidence.
 No release is selected merely to finish this design turn; the obligation remains
 visible until implemented work and model disposition satisfy it.
+
+
+### T042 — PGF1-C1 delivered; C2 next
+
+Owner authorizes autonomous continuation. C1 now delivers explicit canonical binding,
+pinned local instance and registration intent/recovery through six CLI and six JSON
+invocation actions. [Evidence](Evidence-PGF1-C1.md) identifies final source, full
+race/vet results, actual-process lab/schema captures and old-reader refusal.
+Every step remains at admission; no automatic card effect or agent launch is claimed.
+
+The existing SDL WORK remains the authoritative target. Scoped diagnostic Blueprint
+constraints pass; independent product review and whole-workflow model release remain
+open. C1's full-ledger pin deliberately blocks unrelated changes until C2 implements
+scoped reconciliation. C2 is the next implementation checkpoint, using existing
+publication machinery for real card/metadata/history effects and explicit partial
+contribution handling. Do not route normal development through C1 as if C2/PGF2
+were already present. All broader PGF2–9 obligations and software release boundaries
+remain as recorded above.
+
+Milestone backlog/onHold review: KB036/037/042 remain broader backlog; KB059 remains
+onHold under the SDL-only direction. KB050 belongs to the separate Blueprint Session.
+No additional card activation, Ponsse work or scope transfer is selected.

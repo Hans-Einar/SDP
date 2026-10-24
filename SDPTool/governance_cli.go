@@ -16,6 +16,10 @@ import (
 const governanceHelp = `Usage: sdptool [PROJECT] governance context|route|bind|start|read|transition [options]
   --input FILE   bounded JSON Selection, RouteRequest, StartRequest or TransitionRequest
   --run UUID     run to read (read only)
+  --instance UUID  Session instance for session-read
+Session operations: session-definition, session-context, session-adopt, session-read,
+session-list, session-resume. Adoption/resume register durable coverage only; they
+do not activate cards, launch agents or execute later stages.
   --state DIR    private operational state outside project (defaults to XDG state home)
   --json         machine output; human-readable output is the default
 context and route only read; bind is explicit. start/transition are trusted local
@@ -48,6 +52,7 @@ func governanceCommand(selected string, args []string, out, errs io.Writer, json
 	fs.SetOutput(io.Discard)
 	input := fs.String("input", "", "JSON request")
 	run := fs.String("run", "", "run identity")
+	instance := fs.String("instance", "", "Session instance identity")
 	state := fs.String("state", "", "state directory")
 	if e := fs.Parse(args[1:]); e != nil {
 		return report(e)
@@ -55,7 +60,22 @@ func governanceCommand(selected string, args []string, out, errs io.Writer, json
 	if fs.NArg() != 0 {
 		return report(fmt.Errorf("unexpected argument"))
 	}
+	if *instance != "" && op != "session-read" {
+		return report(fmt.Errorf("--instance is only valid for session-read"))
+	}
 	switch op {
+	case "session-definition", "session-list":
+		if *input != "" || *run != "" {
+			return report(fmt.Errorf("operation takes no request/run"))
+		}
+	case "session-read":
+		if *input != "" || *run != "" || *instance == "" {
+			return report(fmt.Errorf("session-read requires --instance only"))
+		}
+	case "session-context", "session-adopt", "session-resume":
+		if *input == "" || *run != "" {
+			return report(fmt.Errorf("operation requires --input only"))
+		}
 	case "bind":
 		if *input != "" || *run != "" {
 			return report(fmt.Errorf("bind takes no request/run"))
@@ -102,6 +122,28 @@ func governanceCommand(selected string, args []string, out, errs io.Writer, json
 	}
 	var result any
 	switch op {
+	case "session-definition":
+		w := governance.SessionWorkflow()
+		result = map[string]any{"schema": governance.SessionSchema, "operation": op, "definition": w, "digest": w.Digest()}
+	case "session-context":
+		var q governance.SessionContextRequest
+		if e = governance.Decode(b, &q); e == nil {
+			result, e = service.SessionContext(q)
+		}
+	case "session-adopt":
+		var q governance.SessionAdoptRequest
+		if e = governance.Decode(b, &q); e == nil {
+			result, e = service.AdoptSession(governance.LocalController(), q)
+		}
+	case "session-resume":
+		var q governance.SessionResumeRequest
+		if e = governance.Decode(b, &q); e == nil {
+			result, e = service.ResumeSession(governance.LocalController(), q)
+		}
+	case "session-read":
+		result, e = service.ReadSession(*instance)
+	case "session-list":
+		result, e = service.ListSessions()
 	case "context":
 		var q governance.Selection
 		if e = governance.Decode(b, &q); e == nil {

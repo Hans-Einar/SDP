@@ -14,7 +14,7 @@ const ReviewSchema = "sdp-governance-review/1"
 const reviewStateSchema = "sdp-project-governance-state/0.11"
 
 func evidenceProfile(schema string) bool {
-	return schema == evidenceStateSchema || schema == reviewStateSchema || schema == publicationStateSchema
+	return schema == evidenceStateSchema || schema == reviewStateSchema || publicationProfile(schema)
 }
 
 type ReviewSpec struct {
@@ -340,7 +340,7 @@ func (s *Service) ReviewWrite(c Caller, q ReviewRequest) (Result, error) {
 		state.Reviews = map[string]Review{}
 	}
 	state.Reviews[d.ID] = d
-	if state.Schema != publicationStateSchema {
+	if !publicationProfile(state.Schema) {
 		state.Schema = reviewStateSchema
 	}
 	out := Result{Schema: Schema, Operation: "review." + q.Action, ProjectRef: s.project, CheckoutID: state.CheckoutID, OperationID: q.OperationID, Run: summarizeRun(r), Coverage: "known", Review: &d}
@@ -351,7 +351,7 @@ func (s *Service) ReviewWrite(c Caller, q ReviewRequest) (Result, error) {
 	return out, nil
 }
 func validateReviewState(state snapshot) error {
-	if state.Schema != reviewStateSchema && state.Schema != publicationStateSchema {
+	if state.Schema != reviewStateSchema && !publicationProfile(state.Schema) {
 		if state.Reviews != nil {
 			return fail("incompatible_profile", "reviews require profile 0.11")
 		}
@@ -362,7 +362,7 @@ func validateReviewState(state snapshot) error {
 		}
 		return nil
 	}
-	if len(state.Reviews) == 0 || len(state.Reviews) > 64 {
+	if (state.Schema != sessionStateSchema && len(state.Reviews) == 0) || len(state.Reviews) > 64 {
 		return fail("reconciliation_required", "invalid review collection")
 	}
 	counts, active := map[string]int{}, map[string]int{}

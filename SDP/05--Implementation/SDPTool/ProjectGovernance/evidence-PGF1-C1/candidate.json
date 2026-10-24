@@ -1,0 +1,27 @@
+{
+  "productBaseline": "0457a2742ad3c56fe5b330d6c1884ab4e6512039",
+  "identity": "Baseline plus exact source/test/schema SHA-256; maintained documentation closeout is separate",
+  "sourceFiles": {
+    "SDPTool/action_invoke.go": "6b051f24d9416c4c5da6ecbbbd2b91869d9bb90825686c9aa8b01dfd4e01eb41",
+    "SDPTool/action_process_test.go": "11ca9ea3a933d91df288accfc574240c1ebcb0d20decfa3338380a083a2cee2d",
+    "SDPTool/action_registry.go": "f656eb4e95c9869999c612194cd14ccbe37148bec166c3bb4658d3059b4b54bf",
+    "SDPTool/action_sessions.go": "e9e8cf1e5472bee9b90efc7d8f39646c6f9e87078da45d819ba49a9aa5e24e00",
+    "SDPTool/governance/check_session_schema.py": "9600ac7b50216ba828bf562bbd5369a610e6480aceeb3478de6675f557f4718d",
+    "SDPTool/governance/evidence.go": "dda4409724dd9b50c1758d3624a5300bde6dc0aba7143fc79e5b6b92364f9f7c",
+    "SDPTool/governance/publication.go": "6c3d2d292a0ab71c693700db20dec8c8e4bd0a02bb689681c055616c6d96a59b",
+    "SDPTool/governance/review.go": "8eb93c283565c0643249f0fd7a369dc288ad2f0d6e60ed8056591b7deb92a6cd",
+    "SDPTool/governance/session.go": "5341749a8ce6a772b028da4594e7f7e52072e1372e883af79f52aba814d78113",
+    "SDPTool/governance/session.schema.json": "bc1291ae814372e54c309938dc9d4e6f57fc847cf2fd757d6f6a571bbebdde9d",
+    "SDPTool/governance/session_cli_test.go": "95bffbee901debec8c0dd6ab6be67a2f0cabbc273f7f603376d86a4e73745c75",
+    "SDPTool/governance/session_test.go": "4e691d4d613702624293edb725a98fad4e021a3065ed6f097311e0a4d9704d26",
+    "SDPTool/governance/store.go": "9b8861cf432ef0e33f61a556d472d97769928ee24eb19d9fa9ab36dae3e8faec",
+    "SDPTool/governance/types.go": "1549dbfa6f2feca8320274b50de637acd7a818123d18330c2e272f0e974c9315",
+    "SDPTool/governance_cli.go": "51d7745153426abb7fae45f3cbcd2b24f5a00e9e301d1a99a41cca2c0a4dff43",
+    "SDPTool/presentation/presentation.go": "8f96399eb21cd3056229982abf3526f51ccb35fa91d947a955419d8c52b7d685",
+    "SDPTool/session_actions_test.go": "1834c4b09c18393193db4eed7717cd0941ae08acda98f08fef4b96cef6617e7b"
+  },
+  "go": "go1.27.1",
+  "platform": "linux/amd64",
+  "binary": "/home/warloc/.cache/sdp-workstation/PGF1-C1/bin/sdptool",
+  "binarySHA256": "be54d88daf6cbbdb8fa41e0121a637e1539866091759cad1414ab37fe94d4bc5"
+}

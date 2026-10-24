@@ -179,7 +179,9 @@ func (s *Service) PreparePublication(c Caller, q PublicationRequest) (Publicatio
 		return PublicationView{}, e
 	}
 	p.Digest = publicationDigest(p)
-	st.Schema = publicationStateSchema
+	if st.Schema != sessionStateSchema {
+		st.Schema = publicationStateSchema
+	}
 	if st.Publications == nil {
 		st.Publications = map[string]Publication{}
 	}
@@ -533,13 +535,13 @@ func (s *Service) applyPublicationFile(c PublicationChange) error {
 	return syncDir(filepath.Dir(path))
 }
 func validatePublicationState(st snapshot) error {
-	if st.Schema != publicationStateSchema {
+	if !publicationProfile(st.Schema) {
 		if len(st.Publications) > 0 {
 			return fail("incompatible_profile", "publication requires profile 0.12")
 		}
 		return nil
 	}
-	if len(st.Publications) == 0 || len(st.Publications) > 16 {
+	if (st.Schema == publicationStateSchema && len(st.Publications) == 0) || len(st.Publications) > 16 {
 		return fail("reconciliation_required", "invalid publication collection")
 	}
 	active := 0
@@ -585,4 +587,8 @@ func validatePublicationState(st snapshot) error {
 		return fail("reconciliation_required", "multiple applying publications")
 	}
 	return nil
+}
+
+func publicationProfile(schema string) bool {
+	return schema == publicationStateSchema || schema == sessionStateSchema
 }

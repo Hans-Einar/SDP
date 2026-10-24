@@ -57,3 +57,18 @@ Local .model-operations journals/backups remain on disk but are excluded from Gi
 tracked WORK checkpoints and frozen provenance retain portable model history. No
 pending model operation may be hidden by that exclusion. Generated views stay in
 external output directories and must be rebuilt from validated source.
+
+## T042 bounded implementation mapping
+
+PGF1-C1 now implements the binding/persistence subset of SessionCoordinator and
+RunRepository, with registration recovery through the existing publication
+primitive. [Evidence](../../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C1.md)
+records the actual boundary. SessionWorkflowDelivery remains planned because
+selection, canonical card effects, dispatch, design/model gates and disposition
+are not all implemented. WORK :00002 remains the same authoritative TARGET;
+no unsupported partial-status syntax or premature CANDIDATE/RELEASE is introduced.
+
+A separate phase-scoped diagnostic Blueprint now passes its explicit constraints.
+Its preliminary status and observed comparison baseline are retained; this is
+same-context scope checking, not independent review or accepted NOW evidence.
+The whole-workflow model review/integration/release obligation remains open.

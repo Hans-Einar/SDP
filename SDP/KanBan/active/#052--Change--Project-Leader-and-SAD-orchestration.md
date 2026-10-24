@@ -9,7 +9,7 @@
 | created | 2026-10-09T12:08:50.581137+00:00 |
 | source | Owner Session0011 T004 role definition and T005 KanBan handoff request |
 | Systems | SDPTOOL |
-| next_review | After C8 native bounded workflow: two-Master/active-host recovery, SAD/scope, capacity/compaction, review and publication gates |
+| next_review | PGF1-C2 checked card lifecycle effects and scoped reconciliation, then shared leader dispatch/model/recovery gates |
 | PlanId | PLAN-SDP-0018 |
 | tags | project-leader, steering, SAD, master, MCP, app-server, coordination |
 
@@ -343,3 +343,15 @@ Blueprint validation are recorded in [evidence](../../04--Design/SDPTool/Project
 PG-A25–30 and PLAN-SDP-0018 PGF1-C1 onward define the implementation sequence.
 This is design preparation; runtime acceptance and model release remain open.
 Existing CardState is unchanged; broader KB037 scope is not activated wholesale.
+
+### T042 — Durable Session binding and registration delivered
+
+PGF1-C1 now validates an explicit card-derived Session binding, persists one pinned
+instance, exposes stages/holds and recovers the exact registration journal through
+CLI/JSON actions. Full SDPTool race/vet, strict wire captures, crash/stale/authority
+checks and actual-process pg_lab trial pass. All 110 earlier lab paths are preserved.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C1.md)
+records source identity and limits. The aggregate model target and independent
+product review/release obligations remain open. No host dispatch or lifecycle
+completion is implied. CardState stays in-progress for the substantial remaining
+outcome; next is PGF1-C2 actual card effects and scoped reconciliation.

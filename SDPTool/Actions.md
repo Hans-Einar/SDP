@@ -27,6 +27,12 @@ Invalid context returns diagnostics and unavailable entries, with exit code 1.
 | blueprint.assess | Evaluate pinned evidence; preserve blocked results | none |
 | blueprint.assignment.list | Project-history assignment projection | none |
 | blueprint.assignment.apply | Revision-bound attributed transition | canonical history |
+| governance.session.definition | Supported pinned Session workflow | none |
+| governance.session.context | Validate binding and canonical coverage | none |
+| governance.session.list | Inspect instances in the selected store | none |
+| governance.session.read | Inspect one instance, stages and holds | none |
+| governance.session.adopt | Persist explicit adoption/registration intent | operational state |
+| governance.session.resume | Reconcile registration journal and coverage | Session journal and operational state |
 
 `project.discover` accepts `navigation: "eager"` (default) or `"lazy-sdl"`.
 `project.model-tree` requires the discovered `model` and exact `revision`; stale
@@ -88,7 +94,8 @@ Local assignment attribution is separately supplied:
 sdptool invoke --request transition.json --as controller --authority controller
 ```
 
-Those flags are rejected for other operations. They attribute a trusted local
+Session adopt/resume also require controller attribution. Those flags are rejected
+for other operations. They attribute a trusted local
 process; they do not authenticate remote callers. JSON cannot grant caller authority.
 A hosted adapter must establish its own principal before calling the Go API.
 
@@ -144,3 +151,19 @@ registry, with terminal-control escaping.
 actual compiled producer, headless consumer and isolated gh-sdp signed-distribution
 trial. No normal extension installation, project upgrade or native GUI acceptance
 is inferred from those checks.
+
+
+## Session invocation parameters
+
+The Session operations use `sdp-session-execution/0.1` results and the same service
+as the governance CLI. Definition takes `{}`. List accepts optional `state`; read
+requires `instance` and accepts optional `state`. Context/adopt/resume require
+`requestFile` and accept optional `state`; both paths are project-relative unless
+absolute. The referenced request uses the strict [Session schema](governance/session.schema.json).
+
+Controller attribution is a separate trusted-host input, not a request parameter.
+Adoption returns pending registration; resume reconciles the journal. Neither
+operation launches agents, activates cards, advances stages or confers owner
+acceptance in PGF1-C1. Restricted coordinator MCP capabilities remain unchanged.
+See the [core guide](governance/README.md#session-instances--pgf1-c1) for the full
+sequence, input/receipt rules and conservative drift behavior.

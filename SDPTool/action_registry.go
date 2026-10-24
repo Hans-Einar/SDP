@@ -34,7 +34,7 @@ func defineAction[T any](d ActionDescriptor, run func(context.Context, actionCon
 type noActionParameters struct{}
 
 func actionRegistry() []actionSpec {
-	return append([]actionSpec{discoveryAction(), modelTreeAction()}, blueprintActions()...)
+	return append(append([]actionSpec{discoveryAction(), modelTreeAction()}, blueprintActions()...), sessionActions()...)
 }
 func performDiscover(ctx context.Context, c actionContext, options DiscoverOptions) (any, int, error) {
 	if err := ctx.Err(); err != nil {

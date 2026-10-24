@@ -215,3 +215,27 @@ Sessions and all adapter authority refusals. Prove no duplicate launch, lifecycl
 event or model release. This design is ready for bounded implementation planning;
 model parsing and preview evidence establish structural validity only. Independent
 review, native acceptance and final model release remain explicit obligations.
+
+## T042 implementation boundary — PGF1-C1
+
+C1 implements binding/context, pinned durable adoption, inspection and registration
+recovery through the core, CLI and six discoverable JSON actions. Wire contract is
+`sdp-session-execution/0.1`; persisted profile is 0.13. Adoption prepares one exact
+Session-journal effect; resume commits/reconciles it. All selected steps remain at
+admission with explicit activation holds. This implements the foundation of the
+transition table, not its later select/start/advance/disposition behavior.
+
+The first increment deliberately retains conservative whole-ledger coverage and
+one instance per Session in the selected store. C2 must deliver the scoped
+reconciliation and lifecycle effects described above. One-file registration uses
+the existing project writer lock and exact preimage/postimage recovery. It does not
+claim a global transaction or prevent uncooperative external edits. A pending
+publication from another store blocks registration; an external edit after a
+registration write blocks recovery rather than being overwritten.
+
+The authority document is pinned evidence supplied by a trusted controller, not
+natural-language permission interpretation. JSON invocation host authority is
+checked separately from request fields. Existing restricted leader MCP remains
+unchanged; common privileged leader commands and dispatch are still PGF2 work.
+See the [implementation evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C1.md)
+for candidate identity, tests and explicit outstanding gates.
