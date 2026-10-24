@@ -48,7 +48,7 @@
           "sdp-vertical-refactor": "2.0.0",
           "sdp-worker": "2.0.0",
           "sdp-planning": "1.0.0",
-          "sdp-project-leader": "1.0.0"
+          "sdp-project-leader": "1.1.0"
         },
         "capabilities": [
           "sdp.install.v1",

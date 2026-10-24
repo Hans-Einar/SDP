@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T038 — detailed PG completion checkpoints recorded; implementation remains at PGI4-C3.
+Latest recorded turn: T039 — owner requires mandatory work admission, SDL lifecycle and conflict supervision; runtime implementation remains at PGI4-C3.
 The native trial asks, receives a delayed fixture reply, starts one fresh attempt
 and implements/reports the selected behavior. Local acknowledgement, coordination and
 serialized leader delivery are implemented. C8 native single-worker/leader and completed
@@ -44,7 +44,7 @@ gantt
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-24 |
 | Current step | S3/S6 active: PGI4-C3 checked bounded result publication/recovery and review notices delivered; final run/lifecycle disposition and orchestration/integrated gates remain |
-| Proposed next step | PGF1 final work disposition, then PGF2–9 in the same plan: orchestration, SDL handoff, owner dialogue, recovery/capacity, native integration, independent review and explicit scope closeout. SDL-only; MVP1 deferred |
+| Proposed next step | PGF1 with refreshed preflight and required SDL WORK/design preparation before product edits; then PGF2–9 with T039 mandatory governance gates in the same plan: orchestration, SDL handoff, owner dialogue, recovery/capacity, native integration, independent review and explicit scope closeout. SDL-only; MVP1 deferred |
 | Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension; T026 assigns hub/webapp to a separate project and continues local SDP/SDPTool work; T027 continues local attention/replies; T028 continues guarded attention continuation; T029 selects stable Codex >=0.164.0 and compatible later hosts, preserving other scopes |
 
 ## Goal and ownership
@@ -1874,3 +1874,71 @@ T038 checks: management replay (73 cards, 47 records, 672 events), Toolkit valid
 and whitespace checks pass; the prior management ledger prefix is preserved.
 Product code is unchanged. Preparing the planning milestone commit and authorized
 phase push; no merge, release or new implementation is selected by this turn.
+
+
+## T039 — Mandatory Project Leader governance routine
+
+Owner input (summary): PG must launch agents against a Session and Session plan
+built from KB cards, actively check adherence, and identify unrelated new work as
+requiring its own card, Session and plan before assignment. Assess Blueprint need;
+every design-affecting change requires SDL WORK. Track model release at completion
+and coordinate model, plan and code integration across Sessions/agents. The Project
+Leader must always use an explicit detailed skill for this responsibility.
+
+### Scope and concurrent-work preflight
+
+Baseline 11cf520ee6427b15f603f2e09c9665d3ad985f3b on
+sdp/codex-forward-compatibility is clean and synchronized with its local origin
+tracking reference. `git worktree list --porcelain` shows only this checkout.
+Inspected committed changes from main, active cards, Session0007, paused Session0008
+and Session0012's current coordination projection. KB038/052 and this Session own
+PG; Session0012 explicitly does not take over runtime work. KB050/Session0008 retain
+separate Blueprint scope; no model/Blueprint implementation or other worktree edits
+are selected. No remote-only activity is claimed absent.
+
+Verdict: green for bounded canonical Project Leader skill/inventory maintenance,
+PG requirement/acceptance and completion-plan clarification, and linked management
+records. No unresolved local scope or new identity collision was observed. Existing
+KB052 is the primary requirement; KB038 links the runtime implications. Reuse this
+Session and PLAN-SDP-0018 because the request directly refines their goal. No new
+card/Session or runtime implementation is needed to record the decision. Recheck
+on changed head, dirty state or scope before affected implementation.
+
+This turn records requirements and operating guidance; it does not claim implemented
+PG design gates. Before dependent product implementation, assess its design impact
+and establish the required SDL WORK/model handoff under the rule below. The current
+coarse PG model is not assumed to cover the runtime design already implemented.
+
+
+### T039 work summary
+
+- The owner's clarification fits KB052/KB038 and this Session; recorded before
+  revising the requirement, skill and completion gates. No unrelated goal launched.
+- Loaded SDP, Planning and its plan contract, Architect, Project Leader and shared
+  roles/document workflow, Traceability, plus skill-creator. Followed Session upkeep, concurrent
+  preflight and management/KanBan routines; no helper delegation.
+- Project Leader skill 1.1.0 now mandates request-fit assessment, KB-derived
+  Session/plan coverage before dispatch, design/Blueprint decisions, cross-work
+  conflict coordination, continuing checks and model-release closeout. Canonical
+  role guidance and development install inventory are aligned; no external install
+  or published release is claimed.
+- Orchestration/Design and PG-A19–24 record the required observable behavior.
+  PLAN-SDP-0018 carries it into PGF1/2/3/5/7/8/9 without replacing its identity.
+  Skill documentation is not runtime enforcement or native skill-use evidence.
+- Runtime code, model artifacts, pg_lab and Ponsse are unchanged. Before dependent
+  product implementation, inspect existing SDL coverage and prepare actual WORK;
+  this turn does not falsely claim an adequate model/handoff already exists.
+- Next: PGF1 under the refined gates and fresh design/preflight checks; retain
+  existing authority and deferred scopes. S3/S6 remain active; no completion claim.
+  This is a work summary, not an already captured final-response transcript.
+
+T039 validation: skill-creator quick validation and both canonical skill/distribution
+regression tests pass. Initial Toolkit validation found the example installed skill
+version stale; updated that maintained example alongside both manifests and reran
+successfully. Management replay passes (73 cards, 47 records, 675 events), 250
+relative links resolve, both historical ledger prefixes remain byte-preserved,
+and whitespace checks pass. No product/model changes or product-test claims.
+PM225 and KB412–413 record management progress; a separate system design event
+records the owner requirement amendment without claiming runtime delivery.
+Preparing the scoped T039 milestone commit and authorized phase push; no merge,
+software release, model promotion or external installation performed.

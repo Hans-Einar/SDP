@@ -17,7 +17,10 @@ PGD1's original evidence remains historical design/schema-inspection evidence.
 
 Owner Session0007 T014 selects [KB052 orchestration](Orchestration.md).
 Project Leader replaces the earlier combined Steering/PM label for normal owner
-dialogue; Steering remains strategic. The original single-Maintenance journey below
+dialogue; Steering remains strategic. Owner T039 additionally requires the
+[mandatory admission and lifecycle contract](Orchestration.md#t039--mandatory-governance-admission-and-lifecycle-supervision):
+card-derived Session/plan coverage, SDL WORK for design changes, supervised
+integration and model-release disposition before whole-assignment closeout. The original single-Maintenance journey below
 is retained as a foundation, not the complete new operating model.
 
 ## 1. Outcome and first user journey

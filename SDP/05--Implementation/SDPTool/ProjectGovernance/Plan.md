@@ -19,7 +19,8 @@ interrupted attempt and return candidate-bound evidence with a truthful disposit
 The owner continuation on 2026-10-06 selects PGI1-M1 from this handoff. The plan
 is active. The owner continuation on 2026-10-07 selects PGI2-M1; PGI3 was selected by the next owner continuation. Subsequent owner continuations
 activated PGI4 and PGL; PGI5 integrated verification remains open. The current tables
-and T038 completion checkpoints supersede earlier next-step forecasts.
+and T038 completion checkpoints, refined by owner T039 governance requirements,
+supersede earlier next-step forecasts.
 
 The [design](../../../04--Design/SDPTool/ProjectGovernance/Design.md),
 [acceptance cases](../../../04--Design/SDPTool/ProjectGovernance/Acceptance.md) and
@@ -32,7 +33,9 @@ contradictions rather than choosing a new product boundary silently.
 Preserve SDPTool discovery/navigation/output and existing manual Session documents;
 reuse existing project identity and record validators. Keep ModelGovernance files,
 model history and KB050 semantic blueprints with their separately selected work.
-Do not make their completion a prerequisite to a plain Maintenance assignment.
+Maintenance with evidenced no design impact needs no model/Blueprint prerequisite.
+Under owner T039, every design-affecting assignment requires SDL WORK, an explicit
+Blueprint assessment and model-release disposition; a Maintenance label is no exemption.
 KB043's full timeline, all routine families, distribution, release, GUI, remote
 hosting and complete shell/file interception remain outside this plan.
 
@@ -60,7 +63,7 @@ do not turn a self-check into an independent review by changing its label.
 | PGI3-M1 Owner workflow | Minimal terminal client recovers Session, submits/steers work, presents route/status and launches the authorized fresh Master with bounded context; applicable child/review mapping is observed | PG-A02/04/05/11/12/13/15; managed account mode and one useful bounded task | in-progress; C6 explicit skill input/correlation verified; native child/review mapping remains unverified |
 | PGI3-U1 Owner development trial | Owner can inspect current work and exercise the candidate before further feature expansion | Identified local engine, runnable trial, actual owner feedback and expectation/design reconciliation | owner reports trial performed; detailed acceptance unrecorded; KB052 now selected |
 | PGI4-M1 Evidence and reconciliation | Candidate-bound evidence, review/rework and checked publication produce one durable Session outcome and correct card/plan disposition | PG-A06/07/09/13/16/17; crash and concurrent-change fixtures | in-progress; C1 evidence/rework, C2 observed review and C3 checked result publication/leader notices delivered; final run/lifecycle disposition remains |
-| PGI5-M1 Integrated verification | The same isolated task survives observer close, interruption/recovery and scope correction with unrelated work preserved | All PG-A01–18 at their stated level; independent review and exact-candidate evidence | planned |
+| PGI5-M1 Integrated verification | The same isolated task survives observer close, interruption/recovery and scope correction with unrelated work preserved | All PG-A01–24 at their stated level; independent review and exact-candidate evidence | planned |
 
 Each milestone is runnable at its stated boundary; no phase claims the whole client
 is delivered because a library or mock passes. Core work can proceed with protocol
@@ -867,13 +870,13 @@ workflow remain incomplete. Do not report a percentage from the count of increme
 
 | Checkpoint | Existing scope | Dependency | Current status |
 | --- | --- | --- | --- |
-| PGF1 Final work disposition | PGI4; PG-A06/07/09/13/16 | C3 | next; implementation required |
-| PGF2 Leader-directed execution and continuation | PGL2/PGL3; handoff scenarios 1/3/4 | PGF1 | partial foundation; implementation and native evidence required |
-| PGF3 SDL design handoff and replan | PGL2/PGL4; scenario 2, PG-A05/07/17 | PGF2 | partial preparation/provider guards; integrated SAD flow required |
+| PGF1 Final work disposition | PGI4; PG-A06/07/09/13/16/23 | C3 | next; implementation required |
+| PGF2 Leader-directed execution and continuation | PGL2/PGL3; PG-A19/20/24; handoff scenarios 1/3/4 | PGF1 | partial foundation; implementation and native evidence required |
+| PGF3 SDL design handoff and replan | PGL2/PGL4; scenario 2, PG-A05/07/17/21/22/23 | PGF2 | partial preparation/provider guards; integrated SAD flow required |
 | PGF4 Usable owner conversation and overview | PGL4; scenarios 4/5 | PGF2/3 | existing inspection/console; integrated workflow required |
 | PGF5 Recovery across the complete workflow | PGI3/PGI5/PGL5; PG-A08/09/11/12/13/14 | PGF1–4 | bounded cases delivered; active-host/full-flow gaps remain |
 | PGF6 Capacity and host compatibility | PGL3/PGL5; PG-A15/18 | PGF5 | limits explicit; sustained operation/rollover not proven |
-| PGF7 Native integrated acceptance in pg_lab | PGI5/PGL5; PG-A01–18 and handoff 1–5 | PGF1–6 | not verified as one final candidate |
+| PGF7 Native integrated acceptance in pg_lab | PGI5/PGL5; PG-A01–24 and handoff 1–5 | PGF1–6 | not verified as one final candidate |
 | PGF8 Independent product review and owner trial | PGI5/PGL4/PGL5 | PGF7 | PG implementation review and final owner workflow feedback open |
 | PGF9 Scope disposition and development closeout | Session S3/S4/S6; handoff 6 | PGF8, explicit remote-Steering disposition | planned; no merge/release authority inferred |
 
@@ -886,7 +889,12 @@ new work. Keep candidate/test/review/publication identity pinned through that pa
 Update only the milestones, cards, plans and Session steps actually satisfied;
 retain broader work as active with named remaining scope. Support rework/successor
 work without deleting old completion evidence. Record actual owner acceptance only
-where required and actually supplied.
+where required and actually supplied. T039 adds a mandatory design-impact/model
+release disposition: unreleased design WORK prevents whole-assignment closeout.
+Build that gate into the disposition contract; model lifecycle integration is PGF3.
+Before product edits, inspect model coverage and prepare the required SDL WORK for
+the affected PG design. This prerequisite is not deferred until PGF3 tests the
+consumer-facing design workflow.
 
 Exit: a small real assignment reaches a consistent terminal disposition across
 runtime and canonical records. Missing evidence, changed candidate, wrong authority
@@ -903,6 +911,11 @@ and owner steering through one durable coordination flow. Advance authorized pha
 without unnecessary repeated permission requests; hold genuine design/scope gates.
 Release or revise completed/retired scope claims safely, retaining the same Session
 for continued work. Keep local and cross-worktree claim guarantees explicit.
+Implement T039 admission/supervision (PG-A19/20/24): classify Session fit, establish
+KB -> Session step -> selected plan -> assignment before dispatch, route separate
+goals to separate records, pin the mandatory Project Leader skill and recheck on
+steering/reports/resume. Missing coverage blocks dependent action; no new hierarchy
+for pure status and no duplicate Session for an inherited child assignment.
 
 Exit: two actual disjoint Masters progress while Project Leader remains responsive;
 a conflicting third assignment is refused or queued with a reason. Phase completion
@@ -922,7 +935,13 @@ by SAD/Master must reach Project Leader and the same durable work records.
 Exit: an actual SDL design change in pg_lab produces a usable bounded implementation
 handoff. A later TARGET/task/protected-boundary change invalidates the affected
 handoff before dependent continuation, preserves unaffected work, and follows an
-explicit replan/review path. No Blueprint redesign, code-derived context, runtime
+explicit replan/review path. T039 additionally requires PG-A21–23: assess design
+impact separately from Blueprint need; every design change has SDL WORK. Coordinate
+model/code/plan overlap, integrate compatible WORKs with retained ancestry, validate
+combined semantics, refresh stale handoffs and promote the accepted exact model
+candidate with implementation evidence. Missing release or conflicted/stale model
+blocks whole-assignment completion. Justified Blueprint omission cannot waive WORK.
+No Blueprint redesign, code-derived context, runtime
 snapshots or new SDL profile is required by this checkpoint.
 
 ### PGF4 — Usable owner conversation and overview
@@ -978,7 +997,11 @@ Run the final combined candidate through a plain Maintenance task and an SDL-bas
 design/implementation task. Include positive completion, deliberate failed review
 and repair, scope feedback, delayed owner response, two disjoint Masters, conflict
 refusal and interruption/recovery. Validate both runtime and canonical work states.
-Use one final acceptance matrix for PG-A01–18 and handoff scenarios 1–5, with case,
+Include the T039 negative paths: unrelated suggestion during active work, missing
+Session/plan chain, small design-changing fix without WORK, justified Blueprint
+omission, model/code/shared-plan overlap and code done with model release pending.
+Verify real Project Leader skill use and behavior, not only an injected file.
+Use one final acceptance matrix for PG-A01–24 and handoff scenarios 1–5, with case,
 implementation/evidence source, candidate and limitations. Reuse valid lower-level
 evidence; rerun scenarios whose affected candidate or contract changed.
 
@@ -1038,3 +1061,19 @@ Resolve them from existing authority at their checkpoint; do not silently reduce
 scope or ask the owner to approve routine implementation choices. Actual owner
 design/acceptance input and the remote-Steering disposition cannot be fabricated.
 No calendar promise or percentage is inferred from current component tests.
+
+
+### T039 — Owner refinement of completion gates
+
+The owner explicitly requires PG to supervise adherence to the workflow, not merely
+launch agents. [Mandatory governance contract](../../../04--Design/SDPTool/ProjectGovernance/Orchestration.md#t039--mandatory-governance-admission-and-lifecycle-supervision)
+and [PG-A19–24](../../../04--Design/SDPTool/ProjectGovernance/Acceptance.md) refine
+PGF1/2/3/5/7/8/9. Required skill 1.1.0 and development distribution inventory are
+updated this turn; runtime enforcement, SDL design handoff and native acceptance
+remain open. No new plan or blanket expansion to every routine family is selected.
+
+PGF5 recovery includes interrupted model integration/promotion and admission retries;
+PGF8 reviews the mandatory gates; PGF9 cannot close design-changing scope with a
+forgotten model release. Model release is part of this selected workflow and is
+separate from this plan's excluded software publication/installation work. The
+existing ModelGovernance acceptance/merge contracts remain authoritative.

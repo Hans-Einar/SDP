@@ -401,3 +401,15 @@ execution, SDL handoff, owner dialogue, recovery/capacity, native integration,
 independent review and scope closeout. Remote Steering needs verification or explicit
 owner disposition; broader deferred capabilities are not silently included or closed.
 CardState remains in-progress. This is planning, not a new implementation delivery.
+
+
+### T039 — Mandatory PG supervision
+
+Owner makes card-derived Session/plan admission, separate-goal routing, mandatory
+SDL WORK for design changes, reasoned Blueprint applicability, model release and
+model/code/plan conflict coordination explicit. Recorded in the existing KB052
+scope, Orchestration contract, PG-A19–24 and PLAN-SDP-0018 PGF checkpoints.
+Canonical Project Leader skill 1.1.0 and development distribution inventory now
+state the detailed mandatory routine. This is requirement/skill maintenance;
+runtime guards and native compliance evidence remain open. CardState remains
+in-progress; next is PGF1 with refreshed preflight and required SDL design preparation.

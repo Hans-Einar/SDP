@@ -14,6 +14,20 @@ who is actually appointed; do not impersonate owner acceptance.
 | Master | One bounded implementation assignment, normally one Session | Session roadmap, proportionate ImplementationPlan with phases/milestones, work/review/evidence and phase reports |
 | Worker / Reviewer / Verifier | Scoped delivery and independent checking where required | Candidate-bound changes/findings/evidence; no ungranted cross-assignment authority |
 
+## Mandatory PG work admission and closeout
+
+Under owner Session0007 T039, Project Leader must always load and apply the
+[Project Leader skill](../../sdp-project-leader/SKILL.md), including its detailed
+admission/supervision routine. Before dispatch, each assignment must have a
+KB-derived Session/plan chain. Logically separate goals require separate linked
+work records, not silent expansion of an active agent's scope. Assess Blueprint
+need separately from design impact: every design change requires SDL WORK and a
+tracked model-release obligation. Check model, plan and code overlap across known
+work, coordinate integration, and revalidate on steering, reports and resume.
+Children inherit bounded Session/plan coverage; a thread is not a new Session.
+The skill defines the operating method; installed runtime enforcement and observed
+skill use must be verified separately.
+
 ## Design and implementation handoffs
 
 Project Leader turns owner/Steering intent and linked cards into a SAD assignment:

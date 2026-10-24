@@ -39,6 +39,17 @@ Steering, Architect as SAD, and Master as the owner of a bounded implementation
 Session/ImplementationPlan. Metadata/distribution checks pass; this does not deliver
 runtime orchestration, online installation or automatic notification.
 
+## T039 owner requirement — mandatory governance supervision
+
+Session0007 T039 explicitly requires card-derived Session plans before agent
+assignment, new card/Session/plan preparation for logically separate goals,
+continuous process checks, a recorded Blueprint applicability decision, mandatory
+SDL WORK for every design-affecting change, model release tracking and coordinated
+model/plan/code integration. This refines this card's existing goal; it does not
+start a parallel Session or select the entire KB036/037 backlog. Project Leader
+must load and apply its canonical skill on every coordination turn. Runtime checks
+and complete native evidence remain required, separately from skill publication.
+
 ## Required scope
 
 - Project Leader prepares bounded SAD assignments, then implementation assignments
@@ -296,3 +307,15 @@ execution, SDL handoff, owner dialogue, recovery/capacity, native integration,
 independent review and scope closeout. Remote Steering needs verification or explicit
 owner disposition; broader deferred capabilities are not silently included or closed.
 CardState remains in-progress. This is planning, not a new implementation delivery.
+
+
+### T039 — Mandatory PG supervision
+
+Owner makes card-derived Session/plan admission, separate-goal routing, mandatory
+SDL WORK for design changes, reasoned Blueprint applicability, model release and
+model/code/plan conflict coordination explicit. Recorded in the existing KB052
+scope, Orchestration contract, PG-A19–24 and PLAN-SDP-0018 PGF checkpoints.
+Canonical Project Leader skill 1.1.0 and development distribution inventory now
+state the detailed mandatory routine. This is requirement/skill maintenance;
+runtime guards and native compliance evidence remain open. CardState remains
+in-progress; next is PGF1 with refreshed preflight and required SDL design preparation.

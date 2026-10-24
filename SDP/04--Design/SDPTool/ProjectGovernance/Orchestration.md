@@ -62,7 +62,8 @@ Design-bound implementation packages reference existing ModelGovernance and
 Blueprint services, exact NOW/TARGET/task/blueprint revisions, allowed/protected
 paths, source evidence and actual design disposition. A changed dependency makes
 the package stale before continuation. Do not implement another model-history or
-blueprint store. General Maintenance remains usable without model prerequisites.
+blueprint store. Maintenance proven not to affect design remains usable without model prerequisites;
+T039 below makes SDL WORK mandatory for every design-affecting change.
 Integration of those separately developed services needs a refreshed preflight and
 selected combined baseline before dependent code changes.
 
@@ -671,3 +672,68 @@ native default Apps catalogue exceeded the existing 1 MiB frame limit and expose
 an extra server; the exclusive MCP guard and bounded transport remain intact.
 A restricted launch supplied exactly the two coordinator tools. No global config
 was edited and no native test agent was granted delegation.
+
+
+## T039 — Mandatory governance admission and lifecycle supervision
+
+Owner Session0007 T039, 2026-10-24, makes the following explicit requirements of
+KB052/PLAN-SDP-0018. They refine the selected PG workflow; they do not claim new
+runtime checks have been delivered. The reusable detailed procedure is canonical
+[sdp-project-leader](../../../../Skills/sdp-project-leader/SKILL.md), version 1.1.0,
+which every Project Leader coordination turn must load and apply.
+
+1. **Admission:** inspect intent against existing Session goals, card outcomes,
+   selected plans, scope and authority. Reuse covered work. A coherent goal revision
+   updates coverage before dependent action. A logically separate change requires
+   its own KB card(s), Session and selected plan before agent assignment; tell the
+   owner why, prepare under existing authority, and retain unrelated running work.
+   A separate existing workstream may be reused. Do not equate same repository with
+   same goal. Pure read/status questions need no new work hierarchy.
+2. **Assignment contract:** bind every SAD/Master/delegated assignment to cards,
+   Session step, selected plan/milestone, exact revisions, authority, role, allowed
+   and protected scope, candidate/worktree and return criteria before launch/resume.
+   Children inherit this chain; Master maintains it. Missing records cannot be
+   retrospectively supplied as launch authority. Use existing Session/plan schemas.
+3. **Design assessment:** record design impact and Blueprint applicability as two
+   distinct decisions. Every design-affecting change requires an actual SDL change
+   in identified WORK before dependent implementation. Missing/inadequate models
+   require model preparation, never a Maintenance-label bypass. Required Blueprint
+   context covers overall system and relevant NOW/TARGET detail; genuinely local
+   tasks may justify no separate Blueprint without waiving WORK. Classify contracts,
+   dependencies, behavior and state changes by effect, not patch size or task label.
+4. **Coordination:** inspect current and paused work, committed/dirty code, model
+   ancestry/elements, plans, Session writers and shared IDs across known worktrees.
+   Resolve overlaps with scoped ownership, sequencing and an integrator. Merge
+   models into mutable WORK through existing ModelGovernance, preserve provenance,
+   validate semantic consistency and refresh affected views/reviews/handoffs. A
+   clean Git merge or separate branch is insufficient. Until shared atomic claims
+   exist, explicit sequencing/preflight is required and coverage limits stay visible.
+5. **Supervision:** recheck these obligations on input, phase reports, scope/design
+   changes, dispatch/resume and integration. Retain current checks, reasons, revisions
+   and pending model-release state in existing durable records. Invalid coverage
+   stops only dependent work; the owner should not have to remind PG of the method.
+6. **Closeout:** design-changing work retains a model-release obligation through
+   implementation. Integrate/validate WORK, freeze CANDIDATE, obtain the actual
+   required integration-owner acceptance and promote the exact candidate to RELEASE,
+   linked to code verification and predecessor. Recheck the current accepted model
+   head; competing heads/conflicts block promotion. Do not close the whole assignment
+   while that obligation is pending. An explicit scoped transfer/defer names a
+   successor and preserves the gap. Model-only evidence cannot satisfy implemented
+   behavior, and model promotion grants no repository merge or software publication.
+
+The model proposes semantic fit/design assessments with reasons; core/controller
+checks must enforce required records, references/revisions, authority and transition
+preconditions. A Boolean self-attestation is insufficient. Explicit skill input,
+observed host acknowledgment and verified compliance remain distinct evidence.
+Unavailable skill or required checks blocks dependent dispatch; it cannot silently
+fall back to an ungoverned prompt. No polling/background guarantee comes from the
+skill alone. Use existing ModelGovernance and Blueprint providers; no competing
+model store or general workflow-family expansion is selected.
+
+[PG-A19–24](Acceptance.md) define the positive/negative acceptance cases. PGF1
+must account for pending model disposition; PGF2 implements admission/supervision;
+PGF3 completes SDL integration/release; PGF5 tests interruption across these gates;
+PGF7 verifies the combined native workflow. Before dependent runtime changes,
+prepare the corresponding SDL WORK under this rule; existing coarse model coverage
+must be inspected, not assumed sufficient. This requirement/skill-maintenance turn
+is not evidence of that SDL handoff or runtime implementation.
