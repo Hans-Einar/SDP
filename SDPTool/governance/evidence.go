@@ -190,7 +190,7 @@ func (s *Service) AttachEvidence(caller Caller, q EvidenceRequest) (Result, erro
 	}
 	out := Result{Schema: Schema, Operation: "evidence.attach", ProjectRef: s.project, CheckoutID: state.CheckoutID, OperationID: q.OperationID,
 		Run: summarizeRun(r), Coverage: "known", Evidence: &record}
-	if state.Schema != reviewStateSchema {
+	if state.Schema != reviewStateSchema && state.Schema != publicationStateSchema {
 		state.Schema = evidenceStateSchema
 	}
 	state.Receipts[q.OperationID] = receipt{Digest: digest, Result: out}

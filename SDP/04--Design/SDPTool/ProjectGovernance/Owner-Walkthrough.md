@@ -326,3 +326,20 @@ format.go:9 and linked the governing contract and failing test. The finding retu
 the test assignment for rework; the coordinator restored the source. These commands
 only inspect history. Both native turns recovered after deliberate response loss
 without replacement. Publication and whole-project acceptance remain unfinished.
+
+
+## Publish a bounded result (PGI4-C3)
+
+The controller can prepare and inspect exact proposed record changes, then apply
+them with durable recovery. It appends the passed review, attributed tests, summary
+and remaining work to the selected Session, card and plan, with canonical history
+and an evidence document. It preserves existing lifecycle and authored roadmap.
+
+In pg_lab, `./pg publication` reads the final disposable publication trial. That
+trial uses explicitly synthetic review protocol observations to test file writes,
+not another native review. The earlier real C2 reviews remain separately inspectable
+with `./pg review`. Coordination now reports their outcomes and current applicability
+through MCP and queues terminal review notices for the Project Leader.
+
+A published result is not whole-project completion or owner acceptance. Lifecycle
+disposition, integrated verification and the retained orchestration gates remain.

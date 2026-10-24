@@ -14,6 +14,9 @@ func (s *Service) authorize(c Caller, schema, project, checkout, operation strin
 	if project != s.project || checkout == "" || checkout != state.CheckoutID {
 		return fail("unauthorized", "checkout binding does not match")
 	}
+	if pendingPublication(state) {
+		return fail("reconciliation_required", "finish pending project record publication before other mutations")
+	}
 	if !uuidPattern.MatchString(operation) {
 		return fail("invalid_request", "operationId must be a version 4 UUID")
 	}

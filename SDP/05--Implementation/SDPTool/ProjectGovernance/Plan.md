@@ -57,7 +57,7 @@ do not turn a self-check into an independent review by changing its label.
 | PGI2-M1 Adapters and protocol | Thin local MCP adapter and controller protocol adapter use the core; inspect compatible schemas, negotiate the selected SDK/host, capture bounded recorded events and reconcile mapped attempts | PG-A10/11/12/15/18; actual protocol negotiation and failure outputs; no simulated-as-live claims | delivered; bounded adapters and real idle protocol probe verified |
 | PGI3-M1 Owner workflow | Minimal terminal client recovers Session, submits/steers work, presents route/status and launches the authorized fresh Master with bounded context; applicable child/review mapping is observed | PG-A02/04/05/11/12/13/15; managed account mode and one useful bounded task | in-progress; C6 explicit skill input/correlation verified; native child/review mapping remains unverified |
 | PGI3-U1 Owner development trial | Owner can inspect current work and exercise the candidate before further feature expansion | Identified local engine, runnable trial, actual owner feedback and expectation/design reconciliation | owner reports trial performed; detailed acceptance unrecorded; KB052 now selected |
-| PGI4-M1 Evidence and reconciliation | Candidate-bound evidence, review/rework and checked publication produce one durable Session outcome and correct card/plan disposition | PG-A06/07/09/13/16/17; crash and concurrent-change fixtures | in-progress; C1 evidence/rework and C2 observed review delivered; checked publication remains |
+| PGI4-M1 Evidence and reconciliation | Candidate-bound evidence, review/rework and checked publication produce one durable Session outcome and correct card/plan disposition | PG-A06/07/09/13/16/17; crash and concurrent-change fixtures | in-progress; C1 evidence/rework, C2 observed review and C3 checked result publication/leader notices delivered; final run/lifecycle disposition remains |
 | PGI5-M1 Integrated verification | The same isolated task survives observer close, interruption/recovery and scope correction with unrelated work preserved | All PG-A01–18 at their stated level; independent review and exact-candidate evidence | planned |
 
 Each milestone is runnable at its stated boundary; no phase claims the whole client
@@ -99,11 +99,12 @@ in backlog. No card is closed merely because this plan is complete.
 
 ## Current result
 
-Latest delivery is [PGI4-C2](Evidence-PGI4-C2.md): observed review in fresh read-only
-contexts, current qualification, and exact recovery verified on positive/negative
-native pg_lab candidates. C1 evidence/rework remains the prerequisite. PGI4-M1 stays
-in-progress for checked canonical publication; remaining orchestration and independent
-integrated verification gates are retained. No plan/card/Session closeout is implied.
+Latest delivery is [PGI4-C3](Evidence-PGI4-C3.md): checked bounded result publication
+with crash/conflict recovery and compact review/publication notices through the
+existing coordination/leader route. C1 evidence/rework and C2 observed review remain
+prerequisites. PGI4-M1 stays in-progress for final run/lifecycle disposition; PGL2/4,
+parallel/active-host/capacity and independent integrated verification remain.
+Publication does not close broader cards/plans or imply owner acceptance.
 
 ### Historical PGI1–3 baseline
 
@@ -805,3 +806,27 @@ in-progress for checked canonical publication and its crash/conflict reconciliat
 Next: that publication boundary and review-result delivery into leader coordination,
 then retained PGL2/4 owner/SAD, PGL3 parallel/active-host/capacity and PGI5 independent
 verification. No completed card/Session, merge or release is inferred.
+
+## PGI4-C3 selection — T037
+
+Continue from ef757ae with the recorded green preflight. Implement checked bounded
+result publication, exact crash/conflict recovery, and review-result delivery through
+the existing coordination/leader route. Preserve active canonical lifecycle and
+manual roadmap; routine completion and overall PG closeout remain separate gates.
+Validate supported record sets through the existing management validator; incomplete
+historical lab fixtures must refuse. Exercise a canonical disposable lab fixture and
+retain C2 native review evidence as historical evidence, without relabeling fixture
+reviews as native. No new model turns are required for filesystem publication tests.
+
+
+### PGI4-C3 result and next handoff
+
+Final full race/vet, 13 observed wire objects, actual compiled six-file publication
+and repeat, canonical fixture validation and stdio MCP coordination pass. Existing
+C2 native review results appear in the new notices without new model calls. Exact
+source and limits are in the linked evidence; old readers refuse profile 0.12.
+
+Next is guarded run completion and canonical work disposition using published
+candidate/review facts, without confusing publication with owner acceptance or
+closing broader cards. Retain orchestration and independent PGI5 gates. Backlog/
+onHold reviewed: no new prerequisite from Blueprint expansion, timeline or hub.

@@ -1,0 +1,7 @@
+{
+  "exitCode": 2,
+  "stderr": "reconciliation_required: invalid_request: json: unknown field \"publications\"\n",
+  "headUnchanged": true,
+  "reader": "actual final PGI4-C2 controller",
+  "state": "/home/warloc/.cache/sdp-workstation/PGI4-C3/lab-state-final-schema"
+}

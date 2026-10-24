@@ -1,0 +1,22 @@
+{
+  "publicationId": "da6bd905-1b95-470e-bc33-a2daa4ff5fb5",
+  "canonicalValidation": {
+    "cards": 1,
+    "managementRecords": 1,
+    "lineageOperations": 0,
+    "events": 4
+  },
+  "traceEvents": 1,
+  "retryFilesUnchanged": 6,
+  "priorLabFilesPreserved": 65,
+  "mcpTools": [
+    "coordination_read",
+    "report_acknowledge"
+  ],
+  "newNativeModelCalls": 0,
+  "reviewProvenance": "publication fixture uses synthetic protocol observations; C2 native outcomes inspected read-only, not re-reviewed",
+  "binaries": {
+    "/home/warloc/.cache/sdp-workstation/PGI4-C3/bin/sdp-controller": "c3c6f69218ee777b7655db6c3cfcc1ffb6b8b4b75f578904c645be8dba7ec479",
+    "/home/warloc/.cache/sdp-workstation/PGI4-C3/bin/sdp-mcp": "71aa505d7a6f16080ed63f3b1e95103bd6f4dafa97e10d9bd5cec70a01f5c63b"
+  }
+}

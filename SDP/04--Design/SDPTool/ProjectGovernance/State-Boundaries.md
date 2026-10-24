@@ -1,6 +1,6 @@
 # Current model, Blueprint and ProjectGovernance state responsibilities
 
-Session0013 / WR2-M2, updated by Session0007 T036 on 24 October 2026. This explains existing implemented boundaries;
+Session0013 / WR2-M2, updated by Session0007 T037 on 24 October 2026. This explains existing implemented boundaries;
 it does not merge their state machines or add new authority. The
 [orchestration design](Orchestration.md), [PG design](Design.md),
 [model design](../ModelGovernance/Design.md) and
@@ -23,6 +23,7 @@ it does not merge their state machines or add new authority. The
 | Project Leader delivery | governance/leader.go, governancecontroller/leader.go and host adapter | Profile 0.9 operational owner queue and one active decision dispatch. Persistent effect claims and exact mapped history recovery; no assignment acceptance, owner impersonation or prose-to-action execution. C8 verifies a bounded native leader/worker trial; parallel, active-host and capacity/compaction gates remain. |
 | Candidate evidence and rework | governance/candidate.go and evidence.go; profile 0.10 operational receipts | Exact selected bytes and attributed external artifact. Current applicability is separate from historical result. Failed current test/review may return work to ready; no independent review or canonical publication implied. |
 | Observed review and qualification | governance/review.go, governancecontroller/review.go and governancehost/review.go; profile 0.11 | Controller-issued exact candidate/test review, fresh read-only thread and exact recovered input/turn. Current passing review qualification is separate from owner acceptance, native child hierarchy and canonical publication. |
+| Checked result publication | governance/publication*.go; profile 0.12 intent and canonical records | Exact reviewed result appended to Session/card/plan and canonical histories. Per-file recovery and postimage applicability; broader lifecycle/owner acceptance stay separate. |
 | Card/typed-plan lifecycle and Session roadmap | canonical ProjectManagement ledger, current records and authored Session | Canonical project work disposition. Private PG operational state does not automatically publish a completed card/Session. |
 
 The private store and canonical project history deliberately hold different facts.
@@ -46,7 +47,7 @@ review decision before creating a run.
 4. Work may report, fail, request scope change or ask for input within that
    capability. Changed authority/coverage and blocking attention prevent affected
    advancement; uncertain transport does not justify blind resubmission.
-5. Checking and independent review follow reporting. Canonical publication and
+5. Checking and independent review follow reporting. Bounded result publication is implemented; lifecycle disposition and
    final acceptance remain unfinished PG gates. Do not complete Blueprint/card/
    Session records merely to mirror host or run state.
 

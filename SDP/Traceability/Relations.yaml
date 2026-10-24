@@ -240,6 +240,13 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-PGI4-C3:
+    status: passed-bounded-publication-and-review-coordination
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI4-C3.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-038
+    design: SDPTOOL-DES-0001
+    note: Final full race/vet, 13 schemas, compiled publication/retry and MCP pass; final lifecycle disposition and integrated gates remain.
   SDPTOOL-VER-PGI4-C2:
     status: passed-bounded-native-review-and-recovery
     path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI4-C2.md

@@ -1,0 +1,355 @@
+[
+  {
+    "definition": "PublicationRequest",
+    "value": {
+      "schema": "sdp-governance-publication/1",
+      "projectRef": "trial",
+      "checkoutId": "8e8e4013-912b-4198-bf85-1ac5a3e1b770",
+      "operationId": "c4d0975f-d538-44b7-b87d-2db6e5028409",
+      "runId": "3cdbeeff-7506-41c2-bb1a-6f48ba74a033",
+      "expectedRevision": 3,
+      "reviewId": "1ca411e2-d256-4c23-93e6-3c0dd940289e",
+      "system": "TEST",
+      "summary": "Publish the tested fixture result",
+      "remaining": "Owner acceptance and broader Session completion remain open"
+    }
+  },
+  {
+    "definition": "PublicationView",
+    "value": {
+      "schema": "sdp-governance-publication/1",
+      "publication": {
+        "request": {
+          "schema": "sdp-governance-publication/1",
+          "projectRef": "trial",
+          "checkoutId": "8e8e4013-912b-4198-bf85-1ac5a3e1b770",
+          "operationId": "c4d0975f-d538-44b7-b87d-2db6e5028409",
+          "runId": "3cdbeeff-7506-41c2-bb1a-6f48ba74a033",
+          "expectedRevision": 3,
+          "reviewId": "1ca411e2-d256-4c23-93e6-3c0dd940289e",
+          "system": "TEST",
+          "summary": "Publish the tested fixture result",
+          "remaining": "Owner acceptance and broader Session completion remain open"
+        },
+        "status": "prepared",
+        "createdAt": "2026-10-24T14:23:33.721001572Z",
+        "publishedAt": "",
+        "inputs": [
+          {
+            "path": "AGENTS.md",
+            "sha256": "21dc4fa0e2f816775618ac9f6e1abe043782ee48030c10d3eacb441d9efe9595"
+          },
+          {
+            "path": "SDP/KanBan/README.md",
+            "sha256": "f25b995ab6a47210d5979358f173fda86645a5ab1b252dae495c61d65ac2ba20"
+          },
+          {
+            "path": "SDP/KanBan/active/#001--Change--fixture.md",
+            "sha256": "52ef95606b0c56bd17e4e079cfbeaa0f4026709c7d77a198441a19bde871148a"
+          },
+          {
+            "path": "SDP/Maintenance/Plan.md",
+            "sha256": "81ab7ac36e0dbec2caf96a314523fe0057c5f329694c7e810ae089c7f6308c4f"
+          },
+          {
+            "path": "SDP/ProjectManagement/Ledger.ndjson",
+            "sha256": "8c2516834619040e39b76bbe3dbd0817d4ca7d4d5615045fd958012a9e5645e9"
+          },
+          {
+            "path": "SDP/SDP-project.manifest.yaml",
+            "sha256": "bf1d21be9fe885671ddcc461769e0496e3dd528c3c5dd1536a29d1e926b9296f"
+          },
+          {
+            "path": "SDP/Sessions/session.md",
+            "sha256": "8919ce9924b295d7dfc9f29d5a10f3cef6cb1a445729d05817e6b7f6828f0ab7"
+          },
+          {
+            "path": "SDP/Traceability/Ledger.ndjson",
+            "sha256": "absent"
+          },
+          {
+            "path": "SDP/Verification/PG/c4d0975f-d538-44b7-b87d-2db6e5028409.md",
+            "sha256": "absent"
+          },
+          {
+            "path": "SDP/authority.md",
+            "sha256": "178357325133c7c4d3f83e42c528218edf12efd545b6992a6dd8e7b7871bc2ad"
+          }
+        ],
+        "changes": [
+          {
+            "path": "SDP/Verification/PG/c4d0975f-d538-44b7-b87d-2db6e5028409.md",
+            "before": "absent",
+            "after": "ce82f06259b6ff71f1fa46b032844f80b696693990a02bf1d43e9a32a559a697",
+            "content": "# Published PG review result\n\nOperation: c4d0975f-d538-44b7-b87d-2db6e5028409\n\n```json\n{\n  \"schema\": \"sdp-governance-publication/1\",\n  \"request\": {\n    \"schema\": \"sdp-governance-publication/1\",\n    \"projectRef\": \"trial\",\n    \"checkoutId\": \"8e8e4013-912b-4198-bf85-1ac5a3e1b770\",\n    \"operationId\": \"c4d0975f-d538-44b7-b87d-2db6e5028409\",\n    \"runId\": \"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\",\n    \"expectedRevision\": 3,\n    \"reviewId\": \"1ca411e2-d256-4c23-93e6-3c0dd940289e\",\n    \"system\": \"TEST\",\n    \"summary\": \"Publish the tested fixture result\",\n    \"remaining\": \"Owner acceptance and broader Session completion remain open\"\n  },\n  \"selection\": {\n    \"card\": \"SDP/KanBan/active/#001--Change--fixture.md\",\n    \"plan\": \"SDP/Maintenance/Plan.md\",\n    \"session\": \"SDP/Sessions/session.md\",\n    \"authority\": \"SDP/authority.md\",\n    \"step\": \"S1\"\n  },\n  \"review\": {\n    \"runRevision\": 3,\n    \"id\": \"1ca411e2-d256-4c23-93e6-3c0dd940289e\",\n    \"runId\": \"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\",\n    \"revision\": 5,\n    \"state\": \"completed\",\n    \"spec\": {\n      \"instructions\": \"Read-only fixture review\",\n      \"candidate\": {\n        \"schema\": \"sdp-governance-evidence/1\",\n        \"projectRef\": \"trial\",\n        \"checkoutId\": \"8e8e4013-912b-4198-bf85-1ac5a3e1b770\",\n        \"runId\": \"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\",\n        \"inputRevision\": \"83fbfb0f8ef4d3bed7d522e3633b3c542495ec5c3c9f3d4facf0b4e49d988305\",\n        \"writablePaths\": [\n          \"target.txt\"\n        ],\n        \"excludedPaths\": [\n          \"unrelated.txt\"\n        ],\n        \"dependencies\": [],\n        \"entries\": [\n          {\n            \"path\": \"target.txt\",\n            \"kind\": \"file\",\n            \"sha256\": \"328dc1bbcb13ca28f3c503ca3ee9a30065fbcf3bb529561819bd2fad6a651f32\",\n            \"executable\": 0\n          }\n        ],\n        \"digest\": \"dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f\"\n      },\n      \"reportId\": \"883334df-ace1-4c62-8b4b-9b384e3612d2\",\n      \"evidenceIds\": [\n        \"ff7c05b4-fbf1-4257-b340-ecbe5382bc59\"\n      ],\n      \"focus\": \"Check fixture\",\n      \"hostVersion\": \"0.164.0\",\n      \"mcpBinary\": \"/fixture/sdp-mcp\",\n      \"skills\": [\n        {\n          \"name\": \"sdp-reviewer\",\n          \"path\": \"/tmp/TestPublicationPreservesHistoryAndRetries925907513/002/project/Skills/sdp-reviewer/SKILL.md\",\n          \"digest\": \"4d649f3ff67aac96394eabe51d01895d04c90baf1953bf3d2b705a25a3e9c37a\"\n        }\n      ]\n    },\n    \"payload\": \"{\\\"schema\\\":\\\"sdp-governance-review/1\\\",\\\"selection\\\":{\\\"card\\\":\\\"SDP/KanBan/active/#001--Change--fixture.md\\\",\\\"plan\\\":\\\"SDP/Maintenance/Plan.md\\\",\\\"session\\\":\\\"SDP/Sessions/session.md\\\",\\\"authority\\\":\\\"SDP/authority.md\\\",\\\"step\\\":\\\"S1\\\"},\\\"assignment\\\":{\\\"outcome\\\":\\\"fix fixture\\\",\\\"writablePaths\\\":[\\\"target.txt\\\"],\\\"excludedPaths\\\":[\\\"unrelated.txt\\\"]},\\\"review\\\":{\\\"instructions\\\":\\\"Read-only fixture review\\\",\\\"candidate\\\":{\\\"schema\\\":\\\"sdp-governance-evidence/1\\\",\\\"projectRef\\\":\\\"trial\\\",\\\"checkoutId\\\":\\\"8e8e4013-912b-4198-bf85-1ac5a3e1b770\\\",\\\"runId\\\":\\\"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\\\",\\\"inputRevision\\\":\\\"83fbfb0f8ef4d3bed7d522e3633b3c542495ec5c3c9f3d4facf0b4e49d988305\\\",\\\"writablePaths\\\":[\\\"target.txt\\\"],\\\"excludedPaths\\\":[\\\"unrelated.txt\\\"],\\\"dependencies\\\":[],\\\"entries\\\":[{\\\"path\\\":\\\"target.txt\\\",\\\"kind\\\":\\\"file\\\",\\\"sha256\\\":\\\"328dc1bbcb13ca28f3c503ca3ee9a30065fbcf3bb529561819bd2fad6a651f32\\\",\\\"executable\\\":0}],\\\"digest\\\":\\\"dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f\\\"},\\\"reportId\\\":\\\"883334df-ace1-4c62-8b4b-9b384e3612d2\\\",\\\"evidenceIds\\\":[\\\"ff7c05b4-fbf1-4257-b340-ecbe5382bc59\\\"],\\\"focus\\\":\\\"Check fixture\\\",\\\"hostVersion\\\":\\\"0.164.0\\\",\\\"mcpBinary\\\":\\\"/fixture/sdp-mcp\\\",\\\"skills\\\":[{\\\"name\\\":\\\"sdp-reviewer\\\",\\\"path\\\":\\\"/tmp/TestPublicationPreservesHistoryAndRetries925907513/002/project/Skills/sdp-reviewer/SKILL.md\\\",\\\"digest\\\":\\\"4d649f3ff67aac96394eabe51d01895d04c90baf1953bf3d2b705a25a3e9c37a\\\"}]},\\\"tests\\\":[{\\\"request\\\":{\\\"schema\\\":\\\"sdp-governance-evidence/1\\\",\\\"projectRef\\\":\\\"trial\\\",\\\"checkoutId\\\":\\\"8e8e4013-912b-4198-bf85-1ac5a3e1b770\\\",\\\"operationId\\\":\\\"ff7c05b4-fbf1-4257-b340-ecbe5382bc59\\\",\\\"runId\\\":\\\"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\\\",\\\"expectedRevision\\\":3,\\\"inputRevision\\\":\\\"83fbfb0f8ef4d3bed7d522e3633b3c542495ec5c3c9f3d4facf0b4e49d988305\\\",\\\"reportId\\\":\\\"883334df-ace1-4c62-8b4b-9b384e3612d2\\\",\\\"candidate\\\":{\\\"schema\\\":\\\"sdp-governance-evidence/1\\\",\\\"projectRef\\\":\\\"trial\\\",\\\"checkoutId\\\":\\\"8e8e4013-912b-4198-bf85-1ac5a3e1b770\\\",\\\"runId\\\":\\\"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\\\",\\\"inputRevision\\\":\\\"83fbfb0f8ef4d3bed7d522e3633b3c542495ec5c3c9f3d4facf0b4e49d988305\\\",\\\"writablePaths\\\":[\\\"target.txt\\\"],\\\"excludedPaths\\\":[\\\"unrelated.txt\\\"],\\\"dependencies\\\":[],\\\"entries\\\":[{\\\"path\\\":\\\"target.txt\\\",\\\"kind\\\":\\\"file\\\",\\\"sha256\\\":\\\"328dc1bbcb13ca28f3c503ca3ee9a30065fbcf3bb529561819bd2fad6a651f32\\\",\\\"executable\\\":0}],\\\"digest\\\":\\\"dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f\\\"},\\\"kind\\\":\\\"test\\\",\\\"verdict\\\":\\\"passed\\\",\\\"issuer\\\":\\\"protocol fixture\\\",\\\"note\\\":\\\"Synthetic adapter evidence; no native execution claim\\\",\\\"artifact\\\":{\\\"path\\\":\\\"evidence/test.log\\\",\\\"sha256\\\":\\\"17dd8fd9c2a320f9d22b28ab756e8140c68e3f0a49084648dc89cce5c7944359\\\"}},\\\"recordedAt\\\":\\\"2026-10-24T14:23:33.399503275Z\\\",\\\"provenance\\\":\\\"controller-attributed\\\"}]}\",\n    \"threadId\": \"fresh-review\",\n    \"turnId\": \"review-turn\",\n    \"answer\": \"{\\\"verdict\\\":\\\"passed\\\",\\\"summary\\\":\\\"Protocol fixture review passed; not a native model observation\\\",\\\"findings\\\":[]}\",\n    \"outcome\": {\n      \"verdict\": \"passed\",\n      \"summary\": \"Protocol fixture review passed; not a native model observation\",\n      \"findings\": []\n    },\n    \"createdAt\": \"2026-10-24T14:23:33.4188446Z\",\n    \"updatedAt\": \"2026-10-24T14:23:33.699003464Z\"\n  },\n  \"tests\": [\n    {\n      \"request\": {\n        \"schema\": \"sdp-governance-evidence/1\",\n        \"projectRef\": \"trial\",\n        \"checkoutId\": \"8e8e4013-912b-4198-bf85-1ac5a3e1b770\",\n        \"operationId\": \"ff7c05b4-fbf1-4257-b340-ecbe5382bc59\",\n        \"runId\": \"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\",\n        \"expectedRevision\": 3,\n        \"inputRevision\": \"83fbfb0f8ef4d3bed7d522e3633b3c542495ec5c3c9f3d4facf0b4e49d988305\",\n        \"reportId\": \"883334df-ace1-4c62-8b4b-9b384e3612d2\",\n        \"candidate\": {\n          \"schema\": \"sdp-governance-evidence/1\",\n          \"projectRef\": \"trial\",\n          \"checkoutId\": \"8e8e4013-912b-4198-bf85-1ac5a3e1b770\",\n          \"runId\": \"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\",\n          \"inputRevision\": \"83fbfb0f8ef4d3bed7d522e3633b3c542495ec5c3c9f3d4facf0b4e49d988305\",\n          \"writablePaths\": [\n            \"target.txt\"\n          ],\n          \"excludedPaths\": [\n            \"unrelated.txt\"\n          ],\n          \"dependencies\": [],\n          \"entries\": [\n            {\n              \"path\": \"target.txt\",\n              \"kind\": \"file\",\n              \"sha256\": \"328dc1bbcb13ca28f3c503ca3ee9a30065fbcf3bb529561819bd2fad6a651f32\",\n              \"executable\": 0\n            }\n          ],\n          \"digest\": \"dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f\"\n        },\n        \"kind\": \"test\",\n        \"verdict\": \"passed\",\n        \"issuer\": \"protocol fixture\",\n        \"note\": \"Synthetic adapter evidence; no native execution claim\",\n        \"artifact\": {\n          \"path\": \"evidence/test.log\",\n          \"sha256\": \"17dd8fd9c2a320f9d22b28ab756e8140c68e3f0a49084648dc89cce5c7944359\"\n        }\n      },\n      \"recordedAt\": \"2026-10-24T14:23:33.399503275Z\",\n      \"provenance\": \"controller-attributed\"\n    }\n  ],\n  \"limitations\": [\n    \"tests are controller-attributed external evidence\",\n    \"fresh review context observed by controller; not owner acceptance\",\n    \"records remain active; routine completion is separate\"\n  ]\n}\n```\n"
+          },
+          {
+            "path": "SDP/Sessions/session.md",
+            "before": "8919ce9924b295d7dfc9f29d5a10f3cef6cb1a445729d05817e6b7f6828f0ab7",
+            "after": "1cc08d6dd052480b2f74700a879083e8f0bef5e0b9141de0efde94abf7c40b15",
+            "content": "# Goal\n\n| State | Step |\n| --- | --- |\n| next | S1 |\n\n| Field | Value |\n| --- | --- |\n| Session reference | SESSION-TEST-0001 |\n| Status | active |\n\n## PG result c4d0975f-d538-44b7-b87d-2db6e5028409\n\nRecorded review of candidate `dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f` for run `3cdbeeff-7506-41c2-bb1a-6f48ba74a033`.\nTests: attributed passed evidence; review: observed passed in a separate context.\nThis entry records a bounded result; lifecycle and owner acceptance remain unchanged.\n\nWork summary:\n\n    Publish the tested fixture result\n\nRemaining work:\n\n    Owner acceptance and broader Session completion remain open\n\n[Exact result and provenance](../Verification/PG/c4d0975f-d538-44b7-b87d-2db6e5028409.md).\n"
+          },
+          {
+            "path": "SDP/KanBan/active/#001--Change--fixture.md",
+            "before": "52ef95606b0c56bd17e4e079cfbeaa0f4026709c7d77a198441a19bde871148a",
+            "after": "673e04eda86fe9677f96cabee6b2f3ee0eeee849a91eaa571fb3fee74cac0dd8",
+            "content": "# Work\n\n| Field | Value |\n| --- | --- |\n| id | KB-SDP-001 |\n| project | SDP |\n| type | Change |\n| created | 2026-10-24 |\n| source | authorized disposable fixture |\n| PlanId | MAINT-SDP-0001 |\n| CardState | in-progress |\n\n## PG result c4d0975f-d538-44b7-b87d-2db6e5028409\n\nRecorded review of candidate `dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f` for run `3cdbeeff-7506-41c2-bb1a-6f48ba74a033`.\nTests: attributed passed evidence; review: observed passed in a separate context.\nThis entry records a bounded result; lifecycle and owner acceptance remain unchanged.\n\nWork summary:\n\n    Publish the tested fixture result\n\nRemaining work:\n\n    Owner acceptance and broader Session completion remain open\n\n[Exact result and provenance](../../Verification/PG/c4d0975f-d538-44b7-b87d-2db6e5028409.md).\n"
+          },
+          {
+            "path": "SDP/Maintenance/Plan.md",
+            "before": "81ab7ac36e0dbec2caf96a314523fe0057c5f329694c7e810ae089c7f6308c4f",
+            "after": "6a4fa8d77d1af5b5b4b0b68ad06872383115ee3d9cd1b44c8b46aab0809c2956",
+            "content": "# Plan\n\n| Field | Value |\n| --- | --- |\n| id | MAINT-SDP-0001 |\n| project | SDP |\n| state | active |\n| PlanType | MaintenancePlan |\n| BranchPolicy | current |\n| CommitPolicy | milestone |\n\nPreserve original authored plan.\n\n## PG result c4d0975f-d538-44b7-b87d-2db6e5028409\n\nRecorded review of candidate `dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f` for run `3cdbeeff-7506-41c2-bb1a-6f48ba74a033`.\nTests: attributed passed evidence; review: observed passed in a separate context.\nThis entry records a bounded result; lifecycle and owner acceptance remain unchanged.\n\nWork summary:\n\n    Publish the tested fixture result\n\nRemaining work:\n\n    Owner acceptance and broader Session completion remain open\n\n[Exact result and provenance](../Verification/PG/c4d0975f-d538-44b7-b87d-2db6e5028409.md).\n"
+          },
+          {
+            "path": "SDP/ProjectManagement/Ledger.ndjson",
+            "before": "8c2516834619040e39b76bbe3dbd0817d4ca7d4d5615045fd958012a9e5645e9",
+            "after": "6d58b70831eed61ecc1932d589e833bdb728e2b6d2ddde761632dcf59849f150",
+            "content": "{\"actor\":\"fixture\",\"commit\":null,\"eventId\":\"EVT-KB-SDP-000001\",\"eventType\":\"x-kanban:created\",\"occurredAt\":\"2026-10-24T00:00:00Z\",\"payload\":{\"from\":null,\"fromPath\":null,\"links\":[],\"previousEventId\":null,\"projectId\":\"SDP\",\"reason\":\"Authorized canonical publication fixture\",\"schemaVersion\":\"0.2\",\"to\":\"active\",\"toPath\":\"active/#001--Change--fixture.md\"},\"schemaVersion\":\"1.0\",\"subjectId\":\"KB-SDP-001\"}\n{\"actor\":\"fixture\",\"commit\":null,\"eventId\":\"EVT-PM-SDP-000001\",\"eventType\":\"x-management:created\",\"occurredAt\":\"2026-10-24T00:00:00Z\",\"payload\":{\"from\":null,\"fromPath\":null,\"kind\":\"Maintenance\",\"links\":[],\"planType\":\"MaintenancePlan\",\"previousEventId\":null,\"reason\":\"Authorized canonical publication fixture\",\"schemaVersion\":\"0.2\",\"to\":\"active\",\"toPath\":\"Maintenance/Plan.md\"},\"schemaVersion\":\"1.0\",\"subjectId\":\"MAINT-SDP-0001\"}\n{\"actor\":\"sdp-controller\",\"commit\":null,\"eventId\":\"EVT-PM-SDP-000002\",\"eventType\":\"x-management:updated\",\"occurredAt\":\"2026-10-24T14:23:33.721001572Z\",\"payload\":{\"from\":\"active\",\"fromPath\":\"Maintenance/Plan.md\",\"kind\":\"Maintenance\",\"links\":[\"KB-SDP-001\",\"MAINT-SDP-0001\"],\"planType\":\"MaintenancePlan\",\"previousEventId\":\"EVT-PM-SDP-000001\",\"reason\":\"Recorded candidate-bound PG review result; lifecycle remains active. Publication c4d0975f-d538-44b7-b87d-2db6e5028409\",\"schemaVersion\":\"0.2\",\"to\":\"active\",\"toPath\":\"Maintenance/Plan.md\"},\"schemaVersion\":\"1.0\",\"subjectId\":\"MAINT-SDP-0001\"}\n{\"actor\":\"sdp-controller\",\"commit\":null,\"eventId\":\"EVT-KB-SDP-000002\",\"eventType\":\"x-kanban:reviewed\",\"occurredAt\":\"2026-10-24T14:23:33.721001572Z\",\"payload\":{\"from\":\"active\",\"fromPath\":\"active/#001--Change--fixture.md\",\"links\":[\"MAINT-SDP-0001\"],\"previousEventId\":\"EVT-KB-SDP-000001\",\"projectId\":\"SDP\",\"reason\":\"Recorded candidate-bound PG review result; lifecycle remains active. Publication c4d0975f-d538-44b7-b87d-2db6e5028409\",\"schemaVersion\":\"0.2\",\"to\":\"active\",\"toPath\":\"active/#001--Change--fixture.md\"},\"schemaVersion\":\"1.0\",\"subjectId\":\"KB-SDP-001\"}\n"
+          },
+          {
+            "path": "SDP/Traceability/Ledger.ndjson",
+            "before": "absent",
+            "after": "a7f99d27264dc62328de7f92a9fca1c8073aabc143609e069f2e30fd182e35b6",
+            "content": "{\"actor\":\"sdp-controller\",\"commit\":null,\"eventId\":\"EVT-TEST-PG-C4D0975F-D538-44B7-B87D-2DB6E5028409\",\"eventType\":\"x-verification:recorded\",\"occurredAt\":\"2026-10-24T14:23:33.721001572Z\",\"payload\":{\"candidate\":\"dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f\",\"card\":\"KB-SDP-001\",\"evidence\":\"Verification/PG/c4d0975f-d538-44b7-b87d-2db6e5028409.md\",\"managementEvent\":\"EVT-PM-SDP-000002\",\"note\":\"Observed passed review and attributed passed tests; no owner acceptance or lifecycle completion.\",\"plan\":\"MAINT-SDP-0001\",\"review\":\"1ca411e2-d256-4c23-93e6-3c0dd940289e\",\"session\":\"SESSION-TEST-0001\"},\"schemaVersion\":\"1.0\",\"subjectId\":\"TEST-VER-PG-C4D0975F-D538-44B7-B87D-2DB6E5028409\"}\n"
+          }
+        ],
+        "evidencePath": "SDP/Verification/PG/c4d0975f-d538-44b7-b87d-2db6e5028409.md",
+        "eventIds": [
+          "EVT-PM-SDP-000002",
+          "EVT-KB-SDP-000002",
+          "EVT-TEST-PG-C4D0975F-D538-44B7-B87D-2DB6E5028409"
+        ],
+        "digest": "1e1716d59b4ac158656692a75ae5e9a0caa39881fe461ded90c41723f868e17d"
+      },
+      "applicable": true,
+      "conditions": []
+    }
+  },
+  {
+    "definition": "PublicationView",
+    "value": {
+      "schema": "sdp-governance-publication/1",
+      "publication": {
+        "request": {
+          "schema": "sdp-governance-publication/1",
+          "projectRef": "trial",
+          "checkoutId": "8e8e4013-912b-4198-bf85-1ac5a3e1b770",
+          "operationId": "c4d0975f-d538-44b7-b87d-2db6e5028409",
+          "runId": "3cdbeeff-7506-41c2-bb1a-6f48ba74a033",
+          "expectedRevision": 3,
+          "reviewId": "1ca411e2-d256-4c23-93e6-3c0dd940289e",
+          "system": "TEST",
+          "summary": "Publish the tested fixture result",
+          "remaining": "Owner acceptance and broader Session completion remain open"
+        },
+        "status": "published",
+        "createdAt": "2026-10-24T14:23:33.721001572Z",
+        "publishedAt": "2026-10-24T14:23:33.926284604Z",
+        "inputs": [
+          {
+            "path": "AGENTS.md",
+            "sha256": "21dc4fa0e2f816775618ac9f6e1abe043782ee48030c10d3eacb441d9efe9595"
+          },
+          {
+            "path": "SDP/KanBan/README.md",
+            "sha256": "f25b995ab6a47210d5979358f173fda86645a5ab1b252dae495c61d65ac2ba20"
+          },
+          {
+            "path": "SDP/KanBan/active/#001--Change--fixture.md",
+            "sha256": "52ef95606b0c56bd17e4e079cfbeaa0f4026709c7d77a198441a19bde871148a"
+          },
+          {
+            "path": "SDP/Maintenance/Plan.md",
+            "sha256": "81ab7ac36e0dbec2caf96a314523fe0057c5f329694c7e810ae089c7f6308c4f"
+          },
+          {
+            "path": "SDP/ProjectManagement/Ledger.ndjson",
+            "sha256": "8c2516834619040e39b76bbe3dbd0817d4ca7d4d5615045fd958012a9e5645e9"
+          },
+          {
+            "path": "SDP/SDP-project.manifest.yaml",
+            "sha256": "bf1d21be9fe885671ddcc461769e0496e3dd528c3c5dd1536a29d1e926b9296f"
+          },
+          {
+            "path": "SDP/Sessions/session.md",
+            "sha256": "8919ce9924b295d7dfc9f29d5a10f3cef6cb1a445729d05817e6b7f6828f0ab7"
+          },
+          {
+            "path": "SDP/Traceability/Ledger.ndjson",
+            "sha256": "absent"
+          },
+          {
+            "path": "SDP/Verification/PG/c4d0975f-d538-44b7-b87d-2db6e5028409.md",
+            "sha256": "absent"
+          },
+          {
+            "path": "SDP/authority.md",
+            "sha256": "178357325133c7c4d3f83e42c528218edf12efd545b6992a6dd8e7b7871bc2ad"
+          }
+        ],
+        "changes": [
+          {
+            "path": "SDP/Verification/PG/c4d0975f-d538-44b7-b87d-2db6e5028409.md",
+            "before": "absent",
+            "after": "ce82f06259b6ff71f1fa46b032844f80b696693990a02bf1d43e9a32a559a697",
+            "content": "# Published PG review result\n\nOperation: c4d0975f-d538-44b7-b87d-2db6e5028409\n\n```json\n{\n  \"schema\": \"sdp-governance-publication/1\",\n  \"request\": {\n    \"schema\": \"sdp-governance-publication/1\",\n    \"projectRef\": \"trial\",\n    \"checkoutId\": \"8e8e4013-912b-4198-bf85-1ac5a3e1b770\",\n    \"operationId\": \"c4d0975f-d538-44b7-b87d-2db6e5028409\",\n    \"runId\": \"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\",\n    \"expectedRevision\": 3,\n    \"reviewId\": \"1ca411e2-d256-4c23-93e6-3c0dd940289e\",\n    \"system\": \"TEST\",\n    \"summary\": \"Publish the tested fixture result\",\n    \"remaining\": \"Owner acceptance and broader Session completion remain open\"\n  },\n  \"selection\": {\n    \"card\": \"SDP/KanBan/active/#001--Change--fixture.md\",\n    \"plan\": \"SDP/Maintenance/Plan.md\",\n    \"session\": \"SDP/Sessions/session.md\",\n    \"authority\": \"SDP/authority.md\",\n    \"step\": \"S1\"\n  },\n  \"review\": {\n    \"runRevision\": 3,\n    \"id\": \"1ca411e2-d256-4c23-93e6-3c0dd940289e\",\n    \"runId\": \"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\",\n    \"revision\": 5,\n    \"state\": \"completed\",\n    \"spec\": {\n      \"instructions\": \"Read-only fixture review\",\n      \"candidate\": {\n        \"schema\": \"sdp-governance-evidence/1\",\n        \"projectRef\": \"trial\",\n        \"checkoutId\": \"8e8e4013-912b-4198-bf85-1ac5a3e1b770\",\n        \"runId\": \"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\",\n        \"inputRevision\": \"83fbfb0f8ef4d3bed7d522e3633b3c542495ec5c3c9f3d4facf0b4e49d988305\",\n        \"writablePaths\": [\n          \"target.txt\"\n        ],\n        \"excludedPaths\": [\n          \"unrelated.txt\"\n        ],\n        \"dependencies\": [],\n        \"entries\": [\n          {\n            \"path\": \"target.txt\",\n            \"kind\": \"file\",\n            \"sha256\": \"328dc1bbcb13ca28f3c503ca3ee9a30065fbcf3bb529561819bd2fad6a651f32\",\n            \"executable\": 0\n          }\n        ],\n        \"digest\": \"dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f\"\n      },\n      \"reportId\": \"883334df-ace1-4c62-8b4b-9b384e3612d2\",\n      \"evidenceIds\": [\n        \"ff7c05b4-fbf1-4257-b340-ecbe5382bc59\"\n      ],\n      \"focus\": \"Check fixture\",\n      \"hostVersion\": \"0.164.0\",\n      \"mcpBinary\": \"/fixture/sdp-mcp\",\n      \"skills\": [\n        {\n          \"name\": \"sdp-reviewer\",\n          \"path\": \"/tmp/TestPublicationPreservesHistoryAndRetries925907513/002/project/Skills/sdp-reviewer/SKILL.md\",\n          \"digest\": \"4d649f3ff67aac96394eabe51d01895d04c90baf1953bf3d2b705a25a3e9c37a\"\n        }\n      ]\n    },\n    \"payload\": \"{\\\"schema\\\":\\\"sdp-governance-review/1\\\",\\\"selection\\\":{\\\"card\\\":\\\"SDP/KanBan/active/#001--Change--fixture.md\\\",\\\"plan\\\":\\\"SDP/Maintenance/Plan.md\\\",\\\"session\\\":\\\"SDP/Sessions/session.md\\\",\\\"authority\\\":\\\"SDP/authority.md\\\",\\\"step\\\":\\\"S1\\\"},\\\"assignment\\\":{\\\"outcome\\\":\\\"fix fixture\\\",\\\"writablePaths\\\":[\\\"target.txt\\\"],\\\"excludedPaths\\\":[\\\"unrelated.txt\\\"]},\\\"review\\\":{\\\"instructions\\\":\\\"Read-only fixture review\\\",\\\"candidate\\\":{\\\"schema\\\":\\\"sdp-governance-evidence/1\\\",\\\"projectRef\\\":\\\"trial\\\",\\\"checkoutId\\\":\\\"8e8e4013-912b-4198-bf85-1ac5a3e1b770\\\",\\\"runId\\\":\\\"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\\\",\\\"inputRevision\\\":\\\"83fbfb0f8ef4d3bed7d522e3633b3c542495ec5c3c9f3d4facf0b4e49d988305\\\",\\\"writablePaths\\\":[\\\"target.txt\\\"],\\\"excludedPaths\\\":[\\\"unrelated.txt\\\"],\\\"dependencies\\\":[],\\\"entries\\\":[{\\\"path\\\":\\\"target.txt\\\",\\\"kind\\\":\\\"file\\\",\\\"sha256\\\":\\\"328dc1bbcb13ca28f3c503ca3ee9a30065fbcf3bb529561819bd2fad6a651f32\\\",\\\"executable\\\":0}],\\\"digest\\\":\\\"dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f\\\"},\\\"reportId\\\":\\\"883334df-ace1-4c62-8b4b-9b384e3612d2\\\",\\\"evidenceIds\\\":[\\\"ff7c05b4-fbf1-4257-b340-ecbe5382bc59\\\"],\\\"focus\\\":\\\"Check fixture\\\",\\\"hostVersion\\\":\\\"0.164.0\\\",\\\"mcpBinary\\\":\\\"/fixture/sdp-mcp\\\",\\\"skills\\\":[{\\\"name\\\":\\\"sdp-reviewer\\\",\\\"path\\\":\\\"/tmp/TestPublicationPreservesHistoryAndRetries925907513/002/project/Skills/sdp-reviewer/SKILL.md\\\",\\\"digest\\\":\\\"4d649f3ff67aac96394eabe51d01895d04c90baf1953bf3d2b705a25a3e9c37a\\\"}]},\\\"tests\\\":[{\\\"request\\\":{\\\"schema\\\":\\\"sdp-governance-evidence/1\\\",\\\"projectRef\\\":\\\"trial\\\",\\\"checkoutId\\\":\\\"8e8e4013-912b-4198-bf85-1ac5a3e1b770\\\",\\\"operationId\\\":\\\"ff7c05b4-fbf1-4257-b340-ecbe5382bc59\\\",\\\"runId\\\":\\\"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\\\",\\\"expectedRevision\\\":3,\\\"inputRevision\\\":\\\"83fbfb0f8ef4d3bed7d522e3633b3c542495ec5c3c9f3d4facf0b4e49d988305\\\",\\\"reportId\\\":\\\"883334df-ace1-4c62-8b4b-9b384e3612d2\\\",\\\"candidate\\\":{\\\"schema\\\":\\\"sdp-governance-evidence/1\\\",\\\"projectRef\\\":\\\"trial\\\",\\\"checkoutId\\\":\\\"8e8e4013-912b-4198-bf85-1ac5a3e1b770\\\",\\\"runId\\\":\\\"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\\\",\\\"inputRevision\\\":\\\"83fbfb0f8ef4d3bed7d522e3633b3c542495ec5c3c9f3d4facf0b4e49d988305\\\",\\\"writablePaths\\\":[\\\"target.txt\\\"],\\\"excludedPaths\\\":[\\\"unrelated.txt\\\"],\\\"dependencies\\\":[],\\\"entries\\\":[{\\\"path\\\":\\\"target.txt\\\",\\\"kind\\\":\\\"file\\\",\\\"sha256\\\":\\\"328dc1bbcb13ca28f3c503ca3ee9a30065fbcf3bb529561819bd2fad6a651f32\\\",\\\"executable\\\":0}],\\\"digest\\\":\\\"dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f\\\"},\\\"kind\\\":\\\"test\\\",\\\"verdict\\\":\\\"passed\\\",\\\"issuer\\\":\\\"protocol fixture\\\",\\\"note\\\":\\\"Synthetic adapter evidence; no native execution claim\\\",\\\"artifact\\\":{\\\"path\\\":\\\"evidence/test.log\\\",\\\"sha256\\\":\\\"17dd8fd9c2a320f9d22b28ab756e8140c68e3f0a49084648dc89cce5c7944359\\\"}},\\\"recordedAt\\\":\\\"2026-10-24T14:23:33.399503275Z\\\",\\\"provenance\\\":\\\"controller-attributed\\\"}]}\",\n    \"threadId\": \"fresh-review\",\n    \"turnId\": \"review-turn\",\n    \"answer\": \"{\\\"verdict\\\":\\\"passed\\\",\\\"summary\\\":\\\"Protocol fixture review passed; not a native model observation\\\",\\\"findings\\\":[]}\",\n    \"outcome\": {\n      \"verdict\": \"passed\",\n      \"summary\": \"Protocol fixture review passed; not a native model observation\",\n      \"findings\": []\n    },\n    \"createdAt\": \"2026-10-24T14:23:33.4188446Z\",\n    \"updatedAt\": \"2026-10-24T14:23:33.699003464Z\"\n  },\n  \"tests\": [\n    {\n      \"request\": {\n        \"schema\": \"sdp-governance-evidence/1\",\n        \"projectRef\": \"trial\",\n        \"checkoutId\": \"8e8e4013-912b-4198-bf85-1ac5a3e1b770\",\n        \"operationId\": \"ff7c05b4-fbf1-4257-b340-ecbe5382bc59\",\n        \"runId\": \"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\",\n        \"expectedRevision\": 3,\n        \"inputRevision\": \"83fbfb0f8ef4d3bed7d522e3633b3c542495ec5c3c9f3d4facf0b4e49d988305\",\n        \"reportId\": \"883334df-ace1-4c62-8b4b-9b384e3612d2\",\n        \"candidate\": {\n          \"schema\": \"sdp-governance-evidence/1\",\n          \"projectRef\": \"trial\",\n          \"checkoutId\": \"8e8e4013-912b-4198-bf85-1ac5a3e1b770\",\n          \"runId\": \"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\",\n          \"inputRevision\": \"83fbfb0f8ef4d3bed7d522e3633b3c542495ec5c3c9f3d4facf0b4e49d988305\",\n          \"writablePaths\": [\n            \"target.txt\"\n          ],\n          \"excludedPaths\": [\n            \"unrelated.txt\"\n          ],\n          \"dependencies\": [],\n          \"entries\": [\n            {\n              \"path\": \"target.txt\",\n              \"kind\": \"file\",\n              \"sha256\": \"328dc1bbcb13ca28f3c503ca3ee9a30065fbcf3bb529561819bd2fad6a651f32\",\n              \"executable\": 0\n            }\n          ],\n          \"digest\": \"dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f\"\n        },\n        \"kind\": \"test\",\n        \"verdict\": \"passed\",\n        \"issuer\": \"protocol fixture\",\n        \"note\": \"Synthetic adapter evidence; no native execution claim\",\n        \"artifact\": {\n          \"path\": \"evidence/test.log\",\n          \"sha256\": \"17dd8fd9c2a320f9d22b28ab756e8140c68e3f0a49084648dc89cce5c7944359\"\n        }\n      },\n      \"recordedAt\": \"2026-10-24T14:23:33.399503275Z\",\n      \"provenance\": \"controller-attributed\"\n    }\n  ],\n  \"limitations\": [\n    \"tests are controller-attributed external evidence\",\n    \"fresh review context observed by controller; not owner acceptance\",\n    \"records remain active; routine completion is separate\"\n  ]\n}\n```\n"
+          },
+          {
+            "path": "SDP/Sessions/session.md",
+            "before": "8919ce9924b295d7dfc9f29d5a10f3cef6cb1a445729d05817e6b7f6828f0ab7",
+            "after": "1cc08d6dd052480b2f74700a879083e8f0bef5e0b9141de0efde94abf7c40b15",
+            "content": "# Goal\n\n| State | Step |\n| --- | --- |\n| next | S1 |\n\n| Field | Value |\n| --- | --- |\n| Session reference | SESSION-TEST-0001 |\n| Status | active |\n\n## PG result c4d0975f-d538-44b7-b87d-2db6e5028409\n\nRecorded review of candidate `dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f` for run `3cdbeeff-7506-41c2-bb1a-6f48ba74a033`.\nTests: attributed passed evidence; review: observed passed in a separate context.\nThis entry records a bounded result; lifecycle and owner acceptance remain unchanged.\n\nWork summary:\n\n    Publish the tested fixture result\n\nRemaining work:\n\n    Owner acceptance and broader Session completion remain open\n\n[Exact result and provenance](../Verification/PG/c4d0975f-d538-44b7-b87d-2db6e5028409.md).\n"
+          },
+          {
+            "path": "SDP/KanBan/active/#001--Change--fixture.md",
+            "before": "52ef95606b0c56bd17e4e079cfbeaa0f4026709c7d77a198441a19bde871148a",
+            "after": "673e04eda86fe9677f96cabee6b2f3ee0eeee849a91eaa571fb3fee74cac0dd8",
+            "content": "# Work\n\n| Field | Value |\n| --- | --- |\n| id | KB-SDP-001 |\n| project | SDP |\n| type | Change |\n| created | 2026-10-24 |\n| source | authorized disposable fixture |\n| PlanId | MAINT-SDP-0001 |\n| CardState | in-progress |\n\n## PG result c4d0975f-d538-44b7-b87d-2db6e5028409\n\nRecorded review of candidate `dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f` for run `3cdbeeff-7506-41c2-bb1a-6f48ba74a033`.\nTests: attributed passed evidence; review: observed passed in a separate context.\nThis entry records a bounded result; lifecycle and owner acceptance remain unchanged.\n\nWork summary:\n\n    Publish the tested fixture result\n\nRemaining work:\n\n    Owner acceptance and broader Session completion remain open\n\n[Exact result and provenance](../../Verification/PG/c4d0975f-d538-44b7-b87d-2db6e5028409.md).\n"
+          },
+          {
+            "path": "SDP/Maintenance/Plan.md",
+            "before": "81ab7ac36e0dbec2caf96a314523fe0057c5f329694c7e810ae089c7f6308c4f",
+            "after": "6a4fa8d77d1af5b5b4b0b68ad06872383115ee3d9cd1b44c8b46aab0809c2956",
+            "content": "# Plan\n\n| Field | Value |\n| --- | --- |\n| id | MAINT-SDP-0001 |\n| project | SDP |\n| state | active |\n| PlanType | MaintenancePlan |\n| BranchPolicy | current |\n| CommitPolicy | milestone |\n\nPreserve original authored plan.\n\n## PG result c4d0975f-d538-44b7-b87d-2db6e5028409\n\nRecorded review of candidate `dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f` for run `3cdbeeff-7506-41c2-bb1a-6f48ba74a033`.\nTests: attributed passed evidence; review: observed passed in a separate context.\nThis entry records a bounded result; lifecycle and owner acceptance remain unchanged.\n\nWork summary:\n\n    Publish the tested fixture result\n\nRemaining work:\n\n    Owner acceptance and broader Session completion remain open\n\n[Exact result and provenance](../Verification/PG/c4d0975f-d538-44b7-b87d-2db6e5028409.md).\n"
+          },
+          {
+            "path": "SDP/ProjectManagement/Ledger.ndjson",
+            "before": "8c2516834619040e39b76bbe3dbd0817d4ca7d4d5615045fd958012a9e5645e9",
+            "after": "6d58b70831eed61ecc1932d589e833bdb728e2b6d2ddde761632dcf59849f150",
+            "content": "{\"actor\":\"fixture\",\"commit\":null,\"eventId\":\"EVT-KB-SDP-000001\",\"eventType\":\"x-kanban:created\",\"occurredAt\":\"2026-10-24T00:00:00Z\",\"payload\":{\"from\":null,\"fromPath\":null,\"links\":[],\"previousEventId\":null,\"projectId\":\"SDP\",\"reason\":\"Authorized canonical publication fixture\",\"schemaVersion\":\"0.2\",\"to\":\"active\",\"toPath\":\"active/#001--Change--fixture.md\"},\"schemaVersion\":\"1.0\",\"subjectId\":\"KB-SDP-001\"}\n{\"actor\":\"fixture\",\"commit\":null,\"eventId\":\"EVT-PM-SDP-000001\",\"eventType\":\"x-management:created\",\"occurredAt\":\"2026-10-24T00:00:00Z\",\"payload\":{\"from\":null,\"fromPath\":null,\"kind\":\"Maintenance\",\"links\":[],\"planType\":\"MaintenancePlan\",\"previousEventId\":null,\"reason\":\"Authorized canonical publication fixture\",\"schemaVersion\":\"0.2\",\"to\":\"active\",\"toPath\":\"Maintenance/Plan.md\"},\"schemaVersion\":\"1.0\",\"subjectId\":\"MAINT-SDP-0001\"}\n{\"actor\":\"sdp-controller\",\"commit\":null,\"eventId\":\"EVT-PM-SDP-000002\",\"eventType\":\"x-management:updated\",\"occurredAt\":\"2026-10-24T14:23:33.721001572Z\",\"payload\":{\"from\":\"active\",\"fromPath\":\"Maintenance/Plan.md\",\"kind\":\"Maintenance\",\"links\":[\"KB-SDP-001\",\"MAINT-SDP-0001\"],\"planType\":\"MaintenancePlan\",\"previousEventId\":\"EVT-PM-SDP-000001\",\"reason\":\"Recorded candidate-bound PG review result; lifecycle remains active. Publication c4d0975f-d538-44b7-b87d-2db6e5028409\",\"schemaVersion\":\"0.2\",\"to\":\"active\",\"toPath\":\"Maintenance/Plan.md\"},\"schemaVersion\":\"1.0\",\"subjectId\":\"MAINT-SDP-0001\"}\n{\"actor\":\"sdp-controller\",\"commit\":null,\"eventId\":\"EVT-KB-SDP-000002\",\"eventType\":\"x-kanban:reviewed\",\"occurredAt\":\"2026-10-24T14:23:33.721001572Z\",\"payload\":{\"from\":\"active\",\"fromPath\":\"active/#001--Change--fixture.md\",\"links\":[\"MAINT-SDP-0001\"],\"previousEventId\":\"EVT-KB-SDP-000001\",\"projectId\":\"SDP\",\"reason\":\"Recorded candidate-bound PG review result; lifecycle remains active. Publication c4d0975f-d538-44b7-b87d-2db6e5028409\",\"schemaVersion\":\"0.2\",\"to\":\"active\",\"toPath\":\"active/#001--Change--fixture.md\"},\"schemaVersion\":\"1.0\",\"subjectId\":\"KB-SDP-001\"}\n"
+          },
+          {
+            "path": "SDP/Traceability/Ledger.ndjson",
+            "before": "absent",
+            "after": "a7f99d27264dc62328de7f92a9fca1c8073aabc143609e069f2e30fd182e35b6",
+            "content": "{\"actor\":\"sdp-controller\",\"commit\":null,\"eventId\":\"EVT-TEST-PG-C4D0975F-D538-44B7-B87D-2DB6E5028409\",\"eventType\":\"x-verification:recorded\",\"occurredAt\":\"2026-10-24T14:23:33.721001572Z\",\"payload\":{\"candidate\":\"dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f\",\"card\":\"KB-SDP-001\",\"evidence\":\"Verification/PG/c4d0975f-d538-44b7-b87d-2db6e5028409.md\",\"managementEvent\":\"EVT-PM-SDP-000002\",\"note\":\"Observed passed review and attributed passed tests; no owner acceptance or lifecycle completion.\",\"plan\":\"MAINT-SDP-0001\",\"review\":\"1ca411e2-d256-4c23-93e6-3c0dd940289e\",\"session\":\"SESSION-TEST-0001\"},\"schemaVersion\":\"1.0\",\"subjectId\":\"TEST-VER-PG-C4D0975F-D538-44B7-B87D-2DB6E5028409\"}\n"
+          }
+        ],
+        "evidencePath": "SDP/Verification/PG/c4d0975f-d538-44b7-b87d-2db6e5028409.md",
+        "eventIds": [
+          "EVT-PM-SDP-000002",
+          "EVT-KB-SDP-000002",
+          "EVT-TEST-PG-C4D0975F-D538-44B7-B87D-2DB6E5028409"
+        ],
+        "digest": "1e1716d59b4ac158656692a75ae5e9a0caa39881fe461ded90c41723f868e17d"
+      },
+      "applicable": true,
+      "conditions": []
+    }
+  },
+  {
+    "definition": "PublicationView",
+    "value": {
+      "schema": "sdp-governance-publication/1",
+      "publication": {
+        "request": {
+          "schema": "sdp-governance-publication/1",
+          "projectRef": "trial",
+          "checkoutId": "8e8e4013-912b-4198-bf85-1ac5a3e1b770",
+          "operationId": "c4d0975f-d538-44b7-b87d-2db6e5028409",
+          "runId": "3cdbeeff-7506-41c2-bb1a-6f48ba74a033",
+          "expectedRevision": 3,
+          "reviewId": "1ca411e2-d256-4c23-93e6-3c0dd940289e",
+          "system": "TEST",
+          "summary": "Publish the tested fixture result",
+          "remaining": "Owner acceptance and broader Session completion remain open"
+        },
+        "status": "published",
+        "createdAt": "2026-10-24T14:23:33.721001572Z",
+        "publishedAt": "2026-10-24T14:23:33.926284604Z",
+        "inputs": [
+          {
+            "path": "AGENTS.md",
+            "sha256": "21dc4fa0e2f816775618ac9f6e1abe043782ee48030c10d3eacb441d9efe9595"
+          },
+          {
+            "path": "SDP/KanBan/README.md",
+            "sha256": "f25b995ab6a47210d5979358f173fda86645a5ab1b252dae495c61d65ac2ba20"
+          },
+          {
+            "path": "SDP/KanBan/active/#001--Change--fixture.md",
+            "sha256": "52ef95606b0c56bd17e4e079cfbeaa0f4026709c7d77a198441a19bde871148a"
+          },
+          {
+            "path": "SDP/Maintenance/Plan.md",
+            "sha256": "81ab7ac36e0dbec2caf96a314523fe0057c5f329694c7e810ae089c7f6308c4f"
+          },
+          {
+            "path": "SDP/ProjectManagement/Ledger.ndjson",
+            "sha256": "8c2516834619040e39b76bbe3dbd0817d4ca7d4d5615045fd958012a9e5645e9"
+          },
+          {
+            "path": "SDP/SDP-project.manifest.yaml",
+            "sha256": "bf1d21be9fe885671ddcc461769e0496e3dd528c3c5dd1536a29d1e926b9296f"
+          },
+          {
+            "path": "SDP/Sessions/session.md",
+            "sha256": "8919ce9924b295d7dfc9f29d5a10f3cef6cb1a445729d05817e6b7f6828f0ab7"
+          },
+          {
+            "path": "SDP/Traceability/Ledger.ndjson",
+            "sha256": "absent"
+          },
+          {
+            "path": "SDP/Verification/PG/c4d0975f-d538-44b7-b87d-2db6e5028409.md",
+            "sha256": "absent"
+          },
+          {
+            "path": "SDP/authority.md",
+            "sha256": "178357325133c7c4d3f83e42c528218edf12efd545b6992a6dd8e7b7871bc2ad"
+          }
+        ],
+        "changes": [
+          {
+            "path": "SDP/Verification/PG/c4d0975f-d538-44b7-b87d-2db6e5028409.md",
+            "before": "absent",
+            "after": "ce82f06259b6ff71f1fa46b032844f80b696693990a02bf1d43e9a32a559a697",
+            "content": "# Published PG review result\n\nOperation: c4d0975f-d538-44b7-b87d-2db6e5028409\n\n```json\n{\n  \"schema\": \"sdp-governance-publication/1\",\n  \"request\": {\n    \"schema\": \"sdp-governance-publication/1\",\n    \"projectRef\": \"trial\",\n    \"checkoutId\": \"8e8e4013-912b-4198-bf85-1ac5a3e1b770\",\n    \"operationId\": \"c4d0975f-d538-44b7-b87d-2db6e5028409\",\n    \"runId\": \"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\",\n    \"expectedRevision\": 3,\n    \"reviewId\": \"1ca411e2-d256-4c23-93e6-3c0dd940289e\",\n    \"system\": \"TEST\",\n    \"summary\": \"Publish the tested fixture result\",\n    \"remaining\": \"Owner acceptance and broader Session completion remain open\"\n  },\n  \"selection\": {\n    \"card\": \"SDP/KanBan/active/#001--Change--fixture.md\",\n    \"plan\": \"SDP/Maintenance/Plan.md\",\n    \"session\": \"SDP/Sessions/session.md\",\n    \"authority\": \"SDP/authority.md\",\n    \"step\": \"S1\"\n  },\n  \"review\": {\n    \"runRevision\": 3,\n    \"id\": \"1ca411e2-d256-4c23-93e6-3c0dd940289e\",\n    \"runId\": \"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\",\n    \"revision\": 5,\n    \"state\": \"completed\",\n    \"spec\": {\n      \"instructions\": \"Read-only fixture review\",\n      \"candidate\": {\n        \"schema\": \"sdp-governance-evidence/1\",\n        \"projectRef\": \"trial\",\n        \"checkoutId\": \"8e8e4013-912b-4198-bf85-1ac5a3e1b770\",\n        \"runId\": \"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\",\n        \"inputRevision\": \"83fbfb0f8ef4d3bed7d522e3633b3c542495ec5c3c9f3d4facf0b4e49d988305\",\n        \"writablePaths\": [\n          \"target.txt\"\n        ],\n        \"excludedPaths\": [\n          \"unrelated.txt\"\n        ],\n        \"dependencies\": [],\n        \"entries\": [\n          {\n            \"path\": \"target.txt\",\n            \"kind\": \"file\",\n            \"sha256\": \"328dc1bbcb13ca28f3c503ca3ee9a30065fbcf3bb529561819bd2fad6a651f32\",\n            \"executable\": 0\n          }\n        ],\n        \"digest\": \"dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f\"\n      },\n      \"reportId\": \"883334df-ace1-4c62-8b4b-9b384e3612d2\",\n      \"evidenceIds\": [\n        \"ff7c05b4-fbf1-4257-b340-ecbe5382bc59\"\n      ],\n      \"focus\": \"Check fixture\",\n      \"hostVersion\": \"0.164.0\",\n      \"mcpBinary\": \"/fixture/sdp-mcp\",\n      \"skills\": [\n        {\n          \"name\": \"sdp-reviewer\",\n          \"path\": \"/tmp/TestPublicationPreservesHistoryAndRetries925907513/002/project/Skills/sdp-reviewer/SKILL.md\",\n          \"digest\": \"4d649f3ff67aac96394eabe51d01895d04c90baf1953bf3d2b705a25a3e9c37a\"\n        }\n      ]\n    },\n    \"payload\": \"{\\\"schema\\\":\\\"sdp-governance-review/1\\\",\\\"selection\\\":{\\\"card\\\":\\\"SDP/KanBan/active/#001--Change--fixture.md\\\",\\\"plan\\\":\\\"SDP/Maintenance/Plan.md\\\",\\\"session\\\":\\\"SDP/Sessions/session.md\\\",\\\"authority\\\":\\\"SDP/authority.md\\\",\\\"step\\\":\\\"S1\\\"},\\\"assignment\\\":{\\\"outcome\\\":\\\"fix fixture\\\",\\\"writablePaths\\\":[\\\"target.txt\\\"],\\\"excludedPaths\\\":[\\\"unrelated.txt\\\"]},\\\"review\\\":{\\\"instructions\\\":\\\"Read-only fixture review\\\",\\\"candidate\\\":{\\\"schema\\\":\\\"sdp-governance-evidence/1\\\",\\\"projectRef\\\":\\\"trial\\\",\\\"checkoutId\\\":\\\"8e8e4013-912b-4198-bf85-1ac5a3e1b770\\\",\\\"runId\\\":\\\"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\\\",\\\"inputRevision\\\":\\\"83fbfb0f8ef4d3bed7d522e3633b3c542495ec5c3c9f3d4facf0b4e49d988305\\\",\\\"writablePaths\\\":[\\\"target.txt\\\"],\\\"excludedPaths\\\":[\\\"unrelated.txt\\\"],\\\"dependencies\\\":[],\\\"entries\\\":[{\\\"path\\\":\\\"target.txt\\\",\\\"kind\\\":\\\"file\\\",\\\"sha256\\\":\\\"328dc1bbcb13ca28f3c503ca3ee9a30065fbcf3bb529561819bd2fad6a651f32\\\",\\\"executable\\\":0}],\\\"digest\\\":\\\"dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f\\\"},\\\"reportId\\\":\\\"883334df-ace1-4c62-8b4b-9b384e3612d2\\\",\\\"evidenceIds\\\":[\\\"ff7c05b4-fbf1-4257-b340-ecbe5382bc59\\\"],\\\"focus\\\":\\\"Check fixture\\\",\\\"hostVersion\\\":\\\"0.164.0\\\",\\\"mcpBinary\\\":\\\"/fixture/sdp-mcp\\\",\\\"skills\\\":[{\\\"name\\\":\\\"sdp-reviewer\\\",\\\"path\\\":\\\"/tmp/TestPublicationPreservesHistoryAndRetries925907513/002/project/Skills/sdp-reviewer/SKILL.md\\\",\\\"digest\\\":\\\"4d649f3ff67aac96394eabe51d01895d04c90baf1953bf3d2b705a25a3e9c37a\\\"}]},\\\"tests\\\":[{\\\"request\\\":{\\\"schema\\\":\\\"sdp-governance-evidence/1\\\",\\\"projectRef\\\":\\\"trial\\\",\\\"checkoutId\\\":\\\"8e8e4013-912b-4198-bf85-1ac5a3e1b770\\\",\\\"operationId\\\":\\\"ff7c05b4-fbf1-4257-b340-ecbe5382bc59\\\",\\\"runId\\\":\\\"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\\\",\\\"expectedRevision\\\":3,\\\"inputRevision\\\":\\\"83fbfb0f8ef4d3bed7d522e3633b3c542495ec5c3c9f3d4facf0b4e49d988305\\\",\\\"reportId\\\":\\\"883334df-ace1-4c62-8b4b-9b384e3612d2\\\",\\\"candidate\\\":{\\\"schema\\\":\\\"sdp-governance-evidence/1\\\",\\\"projectRef\\\":\\\"trial\\\",\\\"checkoutId\\\":\\\"8e8e4013-912b-4198-bf85-1ac5a3e1b770\\\",\\\"runId\\\":\\\"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\\\",\\\"inputRevision\\\":\\\"83fbfb0f8ef4d3bed7d522e3633b3c542495ec5c3c9f3d4facf0b4e49d988305\\\",\\\"writablePaths\\\":[\\\"target.txt\\\"],\\\"excludedPaths\\\":[\\\"unrelated.txt\\\"],\\\"dependencies\\\":[],\\\"entries\\\":[{\\\"path\\\":\\\"target.txt\\\",\\\"kind\\\":\\\"file\\\",\\\"sha256\\\":\\\"328dc1bbcb13ca28f3c503ca3ee9a30065fbcf3bb529561819bd2fad6a651f32\\\",\\\"executable\\\":0}],\\\"digest\\\":\\\"dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f\\\"},\\\"kind\\\":\\\"test\\\",\\\"verdict\\\":\\\"passed\\\",\\\"issuer\\\":\\\"protocol fixture\\\",\\\"note\\\":\\\"Synthetic adapter evidence; no native execution claim\\\",\\\"artifact\\\":{\\\"path\\\":\\\"evidence/test.log\\\",\\\"sha256\\\":\\\"17dd8fd9c2a320f9d22b28ab756e8140c68e3f0a49084648dc89cce5c7944359\\\"}},\\\"recordedAt\\\":\\\"2026-10-24T14:23:33.399503275Z\\\",\\\"provenance\\\":\\\"controller-attributed\\\"}]}\",\n    \"threadId\": \"fresh-review\",\n    \"turnId\": \"review-turn\",\n    \"answer\": \"{\\\"verdict\\\":\\\"passed\\\",\\\"summary\\\":\\\"Protocol fixture review passed; not a native model observation\\\",\\\"findings\\\":[]}\",\n    \"outcome\": {\n      \"verdict\": \"passed\",\n      \"summary\": \"Protocol fixture review passed; not a native model observation\",\n      \"findings\": []\n    },\n    \"createdAt\": \"2026-10-24T14:23:33.4188446Z\",\n    \"updatedAt\": \"2026-10-24T14:23:33.699003464Z\"\n  },\n  \"tests\": [\n    {\n      \"request\": {\n        \"schema\": \"sdp-governance-evidence/1\",\n        \"projectRef\": \"trial\",\n        \"checkoutId\": \"8e8e4013-912b-4198-bf85-1ac5a3e1b770\",\n        \"operationId\": \"ff7c05b4-fbf1-4257-b340-ecbe5382bc59\",\n        \"runId\": \"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\",\n        \"expectedRevision\": 3,\n        \"inputRevision\": \"83fbfb0f8ef4d3bed7d522e3633b3c542495ec5c3c9f3d4facf0b4e49d988305\",\n        \"reportId\": \"883334df-ace1-4c62-8b4b-9b384e3612d2\",\n        \"candidate\": {\n          \"schema\": \"sdp-governance-evidence/1\",\n          \"projectRef\": \"trial\",\n          \"checkoutId\": \"8e8e4013-912b-4198-bf85-1ac5a3e1b770\",\n          \"runId\": \"3cdbeeff-7506-41c2-bb1a-6f48ba74a033\",\n          \"inputRevision\": \"83fbfb0f8ef4d3bed7d522e3633b3c542495ec5c3c9f3d4facf0b4e49d988305\",\n          \"writablePaths\": [\n            \"target.txt\"\n          ],\n          \"excludedPaths\": [\n            \"unrelated.txt\"\n          ],\n          \"dependencies\": [],\n          \"entries\": [\n            {\n              \"path\": \"target.txt\",\n              \"kind\": \"file\",\n              \"sha256\": \"328dc1bbcb13ca28f3c503ca3ee9a30065fbcf3bb529561819bd2fad6a651f32\",\n              \"executable\": 0\n            }\n          ],\n          \"digest\": \"dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f\"\n        },\n        \"kind\": \"test\",\n        \"verdict\": \"passed\",\n        \"issuer\": \"protocol fixture\",\n        \"note\": \"Synthetic adapter evidence; no native execution claim\",\n        \"artifact\": {\n          \"path\": \"evidence/test.log\",\n          \"sha256\": \"17dd8fd9c2a320f9d22b28ab756e8140c68e3f0a49084648dc89cce5c7944359\"\n        }\n      },\n      \"recordedAt\": \"2026-10-24T14:23:33.399503275Z\",\n      \"provenance\": \"controller-attributed\"\n    }\n  ],\n  \"limitations\": [\n    \"tests are controller-attributed external evidence\",\n    \"fresh review context observed by controller; not owner acceptance\",\n    \"records remain active; routine completion is separate\"\n  ]\n}\n```\n"
+          },
+          {
+            "path": "SDP/Sessions/session.md",
+            "before": "8919ce9924b295d7dfc9f29d5a10f3cef6cb1a445729d05817e6b7f6828f0ab7",
+            "after": "1cc08d6dd052480b2f74700a879083e8f0bef5e0b9141de0efde94abf7c40b15",
+            "content": "# Goal\n\n| State | Step |\n| --- | --- |\n| next | S1 |\n\n| Field | Value |\n| --- | --- |\n| Session reference | SESSION-TEST-0001 |\n| Status | active |\n\n## PG result c4d0975f-d538-44b7-b87d-2db6e5028409\n\nRecorded review of candidate `dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f` for run `3cdbeeff-7506-41c2-bb1a-6f48ba74a033`.\nTests: attributed passed evidence; review: observed passed in a separate context.\nThis entry records a bounded result; lifecycle and owner acceptance remain unchanged.\n\nWork summary:\n\n    Publish the tested fixture result\n\nRemaining work:\n\n    Owner acceptance and broader Session completion remain open\n\n[Exact result and provenance](../Verification/PG/c4d0975f-d538-44b7-b87d-2db6e5028409.md).\n"
+          },
+          {
+            "path": "SDP/KanBan/active/#001--Change--fixture.md",
+            "before": "52ef95606b0c56bd17e4e079cfbeaa0f4026709c7d77a198441a19bde871148a",
+            "after": "673e04eda86fe9677f96cabee6b2f3ee0eeee849a91eaa571fb3fee74cac0dd8",
+            "content": "# Work\n\n| Field | Value |\n| --- | --- |\n| id | KB-SDP-001 |\n| project | SDP |\n| type | Change |\n| created | 2026-10-24 |\n| source | authorized disposable fixture |\n| PlanId | MAINT-SDP-0001 |\n| CardState | in-progress |\n\n## PG result c4d0975f-d538-44b7-b87d-2db6e5028409\n\nRecorded review of candidate `dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f` for run `3cdbeeff-7506-41c2-bb1a-6f48ba74a033`.\nTests: attributed passed evidence; review: observed passed in a separate context.\nThis entry records a bounded result; lifecycle and owner acceptance remain unchanged.\n\nWork summary:\n\n    Publish the tested fixture result\n\nRemaining work:\n\n    Owner acceptance and broader Session completion remain open\n\n[Exact result and provenance](../../Verification/PG/c4d0975f-d538-44b7-b87d-2db6e5028409.md).\n"
+          },
+          {
+            "path": "SDP/Maintenance/Plan.md",
+            "before": "81ab7ac36e0dbec2caf96a314523fe0057c5f329694c7e810ae089c7f6308c4f",
+            "after": "6a4fa8d77d1af5b5b4b0b68ad06872383115ee3d9cd1b44c8b46aab0809c2956",
+            "content": "# Plan\n\n| Field | Value |\n| --- | --- |\n| id | MAINT-SDP-0001 |\n| project | SDP |\n| state | active |\n| PlanType | MaintenancePlan |\n| BranchPolicy | current |\n| CommitPolicy | milestone |\n\nPreserve original authored plan.\n\n## PG result c4d0975f-d538-44b7-b87d-2db6e5028409\n\nRecorded review of candidate `dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f` for run `3cdbeeff-7506-41c2-bb1a-6f48ba74a033`.\nTests: attributed passed evidence; review: observed passed in a separate context.\nThis entry records a bounded result; lifecycle and owner acceptance remain unchanged.\n\nWork summary:\n\n    Publish the tested fixture result\n\nRemaining work:\n\n    Owner acceptance and broader Session completion remain open\n\n[Exact result and provenance](../Verification/PG/c4d0975f-d538-44b7-b87d-2db6e5028409.md).\n"
+          },
+          {
+            "path": "SDP/ProjectManagement/Ledger.ndjson",
+            "before": "8c2516834619040e39b76bbe3dbd0817d4ca7d4d5615045fd958012a9e5645e9",
+            "after": "6d58b70831eed61ecc1932d589e833bdb728e2b6d2ddde761632dcf59849f150",
+            "content": "{\"actor\":\"fixture\",\"commit\":null,\"eventId\":\"EVT-KB-SDP-000001\",\"eventType\":\"x-kanban:created\",\"occurredAt\":\"2026-10-24T00:00:00Z\",\"payload\":{\"from\":null,\"fromPath\":null,\"links\":[],\"previousEventId\":null,\"projectId\":\"SDP\",\"reason\":\"Authorized canonical publication fixture\",\"schemaVersion\":\"0.2\",\"to\":\"active\",\"toPath\":\"active/#001--Change--fixture.md\"},\"schemaVersion\":\"1.0\",\"subjectId\":\"KB-SDP-001\"}\n{\"actor\":\"fixture\",\"commit\":null,\"eventId\":\"EVT-PM-SDP-000001\",\"eventType\":\"x-management:created\",\"occurredAt\":\"2026-10-24T00:00:00Z\",\"payload\":{\"from\":null,\"fromPath\":null,\"kind\":\"Maintenance\",\"links\":[],\"planType\":\"MaintenancePlan\",\"previousEventId\":null,\"reason\":\"Authorized canonical publication fixture\",\"schemaVersion\":\"0.2\",\"to\":\"active\",\"toPath\":\"Maintenance/Plan.md\"},\"schemaVersion\":\"1.0\",\"subjectId\":\"MAINT-SDP-0001\"}\n{\"actor\":\"sdp-controller\",\"commit\":null,\"eventId\":\"EVT-PM-SDP-000002\",\"eventType\":\"x-management:updated\",\"occurredAt\":\"2026-10-24T14:23:33.721001572Z\",\"payload\":{\"from\":\"active\",\"fromPath\":\"Maintenance/Plan.md\",\"kind\":\"Maintenance\",\"links\":[\"KB-SDP-001\",\"MAINT-SDP-0001\"],\"planType\":\"MaintenancePlan\",\"previousEventId\":\"EVT-PM-SDP-000001\",\"reason\":\"Recorded candidate-bound PG review result; lifecycle remains active. Publication c4d0975f-d538-44b7-b87d-2db6e5028409\",\"schemaVersion\":\"0.2\",\"to\":\"active\",\"toPath\":\"Maintenance/Plan.md\"},\"schemaVersion\":\"1.0\",\"subjectId\":\"MAINT-SDP-0001\"}\n{\"actor\":\"sdp-controller\",\"commit\":null,\"eventId\":\"EVT-KB-SDP-000002\",\"eventType\":\"x-kanban:reviewed\",\"occurredAt\":\"2026-10-24T14:23:33.721001572Z\",\"payload\":{\"from\":\"active\",\"fromPath\":\"active/#001--Change--fixture.md\",\"links\":[\"MAINT-SDP-0001\"],\"previousEventId\":\"EVT-KB-SDP-000001\",\"projectId\":\"SDP\",\"reason\":\"Recorded candidate-bound PG review result; lifecycle remains active. Publication c4d0975f-d538-44b7-b87d-2db6e5028409\",\"schemaVersion\":\"0.2\",\"to\":\"active\",\"toPath\":\"active/#001--Change--fixture.md\"},\"schemaVersion\":\"1.0\",\"subjectId\":\"KB-SDP-001\"}\n"
+          },
+          {
+            "path": "SDP/Traceability/Ledger.ndjson",
+            "before": "absent",
+            "after": "a7f99d27264dc62328de7f92a9fca1c8073aabc143609e069f2e30fd182e35b6",
+            "content": "{\"actor\":\"sdp-controller\",\"commit\":null,\"eventId\":\"EVT-TEST-PG-C4D0975F-D538-44B7-B87D-2DB6E5028409\",\"eventType\":\"x-verification:recorded\",\"occurredAt\":\"2026-10-24T14:23:33.721001572Z\",\"payload\":{\"candidate\":\"dc8f3073daf483aaf16e15512a3c2a3d7ef4f24475990d436620b11fb2c5669f\",\"card\":\"KB-SDP-001\",\"evidence\":\"Verification/PG/c4d0975f-d538-44b7-b87d-2db6e5028409.md\",\"managementEvent\":\"EVT-PM-SDP-000002\",\"note\":\"Observed passed review and attributed passed tests; no owner acceptance or lifecycle completion.\",\"plan\":\"MAINT-SDP-0001\",\"review\":\"1ca411e2-d256-4c23-93e6-3c0dd940289e\",\"session\":\"SESSION-TEST-0001\"},\"schemaVersion\":\"1.0\",\"subjectId\":\"TEST-VER-PG-C4D0975F-D538-44B7-B87D-2DB6E5028409\"}\n"
+          }
+        ],
+        "evidencePath": "SDP/Verification/PG/c4d0975f-d538-44b7-b87d-2db6e5028409.md",
+        "eventIds": [
+          "EVT-PM-SDP-000002",
+          "EVT-KB-SDP-000002",
+          "EVT-TEST-PG-C4D0975F-D538-44B7-B87D-2DB6E5028409"
+        ],
+        "digest": "1e1716d59b4ac158656692a75ae5e9a0caa39881fe461ded90c41723f868e17d"
+      },
+      "applicable": false,
+      "conditions": [
+        "stale_candidate: review candidate changed"
+      ]
+    }
+  }
+]

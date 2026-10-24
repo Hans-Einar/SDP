@@ -12,7 +12,18 @@ import (
 
 // Validate history before planning any relocation. History bytes remain immutable;
 // validation checks both predecessor chains and the documents they identify.
+// ValidateManagementHistory checks the shared-management record set using the same
+// structural rules as installation, while permitting the canonical project's
+// recorded 0.1 -> 0.2 typed-plan adoption. Installation retains its stricter policy.
+// File keys are canonical SDP-relative project paths. This is read-only.
+func ValidateManagementHistory(history []byte, files map[string][]byte) error {
+	return validateHistoryPolicy(history, files, true)
+}
+
 func validateHistory(history []byte, files map[string][]byte) error {
+	return validateHistoryPolicy(history, files, false)
+}
+func validateHistoryPolicy(history []byte, files map[string][]byte, recordedAdoption bool) error {
 	if _, _, err := blueprintstate.Replay(history); err != nil {
 		return err
 	}
@@ -83,7 +94,7 @@ func validateHistory(history []byte, files map[string][]byte) error {
 			if payload["previousEventId"] != prior["eventId"] || payload["from"] != pp["to"] || payload["fromPath"] != pp["toPath"] {
 				return fmt.Errorf("broken history chain: %s", id)
 			}
-			if pp["planType"] != payload["planType"] {
+			if pp["planType"] != payload["planType"] && !(recordedAdoption && pp["planType"] == nil && pp["schemaVersion"] == "0.1" && payload["schemaVersion"] == "0.2") {
 				return fmt.Errorf("plan type changed")
 			}
 		}

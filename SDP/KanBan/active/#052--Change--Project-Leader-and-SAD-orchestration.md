@@ -273,3 +273,16 @@ owner acceptance or native child hierarchy is inferred. CardState remains in-pro
 Next: checked canonical publication/recovery and review-result leader delivery;
 retain SAD/owner, parallel/active-host/capacity and independent integrated gates.
 Backlog/onHold reviewed without changing SDL-only, Blueprint, Ponsse or hub scope.
+
+
+### T037 — PGI4-C3 checked result publication and coordination
+
+Delivered bounded canonical publication with durable intent and exact crash/retry/
+conflict handling. Review/publication facts are exposed through existing coordinator
+MCP/CLI and serialized leader notices. Full final race/vet, 13 wire objects, compiled
+lab publication, canonical validation and actual MCP exchange pass. The new review
+fixture is synthetic; earlier native reviews are inspected read-only.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI4-C3.md) and
+[Session0007 T037](../../Sessions/session-%230007--Project_governance.md) retain limits.
+CardState remains in-progress: final run/lifecycle disposition, retained orchestration
+and independent integrated verification still require delivery. No broader closeout.

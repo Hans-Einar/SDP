@@ -651,3 +651,36 @@ artifacts and skill snapshots. Completed host status alone is not qualification.
 A passed, applicable result establishes an observed review in a separate context;
 canonical acceptance/publication remains unavailable. C1 attached prose remains
 controller-attributed; it cannot manufacture this provenance.
+
+## PGI4-C3 — Checked result publication and leader delivery, T037
+
+The first publication operation records a passed current review and its attributed
+passing tests, with a controller-supplied work summary and explicit remaining work.
+It appends to the selected Session/card/plan, writes one immutable evidence document,
+and appends canonical management updates and a verification event. Existing
+lifecycle metadata and authored roadmaps remain unchanged: this is publication of
+a bounded result, not overall completion or owner acceptance. A preview exposes
+exact before/after hashes and proposed bytes before apply. No arbitrary paths,
+patches, ledger events or owner decisions can be supplied by an agent.
+
+Reuse the install package's existing management-history validation on the complete
+proposed record set. Its supported shared-management profile is required; minimal
+old lab history is not silently upgraded. Preserve all historical bytes. The core
+checks selected identities, test/review applicability, source/skill/authority pins
+and exact generated event contents. This validator reuse is an internal dependency;
+it does not change installation policy or claim every repository-specific rule.
+
+Profile 0.12 retains publication intent in the existing immutable operational store.
+Apply serializes project writes across PG stores, persists applying state before
+file effects and compares every relevant input against its preimage or generated
+postimage. Unknown bytes stop with reconciliation_required; matching postimages
+are replayed without duplication. Interrupted work remains inspectable. Other
+run mutations in that store refuse while publication is applying. Atomic replacement
+is per file; the full set is not atomic. Nonparticipating editors can race; exact
+rechecks detect observed changes, not enforce security against same-user tools.
+
+Read-only coordination adds compact review notices with current applicability and
+observed provenance. The existing serialized leader delivery deduplicates their
+stable content and delivers changes in applicability; no new mutation capability,
+reviewer authority or host-native hierarchy is introduced. Publication and remaining
+completion/owner disposition are explicitly distinct in these notices.

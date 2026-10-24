@@ -17,7 +17,8 @@
           "enum": [
             "work",
             "report",
-            "attention"
+            "attention",
+            "review"
           ]
         },
         "priority": {
@@ -33,6 +34,9 @@
         },
         "attention": {
           "$ref": "schema.json#/$defs/AttentionView"
+        },
+        "review": {
+          "$ref": "#/$defs/ReviewNotice"
         }
       },
       "required": [
@@ -62,6 +66,11 @@
                 "required": [
                   "attention"
                 ]
+              },
+              {
+                "required": [
+                  "review"
+                ]
               }
             ]
           }
@@ -86,6 +95,11 @@
                 "required": [
                   "attention"
                 ]
+              },
+              {
+                "required": [
+                  "review"
+                ]
               }
             ]
           }
@@ -109,6 +123,40 @@
               {
                 "required": [
                   "report"
+                ]
+              },
+              {
+                "required": [
+                  "review"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "kind": {
+              "const": "review"
+            }
+          },
+          "required": [
+            "review"
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "work"
+                ]
+              },
+              {
+                "required": [
+                  "report"
+                ]
+              },
+              {
+                "required": [
+                  "attention"
                 ]
               }
             ]
@@ -136,10 +184,16 @@
           "type": "string"
         },
         "schema": {
-          "const": "sdp-governance-coordination/1"
+          "enum": [
+            "sdp-governance-coordination/1",
+            "sdp-governance-coordination/2"
+          ]
         },
         "scope": {
-          "const": "registered-work-reports-attention-in-selected-checkout"
+          "enum": [
+            "registered-work-reports-attention-in-selected-checkout",
+            "registered-work-reports-attention-reviews-in-selected-checkout"
+          ]
         },
         "inspectedAt": {
           "type": "string",
@@ -168,6 +222,40 @@
         "inspectedAt",
         "items",
         "total"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "schema": {
+                "const": "sdp-governance-coordination/1"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "scope": {
+                "const": "registered-work-reports-attention-in-selected-checkout"
+              },
+              "items": {
+                "items": {
+                  "not": {
+                    "required": [
+                      "review"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "scope": {
+                "const": "registered-work-reports-attention-reviews-in-selected-checkout"
+              }
+            }
+          }
+        }
       ]
     },
     "CoordinationEvent": {
@@ -319,6 +407,108 @@
             ]
           }
         }
+      ]
+    },
+    "ReviewNotice": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "state": {
+          "enum": [
+            "prepared",
+            "opening",
+            "bound",
+            "sending",
+            "running",
+            "completed",
+            "failed",
+            "interrupted",
+            "superseded"
+          ]
+        },
+        "candidate": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "reportId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "verdict": {
+          "enum": [
+            "",
+            "passed",
+            "failed",
+            "inconclusive"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "maxLength": 8192
+        },
+        "findingCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 32
+        },
+        "applicable": {
+          "type": "boolean"
+        },
+        "qualified": {
+          "type": "boolean"
+        },
+        "contextSeparation": {
+          "enum": [
+            "not-observed",
+            "controller-observed-fresh-thread"
+          ]
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 16
+        },
+        "publicationId": {
+          "type": "string"
+        },
+        "publicationStatus": {
+          "enum": [
+            "",
+            "prepared",
+            "applying",
+            "published"
+          ]
+        },
+        "publicationApplicable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "state",
+        "candidate",
+        "reportId",
+        "verdict",
+        "summary",
+        "findingCount",
+        "applicable",
+        "qualified",
+        "contextSeparation",
+        "conditions",
+        "publicationId",
+        "publicationStatus",
+        "publicationApplicable"
       ]
     }
   }

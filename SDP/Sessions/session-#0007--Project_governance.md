@@ -2,15 +2,15 @@
 
 ## Session roadmap
 
-Latest recorded turn: T036 — PGI4-C2 observed native review, exact recovery and failed-finding rework verified.
+Latest recorded turn: T037 — PGI4-C3 checked result publication/recovery and review coordination verified.
 The native trial asks, receives a delayed fixture reply, starts one fresh attempt
 and implements/reports the selected behavior. Local acknowledgement, coordination and
 serialized leader delivery are implemented. C8 native single-worker/leader and completed
 history recovery pass. Parallel evidence, sustained-hour capacity, active-host recovery,
-independent review and canonical publication remain. PGI4-C1 now captures candidate-bound
+independent review and final work disposition remain. PGI4-C1 now captures candidate-bound
 external evidence and supports guarded rework, preserving historical results. C2 now
-verifies separate-context native review; independent review of PG itself and checked
-canonical publication remain.
+verifies separate-context native review; C3 delivers checked bounded result publication
+and review notices. Final run/lifecycle disposition and independent PG review remain.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
 
 ```mermaid
@@ -31,9 +31,9 @@ gantt
 | --- | --- | --- | --- | --- |
 | completed | S1 | Recover skills, studies, card dependencies and ownership | Owner request, 2026-10-03 | Assessment below; RGS2 reused |
 | completed | S2 | Design the smallest common routing, run, Session and client contract | Owner continuation, T002 | [PGD1 / PLAN-SDP-0017](../04--Design/SDPTool/ProjectGovernance/Plan.md), contract, acceptance cases and protocol inspection |
-| on-going | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C6 verified; owner reports PGI3-U1 trial performed; native mapping remains unverified; PGI4-C1 evidence/rework and C2 native review delivered; checked publication and integrated gates remain |
+| on-going | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C6 verified; owner reports PGI3-U1 trial performed; native mapping remains unverified; PGI4-C1 evidence/rework, C2 native review and C3 checked result publication delivered; final disposition and integrated gates remain |
 | completed | S7 | Codex 0.164.0 and compatible later hosts / PGC1 | Owner T029; KB057 and existing PLAN-SDP-0018 | 98b449c range/identity/recovery checks, full race/vet, 60 schema cases and real no-model 0.164.0 controller/MCP probe pass; full native/review gates remain |
-| on-going | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation, C2a lifecycle, C2b provider checks and C2c decisions and C2d activation/native code trial delivered; PGL3-C2 reports/inbox, C3 attention/replies and C4 guarded continuation delivered; C5 acknowledgement, C6 console/MCP and C7 serialized leader delivery/recovery and C8 native bounded workflow delivered; parallel/capacity/review/publication gates remain |
+| on-going | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation, C2a lifecycle, C2b provider checks and C2c decisions and C2d activation/native code trial delivered; PGL3-C2 reports/inbox, C3 attention/replies and C4 guarded continuation delivered; C5 acknowledgement, C6 console/MCP and C7 serialized leader delivery/recovery and C8 native bounded workflow and C3 review/publication coordination delivered; final disposition, parallel/capacity and independent review gates remain |
 | planned | S4 | Verify interruption, resume, scope change and evidence disposition | S3 candidate | Evidence required before wider use |
 | planned | S5 | Project recorded activity into the KB043 timeline | Reliable S3/S4 capture and selected rendering scope | Full timeline remains deferred |
 
@@ -43,8 +43,8 @@ gantt
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-24 |
-| Current step | S3/S6 active: PGI4-C2 observed native review and recovery delivered after C1 evidence/rework; checked publication and retained orchestration/integrated gates remain |
-| Proposed next step | PGI4 checked canonical publication/recovery and review-result leader delivery; retain two-Master/active-host, SAD/owner, capacity and independent integrated verification. SDL-only scope; KB059 onHold |
+| Current step | S3/S6 active: PGI4-C3 checked bounded result publication/recovery and review notices delivered; final run/lifecycle disposition and orchestration/integrated gates remain |
+| Proposed next step | PGI4 guarded run completion and canonical work disposition using published results; retain two-Master/active-host, SAD/owner, capacity and independent integrated verification. SDL-only scope; KB059 onHold |
 | Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension; T026 assigns hub/webapp to a separate project and continues local SDP/SDPTool work; T027 continues local attention/replies; T028 continues guarded attention continuation; T029 selects stable Codex >=0.164.0 and compatible later hosts, preserving other scopes |
 
 ## Goal and ownership
@@ -1778,3 +1778,68 @@ T036 final checks: all 16 candidate source hashes and 66 evidence artifacts matc
 666 events; Toolkit and whitespace checks pass. Both canonical ledger prefixes
 are preserved. Preparing the scoped SDP milestone commit and authorized phase
 push. Checked publication and the remaining PG integration gates stay open.
+
+
+## T037 — Checked record publication and review delivery
+
+Owner says to continue after PGI4-C2 ef757ae (pushed). Recovered the active
+Session and PLAN-SDP-0018; loaded SDP/document workflow, Master, Architect,
+Planning, Worker, Verifier and Traceability.
+[Preflight](../05--Implementation/SDPTool/ProjectGovernance/preflight-PGI4-C3.json)
+is green for PG-local publication, review coordination and disposable pg_lab tests.
+No helper delegation, merge, release, Blueprint restart or Ponsse work selected.
+
+Select PGI4-C3: publish an exact reviewed result into the selected Session, card,
+plan and canonical histories through durable preimage-checked intent/recovery;
+expose review results to the existing leader coordination route. Preserve broader
+card/plan/Session lifecycle and authored roadmap; publication is a recorded result,
+not owner acceptance or automatic overall completion. Reuse existing canonical
+management history validation; unsupported/incomplete project records must refuse
+rather than weaken their contract.
+
+
+### T037 work summary
+
+- Owner continuation delivered PGI4-C3 under existing completion/test authority.
+  Prepared, inspectable six-file intent records passed review/test provenance,
+  summary and remaining work without closing Session/card/plan or accepting work.
+- Profile 0.12 stores exact before/after bytes and inputs. Project-wide PG writer
+  claim, durable intent, optimistic preimage checks and replay recover interrupted
+  writes. External conflicts refuse; applying work blocks other store mutations.
+  A failed intent save can be retried or abandoned before any project file effect.
+- Reused canonical management validation, adding supported field/index/reference/
+  grouping checks. Inspection found that the installer policy rejects historical
+  typed-plan adoption; the exported canonical read policy now accepts recorded
+  0.1-to-0.2 adoption while installation keeps its old stricter policy. Regression
+  tests and inspection of the actual 125-file repository record set pass.
+- Coordination version 2 exposes compact review/publication facts through existing
+  MCP/CLI authority. Terminal notices enter the existing serialized leader dispatch
+  with deduplication and renewed delivery for changed applicability. Tests prove
+  payload selection; no new native leader execution or PG-independent review.
+- Final full race/vet and 13 observed schema objects pass. A schema-reference error
+  found after the first suite was corrected before final builds/full rerun and
+  a fresh compiled lab publication. Earlier evidence is retained as preliminary.
+- Final lab publication 97a79b56-b20c-455c-b06d-80c710cab9fe preserves exact file
+  postimages on retry. Canonical fixture validation and actual stdio MCP read pass.
+  Its review is synthetic protocol evidence; existing actual C2 positive/negative
+  reviews were inspected read-only. Original C8 state and 63 prior lab files stay
+  unchanged; only README and the read-only pg helper are intentionally updated.
+- The lab command `./pg publication` inspects the final result. No model calls,
+  global host configuration changes, merge, release, Blueprint restart or Ponsse
+  execution. Session and cards stay active. [Evidence](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI4-C3.md)
+  pins final source, commands, results and limitations.
+- Loaded/reused SDP, document workflow, Master, Architect, Planning, Worker, Verifier
+  and Traceability; followed concurrent-work preflight, Session upkeep and canonical
+  ledger routines. Backlog/onHold reviewed: existing deferred scopes retained.
+- Next: final run/lifecycle disposition from published candidate results, then the
+  retained SAD/owner, parallel/active-host/capacity and independent integrated gates.
+  This is the work summary, not an already captured final-response transcript.
+
+T037 delivery checks: pg_lab c3f39e7 is committed and pushed on
+`test/pgi4-c3-publication`. Both canonical history prefixes remain preserved.
+PM223 / KB408–409 and system Traceability record this bounded delivery; no
+card/plan/Session closeout. Preparing the scoped SDP milestone commit and phase
+push after final record/hash/link validation.
+
+Final T037 validation passes: 18 source hashes, 32 artifact hashes, 288 relative
+links, 73 cards/47 management records/669 events, Toolkit and whitespace checks.

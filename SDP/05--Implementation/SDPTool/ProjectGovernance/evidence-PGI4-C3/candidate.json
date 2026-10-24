@@ -1,0 +1,24 @@
+{
+  "productBaseline": "ef757aee061d5c64eca4503de5c12d3327426743",
+  "identity": "baseline plus exact source file SHA-256; documentation/evidence closeout is separate",
+  "sourceFiles": {
+    "SDPTool/cmd/sdp-controller/coordination.go": "6425cff92b2d1cb33a9befbd54d95c8eb123dab1d90f0ee1bf2f2750f87f2f08",
+    "SDPTool/cmd/sdp-controller/main.go": "e6951f93359ea450485d8f55b0bd7b79021eaec1ca551820bcb00c7442972754",
+    "SDPTool/cmd/sdp-controller/publication.go": "333497d2470ee07802ae97bedb1c27208bfa304075e5529b463b4cb5349d1f5c",
+    "SDPTool/governance/coordination.go": "3430f13d26f9b519f5bde1a7db5792032d4829462ac305177cf5494c2ead78b3",
+    "SDPTool/governance/coordination.schema.json": "a977c5088610be88c267ac885f49e55a338fed20c01dfe22eedaf41e2a1d718f",
+    "SDPTool/governance/evidence.go": "75af0a3e3adaaebd59d0b952578c0a4abb40fb4428a5dd01132694ee89f4c89b",
+    "SDPTool/governance/leader.go": "8462ff2c23b307adc57ff7223c065e4dc842373135767c167d0738679557899c",
+    "SDPTool/governance/publication.go": "1a89a4f40b13e4577ce68f1c10c885ff34f010012c54079354238071e70a38e5",
+    "SDPTool/governance/publication_records.go": "af6295d51c1af440cac96de2c5a00a32ce3a47808c2259b6d19ceb9f93ae6686",
+    "SDPTool/governance/publication_test.go": "e4ed7dafff429e93ee416f974878c7277b84b46c1123e9e63c987ff2aedef612",
+    "SDPTool/governance/publication_validation.go": "166946a30f14e44c2c15ab5e709879a23d41145b7f2721df195e3a29b7d6faee",
+    "SDPTool/governance/review.go": "66fe88854b56077066a534ea27b6ce58a4bd10aaa9aa0d86201391b8c2f956aa",
+    "SDPTool/governance/run.go": "66953f9a4be670fce8151b9cb30d47ea1e1dae7d7263f2b82df6023419746045",
+    "SDPTool/governance/schema.json": "d2a2d5f13e7e7b425646085bdd87d8a08311cb84aed57ff3eeebbef5e8cbfad7",
+    "SDPTool/governance/store.go": "594c736e1c561b678417b01ffffdb3dee75f578a2fc9df814ec2bcf288fdf67a",
+    "SDPTool/governance/types.go": "60efc53832e5cb6e896949f62b28b493ff3d3faaa747d66d1c499b06d1051c8a",
+    "SDPTool/install/history.go": "80b45435c64763aa281c5923f520143d47c14493a9adf7d2d5ce38bac0bd95fd",
+    "SDPTool/install/history_policy_test.go": "d02d11ddded0baa91229ec8fbd278bcaac88ae88b3cc6263d457eddc9dbd478d"
+  }
+}

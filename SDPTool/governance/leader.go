@@ -139,6 +139,10 @@ func (s *Service) leaderNotices() ([]leaderNotice, error) {
 				a.CurrentRevision = 0
 				a.Consumption = ""
 				normalized.Attention = &a
+			} else if item.Review != nil {
+				if ReviewActive(item.Review.State) || item.Review.State == "superseded" {
+					continue
+				}
 			} else {
 				continue
 			}

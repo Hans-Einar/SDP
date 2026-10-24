@@ -1,0 +1,56 @@
+[
+  {
+    "name": "build-controller",
+    "command": [
+      "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+      "-C",
+      "/home/warloc/git/SDP/SDPTool",
+      "build",
+      "-o",
+      "/home/warloc/.cache/sdp-workstation/PGI4-C3/bin/sdp-controller",
+      "./cmd/sdp-controller"
+    ],
+    "exitCode": 0,
+    "elapsedSeconds": 1.073
+  },
+  {
+    "name": "build-mcp",
+    "command": [
+      "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+      "-C",
+      "/home/warloc/git/SDP/SDPTool",
+      "build",
+      "-o",
+      "/home/warloc/.cache/sdp-workstation/PGI4-C3/bin/sdp-mcp",
+      "./cmd/sdp-mcp"
+    ],
+    "exitCode": 0,
+    "elapsedSeconds": 0.572
+  },
+  {
+    "name": "sdptool-race",
+    "command": [
+      "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+      "-C",
+      "/home/warloc/git/SDP/SDPTool",
+      "test",
+      "-race",
+      "-count=1",
+      "./..."
+    ],
+    "exitCode": 0,
+    "elapsedSeconds": 208.729
+  },
+  {
+    "name": "sdptool-vet",
+    "command": [
+      "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+      "-C",
+      "/home/warloc/git/SDP/SDPTool",
+      "vet",
+      "./..."
+    ],
+    "exitCode": 0,
+    "elapsedSeconds": 0.325
+  }
+]

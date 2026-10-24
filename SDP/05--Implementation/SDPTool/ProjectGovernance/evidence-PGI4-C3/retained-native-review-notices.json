@@ -1,0 +1,46 @@
+[
+  {
+    "case": "positive",
+    "head": "58a4f796b44da6b288c82e2c1ec422b2318770ac9114919f82da07c04c514476",
+    "review": {
+      "publicationApplicable": false,
+      "id": "7e126a6d-fba1-4a23-9b9a-ceb878b8e8fb",
+      "revision": 5,
+      "state": "completed",
+      "candidate": "30bb557a31b03481c9c4ebd8eb0b819eba5b3f1ab44c0b4ef572aa2dfd74d5c8",
+      "reportId": "dabffc1f-9e82-48a1-beaa-dd8973e924db",
+      "verdict": "passed",
+      "summary": "The inspected candidate satisfies the selected FormatLabel contract. Tests cover empty input, Unicode trimming, preserved interior whitespace/case and unchanged prefix bytes. Normalization code, existing tests and CLI remain unchanged. All supplied file and test-artifact hashes match; the artifact reports passing package tests. Tests were not rerun. This verdict supports Project Leader processing, not assignment completion or owner acceptance.",
+      "findingCount": 0,
+      "applicable": true,
+      "qualified": true,
+      "contextSeparation": "controller-observed-fresh-thread",
+      "conditions": [],
+      "publicationId": "",
+      "publicationStatus": ""
+    }
+  },
+  {
+    "case": "negative",
+    "head": "209cb234df9fb501501933549cea70e39c8924167fe94ffdd8f2ac156c585a10",
+    "review": {
+      "publicationApplicable": false,
+      "id": "b3a13566-1432-4008-9bc6-81b5e99c5184",
+      "revision": 6,
+      "state": "completed",
+      "candidate": "f757bffe9993102c51d4e6072b2599259bcc4188a945f9850085dab4e5164a6f",
+      "reportId": "dabffc1f-9e82-48a1-beaa-dd8973e924db",
+      "verdict": "failed",
+      "summary": "Candidate file hashes and supplied test artifact match the evidence. Static review confirms a separator defect corroborated by seven failing test cases. Tests were not rerun; no files were changed. Project Leader processing should retain the failed result without closing or accepting S1.",
+      "findingCount": 1,
+      "applicable": false,
+      "qualified": false,
+      "contextSeparation": "controller-observed-fresh-thread",
+      "conditions": [
+        "stale_revision: review assignment/report differs"
+      ],
+      "publicationId": "",
+      "publicationStatus": ""
+    }
+  }
+]

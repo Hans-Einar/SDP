@@ -1,0 +1,109 @@
+{
+  "schema": "sdp-governance-coordination/2",
+  "projectRef": "trial",
+  "checkoutId": "324f786f-c124-41ba-abd7-2f8d5a885dc6",
+  "generation": "fc330c8b89b3bc3f4972f5afb92625b94c7b8734539f5c97aa48b43e7e130f37",
+  "revision": "6c00771d93512bcc9e7a028d840e0c5bc31a5c42ecbc6bb3a0386a95d99d366a",
+  "inspectedAt": "2026-10-24T14:22:45.462655244Z",
+  "scope": "registered-work-reports-attention-reviews-in-selected-checkout",
+  "items": [
+    {
+      "id": "report:ff779430-92db-45c0-9ec2-4599a93a2cf4",
+      "runId": "c93ddecc-1c49-4e62-849b-185d82403369",
+      "kind": "report",
+      "priority": 2,
+      "report": {
+        "id": "ff779430-92db-45c0-9ec2-4599a93a2cf4",
+        "runId": "c93ddecc-1c49-4e62-849b-185d82403369",
+        "reportedRevision": 3,
+        "inputRevision": "71c37c703ecfa0db2e1a30cf231277666cb4b899e4f6125b2de45ff503b467d2",
+        "selection": {
+          "card": "SDP/KanBan/active/#001--Change--fixture.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "outcome": "fix fixture",
+        "text": "test observed boundary",
+        "currentRevision": 3,
+        "currentState": "verifying",
+        "coverage": "stale",
+        "conditions": [
+          "governing sources differ from pinned input revision"
+        ]
+      }
+    },
+    {
+      "review": {
+        "publicationApplicable": true,
+        "id": "3ab1c995-8697-466d-a061-3ddd1ac3c322",
+        "revision": 5,
+        "state": "completed",
+        "candidate": "54d6968756c715ffe5da4745f7c4523629c4d755a6f52a5cda1ad9464cb4bd2b",
+        "reportId": "ff779430-92db-45c0-9ec2-4599a93a2cf4",
+        "verdict": "passed",
+        "summary": "Protocol fixture review passed; not a native model observation",
+        "findingCount": 0,
+        "applicable": false,
+        "qualified": false,
+        "contextSeparation": "controller-observed-fresh-thread",
+        "conditions": [
+          "stale_revision: question sources or authority changed"
+        ],
+        "publicationId": "97a79b56-b20c-455c-b06d-80c710cab9fe",
+        "publicationStatus": "published"
+      },
+      "id": "review:3ab1c995-8697-466d-a061-3ddd1ac3c322",
+      "runId": "c93ddecc-1c49-4e62-849b-185d82403369",
+      "kind": "review",
+      "priority": 2
+    },
+    {
+      "id": "work:c93ddecc-1c49-4e62-849b-185d82403369",
+      "runId": "c93ddecc-1c49-4e62-849b-185d82403369",
+      "kind": "work",
+      "priority": 4,
+      "work": {
+        "runId": "c93ddecc-1c49-4e62-849b-185d82403369",
+        "revision": 3,
+        "outcome": "fix fixture",
+        "selection": {
+          "card": "SDP/KanBan/active/#001--Change--fixture.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "inputRevision": "71c37c703ecfa0db2e1a30cf231277666cb4b899e4f6125b2de45ff503b467d2",
+        "routineState": "verifying",
+        "routineStep": "implement",
+        "coverage": "stale",
+        "conditions": [
+          "governing sources differ from pinned input revision"
+        ],
+        "assignedRole": "unknown",
+        "roleEvidence": "unavailable",
+        "attemptId": "",
+        "threadId": "",
+        "turnId": "",
+        "lastHostStatus": "not-observed",
+        "lastObservedAt": "",
+        "observationGap": false,
+        "liveState": "unknown",
+        "toolCompletions": 0,
+        "lastToolItemId": "",
+        "lastToolStatus": "",
+        "childMapping": "not-observed",
+        "requestedSkills": 0,
+        "skillAttemptId": "",
+        "skillInputId": "",
+        "skillAcceptance": "not-observed",
+        "skillCompliance": "not-observed",
+        "ownerAcceptance": "not-observed"
+      }
+    }
+  ],
+  "total": 3,
+  "nextCursor": ""
+}

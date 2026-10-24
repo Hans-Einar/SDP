@@ -377,3 +377,52 @@ Limits: eight reviews/run, 64/store, 64 KiB payload/final answer, 32 findings wi
 4 KiB each, within existing 1024 receipts and 16 MiB state capacity. Current writers
 preserve profile 0.11. Older binaries refuse rather than dropping reviews. Same-user
 shell edits and coherent filesystem inspection retain the C1 boundary.
+
+## Checked result publication — operational profile 0.12
+
+`PreparePublication` accepts a trusted controller request naming the exact run,
+revision, passed review, system prefix, work summary and remaining work. It requires
+current passing test artifacts, no contradictory failed evidence/review, terminal
+known attempts, acknowledged inputs and unchanged authority. It generates a
+reviewable six-file proposal: one new evidence document, appended Session/card/plan
+entries, two management events and one Traceability verification event. No arbitrary
+patches, paths or acceptance decisions are accepted. Broader lifecycle and authored
+roadmap stay unchanged; `complete` remains guarded separately.
+
+`PublicationRead` is read-only. `ApplyPublication` persists intent before replacing
+files and uses exact before/after hashes for recovery; retry never appends duplicate
+events. `AbandonPublication` only retires an unapplied proposal, including an orphan
+project claim when intent persistence failed before file effects. Once applying,
+unknown preimages stop with `reconciliation_required`, and other store mutations
+refuse until recovery. There is no automatic rollback over external edits.
+
+Canonical `SDP/` shared-management records are required. Existing installation
+history validation is reused with the project's recorded 0.1-to-0.2 typed adoption
+allowed; installation behavior stays strict. PG additionally checks payload fields,
+sequence/time, board index, references and current grouping. Generated ledger bytes
+are append-only and the complete proposed record set is validated before effects.
+Unsupported minimal fixtures refuse. No arbitrary repository-specific validators or
+semantic prose checks are inferred. Preparation pins all inspected canonical record
+files, so even another work item's management change conservatively needs a fresh
+proposal. Candidate/test/skill changes also prevent publication.
+
+The project-writer lock and pending-store pointer live at
+`$XDG_STATE_HOME/sdptool/project-publication/<root-sha256>/` (default
+`~/.local/state`). This coordinates PG stores for the same canonical root. The exact
+intent remains in its private operational store. Files are individually replaced
+and fsynced; the set is not atomic. External editors do not share this lock: observed
+changes refuse, but this is not a filesystem CAS or a same-user security boundary.
+
+At most 16 proposals/store, 1024 canonical management files, 2048 input pins and
+4 MiB of generated file contents/proposal are supported within the existing 16 MiB
+store bound. Current writers preserve profile 0.12; old readers refuse. Publication
+changes canonical authority bytes, so the original review becomes historical under
+normal run coverage. The publication view separately checks its accepted postimages
+and candidate. This does not rebase the old assignment or accept a new candidate.
+
+Coordination uses `sdp-governance-coordination/2` when reviews are present (otherwise
+version 1). Compact notices expose verdict, summary, finding count, applicability,
+context provenance and publication status/current applicability; full findings remain
+in `ReviewRead` and published evidence. Terminal review notices enter the existing
+serialized leader delivery, with content-key deduplication and renewed delivery when
+applicability changes. The coordinator MCP capabilities are unchanged.

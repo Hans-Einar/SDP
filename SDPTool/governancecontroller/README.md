@@ -708,3 +708,30 @@ no test rerun is inferred. Automatic leader notification of review outcomes and
 canonical record publication remain integration work. A failed native result may
 be retained as a C1 attributed artifact for guarded rework; the native review record
 continues to own its distinct provenance.
+
+## Publish an exact review result (PGI4-C3)
+
+The trusted controller provides JSON commands; they do not contact Codex:
+
+```sh
+sdp-controller publication prepare --project ROOT --state DIR --input request.json
+sdp-controller publication inspect --project ROOT --state DIR --publication UUID
+sdp-controller publication apply --project ROOT --state DIR --publication UUID
+sdp-controller publication abandon --project ROOT --state DIR --publication UUID
+```
+
+`request.json` follows `PublicationRequest`: `schema` is
+`sdp-governance-publication/1`, with projectRef, checkoutId, operationId, runId,
+expectedRevision, reviewId, system, summary and remaining. Inspect the prepared
+proposal's six exact file contents and before/after hashes. Apply only within the
+existing authority for that work; this command is not owner approval. A retry uses
+the same publication ID. Changed inputs require a fresh proposal; abandon is limited
+to unapplied work. An interrupted applying operation must recover its original store
+and exact preimages/postimages; it never overwrites observed external edits.
+
+Successful publication records a bounded passed review with attributed test results
+in canonical documents/history. Card, plan and Session lifecycle remain active;
+whole-work completion and owner acceptance are not inferred. Coordination CLI/MCP
+and the leader loop now expose compact review/publication notices through their
+existing channels. A current publication can retain a historical original review
+because publication changed the canonical input bytes; these are separate facts.

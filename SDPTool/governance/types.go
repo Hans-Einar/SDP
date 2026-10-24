@@ -1,5 +1,5 @@
 // Package governance implements the bounded PGI1 process core. It does not run
-// agents, publish project records or infer owner approval from model text.
+// agents or infer owner approval from model text.
 package governance
 
 import (
@@ -160,6 +160,7 @@ type Run struct {
 	Reason        string              `json:"reason"`
 }
 type Result struct {
+	PublicationID         string                 `json:"publicationId,omitempty"`
 	Review                *Review                `json:"review,omitempty"`
 	Evidence              *EvidenceRecord        `json:"evidence,omitempty"`
 	EvidenceRework        *EvidenceReworkRequest `json:"evidenceRework,omitempty"`

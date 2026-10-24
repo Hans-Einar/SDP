@@ -285,6 +285,9 @@ func renderCoordination(out io.Writer, v governance.CoordinationView) error {
 			if item.Report.Acknowledgement != nil {
 				status = "acknowledged / " + item.Report.Coverage
 			}
+		case item.Review != nil:
+			text = item.Review.Summary
+			status = fmt.Sprintf("review %s / %s / applicable=%t / qualified=%t / findings=%d / publication=%s (current=%t)", item.Review.State, item.Review.Verdict, item.Review.Applicable, item.Review.Qualified, item.Review.FindingCount, item.Review.PublicationStatus, item.Review.PublicationApplicable)
 		case item.Work != nil:
 			text = item.Work.Outcome
 			status = item.Work.RoutineState + " / " + item.Work.Coverage

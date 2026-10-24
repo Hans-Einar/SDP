@@ -14,7 +14,25 @@ type CoordinationRequest struct {
 	Cursor string `json:"cursor,omitempty"`
 	Limit  int    `json:"limit,omitempty"`
 }
+type ReviewNotice struct {
+	PublicationApplicable bool     `json:"publicationApplicable"`
+	ID                    string   `json:"id"`
+	Revision              uint64   `json:"revision"`
+	State                 string   `json:"state"`
+	Candidate             string   `json:"candidate"`
+	ReportID              string   `json:"reportId"`
+	Verdict               string   `json:"verdict"`
+	Summary               string   `json:"summary"`
+	FindingCount          int      `json:"findingCount"`
+	Applicable            bool     `json:"applicable"`
+	Qualified             bool     `json:"qualified"`
+	ContextSeparation     string   `json:"contextSeparation"`
+	Conditions            []string `json:"conditions"`
+	PublicationID         string   `json:"publicationId"`
+	PublicationStatus     string   `json:"publicationStatus"`
+}
 type CoordinationItem struct {
+	Review    *ReviewNotice  `json:"review,omitempty"`
 	ID        string         `json:"id"`
 	RunID     string         `json:"runId"`
 	Kind      string         `json:"kind"`
@@ -63,7 +81,7 @@ func (s *Service) Coordination(q CoordinationRequest) (CoordinationView, error) 
 	if e != nil {
 		return out, e
 	}
-	_, head, e := s.load()
+	state, head, e := s.load()
 	if e != nil {
 		return out, e
 	}
@@ -92,6 +110,36 @@ func (s *Service) Coordination(q CoordinationRequest) (CoordinationView, error) 
 			}
 		}
 		items = append(items, CoordinationItem{ID: "attention:" + v.Question.ID, RunID: v.RunID, Kind: "attention", Priority: priority, Attention: &v})
+	}
+	for _, d := range state.Reviews {
+		if q.RunID != "" && q.RunID != d.RunID {
+			continue
+		}
+		v, err := s.ReviewRead(d.ID)
+		if err != nil {
+			return out, err
+		}
+		n := ReviewNotice{ID: d.ID, Revision: d.Revision, State: d.State, Candidate: d.Spec.Candidate.Digest, ReportID: d.Spec.ReportID, Applicable: v.Applicable, Qualified: v.Qualified, ContextSeparation: v.ContextSeparation, Conditions: v.Conditions}
+		if d.Outcome != nil {
+			n.Verdict = d.Outcome.Verdict
+			n.Summary = d.Outcome.Summary
+			n.FindingCount = len(d.Outcome.Findings)
+		}
+		for id, p := range state.Publications {
+			if p.Request.ReviewID == d.ID && p.Status != "abandoned" {
+				n.PublicationID = id
+				n.PublicationStatus = p.Status
+				n.PublicationApplicable = s.publicationView(state, p).Applicable
+			}
+		}
+		items = append(items, CoordinationItem{ID: "review:" + d.ID, RunID: d.RunID, Kind: "review", Priority: 2, Review: &n})
+	}
+	_, latest, e := s.load()
+	if e != nil {
+		return out, e
+	}
+	if latest != head {
+		return out, fail("stale_revision", "reviews changed during coordination inspection")
 	}
 	sort.Slice(items, func(i, j int) bool {
 		a, b := items[i], items[j]
@@ -123,6 +171,10 @@ func (s *Service) Coordination(q CoordinationRequest) (CoordinationView, error) 
 		offset = c.Offset
 	}
 	out = CoordinationView{Schema: CoordinationSchema, ProjectRef: s.project, CheckoutID: work.CheckoutID, Generation: head, Revision: revision, InspectedAt: time.Now().UTC().Format(time.RFC3339Nano), Scope: "registered-work-reports-attention-in-selected-checkout", Items: []CoordinationItem{}, Total: len(items)}
+	if len(state.Reviews) > 0 {
+		out.Schema = "sdp-governance-coordination/2"
+		out.Scope = "registered-work-reports-attention-reviews-in-selected-checkout"
+	}
 	size := 0
 	end := offset
 	for end < len(items) && end-offset < q.Limit {

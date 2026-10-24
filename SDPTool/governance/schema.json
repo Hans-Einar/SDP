@@ -517,7 +517,8 @@
             "review.bind",
             "review.send",
             "review.observe",
-            "review.supersede"
+            "review.supersede",
+            "publication.prepare"
           ]
         },
         "projectRef": {
@@ -559,6 +560,10 @@
         },
         "review": {
           "$ref": "#/$defs/Review"
+        },
+        "publicationId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
         }
       },
       "required": [
@@ -658,6 +663,27 @@
             "not": {
               "required": [
                 "review"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "operation": {
+                "const": "publication.prepare"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "publicationId"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "publicationId"
               ]
             }
           }
@@ -2759,6 +2785,214 @@
         "applicable",
         "qualified",
         "contextSeparation",
+        "conditions"
+      ]
+    },
+    "PublicationRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-publication/1"
+        },
+        "projectRef": {
+          "type": "string"
+        },
+        "checkoutId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "operationId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "runId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "reviewId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "system": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9]{0,31}$"
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "remaining": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        }
+      },
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "operationId",
+        "runId",
+        "expectedRevision",
+        "reviewId",
+        "system",
+        "summary",
+        "remaining"
+      ]
+    },
+    "PublicationChange": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "before": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "const": "absent"
+            }
+          ]
+        },
+        "after": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "content": {
+          "type": "string",
+          "maxLength": 4194304
+        }
+      },
+      "required": [
+        "path",
+        "before",
+        "after",
+        "content"
+      ]
+    },
+    "Publication": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "request": {
+          "$ref": "#/$defs/PublicationRequest"
+        },
+        "status": {
+          "enum": [
+            "prepared",
+            "applying",
+            "published",
+            "abandoned"
+          ]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "publishedAt": {
+          "type": "string"
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string",
+                "maxLength": 4096
+              },
+              "sha256": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  {
+                    "const": "absent"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ]
+          },
+          "maxItems": 2048
+        },
+        "changes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PublicationChange"
+          },
+          "maxItems": 6,
+          "minItems": 6
+        },
+        "evidencePath": {
+          "type": "string"
+        },
+        "eventIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 3,
+          "minItems": 3
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "request",
+        "status",
+        "createdAt",
+        "publishedAt",
+        "inputs",
+        "changes",
+        "evidencePath",
+        "eventIds",
+        "digest"
+      ]
+    },
+    "PublicationView": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-publication/1"
+        },
+        "publication": {
+          "$ref": "#/$defs/Publication"
+        },
+        "applicable": {
+          "type": "boolean"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 16
+        }
+      },
+      "required": [
+        "schema",
+        "publication",
+        "applicable",
         "conditions"
       ]
     }

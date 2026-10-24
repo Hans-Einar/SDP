@@ -14,7 +14,7 @@ const ReviewSchema = "sdp-governance-review/1"
 const reviewStateSchema = "sdp-project-governance-state/0.11"
 
 func evidenceProfile(schema string) bool {
-	return schema == evidenceStateSchema || schema == reviewStateSchema
+	return schema == evidenceStateSchema || schema == reviewStateSchema || schema == publicationStateSchema
 }
 
 type ReviewSpec struct {
@@ -340,7 +340,9 @@ func (s *Service) ReviewWrite(c Caller, q ReviewRequest) (Result, error) {
 		state.Reviews = map[string]Review{}
 	}
 	state.Reviews[d.ID] = d
-	state.Schema = reviewStateSchema
+	if state.Schema != publicationStateSchema {
+		state.Schema = reviewStateSchema
+	}
 	out := Result{Schema: Schema, Operation: "review." + q.Action, ProjectRef: s.project, CheckoutID: state.CheckoutID, OperationID: q.OperationID, Run: summarizeRun(r), Coverage: "known", Review: &d}
 	state.Receipts[q.OperationID] = receipt{Digest: digest, Result: out}
 	if e = s.save(state, head); e != nil {
@@ -349,7 +351,7 @@ func (s *Service) ReviewWrite(c Caller, q ReviewRequest) (Result, error) {
 	return out, nil
 }
 func validateReviewState(state snapshot) error {
-	if state.Schema != reviewStateSchema {
+	if state.Schema != reviewStateSchema && state.Schema != publicationStateSchema {
 		if state.Reviews != nil {
 			return fail("incompatible_profile", "reviews require profile 0.11")
 		}
