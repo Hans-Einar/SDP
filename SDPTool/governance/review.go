@@ -27,6 +27,14 @@ type ReviewSpec struct {
 	MCPBinary    string       `json:"mcpBinary"`
 	Skills       []SkillInput `json:"skills"`
 }
+type reviewPayload struct {
+	Schema     string           `json:"schema"`
+	Selection  Selection        `json:"selection"`
+	Assignment Assignment       `json:"assignment"`
+	Spec       ReviewSpec       `json:"review"`
+	Evidence   []EvidenceRecord `json:"tests"`
+	Session    *SessionBinding  `json:"sessionBinding,omitempty"`
+}
 type ReviewOutcome struct {
 	Verdict  string   `json:"verdict"`
 	Summary  string   `json:"summary"`
@@ -109,6 +117,9 @@ func parseReviewOutcome(answer string) *ReviewOutcome {
 	return &v
 }
 func (s *Service) reviewBasis(state snapshot, r Run, spec ReviewSpec) error {
+	if e := sessionReviewBasis(state, r, spec); e != nil {
+		return e
+	}
 	if !validReviewSpec(spec) {
 		return fail("invalid_request", "bounded candidate, tests, reviewer skill and host configuration required")
 	}
@@ -259,6 +270,9 @@ func (s *Service) ReviewWrite(c Caller, q ReviewRequest) (Result, error) {
 	now := time.Now().UTC().Format(time.RFC3339Nano)
 	switch q.Action {
 	case "prepare":
+		if i, ok := sessionRunBinding(state, r.ID); ok && len(i.Work) > 3 {
+			return Result{}, fail("conflict", "Session review intake already prepared")
+		}
 		if exists || q.ReviewID != q.OperationID || q.Spec == nil || q.ExpectedRunRevision != r.Revision {
 			return Result{}, fail("stale_revision", "new review and current run revision required")
 		}
@@ -281,13 +295,11 @@ func (s *Service) ReviewWrite(c Caller, q ReviewRequest) (Result, error) {
 		for _, id := range q.Spec.EvidenceIDs {
 			evidence = append(evidence, *state.Receipts[id].Result.Evidence)
 		}
-		payload, _ := json.Marshal(struct {
-			Schema     string           `json:"schema"`
-			Selection  Selection        `json:"selection"`
-			Assignment Assignment       `json:"assignment"`
-			Spec       ReviewSpec       `json:"review"`
-			Evidence   []EvidenceRecord `json:"tests"`
-		}{ReviewSchema, r.Selection, r.Assignment, *q.Spec, evidence})
+		var session *SessionBinding
+		if i, ok := sessionRunBinding(state, r.ID); ok {
+			session = &i.Context.Binding
+		}
+		payload, _ := json.Marshal(reviewPayload{ReviewSchema, r.Selection, r.Assignment, *q.Spec, evidence, session})
 		if len(payload) > 64<<10 {
 			return Result{}, fail("limit", "review payload exceeds 64 KiB")
 		}

@@ -17,27 +17,31 @@ import (
 const sessionWorkStateSchema = "sdp-project-governance-state/0.16"
 
 func sessionAssessmentProfile(schema string) bool {
-	return schema == sessionAssessmentStateSchema || schema == sessionWorkStateSchema
+	return schema == sessionAssessmentStateSchema || sessionWorkProfile(schema)
 }
 func SessionImplementation() Routine { r := Maintenance(); r.ID = "session-implementation"; return r }
 
-// Start and progress have disjoint additional fields. Adapters select the verb;
+// Work operations have disjoint additional fields. Adapters select the verb;
 // request JSON cannot select a role, alternate run or broaden the binding scope.
 type SessionWorkRequest struct {
-	Schema              string       `json:"schema"`
-	ProjectRef          string       `json:"projectRef"`
-	CheckoutID          string       `json:"checkoutId"`
-	OperationID         string       `json:"operationId"`
-	InstanceID          string       `json:"instanceId"`
-	ExpectedRevision    uint64       `json:"expectedRevision"`
-	Reason              string       `json:"reason"`
-	AssessmentID        string       `json:"assessmentId,omitempty"`
-	Outcome             string       `json:"outcome,omitempty"`
-	Skills              []SkillInput `json:"skills,omitempty"`
-	EvidenceID          string       `json:"evidenceId,omitempty"`
-	ExpectedRunRevision uint64       `json:"expectedRunRevision,omitempty"`
+	ReviewID               string       `json:"reviewId,omitempty"`
+	ExpectedReviewRevision uint64       `json:"expectedReviewRevision,omitempty"`
+	Schema                 string       `json:"schema"`
+	ProjectRef             string       `json:"projectRef"`
+	CheckoutID             string       `json:"checkoutId"`
+	OperationID            string       `json:"operationId"`
+	InstanceID             string       `json:"instanceId"`
+	ExpectedRevision       uint64       `json:"expectedRevision"`
+	Reason                 string       `json:"reason"`
+	AssessmentID           string       `json:"assessmentId,omitempty"`
+	Outcome                string       `json:"outcome,omitempty"`
+	Skills                 []SkillInput `json:"skills,omitempty"`
+	EvidenceID             string       `json:"evidenceId,omitempty"`
+	ExpectedRunRevision    uint64       `json:"expectedRunRevision,omitempty"`
 }
 type SessionWork struct {
+	Review   *Review              `json:"review,omitempty"`
+	Tests    []EvidenceRecord     `json:"tests,omitempty"`
 	Kind     string               `json:"kind"`
 	Request  SessionWorkRequest   `json:"request"`
 	Evidence *EvidenceRecord      `json:"evidence,omitempty"`
@@ -57,6 +61,9 @@ func validSessionWork(kind string, q SessionWorkRequest) error {
 	if q.Schema != SessionSchema || !uuidPattern.MatchString(q.InstanceID) || !uuidPattern.MatchString(q.OperationID) || q.ExpectedRevision == 0 || !validLeaderText(q.Reason, 2048) {
 		return fail("invalid_request", "exact Session identity/revision and reason required")
 	}
+	if kind != "review" && (q.ReviewID != "" || q.ExpectedReviewRevision != 0) {
+		return fail("invalid_request", "review fields on another Session operation")
+	}
 	switch kind {
 	case "start":
 		if !uuidPattern.MatchString(q.AssessmentID) || !validLeaderText(q.Outcome, 4096) || !ValidSkillInputs(q.Skills) || q.ExpectedRunRevision != 0 || q.EvidenceID != "" {
@@ -73,9 +80,13 @@ func validSessionWork(kind string, q SessionWorkRequest) error {
 		if !master || !worker {
 			return fail("missing_coverage", "Master and Worker skill snapshots required")
 		}
-	case "progress":
+	case "progress", "verify":
 		if q.AssessmentID != "" || q.Outcome != "" || len(q.Skills) > 0 || !uuidPattern.MatchString(q.EvidenceID) || q.ExpectedRunRevision == 0 {
 			return fail("invalid_request", "exact run revision and evidence receipt required")
+		}
+	case "review":
+		if q.AssessmentID != "" || q.Outcome != "" || len(q.Skills) > 0 || q.EvidenceID != "" || q.ExpectedRunRevision == 0 || !uuidPattern.MatchString(q.ReviewID) || q.ExpectedReviewRevision == 0 {
+			return fail("invalid_request", "exact observed review and run revisions required")
 		}
 	default:
 		return fail("invalid_request", "unsupported Session work verb")
@@ -169,7 +180,9 @@ func sessionWorkArtifact(i SessionInstance, w SessionWork) []byte {
 		CreatedAt     string             `json:"createdAt"`
 		Request       SessionWorkRequest `json:"request"`
 		Evidence      *EvidenceRecord    `json:"evidence,omitempty"`
-	}{"sdp-session-work/0.1", w.Kind, i.Context.BindingDigest, i.Work[0].Request.OperationID, w.Effects.CreatedAt, w.Request, w.Evidence}, "", "  ")
+		Review        *Review            `json:"review,omitempty"`
+		Tests         []EvidenceRecord   `json:"tests,omitempty"`
+	}{"sdp-session-work/0.1", w.Kind, i.Context.BindingDigest, i.Work[0].Request.OperationID, w.Effects.CreatedAt, w.Request, w.Evidence, w.Review, w.Tests}, "", "  ")
 	return append(b, '\n')
 }
 func sessionWorkJournal(i SessionInstance, w SessionWork, path string) string {
@@ -177,6 +190,10 @@ func sessionWorkJournal(i SessionInstance, w SessionWork, path string) string {
 	out := "\n## PG Session " + w.Kind + " " + w.Request.OperationID + "\n\nStep " + selectedSessionStep(i).ID + "; run " + i.Work[0].Request.OperationID + ".\n[Exact assignment and evidence](" + filepath.ToSlash(rel) + ").\n"
 	if w.Kind == "start" {
 		out += "Assignment in-progress; host launch is a separate observed operation.\n"
+	} else if w.Kind == "verify" {
+		out += "Passing test evidence recorded; required review and disposition remain.\n"
+	} else if w.Kind == "review" {
+		out += "Passing observed review recorded; owner acceptance and checked disposition remain as required.\n"
 	} else {
 		out += "Result submitted for verification; no acceptance, card completion or model release.\n"
 	}
@@ -188,17 +205,15 @@ func (s *Service) buildSessionWork(i SessionInstance, w SessionWork) (SessionWor
 		return w, e
 	}
 	previous := &i.Assessments[len(i.Assessments)-1].Effects
-	if w.Kind == "progress" {
-		previous = &i.Work[0].Effects
+	if w.Kind != "start" {
+		previous = &i.Work[len(i.Work)-2].Effects
 	}
 	pins := append([]Source{}, previous.Coverage...)
 	for _, skill := range w.Request.Skills {
 		p, _ := filepath.Rel(s.root, skill.Path)
 		pins = append(pins, Source{filepath.ToSlash(p), skill.Digest})
 	}
-	if w.Evidence != nil {
-		pins = append(pins, w.Evidence.Request.Artifact)
-	}
+	pins = append(pins, sessionWorkExtraPins(s.root, w)...)
 	for _, pin := range pins {
 		b, err := readFile(filepath.Join(s.root, pin.Path), maxState)
 		if os.IsNotExist(err) && pin.SHA256 == "absent" {
@@ -490,7 +505,7 @@ func (s *Service) prepareSessionWork(c Caller, kind string, q SessionWorkRequest
 				}
 			}
 		}
-	} else {
+	} else if kind == "progress" {
 		if len(i.Work) != 1 || i.Work[0].Effects.Status != "committed" {
 			return SessionMutationResult{}, fail("conflict", "one committed Session start required")
 		}
@@ -501,6 +516,10 @@ func (s *Service) prepareSessionWork(c Caller, kind string, q SessionWorkRequest
 		copy := *record
 		w.Evidence = &copy
 		if e = s.progressSnapshot(st, i, w); e != nil {
+			return SessionMutationResult{}, e
+		}
+	} else {
+		if e = s.prepareSessionResult(st, i, &w); e != nil {
 			return SessionMutationResult{}, e
 		}
 	}
@@ -515,7 +534,11 @@ func (s *Service) prepareSessionWork(c Caller, kind string, q SessionWorkRequest
 	i.Work[len(i.Work)-1] = w
 	i.Revision++
 	st.Sessions[i.ID] = i
-	st.Schema = sessionWorkStateSchema
+	if kind == "verify" || kind == "review" {
+		st.Schema = sessionResultStateSchema
+	} else if st.Schema != sessionResultStateSchema {
+		st.Schema = sessionWorkStateSchema
+	}
 	out := SessionMutationResult{Schema: SessionSchema, Operation: "session-" + kind, OperationID: q.OperationID, InstanceID: i.ID, Revision: i.Revision, Registration: "committed", RecordEffects: "prepared"}
 	st.Receipts[q.OperationID] = receipt{workDigest(kind, q), Result{Schema: Schema, Operation: "session." + kind, OperationID: q.OperationID, ProjectRef: s.project, CheckoutID: st.CheckoutID, Session: &out}}
 	if e = s.save(st, head); e != nil {
@@ -531,6 +554,9 @@ func (s *Service) applySessionWork(st *snapshot, i *SessionInstance, tx *project
 	check := func() error {
 		if w.Kind == "progress" {
 			return s.progressSnapshot(*st, *i, *w)
+		}
+		if w.Kind == "verify" || w.Kind == "review" {
+			return s.sessionResultSnapshot(*st, *i, *w)
 		}
 		if len(st.Runs) >= 128 {
 			return fail("limit", "run capacity reached before effects")
@@ -585,13 +611,14 @@ func (s *Service) projectSessionWork(i SessionInstance, st snapshot, v *SessionV
 			v.HostExecution = "launch-pending"
 		}
 	}
-	if len(i.Work) == 2 && i.Work[1].Effects.Status == "committed" {
+	if len(i.Work) >= 2 && i.Work[1].Effects.Status == "committed" {
 		step.Stage = "verification"
 		step.ProgressEvidence = i.Work[1].Request.EvidenceID
 		step.Holds = append(step.Holds, "verification, review and Session disposition required")
 		if e := s.progressSnapshot(st, i, i.Work[1]); e != nil {
 			step.Holds = append(step.Holds, e.Error())
 		}
+		s.projectSessionResult(i, st, v, step)
 		return
 	}
 	step.Stage = "implementation"
@@ -607,7 +634,7 @@ func validateSessionWork(st snapshot) error {
 		if len(i.Work) == 0 {
 			continue
 		}
-		if st.Schema != sessionWorkStateSchema || len(i.Work) > 2 || len(i.Assessments) == 0 || i.Selection == nil || !i.Registered {
+		if !sessionWorkProfile(st.Schema) || len(i.Work) > 4 || (len(i.Work) > 2 && st.Schema != sessionResultStateSchema) || len(i.Assessments) == 0 || i.Selection == nil || !i.Registered {
 			return fail("reconciliation_required", "invalid Session work owner/profile")
 		}
 		a := i.Assessments[len(i.Assessments)-1]
@@ -618,7 +645,7 @@ func validateSessionWork(st snapshot) error {
 		revision := a.Request.ExpectedRevision + 1
 		for n, w := range i.Work {
 			q, p := w.Request, w.Effects
-			kind := []string{"start", "progress"}[n]
+			kind := []string{"start", "progress", "verify", "review"}[n]
 			if w.Kind != kind || validSessionWork(kind, q) != nil || q.InstanceID != i.ID || q.ProjectRef != st.Project || q.CheckoutID != st.CheckoutID || q.ExpectedRevision <= revision || q.ExpectedRevision >= i.Revision {
 				return fail("reconciliation_required", "invalid Session work request")
 			}
@@ -635,14 +662,20 @@ func validateSessionWork(st snapshot) error {
 			}
 			seen[q.OperationID] = true
 			if n == 0 {
-				if q.AssessmentID != a.Request.OperationID || w.Evidence != nil {
+				if q.AssessmentID != a.Request.OperationID || w.Evidence != nil || w.Review != nil {
 					return fail("reconciliation_required", "Session start assessment differs")
 				}
-			} else {
+			} else if n < 3 {
 				r := st.Receipts[q.EvidenceID].Result.Evidence
 				if w.Evidence == nil || r == nil || !reflect.DeepEqual(r, w.Evidence) || r.Request.RunID != i.Work[0].Request.OperationID {
 					return fail("reconciliation_required", "Session progress evidence differs")
 				}
+			}
+			if n > 0 && previous.Status != "committed" {
+				return fail("reconciliation_required", "work predecessor uncommitted")
+			}
+			if e := validateSessionResult(st, i, w); e != nil {
+				return e
 			}
 			required := map[string]string{}
 			for _, src := range previous.Coverage {
@@ -659,8 +692,11 @@ func validateSessionWork(st snapshot) error {
 				}
 				required[p] = skill.Digest
 			}
-			if w.Evidence != nil {
-				required[w.Evidence.Request.Artifact.Path] = w.Evidence.Request.Artifact.SHA256
+			for _, src := range sessionWorkExtraPins(st.Root, w) {
+				if old := required[src.Path]; old != "" && old != src.SHA256 {
+					return fail("reconciliation_required", "result evidence pin conflict")
+				}
+				required[src.Path] = src.SHA256
 			}
 			inputs := map[string]string{}
 			for _, src := range p.Inputs {
@@ -743,7 +779,7 @@ func validateSessionWork(st snapshot) error {
 		}
 	}
 	for _, r := range st.Receipts {
-		if v := r.Result.Session; v != nil && (v.Operation == "session-start" || v.Operation == "session-progress") && !seen[v.OperationID] {
+		if v := r.Result.Session; v != nil && (v.Operation == "session-start" || v.Operation == "session-progress" || v.Operation == "session-verify" || v.Operation == "session-review") && !seen[v.OperationID] {
 			return fail("reconciliation_required", "orphan work receipt")
 		}
 	}
@@ -774,9 +810,12 @@ func DecodeSessionWork(b []byte, kind string) (SessionWorkRequest, error) {
 	if e := json.Unmarshal(b, &fields); e != nil {
 		return q, e
 	}
-	forbidden := []string{"evidenceId", "expectedRunRevision"}
-	if kind == "progress" {
-		forbidden = []string{"assessmentId", "outcome", "skills"}
+	forbidden := []string{"evidenceId", "expectedRunRevision", "reviewId", "expectedReviewRevision"}
+	if kind == "progress" || kind == "verify" {
+		forbidden = []string{"assessmentId", "outcome", "skills", "reviewId", "expectedReviewRevision"}
+	}
+	if kind == "review" {
+		forbidden = []string{"assessmentId", "outcome", "skills", "evidenceId"}
 	}
 	for _, key := range forbidden {
 		if _, exists := fields[key]; exists {

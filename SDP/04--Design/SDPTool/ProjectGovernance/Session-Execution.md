@@ -3,7 +3,7 @@
 Owner Session0007 T041 accepts the T040 direction and selects its concretization.
 This is the bounded design for PLAN-SDP-0018 / KB052, linked to KB038 and KB037.
 It specifies the target behavior; runtime now includes the bounded C1, C2a and
-C2b1/C2b2 subsets described below. Full lifecycle delivery remains open.
+C2b1/C2b2/C2c1 subsets described below. Full lifecycle delivery remains open.
 [Orchestration](Orchestration.md) retains role/event behavior and T039 mandatory
 admission/model rules. [Acceptance](Acceptance.md) owns the test case register.
 The [SDL concern](../../../SDL/ProjectGovernance/SDPTool/SessionWorkflow/README.md)
@@ -343,3 +343,33 @@ WORK/model handoff and release gates. PGF2 retains privileged leader orchestrati
 [Evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2b2.md)
 records fault, candidate drift, strict wire, multi-card and actual-controller protocol
 tests. No native model execution, independent review or release is asserted.
+
+
+## T046 implementation boundary — PGF1-C2c1
+
+The verify-result/review-result prerequisites now bind the Session stage to existing
+candidate evidence and observed review ownership. Verification consumes an exact
+passing test receipt for the progressed report/candidate. It cannot advance on a
+claim, failed/inconclusive result or contradictory current failure. Canonical records
+commit before a required review can start. Existing review preparation carries the
+full Session binding and requires the verified receipt among its selected passing
+tests. Fresh-thread provenance remains owned by the existing review engine.
+
+Review intake pins the exact terminal passing review revision, its tests and complete
+payload/binding. Current candidate/artifact/skill checks and absence of conflicting
+review/evidence are rechecked at each canonical effect. The shared effect protocol
+publishes journals for all selected cards, the plan and Session, immutable result
+artifacts and management history. Prepared effects never advance the visible stage;
+external drift holds recovery and preserves bytes. Operational profile 0.17 retains
+these snapshots without rewriting historical start/progress artifacts.
+
+Committed verification routes to review where required; explicit not-required policy
+routes to disposition. Committed review intake routes to disposition while preserving
+any owner-acceptance hold. These stages do not mark a contribution/card completed or
+release claims. C2c2 remains responsible for owner decisions, failed-result rework,
+whole/contribution disposition, dependencies and claim release/replan. This is a
+bounded implementation of the existing table, not a waiver of those obligations.
+WORK :00002 remains TARGET; model review/integration/release is still required.
+[Evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2c1.md)
+records actual scope and limits; synthetic review observations are not independent
+PG review or native whole-workflow acceptance.

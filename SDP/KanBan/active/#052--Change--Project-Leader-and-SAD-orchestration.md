@@ -393,3 +393,15 @@ protocol trial in pg_lab. No native Codex/model execution or independent PG revi
 CardState remains in-progress: next C2c owns verified disposition, rework/dependencies
 and claim release/replan; privileged leader/model gates and release remain open.
 EVT-KB-SDP-000426 records this unchanged-lifecycle work review.
+
+
+2026-10-25 / Session0007 T046: C2c1 binds exact passing test/review evidence to
+Session stages and canonical records. Review follows committed verification and
+retains all selected whole/contribution context. Current candidate/test/skill checks
+and recovery prevent stale intake. Cards remain in-progress; no owner acceptance,
+card completion or claim release is inferred. The compiled two-card pg_lab fixture
+passes with synthetic report/review observations, not native execution or independent
+PG review. [Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2c1.md)
+records final candidate and checks. C2c2 owns actual disposition, owner decisions,
+rework/dependencies and claim release; later leader/model/release gates remain open.
+EVT-KB-SDP-000428 records this unchanged-lifecycle work review.

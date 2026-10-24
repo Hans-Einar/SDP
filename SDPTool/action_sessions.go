@@ -73,12 +73,16 @@ func sessionActions() []actionSpec {
 			return sessionActionCall(ctx, c, "session-read", q.State, "", q.Instance, false)
 		}),
 	}
-	for _, op := range []string{"context", "adopt", "resume", "select", "assess", "start", "progress"} {
+	for _, op := range []string{"context", "adopt", "resume", "select", "assess", "start", "progress", "verify", "review"} {
 		mutation := "none"
 		desc := "Read and validate the binding and canonical coverage."
 		if op == "adopt" {
 			mutation = "state"
 			desc = "Persist adoption intent; no card activation or agent dispatch."
+		}
+		if op == "verify" || op == "review" {
+			mutation = "state"
+			desc = "Prepare exact candidate test or observed review intake; resume commits canonical records."
 		}
 		if op == "start" || op == "progress" {
 			mutation = "state"

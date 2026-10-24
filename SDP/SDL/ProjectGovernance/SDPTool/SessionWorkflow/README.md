@@ -115,3 +115,16 @@ the model. Aggregate SessionWorkflowDelivery remains planned while disposition,
 model handoff/release, integrated native validation and independent review are open.
 [Evidence](../../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2b2.md)
 identifies the exact candidate, model validation and implementation limits.
+
+
+## T046 verification/review mapping
+
+PGF1-C2c1 implements the candidate-bound verification/review subset of
+AdvanceWorkflowStage through existing evidence/review owners and ApplyCheckedRecordEffects.
+All selected contributions remain in canonical journals and review context. No
+CheckWholeCardDisposition or claim release is asserted. WORK :00002 stays unchanged
+TARGET; the scoped diagnostic Blueprint passes constraints and source validation.
+Aggregate SessionWorkflowDelivery remains planned until the remaining runtime,
+independent review and model integration/release obligations are met.
+[Evidence](../../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2c1.md)
+retains exact code/model identities and the test boundary.

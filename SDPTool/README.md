@@ -213,7 +213,9 @@ Unknown impact holds admission; changed design requires SDL WORK/design handoff.
 PGF1-C2b2 binds no-design start/progress to the existing run/controller. Start commits
 in-progress records before creating one ready run; explicit controller launch remains
 separate. Progress consumes its assigned report/current candidate evidence and enters
-verification. Checked Session completion and design-changing dispatch remain open.
+verification. PGF1-C2c1 checks passing tests and an exact observed review before
+disposition, preserving all selected contributions. Checked Session completion and
+design-changing dispatch remain open.
 Full lifecycle/model gates, integrated verification and independent product review
 remain in PLAN-SDP-0018. Development-source availability does not imply a published
 installer or consuming-project installation.

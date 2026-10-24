@@ -1,0 +1,71 @@
+{
+  "candidate": "candidate.json",
+  "environment": {
+    "go": "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+    "GOTOOLCHAIN": "local",
+    "GOCACHE": "/home/warloc/.cache/sdp-workstation/gocache",
+    "GOMODCACHE": "/home/warloc/.cache/sdp-workstation/gomodcache"
+  },
+  "checks": [
+    {
+      "command": "go -C SDPTool test ./governance -run ^TestSessionResult -count=1",
+      "exitCode": 0,
+      "log": "focused.log"
+    },
+    {
+      "command": "go -C SDPTool test -race ./...",
+      "result": "passed",
+      "log": "race.log",
+      "exitCode": 0
+    },
+    {
+      "command": "go -C SDPTool vet ./...",
+      "exitCode": 0,
+      "log": "vet.log"
+    },
+    {
+      "command": "go -C SDPTool test -race ./governance -run ^TestSessionResultCompiledJourney$ -count=1 -v (explicit PG_RESULT_LAB_ROOT/STATE/BINARY)",
+      "exitCode": 0,
+      "output": "lab-output.json"
+    },
+    {
+      "command": "sdl check WORK--SessionLifecycle/System.design",
+      "exitCode": 0,
+      "output": "sdl-check.json"
+    },
+    {
+      "command": "new executable reads existing 0.16 store; old executable refuses 0.17; both heads unchanged",
+      "result": "passed",
+      "outputs": [
+        "predecessor-read.json",
+        "old-reader.json"
+      ]
+    },
+    {
+      "command": "python3 SDP/ProjectManagement/validate.py",
+      "exitCode": 0,
+      "log": "management.log",
+      "observation": "73 cards, 47 management records, 696 events"
+    },
+    {
+      "command": "python3 Toolkit/scripts/validate_sdp.py --base-ref main",
+      "exitCode": 0,
+      "log": "toolkit.log"
+    },
+    {
+      "command": "candidate source/binary hashes, maintained relative links and original ledger prefixes",
+      "exitCode": 0,
+      "output": "final-checks.json"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "limits": [
+    "Verification/review intake only; actual card/Session disposition, owner decisions, rework/dependencies and claim release remain",
+    "Synthetic report/test/review observations, not native Codex execution or independent PG review",
+    "No owner acceptance, model/software release, merge or installation"
+  ],
+  "developmentCorrection": "Initial fixture reused a review thread already retained by its historical setup. The product correctly refused it. Final fixtures use unique review threads; no product guard was weakened."
+}

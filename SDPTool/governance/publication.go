@@ -68,10 +68,14 @@ func validPublicationRequest(q PublicationRequest) bool {
 }
 func (s *Service) publicationEvidence(st snapshot, p Publication) error {
 	q := p.Request
-	r, ok := st.Runs[q.RunID]
+	r := st.Runs[q.RunID]
 	if r.Routine.ID == SessionImplementation().ID {
 		return fail("conflict", "Session disposition must reconcile all selected cards; not implemented")
 	}
+	return s.checkedReviewEvidence(st, q)
+}
+func (s *Service) checkedReviewEvidence(st snapshot, q PublicationRequest) error {
+	r, ok := st.Runs[q.RunID]
 	d, found := st.Reviews[q.ReviewID]
 	if !ok || !found || r.Revision != q.ExpectedRevision || r.State != "verifying" || d.RunID != r.ID || d.State != "completed" || d.Outcome == nil || d.Outcome.Verdict != "passed" || latestReport(st, r) != d.Spec.ReportID {
 		return fail("stale_revision", "publication requires the selected terminal passing review and unchanged run/report")

@@ -1,0 +1,26 @@
+{
+  "root": "/home/warloc/git/pg_lab/session-c2c1-results",
+  "state": "/home/warloc/.cache/sdp-workstation/PGF1-C2c1/lab-state",
+  "priorHead": "f3b50f875e3b36f3847a66bda73f3777516a9f5d",
+  "priorTrackedPathsUnchanged": 234,
+  "wireObjects": 13,
+  "instanceRevision": 14,
+  "stage": "disposition",
+  "selectedCards": [
+    {
+      "id": "KB-SDP-001",
+      "coverage": "contribution"
+    },
+    {
+      "id": "KB-SDP-002",
+      "coverage": "whole"
+    }
+  ],
+  "pendingReservation": false,
+  "limits": [
+    "Actual compiled CLI processes, synthetic report/test/review observations",
+    "No native agent execution, independent PG review or owner acceptance"
+  ],
+  "commit": "92d97a7215c7d9e90c6036ff4fbb2b23331a6dae",
+  "branch": "test/pgf1-c2c1-results"
+}

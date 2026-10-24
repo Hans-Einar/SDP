@@ -642,3 +642,49 @@ progress and legacy single-card result publication cannot bypass the pending Ses
 disposition. C2c must add verified whole/contribution disposition, rework/dependencies
 and claim release/replan; design/model release, privileged leader integration, native
 whole-workflow trials and independent review remain required.
+
+
+## Session verification and review intake — PGF1-C2c1
+
+After progress commits, `session-verify --input verify.json` prepares the next
+canonical gate. It uses the same common identity/revision/reason fields as progress,
+plus `evidenceId` and `expectedRunRevision`. The receipt must be a passing test for
+the exact progressed report/candidate. Failed, inconclusive or claim-only evidence
+cannot advance; contradictory failures and active reviews also hold intake. This
+checks the selected receipt and provenance, not whether an unstructured test note
+proves every requirement. The existing verifier/reviewer procedures still own that
+judgment. Resume commits the verification artifact and all selected worklogs/history.
+
+Only then may the existing controller review workflow prepare its fresh context.
+Review must include the verified test receipt, same report/candidate, passing selected
+tests and current reviewer skill. Its payload now includes the full Session binding,
+including every whole/contribution card. The existing review engine owns thread
+separation, observations and verdict parsing; Session intake does not accept a caller
+verdict. Other legacy review workflows retain their existing admission behavior.
+
+`session-review --input review.json` consumes `reviewId`, `expectedReviewRevision`
+and `expectedRunRevision`, with the common Session fields. It requires that exact
+completed passing observed review, full matching payload and current test/artifact/
+skill/candidate basis, with no competing active or contradictory review. Resume
+publishes its immutable review/test snapshots and journals, then exposes disposition.
+The JSON actions are `governance.session.verify` and `governance.session.review`;
+trusted-controller attribution remains separate from JSON. Restricted leader/worker
+MCP gains no controller capability. Cross-verb fields, even empty, are refused.
+
+Verification and review intake reuse the same pre/postimage publisher, reservation
+and retry receipts. Candidate/evidence checks run before and after every effect;
+partial effects retain their pending intent on drift. Old operation retries return
+historical receipts, not permission to repeat canonical effects. Inputs remain pinned
+through own journals and validated unrelated history. Stored snapshots also check
+full review payload/binding and evidence equality. Operational profile 0.17 permits
+one verify and one review intake after the existing start/progress pair. Existing
+0.16 stores remain readable without mutation; old executables refuse 0.17.
+
+Where binding review is explicitly not-required, committed verification exposes
+disposition without inventing a review. A required owner decision remains a visible
+hold; this increment cannot record owner acceptance or create a gate-review request.
+Cards, plan and Session remain active, claims remain held and generic completion
+stays blocked. C2c2 must provide checked whole/contribution disposition, owner-decision
+handling, rework/dependency progression and claim release/replan. Design-changing work
+still requires PGF3. This checkpoint uses synthetic review observations in tests;
+independent PG review and native whole-workflow acceptance remain unfulfilled.

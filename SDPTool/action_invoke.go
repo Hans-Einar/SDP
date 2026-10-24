@@ -111,7 +111,7 @@ func Invoke(ctx context.Context, in io.Reader, caller ActionCaller) InvokeRespon
 	if err != nil {
 		return invokeFailure(r, 2, "invalid-parameters", err)
 	}
-	if req.Action != "blueprint.assignment.apply" && req.Action != "governance.session.adopt" && req.Action != "governance.session.resume" && req.Action != "governance.session.select" && req.Action != "governance.session.assess" && req.Action != "governance.session.start" && req.Action != "governance.session.progress" && (caller.Principal.Actor != "" || caller.Principal.Authority != "") {
+	if req.Action != "blueprint.assignment.apply" && req.Action != "governance.session.adopt" && req.Action != "governance.session.resume" && req.Action != "governance.session.select" && req.Action != "governance.session.assess" && req.Action != "governance.session.start" && req.Action != "governance.session.progress" && req.Action != "governance.session.verify" && req.Action != "governance.session.review" && (caller.Principal.Actor != "" || caller.Principal.Authority != "") {
 		return invokeFailure(r, 2, "invalid-parameters", fmt.Errorf("caller attribution applies only to assignment or Session mutation"))
 	}
 	c, err := resolveActionContext(req.Context.Project, caller)

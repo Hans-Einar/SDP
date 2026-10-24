@@ -1,0 +1,24 @@
+{
+  "baseline": "dd13176082a17532fdb126085eada0d2d01be607",
+  "identity": "Uncommitted product/test/schema candidate; maintained documents finalized after product tests.",
+  "files": {
+    "SDPTool/action_invoke.go": "f717664af4c8c8376dae2d1e2139e74da934fa64d2f2c7509e6c42de8c07cc0d",
+    "SDPTool/action_process_test.go": "462159e3856bc86311ec4cb89fa46fd874e57f62ba87f3836be9935b27671b7f",
+    "SDPTool/action_sessions.go": "0d0d04d4771dce8aed90113e6d851675e2a51792a6cf100b7cb6ef5cb9040078",
+    "SDPTool/governance/publication.go": "0f4f8d74f5d22250a50b75b9dbc85fa0753e9bed22228578d9035476b4ebbd0e",
+    "SDPTool/governance/review.go": "f0e0e860f88b16a3a17925ba9ba5913320d0f4d5fbbad48c815b8a46781d296a",
+    "SDPTool/governance/session.go": "28bc8e688bf5bf4908e6f6505b932b928af7df0adc69490cc5e56aa8baf73013",
+    "SDPTool/governance/session.schema.json": "9b9a49d06c2477d17faf609f99a0d5d63f54fd6163b4d4160bf87bdd6365c3e8",
+    "SDPTool/governance/session_result.go": "d150325a9c45b5792af38274a5aecb755bfb083e02b4f82d882fd9ea62a352bf",
+    "SDPTool/governance/session_result_cli_test.go": "f51baadc6523830ff1e9f8a8eb5293b4851b5f325ad69e12a196263b377414cd",
+    "SDPTool/governance/session_result_test.go": "4a41dcb9feb37a2e281fbb72494b58a905b0cf409cfba8ee328dc54c63ccf541",
+    "SDPTool/governance/session_work.go": "f0d694695ca20b039f568138cc5404f663b31713abcc75425b0b655c5497153e",
+    "SDPTool/governance_cli.go": "0225ea9df2d2bb9f3788c3eb7c13269adbcca3389ee62133729c0f69d92f8c6d",
+    "SDPTool/presentation/presentation.go": "67ddf31284c2a83b3e109bae6df14a9c36d5f99440c975037ac51c863dc48c94",
+    "SDPTool/session_actions_test.go": "2466ec900117dde4a27bcc6e61b3471b296f70a2704c018f9294ffb16162a42c"
+  },
+  "binary": {
+    "path": "/home/warloc/.cache/sdp-workstation/PGF1-C2c1/bin/sdptool",
+    "sha256": "ffdcde76409140f00603da91322a156798889ae2efe1004c4f2c7e064bca3f9b"
+  }
+}

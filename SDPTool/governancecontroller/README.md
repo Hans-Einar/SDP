@@ -755,3 +755,15 @@ Session progress consumes the assigned report/current candidate and advances onl
 to verification. Legacy result publication is refused for Session runs until checked
 Session disposition is implemented. C2b2 controller tests use a deterministic protocol
 host, not a new native Codex/model execution or independent product review.
+
+
+## Session review admission — PGF1-C2c1
+
+For a Session-bound run, commit `session-verify` before using the existing review
+controller. Select the same candidate/report and include that verification receipt
+among the passing tests. The review payload carries `sessionBinding` with all selected
+cards/contributions; intake later validates this full context. The controller retains
+fresh-thread, observation and retry ownership. `session-review` consumes the exact
+terminal passing review through trusted CLI/JSON and prepares canonical records;
+resume commits disposition-stage visibility. Neither operation completes the card
+or supplies owner acceptance. Existing Maintenance/Blueprint reviews are unchanged.

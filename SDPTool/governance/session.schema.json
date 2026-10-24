@@ -370,7 +370,9 @@
             "session-select",
             "session-assess",
             "session-start",
-            "session-progress"
+            "session-progress",
+            "session-verify",
+            "session-review"
           ]
         },
         "operationId": {
@@ -484,7 +486,9 @@
                   "admission",
                   "design",
                   "implementation",
-                  "verification"
+                  "verification",
+                  "review",
+                  "disposition"
                 ]
               },
               "holds": {
@@ -511,6 +515,14 @@
               "progressEvidence": {
                 "type": "string",
                 "format": "uuid"
+              },
+              "verificationEvidence": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "reviewId": {
+                "type": "string",
+                "format": "uuid"
               }
             }
           },
@@ -526,7 +538,9 @@
               "session-select",
               "session-assess",
               "session-start",
-              "session-progress"
+              "session-progress",
+              "session-verify",
+              "session-review"
             ]
           }
         },
@@ -1036,6 +1050,122 @@
           "format": "uuid"
         },
         "expectedRunRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 18446744073709551615
+        }
+      }
+    },
+    "verifyRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "operationId",
+        "instanceId",
+        "expectedRevision",
+        "reason",
+        "evidenceId",
+        "expectedRunRevision"
+      ],
+      "properties": {
+        "schema": {
+          "const": "sdp-session-execution/0.1"
+        },
+        "projectRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "checkoutId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "operationId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "instanceId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 18446744073709551615
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "evidenceId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "expectedRunRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 18446744073709551615
+        }
+      }
+    },
+    "reviewRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "operationId",
+        "instanceId",
+        "expectedRevision",
+        "reason",
+        "expectedRunRevision",
+        "reviewId",
+        "expectedReviewRevision"
+      ],
+      "properties": {
+        "schema": {
+          "const": "sdp-session-execution/0.1"
+        },
+        "projectRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "checkoutId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "operationId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "instanceId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 18446744073709551615
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "expectedRunRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 18446744073709551615
+        },
+        "reviewId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "expectedReviewRevision": {
           "type": "integer",
           "minimum": 1,
           "maximum": 18446744073709551615
