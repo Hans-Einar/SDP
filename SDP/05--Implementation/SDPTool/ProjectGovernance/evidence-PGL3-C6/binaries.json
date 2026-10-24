@@ -1,0 +1,17 @@
+{
+  "command": [
+    "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+    "-C",
+    "SDPTool",
+    "build",
+    "-o",
+    "/home/warloc/.cache/sdp-workstation/PGL3-C6/bin/",
+    "./cmd/sdp-controller",
+    "./cmd/sdp-mcp"
+  ],
+  "exitCode": 0,
+  "binaries": {
+    "/home/warloc/.cache/sdp-workstation/PGL3-C6/bin/sdp-controller": "c77999b37e0039195a9b86ae89c630e484319db83dc177402836dd97314ed421",
+    "/home/warloc/.cache/sdp-workstation/PGL3-C6/bin/sdp-mcp": "c7f2b27859cedfed2ffa869256dad50b7b921aa2d848f4c5511b48c7d3639868"
+  }
+}

@@ -9,7 +9,7 @@
 | created | 2026-10-09T12:08:50.581137+00:00 |
 | source | Owner Session0011 T004 role definition and T005 KanBan handoff request |
 | Systems | SDPTOOL |
-| next_review | Responsive leader coordination after PGL3-C5 durable acknowledgement; retained native workflow, capacity/recovery and evidence gates |
+| next_review | AI Project Leader turn scheduling after PGL3-C6 local console/MCP; retained native workflow, capacity/recovery and evidence gates |
 | PlanId | PLAN-SDP-0018 |
 | tags | project-leader, steering, SAD, master, MCP, app-server, coordination |
 
@@ -211,3 +211,15 @@ compiled CLI/restart/old-reader and wire schema checks pass; see
 CardState remains in-progress for responsive coordination and the retained plan
 gates. No native task, independent review, Blueprint pilot resumption or Ponsse work.
 SDL-only direction and KB059 onHold remain. EVT-KB-SDP-000400 records this result.
+
+
+## T032 — PGL3-C6 shared coordination entry point
+
+Delivered combined registered-work/report/attention view with bounded paging and
+stale-cursor checks, explicit coordinator MCP read/ack authority, and terminal watch
+with owner-attributed replies while independent service work progresses. Full race/
+vet, actual compiled CLI and stdio MCP/restart checks and ten final wire objects
+pass; see [evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C6.md).
+CardState remains in-progress for AI leader scheduling and the parent plan's native,
+review/recovery/publication gates. No model/subagent launch, stable/global config
+change, Blueprint resumption or Ponsse work. EVT-KB-SDP-000401 records this boundary.

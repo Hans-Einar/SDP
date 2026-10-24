@@ -69,3 +69,37 @@ explains those distinctions. The current
 [MCP adoption study](../../SDP/Maintenance/WorkstationReadiness/MCP-Adoption-Study.md)
 records actual workstation capability, configuration and host compatibility limits.
 The documentation correction adds no tools or runtime behavior.
+
+
+## Explicit coordinator adapter — PGL3-C6
+
+A trusted launcher can select a separate bounded capability:
+
+```sh
+sdp-mcp --project /absolute/project --state /private/operational-state --coordinator project-leader
+```
+
+This cannot be combined with run/attempt/epoch. It exposes exactly two tools:
+
+- `coordination_read`: optional `runId`, `limit` (1..50, default 20) and `cursor`.
+  Read registered work, attention and reports with one operational generation.
+  Blocking questions precede pending reports; stale coverage and unknown host
+  liveness stay explicit. Pages fit the existing transport response bound. Copy
+  `nextCursor` for later pages; changed content/filter invalidates it. Restart
+  inspection with no cursor on `stale_revision`. Reading consumes nothing.
+- `report_acknowledge`: the existing exact C5 request, with `coordinator` matching
+  the launcher's ID. This records report processing only; it does not verify,
+  accept, continue, launch or publish work. Preserve operation ID and all request
+  bytes for retry. First use upgrades that operational store to C5 profile 0.8.
+
+Default unbound inspection still exposes three tools; fully bound workers retain
+seven. No tool argument can promote either adapter. The coordinator cannot reply
+as the owner or record design approval. Use the trusted terminal/controller reply
+path for actual attributed owner input. Coordinator attribution is local launcher
+provenance, not human authentication. Use this only for the explicitly selected
+project/state; no remote/shared-machine authority is implied.
+
+MCP supplies operations on demand. It does not wake a host conversation, automatically
+preload SDL context or schedule Project Leader turns. The separate terminal
+[coordination console](../governancecontroller/README.md#coordination-console--pgl3-c6)
+can poll while existing worker controllers progress.

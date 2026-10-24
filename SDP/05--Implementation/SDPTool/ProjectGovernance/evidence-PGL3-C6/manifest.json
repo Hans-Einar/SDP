@@ -1,0 +1,18 @@
+{
+  "baseline": "59830cf79b621016f869b7dd9c09ad6656e0a8cc",
+  "sourceManifest": "candidate.json",
+  "artifacts": {
+    "README.md": "0c62a7280433e577d24374d750779952fc11f93d5e7909455a5e3b71f1fc9a16",
+    "binaries.json": "bf763c88849e2ad26a9adf3b09efb7730125b95b03b18747cffa7e7edf20ebb6",
+    "candidate.json": "77f5cd7f0e4f516ec3a16a5daf0a774ae7a5af38ba291b457049cdf157c34385",
+    "checks.json": "c8d82516c6be524944da495fb83c68c43162784998739fda37063fc54aae02ca",
+    "checks.py": "0708bc3724a4f1c5b360582e3cefa4d41a62c0b551867a33e1d2e138e4164a03",
+    "console-capture-before-correction.json": "e0a88572fb2ed6282bd1b35c8416503696d95678761ae44936c52be04e3e7317",
+    "console-wire.json": "61cf632f6f929b206c2d109a4f90ed3eecfb1db43a2daa12cd4be4ebfd7a0a11",
+    "mcp-wire.json": "bad12983eeb039dd13ce920f781efdeed028df353259d63e82689abc5eb0c881",
+    "schema-checks.json": "fa45064039fdd90d14adecc17160528a80369fe832728eae31bd65320560af03",
+    "sdptool-race.log": "593685cd9a581091ba4ac4730a7ebe00167f968db39fffdd26d7d36d4751f6c3",
+    "sdptool-vet.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "verify_wire.py": "0b94f49393a69365b193039f0a3b7c292e835c63db17355613b2ab94bd9cc675"
+  }
+}

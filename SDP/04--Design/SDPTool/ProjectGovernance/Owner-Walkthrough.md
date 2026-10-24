@@ -261,3 +261,21 @@ Use the [controller instructions](../../../../SDPTool/governancecontroller/READM
 with an explicitly built current binary. The historical laptop lab paths and trials
 above remain historical evidence, not an installation on this workstation. No new
 Ponsse pilot or owner acceptance is inferred.
+
+
+## Unified local coordination — T032
+
+The development candidate now provides one view for registered assignments,
+questions and reports. A watching terminal can stay open while worker controllers
+continue; it accepts exact question replies and report acknowledgements without
+switching between separate inspection commands. Pending records survive closing
+and reopening the observer.
+
+A separately selected coordinator MCP adapter gives an existing host conversation
+access to this view and report acknowledgement. It cannot answer as the owner,
+approve design or start another agent. The owner reply stays in the trusted local
+controller path. This is usable coordination infrastructure, not yet automatic
+Project Leader wake-up or the final conversation UI. See the
+[console instructions](../../../../SDPTool/governancecontroller/README.md#coordination-console--pgl3-c6)
+and [MCP launch instructions](../../../../SDPTool/governancemcp/README.md#explicit-coordinator-adapter--pgl3-c6).
+Use binaries built from this candidate; the stable installation is unchanged.

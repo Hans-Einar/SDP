@@ -562,3 +562,40 @@ authority and stale-source/generation/state refusals without mutation, no run
 advancement, coexistence with attention/continuation profiles, legacy reader
 refusal and actual compiled CLI/schema output. Native leader reasoning, automatic
 continuation, independent review and the remaining PGI/PGL gates stay separate.
+
+
+## PGL3-C6 — Shared coordination view and responsive local input (2026-10-24)
+
+Refine the existing controller-owned inbox/event-loop boundary into a usable local
+entry point. Reuse registered work, report receipts/acknowledgements and attention
+records; do not create another queue or acceptance state. A bounded combined view
+pins one operational generation, lists blocking questions before pending reports,
+and retains explicit stale coverage, unknown liveness and historical dispositions.
+Stable item IDs and a content revision support refresh coalescing. Pagination binds
+that revision and filter; a changed view refuses an old cursor. Inspecting creates
+no work. Filesystem coverage remains separate from the operational snapshot.
+
+Expose the view through `sdp-controller coordinate` and an explicitly configured
+coordinator MCP adapter. Default inspection and bound worker adapters keep their
+existing tool sets. `sdp-mcp --coordinator ID` is a launcher capability, mutually
+exclusive with run/attempt/epoch. It exposes only `coordination_read` and
+`report_acknowledge`, using C5's exact request guards and launcher-bound coordinator
+attribution. No owner-reply, design-decision, launch, resume, completion or publication
+tool is added. A payload role string cannot select this adapter. These restrictions
+make it useful for a host conversation without giving that conversation owner approval.
+
+The optional terminal watch loop polls snapshots while accepting bounded JSON lines
+on stdin. Explicit refresh, pinned report acknowledgement and attributed attention
+reply reuse existing services. Reply requires the launcher's owner attribution;
+report acknowledgement requires its coordinator identity. No free-text inference of
+approval or automatic model dispatch. Process one input at a time, prioritize queued
+input over polling, and do not hold run-controller leases or mutation locks while
+waiting. Failed/invalid input emits an error and preserves the loop; output failure
+stops this observer, not worker execution. EOF permits watching until timeout; quit
+and cancellation stop it. On restart, pending work comes from durable core records.
+
+This console is an intermediate coordination interface, not yet an AI Project Leader
+conversation scheduler or a native wake-up guarantee. Verify actual compiled CLI
+and stdio MCP, independent worker progress during watch, replies/acknowledgements,
+restart, pagination/stale refusals and authority separation. Full native leader
+turn scheduling, uncertainty recovery and independent review remain required later.

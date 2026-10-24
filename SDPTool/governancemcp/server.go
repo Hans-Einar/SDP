@@ -7,7 +7,9 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"strings"
 	"time"
+	"unicode/utf8"
 
 	"github.com/Hans-Einar/SDP/SDPTool/governance"
 	"github.com/modelcontextprotocol/go-sdk/mcp"
@@ -17,6 +19,18 @@ const SDKVersion = "v1.8.0"
 const ProtocolVersion = "2025-11-25"
 
 func New(service *governance.Service, runID, attemptID, epoch string) (*mcp.Server, error) {
+	return newServer(service, runID, attemptID, epoch, "")
+}
+
+// NewCoordinator is an explicit launcher capability, never selected by tool input.
+// It permits project inspection and report acknowledgement, not owner decisions.
+func NewCoordinator(service *governance.Service, coordinator string) (*mcp.Server, error) {
+	if strings.TrimSpace(coordinator) == "" || len(coordinator) > 256 || !utf8.ValidString(coordinator) {
+		return nil, fmt.Errorf("bounded coordinator identity required")
+	}
+	return newServer(service, "", "", "", coordinator)
+}
+func newServer(service *governance.Service, runID, attemptID, epoch, coordinator string) (*mcp.Server, error) {
 	if service == nil {
 		return nil, fmt.Errorf("missing governance service")
 	}
@@ -78,6 +92,26 @@ func New(service *governance.Service, runID, attemptID, epoch string) (*mcp.Serv
 				}
 				return &mcp.CallToolResult{IsError: e != nil, StructuredContent: json.RawMessage(b), Content: []mcp.Content{&mcp.TextContent{Text: string(b)}}}, nil
 			})
+	}
+	if coordinator != "" {
+		add("coordination_read", "Read a bounded page of registered work, questions and reports in the launch-selected checkout. No host liveness or acceptance is inferred. A stale cursor requires a fresh first page.", governance.WireDefinition("CoordinationRequest"), true, func(b []byte) (any, error) {
+			var q governance.CoordinationRequest
+			if e := governance.Decode(b, &q); e != nil {
+				return nil, e
+			}
+			return service.Coordination(q)
+		})
+		add("report_acknowledge", "Record processing of an exact current report under the launcher's coordinator identity. Does not accept, complete, publish or continue work. Preserve operationId on retry.", governance.WireDefinition("ReportAcknowledgementRequest"), false, func(b []byte) (any, error) {
+			var q governance.ReportAcknowledgementRequest
+			if e := governance.Decode(b, &q); e != nil {
+				return nil, e
+			}
+			if q.Coordinator != coordinator {
+				return nil, &governance.Error{Code: "unauthorized", Message: "coordinator differs from launcher identity"}
+			}
+			return service.AcknowledgeReport(governance.LocalController(), q)
+		})
+		return s, nil
 	}
 	denied := func() error {
 		return &governance.Error{Code: "unauthorized", Message: "request is outside launch-bound assignment"}

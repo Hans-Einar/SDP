@@ -1,0 +1,277 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Combined coordination view and console event contract",
+  "description": "Select CoordinationView or CoordinationEvent; resolve references against this file and adjacent canonical schemas.",
+  "$defs": {
+    "CoordinationItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "runId": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "work",
+            "report",
+            "attention"
+          ]
+        },
+        "priority": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "work": {
+          "$ref": "overview.schema.json#/$defs/work"
+        },
+        "report": {
+          "$ref": "inbox.schema.json#/properties/reports/items"
+        },
+        "attention": {
+          "$ref": "schema.json#/$defs/AttentionView"
+        }
+      },
+      "required": [
+        "id",
+        "runId",
+        "kind",
+        "priority"
+      ],
+      "oneOf": [
+        {
+          "properties": {
+            "kind": {
+              "const": "work"
+            }
+          },
+          "required": [
+            "work"
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "report"
+                ]
+              },
+              {
+                "required": [
+                  "attention"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "kind": {
+              "const": "report"
+            }
+          },
+          "required": [
+            "report"
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "work"
+                ]
+              },
+              {
+                "required": [
+                  "attention"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "kind": {
+              "const": "attention"
+            }
+          },
+          "required": [
+            "attention"
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "work"
+                ]
+              },
+              {
+                "required": [
+                  "report"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "CoordinationView": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "projectRef": {
+          "type": "string"
+        },
+        "checkoutId": {
+          "type": "string"
+        },
+        "generation": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "string"
+        },
+        "nextCursor": {
+          "type": "string"
+        },
+        "schema": {
+          "const": "sdp-governance-coordination/1"
+        },
+        "scope": {
+          "const": "registered-work-reports-attention-in-selected-checkout"
+        },
+        "inspectedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "items": {
+          "type": "array",
+          "maxItems": 50,
+          "items": {
+            "$ref": "#/$defs/CoordinationItem"
+          }
+        },
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "projectRef",
+        "checkoutId",
+        "generation",
+        "revision",
+        "nextCursor",
+        "schema",
+        "scope",
+        "inspectedAt",
+        "items",
+        "total"
+      ]
+    },
+    "CoordinationEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-coordination-event/1"
+        },
+        "kind": {
+          "enum": [
+            "snapshot",
+            "result",
+            "error"
+          ]
+        },
+        "view": {
+          "$ref": "#/$defs/CoordinationView"
+        },
+        "result": {
+          "$ref": "schema.json#/$defs/Result"
+        },
+        "error": {
+          "$ref": "schema.json#/$defs/Error/properties/error"
+        }
+      },
+      "required": [
+        "schema",
+        "kind"
+      ],
+      "oneOf": [
+        {
+          "properties": {
+            "kind": {
+              "const": "snapshot"
+            }
+          },
+          "required": [
+            "view"
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "result"
+                ]
+              },
+              {
+                "required": [
+                  "error"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "kind": {
+              "const": "result"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "view"
+                ]
+              },
+              {
+                "required": [
+                  "error"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "kind": {
+              "const": "error"
+            }
+          },
+          "required": [
+            "error"
+          ],
+          "not": {
+            "anyOf": [
+              {
+                "required": [
+                  "view"
+                ]
+              },
+              {
+                "required": [
+                  "result"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

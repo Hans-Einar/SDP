@@ -1,6 +1,6 @@
 # Current model, Blueprint and ProjectGovernance state responsibilities
 
-Session0013 / WR2-M2, updated by Session0007 T031 on 24 October 2026. This explains existing implemented boundaries;
+Session0013 / WR2-M2, updated by Session0007 T032 on 24 October 2026. This explains existing implemented boundaries;
 it does not merge their state machines or add new authority. The
 [orchestration design](Orchestration.md), [PG design](Design.md),
 [model design](../ModelGovernance/Design.md) and
@@ -19,6 +19,7 @@ it does not merge their state machines or add new authority. The
 | Attempt/thread/turn and observation/agent epoch | governancehost/controller with durable run observations | Observed execution, delivery and recovery identities. Epoch changes and uncertain sends must be reconciled; a role string is not a capability. |
 | Worker report / report receipt | restricted governance MCP run_transition; report inbox projection | Report moves work to verifying. PGL3-C5 permits a trusted-controller acknowledgement of exact report processing; this leaves the run unchanged and is not reviewed delivery or owner acceptance. |
 | Owner questions, replies and continuation references | governance attention/continuation services; trusted reply adapter | Durable attributed input, applicability and guarded fresh attempt. Answer acknowledgement is not approval of implementation or another phase. |
+| Combined coordination view and console | governance/coordination.go plus controller/MCP adapters | Read-only paged projection of registered work. Explicit coordinator MCP adds C5 acknowledgement only; terminal owner replies retain C3 attribution. No native leader wake-up or new acceptance authority. |
 | Card/typed-plan lifecycle and Session roadmap | canonical ProjectManagement ledger, current records and authored Session | Canonical project work disposition. Private PG operational state does not automatically publish a completed card/Session. |
 
 The private store and canonical project history deliberately hold different facts.

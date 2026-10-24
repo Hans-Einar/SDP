@@ -279,3 +279,10 @@ binding, durable retry and separate recorded processing, without advancing the r
 The first acknowledgement selects operational profile 0.8 and inbox profile 2;
 untouched stores retain their profiles. See the
 [controller workflow](../governancecontroller/README.md#pgl3-c5-report-acknowledgement).
+
+
+PGL3-C6 `Coordination` combines existing work/report/attention projections with
+one operational generation, stable item IDs, prioritized bounded pages and a
+content-bound cursor. It is read-only; it adds no store profile or lifecycle.
+[Coordinator MCP](../governancemcp/README.md#explicit-coordinator-adapter--pgl3-c6)
+and the controller console reuse this projection and existing guarded writes.

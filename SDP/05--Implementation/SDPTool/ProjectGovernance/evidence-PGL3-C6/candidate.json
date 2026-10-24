@@ -1,0 +1,21 @@
+{
+  "baseline": "59830cf79b621016f869b7dd9c09ad6656e0a8cc",
+  "candidate": "baseline plus listed final source/test/schema hashes",
+  "sources": {
+    "SDPTool/cmd/sdp-controller/coordination.go": "75659ebb581f775605d764d758d7c576037b61c6980ce7eaf0f412c9c730883f",
+    "SDPTool/cmd/sdp-controller/coordination_test.go": "eac69927d4e4e076ea50213c1f1e3ac072acf5f7d9080ba0d2723b4790c78005",
+    "SDPTool/cmd/sdp-controller/main.go": "47a5ae32f385c01b1f19c26d1aaaabe94e26d71f3e9121e53ff7e867d7da3d17",
+    "SDPTool/cmd/sdp-mcp/main.go": "2ec9b1502c96dc027a7cf62fe8c7f51e2dc163e9d47b0778c0eb8b49cbed4088",
+    "SDPTool/governance/coordination.go": "ffff47ca021a2d0b18463f4df7e54768dab724f9827008f62b856d91c5633e31",
+    "SDPTool/governance/coordination.schema.json": "b87e7b69e451c92c9edc49ca993892b59e94853299f0639890e443cb94626884",
+    "SDPTool/governance/coordination_test.go": "42a4e11bdabe4fef1148606b5e545aebbb82a2e76d53327694651a8132de29ca",
+    "SDPTool/governance/schema.json": "b2b93ad256e774cc33e59551474f57d3ce489b306a4e13a7de4d57f250cc821e",
+    "SDPTool/governancecontroller/coordination_cli_test.go": "e25496487e180d7b928907f50c6dac30ff18d0deadd09b3f15df24d47b99e25e",
+    "SDPTool/governancemcp/coordination_test.go": "26ec9b21368a847c9f885f038beec26dd7fa2e111a9117e3022b01201cd8131f",
+    "SDPTool/governancemcp/server.go": "081dd6fb56cdc4d89c27975641bbeffafb8f8ea33920d8b12fbde19f24907fa0"
+  },
+  "toolchain": "go version go1.27.1 linux/amd64",
+  "nativeModelTask": false,
+  "independentReview": false,
+  "finalSchemaRefinement": "Output-only coordination error shape now references canonical Error.properties.error including retryable/currentRevision. Not embedded in Go; final actual wire validation covers this correction."
+}

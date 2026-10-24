@@ -650,3 +650,35 @@ using the durable report/reply path, followed by current-host integrated workflo
 capacity/recovery, SAD/scope closure and retained PGI4/5 evidence/publication gates.
 Backlog/onHold review preserves KB036/037/042/043, external KB054, proposed KB058 and
 SDL-only/KB059 deferral. No new scope selected; no merge or release.
+
+
+## PGL3-C6 selection — T032
+
+Owner continues. Deliver the existing coordinator inbox/event-loop boundary as one
+bounded service/CLI/MCP workflow: combined paged work/report/attention view, explicit
+coordinator MCP read/ack authority and a responsive terminal watch accepting pinned
+acknowledgements and owner-attributed replies. Reuse C3/C5 stores and guards; no new
+store profile, native model launch or second lifecycle queue. Follow the
+[design](../../../04--Design/SDPTool/ProjectGovernance/Orchestration.md#pgl3-c6--shared-coordination-view-and-responsive-local-input-2026-10-24)
+and [preflight](preflight-PGL3-C6.json). Branch/commit policy remains current/milestone.
+Compiled CLI and stdio MCP must establish the useful operation and unchanged worker
+capabilities. AI leader scheduling and whole-workflow/native/review gates remain open.
+
+
+## PGL3-C6 result — T032
+
+[Evidence](Evidence-PGL3-C6.md) records the delivered shared coordination view,
+explicit coordinator MCP read/ack capability and responsive terminal watch with
+attributed replies. Core pagination/freshness and authority guards, actual compiled
+console/two-run service workflow, stdio MCP restart/retry, full affected race/vet
+and ten final wire objects pass. Private development binaries are available; stable
+installation/global MCP settings are unchanged. No new operational profile beyond
+C5 acknowledgement; no native agent turn or independent review.
+
+PGL3/S6 remain active. The local coordination interface is delivered; next is actual
+AI Project Leader turn scheduling/wake-up with serialized delivery and uncertainty
+recovery, followed by the retained current-host integrated/native, SAD/scope closure,
+capacity, independent review and canonical evidence/publication gates. Manual
+Sessions without registered runs remain outside the operational view. Broader
+KB036/037/042/043, external hub KB054 and metrics KB058 stay in backlog; KB059 stays
+onHold under SDL-only scope. Blueprint pause and Ponsse MVP1 deferral remain.

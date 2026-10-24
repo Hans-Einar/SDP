@@ -517,3 +517,49 @@ still requires reconciliation. Waiting-controller settings are local and transie
 reply capture warns that an authorized waiting controller may continue after a reply.
 No global host settings or default automatic behavior changes. Receipt, input, attempt,
 payload and state bounds remain; sustained multi-hour execution is not established.
+
+
+## Coordination console — PGL3-C6
+
+```sh
+sdp-controller coordinate --project ROOT --state DIR
+sdp-controller coordinate --project ROOT --state DIR --json --limit 20
+sdp-controller coordinate --project ROOT --state DIR --watch --json --coordinator project-leader --owner OWNER
+```
+
+The combined view shows registered work, questions and reports, prioritizing open
+blocking questions and pending reports. Inspect subsequent pages with `--cursor`,
+or narrow the view with `--run`. A cursor binds the current content revision and
+filter; changed operational facts or displayed coverage require fresh inspection.
+`generation` pins operational facts; filesystem coverage is checked separately.
+Observed host status is historical, not a live heartbeat.
+
+Watch polls once per second by default (`--interval` at least 100ms) until its
+`--timeout` (default 30 minutes), interruption or quit. Unchanged snapshots are
+coalesced. Stdin remains available for one bounded JSON command per line:
+
+```json
+{"action":"refresh"}
+{"action":"quit"}
+```
+
+For acknowledgement, send `action: "acknowledge"` and `acknowledgement` containing
+the exact `ReportAcknowledgementRequest` described above, with the coordinator ID
+selected at launch. For a reply, send `action: "reply"`, `disposition` containing
+an `AttentionDisposition` from the displayed question, and `reply` containing
+`text` and optional `optionId`. The configured `--owner` supplies attribution; input
+JSON cannot choose another actor/source. With `--run`, commands cannot affect a
+different run. Omit coordinator/owner flags for a read-only observer.
+
+JSON watch output uses `sdp-governance-coordination-event/1`: snapshot (`view`),
+result (`result`) or error (`error`). Definitions live in
+[the coordination schema](../governance/coordination.schema.json). Bad commands emit an error and
+leave the loop available. EOF stops input but leaves observation active until its
+bound; a read failure ends the input stream. Quit/timeout/output failure stops this
+observer and does not terminate workers. No lease or state lock is held while
+waiting. Replies and acknowledgements use the existing atomic store and are visible
+after restart; snapshots alone do not create or consume records.
+
+This is an intermediate local interface. It launches no model, interprets no
+free-text approval and does not implement native Project Leader wake-up/turn
+scheduling. Its optional owner reply is attributed input, not design approval.

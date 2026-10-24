@@ -1,0 +1,62 @@
+[
+  {
+    "object": "MCP view",
+    "schema": "coordination.schema.json",
+    "definition": "CoordinationView",
+    "passed": true
+  },
+  {
+    "object": "MCP acknowledgement request",
+    "schema": "schema.json",
+    "definition": "ReportAcknowledgementRequest",
+    "passed": true
+  },
+  {
+    "object": "MCP result",
+    "schema": "schema.json",
+    "definition": "Result",
+    "passed": true
+  },
+  {
+    "object": "console event 0",
+    "schema": "coordination.schema.json",
+    "definition": "CoordinationEvent",
+    "passed": true
+  },
+  {
+    "object": "console event 1",
+    "schema": "coordination.schema.json",
+    "definition": "CoordinationEvent",
+    "passed": true
+  },
+  {
+    "object": "console event 2",
+    "schema": "coordination.schema.json",
+    "definition": "CoordinationEvent",
+    "passed": true
+  },
+  {
+    "object": "console event 3",
+    "schema": "coordination.schema.json",
+    "definition": "CoordinationEvent",
+    "passed": true
+  },
+  {
+    "object": "console event 4",
+    "schema": "coordination.schema.json",
+    "definition": "CoordinationEvent",
+    "passed": true
+  },
+  {
+    "object": "console event 5",
+    "schema": "coordination.schema.json",
+    "definition": "CoordinationEvent",
+    "passed": true
+  },
+  {
+    "object": "console event 6",
+    "schema": "coordination.schema.json",
+    "definition": "CoordinationEvent",
+    "passed": true
+  }
+]
