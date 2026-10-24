@@ -1090,7 +1090,7 @@ policy. This turn delivers design/model preparation, not a runtime milestone.
 | Increment | Checkpoint mapping | Runnable outcome and exit evidence | Dependency/status |
 | --- | --- | --- | --- |
 | PGF1-C1 Session binding and durable instance | PGF1 foundation; PGF2 admission | Adopt a covered manual Session explicitly, read its selected steps/stages/holds, recover the same instance and reject stale/unsupported/cyclic bindings. Pin routine version and authority; leave legacy runs unchanged. New incomplete paths refuse action rather than simulate delivery | delivered T042 at bounded C1 scope; core, CLI/JSON, recovery and pg_lab evidence pass; later activation/leader/model gates remain |
-| PGF1-C2 Checked lifecycle effects and disposition | PGF1; PG-A25/27/28 | Use existing publication machinery for select/start/progress and eligible no-design closeout, including real card moves, metadata/history/links and partial-contribution handling. Reconcile own effects/unrelated ledger additions without weakening coverage. Crash matrix and shared writer/ID contention pass | in-progress; C2a selection/effects delivered T043; start/progress and verified disposition remain |
+| PGF1-C2 Checked lifecycle effects and disposition | PGF1; PG-A25/27/28 | Use existing publication machinery for select/start/progress and eligible no-design closeout, including real card moves, metadata/history/links and partial-contribution handling. Reconcile own effects/unrelated ledger additions without weakening coverage. Crash matrix and shared writer/ID contention pass | in-progress; C2a selection/effects delivered T043; C2b1 assessment delivered T044; C2b2 start/progress and C2c verified disposition remain |
 | PGF2-C1 Common owner/leader Session operations | PGF2/4; PG-A26/29/30 | CLI and explicitly privileged leader adapter use the same core/instance/receipts. Controller dispatch follows committed record effects; leader-free owner resume and later leader reconnect neither duplicate work nor bypass authority | C1/C2; implementation/native evidence required |
 | PGF3-C1 Design and model-release workflow | PGF3; PG-A21/22/23/25 | SDL WORK, required Blueprint, design handoff, code verification/rework and exact accepted model release participate in Session gates. Combine compatible model WORKs, refresh affected evidence and refuse unresolved model release at closure | common Session operations; implementation/native evidence required |
 | PGF5-C1 Full recovery across effects and attempts | PGF5; PG-A27/28/29 | Recover at each canonical/model/host boundary; preserve pending work, external edits and whole-card scope. Different routine versions and legacy profiles stay explicit | prior functional increments; evidence required |
@@ -1156,3 +1156,25 @@ never equate selected/ready with host running or completion. The aggregate SDL
 WORK remains planned and unreleased. Broader PGF2–9, independent review and owner
 trial remain explicit. Backlog/onHold review retains KB036/037/042 broader scope,
 KB050's separate Session and KB059's SDL-only deferral; no new activation selected.
+
+
+### T044 — C2b1 explicit design assessment; C2b2 start/progress next
+
+C2b1 implements the assess-design portion of C2b: explicit design domains, separate
+Blueprint requirement, evidence/procedure pins, conservative routing, immutable
+assessment history and checked Session/plan/card records. The
+[evidence](Evidence-PGF1-C2b1.md) owns verification results and limitations.
+This is an internal runnable checkpoint, preserving the C2 outcome and Git policy.
+
+C2b remains in-progress. C2b2 must bind the selected Session/step and exact current
+assessment to the existing run/attempt engine, publish in-progress before dispatch,
+and record candidate-bound progress from the assigned run. The existing Maintenance
+and approved-Blueprint run contexts cannot serve as an unchecked no-design bypass.
+Continue with a fresh scoped preflight/Blueprint, covering multi-card contribution
+semantics, own-journal coverage refresh, uncertain launch recovery and report identity.
+C2c disposition/dependencies/claim release and PGF2–9 keep their previous obligations.
+
+No native host launch, independent product review, owner acceptance or model/software
+release is claimed by assessment. Review of backlog/onHold retains broader
+KB036/037/042, separate paused KB050 and SDL-only KB059 deferral; no new scope is
+activated. KB038/052 and this plan stay in-progress/active.

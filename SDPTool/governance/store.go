@@ -101,6 +101,9 @@ func (s *Service) load() (snapshot, string, error) {
 	if e := validatePublicationState(state); e != nil {
 		return empty, "", e
 	}
+	if e := validateSessionAssessments(state); e != nil {
+		return snapshot{}, "", e
+	}
 	if e := validateSessionSelections(state); e != nil {
 		return empty, "", e
 	}

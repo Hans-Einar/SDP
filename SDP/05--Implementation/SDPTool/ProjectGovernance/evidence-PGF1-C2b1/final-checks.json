@@ -1,0 +1,11 @@
+{
+  "sourceFiles": 14,
+  "binaryHashMatches": true,
+  "fullSuiteToFinalCandidateDifference": [
+    "SDPTool/governance/session_assessment_cli_test.go"
+  ],
+  "differenceValidation": "test-only capture snapshot fix; final targeted race CLI trial passed and captured requests equal canonical records",
+  "relativeLinks": 309,
+  "originalLedgerPrefixesPreserved": true,
+  "labCommit": "eda3df86e17433192f5ed93b520c6ea5f45637b5"
+}

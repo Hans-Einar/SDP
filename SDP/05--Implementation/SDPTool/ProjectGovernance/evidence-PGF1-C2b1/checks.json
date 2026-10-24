@@ -1,0 +1,64 @@
+{
+  "candidate": "candidate.json",
+  "environment": {
+    "go": "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+    "GOTOOLCHAIN": "local",
+    "GOCACHE": "/home/warloc/.cache/sdp-workstation/gocache",
+    "GOMODCACHE": "/home/warloc/.cache/sdp-workstation/gomodcache"
+  },
+  "checks": [
+    {
+      "command": "go -C SDPTool test ./governance -run ^TestSessionAssessment -count=1",
+      "exitCode": 0,
+      "observation": "Focused service, faults, capacity, model-scope and compiled CLI checks passed on final product source."
+    },
+    {
+      "command": "go -C SDPTool test -race ./...",
+      "log": "race.log",
+      "candidate": "race-candidate.json",
+      "exitCode": 0
+    },
+    {
+      "command": "go -C SDPTool vet ./...",
+      "exitCode": 0,
+      "log": "vet.log"
+    },
+    {
+      "command": "go -C SDPTool test -race ./governance -run ^TestSessionAssessmentCompiledJourney$ -count=1 -v (explicit final lab environment)",
+      "exitCode": 0,
+      "output": "lab-output.json"
+    },
+    {
+      "command": "sdl check WORK--SessionLifecycle/System.design",
+      "exitCode": 0,
+      "output": "sdl-check.json"
+    },
+    {
+      "command": "python3 SDP/ProjectManagement/validate.py",
+      "exitCode": 0,
+      "log": "management.log"
+    },
+    {
+      "command": "python3 Toolkit/scripts/validate_sdp.py --base-ref main",
+      "exitCode": 0,
+      "log": "toolkit.log"
+    },
+    {
+      "command": "candidate source/binary hashes, relative links and original ledger prefixes",
+      "exitCode": 0,
+      "output": "final-checks.json"
+    }
+  ],
+  "limits": [
+    "C2b1 assessment only; Session start/progress integration remains C2b2",
+    "Controller-attributed reasoning and skill snapshots do not prove semantic correctness or host consumption",
+    "No native model call, independent product review, owner acceptance or release"
+  ],
+  "preliminary": {
+    "command": "go -C SDPTool test -race ./...",
+    "exitCode": 1,
+    "log": "race-before-catalogue-expectation.log",
+    "finding": "Only the exact action-catalogue expectation lacked the newly authorized governance.session.assess entry. Updated that expectation; no product behavior or other assertion was changed. The full suite is repeated."
+  },
+  "captureCorrection": "After the full-suite candidate was started, a test-only criteria copy preserved the first captured request across later clarification. No product source changed. Final targeted race/CLI trial passes; both requests equal canonical artifacts. Preliminary lab records/captures remain preserved."
+}

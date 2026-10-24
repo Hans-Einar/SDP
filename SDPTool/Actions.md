@@ -32,8 +32,9 @@ Invalid context returns diagnostics and unavailable entries, with exit code 1.
 | governance.session.list | Inspect instances in the selected store | none |
 | governance.session.read | Inspect one instance, stages and holds | none |
 | governance.session.adopt | Persist explicit adoption/registration intent | operational state |
-| governance.session.resume | Reconcile registration or prepared selection effects and coverage | selected canonical records and operational state |
+| governance.session.resume | Reconcile registration, prepared selection/assessment effects and coverage | selected canonical records and operational state |
 | governance.session.select | Prepare checked step/ready-card selection | operational state |
+| governance.session.assess | Prepare attributed design/Blueprint assessment and canonical records | operational state |
 
 `project.discover` accepts `navigation: "eager"` (default) or `"lazy-sdl"`.
 `project.model-tree` requires the discovered `model` and exact `revision`; stale

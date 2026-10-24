@@ -1,0 +1,13 @@
+{
+  "fixture": "/home/warloc/git/pg_lab/session-c2b1-assessment",
+  "state": "/home/warloc/.cache/sdp-workstation/PGF1-C2b1/lab-state",
+  "schema": "sdp-project-governance-state/0.15",
+  "instanceId": "e69ecd66-11c8-4eb5-b2cc-5bcdb4707a34",
+  "revision": 8,
+  "assessments": 2,
+  "wireObjects": 12,
+  "previousTrackedPathsUnchanged": 160,
+  "pendingMarkerAbsent": true,
+  "nativeHostExecuted": false,
+  "commit": "551243a65e4393f37297dc55c715a9c5399fb7cd"
+}

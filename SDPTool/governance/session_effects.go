@@ -29,17 +29,20 @@ type SessionSelectRequest struct {
 	Reason           string `json:"reason"`
 }
 type SessionSelection struct {
-	Request     SessionSelectRequest `json:"request"`
-	Status      string               `json:"status"`
-	Inputs      []Source             `json:"inputs"`
-	Changes     []PublicationChange  `json:"changes"`
-	Coverage    []Source             `json:"coverage"`
-	LedgerBytes int                  `json:"ledgerBytes"`
-	CreatedAt   string               `json:"createdAt"`
+	Request SessionSelectRequest `json:"request"`
+	SessionRecordEffects
+}
+type SessionRecordEffects struct {
+	Status      string              `json:"status"`
+	Inputs      []Source            `json:"inputs"`
+	Changes     []PublicationChange `json:"changes"`
+	Coverage    []Source            `json:"coverage"`
+	LedgerBytes int                 `json:"ledgerBytes"`
+	CreatedAt   string              `json:"createdAt"`
 }
 
 func sessionProfile(schema string) bool {
-	return schema == sessionStateSchema || schema == sessionEffectsStateSchema
+	return schema == sessionStateSchema || sessionEffectsProfile(schema)
 }
 func (s *Service) canonicalTransaction() (*projecthistory.Transaction, error) {
 	return projecthistory.BeginTransaction(filepath.Join(s.root, managementLedger))
@@ -52,7 +55,7 @@ func (s *Service) sessionEffectOwner(i SessionInstance) string {
 // prefix plus unrelated events. Selected documents remain byte-pinned. Unknown
 // Blueprint events conservatively hold until execution claims can be reconciled.
 func (s *Service) selectionCoverage(i SessionInstance) error {
-	sel := i.Selection
+	sel := sessionLatestEffects(i)
 	if sel.Status != "committed" {
 		return fail("reconciliation_required", "Session record effects pending")
 	}
@@ -129,7 +132,7 @@ func rewriteCardLinks(raw []byte, doc, from, to string) []byte {
 	return []byte(s)
 }
 func (s *Service) buildSessionSelection(i SessionInstance, q SessionSelectRequest) (SessionSelection, error) {
-	out := SessionSelection{Request: q, Status: "prepared", CreatedAt: time.Now().UTC().Format(time.RFC3339Nano)}
+	out := SessionSelection{Request: q, SessionRecordEffects: SessionRecordEffects{Status: "prepared", CreatedAt: time.Now().UTC().Format(time.RFC3339Nano)}}
 	files, e := s.publicationFiles()
 	if e != nil {
 		return out, e
@@ -464,7 +467,9 @@ func (s *Service) SelectSession(c Caller, q SessionSelectRequest) (SessionMutati
 	i.Selection = &selection
 	i.Revision++
 	st.Sessions[i.ID] = i
-	st.Schema = sessionEffectsStateSchema
+	if st.Schema != sessionAssessmentStateSchema {
+		st.Schema = sessionEffectsStateSchema
+	}
 	out := SessionMutationResult{Schema: SessionSchema, Operation: "session-select", OperationID: q.OperationID, InstanceID: i.ID, Revision: i.Revision, Registration: "committed", RecordEffects: "prepared"}
 	st.Receipts[q.OperationID] = receipt{requestDigest(q), Result{Schema: Schema, Operation: "session.select", OperationID: q.OperationID, ProjectRef: s.project, CheckoutID: st.CheckoutID, Session: &out}}
 	if e = s.save(st, head); e != nil {
@@ -483,21 +488,25 @@ func (s *Service) applySessionSelection(i *SessionInstance, tx *projecthistory.T
 	if e := s.checkSelectionClaims(*i, p.Request, step); e != nil {
 		return e
 	}
+	return s.applySessionRecordEffects(&p.SessionRecordEffects, tx, s.sessionEffectOwner(*i), "session-selection")
+}
+
+func (s *Service) applySessionRecordEffects(p *SessionRecordEffects, tx *projecthistory.Transaction, owner, faultPrefix string) error {
 	intent := Publication{Inputs: p.Inputs, Changes: p.Changes}
-	if e := tx.Check(s.sessionEffectOwner(*i)); e != nil {
+	if e := tx.Check(owner); e != nil {
 		return e
 	}
 	if e := s.publicationInputs(intent, true); e != nil {
 		return e
 	}
-	if e := s.validateSelectionRecords(*p); e != nil {
+	if e := s.validateSessionEffectRecords(*p); e != nil {
 		return e
 	}
-	if e := tx.Reserve(s.sessionEffectOwner(*i)); e != nil {
+	if e := tx.Reserve(owner); e != nil {
 		return e
 	}
 	if s.fault != nil {
-		if e := s.fault("session-selection-after-claim"); e != nil {
+		if e := s.fault(faultPrefix + "-after-claim"); e != nil {
 			return e
 		}
 	}
@@ -509,7 +518,7 @@ func (s *Service) applySessionSelection(i *SessionInstance, tx *projecthistory.T
 			return e
 		}
 		if s.fault != nil {
-			if e := s.fault(fmt.Sprintf("session-selection-after-file:%d", j)); e != nil {
+			if e := s.fault(fmt.Sprintf("%s-after-file:%d", faultPrefix, j)); e != nil {
 				return e
 			}
 		}
@@ -550,7 +559,7 @@ func validateSessionSelections(st snapshot) error {
 		if p == nil {
 			continue
 		}
-		if st.Schema != sessionEffectsStateSchema || !i.Registered || p.Request.Schema != SessionSchema || p.Request.InstanceID != i.ID || p.Request.ProjectRef != st.Project || p.Request.CheckoutID != st.CheckoutID || !uuidPattern.MatchString(p.Request.OperationID) || !slices.Contains([]string{"prepared", "committed"}, p.Status) || len(p.Changes) == 0 || len(p.Changes) > 128 || p.LedgerBytes <= 0 {
+		if !sessionEffectsProfile(st.Schema) || !i.Registered || p.Request.Schema != SessionSchema || p.Request.InstanceID != i.ID || p.Request.ProjectRef != st.Project || p.Request.CheckoutID != st.CheckoutID || !uuidPattern.MatchString(p.Request.OperationID) || !slices.Contains([]string{"prepared", "committed"}, p.Status) || len(p.Changes) == 0 || len(p.Changes) > 128 || p.LedgerBytes <= 0 {
 			return fail("reconciliation_required", "invalid Session selection")
 		}
 		r, ok := st.Receipts[p.Request.OperationID]
@@ -750,7 +759,7 @@ func (s *Service) checkSelectionReferences(old string, allowed map[string]bool) 
 	})
 }
 
-func (s *Service) validateSelectionRecords(p SessionSelection) error {
+func (s *Service) validateSessionEffectRecords(p SessionRecordEffects) error {
 	files := map[string][]byte{}
 	changes := map[string]PublicationChange{}
 	for _, ch := range p.Changes {

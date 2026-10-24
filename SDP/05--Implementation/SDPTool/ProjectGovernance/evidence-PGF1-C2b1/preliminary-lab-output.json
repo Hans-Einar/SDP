@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+    "-C",
+    "SDPTool",
+    "test",
+    "./governance",
+    "-run",
+    "^TestSessionAssessmentCompiledJourney$",
+    "-count=1",
+    "-v"
+  ],
+  "exitCode": 0,
+  "output": "=== RUN   TestSessionAssessmentCompiledJourney\n    session_assessment_cli_test.go:114: PASS: 12 observed Session wire objects\n        \n--- PASS: TestSessionAssessmentCompiledJourney (0.71s)\nPASS\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t0.713s\n",
+  "outputSHA256": "1b9ae34b4c9dc8694fe122853b1893084f1694d387ade0434d5985b079125c54"
+}

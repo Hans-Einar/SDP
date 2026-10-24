@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:sdp:session-execution:0.1",
   "title": "Bounded Session execution wire contract",
-  "description": "Wire structure only. Core additionally validates canonical records, authority, path scopes, DAG and workflow digest. C1 does not activate steps or dispatch agents.",
+  "description": "Bounded Session execution structure; the core additionally checks exact coverage, canonical records, authority and design admission. Assessment never dispatches a host.",
   "$defs": {
     "record": {
       "type": "object",
@@ -367,7 +367,8 @@
           "enum": [
             "session-adopt",
             "session-resume",
-            "session-select"
+            "session-select",
+            "session-assess"
           ]
         },
         "operationId": {
@@ -477,7 +478,11 @@
                 "minLength": 1
               },
               "stage": {
-                "const": "admission"
+                "enum": [
+                  "admission",
+                  "design",
+                  "implementation"
+                ]
               },
               "holds": {
                 "type": "array",
@@ -488,6 +493,9 @@
               },
               "selected": {
                 "type": "boolean"
+              },
+              "assessment": {
+                "$ref": "#/$defs/assessmentView"
               }
             }
           },
@@ -500,7 +508,8 @@
             "enum": [
               "session-read",
               "session-resume",
-              "session-select"
+              "session-select",
+              "session-assess"
             ]
           }
         },
@@ -640,6 +649,248 @@
         "stepId": {
           "type": "string",
           "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+        }
+      }
+    },
+    "designCriterion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "domain",
+        "impact",
+        "rationale"
+      ],
+      "properties": {
+        "domain": {
+          "enum": [
+            "contracts",
+            "data-model",
+            "responsibilities",
+            "state-flow",
+            "interfaces",
+            "persistence",
+            "deployment"
+          ]
+        },
+        "impact": {
+          "enum": [
+            "changed",
+            "unchanged",
+            "unknown"
+          ]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        }
+      }
+    },
+    "blueprintDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requirement",
+        "rationale"
+      ],
+      "properties": {
+        "requirement": {
+          "enum": [
+            "required",
+            "not-required",
+            "unknown"
+          ]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        }
+      }
+    },
+    "sourcePin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "skillPin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "path",
+        "digest"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "assessRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "operationId",
+        "instanceId",
+        "expectedRevision",
+        "reason",
+        "stepId",
+        "criteria",
+        "blueprint",
+        "evidence",
+        "skills"
+      ],
+      "properties": {
+        "schema": {
+          "const": "sdp-session-execution/0.1"
+        },
+        "projectRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "checkoutId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "operationId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "instanceId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 18446744073709551615
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "stepId": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+        },
+        "criteria": {
+          "type": "array",
+          "minItems": 7,
+          "maxItems": 7,
+          "items": {
+            "$ref": "#/$defs/designCriterion"
+          }
+        },
+        "blueprint": {
+          "$ref": "#/$defs/blueprintDecision"
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/$defs/sourcePin"
+          }
+        },
+        "skills": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/$defs/skillPin"
+          }
+        }
+      }
+    },
+    "assessmentView": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operationId",
+        "reason",
+        "criteria",
+        "blueprint",
+        "evidence",
+        "skills",
+        "recordPath",
+        "designImpact"
+      ],
+      "properties": {
+        "operationId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "criteria": {
+          "type": "array",
+          "minItems": 7,
+          "maxItems": 7,
+          "items": {
+            "$ref": "#/$defs/designCriterion"
+          }
+        },
+        "blueprint": {
+          "$ref": "#/$defs/blueprintDecision"
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/$defs/sourcePin"
+          }
+        },
+        "skills": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/$defs/skillPin"
+          }
+        },
+        "recordPath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "designImpact": {
+          "enum": [
+            "changed",
+            "unchanged",
+            "unknown"
+          ]
         }
       }
     }

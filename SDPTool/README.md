@@ -208,7 +208,9 @@ and sdp-controller. The [owner controller](governancecontroller/README.md) adds
 bounded execution, steering, observed review and checked result publication.
 
 PGF1-C2a Session selection prepares and commits ready-card/plan/history effects.
-It preserves admission holds until design assessment; no agent launch or completion.
+PGF1-C2b1 records revision-bound design/Blueprint assessment with checked recovery.
+Unknown impact holds admission; changed design requires SDL WORK/design handoff.
+Session start/progress remains unimplemented; no agent launch or completion is implied.
 Full lifecycle/model gates, integrated verification and independent product review
 remain in PLAN-SDP-0018. Development-source availability does not imply a published
 installer or consuming-project installation.

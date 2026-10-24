@@ -2,7 +2,8 @@
 
 Owner Session0007 T041 accepts the T040 direction and selects its concretization.
 This is the bounded design for PLAN-SDP-0018 / KB052, linked to KB038 and KB037.
-It specifies the target behavior; existing runtime delivery remains PGI4-C3.
+It specifies the target behavior; runtime now includes the bounded C1, C2a and
+C2b1 subsets described below. Full lifecycle delivery remains open.
 [Orchestration](Orchestration.md) retains role/event behavior and T039 mandatory
 admission/model rules. [Acceptance](Acceptance.md) owns the test case register.
 The [SDL concern](../../../SDL/ProjectGovernance/SDPTool/SessionWorkflow/README.md)
@@ -274,3 +275,36 @@ appends are reconciled; selected-document/subject changes and new Blueprint even
 hold. Prepared effects retain exact all-input preconditions and cannot be silently
 rebased. [Evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2a.md)
 records bounded verification and remaining C2/PGF2–9 obligations.
+
+
+## T044 implementation boundary — PGF1-C2b1
+
+The first C2b checkpoint implements assess-design through the shared Session core,
+CLI and trusted-controller JSON action. An explicit seven-domain assessment and
+separate Blueprint decision are tied to the selected binding/step, instance revision,
+one to eight evidence pins and required Project Leader plus Change Analysis/Architect
+skill snapshots. This refines section 3's attributed assessment contract; it does
+not claim semantic inference from prose, skill consumption or independent approval.
+
+Changed impact routes to design and requires SDL WORK/accepted handoff. Explicit
+model-file/source writable scope cannot be classified as no-design. Unknown impact
+or unknown Blueprint applicability prevents no-design admission. All-unchanged impact
+permits the implementation business stage; required Blueprint remains a hold. Every
+route retains a start/dispatch hold until the remaining integration is delivered.
+The existing WORK :00002 covers RequireDesignWork, AdvanceWorkflowStage and checked
+effect ownership; no semantic model rewrite or release is selected here.
+
+A prepared assessment has no canonical effects. Resume publishes the exact attributed
+JSON record, Session/plan/card journals and history, then commits stage visibility.
+CardState remains ready/in-progress. Operational profile 0.15 stores bounded
+assessment history (eight records), while preserving the selection intent and all
+prior assessment artifacts. A new assessment can resolve uncertainty against the
+unchanged pinned basis. Changed evidence or procedures require explicit reconciliation,
+not an automatic new authority. Existing checked writer locks, reservations and
+pre/postimage recovery apply. Old resume receipts cannot release newer pending work.
+
+C2b2 remains responsible for start/progress and exact Session-to-existing-run binding.
+Legacy Maintenance and approved-Blueprint run contexts have their own validation;
+relabelling them would bypass those checks. No second execution engine or fabricated
+run report is introduced. C2c owns verified disposition/dependencies/claim release;
+PGF2/3 retain privileged leader and model handoff/release gates.

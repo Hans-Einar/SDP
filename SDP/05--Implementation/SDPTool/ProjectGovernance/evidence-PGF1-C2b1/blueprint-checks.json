@@ -1,0 +1,24 @@
+{
+  "revision": "93b746bfddb06f5e0206bfaaab21be0f15a5280b813b91e151e1d5cd2bb39ee7",
+  "status": "diagnostic-preview",
+  "files": {
+    "assignment.json": "77194b81968e56e3bae2347e5395834c3fbb7921d770e63f41e42e1287bc79ba",
+    "blueprint.json": "fbcf2a8fa03f314469e5826db68bfddc547b2f57215b5c599a6179caaf03524c",
+    "changes.md": "b6c43ea5f4ef8ef1412cde900215cd51452462aea89ad4a82f8bb2c72a8ec197",
+    "changes.mmd": "0d4b20f27eafadd396ac63776d11969e69912502052e0a4ee72e7433c3c18390",
+    "context.md": "f144e79061256e1e1fc511dcb57394e2c6b30fa8402b686d00b9b06d98d60860",
+    "context.mmd": "4abe54c5a21779ae31758cfa2f2ef6d53a88f75d218be9c64c5cf6dee76a45de",
+    "evidence.md": "b2aaeec660ef9caab675ae6a7b790ac1121ef93089ee87369f40dcaeb29fa023",
+    "index.md": "a92a9a06a361bf8e39ce38f451313e197e1b810c7f01f188f8166322f984fa86",
+    "manifest.json": "cc47f671a7fc8989c7134083e8b10225f2eec8e71da8b08f0c0f9d9d22c587fc",
+    "obligations.md": "da5de7d99ae3ea8c4e12985fa4f4e4fc221bad9e70073082d87035bed0948e9e",
+    "sources/NOW/Foundation.design": "c6c35abbb8efd6f742e35ec052d349e2033f4fcdf616a5d30ff355f58f237725",
+    "sources/NOW/System.design": "40707572c01915eeb46f1c9a80254ed0129b534b07b70b750c1ef7d89860b87b",
+    "sources/TARGET/Contracts.design": "b6f367149d229c7a09d3bae67677b77db7a79a3dbc230794bae254b8f6e36072",
+    "sources/TARGET/Foundation.design": "b705dc3815ba8075001dbf2e4dbb46152b74abe1c6c8d85d89f968edddbd9edc",
+    "sources/TARGET/System.design": "835abf7be06461e0dbcb2ad73c9250c9b5af2ca1924ec7e4ac0d6caac1076871",
+    "sources/TARGET/Workflow.design": "cca9cf67c5a6e03fcacaaaa9036c5268ed6f03b41ef082f15cf4548e961b8d38"
+  },
+  "ConstraintsPass": true,
+  "obligationCount": 320
+}

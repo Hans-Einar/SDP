@@ -503,8 +503,9 @@ updates worklogs, current selected-document links, board index and canonical his
 Unsupported references outside the selected card/plan/Session/index set refuse the
 move before effects; arbitrary historical documents are not silently rewritten.
 A committed selection has `recordEffects: committed` and `selected: true` on its
-step. The stage remains admission: design assessment, execution and completion
-remain unavailable. A gate-review card cannot be taken over by this operation.
+step. Selection alone stays at admission; explicit assessment is described below.
+Execution/completion remain unavailable. A gate-review card cannot be taken over
+by this operation.
 
 Operational profile 0.14 stores exact preimages/postimages and selection coverage.
 The shared canonical ledger lock coordinates current PG publication, Session effects
@@ -531,3 +532,55 @@ expiry until later verified disposition/replan support; do not delete them to by
 ownership. Limits: 128 claims, 128 effects/4 MiB content and 4096 reference-scan
 Markdown files, in addition to existing store limits. This is a development checkpoint,
 not the full C2 start/progress/disposition engine or privileged leader MCP integration.
+
+
+## Explicit Session design assessment — PGF1-C2b1
+
+After selection effects commit, `session-assess --input assessment.json` prepares
+an assessment of that selected step. `session-resume` applies its canonical records
+and commits the route. Both commands use the same revision/receipt/writer protocol
+as selection. `governance.session.assess` is the corresponding trusted-controller
+JSON action; restricted worker/leader MCP does not gain this authority.
+
+The request extends the selection fields (`schema`, project/checkout, operation and
+instance IDs, expected revision, step ID and reason) with:
+
+- `criteria`: exactly one entry for contracts, data-model, responsibilities,
+  state-flow, interfaces, persistence and deployment. Each has `impact`
+  (`changed`, `unchanged` or `unknown`) and a nonempty `rationale`.
+- `blueprint`: separate `requirement` (`required`, `not-required` or `unknown`)
+  and rationale. A no-design decision does not waive a required Blueprint.
+- `evidence`: one to eight project-relative path/SHA-256 snapshots.
+- `skills`: project-local absolute SKILL.md paths/digests for sdp-project-leader
+  and sdp-change-analysis or sdp-architect. Up to eight distinct skill snapshots
+  use the existing SkillInput contract. Use canonical source paths.
+
+Any changed criterion selects design. Explicitly writable .design/.sdui files or
+SDP/SDL source paths also require design, regardless of negative prose criteria.
+Otherwise unknown impact or unknown Blueprint applicability keeps admission held.
+All-unchanged criteria route to implementation with an explicit no-model disposition;
+required Blueprint handoff remains a hold. **No route dispatches an agent in this
+checkpoint.** Implementation is a business stage, not an observed running host.
+SDL WORK/design handoff and model release remain required for design-changing work.
+
+Operational profile 0.15 retains at most eight assessment intents per instance.
+Canonical records live at `SDP/Sessions/execution/assessments/<operation-id>.json`,
+with Session, plan and selected-card worklogs and append-only management events.
+CardState remains ready/in-progress: assessment is neither start nor completion.
+The artifact contains the attributed request, exact binding digest and derived
+impact. The controller supplies judgment; PG validates structure, pins and routing,
+not semantic truth or actual host consumption of a skill.
+
+A later assessment can resolve uncertainty against current pinned inputs, keeping
+earlier records unchanged. Edited selected documents/skills/evidence require explicit
+reconciliation; reassessment cannot silently rebind them. The eight-record bound
+refuses further assessment without discarding history; rollover/replan is not yet
+implemented. Pending effects use exact pre/postimage recovery and the canonical
+reservation. Even a historical resume retry cannot clear a newer pending reservation.
+
+Existing 0.13/0.14 stores remain readable and gain 0.15 only on assessment. Older
+executables refuse a 0.15 store. The workflow definition/digest stays pinned. CLI
+and action schemas expose committed assessment, stage and holds. Existing run/attempt
+ownership remains unchanged; C2b2 must integrate recorded start/progress with that
+engine before Session execution is usable. C2c disposition and PGF2/PGF3 leader/model
+gates, independent review and whole-workflow acceptance remain open.

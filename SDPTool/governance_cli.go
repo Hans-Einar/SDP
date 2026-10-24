@@ -18,7 +18,7 @@ const governanceHelp = `Usage: sdptool [PROJECT] governance context|route|bind|s
   --run UUID     run to read (read only)
   --instance UUID  Session instance for session-read
 Session operations: session-definition, session-context, session-adopt, session-read,
-session-list, session-select, session-resume. Selection prepares checked ready-card effects; resume commits them.
+session-list, session-select, session-assess, session-resume. Selection prepares checked ready-card effects; resume commits them.
 These operations do not launch agents or complete work.
   --state DIR    private operational state outside project (defaults to XDG state home)
   --json         machine output; human-readable output is the default
@@ -72,7 +72,7 @@ func governanceCommand(selected string, args []string, out, errs io.Writer, json
 		if *input != "" || *run != "" || *instance == "" {
 			return report(fmt.Errorf("session-read requires --instance only"))
 		}
-	case "session-context", "session-adopt", "session-resume", "session-select":
+	case "session-context", "session-adopt", "session-resume", "session-select", "session-assess":
 		if *input == "" || *run != "" {
 			return report(fmt.Errorf("operation requires --input only"))
 		}
@@ -144,6 +144,11 @@ func governanceCommand(selected string, args []string, out, errs io.Writer, json
 		var q governance.SessionSelectRequest
 		if e = governance.Decode(b, &q); e == nil {
 			result, e = service.SelectSession(governance.LocalController(), q)
+		}
+	case "session-assess":
+		var q governance.SessionAssessRequest
+		if e = governance.Decode(b, &q); e == nil {
+			result, e = service.AssessSession(governance.LocalController(), q)
 		}
 	case "session-read":
 		result, e = service.ReadSession(*instance)

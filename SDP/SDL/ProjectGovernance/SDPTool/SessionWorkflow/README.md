@@ -86,3 +86,15 @@ SessionWorkflowDelivery remains planned because design/dispatch/verification/mod
 release and complete disposition are not delivered. The scoped diagnostic Blueprint
 was generated before implementation and its constraints pass; independent product
 review and accepted model release remain unfulfilled gates.
+
+
+## T044 design-admission mapping
+
+PGF1-C2b1 implements the explicit assessment/routing subset of RequireDesignWork
+and AdvanceWorkflowStage, reusing CanonicalEffectPublisher and RunRepository for
+records/recovery. WORK :00002 validates unchanged; the pre-implementation diagnostic
+Blueprint passes its scoped constraints. This is partial target implementation,
+not an accepted NOW, independent review or model release. SessionWorkflowDelivery
+stays planned until run integration, design/model handoff and verified disposition
+are delivered. [Evidence](../../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2b1.md)
+records the bounded candidate and remaining obligations.

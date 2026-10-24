@@ -1,0 +1,20 @@
+--- FAIL: TestCompiledInvocationConsumer (0.48s)
+    action_process_test.go:30: catalogue actions: got [blueprint.assess blueprint.assignment.apply blueprint.assignment.list blueprint.generate governance.session.adopt governance.session.assess governance.session.context governance.session.definition governance.session.list governance.session.read governance.session.resume governance.session.select project.discover project.model-tree], want [blueprint.assess blueprint.assignment.apply blueprint.assignment.list blueprint.generate governance.session.adopt governance.session.context governance.session.definition governance.session.list governance.session.read governance.session.resume governance.session.select project.discover project.model-tree]
+FAIL
+FAIL	github.com/Hans-Einar/SDP/SDPTool	204.699s
+ok  	github.com/Hans-Einar/SDP/SDPTool/blueprints	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/blueprintstate	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller	1.021s
+?   	github.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp	[no test files]
+ok  	github.com/Hans-Einar/SDP/SDPTool/cmd/sdptool	1.014s
+ok  	github.com/Hans-Einar/SDP/SDPTool/codexcompat	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/governance	218.010s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancecontroller	68.283s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancehost	1.143s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancemcp	5.305s
+ok  	github.com/Hans-Einar/SDP/SDPTool/install	40.012s
+ok  	github.com/Hans-Einar/SDP/SDPTool/model	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/presentation	1.016s
+ok  	github.com/Hans-Einar/SDP/SDPTool/projecthistory	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/tools/profile	26.820s
+FAIL

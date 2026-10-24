@@ -1,0 +1,24 @@
+{
+  "baseline": "2b7c5d82e0cf1265664b1aba8b061d8c4631327e",
+  "candidate": "baseline plus exact source hashes; documentation may be completed after tests",
+  "files": {
+    "SDPTool/action_invoke.go": "e679c893512b8e49710347a460da8bde5b3ff30239639d6ac76d406a97fa6100",
+    "SDPTool/action_process_test.go": "1bea8353c1d1e75faeef31ccb83f888c6396ab655f1a3eb66278734edf27d765",
+    "SDPTool/action_sessions.go": "d2b746595f7be54477e71acfb8e311eb19675b32ade611823974317e5c395fef",
+    "SDPTool/governance/session.go": "4f301ca37c4b0c216465ffd664728210330bb75080191d7d7085f006697fe7e8",
+    "SDPTool/governance/session.schema.json": "24e99d8db894570cd38665950b8683dd5a8d302bb9f78d3b797cd8ad28a3ff75",
+    "SDPTool/governance/session_assessment.go": "0a392956777719104957099cf78094e0eed2eacd4370d1dbd17a2024312354f3",
+    "SDPTool/governance/session_assessment_cli_test.go": "2332824d6ab93449afa4fd7d5e442e98d849f9b89c1a16dc2da7f589095d6838",
+    "SDPTool/governance/session_assessment_test.go": "0f797aca83e7f3e1f55f511a30f4f620b0a6721151ab8aaec4bba69e46218b0a",
+    "SDPTool/governance/session_effects.go": "4e4676665b517f62fbb0d55fe8244d39459bf5a5eac6b729220b87f34c423809",
+    "SDPTool/governance/session_effects_test.go": "09324e9f63e9e2f1d162d11d05c9da114a1f2ba1435d68b3dccca6c0e882e8b6",
+    "SDPTool/governance/store.go": "60bb7efc408a1f250dad6841ea3ac31675acffa03664eec5809d92789b3cb6fa",
+    "SDPTool/governance_cli.go": "110c8f66c6dfb78ff18111e7819f6a7816d966baa432f0b1ec4ab9c7fe622053",
+    "SDPTool/presentation/presentation.go": "9a5ab9e79d7ec9fff6c6b1b191db04cef79c8888c47015d4084b2ed023bbc062",
+    "SDPTool/session_actions_test.go": "c534e84c9af88a4bf51e1d2b3d349f4beb7a0f7c03cf9177063bfaf91a6e5c20"
+  },
+  "binary": {
+    "path": "/home/warloc/.cache/sdp-workstation/PGF1-C2b1/bin/sdptool",
+    "sha256": "e09a06ad67d5083982ace09e55ef99f2c91d235502f64ff16cdb76d6ddd935af"
+  }
+}
