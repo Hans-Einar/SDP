@@ -1,0 +1,45 @@
+{
+  "productBaseline": "708f98fc4a29d8ff8be9c98c2e55b50f1a71cb38",
+  "labBaseline": "44b10d03ff4378089763cc1647bacf1c1884e3f2",
+  "binary": "/home/warloc/.cache/sdp-workstation/PGI4-C2/bin/sdp-controller",
+  "binarySHA256": "b26525ff2f41c1d5766b0448d33cc1204bc763b946ad5f21d8fb00fe33e0d916",
+  "mcpSHA256": "4911e055eb72183f843faadd917a090f474caa3db8a9af402d9347f67d10f01f",
+  "originalC8Head": "a6db29e0f60ebe1b70762c474346af462ce493913faf8da14b6008fa4228b87f",
+  "originalStatePreserved": true,
+  "baselineFilesPreserved": 51,
+  "nativeReviews": [
+    {
+      "case": "positive",
+      "reviewId": "cb6f4b07-c5a3-4acb-991c-78d8148f45c9",
+      "threadId": "01a16e22-1fb2-7fa1-a1f8-502918fc8fef",
+      "turnId": "01a16e22-22f4-7a12-a061-4cfc9a4da3d8",
+      "verdict": "passed",
+      "qualified": true,
+      "candidate": "30bb557a31b03481c9c4ebd8eb0b819eba5b3f1ab44c0b4ef572aa2dfd74d5c8",
+      "fault": "turn-start",
+      "recoveryMethods": [
+        "initialize",
+        "thread/read"
+      ],
+      "state": "/home/warloc/.cache/sdp-workstation/PGI4-C2/state-positive",
+      "testExitCode": 0
+    },
+    {
+      "case": "negative",
+      "reviewId": "d5e7b40c-ec81-4a95-9b87-450eb873fa32",
+      "threadId": "01a16e22-928c-7c22-9e6a-51b687ac2bdb",
+      "turnId": "01a16e22-93ce-77d2-9b5c-3d342ea3b4c3",
+      "verdict": "failed",
+      "qualified": false,
+      "candidate": "f757bffe9993102c51d4e6072b2599259bcc4188a945f9850085dab4e5164a6f",
+      "fault": "terminal-read",
+      "recoveryMethods": [
+        "initialize",
+        "thread/read"
+      ],
+      "state": "/home/warloc/.cache/sdp-workstation/PGI4-C2/state-negative",
+      "testExitCode": 1
+    }
+  ],
+  "limits": "Native product-test reviews of pg_lab only; not independent review of this PG implementation, native child hierarchy, owner acceptance or publication."
+}

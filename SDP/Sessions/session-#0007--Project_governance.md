@@ -2,13 +2,15 @@
 
 ## Session roadmap
 
-Latest recorded turn: T035 — PGI4-C1 candidate evidence and guarded rework verified in the core, compiled CLI and pg_lab.
+Latest recorded turn: T036 — PGI4-C2 observed native review, exact recovery and failed-finding rework verified.
 The native trial asks, receives a delayed fixture reply, starts one fresh attempt
 and implements/reports the selected behavior. Local acknowledgement, coordination and
 serialized leader delivery are implemented. C8 native single-worker/leader and completed
 history recovery pass. Parallel evidence, sustained-hour capacity, active-host recovery,
 independent review and canonical publication remain. PGI4-C1 now captures candidate-bound
-external evidence and supports guarded rework, preserving historical results.
+external evidence and supports guarded rework, preserving historical results. C2 now
+verifies separate-context native review; independent review of PG itself and checked
+canonical publication remain.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
 
 ```mermaid
@@ -29,7 +31,7 @@ gantt
 | --- | --- | --- | --- | --- |
 | completed | S1 | Recover skills, studies, card dependencies and ownership | Owner request, 2026-10-03 | Assessment below; RGS2 reused |
 | completed | S2 | Design the smallest common routing, run, Session and client contract | Owner continuation, T002 | [PGD1 / PLAN-SDP-0017](../04--Design/SDPTool/ProjectGovernance/Plan.md), contract, acceptance cases and protocol inspection |
-| on-going | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C6 verified; owner reports PGI3-U1 trial performed; native mapping remains unverified; PGI4-C1 evidence/rework delivered, review/publication remain |
+| on-going | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C6 verified; owner reports PGI3-U1 trial performed; native mapping remains unverified; PGI4-C1 evidence/rework and C2 native review delivered; checked publication and integrated gates remain |
 | completed | S7 | Codex 0.164.0 and compatible later hosts / PGC1 | Owner T029; KB057 and existing PLAN-SDP-0018 | 98b449c range/identity/recovery checks, full race/vet, 60 schema cases and real no-model 0.164.0 controller/MCP probe pass; full native/review gates remain |
 | on-going | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation, C2a lifecycle, C2b provider checks and C2c decisions and C2d activation/native code trial delivered; PGL3-C2 reports/inbox, C3 attention/replies and C4 guarded continuation delivered; C5 acknowledgement, C6 console/MCP and C7 serialized leader delivery/recovery and C8 native bounded workflow delivered; parallel/capacity/review/publication gates remain |
 | planned | S4 | Verify interruption, resume, scope change and evidence disposition | S3 candidate | Evidence required before wider use |
@@ -41,8 +43,8 @@ gantt
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-24 |
-| Current step | S3/S6 active: PGI4-C1 exact candidate evidence and rework delivered after the C8 native trial; review/publication and retained orchestration gates remain |
-| Proposed next step | PGI4 review provenance and checked canonical publication; retain two-Master/active-host recovery, SAD/owner interaction, capacity and integrated verification. SDL-only scope; KB059 onHold |
+| Current step | S3/S6 active: PGI4-C2 observed native review and recovery delivered after C1 evidence/rework; checked publication and retained orchestration/integrated gates remain |
+| Proposed next step | PGI4 checked canonical publication/recovery and review-result leader delivery; retain two-Master/active-host, SAD/owner, capacity and independent integrated verification. SDL-only scope; KB059 onHold |
 | Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension; T026 assigns hub/webapp to a separate project and continues local SDP/SDPTool work; T027 continues local attention/replies; T028 continues guarded attention continuation; T029 selects stable Codex >=0.164.0 and compatible later hosts, preserving other scopes |
 
 ## Goal and ownership
@@ -1711,3 +1713,68 @@ events; Toolkit and whitespace checks pass. Both canonical ledger prefixes are
 preserved. The record validator caught a misplaced new YAML verification entry;
 it was moved to the existing verification map and all checks now pass. Preparing
 the scoped SDP milestone commit and authorized phase push; no merge or release.
+
+
+## T036 — Continue through the independent-context review boundary
+
+Owner says to continue. Recover clean SDP 708f98f and pg_lab 44b10d0, both pushed.
+Use existing completion and native pg_lab test authority. Loaded/reused SDP, document
+workflow, Master, Architect, Planning, Worker, Verifier and Traceability.
+[Preflight](../05--Implementation/SDPTool/ProjectGovernance/preflight-PGI4-C2.json) is
+green for PG-local review execution/provenance and its native lab tests. No helper
+agents or independent review of this PG implementation is selected.
+
+Select PGI4-C2: a controller-issued review assignment pins candidate, report, tests,
+criteria and explicit review skill; a fresh read-only native context returns observed
+findings with exact send/recovery provenance. Keep context separation distinct from
+native child hierarchy, owner approval, semantic review quality and completion.
+Checked publication remains the subsequent gate.
+
+
+### T036 work summary
+
+- Owner continuation selects the existing PG completion route. Delivered PGI4-C2
+  under the recorded green preflight, with current branch/milestone policy. No
+  helper-agent delegation or independent review of this PG implementation.
+- Review assignments pin candidate, latest report, current test receipts, focus,
+  exact reviewer instructions, observed host version and explicit skill snapshots.
+  Profile 0.11 extends the existing immutable store/shared operation namespace.
+  Older actual reader refuses; current writers retain the new records.
+- Native controller opens a distinct fresh read-only context with empty history.
+  Complete MCP inventory contains only the three run-bound read tools; no attempt/
+  epoch mutation capability or child delegation. Controller-assigned Reviewer is
+  not mislabeled as a host-native child role. Skill acceptance is observed, not
+  procedural compliance or consumed-byte attestation.
+- Durable opening/sending claims prevent replacement after uncertainty. Recovery
+  requires the original version/thread/project and exact unique payload/skill input
+  in one full-history turn. Only final visible text supplies the structured verdict.
+  Unsent bound work can be safely superseded after controller replacement.
+- Final actual 0.164.0 / gpt-6-astra / high native reviews passed correct FormatLabel
+  and identified the deliberate separator defect at format.go:9. Lost turn/start
+  and completed-history responses recovered using initialize/thread-read only,
+  with no replacement threads or submissions. Reviewer inspected external Go test
+  evidence; no independent test rerun is inferred. Two earlier native trials are
+  retained separately before final run-bound MCP/instruction retention refinements.
+- Failed native finding was retained as a C1 attributed artifact and returned for
+  rework in the same Session; the native record continues to own its distinct
+  provenance. Sources restored; actual Go tests pass. Original C8 state and 51 lab
+  baseline regular files preserved. Read-only `./pg review [negative]` inspects results.
+- Final full SDPTool race/vet and 24 actual schema objects pass. Core/host/controller
+  tests cover stale/forged/unsafe inputs, context/history contamination, crash/retry,
+  profile preservation and no-resend boundaries. Exact candidate and evidence are
+  linked in [PGI4-C2](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI4-C2.md).
+- Lab d825cee on test/pgi4-c2-review is committed and pushed; worktree is clean.
+  PM222 / KB406–407 and system Traceability record delivery. Cards/plan/Session stay
+  active. Current design, state-boundary, owner walkthrough and product docs updated.
+- Loaded/reused SDP, document workflow, Master, Architect, Planning, Worker, Verifier
+  and Traceability. Next: checked canonical publication and interrupted/conflicting
+  write recovery, plus review-result delivery into leader coordination. Retain
+  PGL2/4 SAD/owner, PGL3 parallel/active-host/capacity and PGI5 independent integrated
+  verification. Backlog/onHold reviewed; no Blueprint restart, Ponsse, hub, merge or
+  release. This is the work summary, not an already captured final response.
+
+T036 final checks: all 16 candidate source hashes and 66 evidence artifacts match;
+287 relative links resolve. Management replay passes with 73 cards, 47 records and
+666 events; Toolkit and whitespace checks pass. Both canonical ledger prefixes
+are preserved. Preparing the scoped SDP milestone commit and authorized phase
+push. Checked publication and the remaining PG integration gates stay open.

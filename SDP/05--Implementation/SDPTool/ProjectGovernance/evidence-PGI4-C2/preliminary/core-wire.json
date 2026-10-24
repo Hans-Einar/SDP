@@ -1,0 +1,272 @@
+[
+  {
+    "definition": "ReviewRequest",
+    "value": {
+      "schema": "sdp-governance-review/1",
+      "projectRef": "trial",
+      "checkoutId": "2701810d-5e41-4838-a912-6c1e3e632216",
+      "operationId": "00f06a0e-1bda-48e1-8f98-6df3147181fa",
+      "runId": "5fea3e1f-aa18-4e5e-93e3-912016a6ea63",
+      "reviewId": "00f06a0e-1bda-48e1-8f98-6df3147181fa",
+      "expectedRevision": 0,
+      "expectedRunRevision": 3,
+      "action": "prepare",
+      "spec": {
+        "candidate": {
+          "schema": "sdp-governance-evidence/1",
+          "projectRef": "trial",
+          "checkoutId": "2701810d-5e41-4838-a912-6c1e3e632216",
+          "runId": "5fea3e1f-aa18-4e5e-93e3-912016a6ea63",
+          "inputRevision": "a10d4cca515a8089d1180f1649540c854f44f0ee4ff4f75eea74567aecab2429",
+          "writablePaths": [
+            "target.txt"
+          ],
+          "excludedPaths": [
+            "unrelated.txt"
+          ],
+          "dependencies": [
+            "dependencies"
+          ],
+          "entries": [
+            {
+              "path": "dependencies",
+              "kind": "directory",
+              "sha256": "",
+              "executable": 0
+            },
+            {
+              "path": "dependencies/config.txt",
+              "kind": "file",
+              "sha256": "b4a516812161f30dc9be9c2c6018b62069c58defafcef716e64261fb11e71dc4",
+              "executable": 0
+            },
+            {
+              "path": "target.txt",
+              "kind": "file",
+              "sha256": "a243a5c017666fec3846db80f1d1082d77f29dea97d147e81b21e5e171e8b1d3",
+              "executable": 0
+            }
+          ],
+          "digest": "2ccac743eb158f1adc3ae67715d75267574b42e67a94fe0efcec0abb83d972e0"
+        },
+        "reportId": "cc0febc6-0b85-47a7-b249-eccfbc17b2fd",
+        "evidenceIds": [
+          "53e2ed8c-c189-48da-a27a-468724690e02"
+        ],
+        "focus": "Check exact owner outcome and regressions",
+        "hostVersion": "0.164.0",
+        "mcpBinary": "/fixture/sdp-mcp",
+        "skills": [
+          {
+            "name": "sdp-reviewer",
+            "path": "/tmp/TestReviewQualificationAndHistoricalDrift338111463/001/project/Skills/sdp-reviewer/SKILL.md",
+            "digest": "101d4241d1b54c3c8154472cef38a8a3366cfc4dde158fc1ce80aa35eb9b7b5d"
+          }
+        ]
+      },
+      "threadId": "",
+      "turnId": "",
+      "status": "",
+      "answer": ""
+    }
+  },
+  {
+    "definition": "Result",
+    "value": {
+      "review": {
+        "runRevision": 3,
+        "id": "00f06a0e-1bda-48e1-8f98-6df3147181fa",
+        "runId": "5fea3e1f-aa18-4e5e-93e3-912016a6ea63",
+        "revision": 1,
+        "state": "prepared",
+        "spec": {
+          "candidate": {
+            "schema": "sdp-governance-evidence/1",
+            "projectRef": "trial",
+            "checkoutId": "2701810d-5e41-4838-a912-6c1e3e632216",
+            "runId": "5fea3e1f-aa18-4e5e-93e3-912016a6ea63",
+            "inputRevision": "a10d4cca515a8089d1180f1649540c854f44f0ee4ff4f75eea74567aecab2429",
+            "writablePaths": [
+              "target.txt"
+            ],
+            "excludedPaths": [
+              "unrelated.txt"
+            ],
+            "dependencies": [
+              "dependencies"
+            ],
+            "entries": [
+              {
+                "path": "dependencies",
+                "kind": "directory",
+                "sha256": "",
+                "executable": 0
+              },
+              {
+                "path": "dependencies/config.txt",
+                "kind": "file",
+                "sha256": "b4a516812161f30dc9be9c2c6018b62069c58defafcef716e64261fb11e71dc4",
+                "executable": 0
+              },
+              {
+                "path": "target.txt",
+                "kind": "file",
+                "sha256": "a243a5c017666fec3846db80f1d1082d77f29dea97d147e81b21e5e171e8b1d3",
+                "executable": 0
+              }
+            ],
+            "digest": "2ccac743eb158f1adc3ae67715d75267574b42e67a94fe0efcec0abb83d972e0"
+          },
+          "reportId": "cc0febc6-0b85-47a7-b249-eccfbc17b2fd",
+          "evidenceIds": [
+            "53e2ed8c-c189-48da-a27a-468724690e02"
+          ],
+          "focus": "Check exact owner outcome and regressions",
+          "hostVersion": "0.164.0",
+          "mcpBinary": "/fixture/sdp-mcp",
+          "skills": [
+            {
+              "name": "sdp-reviewer",
+              "path": "/tmp/TestReviewQualificationAndHistoricalDrift338111463/001/project/Skills/sdp-reviewer/SKILL.md",
+              "digest": "101d4241d1b54c3c8154472cef38a8a3366cfc4dde158fc1ce80aa35eb9b7b5d"
+            }
+          ]
+        },
+        "payload": "{\"schema\":\"sdp-governance-review/1\",\"selection\":{\"card\":\"SDP/KanBan/active/card.md\",\"plan\":\"SDP/Maintenance/Plan.md\",\"session\":\"SDP/Sessions/session.md\",\"authority\":\"SDP/authority.md\",\"step\":\"S1\"},\"assignment\":{\"outcome\":\"fix fixture\",\"writablePaths\":[\"target.txt\"],\"excludedPaths\":[\"unrelated.txt\"]},\"review\":{\"candidate\":{\"schema\":\"sdp-governance-evidence/1\",\"projectRef\":\"trial\",\"checkoutId\":\"2701810d-5e41-4838-a912-6c1e3e632216\",\"runId\":\"5fea3e1f-aa18-4e5e-93e3-912016a6ea63\",\"inputRevision\":\"a10d4cca515a8089d1180f1649540c854f44f0ee4ff4f75eea74567aecab2429\",\"writablePaths\":[\"target.txt\"],\"excludedPaths\":[\"unrelated.txt\"],\"dependencies\":[\"dependencies\"],\"entries\":[{\"path\":\"dependencies\",\"kind\":\"directory\",\"sha256\":\"\",\"executable\":0},{\"path\":\"dependencies/config.txt\",\"kind\":\"file\",\"sha256\":\"b4a516812161f30dc9be9c2c6018b62069c58defafcef716e64261fb11e71dc4\",\"executable\":0},{\"path\":\"target.txt\",\"kind\":\"file\",\"sha256\":\"a243a5c017666fec3846db80f1d1082d77f29dea97d147e81b21e5e171e8b1d3\",\"executable\":0}],\"digest\":\"2ccac743eb158f1adc3ae67715d75267574b42e67a94fe0efcec0abb83d972e0\"},\"reportId\":\"cc0febc6-0b85-47a7-b249-eccfbc17b2fd\",\"evidenceIds\":[\"53e2ed8c-c189-48da-a27a-468724690e02\"],\"focus\":\"Check exact owner outcome and regressions\",\"hostVersion\":\"0.164.0\",\"mcpBinary\":\"/fixture/sdp-mcp\",\"skills\":[{\"name\":\"sdp-reviewer\",\"path\":\"/tmp/TestReviewQualificationAndHistoricalDrift338111463/001/project/Skills/sdp-reviewer/SKILL.md\",\"digest\":\"101d4241d1b54c3c8154472cef38a8a3366cfc4dde158fc1ce80aa35eb9b7b5d\"}]},\"tests\":[{\"request\":{\"schema\":\"sdp-governance-evidence/1\",\"projectRef\":\"trial\",\"checkoutId\":\"2701810d-5e41-4838-a912-6c1e3e632216\",\"operationId\":\"53e2ed8c-c189-48da-a27a-468724690e02\",\"runId\":\"5fea3e1f-aa18-4e5e-93e3-912016a6ea63\",\"expectedRevision\":3,\"inputRevision\":\"a10d4cca515a8089d1180f1649540c854f44f0ee4ff4f75eea74567aecab2429\",\"reportId\":\"cc0febc6-0b85-47a7-b249-eccfbc17b2fd\",\"candidate\":{\"schema\":\"sdp-governance-evidence/1\",\"projectRef\":\"trial\",\"checkoutId\":\"2701810d-5e41-4838-a912-6c1e3e632216\",\"runId\":\"5fea3e1f-aa18-4e5e-93e3-912016a6ea63\",\"inputRevision\":\"a10d4cca515a8089d1180f1649540c854f44f0ee4ff4f75eea74567aecab2429\",\"writablePaths\":[\"target.txt\"],\"excludedPaths\":[\"unrelated.txt\"],\"dependencies\":[\"dependencies\"],\"entries\":[{\"path\":\"dependencies\",\"kind\":\"directory\",\"sha256\":\"\",\"executable\":0},{\"path\":\"dependencies/config.txt\",\"kind\":\"file\",\"sha256\":\"b4a516812161f30dc9be9c2c6018b62069c58defafcef716e64261fb11e71dc4\",\"executable\":0},{\"path\":\"target.txt\",\"kind\":\"file\",\"sha256\":\"a243a5c017666fec3846db80f1d1082d77f29dea97d147e81b21e5e171e8b1d3\",\"executable\":0}],\"digest\":\"2ccac743eb158f1adc3ae67715d75267574b42e67a94fe0efcec0abb83d972e0\"},\"kind\":\"test\",\"verdict\":\"passed\",\"issuer\":\"local verifier\",\"note\":\"external fixture checks; no independent review claim\",\"artifact\":{\"path\":\"evidence/test.log\",\"sha256\":\"f070c33a000f06c7facd7c86e2e60eabab2c8f8a1373604b166d970fb2482ad5\"}},\"recordedAt\":\"2026-10-24T13:40:37.802012009Z\",\"provenance\":\"controller-attributed\"}]}",
+        "threadId": "",
+        "turnId": "",
+        "answer": "",
+        "createdAt": "2026-10-24T13:40:37.828015119Z",
+        "updatedAt": "2026-10-24T13:40:37.828015119Z"
+      },
+      "schema": "sdp-project-governance/0.1",
+      "operation": "review.prepare",
+      "projectRef": "trial",
+      "checkoutId": "2701810d-5e41-4838-a912-6c1e3e632216",
+      "operationId": "00f06a0e-1bda-48e1-8f98-6df3147181fa",
+      "run": {
+        "id": "5fea3e1f-aa18-4e5e-93e3-912016a6ea63",
+        "revision": 3,
+        "requestId": "9e74da73-ab8b-41b7-a41c-e6828c3a4719",
+        "state": "verifying",
+        "step": "implement",
+        "inputRevision": "a10d4cca515a8089d1180f1649540c854f44f0ee4ff4f75eea74567aecab2429",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "fix fixture",
+          "writablePaths": [
+            "target.txt"
+          ],
+          "excludedPaths": [
+            "unrelated.txt"
+          ]
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "reason": "test observed boundary"
+      },
+      "coverage": "known"
+    }
+  },
+  {
+    "definition": "ReviewView",
+    "value": {
+      "schema": "sdp-governance-review/1",
+      "projectRef": "trial",
+      "checkoutId": "2701810d-5e41-4838-a912-6c1e3e632216",
+      "review": {
+        "runRevision": 3,
+        "id": "00f06a0e-1bda-48e1-8f98-6df3147181fa",
+        "runId": "5fea3e1f-aa18-4e5e-93e3-912016a6ea63",
+        "revision": 5,
+        "state": "completed",
+        "spec": {
+          "candidate": {
+            "schema": "sdp-governance-evidence/1",
+            "projectRef": "trial",
+            "checkoutId": "2701810d-5e41-4838-a912-6c1e3e632216",
+            "runId": "5fea3e1f-aa18-4e5e-93e3-912016a6ea63",
+            "inputRevision": "a10d4cca515a8089d1180f1649540c854f44f0ee4ff4f75eea74567aecab2429",
+            "writablePaths": [
+              "target.txt"
+            ],
+            "excludedPaths": [
+              "unrelated.txt"
+            ],
+            "dependencies": [
+              "dependencies"
+            ],
+            "entries": [
+              {
+                "path": "dependencies",
+                "kind": "directory",
+                "sha256": "",
+                "executable": 0
+              },
+              {
+                "path": "dependencies/config.txt",
+                "kind": "file",
+                "sha256": "b4a516812161f30dc9be9c2c6018b62069c58defafcef716e64261fb11e71dc4",
+                "executable": 0
+              },
+              {
+                "path": "target.txt",
+                "kind": "file",
+                "sha256": "a243a5c017666fec3846db80f1d1082d77f29dea97d147e81b21e5e171e8b1d3",
+                "executable": 0
+              }
+            ],
+            "digest": "2ccac743eb158f1adc3ae67715d75267574b42e67a94fe0efcec0abb83d972e0"
+          },
+          "reportId": "cc0febc6-0b85-47a7-b249-eccfbc17b2fd",
+          "evidenceIds": [
+            "53e2ed8c-c189-48da-a27a-468724690e02"
+          ],
+          "focus": "Check exact owner outcome and regressions",
+          "hostVersion": "0.164.0",
+          "mcpBinary": "/fixture/sdp-mcp",
+          "skills": [
+            {
+              "name": "sdp-reviewer",
+              "path": "/tmp/TestReviewQualificationAndHistoricalDrift338111463/001/project/Skills/sdp-reviewer/SKILL.md",
+              "digest": "101d4241d1b54c3c8154472cef38a8a3366cfc4dde158fc1ce80aa35eb9b7b5d"
+            }
+          ]
+        },
+        "payload": "{\"schema\":\"sdp-governance-review/1\",\"selection\":{\"card\":\"SDP/KanBan/active/card.md\",\"plan\":\"SDP/Maintenance/Plan.md\",\"session\":\"SDP/Sessions/session.md\",\"authority\":\"SDP/authority.md\",\"step\":\"S1\"},\"assignment\":{\"outcome\":\"fix fixture\",\"writablePaths\":[\"target.txt\"],\"excludedPaths\":[\"unrelated.txt\"]},\"review\":{\"candidate\":{\"schema\":\"sdp-governance-evidence/1\",\"projectRef\":\"trial\",\"checkoutId\":\"2701810d-5e41-4838-a912-6c1e3e632216\",\"runId\":\"5fea3e1f-aa18-4e5e-93e3-912016a6ea63\",\"inputRevision\":\"a10d4cca515a8089d1180f1649540c854f44f0ee4ff4f75eea74567aecab2429\",\"writablePaths\":[\"target.txt\"],\"excludedPaths\":[\"unrelated.txt\"],\"dependencies\":[\"dependencies\"],\"entries\":[{\"path\":\"dependencies\",\"kind\":\"directory\",\"sha256\":\"\",\"executable\":0},{\"path\":\"dependencies/config.txt\",\"kind\":\"file\",\"sha256\":\"b4a516812161f30dc9be9c2c6018b62069c58defafcef716e64261fb11e71dc4\",\"executable\":0},{\"path\":\"target.txt\",\"kind\":\"file\",\"sha256\":\"a243a5c017666fec3846db80f1d1082d77f29dea97d147e81b21e5e171e8b1d3\",\"executable\":0}],\"digest\":\"2ccac743eb158f1adc3ae67715d75267574b42e67a94fe0efcec0abb83d972e0\"},\"reportId\":\"cc0febc6-0b85-47a7-b249-eccfbc17b2fd\",\"evidenceIds\":[\"53e2ed8c-c189-48da-a27a-468724690e02\"],\"focus\":\"Check exact owner outcome and regressions\",\"hostVersion\":\"0.164.0\",\"mcpBinary\":\"/fixture/sdp-mcp\",\"skills\":[{\"name\":\"sdp-reviewer\",\"path\":\"/tmp/TestReviewQualificationAndHistoricalDrift338111463/001/project/Skills/sdp-reviewer/SKILL.md\",\"digest\":\"101d4241d1b54c3c8154472cef38a8a3366cfc4dde158fc1ce80aa35eb9b7b5d\"}]},\"tests\":[{\"request\":{\"schema\":\"sdp-governance-evidence/1\",\"projectRef\":\"trial\",\"checkoutId\":\"2701810d-5e41-4838-a912-6c1e3e632216\",\"operationId\":\"53e2ed8c-c189-48da-a27a-468724690e02\",\"runId\":\"5fea3e1f-aa18-4e5e-93e3-912016a6ea63\",\"expectedRevision\":3,\"inputRevision\":\"a10d4cca515a8089d1180f1649540c854f44f0ee4ff4f75eea74567aecab2429\",\"reportId\":\"cc0febc6-0b85-47a7-b249-eccfbc17b2fd\",\"candidate\":{\"schema\":\"sdp-governance-evidence/1\",\"projectRef\":\"trial\",\"checkoutId\":\"2701810d-5e41-4838-a912-6c1e3e632216\",\"runId\":\"5fea3e1f-aa18-4e5e-93e3-912016a6ea63\",\"inputRevision\":\"a10d4cca515a8089d1180f1649540c854f44f0ee4ff4f75eea74567aecab2429\",\"writablePaths\":[\"target.txt\"],\"excludedPaths\":[\"unrelated.txt\"],\"dependencies\":[\"dependencies\"],\"entries\":[{\"path\":\"dependencies\",\"kind\":\"directory\",\"sha256\":\"\",\"executable\":0},{\"path\":\"dependencies/config.txt\",\"kind\":\"file\",\"sha256\":\"b4a516812161f30dc9be9c2c6018b62069c58defafcef716e64261fb11e71dc4\",\"executable\":0},{\"path\":\"target.txt\",\"kind\":\"file\",\"sha256\":\"a243a5c017666fec3846db80f1d1082d77f29dea97d147e81b21e5e171e8b1d3\",\"executable\":0}],\"digest\":\"2ccac743eb158f1adc3ae67715d75267574b42e67a94fe0efcec0abb83d972e0\"},\"kind\":\"test\",\"verdict\":\"passed\",\"issuer\":\"local verifier\",\"note\":\"external fixture checks; no independent review claim\",\"artifact\":{\"path\":\"evidence/test.log\",\"sha256\":\"f070c33a000f06c7facd7c86e2e60eabab2c8f8a1373604b166d970fb2482ad5\"}},\"recordedAt\":\"2026-10-24T13:40:37.802012009Z\",\"provenance\":\"controller-attributed\"}]}",
+        "threadId": "fresh-review",
+        "turnId": "review-turn",
+        "answer": "{\"verdict\":\"passed\",\"summary\":\"Candidate satisfies scope\",\"findings\":[]}",
+        "outcome": {
+          "verdict": "passed",
+          "summary": "Candidate satisfies scope",
+          "findings": []
+        },
+        "createdAt": "2026-10-24T13:40:37.828015119Z",
+        "updatedAt": "2026-10-24T13:40:38.207303607Z"
+      },
+      "applicable": false,
+      "qualified": false,
+      "contextSeparation": "controller-observed-fresh-thread",
+      "conditions": [
+        "stale_candidate: review candidate changed"
+      ]
+    }
+  }
+]

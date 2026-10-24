@@ -1,0 +1,275 @@
+[
+  {
+    "definition": "ReviewRequest",
+    "value": {
+      "schema": "sdp-governance-review/1",
+      "projectRef": "trial",
+      "checkoutId": "4eff09ea-2ec1-487f-a9d0-8997699cb4da",
+      "operationId": "12bedcac-4df2-4fc1-809e-56260c4fee58",
+      "runId": "762eb3cc-d6c3-491b-8df1-edbf868fd5c1",
+      "reviewId": "12bedcac-4df2-4fc1-809e-56260c4fee58",
+      "expectedRevision": 0,
+      "expectedRunRevision": 3,
+      "action": "prepare",
+      "spec": {
+        "instructions": "Read-only independent review",
+        "candidate": {
+          "schema": "sdp-governance-evidence/1",
+          "projectRef": "trial",
+          "checkoutId": "4eff09ea-2ec1-487f-a9d0-8997699cb4da",
+          "runId": "762eb3cc-d6c3-491b-8df1-edbf868fd5c1",
+          "inputRevision": "569fa4a6f6ce9712eeb869d26cc03437b57dc32c9ea552616932c7f4c9e53fe5",
+          "writablePaths": [
+            "target.txt"
+          ],
+          "excludedPaths": [
+            "unrelated.txt"
+          ],
+          "dependencies": [
+            "dependencies"
+          ],
+          "entries": [
+            {
+              "path": "dependencies",
+              "kind": "directory",
+              "sha256": "",
+              "executable": 0
+            },
+            {
+              "path": "dependencies/config.txt",
+              "kind": "file",
+              "sha256": "b4a516812161f30dc9be9c2c6018b62069c58defafcef716e64261fb11e71dc4",
+              "executable": 0
+            },
+            {
+              "path": "target.txt",
+              "kind": "file",
+              "sha256": "a243a5c017666fec3846db80f1d1082d77f29dea97d147e81b21e5e171e8b1d3",
+              "executable": 0
+            }
+          ],
+          "digest": "4c5a46518addcfd68da7a5d091b851a2f26b386fc7ca09c07d872af602b44ddd"
+        },
+        "reportId": "15c14d5b-e485-4aa2-935a-55084019c348",
+        "evidenceIds": [
+          "00cac897-103a-491b-879d-c8a749cbe706"
+        ],
+        "focus": "Check exact owner outcome and regressions",
+        "hostVersion": "0.164.0",
+        "mcpBinary": "/fixture/sdp-mcp",
+        "skills": [
+          {
+            "name": "sdp-reviewer",
+            "path": "/tmp/TestReviewQualificationAndHistoricalDrift559564715/001/project/Skills/sdp-reviewer/SKILL.md",
+            "digest": "101d4241d1b54c3c8154472cef38a8a3366cfc4dde158fc1ce80aa35eb9b7b5d"
+          }
+        ]
+      },
+      "threadId": "",
+      "turnId": "",
+      "status": "",
+      "answer": ""
+    }
+  },
+  {
+    "definition": "Result",
+    "value": {
+      "review": {
+        "runRevision": 3,
+        "id": "12bedcac-4df2-4fc1-809e-56260c4fee58",
+        "runId": "762eb3cc-d6c3-491b-8df1-edbf868fd5c1",
+        "revision": 1,
+        "state": "prepared",
+        "spec": {
+          "instructions": "Read-only independent review",
+          "candidate": {
+            "schema": "sdp-governance-evidence/1",
+            "projectRef": "trial",
+            "checkoutId": "4eff09ea-2ec1-487f-a9d0-8997699cb4da",
+            "runId": "762eb3cc-d6c3-491b-8df1-edbf868fd5c1",
+            "inputRevision": "569fa4a6f6ce9712eeb869d26cc03437b57dc32c9ea552616932c7f4c9e53fe5",
+            "writablePaths": [
+              "target.txt"
+            ],
+            "excludedPaths": [
+              "unrelated.txt"
+            ],
+            "dependencies": [
+              "dependencies"
+            ],
+            "entries": [
+              {
+                "path": "dependencies",
+                "kind": "directory",
+                "sha256": "",
+                "executable": 0
+              },
+              {
+                "path": "dependencies/config.txt",
+                "kind": "file",
+                "sha256": "b4a516812161f30dc9be9c2c6018b62069c58defafcef716e64261fb11e71dc4",
+                "executable": 0
+              },
+              {
+                "path": "target.txt",
+                "kind": "file",
+                "sha256": "a243a5c017666fec3846db80f1d1082d77f29dea97d147e81b21e5e171e8b1d3",
+                "executable": 0
+              }
+            ],
+            "digest": "4c5a46518addcfd68da7a5d091b851a2f26b386fc7ca09c07d872af602b44ddd"
+          },
+          "reportId": "15c14d5b-e485-4aa2-935a-55084019c348",
+          "evidenceIds": [
+            "00cac897-103a-491b-879d-c8a749cbe706"
+          ],
+          "focus": "Check exact owner outcome and regressions",
+          "hostVersion": "0.164.0",
+          "mcpBinary": "/fixture/sdp-mcp",
+          "skills": [
+            {
+              "name": "sdp-reviewer",
+              "path": "/tmp/TestReviewQualificationAndHistoricalDrift559564715/001/project/Skills/sdp-reviewer/SKILL.md",
+              "digest": "101d4241d1b54c3c8154472cef38a8a3366cfc4dde158fc1ce80aa35eb9b7b5d"
+            }
+          ]
+        },
+        "payload": "{\"schema\":\"sdp-governance-review/1\",\"selection\":{\"card\":\"SDP/KanBan/active/card.md\",\"plan\":\"SDP/Maintenance/Plan.md\",\"session\":\"SDP/Sessions/session.md\",\"authority\":\"SDP/authority.md\",\"step\":\"S1\"},\"assignment\":{\"outcome\":\"fix fixture\",\"writablePaths\":[\"target.txt\"],\"excludedPaths\":[\"unrelated.txt\"]},\"review\":{\"instructions\":\"Read-only independent review\",\"candidate\":{\"schema\":\"sdp-governance-evidence/1\",\"projectRef\":\"trial\",\"checkoutId\":\"4eff09ea-2ec1-487f-a9d0-8997699cb4da\",\"runId\":\"762eb3cc-d6c3-491b-8df1-edbf868fd5c1\",\"inputRevision\":\"569fa4a6f6ce9712eeb869d26cc03437b57dc32c9ea552616932c7f4c9e53fe5\",\"writablePaths\":[\"target.txt\"],\"excludedPaths\":[\"unrelated.txt\"],\"dependencies\":[\"dependencies\"],\"entries\":[{\"path\":\"dependencies\",\"kind\":\"directory\",\"sha256\":\"\",\"executable\":0},{\"path\":\"dependencies/config.txt\",\"kind\":\"file\",\"sha256\":\"b4a516812161f30dc9be9c2c6018b62069c58defafcef716e64261fb11e71dc4\",\"executable\":0},{\"path\":\"target.txt\",\"kind\":\"file\",\"sha256\":\"a243a5c017666fec3846db80f1d1082d77f29dea97d147e81b21e5e171e8b1d3\",\"executable\":0}],\"digest\":\"4c5a46518addcfd68da7a5d091b851a2f26b386fc7ca09c07d872af602b44ddd\"},\"reportId\":\"15c14d5b-e485-4aa2-935a-55084019c348\",\"evidenceIds\":[\"00cac897-103a-491b-879d-c8a749cbe706\"],\"focus\":\"Check exact owner outcome and regressions\",\"hostVersion\":\"0.164.0\",\"mcpBinary\":\"/fixture/sdp-mcp\",\"skills\":[{\"name\":\"sdp-reviewer\",\"path\":\"/tmp/TestReviewQualificationAndHistoricalDrift559564715/001/project/Skills/sdp-reviewer/SKILL.md\",\"digest\":\"101d4241d1b54c3c8154472cef38a8a3366cfc4dde158fc1ce80aa35eb9b7b5d\"}]},\"tests\":[{\"request\":{\"schema\":\"sdp-governance-evidence/1\",\"projectRef\":\"trial\",\"checkoutId\":\"4eff09ea-2ec1-487f-a9d0-8997699cb4da\",\"operationId\":\"00cac897-103a-491b-879d-c8a749cbe706\",\"runId\":\"762eb3cc-d6c3-491b-8df1-edbf868fd5c1\",\"expectedRevision\":3,\"inputRevision\":\"569fa4a6f6ce9712eeb869d26cc03437b57dc32c9ea552616932c7f4c9e53fe5\",\"reportId\":\"15c14d5b-e485-4aa2-935a-55084019c348\",\"candidate\":{\"schema\":\"sdp-governance-evidence/1\",\"projectRef\":\"trial\",\"checkoutId\":\"4eff09ea-2ec1-487f-a9d0-8997699cb4da\",\"runId\":\"762eb3cc-d6c3-491b-8df1-edbf868fd5c1\",\"inputRevision\":\"569fa4a6f6ce9712eeb869d26cc03437b57dc32c9ea552616932c7f4c9e53fe5\",\"writablePaths\":[\"target.txt\"],\"excludedPaths\":[\"unrelated.txt\"],\"dependencies\":[\"dependencies\"],\"entries\":[{\"path\":\"dependencies\",\"kind\":\"directory\",\"sha256\":\"\",\"executable\":0},{\"path\":\"dependencies/config.txt\",\"kind\":\"file\",\"sha256\":\"b4a516812161f30dc9be9c2c6018b62069c58defafcef716e64261fb11e71dc4\",\"executable\":0},{\"path\":\"target.txt\",\"kind\":\"file\",\"sha256\":\"a243a5c017666fec3846db80f1d1082d77f29dea97d147e81b21e5e171e8b1d3\",\"executable\":0}],\"digest\":\"4c5a46518addcfd68da7a5d091b851a2f26b386fc7ca09c07d872af602b44ddd\"},\"kind\":\"test\",\"verdict\":\"passed\",\"issuer\":\"local verifier\",\"note\":\"external fixture checks; no independent review claim\",\"artifact\":{\"path\":\"evidence/test.log\",\"sha256\":\"f070c33a000f06c7facd7c86e2e60eabab2c8f8a1373604b166d970fb2482ad5\"}},\"recordedAt\":\"2026-10-24T13:45:44.514789499Z\",\"provenance\":\"controller-attributed\"}]}",
+        "threadId": "",
+        "turnId": "",
+        "answer": "",
+        "createdAt": "2026-10-24T13:45:44.533919463Z",
+        "updatedAt": "2026-10-24T13:45:44.533919463Z"
+      },
+      "schema": "sdp-project-governance/0.1",
+      "operation": "review.prepare",
+      "projectRef": "trial",
+      "checkoutId": "4eff09ea-2ec1-487f-a9d0-8997699cb4da",
+      "operationId": "12bedcac-4df2-4fc1-809e-56260c4fee58",
+      "run": {
+        "id": "762eb3cc-d6c3-491b-8df1-edbf868fd5c1",
+        "revision": 3,
+        "requestId": "8540b8a4-92eb-4558-916a-db85496dca86",
+        "state": "verifying",
+        "step": "implement",
+        "inputRevision": "569fa4a6f6ce9712eeb869d26cc03437b57dc32c9ea552616932c7f4c9e53fe5",
+        "selection": {
+          "card": "SDP/KanBan/active/card.md",
+          "plan": "SDP/Maintenance/Plan.md",
+          "session": "SDP/Sessions/session.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "fix fixture",
+          "writablePaths": [
+            "target.txt"
+          ],
+          "excludedPaths": [
+            "unrelated.txt"
+          ]
+        },
+        "routine": {
+          "id": "maintenance",
+          "version": "0.1",
+          "steps": [
+            "implement",
+            "verify",
+            "review",
+            "record"
+          ],
+          "completion": "candidate evidence, applicable independent review and checked publication required"
+        },
+        "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+        "reason": "test observed boundary"
+      },
+      "coverage": "known"
+    }
+  },
+  {
+    "definition": "ReviewView",
+    "value": {
+      "schema": "sdp-governance-review/1",
+      "projectRef": "trial",
+      "checkoutId": "4eff09ea-2ec1-487f-a9d0-8997699cb4da",
+      "review": {
+        "runRevision": 3,
+        "id": "12bedcac-4df2-4fc1-809e-56260c4fee58",
+        "runId": "762eb3cc-d6c3-491b-8df1-edbf868fd5c1",
+        "revision": 5,
+        "state": "completed",
+        "spec": {
+          "instructions": "Read-only independent review",
+          "candidate": {
+            "schema": "sdp-governance-evidence/1",
+            "projectRef": "trial",
+            "checkoutId": "4eff09ea-2ec1-487f-a9d0-8997699cb4da",
+            "runId": "762eb3cc-d6c3-491b-8df1-edbf868fd5c1",
+            "inputRevision": "569fa4a6f6ce9712eeb869d26cc03437b57dc32c9ea552616932c7f4c9e53fe5",
+            "writablePaths": [
+              "target.txt"
+            ],
+            "excludedPaths": [
+              "unrelated.txt"
+            ],
+            "dependencies": [
+              "dependencies"
+            ],
+            "entries": [
+              {
+                "path": "dependencies",
+                "kind": "directory",
+                "sha256": "",
+                "executable": 0
+              },
+              {
+                "path": "dependencies/config.txt",
+                "kind": "file",
+                "sha256": "b4a516812161f30dc9be9c2c6018b62069c58defafcef716e64261fb11e71dc4",
+                "executable": 0
+              },
+              {
+                "path": "target.txt",
+                "kind": "file",
+                "sha256": "a243a5c017666fec3846db80f1d1082d77f29dea97d147e81b21e5e171e8b1d3",
+                "executable": 0
+              }
+            ],
+            "digest": "4c5a46518addcfd68da7a5d091b851a2f26b386fc7ca09c07d872af602b44ddd"
+          },
+          "reportId": "15c14d5b-e485-4aa2-935a-55084019c348",
+          "evidenceIds": [
+            "00cac897-103a-491b-879d-c8a749cbe706"
+          ],
+          "focus": "Check exact owner outcome and regressions",
+          "hostVersion": "0.164.0",
+          "mcpBinary": "/fixture/sdp-mcp",
+          "skills": [
+            {
+              "name": "sdp-reviewer",
+              "path": "/tmp/TestReviewQualificationAndHistoricalDrift559564715/001/project/Skills/sdp-reviewer/SKILL.md",
+              "digest": "101d4241d1b54c3c8154472cef38a8a3366cfc4dde158fc1ce80aa35eb9b7b5d"
+            }
+          ]
+        },
+        "payload": "{\"schema\":\"sdp-governance-review/1\",\"selection\":{\"card\":\"SDP/KanBan/active/card.md\",\"plan\":\"SDP/Maintenance/Plan.md\",\"session\":\"SDP/Sessions/session.md\",\"authority\":\"SDP/authority.md\",\"step\":\"S1\"},\"assignment\":{\"outcome\":\"fix fixture\",\"writablePaths\":[\"target.txt\"],\"excludedPaths\":[\"unrelated.txt\"]},\"review\":{\"instructions\":\"Read-only independent review\",\"candidate\":{\"schema\":\"sdp-governance-evidence/1\",\"projectRef\":\"trial\",\"checkoutId\":\"4eff09ea-2ec1-487f-a9d0-8997699cb4da\",\"runId\":\"762eb3cc-d6c3-491b-8df1-edbf868fd5c1\",\"inputRevision\":\"569fa4a6f6ce9712eeb869d26cc03437b57dc32c9ea552616932c7f4c9e53fe5\",\"writablePaths\":[\"target.txt\"],\"excludedPaths\":[\"unrelated.txt\"],\"dependencies\":[\"dependencies\"],\"entries\":[{\"path\":\"dependencies\",\"kind\":\"directory\",\"sha256\":\"\",\"executable\":0},{\"path\":\"dependencies/config.txt\",\"kind\":\"file\",\"sha256\":\"b4a516812161f30dc9be9c2c6018b62069c58defafcef716e64261fb11e71dc4\",\"executable\":0},{\"path\":\"target.txt\",\"kind\":\"file\",\"sha256\":\"a243a5c017666fec3846db80f1d1082d77f29dea97d147e81b21e5e171e8b1d3\",\"executable\":0}],\"digest\":\"4c5a46518addcfd68da7a5d091b851a2f26b386fc7ca09c07d872af602b44ddd\"},\"reportId\":\"15c14d5b-e485-4aa2-935a-55084019c348\",\"evidenceIds\":[\"00cac897-103a-491b-879d-c8a749cbe706\"],\"focus\":\"Check exact owner outcome and regressions\",\"hostVersion\":\"0.164.0\",\"mcpBinary\":\"/fixture/sdp-mcp\",\"skills\":[{\"name\":\"sdp-reviewer\",\"path\":\"/tmp/TestReviewQualificationAndHistoricalDrift559564715/001/project/Skills/sdp-reviewer/SKILL.md\",\"digest\":\"101d4241d1b54c3c8154472cef38a8a3366cfc4dde158fc1ce80aa35eb9b7b5d\"}]},\"tests\":[{\"request\":{\"schema\":\"sdp-governance-evidence/1\",\"projectRef\":\"trial\",\"checkoutId\":\"4eff09ea-2ec1-487f-a9d0-8997699cb4da\",\"operationId\":\"00cac897-103a-491b-879d-c8a749cbe706\",\"runId\":\"762eb3cc-d6c3-491b-8df1-edbf868fd5c1\",\"expectedRevision\":3,\"inputRevision\":\"569fa4a6f6ce9712eeb869d26cc03437b57dc32c9ea552616932c7f4c9e53fe5\",\"reportId\":\"15c14d5b-e485-4aa2-935a-55084019c348\",\"candidate\":{\"schema\":\"sdp-governance-evidence/1\",\"projectRef\":\"trial\",\"checkoutId\":\"4eff09ea-2ec1-487f-a9d0-8997699cb4da\",\"runId\":\"762eb3cc-d6c3-491b-8df1-edbf868fd5c1\",\"inputRevision\":\"569fa4a6f6ce9712eeb869d26cc03437b57dc32c9ea552616932c7f4c9e53fe5\",\"writablePaths\":[\"target.txt\"],\"excludedPaths\":[\"unrelated.txt\"],\"dependencies\":[\"dependencies\"],\"entries\":[{\"path\":\"dependencies\",\"kind\":\"directory\",\"sha256\":\"\",\"executable\":0},{\"path\":\"dependencies/config.txt\",\"kind\":\"file\",\"sha256\":\"b4a516812161f30dc9be9c2c6018b62069c58defafcef716e64261fb11e71dc4\",\"executable\":0},{\"path\":\"target.txt\",\"kind\":\"file\",\"sha256\":\"a243a5c017666fec3846db80f1d1082d77f29dea97d147e81b21e5e171e8b1d3\",\"executable\":0}],\"digest\":\"4c5a46518addcfd68da7a5d091b851a2f26b386fc7ca09c07d872af602b44ddd\"},\"kind\":\"test\",\"verdict\":\"passed\",\"issuer\":\"local verifier\",\"note\":\"external fixture checks; no independent review claim\",\"artifact\":{\"path\":\"evidence/test.log\",\"sha256\":\"f070c33a000f06c7facd7c86e2e60eabab2c8f8a1373604b166d970fb2482ad5\"}},\"recordedAt\":\"2026-10-24T13:45:44.514789499Z\",\"provenance\":\"controller-attributed\"}]}",
+        "threadId": "fresh-review",
+        "turnId": "review-turn",
+        "answer": "{\"verdict\":\"passed\",\"summary\":\"Candidate satisfies scope\",\"findings\":[]}",
+        "outcome": {
+          "verdict": "passed",
+          "summary": "Candidate satisfies scope",
+          "findings": []
+        },
+        "createdAt": "2026-10-24T13:45:44.533919463Z",
+        "updatedAt": "2026-10-24T13:45:44.897281409Z"
+      },
+      "applicable": false,
+      "qualified": false,
+      "contextSeparation": "controller-observed-fresh-thread",
+      "conditions": [
+        "stale_candidate: review candidate changed"
+      ]
+    }
+  }
+]

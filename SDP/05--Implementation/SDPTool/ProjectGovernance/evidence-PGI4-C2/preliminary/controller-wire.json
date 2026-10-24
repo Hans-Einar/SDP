@@ -1,0 +1,71 @@
+[
+  {
+    "definition": "ReviewView",
+    "value": {
+      "schema": "sdp-governance-review/1",
+      "projectRef": "trial",
+      "checkoutId": "0b15a830-7e69-4aac-af60-598bded391c5",
+      "review": {
+        "runRevision": 3,
+        "id": "2bab61d5-d982-4a9a-8291-348c17b4d632",
+        "runId": "4b081baa-1a0f-4baa-82c9-c6ce01a8930c",
+        "revision": 5,
+        "state": "completed",
+        "spec": {
+          "candidate": {
+            "schema": "sdp-governance-evidence/1",
+            "projectRef": "trial",
+            "checkoutId": "0b15a830-7e69-4aac-af60-598bded391c5",
+            "runId": "4b081baa-1a0f-4baa-82c9-c6ce01a8930c",
+            "inputRevision": "62d321389d6b4414ce408fcab6010b82009583e0c6897267dee5c07fdc3b1ed7",
+            "writablePaths": [
+              "target.txt"
+            ],
+            "excludedPaths": [
+              "unrelated.txt"
+            ],
+            "dependencies": [],
+            "entries": [
+              {
+                "path": "target.txt",
+                "kind": "missing",
+                "sha256": "",
+                "executable": 0
+              }
+            ],
+            "digest": "e8eb0c181442b4c9822f33d2786936dbf95383839e22e442dac48f7db04abb64"
+          },
+          "reportId": "9dc0d1fa-e602-4efe-8245-fb5f64c2bb62",
+          "evidenceIds": [
+            "139d8a98-25e0-4924-b546-29c4fdd4a5ad"
+          ],
+          "focus": "review candidate independently",
+          "hostVersion": "0.164.0",
+          "mcpBinary": "/fixture/mcp",
+          "skills": [
+            {
+              "name": "sdp-reviewer",
+              "path": "/tmp/TestReviewControllerExactRecoveryAndNoResend2371247220/001/project/Skills/sdp/SKILL.md",
+              "digest": "9c53c074d7ac6a2728b638ac1f376c5fa9eb8f71603017c3ea638c2fd40548df"
+            }
+          ]
+        },
+        "payload": "{\"schema\":\"sdp-governance-review/1\",\"selection\":{\"card\":\"SDP/KanBan/active/card.md\",\"plan\":\"SDP/Maintenance/Plan.md\",\"session\":\"SDP/Sessions/session.md\",\"authority\":\"SDP/authority.md\",\"step\":\"S1\"},\"assignment\":{\"outcome\":\"fix fixture\",\"writablePaths\":[\"target.txt\"],\"excludedPaths\":[\"unrelated.txt\"]},\"review\":{\"candidate\":{\"schema\":\"sdp-governance-evidence/1\",\"projectRef\":\"trial\",\"checkoutId\":\"0b15a830-7e69-4aac-af60-598bded391c5\",\"runId\":\"4b081baa-1a0f-4baa-82c9-c6ce01a8930c\",\"inputRevision\":\"62d321389d6b4414ce408fcab6010b82009583e0c6897267dee5c07fdc3b1ed7\",\"writablePaths\":[\"target.txt\"],\"excludedPaths\":[\"unrelated.txt\"],\"dependencies\":[],\"entries\":[{\"path\":\"target.txt\",\"kind\":\"missing\",\"sha256\":\"\",\"executable\":0}],\"digest\":\"e8eb0c181442b4c9822f33d2786936dbf95383839e22e442dac48f7db04abb64\"},\"reportId\":\"9dc0d1fa-e602-4efe-8245-fb5f64c2bb62\",\"evidenceIds\":[\"139d8a98-25e0-4924-b546-29c4fdd4a5ad\"],\"focus\":\"review candidate independently\",\"hostVersion\":\"0.164.0\",\"mcpBinary\":\"/fixture/mcp\",\"skills\":[{\"name\":\"sdp-reviewer\",\"path\":\"/tmp/TestReviewControllerExactRecoveryAndNoResend2371247220/001/project/Skills/sdp/SKILL.md\",\"digest\":\"9c53c074d7ac6a2728b638ac1f376c5fa9eb8f71603017c3ea638c2fd40548df\"}]},\"tests\":[{\"request\":{\"schema\":\"sdp-governance-evidence/1\",\"projectRef\":\"trial\",\"checkoutId\":\"0b15a830-7e69-4aac-af60-598bded391c5\",\"operationId\":\"139d8a98-25e0-4924-b546-29c4fdd4a5ad\",\"runId\":\"4b081baa-1a0f-4baa-82c9-c6ce01a8930c\",\"expectedRevision\":3,\"inputRevision\":\"62d321389d6b4414ce408fcab6010b82009583e0c6897267dee5c07fdc3b1ed7\",\"reportId\":\"9dc0d1fa-e602-4efe-8245-fb5f64c2bb62\",\"candidate\":{\"schema\":\"sdp-governance-evidence/1\",\"projectRef\":\"trial\",\"checkoutId\":\"0b15a830-7e69-4aac-af60-598bded391c5\",\"runId\":\"4b081baa-1a0f-4baa-82c9-c6ce01a8930c\",\"inputRevision\":\"62d321389d6b4414ce408fcab6010b82009583e0c6897267dee5c07fdc3b1ed7\",\"writablePaths\":[\"target.txt\"],\"excludedPaths\":[\"unrelated.txt\"],\"dependencies\":[],\"entries\":[{\"path\":\"target.txt\",\"kind\":\"missing\",\"sha256\":\"\",\"executable\":0}],\"digest\":\"e8eb0c181442b4c9822f33d2786936dbf95383839e22e442dac48f7db04abb64\"},\"kind\":\"test\",\"verdict\":\"passed\",\"issuer\":\"fixture\",\"note\":\"external test\",\"artifact\":{\"path\":\"test.log\",\"sha256\":\"803bfacf7da20f010a9b3a7f37afa761f71e3c222b4dd0febad69c19fc00a632\"}},\"recordedAt\":\"2026-10-24T13:39:33.881590722Z\",\"provenance\":\"controller-attributed\"}]}",
+        "threadId": "isolated-review",
+        "turnId": "turn",
+        "answer": "{\"verdict\":\"passed\",\"summary\":\"checked exact candidate\",\"findings\":[]}",
+        "outcome": {
+          "verdict": "passed",
+          "summary": "checked exact candidate",
+          "findings": []
+        },
+        "createdAt": "2026-10-24T13:39:33.912961867Z",
+        "updatedAt": "2026-10-24T13:39:34.453473359Z"
+      },
+      "applicable": true,
+      "qualified": true,
+      "contextSeparation": "controller-observed-fresh-thread",
+      "conditions": []
+    }
+  }
+]

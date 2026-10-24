@@ -1,0 +1,13 @@
+{
+  "reviewId": "b3a13566-1432-4008-9bc6-81b5e99c5184",
+  "findingArtifact": {
+    "path": "evidence/PGI4-C2/negative-review-final.json",
+    "sha256": "7a3002d2ed99fd6a63dee33aaa215f8c32e066d1ad2c9fca7776fc880bfe9e39"
+  },
+  "evidenceReceipt": "500b24f8-ea92-4dda-b468-bb42f0789bcf",
+  "reworkReceipt": "aa78b9fd-3c3b-4458-ae8f-e201f428e626",
+  "finalRunState": "ready",
+  "sameSession": "SDP/Sessions/leader-trial.md",
+  "sourceRestored": true,
+  "limits": "Review provenance remains in the native review record; the C1 artifact is attributed, not an independent-review import."
+}

@@ -605,3 +605,49 @@ Rework requires no open blocking attention, no uncertain input and no active/unk
 host attempt. Old agent capabilities cannot submit another report after rework;
 subsequent work requires a fresh attempt. Completion still refuses until required
 review and checked publication exist. Agent/coordinator MCP authority is unchanged.
+
+## PGI4-C2 — Observed review context, T036
+
+Implements PG-A06/07/08/11/15/16/18's independent-context review prerequisite.
+Use an explicitly controller-assigned Reviewer in a fresh persistent read-only
+thread, not a resumed/forked implementation conversation. Native child hierarchy
+is still unverified and is not claimed by this route. A fresh-context host mapping
+establishes separation within the measured local adapter, not reviewer competence,
+model diversity, authenticated human approval or protection from same-user shell edits.
+
+A review pins run/report/input identity, exact C1 Candidate, 1..8 current test
+receipt IDs, bounded review focus, installed host version, local MCP executable and
+explicit project reviewer skill snapshots and exact reviewer instructions. The payload carries governing selection,
+assignment, candidate and referenced test records, not implementation conversation
+history. At least one selected skill must be named sdp-reviewer. Other relevant
+project skills may accompany it (maximum eight). Payload/result are bounded to
+64 KiB; at most eight reviews/run and 64 reviews/store, under existing receipt/store
+limits. Skills and source/evidence/authority must still match before opening/sending.
+
+Profile 0.11 extends the existing operational store with review records. Standard
+receipts retain exact retry semantics and shared UUID collisions. Review states are
+prepared, opening, bound, sending, running, completed, failed, interrupted or
+superseded. Each external effect follows a durable claim. Unknown opening has no
+replacement; unsent prepared/bound work may be superseded safely. A new controller
+cannot assume an unsent native bound thread survived. Sending/running must recover
+the exact original host/thread/input/turn mapping, never resubmit. A per-run lease
+serializes controller effects while owner messages and unrelated runs remain free.
+
+The trusted adapter checks fresh idle thread provenance, empty history, expected
+project/version and a thread ID distinct from all recorded implementation, leader
+and review threads. Before sending, it checks the complete MCP inventory contains
+only the configured read-only PG context/route/run tools, bound to this run without
+an attempt/epoch mutation capability. Built-in tool sandbox is
+read-only with approvals never; no native delegation or project publication is
+requested. Native host role and controller-assigned Reviewer remain distinct.
+
+Recovery requires exactly one full-history review turn with the unique review ID
+and exact payload/skills input. Retain only the final visible answer, never private
+reasoning. The final answer must decode as a bounded verdict (passed/failed/
+inconclusive), summary and findings. Failed/interrupted/malformed outcomes are
+retained without a passing review. Capture results even after source drift; current
+qualification separately rechecks report, candidate, authority, selected test
+artifacts and skill snapshots. Completed host status alone is not qualification.
+A passed, applicable result establishes an observed review in a separate context;
+canonical acceptance/publication remains unavailable. C1 attached prose remains
+controller-attributed; it cannot manufacture this provenance.

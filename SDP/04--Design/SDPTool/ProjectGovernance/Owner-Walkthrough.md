@@ -311,3 +311,18 @@ In pg_lab, run `./pg evidence`. This reads the separate evidence trial without
 launching a model. It deliberately tested a source fault and then restored the
 original files; the original native trial remains untouched. Review independence,
 canonical publication and final acceptance remain separate unfinished gates.
+
+
+## Review by a separate agent context (PGI4-C2)
+
+The controller can now prepare a review of an exact candidate and its current test
+artifacts, then run an explicitly assigned Reviewer in a fresh read-only context.
+The original implementation conversation is not reused. The recorded verdict stays
+visible after relevant changes, while current qualification is recalculated.
+
+In pg_lab, `./pg review` shows the passing review and `./pg review negative` shows
+the deliberately failing case. The reviewer identified the wrong separator at
+format.go:9 and linked the governing contract and failing test. The finding returned
+the test assignment for rework; the coordinator restored the source. These commands
+only inspect history. Both native turns recovered after deliberate response loss
+without replacement. Publication and whole-project acceptance remain unfinished.

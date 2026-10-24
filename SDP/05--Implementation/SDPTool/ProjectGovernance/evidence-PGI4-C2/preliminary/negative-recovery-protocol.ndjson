@@ -1,0 +1,4 @@
+{"direction": "request", "method": "initialize"}
+{"direction": "response", "method": "initialize", "bytes": 192}
+{"direction": "request", "method": "thread/read", "threadId": "01a16e22-928c-7c22-9e6a-51b687ac2bdb"}
+{"direction": "response", "method": "thread/read", "bytes": 42629, "thread": {"id": "01a16e22-928c-7c22-9e6a-51b687ac2bdb", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "notLoaded"}}, "turns": [{"id": "01a16e22-93ce-77d2-9b5c-3d342ea3b4c3", "status": "completed", "itemsView": "full"}]}

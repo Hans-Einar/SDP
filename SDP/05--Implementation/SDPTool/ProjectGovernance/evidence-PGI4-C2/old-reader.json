@@ -1,0 +1,14 @@
+[
+  {
+    "case": "positive",
+    "exitCode": 2,
+    "diagnostic": "reconciliation_required: invalid_request: json: unknown field \"reviews\"",
+    "stateUnchanged": true
+  },
+  {
+    "case": "negative",
+    "exitCode": 2,
+    "diagnostic": "reconciliation_required: invalid_request: json: unknown field \"reviews\"",
+    "stateUnchanged": true
+  }
+]

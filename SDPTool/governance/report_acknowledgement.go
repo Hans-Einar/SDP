@@ -103,7 +103,7 @@ func (s *Service) AcknowledgeReport(caller Caller, q ReportAcknowledgementReques
 	out := Result{Schema: Schema, Operation: "report.acknowledge", OperationID: q.OperationID, ProjectRef: s.project,
 		CheckoutID: state.CheckoutID, Run: summarizeRun(r), Coverage: "known",
 		ReportAcknowledgement: &ReportAcknowledgement{Request: q, RecordedAt: time.Now().UTC().Format(time.RFC3339Nano)}}
-	if state.Schema != leaderStateSchema && state.Schema != evidenceStateSchema {
+	if state.Schema != leaderStateSchema && !evidenceProfile(state.Schema) {
 		state.Schema = reportAcknowledgementStateSchema
 	}
 	state.Receipts[q.OperationID] = receipt{Digest: digest, Result: out}

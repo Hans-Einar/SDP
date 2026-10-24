@@ -190,7 +190,9 @@ func (s *Service) AttachEvidence(caller Caller, q EvidenceRequest) (Result, erro
 	}
 	out := Result{Schema: Schema, Operation: "evidence.attach", ProjectRef: s.project, CheckoutID: state.CheckoutID, OperationID: q.OperationID,
 		Run: summarizeRun(r), Coverage: "known", Evidence: &record}
-	state.Schema = evidenceStateSchema
+	if state.Schema != reviewStateSchema {
+		state.Schema = evidenceStateSchema
+	}
 	state.Receipts[q.OperationID] = receipt{Digest: digest, Result: out}
 	if !s.evidenceCurrent(state, r, record).Applicable {
 		return Result{}, fail("stale_candidate", "evidence basis changed before publication")
@@ -297,7 +299,7 @@ func validateEvidenceState(state snapshot) error {
 		if q := v.EvidenceRework; q != nil {
 			a := state.Receipts[q.EvidenceID].Result.Evidence
 			r, exists := state.Runs[q.RunID]
-			if state.Schema != evidenceStateSchema || v.Operation != "evidence.rework" || v.Evidence != nil || q.Schema != EvidenceSchema ||
+			if !evidenceProfile(state.Schema) || v.Operation != "evidence.rework" || v.Evidence != nil || q.Schema != EvidenceSchema ||
 				id != q.OperationID || v.OperationID != id || receipt.Digest != requestDigest(q) ||
 				q.ProjectRef != state.Project || q.CheckoutID != state.CheckoutID || v.ProjectRef != state.Project || v.CheckoutID != state.CheckoutID ||
 				!exists || q.ExpectedRevision == 0 || q.ExpectedRevision == ^uint64(0) || r.Revision <= q.ExpectedRevision ||
@@ -319,7 +321,7 @@ func validateEvidenceState(state snapshot) error {
 		report, found := state.Receipts[q.ReportID]
 		_, err := time.Parse(time.RFC3339Nano, a.RecordedAt)
 		counts[q.RunID]++
-		if state.Schema != evidenceStateSchema || !validEvidence(q) || a.Provenance != "controller-attributed" || err != nil ||
+		if !evidenceProfile(state.Schema) || !validEvidence(q) || a.Provenance != "controller-attributed" || err != nil ||
 			id != q.OperationID || receipt.Digest != requestDigest(q) || v.Operation != "evidence.attach" || v.Schema != Schema || v.OperationID != id ||
 			q.ProjectRef != state.Project || q.CheckoutID != state.CheckoutID || v.ProjectRef != state.Project || v.CheckoutID != state.CheckoutID ||
 			!exists || r.Revision < q.ExpectedRevision || v.Run.ID != q.RunID || v.Run.Revision != q.ExpectedRevision || v.Run.State != "verifying" || v.Run.InputRevision != q.InputRevision ||

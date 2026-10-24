@@ -116,5 +116,5 @@ func validateAttentionContinuations(state snapshot) error {
 }
 
 func reportProfile(schema string) bool {
-	return schema == reportAcknowledgementStateSchema || schema == leaderStateSchema || schema == evidenceStateSchema
+	return schema == reportAcknowledgementStateSchema || schema == leaderStateSchema || evidenceProfile(schema)
 }

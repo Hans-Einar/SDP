@@ -1,0 +1,26 @@
+{
+  "schema": "SDPTool/governance/schema.json",
+  "definitionReferences": "resolved",
+  "results": [
+    {
+      "file": "core-wire.json",
+      "cases": 3,
+      "result": "passed"
+    },
+    {
+      "file": "controller-wire.json",
+      "cases": 1,
+      "result": "passed"
+    },
+    {
+      "file": "native-wire.json",
+      "cases": 13,
+      "result": "passed"
+    },
+    {
+      "file": "native-rework-wire.json",
+      "cases": 7,
+      "result": "passed"
+    }
+  ]
+}

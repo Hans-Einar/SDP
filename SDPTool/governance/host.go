@@ -200,6 +200,9 @@ func (s *Service) RecordHost(caller Caller, q HostRequest) (Result, error) {
 		}
 	}
 	if q.Action == "bind" {
+		if reservedReviewThread(state, q.ThreadID) {
+			return Result{}, fail("conflict", "thread belongs to a review")
+		}
 		if a >= 0 {
 			return Result{}, fail("conflict", "attempt already bound; retry original operation")
 		}

@@ -57,7 +57,7 @@ do not turn a self-check into an independent review by changing its label.
 | PGI2-M1 Adapters and protocol | Thin local MCP adapter and controller protocol adapter use the core; inspect compatible schemas, negotiate the selected SDK/host, capture bounded recorded events and reconcile mapped attempts | PG-A10/11/12/15/18; actual protocol negotiation and failure outputs; no simulated-as-live claims | delivered; bounded adapters and real idle protocol probe verified |
 | PGI3-M1 Owner workflow | Minimal terminal client recovers Session, submits/steers work, presents route/status and launches the authorized fresh Master with bounded context; applicable child/review mapping is observed | PG-A02/04/05/11/12/13/15; managed account mode and one useful bounded task | in-progress; C6 explicit skill input/correlation verified; native child/review mapping remains unverified |
 | PGI3-U1 Owner development trial | Owner can inspect current work and exercise the candidate before further feature expansion | Identified local engine, runnable trial, actual owner feedback and expectation/design reconciliation | owner reports trial performed; detailed acceptance unrecorded; KB052 now selected |
-| PGI4-M1 Evidence and reconciliation | Candidate-bound evidence, review/rework and checked publication produce one durable Session outcome and correct card/plan disposition | PG-A06/07/09/13/16/17; crash and concurrent-change fixtures | in-progress; PGI4-C1 candidate evidence/rework delivered; independent review/publication remain |
+| PGI4-M1 Evidence and reconciliation | Candidate-bound evidence, review/rework and checked publication produce one durable Session outcome and correct card/plan disposition | PG-A06/07/09/13/16/17; crash and concurrent-change fixtures | in-progress; C1 evidence/rework and C2 observed review delivered; checked publication remains |
 | PGI5-M1 Integrated verification | The same isolated task survives observer close, interruption/recovery and scope correction with unrelated work preserved | All PG-A01–18 at their stated level; independent review and exact-candidate evidence | planned |
 
 Each milestone is runnable at its stated boundary; no phase claims the whole client
@@ -99,11 +99,11 @@ in backlog. No card is closed merely because this plan is complete.
 
 ## Current result
 
-Latest delivery is [PGI4-C1](Evidence-PGI4-C1.md): candidate evidence and guarded
-rework verified through the full suite and compiled pg_lab workflow. PGI4-M1 remains
-in-progress for independent review and checked canonical publication; remaining
-orchestration and integrated verification gates are retained. PM221 / KB404–405
-record this result without closing the plan or either active card.
+Latest delivery is [PGI4-C2](Evidence-PGI4-C2.md): observed review in fresh read-only
+contexts, current qualification, and exact recovery verified on positive/negative
+native pg_lab candidates. C1 evidence/rework remains the prerequisite. PGI4-M1 stays
+in-progress for checked canonical publication; remaining orchestration and independent
+integrated verification gates are retained. No plan/card/Session closeout is implied.
 
 ### Historical PGI1–3 baseline
 
@@ -776,3 +776,32 @@ promoting an attachment into an observed independent review. Retain PGL3's remai
 parallel/active-host/capacity gates and PGL2/4 SAD/owner interaction; neither this
 increment nor the native trial closes the whole Session. Existing branch/milestone
 policy and owner continuation authority remain; no merge or release selected.
+
+
+## PGI4-C2 selection — T036
+
+Continue the authorized completion route from C1 evidence to observed review
+provenance. Implement a durable review assignment and read-only fresh-host dispatch,
+pinning current candidate/report/test evidence and explicit reviewer skill. Retain
+uncertain sends and recover only exact mapped history. Observe context separation;
+do not infer it from attached review prose or claim native child hierarchy. Exercise
+positive/negative actual-model reviews in pg_lab under existing test authority.
+[Preflight](preflight-PGI4-C2.json) bounds this work. BranchPolicy current and
+CommitPolicy milestone remain. Canonical publication and whole-PG closeout remain.
+
+
+## PGI4-C2 result — T036
+
+[Evidence](Evidence-PGI4-C2.md) records durable review assignments, exact instructions
+and skill inputs, fresh read-only native contexts and recovered results. The final
+pg_lab native reviewer passed correct code and identified the deliberate separator
+defect. Lost turn/start and completed-history responses recovered through the same
+original thread/turn, without replacement. The failed finding also returned to ready
+through C1 rework, preserving its native review provenance and Session.
+
+Observed review support is delivered at this boundary. This is not independent
+review of the PG implementation or proof of native child hierarchy. PGI4-M1 stays
+in-progress for checked canonical publication and its crash/conflict reconciliation.
+Next: that publication boundary and review-result delivery into leader coordination,
+then retained PGL2/4 owner/SAD, PGL3 parallel/active-host/capacity and PGI5 independent
+verification. No completed card/Session, merge or release is inferred.

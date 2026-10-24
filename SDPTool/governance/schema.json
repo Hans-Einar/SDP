@@ -511,7 +511,13 @@
             "attention.withdraw",
             "report.acknowledge",
             "evidence.attach",
-            "evidence.rework"
+            "evidence.rework",
+            "review.prepare",
+            "review.open",
+            "review.bind",
+            "review.send",
+            "review.observe",
+            "review.supersede"
           ]
         },
         "projectRef": {
@@ -550,6 +556,9 @@
         },
         "evidenceRework": {
           "$ref": "#/$defs/EvidenceReworkRequest"
+        },
+        "review": {
+          "$ref": "#/$defs/Review"
         }
       },
       "required": [
@@ -621,6 +630,34 @@
             "not": {
               "required": [
                 "evidenceRework"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "operation": {
+                "enum": [
+                  "review.prepare",
+                  "review.open",
+                  "review.bind",
+                  "review.send",
+                  "review.observe",
+                  "review.supersede"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "review"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "review"
               ]
             }
           }
@@ -2326,6 +2363,403 @@
         "state",
         "items",
         "limitations"
+      ]
+    },
+    "ReviewSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "candidate": {
+          "$ref": "#/$defs/Candidate"
+        },
+        "reportId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "evidenceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "focus": {
+          "type": "string",
+          "maxLength": 4096,
+          "minLength": 1
+        },
+        "hostVersion": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "mcpBinary": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SkillInput"
+          },
+          "maxItems": 8
+        },
+        "instructions": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 8192
+        }
+      },
+      "required": [
+        "candidate",
+        "reportId",
+        "evidenceIds",
+        "focus",
+        "hostVersion",
+        "mcpBinary",
+        "skills",
+        "instructions"
+      ]
+    },
+    "ReviewInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "candidate": {
+          "$ref": "#/$defs/Candidate"
+        },
+        "reportId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "evidenceIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "focus": {
+          "type": "string",
+          "maxLength": 4096,
+          "minLength": 1
+        }
+      },
+      "required": [
+        "candidate",
+        "reportId",
+        "evidenceIds",
+        "focus"
+      ]
+    },
+    "ReviewOutcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "verdict": {
+          "enum": [
+            "passed",
+            "failed",
+            "inconclusive"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "maxLength": 8192,
+          "minLength": 1
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 4096,
+            "minLength": 1
+          },
+          "maxItems": 32
+        }
+      },
+      "required": [
+        "verdict",
+        "summary",
+        "findings"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "verdict": {
+                "const": "passed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "findings": {
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "verdict": {
+                "const": "failed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "findings": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Review": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "runId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "runRevision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "state": {
+          "enum": [
+            "prepared",
+            "opening",
+            "bound",
+            "sending",
+            "running",
+            "completed",
+            "failed",
+            "interrupted",
+            "superseded"
+          ]
+        },
+        "spec": {
+          "$ref": "#/$defs/ReviewSpec"
+        },
+        "payload": {
+          "type": "string",
+          "maxLength": 65536,
+          "minLength": 1
+        },
+        "threadId": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "turnId": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "answer": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "outcome": {
+          "$ref": "#/$defs/ReviewOutcome"
+        }
+      },
+      "required": [
+        "id",
+        "runId",
+        "runRevision",
+        "revision",
+        "state",
+        "spec",
+        "payload",
+        "threadId",
+        "turnId",
+        "answer",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "ReviewRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-review/1"
+        },
+        "projectRef": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "checkoutId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "operationId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "runId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "reviewId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "expectedRunRevision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "action": {
+          "enum": [
+            "prepare",
+            "open",
+            "bind",
+            "send",
+            "observe",
+            "supersede"
+          ]
+        },
+        "threadId": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "turnId": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "status": {
+          "enum": [
+            "",
+            "running",
+            "completed",
+            "failed",
+            "interrupted"
+          ]
+        },
+        "answer": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "spec": {
+          "$ref": "#/$defs/ReviewSpec"
+        }
+      },
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "operationId",
+        "runId",
+        "reviewId",
+        "expectedRevision",
+        "expectedRunRevision",
+        "action",
+        "threadId",
+        "turnId",
+        "status",
+        "answer"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "action": {
+                "const": "prepare"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "spec"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "spec"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "ReviewView": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-governance-review/1"
+        },
+        "projectRef": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "checkoutId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "review": {
+          "$ref": "#/$defs/Review"
+        },
+        "applicable": {
+          "type": "boolean"
+        },
+        "qualified": {
+          "type": "boolean"
+        },
+        "contextSeparation": {
+          "enum": [
+            "not-observed",
+            "controller-observed-fresh-thread"
+          ]
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 4096
+          },
+          "maxItems": 16
+        }
+      },
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "review",
+        "applicable",
+        "qualified",
+        "contextSeparation",
+        "conditions"
       ]
     }
   }

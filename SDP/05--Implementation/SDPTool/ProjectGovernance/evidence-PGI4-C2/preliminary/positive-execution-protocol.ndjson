@@ -1,0 +1,11 @@
+{"direction": "request", "method": "initialize"}
+{"direction": "response", "method": "initialize", "bytes": 192}
+{"direction": "request", "method": "account/read"}
+{"direction": "response", "method": "account/read", "bytes": 292}
+{"direction": "request", "method": "thread/start", "sandbox": "read-only", "approvalPolicy": "never"}
+{"direction": "response", "method": "thread/start", "bytes": 1388, "thread": {"id": "01a16e22-1fb2-7fa1-a1f8-502918fc8fef", "cwd": "/home/warloc/git/pg_lab", "cliVersion": "0.164.0", "status": {"type": "idle"}}, "turns": [], "model": "gpt-6-astra", "reasoningEffort": "high"}
+{"direction": "request", "method": "mcpServerStatus/list", "threadId": "01a16e22-1fb2-7fa1-a1f8-502918fc8fef"}
+{"direction": "response", "method": "mcpServerStatus/list", "bytes": 71924, "servers": [{"name": "sdp_governance", "tools": ["context_read", "route_evaluate", "run_read"]}], "nextCursor": null}
+{"direction": "request", "method": "turn/start", "threadId": "01a16e22-1fb2-7fa1-a1f8-502918fc8fef", "clientUserMessageId": "cb6f4b07-c5a3-4acb-991c-78d8148f45c9"}
+{"direction": "response", "method": "turn/start", "bytes": 249, "turn": {"id": "01a16e22-22f4-7a12-a061-4cfc9a4da3d8", "status": "inProgress"}}
+{"fault": "turn-start-response-withheld", "turnId": "01a16e22-22f4-7a12-a061-4cfc9a4da3d8"}

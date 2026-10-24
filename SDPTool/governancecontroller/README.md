@@ -672,3 +672,39 @@ after host/input uncertainty and blocking attention have been resolved. Old agen
 capabilities are revoked; the same Session continues through a fresh launch.
 Operational profile 0.10 preserves existing data; older readers refuse it. This
 command does not publish Session/card/plan records, impersonate the owner or accept work.
+
+
+## PGI4-C2: review in an observed fresh context
+
+Prepare a `ReviewInput` JSON file with `candidate` from evidence capture, `reportId`,
+1..8 current test `evidenceIds`, and bounded `focus`. The controller supplies host,
+skill and exact instruction provenance; these fields must not be supplied by the file.
+
+```sh
+sdp-controller review prepare --project ROOT --state DIR --operation UUID --input review.json --mcp-binary /absolute/sdp-mcp --codex CODEX --skill Skills/sdp-reviewer/SKILL.md
+sdp-controller review run --project ROOT --state DIR --review UUID --mcp-binary /absolute/sdp-mcp --codex CODEX
+sdp-controller review inspect --project ROOT --state DIR --review UUID
+sdp-controller review supersede --project ROOT --state DIR --review UUID
+```
+
+Preparation emits a receipt; its review ID equals the supplied operation UUID. Run
+opens/submits only the persisted review and emits changed views as JSON. A terminal
+review is read without starting more work. Default timeout is five minutes (maximum
+30); timeout or transport failure retains state. Reuse run to recover sending/running
+from exact history. It does not resend. Unresolved opening refuses. A new controller
+supersedes an unsent bound review; use a fresh prepare UUID afterward. Explicit
+supersede permits only prepared/bound work. Do not reset uncertain stores.
+
+The host must expose exclusively the configured run-bound read-only PG MCP tools.
+Inherited Apps or other tool inventories can fail this boundary; the pg_lab trial
+uses process-local feature isolation, with no global configuration changes. Native
+Codex 0.164.0 is measured; stable later hosts must satisfy the same bounded wire
+contract. The actual recorded version remains part of recovery identity.
+
+Inspection reports observed context separation, original verdict, current applicability
+and `qualified`. Qualification is a current passing review in that separate context,
+not owner acceptance or completion. The reviewer inspects external test artifacts;
+no test rerun is inferred. Automatic leader notification of review outcomes and
+canonical record publication remain integration work. A failed native result may
+be retained as a C1 attributed artifact for guarded rework; the native review record
+continues to own its distinct provenance.

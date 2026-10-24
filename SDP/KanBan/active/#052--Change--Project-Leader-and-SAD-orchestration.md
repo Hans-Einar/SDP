@@ -260,3 +260,16 @@ establishes independent review, and completion/publication remain unavailable.
 CardState stays in-progress. Next: retained review/publication contract and evidence,
 with SAD/owner, parallel/active-host/capacity and integrated verification still open.
 Backlog/onHold reviewed; no Blueprint restart, Ponsse, hub, merge or release selected.
+
+
+2026-10-24, T036 / EVT-KB-SDP-000407: [PGI4-C2 review evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI4-C2.md)
+delivers observed fresh-context read-only review of exact candidate/test evidence,
+structured results, current qualification and strict original-turn recovery. Final
+full race/vet, 24 schemas and actual gpt-6-astra/high positive/negative lab reviews
+pass. The reviewer identified the deliberate separator defect; its finding returned
+the same test Session to ready through C1 rework. Original C8 state and 51 baseline
+regular files remain preserved. No independent review of the PG implementation,
+owner acceptance or native child hierarchy is inferred. CardState remains in-progress.
+Next: checked canonical publication/recovery and review-result leader delivery;
+retain SAD/owner, parallel/active-host/capacity and independent integrated gates.
+Backlog/onHold reviewed without changing SDL-only, Blueprint, Ponsse or hub scope.

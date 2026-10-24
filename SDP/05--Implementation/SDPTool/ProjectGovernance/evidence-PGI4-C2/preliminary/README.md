@@ -1,0 +1,1 @@
+Initial native reviews passed before the final run-bound MCP configuration and retained reviewer-instruction refinement. Original binaries are retained under the private PGI4-C2/bin-preliminary directory. These prototype profile-0.11 captures are historical and are not final-candidate schema evidence.

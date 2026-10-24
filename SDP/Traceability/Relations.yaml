@@ -240,6 +240,13 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-PGI4-C2:
+    status: passed-bounded-native-review-and-recovery
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI4-C2.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-038
+    design: SDPTOOL-DES-0001
+    note: Final full race/vet, 24 schemas and actual positive/negative fresh-context reviews with exact recovery pass; checked publication and independent integrated PG verification remain.
   SDPTOOL-VER-PGI4-C1:
     status: passed-bounded-candidate-evidence-and-rework
     path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI4-C1.md

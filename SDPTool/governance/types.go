@@ -160,6 +160,7 @@ type Run struct {
 	Reason        string              `json:"reason"`
 }
 type Result struct {
+	Review                *Review                `json:"review,omitempty"`
 	Evidence              *EvidenceRecord        `json:"evidence,omitempty"`
 	EvidenceRework        *EvidenceReworkRequest `json:"evidenceRework,omitempty"`
 	ReportAcknowledgement *ReportAcknowledgement `json:"reportAcknowledgement,omitempty"`

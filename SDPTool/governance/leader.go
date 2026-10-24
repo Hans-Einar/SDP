@@ -359,6 +359,9 @@ func (s *Service) LeaderWrite(c Caller, q LeaderRequest) (LeaderResult, error) {
 			}
 			d.State = "opening"
 		case "bind":
+			if reservedReviewThread(state, q.ThreadID) {
+				return out, fail("conflict", "thread belongs to a review")
+			}
 			if d.State != "opening" || !validLeaderText(q.ThreadID, 256) {
 				return out, fail("conflict", "binding needs claimed thread creation and observed identity")
 			}
@@ -396,7 +399,7 @@ func (s *Service) LeaderWrite(c Caller, q LeaderRequest) (LeaderResult, error) {
 	}
 	l.Revision++
 	state.Leader = &l
-	if state.Schema != evidenceStateSchema {
+	if !evidenceProfile(state.Schema) {
 		state.Schema = leaderStateSchema
 	}
 	if state.LeaderReceipts == nil {
@@ -409,13 +412,13 @@ func (s *Service) LeaderWrite(c Caller, q LeaderRequest) (LeaderResult, error) {
 	return out, nil
 }
 func validateLeaderState(state snapshot) error {
-	if state.Schema != leaderStateSchema && state.Schema != evidenceStateSchema {
+	if state.Schema != leaderStateSchema && !evidenceProfile(state.Schema) {
 		if state.Leader != nil || len(state.LeaderReceipts) > 0 {
 			return fail("incompatible_profile", "leader records require operational profile 0.9")
 		}
 		return nil
 	}
-	if state.Schema == evidenceStateSchema && state.Leader == nil && len(state.LeaderReceipts) == 0 {
+	if evidenceProfile(state.Schema) && state.Leader == nil && len(state.LeaderReceipts) == 0 {
 		return nil
 	}
 	if state.Leader == nil || state.Leader.Revision == 0 || len(state.Leader.Messages) > 64 || len(state.Leader.Dispatches) > 16 || len(state.LeaderReceipts) == 0 || len(state.LeaderReceipts) > 256 {

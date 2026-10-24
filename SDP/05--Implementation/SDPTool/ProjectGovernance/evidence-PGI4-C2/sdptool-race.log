@@ -1,0 +1,16 @@
+ok  	github.com/Hans-Einar/SDP/SDPTool	203.345s
+ok  	github.com/Hans-Einar/SDP/SDPTool/blueprints	51.469s
+ok  	github.com/Hans-Einar/SDP/SDPTool/blueprintstate	2.826s
+ok  	github.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller	1.045s
+?   	github.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp	[no test files]
+ok  	github.com/Hans-Einar/SDP/SDPTool/cmd/sdptool	1.042s
+ok  	github.com/Hans-Einar/SDP/SDPTool/codexcompat	1.021s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governance	132.388s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancecontroller	68.681s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancehost	1.155s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancemcp	5.367s
+ok  	github.com/Hans-Einar/SDP/SDPTool/install	41.948s
+ok  	github.com/Hans-Einar/SDP/SDPTool/model	18.187s
+ok  	github.com/Hans-Einar/SDP/SDPTool/presentation	1.009s
+ok  	github.com/Hans-Einar/SDP/SDPTool/projecthistory	1.558s
+ok  	github.com/Hans-Einar/SDP/SDPTool/tools/profile	27.885s

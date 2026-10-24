@@ -1,0 +1,26 @@
+{
+  "productBaseline": "708f98fc4a29d8ff8be9c98c2e55b50f1a71cb38",
+  "identity": "baseline plus exact changed source hashes; native binaries built from these sources before record-only updates",
+  "sourceFiles": {
+    "SDPTool/cmd/sdp-controller/main.go": "c3a892cbd8a8f56ff305b1e9714ed45208af2f81580df6d4f130942fc55fac53",
+    "SDPTool/cmd/sdp-controller/review.go": "7b8b7689d6f6c2027ec6d4d8cf05c21e04cccdf6d2ec1e0fe3d44a7a30c30167",
+    "SDPTool/governance/attention_continuation.go": "22da1b46f8c614eb76a931a568b6c220b3c1ece82f41e5b85eeb882b1ce14eb9",
+    "SDPTool/governance/evidence.go": "7529b67d0dd748c84ff7dbb46540da43abbca8b3c6e976cfedb5935a5d5fdaff",
+    "SDPTool/governance/host.go": "dc5dd45e257d464e8beaac25a24f7e74e6b9cf5e9878a910d3752e103f7791e4",
+    "SDPTool/governance/leader.go": "9ee29601b06c6b3d5d0cfe126eb33866b085a467d2f55dbbc495f126dcfad4e4",
+    "SDPTool/governance/report_acknowledgement.go": "6fc3084350750ac8119b05d92421060ba03476e05d1b1d02dd7cef986d543b77",
+    "SDPTool/governance/review.go": "a9767949e0b3cb6b0d12319b4dda9722a2623018274f31f77371cd26a5bf3f84",
+    "SDPTool/governance/review_test.go": "96bcaa278f2379869b2b73f86552ff77f08442ebb34e40d1296075f2b462aca5",
+    "SDPTool/governance/schema.json": "d9642a999bc458049d778da00edc5338c92a3d519529f9f331b01be777a5f5da",
+    "SDPTool/governance/store.go": "6319c0314043c604d67b5bdf98d9eb5be0217fed952125cb42b0612e0721a139",
+    "SDPTool/governance/types.go": "2fc287542519feb593bc6f2c9c166d4d5c20645cf9b072103b026b6a2bb4a3df",
+    "SDPTool/governancecontroller/review.go": "2aefc70002a2104149778cc049c9d96adc3fcb43b688adf8bbf66f0a8ddcbdd9",
+    "SDPTool/governancecontroller/review_test.go": "b99c7ec09981bbd0208d807429a37f613798f1cf6e647b45a12638448949ca9b",
+    "SDPTool/governancehost/review.go": "417fc7039a20ed77691885e48402ca910cc7328ec9082026a4f2780797cd2975",
+    "SDPTool/governancehost/review_test.go": "000271508b58dc4a0d18bb32bcacdeaeaf3ca4bf702823785590530a536b54fd"
+  },
+  "binaries": {
+    "sdp-controller": "d4bc6ff0c42cfd7998ad917511abdfb6af55df08f88b56f548ccca732c2c66f8",
+    "sdp-mcp": "b5b3e8b39c20b0b885c23fa2754c0895fbdb2badc8e333fe03400e53e18ef679"
+  }
+}

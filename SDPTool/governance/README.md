@@ -93,7 +93,7 @@ assignment boundaries; PGI1 neither executes changes nor intercepts shell access
 `step` stays `implement`: `report` means an implementation result needs checking,
 not that the verify/review/record steps ran. Resume preserves run, assignment and
 Session identity. It does not represent reconnection to a host attempt. Replanning,
-PGI4-C1 adds the controller-only evidence and failed-evidence rework operations described below. Independent review, checked publication and completion remain later gates.
+PGI4-C1 adds the controller-only evidence and failed-evidence rework operations described below. Observed review in a separate context is described below; checked publication and completion remain later gates.
 The serialized definition and digest stay pinned on each run.
 
 ## Authority, consistency and recovery
@@ -341,3 +341,39 @@ Profile 0.10 is selected only by attachment; existing current writers preserve i
 Earlier binaries refuse rather than dropping evidence. The common wire schema's
 Candidate/EvidenceRequest/EvidenceReworkRequest/EvidenceView/Result definitions
 cover the CLI. Existing worker/coordinator MCP tool authority is unchanged.
+
+
+## Observed review — operational profile 0.11
+
+`ReviewWrite` prepares one controller-issued review with a C1 candidate, latest report,
+1..8 current test receipts, review focus, exact instructions, host version, MCP
+executable and explicit skill snapshots including sdp-reviewer. It does not change
+the implementation run. The payload includes selected governing records, assignment
+and test references, without copying implementation conversation history.
+
+The native controller opens a fresh persistent read-only thread, checks empty history
+and a distinct thread ID, and submits explicit skill inputs with the review ID as
+client correlation ID. Run-bound MCP exposes only context_read, route_evaluate and
+run_read; no attempt/epoch or coordinator capability is granted. Account mode must
+be managed ChatGPT. Exclusive tool inventory and the supported host/wire contract
+are enforced; inherited additional tools cause refusal.
+
+Prepared/opening/bound/sending/running states retain effect intent. Unknown opening
+never creates a replacement; prepared/bound work can be superseded without sending.
+After controller replacement, an unsent bound thread is superseded. Sending/running
+recover only the same host/thread/input/turn with exactly one full-history turn.
+Only final visible text is retained. A malformed/inconclusive/failed answer cannot
+qualify as passing review. Private reasoning and commentary are not review results.
+
+`ReviewRead` separates historical outcome from current applicability and qualification.
+Qualification means a passed structured review, observed in a separate fresh context,
+whose report/candidate/test artifacts/authority/skills still match. It does not mean
+that tests were independently rerun, a human accepted work, native child hierarchy
+was established, or publication/completion occurred. Attached C1 review prose remains
+controller-attributed regardless of its wording. Reviewer skill acceptance does not
+attest procedural compliance or consumed file bytes.
+
+Limits: eight reviews/run, 64/store, 64 KiB payload/final answer, 32 findings with
+4 KiB each, within existing 1024 receipts and 16 MiB state capacity. Current writers
+preserve profile 0.11. Older binaries refuse rather than dropping reviews. Same-user
+shell edits and coherent filesystem inspection retain the C1 boundary.
