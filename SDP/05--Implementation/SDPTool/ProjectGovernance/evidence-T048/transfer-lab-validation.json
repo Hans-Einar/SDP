@@ -1,0 +1,14 @@
+{
+  "canonicalValidation": "passed",
+  "cardsPlansLineage": [
+    1,
+    2,
+    0
+  ],
+  "events": 20,
+  "preservedEarlierTrackedPaths": 545,
+  "predecessorLabCommit": "ea470d0dc4e2754e0a68114aa364559184aadff3",
+  "oldReaderExit": 2,
+  "oldReaderRefusal": "{\"error\":{\"code\":\"reconciliation_required\",\"message\":\"invalid_request: json: unknown field \\\"successor\\\"\",\"retryable\":false},\"operation\":\"error\",\"schema\":\"sdp-project-governance/0.1\",\"status\":\"error\"}\n",
+  "limits": "Compiled synthetic transfer fixture; no native agent or owner acceptance in this increment."
+}

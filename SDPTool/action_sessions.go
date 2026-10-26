@@ -77,7 +77,7 @@ func sessionActions() []actionSpec {
 			return sessionActionCall(ctx, c, "session-read", q.State, "", q.Instance, false)
 		}),
 	}
-	for _, op := range []string{"context", "adopt", "resume", "select", "assess", "start", "progress", "verify", "review", "dispose", "owner", "advance"} {
+	for _, op := range []string{"context", "successor", "adopt", "resume", "select", "assess", "start", "progress", "verify", "review", "dispose", "owner", "advance"} {
 		mutation := "none"
 		desc := "Read and validate the binding and canonical coverage."
 		if op == "adopt" {
@@ -117,7 +117,7 @@ func sessionActions() []actionSpec {
 			desc = "Reconcile Session registration and coverage; no agent dispatch or later-stage execution."
 		}
 		out = append(out, defineAction(descriptor(op, "Session "+op, desc, mutation), func(ctx context.Context, c actionContext, q SessionActionInput) (any, int, error) {
-			return sessionActionCall(ctx, c, "session-"+op, q.State, q.RequestFile, "", op != "context")
+			return sessionActionCall(ctx, c, "session-"+op, q.State, q.RequestFile, "", op != "context" && op != "successor")
 		}))
 	}
 	return out

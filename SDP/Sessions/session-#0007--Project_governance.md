@@ -43,8 +43,8 @@ gantt
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-26 |
-| Current step | S3/S6 active: C2c2b owner decisions, rework/dependencies and eligible overall closure delivered. Scoped common MCP, Session host entry and terminal owner operations delivered; actual native no-design task verified through test, fresh review and full card/plan/Session closure. Transfer/rebind, leader scheduling and model gates remain |
-| Proposed next step | Complete explicit remaining-scope transfer/rebind, trusted host scheduling and PGF2–9 under T039/T041 gates: orchestration, SDL handoff, owner dialogue, recovery/capacity, native integration, independent review and explicit scope closeout. SDL-only; MVP1 deferred |
+| Current step | S3/S6 active: owner decisions, retained continuation/closure, Session MCP/host/terminal entry and bounded native no-design closeout delivered. C2c3 now transfers disposed contributions to an explicit successor. Reviewed active rebind, autonomous leader scheduling and model gates remain |
+| Proposed next step | Continue reviewed active rebind and trusted host scheduling, followed by integrated SDL handoff/merge/release, recovery/capacity and PGF7–9 acceptance. Reuse this Session and existing owner authorization; SDL-only and MVP1 deferred |
 | Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension; T026 assigns hub/webapp to a separate project and continues local SDP/SDPTool work; T027 continues local attention/replies; T028 continues guarded attention continuation; T029 selects stable Codex >=0.164.0 and compatible later hosts, preserving other scopes |
 
 ## Goal and ownership
@@ -2746,3 +2746,74 @@ Session and existing authorization. Backlog/onHold review and deferred Ponsse/MV
 paused KB050 ownership remain unchanged. SDP/Master/Worker/Architect and reused
 Planning/Verifier/Traceability routines govern this work summary; no final response
 is claimed to have been captured. No merge, installation or model/software release.
+
+
+T048 PGF1-C2c3 selected refinement and preflight: continue the owner-authorized
+remaining-scope transfer within CheckWholeCardDisposition, PlanCardLifecycleEffects,
+ReconcileCoverage and existing canonical effect ownership in unreleased WORK :00002.
+Baseline a419751, one local worktree on sdp/codex-forward-compatibility, clean product
+and management records. Prior committed changes are this same PG goal; no overlapping
+local writer. KB038/052 retain ownership; KB032/viewpoint and paused KB050 scopes are
+excluded. Unknown remote activity is outside observation coverage. Green for the
+Session continuation/core/schema/CLI/MCP paths, focused tests and linked PG records.
+
+Select a bounded terminal transfer after every predecessor step has a committed
+disposition. All remaining contribution cards must have one explicit existing manual
+successor Session/binding and planned successor plan. Pin the exact successor context,
+preserve the remaining-work text and old evidence, update card PlanId and readiness
+with canonical history, and close only the predecessor plan/Session. Do not dispatch,
+adopt or accept the successor implicitly. A fresh adoption and assessment are required.
+Reject incomplete steps, missing/extra successor cards, stale context, adopted/active
+successor ownership and competing claims. Use the existing reserved preimage/postimage
+publisher and recover every boundary. Rebind of an edited active binding is separate.
+This is a selected implementation boundary, not a delivered result or owner acceptance.
+
+T048 C2c3 scope refinement before action-registry edit: include action_sessions.go
+to expose the same read-only successor preflight through the existing JSON invocation
+catalogue. Current dirty files belong to this increment, with no new worktree/owner;
+green extends to this adapter only. Regenerate the diagnostic Blueprint before editing.
+Adoption now takes the shared canonical writer lock so partially committed transfer
+cannot authorize a new instance. This preserves AdoptSession ownership and recovery
+in the existing WORK target; it adds no independent dispatch/acceptance authority.
+
+
+T048 PGF1-C2c3 outcome: explicit terminal transfer of disposed contributions is
+implemented and verified. Exact manual successor context is pinned, remaining cards
+retain their work/history and become ready under the successor plan, and only the
+predecessor plan/Session close. Fresh successor adoption/assessment is required.
+Adoption now shares the canonical writer reservation; complete postimages without
+operational commitment cannot authorize it. Profile 0.21 retains successor context
+and links without downgrading later work; the actual prior binary refuses new state.
+
+The final compiled CLI/JSON/MCP fixture and its intermediate trial are committed in
+pg_lab e63188f. All 545 earlier tracked paths are unchanged. The actual final fixture
+passes shared canonical validation (one card, two plans, 20 events). Its report/test/
+review setup is synthetic, distinguished from the earlier native PGF2/4/7 journeys.
+The final scoped diagnostic Blueprint constraints pass against unchanged WORK :00002;
+no model source acceptance/release or independent PG implementation review is claimed.
+
+Final focused race checks pass (62.406s); the earlier wider transfer race including
+every-effect recovery passes at its recorded intermediate candidate (198.659s).
+All SDPTool packages now have passing final-product test coverage: the full invocation
+passes governance (349.058s) and all other packages except the root's stale catalogue
+expectation. That expected-action list was corrected for the newly added read operation,
+and the entire root package passes on rerun (22.609s). The original invocation remains
+recorded as exit 1. Vet passes. An earlier run that overlapped product edits/builds is
+excluded as mixed-source evidence; no incompatible postimage is accepted as recovery.
+
+Final work summary for T048: six bounded increments were delivered or verified, with
+phase commits and durable evidence; the owner's request to finish the whole PG plan
+has not been achieved. PLAN-SDP-0018 and KB038/052 remain active/in-progress. The latest
+completion map separates implemented transfer from active rebind/in-flight work,
+autonomous leader dispatch/supervision, SDL WORK/handoff/merge/release, remaining owner
+conversation, active-host recovery and sustained capacity. Combined native acceptance,
+independent PG review, actual owner trial and remote-Steering disposition remain.
+Existing authorization covers continued implementation; these missing features are
+not described as merely waiting for owner permission.
+
+Backlog/onHold review retains KB036/037/042 and SDL-only KB059; paused KB050/Session0008,
+viewpoint ownership and deferred Ponsse/MVP1 remain unchanged. Reused SDP entrypoint,
+Master/Worker/Architect, Planning/Verifier/Traceability and concurrent-work routines
+govern this work. Next execution resumes the same Session with scoped preflight for
+reviewed rebind and trusted dispatch. This is a work summary, not a captured final
+response. No merge, installation or model/software release was performed.

@@ -140,3 +140,19 @@ unchanged. SessionWorkflowDelivery remains planned: owner decisions, rework/depe
 progression, overall closure, leader/model handoff and acceptance/release are open.
 [Evidence](../../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2c2a.md)
 distinguishes synthetic report/review fixtures from native or independent PG review.
+
+
+## T048 continuation and successor mapping
+
+Owner decisions, retained rework/dependency history, eligible whole-plan completion
+and explicit transfer of disposed contributions' remaining cards now implement bounded
+parts of CheckWholeCardDisposition, PlanCardLifecycleEffects, ReconcileCoverage and
+PersistSessionInstance. Adoption shares CanonicalEffectPublisher's writer reservation.
+Session CLI/JSON/MCP entrypoints preserve the same service boundary. The terminal
+adapter and native no-design closeout are separately evidenced.
+
+[Transfer evidence](../../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2c3.md)
+pins the final scoped diagnostic Blueprint and unchanged WORK :00002. No new source
+semantics, accepted NOW, model release or independent model review is claimed.
+SessionWorkflowDelivery remains planned until the integrated model/host/recovery and
+acceptance obligations in PLAN-SDP-0018 are satisfied.

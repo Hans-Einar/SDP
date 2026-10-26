@@ -17,7 +17,7 @@ import (
 const sessionOwnerStateSchema = "sdp-project-governance-state/0.19"
 
 func sessionDispositionProfile(schema string) bool {
-	return schema == sessionDispositionStateSchema || schema == sessionOwnerStateSchema || schema == sessionLifecycleStateSchema
+	return schema == sessionDispositionStateSchema || schema == sessionOwnerStateSchema || sessionLifecycleProfile(schema)
 }
 
 type SessionOwnerRequest struct {
@@ -359,7 +359,7 @@ func (s *Service) OwnerSession(c Caller, q SessionOwnerRequest) (SessionMutation
 	i.OwnerGates = append(i.OwnerGates, g)
 	i.Revision++
 	st.Sessions[i.ID] = i
-	if st.Schema != sessionLifecycleStateSchema {
+	if !sessionLifecycleProfile(st.Schema) {
 		st.Schema = sessionOwnerStateSchema
 	}
 	out := SessionMutationResult{Schema: SessionSchema, Operation: "session-owner", OperationID: q.OperationID, InstanceID: i.ID, Revision: i.Revision, Registration: "committed", RecordEffects: "prepared"}
@@ -393,7 +393,7 @@ func validateSessionOwnerGates(st snapshot) error {
 			prior := i
 			prior.Disposition = nil
 			prior.OwnerGates = i.OwnerGates[:n]
-			if (st.Schema != sessionOwnerStateSchema && st.Schema != sessionLifecycleStateSchema) || validSessionOwner(q) != nil || ownerGateEligibility(prior, q) != nil || len(i.Work) < 3 || i.Work[2].Evidence == nil || q.ProjectRef != st.Project || q.CheckoutID != st.CheckoutID || q.InstanceID != i.ID || q.ExpectedRevision >= i.Revision || q.ExpectedRevision <= dispositionResult(i).Request.ExpectedRevision || seen[q.OperationID] {
+			if (st.Schema != sessionOwnerStateSchema && !sessionLifecycleProfile(st.Schema)) || validSessionOwner(q) != nil || ownerGateEligibility(prior, q) != nil || len(i.Work) < 3 || i.Work[2].Evidence == nil || q.ProjectRef != st.Project || q.CheckoutID != st.CheckoutID || q.InstanceID != i.ID || q.ExpectedRevision >= i.Revision || q.ExpectedRevision <= dispositionResult(i).Request.ExpectedRevision || seen[q.OperationID] {
 				return fail("reconciliation_required", "invalid owner gate identity/order")
 			}
 			if n > 0 && q.ExpectedRevision <= i.OwnerGates[n-1].Request.ExpectedRevision+1 {

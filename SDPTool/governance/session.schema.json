@@ -564,7 +564,8 @@
               "session-review",
               "session-dispose",
               "session-owner",
-              "session-advance"
+              "session-advance",
+              "session-successor"
             ]
           }
         },
@@ -1496,7 +1497,8 @@
           "enum": [
             "next",
             "rework",
-            "complete"
+            "complete",
+            "transfer"
           ]
         },
         "stepId": {
@@ -1509,6 +1511,117 @@
             "test",
             "review"
           ]
+        },
+        "successor": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "bindingPath",
+            "inputRevision"
+          ],
+          "properties": {
+            "bindingPath": {
+              "type": "string",
+              "minLength": 1
+            },
+            "inputRevision": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        }
+      }
+    },
+    "successorRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "instanceId",
+        "bindingPath"
+      ],
+      "properties": {
+        "instanceId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "bindingPath": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "successorContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "operation",
+        "projectRef",
+        "checkoutId",
+        "bindingPath",
+        "bindingDigest",
+        "binding",
+        "inputRevision",
+        "sources"
+      ],
+      "properties": {
+        "schema": {
+          "const": "sdp-session-execution/0.1"
+        },
+        "operation": {
+          "const": "session-successor"
+        },
+        "projectRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "checkoutId": {
+          "type": "string"
+        },
+        "bindingPath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bindingDigest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "binding": {
+          "$ref": "#/$defs/binding"
+        },
+        "inputRevision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sha256": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  {
+                    "const": "absent"
+                  }
+                ]
+              }
+            }
+          },
+          "minItems": 4,
+          "maxItems": 72
         }
       }
     }

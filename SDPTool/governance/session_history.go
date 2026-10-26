@@ -55,14 +55,14 @@ func validateSessionHistoryShape(st snapshot) error {
 		if len(i.Past) > 64 {
 			return fail("reconciliation_required", "Session execution history capacity exceeded")
 		}
-		if (len(i.Past) > 0 || i.Advance != nil) && st.Schema != sessionLifecycleStateSchema {
+		if (len(i.Past) > 0 || i.Advance != nil) && !sessionLifecycleProfile(st.Schema) {
 			return fail("incompatible_profile", "Session lifecycle requires profile 0.20")
 		}
 		previous := uint64(0)
 		for _, p := range i.Past {
 			old := p.Execution
 			q := p.Transition.Request
-			if len(old.Past) != 0 || old.Advance != nil || old.ID != i.ID || old.Revision != q.ExpectedRevision || old.Revision <= previous || !old.Registered || !reflect.DeepEqual(old.Context, i.Context) || !reflect.DeepEqual(old.Registration, i.Registration) || old.Reason != i.Reason || p.Transition.Effects.Status != "committed" || q.Action == "complete" {
+			if len(old.Past) != 0 || old.Advance != nil || old.ID != i.ID || old.Revision != q.ExpectedRevision || old.Revision <= previous || !old.Registered || !reflect.DeepEqual(old.Context, i.Context) || !reflect.DeepEqual(old.Registration, i.Registration) || old.Reason != i.Reason || p.Transition.Effects.Status != "committed" || terminalSessionAdvance(q.Action) {
 				return fail("reconciliation_required", "invalid flat Session execution history")
 			}
 			previous = q.ExpectedRevision + 2
@@ -114,7 +114,7 @@ func (s *Service) projectSessionHistory(i SessionInstance, st snapshot, v *Sessi
 	if i.Advance != nil {
 		v.RecordEffects = i.Advance.Effects.Status
 		v.NextActions = []string{"session-read", "session-resume"}
-		if i.Advance.Effects.Status == "committed" && i.Advance.Request.Action == "complete" {
+		if i.Advance.Effects.Status == "committed" && terminalSessionAdvance(i.Advance.Request.Action) {
 			v.State = "completed"
 			v.NextActions = []string{"session-read"}
 		}
@@ -145,5 +145,8 @@ func (s *Service) projectSessionHistory(i SessionInstance, st snapshot, v *Sessi
 	}
 	if eligible {
 		v.NextActions = append(v.NextActions, "session-advance")
+		if _, e := remainingSessionCards(i); e == nil {
+			v.NextActions = append(v.NextActions, "session-successor")
+		}
 	}
 }

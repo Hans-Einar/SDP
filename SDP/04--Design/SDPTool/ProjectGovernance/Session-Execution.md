@@ -421,7 +421,8 @@ is flat and bounded; this is not the sustained-use archive/rollover solution.
 An initially activated plan readies all bound execution cards, satisfying the existing
 plan contract; only the selected step acquires a scope claim. Overall closure is a
 separate operation: every bound step and whole-card obligation must be satisfied.
-Remaining contribution scope still refuses without implemented successor transfer.
+At the C2c2b checkpoint, remaining contribution scope still refused without successor
+transfer; the later C2c3 section below adds the bounded disposed-scope transition.
 Authoring a changed binding still requires the later explicit rebind/replan path.
 These retained boundaries are not waivers of the original transition table.
 
@@ -473,3 +474,24 @@ assignment with current sources. Later input/scope/source changes, uncertainty o
 terminal routine state cannot inherit that exception. Admission, retry identity and
 semantic-consumption claims remain unchanged. The initial failed trial and corrected
 native trial are retained in PGF4-C1 evidence.
+
+
+## T048 bounded successor transfer — PGF1-C2c3
+
+A completed contribution may leave card scope for a different Session. The terminal
+`transfer` continuation requires all predecessor steps disposed, at least one remaining
+contribution, and an exact preflight snapshot of an existing manual successor binding,
+active Session and planned plan. The successor must name exactly the remaining cards;
+its authority, anchors, workflow and scope must pass normal binding checks. Existing
+adoption, active plan or claims refuse transfer. This closes only the predecessor's
+selected work; it does not complete the remaining cards or imply the overall goal.
+
+Canonical effects retain all predecessor evidence and remaining-work descriptions,
+set the transferred cards ready with the successor PlanId, append explicit predecessor/
+successor links and history, and complete the predecessor plan/Session. The successor
+plan remains planned. A fresh explicit adoption/selection/assessment is required before
+execution. Exact request/context pins, one writer reservation and checked effects
+provide retry/recovery; no delete-and-recreate or silent binding rewrite is permitted.
+Operational profile 0.21 represents this additive terminal action; prior profiles stay
+readable and older readers must refuse the new state. Reviewed active rebind/replan
+and in-flight transfer remain separate obligations.

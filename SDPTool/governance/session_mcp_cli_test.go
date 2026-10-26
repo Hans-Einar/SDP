@@ -79,11 +79,11 @@ func TestSessionMCPCompiledLifecycle(t *testing.T) {
 	binary := sessionMCPBinary(t)
 	c := sessionMCPConnect(t, binary, s, q.InstanceID)
 	list, e := c.ListTools(context.Background(), nil)
-	if e != nil || len(list.Tools) != 12 {
+	if e != nil || len(list.Tools) != 13 {
 		t.Fatal(list, e)
 	}
 	for _, tool := range list.Tools {
-		if tool.Annotations.ReadOnlyHint != (tool.Name == "session_read" || tool.Name == "session_definition") {
+		if tool.Annotations.ReadOnlyHint != (tool.Name == "session_read" || tool.Name == "session_definition" || tool.Name == "session_successor") {
 			t.Fatal(tool.Name)
 		}
 	}

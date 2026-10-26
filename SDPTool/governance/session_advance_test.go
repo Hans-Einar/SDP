@@ -20,7 +20,7 @@ func advanceRequest(t *testing.T, s *Service, id, action, step, basis, result st
 	}
 	i := st.Sessions[id]
 	r := st.Runs[i.Work[0].Request.OperationID]
-	return SessionAdvanceRequest{SessionSchema, s.project, st.CheckoutID, newTestID(), id, i.Revision, r.Revision, action, step, basis, result, "Continue within the selected Session and preserve earlier evidence"}
+	return SessionAdvanceRequest{nil, SessionSchema, s.project, st.CheckoutID, newTestID(), id, i.Revision, r.Revision, action, step, basis, result, "Continue within the selected Session and preserve earlier evidence"}
 }
 func commitAdvance(t *testing.T, s *Service, q SessionAdvanceRequest) SessionMutationResult {
 	t.Helper()

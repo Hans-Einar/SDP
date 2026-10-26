@@ -3,6 +3,7 @@ package governance
 import (
 	"encoding/json"
 	"fmt"
+	"net/url"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -15,20 +16,22 @@ import (
 )
 
 type SessionAdvanceRequest struct {
-	Schema              string `json:"schema"`
-	ProjectRef          string `json:"projectRef"`
-	CheckoutID          string `json:"checkoutId"`
-	OperationID         string `json:"operationId"`
-	InstanceID          string `json:"instanceId"`
-	ExpectedRevision    uint64 `json:"expectedRevision"`
-	ExpectedRunRevision uint64 `json:"expectedRunRevision"`
-	Action              string `json:"action"`
-	StepID              string `json:"stepId"`
-	Basis               string `json:"basis"`
-	ResultID            string `json:"resultId"`
-	Reason              string `json:"reason"`
+	Successor           *SessionSuccessor `json:"successor,omitempty"`
+	Schema              string            `json:"schema"`
+	ProjectRef          string            `json:"projectRef"`
+	CheckoutID          string            `json:"checkoutId"`
+	OperationID         string            `json:"operationId"`
+	InstanceID          string            `json:"instanceId"`
+	ExpectedRevision    uint64            `json:"expectedRevision"`
+	ExpectedRunRevision uint64            `json:"expectedRunRevision"`
+	Action              string            `json:"action"`
+	StepID              string            `json:"stepId"`
+	Basis               string            `json:"basis"`
+	ResultID            string            `json:"resultId"`
+	Reason              string            `json:"reason"`
 }
 type SessionAdvance struct {
+	Successor   *SessionContext       `json:"successor,omitempty"`
 	Request     SessionAdvanceRequest `json:"request"`
 	PriorDigest string                `json:"priorDigest"`
 	Effects     SessionRecordEffects  `json:"effects"`
@@ -45,15 +48,21 @@ func advanceExecution(i SessionInstance, revision uint64) SessionInstance {
 	return i
 }
 func validSessionAdvance(q SessionAdvanceRequest) error {
-	if q.Schema != SessionSchema || !uuidPattern.MatchString(q.OperationID) || !uuidPattern.MatchString(q.InstanceID) || !uuidPattern.MatchString(q.ResultID) || q.ExpectedRevision == 0 || q.ExpectedRunRevision == 0 || !validLeaderText(q.Reason, 2048) || !slices.Contains([]string{"next", "rework", "complete"}, q.Action) {
+	if q.Schema != SessionSchema || !uuidPattern.MatchString(q.OperationID) || !uuidPattern.MatchString(q.InstanceID) || !uuidPattern.MatchString(q.ResultID) || q.ExpectedRevision == 0 || q.ExpectedRunRevision == 0 || !validLeaderText(q.Reason, 2048) || !slices.Contains([]string{"next", "rework", "complete", "transfer"}, q.Action) {
 		return fail("invalid_request", "exact Session continuation identity, revisions and reason required")
 	}
-	if q.Action == "complete" {
+	if terminalSessionAdvance(q.Action) {
 		if q.StepID != "" || q.Basis != "disposition" {
 			return fail("invalid_request", "completion requires disposition without a next step")
 		}
 	} else if !sessionStepPattern.MatchString(q.StepID) {
 		return fail("invalid_request", "bounded target step required")
+	}
+	if (q.Action == "transfer") != (q.Successor != nil) {
+		return fail("invalid_request", "successor required only for transfer")
+	}
+	if q.Successor != nil && (!digestPattern.MatchString(q.Successor.InputRevision) || !literalCandidatePath(q.Successor.BindingPath)) {
+		return fail("invalid_request", "exact successor context required")
 	}
 	if q.Action == "rework" {
 		if !slices.Contains([]string{"owner", "test", "review"}, q.Basis) {
@@ -83,7 +92,7 @@ func advanceEligibility(i SessionInstance, q SessionAdvanceRequest) error {
 	if i.Disposition == nil || i.Disposition.Effects.Status != "committed" || i.Disposition.Request.OperationID != q.ResultID {
 		return fail("missing_coverage", "exact completed disposition required")
 	}
-	if q.Action == "complete" {
+	if terminalSessionAdvance(q.Action) {
 		for _, step := range i.Context.Binding.Steps {
 			if !sessionStepDone(i, step.ID) {
 				return fail("conflict", "all selected steps must be disposed before Session closure")
@@ -184,7 +193,8 @@ func advanceArtifact(i SessionInstance, a SessionAdvance) string {
 		CreatedAt     string                `json:"createdAt"`
 		BindingDigest string                `json:"bindingDigest"`
 		RunID         string                `json:"runId"`
-	}{"sdp-session-transition/0.1", a.Request, a.PriorDigest, a.Effects.CreatedAt, i.Context.BindingDigest, i.Work[0].Request.OperationID}, "", "  ")
+		Successor     *SessionContext       `json:"successor,omitempty"`
+	}{"sdp-session-transition/0.1", a.Request, a.PriorDigest, a.Effects.CreatedAt, i.Context.BindingDigest, i.Work[0].Request.OperationID, a.Successor}, "", "  ")
 	return string(b) + "\n"
 }
 func advanceJournal(i SessionInstance, a SessionAdvance, p string) string {
@@ -192,15 +202,19 @@ func advanceJournal(i SessionInstance, a SessionAdvance, p string) string {
 	description := "Completed step retained; next selected step requires fresh assessment and assignment."
 	if a.Request.Action == "rework" {
 		description = "Prior implementation and failed/owner result retained; fresh implementation required. Prior owner gate is no longer current; no acceptance inferred."
-	} else if a.Request.Action == "complete" {
+	} else if terminalSessionAdvance(a.Request.Action) {
 		description = "All selected steps and whole-card outcomes disposed; selected plan and Session completed."
+	}
+	if a.Successor != nil {
+		rel, _ := filepath.Rel(filepath.Dir(p), a.Successor.Binding.Session.Path)
+		description = "Selected predecessor work completed; remaining cards transferred to [" + a.Successor.Binding.Session.ID + "](" + (&url.URL{Path: filepath.ToSlash(rel)}).EscapedPath() + ") and plan " + a.Successor.Binding.Plan.ID + ". Cards remain open; fresh adoption and assessment required. Predecessor: " + i.Context.Binding.Session.ID + "."
 	}
 	return "\n## PG Session " + a.Request.Action + " " + a.Request.OperationID + "\n\n" + description + "\n[Exact continuation record](" + filepath.ToSlash(rel) + ").\n\n" + publicationProse(a.Request.Reason)
 }
 func advanceCardPaths(i SessionInstance, files map[string]string, q SessionAdvanceRequest) (map[string]string, error) {
 	required := map[string]bool{}
 	steps := []SessionStepBinding{selectedSessionStep(i)}
-	if q.Action == "complete" {
+	if terminalSessionAdvance(q.Action) {
 		steps = i.Context.Binding.Steps
 	}
 	for _, step := range steps {
@@ -226,6 +240,9 @@ func advanceCardPaths(i SessionInstance, files map[string]string, q SessionAdvan
 	return cards, nil
 }
 func planSessionAdvance(i SessionInstance, a SessionAdvance) (map[string]string, error) {
+	if e := validateSuccessorRecord(i, a); e != nil {
+		return nil, e
+	}
 	files := map[string]string{}
 	for p, b := range a.Before {
 		files[p] = b
@@ -235,6 +252,9 @@ func planSessionAdvance(i SessionInstance, a SessionAdvance) (map[string]string,
 		return nil, e
 	}
 	subjects := map[string]string{i.Context.Binding.Plan.ID: i.Context.Binding.Plan.Path}
+	if a.Request.Action == "transfer" {
+		subjects[a.Successor.Binding.Plan.ID] = a.Successor.Binding.Plan.Path
+	}
 	for id, p := range cards {
 		subjects[id] = p
 	}
@@ -265,6 +285,20 @@ func planSessionAdvance(i SessionInstance, a SessionAdvance) (map[string]string,
 			if a.Request.Action == "complete" && m["CardState"] != "completed" {
 				return nil, fail("missing_coverage", "remaining card scope needs explicit successor disposition before overall closure")
 			}
+			if a.Request.Action == "transfer" && m["CardState"] != "completed" {
+				if m["CardState"] != "in-progress" {
+					return nil, fail("conflict", "remaining card must be in-progress")
+				}
+				b, e := replaceMetadata([]byte(body), "PlanId", a.Successor.Binding.Plan.ID)
+				if e != nil {
+					return nil, e
+				}
+				b, e = replaceMetadata(b, "CardState", "ready")
+				if e != nil {
+					return nil, e
+				}
+				body = string(b)
+			}
 			if a.Request.Action == "rework" {
 				if !slices.Contains([]string{"in-progress", "gate-review"}, m["CardState"]) {
 					return nil, fail("conflict", "rework card must be active")
@@ -275,7 +309,7 @@ func planSessionAdvance(i SessionInstance, a SessionAdvance) (map[string]string,
 				}
 				body = string(b)
 			}
-		} else if a.Request.Action == "complete" {
+		} else if terminalSessionAdvance(a.Request.Action) && id == i.Context.Binding.Plan.ID {
 			if m["state"] != "active" {
 				return nil, fail("conflict", "active selected plan required")
 			}
@@ -303,11 +337,25 @@ func planSessionAdvance(i SessionInstance, a SessionAdvance) (map[string]string,
 		payload["from"] = prev["to"]
 		payload["fromPath"] = prev["toPath"]
 		payload["reason"] = "Session " + a.Request.Action + " " + a.Request.OperationID + "; prior evidence retained."
+		if a.Successor != nil {
+			links := []string{}
+			if prior, ok := payload["links"].([]any); ok {
+				for _, value := range prior {
+					if id, ok := value.(string); ok {
+						links = append(links, id)
+					}
+				}
+			}
+			links = append(links, i.Context.Binding.Plan.ID, a.Successor.Binding.Plan.ID)
+			sort.Strings(links)
+			payload["links"] = slices.Compact(links)
+			payload["reason"] = fmt.Sprint(payload["reason"]) + " Remaining cards transferred to " + a.Successor.Binding.Plan.ID + "; fresh successor adoption required."
+		}
 		prefix, kind := "EVT-PM-"+strings.Split(id, "-")[1]+"-", "x-management:updated"
 		if strings.HasPrefix(id, "KB-") {
 			prefix = "EVT-KB-" + strings.Split(id, "-")[1] + "-"
 			kind = "x-kanban:reviewed"
-		} else if a.Request.Action == "complete" {
+		} else if terminalSessionAdvance(a.Request.Action) && id == i.Context.Binding.Plan.ID {
 			payload["to"] = "completed"
 			kind = "x-management:completed"
 		}
@@ -325,7 +373,7 @@ func planSessionAdvance(i SessionInstance, a SessionAdvance) (map[string]string,
 	if !ok {
 		return nil, fail("missing_coverage", "continuation Session absent")
 	}
-	if a.Request.Action == "complete" {
+	if terminalSessionAdvance(a.Request.Action) {
 		b, e := replaceMetadata([]byte(body), "Status", "completed")
 		if e != nil {
 			return nil, e
@@ -333,6 +381,10 @@ func planSessionAdvance(i SessionInstance, a SessionAdvance) (map[string]string,
 		body = string(b)
 	}
 	files[sp] = appendRecord([]byte(body), advanceJournal(i, a, sp))
+	if a.Successor != nil {
+		p := a.Successor.Binding.Session.Path
+		files[p] = appendRecord([]byte(files[p]), advanceJournal(i, a, p))
+	}
 	files[advancePath(a.Request)] = advanceArtifact(i, a)
 	if a.Request.Action == "rework" {
 		if _, ok := files[dispositionClaim(i)]; !ok {
@@ -344,6 +396,9 @@ func planSessionAdvance(i SessionInstance, a SessionAdvance) (map[string]string,
 }
 func advanceCoverage(previous SessionRecordEffects, a SessionAdvance, basis []Source) []Source {
 	previous.Coverage = append(append([]Source{}, previous.Coverage...), basis...)
+	if a.Successor != nil {
+		previous.Coverage = mergeSessionSources(previous.Coverage, a.Successor.Sources)
+	}
 	return ownerGateCoverage(previous, SessionOwnerGate{Effects: a.Effects})
 }
 func (s *Service) buildSessionAdvance(st snapshot, i SessionInstance, a SessionAdvance) (SessionAdvance, error) {
@@ -352,6 +407,17 @@ func (s *Service) buildSessionAdvance(st snapshot, i SessionInstance, a SessionA
 		return a, e
 	}
 	previous := *sessionLatestEffects(i)
+	if a.Request.Action == "transfer" {
+		ctx, e := s.readSuccessorContext(i, a.Request.Successor.BindingPath, files)
+		if e != nil {
+			return a, e
+		}
+		ctx.CheckoutID = st.CheckoutID
+		if ctx.InputRevision != a.Request.Successor.InputRevision {
+			return a, fail("stale_revision", "successor context changed")
+		}
+		a.Successor = &ctx
+	}
 	for _, src := range previous.Coverage {
 		b, err := readFile(filepath.Join(s.root, src.Path), maxState)
 		if os.IsNotExist(err) && src.SHA256 == "absent" {
@@ -379,6 +445,11 @@ func (s *Service) buildSessionAdvance(st snapshot, i SessionInstance, a SessionA
 	}
 	if a.Request.Action == "rework" {
 		paths = append(paths, dispositionClaim(i))
+	}
+	if a.Successor != nil {
+		for _, src := range a.Successor.Sources {
+			paths = append(paths, src.Path)
+		}
 	}
 	a.Before = map[string]string{}
 	for _, p := range paths {
@@ -494,10 +565,17 @@ func (s *Service) AdvanceSession(c Caller, q SessionAdvanceRequest) (SessionMuta
 	if e != nil {
 		return SessionMutationResult{}, e
 	}
+	if e = s.transferClaims(st, i, a); e != nil {
+		return SessionMutationResult{}, e
+	}
 	i.Advance = &a
 	i.Revision++
 	st.Sessions[i.ID] = i
-	st.Schema = sessionLifecycleStateSchema
+	if a.Successor != nil {
+		st.Schema = sessionTransferStateSchema
+	} else if st.Schema != sessionTransferStateSchema {
+		st.Schema = sessionLifecycleStateSchema
+	}
 	out := SessionMutationResult{Schema: SessionSchema, Operation: "session-advance", OperationID: q.OperationID, InstanceID: i.ID, Revision: i.Revision, Registration: "committed", RecordEffects: "prepared"}
 	st.Receipts[q.OperationID] = receipt{requestDigest(q), Result{Schema: Schema, Operation: "session.advance", OperationID: q.OperationID, ProjectRef: s.project, CheckoutID: st.CheckoutID, Session: &out}}
 	if e = validateSessionAdvances(st); e != nil {
@@ -512,13 +590,16 @@ func (s *Service) applySessionAdvance(st *snapshot, i *SessionInstance, tx *proj
 	a := i.Advance
 	prior := *i
 	prior.Advance = nil
+	if e := s.transferClaims(*st, prior, *a); e != nil {
+		return e
+	}
 	if e := s.sessionWorkClaims(*st, prior); e != nil {
 		return e
 	}
 	if e := s.applySessionRecordEffects(&a.Effects, tx, s.sessionPendingOwner(*i), "session-advance", func() error { return s.advanceBasis(*st, prior, *a) }); e != nil {
 		return e
 	}
-	if a.Request.Action == "complete" {
+	if terminalSessionAdvance(a.Request.Action) {
 		return nil
 	}
 	if a.Request.Action == "rework" {
@@ -545,7 +626,7 @@ func validateSessionAdvances(st snapshot) error {
 			q, p := a.Request, a.Effects
 			prior := i
 			prior.Advance = nil
-			if st.Schema != sessionLifecycleStateSchema || validSessionAdvance(q) != nil || advanceEligibility(prior, q) != nil || advanceStoredBasis(st, prior, q) != nil || a.PriorDigest != requestDigest(advanceExecution(prior, q.ExpectedRevision)) || q.ProjectRef != st.Project || q.CheckoutID != st.CheckoutID || q.InstanceID != root.ID || q.ExpectedRevision >= root.Revision || seen[q.OperationID] {
+			if !sessionLifecycleProfile(st.Schema) || (q.Action == "transfer" && st.Schema != sessionTransferStateSchema) || validSessionAdvance(q) != nil || advanceEligibility(prior, q) != nil || advanceStoredBasis(st, prior, q) != nil || a.PriorDigest != requestDigest(advanceExecution(prior, q.ExpectedRevision)) || q.ProjectRef != st.Project || q.CheckoutID != st.CheckoutID || q.InstanceID != root.ID || q.ExpectedRevision >= root.Revision || seen[q.OperationID] {
 				return fail("reconciliation_required", "invalid Session continuation identity/basis")
 			}
 			seen[q.OperationID] = true
@@ -570,6 +651,11 @@ func validateSessionAdvances(st snapshot) error {
 			if q.Action == "rework" {
 				allowed[dispositionClaim(prior)] = true
 			}
+			if a.Successor != nil {
+				for _, src := range a.Successor.Sources {
+					allowed[src.Path] = true
+				}
+			}
 			for p := range a.Before {
 				if !allowed[p] {
 					return fail("reconciliation_required", "unselected continuation preimage")
@@ -588,6 +674,13 @@ func validateSessionAdvances(st snapshot) error {
 					return fail("reconciliation_required", "invalid continuation pins")
 				}
 				inputs[src.Path] = src.SHA256
+			}
+			if a.Successor != nil {
+				for _, src := range a.Successor.Sources {
+					if inputs[src.Path] != src.SHA256 {
+						return fail("reconciliation_required", "successor input pin differs")
+					}
+				}
 			}
 			for _, src := range advanceBasisSources(st, q) {
 				if inputs[src.Path] != src.SHA256 {

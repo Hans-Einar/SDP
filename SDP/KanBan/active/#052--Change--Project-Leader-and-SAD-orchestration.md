@@ -465,3 +465,9 @@ T048 PGF4-C1 delivers terminal Session inspection, checked record resume, step c
 T048 PGF7-C1a verifies the native no-design lab task through actual question/reply continuation, external byte test, fresh native review, checked whole-card disposition and plan/Session completion. Final full SDPTool tests pass. The initial unsent review catalogue refusal is retained and handled through documented process-local isolation. Full SDL/multi-Master/recovery/capacity acceptance and PG product review remain open.
 [Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF7-C1a.md);
 [remaining completion gates](../../05--Implementation/SDPTool/ProjectGovernance/Completion-status-T048.md).
+
+
+## T048 — Explicit remaining-scope successor
+
+T048 PGF1-C2c3 delivers explicit remaining-scope transfer after all predecessor steps are disposed. Canonical effects close only the predecessor plan/Session and retain remaining cards ready under a planned manual successor; fresh adoption and assessment are required. CLI/JSON/MCP, per-effect/HEAD recovery, pending-adoption exclusion, final focused race/vet and complete per-package test coverage pass. Active rebind, in-flight transfer, autonomous scheduling, model gates and full PG acceptance remain open.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2c3.md).

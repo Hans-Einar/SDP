@@ -430,7 +430,7 @@ func (s *Service) AdoptSession(c Caller, q SessionAdoptRequest) (SessionMutation
 	if !digestPattern.MatchString(q.InputRevision) || !validLeaderText(q.Reason, 2048) {
 		return SessionMutationResult{}, fail("invalid_request", "coverage revision and bounded reason required")
 	}
-	unlock, e := lock(s.state)
+	_, tx, unlock, e := s.lockRecordWriter()
 	if e != nil {
 		return SessionMutationResult{}, e
 	}
@@ -444,6 +444,9 @@ func (s *Service) AdoptSession(c Caller, q SessionAdoptRequest) (SessionMutation
 	}
 	if r, ok, e := sessionRetry(st, q.OperationID, requestDigest(q)); ok {
 		return r, e
+	}
+	if e = tx.Check(""); e != nil {
+		return SessionMutationResult{}, e
 	}
 	ctx, e := s.sessionContext(q.BindingPath)
 	if e != nil {

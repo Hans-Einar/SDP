@@ -43,6 +43,19 @@ func NewSessionController(service *governance.Service, instance string, skill go
 		}
 		return map[string]any{"workflow": governance.SessionWorkflow(), "skill": skill, "instanceId": instance}, nil
 	})
+	addSessionTool(server, "session_successor", "Inspect the exact manual successor context for remaining scope of the launch-bound predecessor. No adoption or execution.", governance.SessionWireDefinition("successorRequest"), true, func(b []byte) (any, error) {
+		var q governance.SessionSuccessorRequest
+		if e := governance.Decode(b, &q); e != nil {
+			return nil, e
+		}
+		if q.InstanceID != instance {
+			return nil, &governance.Error{Code: "unauthorized", Message: "request outside launch-bound Session"}
+		}
+		if e := check(); e != nil {
+			return nil, e
+		}
+		return service.SessionSuccessorContext(q)
+	})
 	caller := governance.LocalController()
 	addSessionMutation(server, service, instance, skill, "resume", "resumeRequest", func(q governance.SessionResumeRequest) (any, error) { return service.ResumeSession(caller, q) })
 	addSessionMutation(server, service, instance, skill, "select", "selectRequest", func(q governance.SessionSelectRequest) (any, error) { return service.SelectSession(caller, q) })

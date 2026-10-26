@@ -1,0 +1,45 @@
+{
+  "baseline": "a4197517ff349e5802aa7b3904106cd91de2322c",
+  "changedFiles": {
+    "SDPTool/action_process_test.go": "be35f35b8ac7cfbb85c7b6141e29b2fe632e070a0cce43fc21bb079bbf5933a1",
+    "SDPTool/action_sessions.go": "b993dd07dfb146105bb090b8402be676dc398177b8fda41fd93d6137d9d5264b",
+    "SDPTool/governance/README.md": "aed8a6fc2c85069b3e3d63f5707bcda353fa64a7be26e295baf78422c6afc264",
+    "SDPTool/governance/session.go": "bdddb4619f8c0d97b4bfd217686f4d2331dcaf6cd84eba978e3dc881f43f6bdc",
+    "SDPTool/governance/session.schema.json": "28723b968d9348f14fe78a64139f7262563ea2592797d59f6658c840f48c6d98",
+    "SDPTool/governance/session_advance.go": "bdcb3db4f7b7c9834f6850bae7331a7d13a6636abe0f87175398c12371aecbdd",
+    "SDPTool/governance/session_advance_test.go": "f466eaa19d8a876dcbeb70dcfe5f1377399c005f557b7edf117623f8518f0d1c",
+    "SDPTool/governance/session_disposition.go": "3e2333d2afc0119713e7dd4828de0cac54164a67e049772c34dadea6fb2d6cf8",
+    "SDPTool/governance/session_history.go": "77e819a4481e0db248b8ab0258d0c8ef87dc9fb00efef034dcfc0d333a4f4a6f",
+    "SDPTool/governance/session_mcp_cli_test.go": "9b6d4d083770c3c98b81420b79e8c7b1006c299fd9942e786195ce1aea4154cf",
+    "SDPTool/governance/session_owner.go": "c80637e42f5dbf621ddb9618bad78de7f870e5e9bc89da6d7eb7fb1ddf722512",
+    "SDPTool/governance/session_transfer.go": "f15d955f0a35b09d6417c599b781e31ccae0552e9862524027dbd8bc1106fb41",
+    "SDPTool/governance/session_transfer_cli_test.go": "054c2c7656bbcaa0b1b2bd6bf6d18cd43b0b67b2837888d0fa164d761f075c6f",
+    "SDPTool/governance/session_transfer_test.go": "08a4877aa19ef1347b8ad263cf1c53b83bb4c33497955def550149a876039308",
+    "SDPTool/governance_cli.go": "4be01ae14a1e198e9e0d09504096d6a655718ec1abfaec7353a40e174a4b2c7e",
+    "SDPTool/governancemcp/README.md": "399cf75b0c51209293a7f6530e4a81d4a07ca517e32b2b8240fbabab1ae7daea",
+    "SDPTool/governancemcp/session.go": "1ac4af0db05e2da7a0ead3aa34f66221ad90052d2a7671a2063acbd89f3c1772",
+    "SDPTool/presentation/presentation.go": "8a33d27a9af0120ae9a1506f30e94d910d5b34ddbd04326289a1b7735d636464"
+  },
+  "binaries": {
+    "sdptool": "9a065c839c305550487b72edb8ca932594e79654c719f127555c6495dc774217",
+    "sdp-mcp": "0524eca47a68357048bb81aa23e4f80c881453dc16a794a5c7d73248cf6ec8b1"
+  },
+  "labCommit": "e63188f655c55ced6d35efa7b0cd84a7cd836918",
+  "blueprintRevision": "9b9c94b2083bfd70e815296387ea0e785fb9a763954d590876e37a0269a152b5",
+  "model": "Unreleased WORK--SessionLifecycle :00002; unchanged target responsibilities; not an accepted NOW or RELEASE",
+  "limits": "Final product sources pinned by changed-file SHA256 plus baseline. Precommit binary build metadata is not relabeled as a later commit. Native evidence from earlier milestones retains its earlier candidate.",
+  "checks": {
+    "allPackageCoverage": "passed across frozen-product full invocation plus corrected root-package rerun",
+    "fullInvocationExitCode": 1,
+    "fullInvocationLimit": "Only the old action-catalogue expectation failed; the entire root package was corrected and rerun. Other packages passed, including governance 349.058s. Do not relabel the original invocation as exit 0.",
+    "fullInvocationOutput": "--- FAIL: TestCompiledInvocationConsumer (0.69s)\n    action_process_test.go:30: catalogue actions: got [blueprint.assess blueprint.assignment.apply blueprint.assignment.list blueprint.generate governance.session.adopt governance.session.advance governance.session.assess governance.session.context governance.session.definition governance.session.dispose governance.session.list governance.session.owner governance.session.progress governance.session.read governance.session.resume governance.session.review governance.session.select governance.session.start governance.session.successor governance.session.verify project.discover project.model-tree], want [blueprint.assess blueprint.assignment.apply blueprint.assignment.list blueprint.generate governance.session.adopt governance.session.advance governance.session.assess governance.session.context governance.session.definition governance.session.dispose governance.session.list governance.session.owner governance.session.progress governance.session.read governance.session.resume governance.session.review governance.session.select governance.session.start governance.session.verify project.discover project.model-tree]\nFAIL\nFAIL\tgithub.com/Hans-Einar/SDP/SDPTool\t27.090s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprints\t12.561s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprintstate\t1.876s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t0.013s\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp\t[no test files]\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdptool\t0.011s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/codexcompat\t0.006s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t349.058s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t31.396s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancehost\t0.051s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t3.995s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/install\t18.421s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/model\t5.467s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/presentation\t0.008s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/projecthistory\t0.248s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/tools/profile\t2.987s\nFAIL\n",
+    "rootPackageRerunExitCode": 0,
+    "rootPackageRerunOutput": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool\t22.609s\n",
+    "finalFocusedRaceExitCode": 0,
+    "finalFocusedRaceOutput": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t62.406s\n",
+    "earlierTransferRace": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t198.659s\n",
+    "vetExitCode": 0,
+    "compiledFinalLabExitCode": 0,
+    "compiledFinalLabOutput": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t2.663s\n"
+  }
+}

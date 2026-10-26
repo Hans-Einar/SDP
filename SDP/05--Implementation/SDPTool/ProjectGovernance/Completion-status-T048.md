@@ -1,10 +1,10 @@
 # PG completion status after T048
 
 This is a current evidence map for PLAN-SDP-0018, not a new plan or an acceptance
-certificate. Product candidate: 6e236c8 (the T048 lifecycle, MCP, host-entry and
-terminal increments). Each linked evidence record owns its exact earlier candidate
-and limits. Documentation-only closeout does not turn earlier results into tests of
-another executable. The selected full PG goal remains incomplete.
+certificate. The latest PGF1-C2c3 product candidate is pinned by baseline plus changed
+file hashes in [its evidence](Evidence-PGF1-C2c3.md). Earlier increments retain their
+own candidate and evidence limits; native no-design closeout used source 6e236c8.
+The selected full PG goal remains incomplete.
 
 ## Delivered in this turn
 
@@ -20,11 +20,15 @@ another executable. The selected full PG goal remains incomplete.
 - [PGF7-C1a](Evidence-PGF7-C1a.md): that native no-design task passed an actual byte
   test and fresh native review, then completed its card/plan/Session through PG.
 
+- [PGF1-C2c3](Evidence-PGF1-C2c3.md): explicit transfer of disposed contributions' remaining
+  cards to a pinned manual successor; fresh adoption/assessment, canonical recovery
+  and compiled CLI/JSON/MCP verification. Active rebind and in-flight transfer remain.
+
 ## Remaining implementation and integration
 
 | Priority in the existing plan | Concrete remaining delivery | Why current behavior is insufficient |
 | --- | --- | --- |
-| PGF1 | Explicit remaining-scope transfer and reviewed rebind/replan | A contribution with remaining card scope still cannot close its Session; manually changed binding/authority is held and cannot be repaired through a supported rebind command |
+| PGF1 | Reviewed rebind/replan and in-flight remaining-scope disposition | Fully disposed contributions can now transfer to a manual successor; unfinished steps or an executing host cannot transfer, and manually changed binding/authority still needs a supported reviewed rebind path |
 | PGF2 | Controller-owned leader prepare/start/continue/stop, goal-fit admission and supervision | Session MCP can mutate supported records, and the owner can launch a committed run; the autonomous Project Leader does not yet schedule those host operations |
 | PGF3 | SDL WORK/design handoff, exact owner disposition, compatible WORK integration and model release in Session gates | The Session execution path still admits only explicit no-design/no-Blueprint work; standalone model/Blueprint services are not the complete integrated Session flow |
 | PGF4 | Complete normal owner conversation/admission and direct role dialogue | Common terminal operations work, but complex design/evidence inputs still require structured requests and the broader leader-directed conversation is incomplete |
@@ -51,7 +55,7 @@ bounded checks already delivered. The normative scenarios remain in
 | PG-A07 | Candidate/source drift and excluded-path tests | Combined design/model candidate changes in the final matrix |
 | PG-A08 | Core receipt/CAS/crash and orphan-generation tests | Final-candidate complete-workflow recovery and rollover |
 | PG-A09 | Every-effect canonical publication recovery tests | Integrated model promotion/closeout recovery |
-| PG-A10 | Routine pins, strict caller authority and owner-only decisions | Explicit successor/rebind migration and final-case replay |
+| PG-A10 | Routine pins, strict caller authority and owner-only decisions | Reviewed rebind/migration and final-case replay; bounded successor transfer now verified |
 | PG-A11 | Existing observer/recovery checks; actual fresh-controller continuation | Actually active-host loss, uncertain creation/send and full recovery matrix |
 | PG-A12 | Durable host/input/report projections; actual recorded reply | Full concurrent steering, role-dialogue and interruption matrix |
 | PG-A13 | Same run/Session with two actual attempts and retained answer | Full design/replan/leader reconnect journey |
@@ -66,11 +70,11 @@ bounded checks already delivered. The normative scenarios remain in
 | PG-A22 | Persistent local claims and canonical writer reservations | Compatible WORK merge, semantic conflicts, ancestry and two native Masters |
 | PG-A23 | No-design-only completion cannot bypass design/model requirements | Exact accepted model promotion and interrupted-release recovery |
 | PG-A24 | Named/pinned leader skill checked on Session MCP calls | Actual native Project Leader admission/supervision/closeout decisions |
-| PG-A25 | Actual native no-design task, external test, fresh review and checked card/plan/Session closure | Combined SDL/rework/model-release journey and broader-scope transfer |
+| PG-A25 | Actual native no-design task, external test, fresh review and checked card/plan/Session closure | Combined native SDL/rework/model-release journey and native successor transfer |
 | PG-A26 | Shared CLI/MCP receipts and owner terminal/host entry | Native Project Leader reconnect/dispatch without duplicate work |
 | PG-A27 | Canonical effects/fault matrix and launch-after-commit guard | Actual active-host and model-promotion interruption boundaries |
 | PG-A28 | Own-effect refresh, unrelated append and selected-edit refusal | Explicit reviewed rebind/replan after legitimate selected changes |
-| PG-A29 | Strict binding/dependency/version validation and retained history | Explicit migration and successor handling through the final native journey |
+| PG-A29 | Strict binding/dependency/version validation and retained history | Explicit migration and successor handling through the final native journey; bounded compiled transfer verified |
 | PG-A30 | Separate stage/card/host/effect/owner projections | Full native concurrent workflow and all selected completion obligations |
 
 No owner acceptance, model release, merge, publication or Ponsse/MVP1 activation is

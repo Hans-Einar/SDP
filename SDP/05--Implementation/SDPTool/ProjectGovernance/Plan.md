@@ -875,7 +875,7 @@ workflow remain incomplete. Do not report a percentage from the count of increme
 
 | Checkpoint | Existing scope | Dependency | Current status |
 | --- | --- | --- | --- |
-| PGF1 Final work disposition | PGI4; PG-A06/07/09/13/16/23 | C3 | C2c2b owner/continuation/whole-plan closure delivered T048; transfer/rebind/model gates remain |
+| PGF1 Final work disposition | PGI4; PG-A06/07/09/13/16/23 | C3 | C2c2b owner/continuation/whole-plan closure and C2c3 explicit disposed-scope transfer delivered T048; reviewed rebind/model gates remain |
 | PGF2 Leader-directed execution and continuation | PGL2/PGL3; PG-A19/20/24; handoff scenarios 1/3/4 | PGF1 | partial foundation; implementation and native evidence required |
 | PGF3 SDL design handoff and replan | PGL2/PGL4; scenario 2, PG-A05/07/17/21/22/23 | PGF2 | partial preparation/provider guards; integrated SAD flow required |
 | PGF4 Usable owner conversation and overview | PGL4; scenarios 4/5 | PGF2/3 | terminal Session workflow C1 delivered T048 with real question/reply/continuation; broader conversation/admission remains |
@@ -1095,7 +1095,7 @@ policy. This turn delivers design/model preparation, not a runtime milestone.
 | Increment | Checkpoint mapping | Runnable outcome and exit evidence | Dependency/status |
 | --- | --- | --- | --- |
 | PGF1-C1 Session binding and durable instance | PGF1 foundation; PGF2 admission | Adopt a covered manual Session explicitly, read its selected steps/stages/holds, recover the same instance and reject stale/unsupported/cyclic bindings. Pin routine version and authority; leave legacy runs unchanged. New incomplete paths refuse action rather than simulate delivery | delivered T042 at bounded C1 scope; core, CLI/JSON, recovery and pg_lab evidence pass; later activation/leader/model gates remain |
-| PGF1-C2 Checked lifecycle effects and disposition | PGF1; PG-A25/27/28 | Use existing publication machinery for select/start/progress and eligible no-design closeout, including real card moves, metadata/history/links and partial-contribution handling. Reconcile own effects/unrelated ledger additions without weakening coverage. Crash matrix and shared writer/ID contention pass | in-progress; C2a selection/effects delivered T043; C2b1 assessment delivered T044; C2b2 no-design start/progress delivered T045; C2c1 verification/review gates delivered T046; C2c2a selected-step disposition/claim release delivered T047; C2c2b owner gates, rework/dependencies and eligible overall closure delivered T048; transfer/rebind/model gates remain |
+| PGF1-C2 Checked lifecycle effects and disposition | PGF1; PG-A25/27/28 | Use existing publication machinery for select/start/progress and eligible no-design closeout, including real card moves, metadata/history/links and partial-contribution handling. Reconcile own effects/unrelated ledger additions without weakening coverage. Crash matrix and shared writer/ID contention pass | in-progress; C2a selection/effects delivered T043; C2b1 assessment delivered T044; C2b2 no-design start/progress delivered T045; C2c1 verification/review gates delivered T046; C2c2a selected-step disposition/claim release delivered T047; C2c2b owner gates, rework/dependencies and eligible overall closure plus C2c3 explicit disposed-scope transfer delivered T048; reviewed rebind/model gates remain |
 | PGF2-C1 Common owner/leader Session operations | PGF2/4; PG-A26/29/30 | CLI and explicitly privileged leader adapter use the same core/instance/receipts. Controller dispatch follows committed record effects; leader-free owner resume and later leader reconnect neither duplicate work nor bypass authority | C1/C2; scoped MCP adapter C1a and Session-selected owner host entry C1b delivered T048; one native assignment verified; scheduling and remaining convenience stay open |
 | PGF3-C1 Design and model-release workflow | PGF3; PG-A21/22/23/25 | SDL WORK, required Blueprint, design handoff, code verification/rework and exact accepted model release participate in Session gates. Combine compatible model WORKs, refresh affected evidence and refuse unresolved model release at closure | common Session operations; implementation/native evidence required |
 | PGF5-C1 Full recovery across effects and attempts | PGF5; PG-A27/28/29 | Recover at each canonical/model/host boundary; preserve pending work, external edits and whole-card scope. Different routine versions and legacy profiles stay explicit | prior functional increments; evidence required |
@@ -1315,3 +1315,19 @@ T048 PGF7-C1a verifies the native no-design lab task through actual question/rep
 and PG-A01–30 without changing scope or claiming full acceptance. Continue explicit
 remaining-scope transfer/rebind, trusted leader scheduling and SDL model integration
 before the final recovery/capacity and combined acceptance matrix.
+
+
+### T048 — PGF1-C2c3 explicit successor transfer
+
+[Evidence](Evidence-PGF1-C2c3.md) records the checked transfer of all explicitly remaining
+contribution cards after every predecessor step is disposed. The predecessor plan/Session
+close, remaining cards reference a planned manual successor and remain ready, and fresh
+adoption/assessment is mandatory. Shared writer reservation protects adoption during
+partial publication. CLI, JSON invocation and Session-scoped MCP use the same core.
+
+Profile 0.21 retains exact successor context and canonical links. Earlier profiles and
+receipts remain readable; unsupported older readers refuse. Per-effect/HEAD recovery,
+stale/tampered input refusal and the compiled pg_lab journey are recorded with their
+exact candidate. The plan remains active: active reviewed rebind, autonomous host
+scheduling, SDL handoff/merge/release, sustained recovery/capacity and full acceptance
+are not completed. Next work continues under the existing owner authorization.

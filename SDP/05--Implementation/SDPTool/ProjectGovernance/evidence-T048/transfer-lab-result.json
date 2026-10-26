@@ -1,0 +1,12 @@
+{
+  "canonicalEffects": "committed",
+  "crossAdapterRetry": "unchanged HEAD",
+  "history": "preserved",
+  "limitations": "Synthetic report/test/review foundation; compiled CLI and MCP transfer only; successor remains unadopted and requires fresh assessment.",
+  "predecessorInstance": "50d8662e-74f9-406b-aa6b-c1b8cc328180",
+  "schema": "pg-transfer-lab/1",
+  "state": "completed",
+  "successorInputRevision": "9369e394c98f71206a0f699b48c7c8fca9c01d3adf49040f2d14c33faac49f24",
+  "successorPlan": "MAINT-SDP-0002",
+  "successorSession": "SESSION-TEST-0002"
+}

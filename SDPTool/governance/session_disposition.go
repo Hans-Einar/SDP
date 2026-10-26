@@ -533,7 +533,7 @@ func (s *Service) DisposeSession(c Caller, q SessionDisposeRequest) (SessionMuta
 	i.Disposition = &d
 	i.Revision++
 	st.Sessions[i.ID] = i
-	if st.Schema != sessionOwnerStateSchema && st.Schema != sessionLifecycleStateSchema {
+	if st.Schema != sessionOwnerStateSchema && !sessionLifecycleProfile(st.Schema) {
 		st.Schema = sessionDispositionStateSchema
 	}
 	out := SessionMutationResult{Schema: SessionSchema, Operation: "session-dispose", OperationID: q.OperationID, InstanceID: i.ID, Revision: i.Revision, Registration: "committed", RecordEffects: "prepared"}

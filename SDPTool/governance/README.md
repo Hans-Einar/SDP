@@ -763,7 +763,7 @@ profile 0.19 retains exact decision preimages, effects and receipts.
   host attempt or review holds continuation. The retired run and evidence remain.
 - `complete`: use an empty step ID and the current committed disposition. All bound
   steps and whole-card obligations must be completed. A broader contribution with
-  remaining work refuses until explicit successor-transfer support is implemented.
+  remaining work requires the explicit `transfer` action below.
 
 Resume publishes exact transition records, card/plan/Session journals and management
 history. Completion closes the selected plan and Session. Next/rework archive a flat
@@ -779,5 +779,33 @@ shows completed prior steps, execution history and `state: completed` separately
 host status. Shared publication reservation, exact pre/postimage recovery and receipt
 idempotency apply to owner and continuation effects as to disposition. Finite limits
 remain explicit: eight owner records per execution, 64 archived executions and the
-existing overall store/receipt bounds. Rollover, manual rebind/replan, successor
+existing overall store/receipt bounds. Rollover, manual rebind/replan, in-flight
 transfer, model release and privileged leader scheduling remain separate work.
+
+
+### Explicit remaining-scope successor — PGF1-C2c3
+
+After every predecessor step is disposed, author a manual successor Session, its
+execution binding and a registered planned plan. Name exactly the remaining cards;
+the cards still reference the predecessor plan until transfer commits. Register the
+new plan before the predecessor's final disposition, or append only unrelated history
+while its coverage is pinned; edits to already selected records require reviewed rebind.
+
+`session-successor --input successor.json` takes `instanceId` and `bindingPath` and
+returns the exact successor context and `inputRevision`. Use `session-advance` with
+`action: transfer`, empty `stepId`, `basis: disposition`, the exact result/revisions,
+and `successor: {bindingPath, inputRevision}`. Inspect the prepared result and commit
+with `session-resume`. The same operation is available through Session-scoped MCP.
+
+The checked effects complete only the predecessor plan/Session, retain contribution
+evidence and remaining-work text, and change remaining cards to `ready` with the
+successor PlanId. The successor plan stays planned; no host starts. Its ordinary
+context/adopt/select/assess path establishes fresh authority and evidence. A completed
+predecessor remains historical after successor edits. Adoption shares the canonical
+writer reservation, so it cannot observe partially committed transfer as permission.
+
+Operational profile 0.21 adds transfer records; older readers refuse it. Current readers
+retain supported older profiles and do not downgrade 0.21 during later work. Missing
+or extra cards, incomplete steps, active/adopted successor ownership, changed context
+and local/shared claims refuse. Cross-worktree preflight remains required; this is no
+distributed allocator or automatic replan of an edited active binding.
