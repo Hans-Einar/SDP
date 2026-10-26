@@ -540,3 +540,10 @@ T048 PGF2-C1b adds Session-selected owner host operations with exact committed a
 
 T048 PGF4-C1 delivers terminal Session inspection, checked record resume, step continuation/rework/completion, exact owner decisions and stdin question replies. Native testing found and corrected stale projection of a reply selected for the current continuation. The retained failing trial and corrected two-attempt native trial establish the bounded result; focused race, adapter suites and vet pass. Full PG scheduling, transfer/rebind, model lifecycle, sustained recovery and final review/owner gates remain open.
 [Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF4-C1.md).
+
+
+## T048 — Native no-design Session closeout verified
+
+T048 PGF7-C1a verifies the native no-design lab task through actual question/reply continuation, external byte test, fresh native review, checked whole-card disposition and plan/Session completion. Final full SDPTool tests pass. The initial unsent review catalogue refusal is retained and handled through documented process-local isolation. Full SDL/multi-Master/recovery/capacity acceptance and PG product review remain open.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF7-C1a.md);
+[remaining completion gates](../../05--Implementation/SDPTool/ProjectGovernance/Completion-status-T048.md).

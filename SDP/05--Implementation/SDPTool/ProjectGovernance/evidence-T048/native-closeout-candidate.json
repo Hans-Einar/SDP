@@ -1,0 +1,17 @@
+{
+  "productCommit": "6e236c8ea87fc661e61429d2f14fc4e534c109ef",
+  "binaries": {
+    "sdptool": "36bfe254abebbf1e51929d9a14c03825d992091c7f041f8a7e37619a668f7817",
+    "sdp-controller": "04975491daf204082dae3f48c901eb2369f1dbd9fddd6497fbe1333bfc0f857d",
+    "sdp-mcp": "b54b08e8d62484119788df6ed86299fdf28f132af775bcdbb41c6b88ea551314"
+  },
+  "fullTestExitCode": 0,
+  "fullTestOutput": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool\t23.662s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprints\t10.920s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprintstate\t1.752s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t0.009s\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp\t[no test files]\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdptool\t0.008s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/codexcompat\t0.004s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t296.522s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t27.761s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancehost\t0.044s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t3.746s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/install\t16.491s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/model\t4.992s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/presentation\t0.003s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/projecthistory\t0.232s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/tools/profile\t2.687s\n",
+  "nativeCloseout": "native-closeout-result.json",
+  "canonicalValidation": "native-closeout-canonical-validation.json",
+  "preservation": "native-closeout-preservation.json",
+  "limits": "Bounded no-design lifecycle. Actual external byte test and fresh native reviewer of lab task; not independent PG product review or full combined SDL/multi-Master/recovery acceptance.",
+  "labCommit": "ea470d0dc4e2754e0a68114aa364559184aadff3",
+  "nativeBinaryBuildBasis": "Precommit binaries pinned by hash, executable source equivalent to 6e236c8; embedded build VCS metadata may retain the earlier dirty baseline. Full test suite ran the 6e236c8 product sources.",
+  "actualSessionWireSchemaValidation": "PASS: 21 observed Session wire objects"
+}

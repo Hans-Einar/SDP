@@ -1,0 +1,9 @@
+{
+  "outsideTrackedPathsUnchanged": 477,
+  "referenceLabCommit": "d0b92f7",
+  "prefixChecks": {
+    "SDP/ProjectManagement/Ledger.ndjson": "608ad5dd944df6672a0b3c6683185a91d06b84622efc59715a5710ebcf286b52",
+    "SDP/Sessions/session.md": "original authored prefix preserved except expected Status metadata"
+  },
+  "onlyAllowedCanonicalChanges": true
+}

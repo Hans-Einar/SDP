@@ -1,0 +1,175 @@
+{
+  "productCommit": "6e236c8",
+  "instanceId": "fdf93304-d1a8-4003-a017-b0bec45c48e8",
+  "runId": "7220e237-0124-487a-b384-63d3fae2d6c0",
+  "reviewId": "81e4f00a-86e9-43be-b366-25167e239fbd",
+  "contextSeparation": "controller-observed-fresh-thread",
+  "qualifiedReviewBeforePublication": true,
+  "verdict": "passed",
+  "candidateDigest": "e84ee559c41255c5417af66085032f7602d4244fbc3fff53376e4b02781a3bfa",
+  "finalSession": {
+    "state": "completed",
+    "binding": {
+      "schema": "sdp-session-execution/0.1",
+      "session": {
+        "id": "SESSION-TEST-0001",
+        "path": "SDP/Sessions/session.md"
+      },
+      "plan": {
+        "id": "MAINT-SDP-0001",
+        "path": "SDP/Maintenance/Plan.md"
+      },
+      "authority": "SDP/authority.md",
+      "workflow": {
+        "id": "session-lifecycle",
+        "version": "0.1",
+        "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1"
+      },
+      "steps": [
+        {
+          "id": "S1",
+          "milestone": "M1",
+          "cards": [
+            {
+              "id": "KB-SDP-001",
+              "coverage": "whole"
+            }
+          ],
+          "dependsOn": [],
+          "writablePaths": [
+            "target.txt"
+          ],
+          "protectedPaths": [
+            "unrelated.txt"
+          ],
+          "review": "independent",
+          "ownerAcceptance": "not-required"
+        }
+      ]
+    },
+    "recordEffects": "committed",
+    "schema": "sdp-session-execution/0.1",
+    "operation": "session-read",
+    "instanceId": "fdf93304-d1a8-4003-a017-b0bec45c48e8",
+    "revision": 18,
+    "sessionId": "SESSION-TEST-0001",
+    "planId": "MAINT-SDP-0001",
+    "workflow": {
+      "id": "session-lifecycle",
+      "version": "0.1",
+      "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1"
+    },
+    "registration": "committed",
+    "coverage": "current",
+    "conditions": [],
+    "steps": [
+      {
+        "dispositionId": "27b29351-c21f-4ad7-ad26-a99cc063f104",
+        "cardDispositions": [
+          {
+            "id": "KB-SDP-001",
+            "outcome": "completed",
+            "summary": "The actual native agent selected the recorded short answer, changed only target.txt, passed byte verification and a fresh native review. No design change or owner acceptance was required by the selected binding.",
+            "remaining": ""
+          }
+        ],
+        "verificationEvidence": "b8d86754-6947-4cc0-97e5-7cbff74da155",
+        "reviewId": "81e4f00a-86e9-43be-b366-25167e239fbd",
+        "runId": "7220e237-0124-487a-b384-63d3fae2d6c0",
+        "runState": "completed",
+        "progressEvidence": "473ee8a2-9d81-439c-948f-7b318591ad38",
+        "assessment": {
+          "operationId": "4c844a64-dc3c-461f-aff7-6cdd26047b8b",
+          "recordPath": "SDP/Sessions/execution/assessments/4c844a64-dc3c-461f-aff7-6cdd26047b8b.json",
+          "designImpact": "unchanged",
+          "blueprint": {
+            "requirement": "not-required",
+            "rationale": "No model or implementation contract changes in this documentation-only fixture"
+          },
+          "reason": "Assess the selected documentation correction with explicit impact criteria",
+          "criteria": [
+            {
+              "domain": "contracts",
+              "impact": "unchanged",
+              "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+            },
+            {
+              "domain": "data-model",
+              "impact": "unchanged",
+              "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+            },
+            {
+              "domain": "responsibilities",
+              "impact": "unchanged",
+              "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+            },
+            {
+              "domain": "state-flow",
+              "impact": "unchanged",
+              "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+            },
+            {
+              "domain": "interfaces",
+              "impact": "unchanged",
+              "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+            },
+            {
+              "domain": "persistence",
+              "impact": "unchanged",
+              "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+            },
+            {
+              "domain": "deployment",
+              "impact": "unchanged",
+              "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+            }
+          ],
+          "evidence": [
+            {
+              "path": "evidence/design-scope.md",
+              "sha256": "6bbfa38ae969e5671186facb86c8f3b828c757badb32201385370708eb7a5716"
+            }
+          ],
+          "skills": [
+            {
+              "name": "sdp-project-leader",
+              "path": "/home/warloc/git/pg_lab/session-pgf4-c1-native-attention-final/Skills/sdp-project-leader/SKILL.md",
+              "digest": "8f903093e51638d6c1013b9ca3e51f0054f0a6a3173b686fd348b1ce794701ee"
+            },
+            {
+              "name": "sdp-change-analysis",
+              "path": "/home/warloc/git/pg_lab/session-pgf4-c1-native-attention-final/Skills/sdp-change-analysis/SKILL.md",
+              "digest": "0d55a9e318494eb8406721f428fd43f408bee32f7068d22f428a1c1c69db339a"
+            }
+          ]
+        },
+        "selected": true,
+        "id": "S1",
+        "stage": "done",
+        "holds": [
+          "selected step completed; plan/Session closure and other steps remain separate"
+        ]
+      }
+    ],
+    "nextActions": [
+      "session-read"
+    ],
+    "hostExecution": "completed"
+  },
+  "canonicalCardCompleted": true,
+  "canonicalPlanCompleted": true,
+  "canonicalSessionCompleted": true,
+  "claimReleased": true,
+  "terminalResumeUnchanged": true,
+  "actualOwnerAcceptance": false,
+  "ownerAcceptanceRequired": false,
+  "independentPGProductReview": false,
+  "hostVersion": "0.164.0",
+  "reviewProcessIsolation": [
+    "apps disabled",
+    "remote_plugin disabled",
+    "multi_agent disabled"
+  ],
+  "firstUnsentReviewRetained": "0ff01a91-086c-403e-8bba-ffd3c692afaa",
+  "finishedAt": "2026-10-26T02:09:59.427778+00:00"
+}

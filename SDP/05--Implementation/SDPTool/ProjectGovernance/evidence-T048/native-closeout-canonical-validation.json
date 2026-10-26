@@ -1,0 +1,11 @@
+{
+  "validator": "/home/warloc/git/SDP/SDP/ProjectManagement/validate.py",
+  "method": "validate_current(events, board=lab/SDP/KanBan, sdp=lab/SDP) with maintained schemas; no installed Toolkit/board-descriptor claim",
+  "result": [
+    1,
+    1,
+    0
+  ],
+  "events": 18,
+  "passed": true
+}

@@ -13,6 +13,9 @@
 
 ## Outcome and authority
 
+The [T048 completion-status map](Completion-status-T048.md) collects delivered increments,
+remaining implementation and PG-A01–30 evidence limits without changing this plan.
+
 Deliver one useful owner-to-agent Maintenance workflow through a local Codex client,
 shared SDPTool process core and agent adapter. Restore the same Session after an
 interrupted attempt and return candidate-bound evidence with a truthful disposition.
@@ -878,7 +881,7 @@ workflow remain incomplete. Do not report a percentage from the count of increme
 | PGF4 Usable owner conversation and overview | PGL4; scenarios 4/5 | PGF2/3 | terminal Session workflow C1 delivered T048 with real question/reply/continuation; broader conversation/admission remains |
 | PGF5 Recovery across the complete workflow | PGI3/PGI5/PGL5; PG-A08/09/11/12/13/14 | PGF1–4 | bounded cases delivered; active-host/full-flow gaps remain |
 | PGF6 Capacity and host compatibility | PGL3/PGL5; PG-A15/18 | PGF5 | limits explicit; sustained operation/rollover not proven |
-| PGF7 Native integrated acceptance in pg_lab | PGI5/PGL5; PG-A01–30 and handoff 1–5 | PGF1–6 | not verified as one final candidate |
+| PGF7 Native integrated acceptance in pg_lab | PGI5/PGL5; PG-A01–30 and handoff 1–5 | PGF1–6 | bounded native no-design closeout C1a verified T048; combined matrix remains open |
 | PGF8 Independent product review and owner trial | PGI5/PGL4/PGL5 | PGF7 | PG implementation review and final owner workflow feedback open |
 | PGF9 Scope disposition and development closeout | Session S3/S4/S6; handoff 6 | PGF8, explicit remote-Steering disposition | planned; no merge/release authority inferred |
 
@@ -1302,3 +1305,13 @@ T048 PGF4-C1 delivers terminal Session inspection, checked record resume, step c
 and the corrected result. Lab d0b92f7 retains both scenarios. Full PGF4 remains open;
 complex design/evidence inputs still use strict JSON/MCP, and no unattended leader
 scheduler or active-host crash recovery is claimed by this bounded continuation.
+
+
+### T048 — PGF7-C1a actual native no-design closeout
+
+T048 PGF7-C1a verifies the native no-design lab task through actual question/reply continuation, external byte test, fresh native review, checked whole-card disposition and plan/Session completion. Final full SDPTool tests pass. The initial unsent review catalogue refusal is retained and handled through documented process-local isolation. Full SDL/multi-Master/recovery/capacity acceptance and PG product review remain open.
+[Evidence](Evidence-PGF7-C1a.md) pins product source 6e236c8 and lab ea470d0.
+[Completion status](Completion-status-T048.md) consolidates all remaining PGF gates
+and PG-A01–30 without changing scope or claiming full acceptance. Continue explicit
+remaining-scope transfer/rebind, trusted leader scheduling and SDL model integration
+before the final recovery/capacity and combined acceptance matrix.

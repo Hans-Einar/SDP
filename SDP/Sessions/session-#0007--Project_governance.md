@@ -42,8 +42,8 @@ gantt
 | Session reference | SESSION-SDP-0007 |
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
-| Snapshot date | 2026-10-25 |
-| Current step | S3/S6 active: C2c2b owner decisions, rework/dependencies and eligible overall closure delivered. Scoped common MCP, Session host entry and terminal owner operations delivered; actual native reply/continuation verified. Transfer/rebind, leader scheduling and model gates remain |
+| Snapshot date | 2026-10-26 |
+| Current step | S3/S6 active: C2c2b owner decisions, rework/dependencies and eligible overall closure delivered. Scoped common MCP, Session host entry and terminal owner operations delivered; actual native no-design task verified through test, fresh review and full card/plan/Session closure. Transfer/rebind, leader scheduling and model gates remain |
 | Proposed next step | Complete explicit remaining-scope transfer/rebind, trusted host scheduling and PGF2–9 under T039/T041 gates: orchestration, SDL handoff, owner dialogue, recovery/capacity, native integration, independent review and explicit scope closeout. SDL-only; MVP1 deferred |
 | Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension; T026 assigns hub/webapp to a separate project and continues local SDP/SDPTool work; T027 continues local attention/replies; T028 continues guarded attention continuation; T029 selects stable Codex >=0.164.0 and compatible later hosts, preserving other scopes |
 
@@ -2688,3 +2688,61 @@ KB050/Session0008 and SDL-only KB059; Ponsse/MVP1 remains deferred. Loaded/reuse
 Master/Worker/Architect, Planning/Verifier/Traceability routines are unchanged. This is
 a work summary, not a captured final response. The owner's all-plan authorization
 remains in force; full PG is not complete from these four delivered increments.
+
+
+T048 PGF7-C1a selected verification: extend the successful native no-design question/
+reply fixture through actual byte/preservation verification, a native fresh reviewer,
+checked Session review/disposition and whole-card/plan/Session closure. These native
+agents are product tests explicitly selected by PLAN-SDP-0018, not delegated PG
+implementation or an independent review of PG itself. No owner acceptance is fabricated;
+the existing fixture explicitly does not require owner acceptance for this step.
+
+Preflight: product baseline 6e236c8; single worktree, no competing local writer and
+unchanged board/Session ownership. Green for the owner-authorized existing pg_lab
+fixture, external private operational store and linked T048 evidence/projections.
+No product or SDL design change is selected. Preserve failed and earlier native trials;
+new canonical effects in the selected successful fixture are expected and recorded,
+while other fixtures remain unchanged. This proves a bounded native no-design journey;
+PGF7's SDL, multi-Master, scope-change and full recovery matrix remains required.
+
+Native review preparation succeeds. Its first unsent bound thread encounters the
+known inherited Apps tool-catalogue transport bound (documented at PGL3-C8). No model
+turn was sent. Explicitly supersede that unsent review and prepare a fresh review
+using the existing documented process-local apps/remote_plugin/multi_agent isolation;
+retain the refusal, without enlarging protocol limits or changing global settings.
+
+
+T048 PGF7-C1a outcome: actual external byte verification and a native reviewer in a
+controller-observed fresh thread pass for the exact lab candidate. Checked Session
+review intake, disposition and terminal completion move the whole card to completed,
+close its plan/Session, complete the Run and release its claim. Terminal resume after
+completion leaves HEAD unchanged. The selected binding requires no owner acceptance;
+none is fabricated. This is native review of the lab task, not independent PG review.
+
+The first unsent review remains superseded with its Apps-catalogue refusal preserved.
+Documented process-local feature isolation permits the fresh native review; no global
+configuration changes, limit increase or unknown-send replay. OpenAI Docs entrypoint
+was consulted during host troubleshooting; existing local controller guidance supplied
+the applicable tested configuration. Actual host version remains Codex 0.164.0.
+
+Lab ea470d0 contains the final canonical records, request/receipt and review evidence.
+All 477 tracked paths outside the selected fixture are unchanged. Original ledger bytes
+and authored Session prefix are preserved except expected Status metadata. The shared
+Python management validator passes on the actual fixture (one card, one plan, 18 events).
+The final full SDPTool test suite passes on product source 6e236c8 (governance 296.522s);
+prior race/vet evidence keeps its own exact candidate. Native precommit binaries remain
+hash-pinned rather than relabeled with a different embedded VCS identity.
+
+The completion-status map now lists every remaining PGF delivery and PG-A01–30 gap.
+Five bounded increments were delivered/verified in T048; the owner's full-goal request
+is not achieved yet. S3/S6, PLAN-SDP-0018 and KB038/052 remain active/in-progress.
+Remaining implementation includes explicit successor transfer/rebind, autonomous trusted
+leader dispatch/supervision, integrated SDL WORK/handoff/merge/release, remaining owner
+conversation and active-host recovery/sustained rollover. The combined native matrix,
+independent PG review, actual owner trial and remote-Steering disposition remain open.
+No missing feature is mislabeled as merely waiting for owner approval. Next execution
+starts with scoped preflight for transfer/rebind and trusted dispatch, using the same
+Session and existing authorization. Backlog/onHold review and deferred Ponsse/MVP1/
+paused KB050 ownership remain unchanged. SDP/Master/Worker/Architect and reused
+Planning/Verifier/Traceability routines govern this work summary; no final response
+is claimed to have been captured. No merge, installation or model/software release.
