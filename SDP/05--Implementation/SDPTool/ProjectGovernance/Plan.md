@@ -868,8 +868,9 @@ report delivery/acknowledgement, serialized leader delivery, exact candidate evi
 native separate-context review and checked six-file result publication. These are
 real increments, but their combination is not yet a complete accepted workflow.
 T048 implements bounded no-design owner gates, rework, next-step continuation and
-whole-plan/Session closure; bounded C2c2b verification passes. Explicit
-remaining-scope transfers/rebind remain incomplete. Leader notices do not implement
+whole-plan/Session closure. C2c3 additionally transfers explicitly remaining card scope
+after every predecessor step is disposed. Reviewed active rebind/replan and in-flight
+transfer remain incomplete. Leader notices do not implement
 the full trusted scheduling/continuation policy; SAD dispatch and the owner-facing integrated
 workflow remain incomplete. Do not report a percentage from the count of increments.
 
