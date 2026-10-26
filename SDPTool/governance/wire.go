@@ -23,3 +23,19 @@ func WireDefinition(name string) map[string]any {
 	copy["$defs"] = defs
 	return copy
 }
+
+//go:embed session.schema.json
+var sessionWireSchema []byte
+
+// SessionWireDefinition is the shared strict Session transport contract.
+func SessionWireDefinition(name string) map[string]any {
+	var schema map[string]any
+	_ = json.Unmarshal(sessionWireSchema, &schema)
+	defs := schema["$defs"].(map[string]any)
+	out := map[string]any{}
+	for k, v := range defs[name].(map[string]any) {
+		out[k] = v
+	}
+	out["$defs"] = defs
+	return out
+}

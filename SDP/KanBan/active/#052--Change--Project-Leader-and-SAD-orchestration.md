@@ -9,7 +9,7 @@
 | created | 2026-10-09T12:08:50.581137+00:00 |
 | source | Owner Session0011 T004 role definition and T005 KanBan handoff request |
 | Systems | SDPTOOL |
-| next_review | Common Session MCP, remaining-scope transfer/rebind, trusted scheduling and SDL model gates |
+| next_review | Remaining-scope transfer/rebind, trusted scheduling and SDL model gates |
 | PlanId | PLAN-SDP-0018 |
 | tags | project-leader, steering, SAD, master, MCP, app-server, coordination |
 
@@ -437,3 +437,12 @@ T048 PGF1-C2c2b delivers trusted exact-result owner gates, retained next-step/de
 The SDL WORK remains unreleased TARGET. Synthetic lab observations are not native
 agent execution, independent PG review or actual owner acceptance. The same Session
 continues; unrelated backlog/onHold and paused work retain their existing ownership.
+
+
+## T048 — Common Session MCP adapter
+
+T048 PGF2-C1a delivers an explicit one-instance Session MCP capability with twelve shared-core tools, pinned named Project Leader skill, strict scope/authority checks and unchanged default coordinator/worker rights. Final targeted race/vet, compiled lifecycle and durable replay checks pass. Host scheduling, transfer/rebind, model integration and native/owner acceptance remain; plan/cards stay active.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF2-C1a.md).
+
+Required native skill use, actual parallel Masters, model release and independent PG
+review are still separate obligations; these protocol fixtures do not satisfy them.

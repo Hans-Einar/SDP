@@ -1,0 +1,171 @@
+{
+  "advance": {
+    "recordEffects": "prepared",
+    "schema": "sdp-session-execution/0.1",
+    "operation": "session-advance",
+    "operationId": "bc8b8ede-51c7-481a-ae7b-543be2941b69",
+    "instanceId": "16fce408-3bd5-4fdc-bb40-83e0e0e35b26",
+    "revision": 17,
+    "registration": "committed"
+  },
+  "headUnchanged": true,
+  "limitation": "actual compiled MCP replay; synthetic earlier agent/test/review observations",
+  "resume": {
+    "recordEffects": "committed",
+    "schema": "sdp-session-execution/0.1",
+    "operation": "session-resume",
+    "operationId": "5a3fc5ec-8a61-4982-886a-2d3b5ba31f9f",
+    "instanceId": "16fce408-3bd5-4fdc-bb40-83e0e0e35b26",
+    "revision": 18,
+    "registration": "committed"
+  },
+  "view": {
+    "binding": {
+      "authority": "SDP/authority.md",
+      "plan": {
+        "id": "MAINT-SDP-0001",
+        "path": "SDP/Maintenance/Plan.md"
+      },
+      "schema": "sdp-session-execution/0.1",
+      "session": {
+        "id": "SESSION-TEST-0001",
+        "path": "SDP/Sessions/session.md"
+      },
+      "steps": [
+        {
+          "cards": [
+            {
+              "coverage": "whole",
+              "id": "KB-SDP-001"
+            }
+          ],
+          "dependsOn": [],
+          "id": "S1",
+          "milestone": "M1",
+          "ownerAcceptance": "not-required",
+          "protectedPaths": [
+            "unrelated.txt"
+          ],
+          "review": "independent",
+          "writablePaths": [
+            "target.txt"
+          ]
+        }
+      ],
+      "workflow": {
+        "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1",
+        "id": "session-lifecycle",
+        "version": "0.1"
+      }
+    },
+    "conditions": [],
+    "coverage": "current",
+    "hostExecution": "completed",
+    "instanceId": "16fce408-3bd5-4fdc-bb40-83e0e0e35b26",
+    "nextActions": [
+      "session-read"
+    ],
+    "operation": "session-read",
+    "planId": "MAINT-SDP-0001",
+    "recordEffects": "committed",
+    "registration": "committed",
+    "revision": 18,
+    "schema": "sdp-session-execution/0.1",
+    "sessionId": "SESSION-TEST-0001",
+    "state": "completed",
+    "steps": [
+      {
+        "assessment": {
+          "blueprint": {
+            "rationale": "No model or implementation contract changes in this documentation-only fixture",
+            "requirement": "not-required"
+          },
+          "criteria": [
+            {
+              "domain": "contracts",
+              "impact": "unchanged",
+              "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+            },
+            {
+              "domain": "data-model",
+              "impact": "unchanged",
+              "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+            },
+            {
+              "domain": "responsibilities",
+              "impact": "unchanged",
+              "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+            },
+            {
+              "domain": "state-flow",
+              "impact": "unchanged",
+              "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+            },
+            {
+              "domain": "interfaces",
+              "impact": "unchanged",
+              "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+            },
+            {
+              "domain": "persistence",
+              "impact": "unchanged",
+              "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+            },
+            {
+              "domain": "deployment",
+              "impact": "unchanged",
+              "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+            }
+          ],
+          "designImpact": "unchanged",
+          "evidence": [
+            {
+              "path": "evidence/design-scope.md",
+              "sha256": "6bbfa38ae969e5671186facb86c8f3b828c757badb32201385370708eb7a5716"
+            }
+          ],
+          "operationId": "a98b8a6d-a47b-45e8-a439-538a8a119531",
+          "reason": "Assess the selected documentation correction with explicit impact criteria",
+          "recordPath": "SDP/Sessions/execution/assessments/a98b8a6d-a47b-45e8-a439-538a8a119531.json",
+          "skills": [
+            {
+              "digest": "8f903093e51638d6c1013b9ca3e51f0054f0a6a3173b686fd348b1ce794701ee",
+              "name": "sdp-project-leader",
+              "path": "/home/warloc/git/pg_lab/session-pgf2-c1a-mcp/Skills/sdp-project-leader/SKILL.md"
+            },
+            {
+              "digest": "0d55a9e318494eb8406721f428fd43f408bee32f7068d22f428a1c1c69db339a",
+              "name": "sdp-change-analysis",
+              "path": "/home/warloc/git/pg_lab/session-pgf2-c1a-mcp/Skills/sdp-change-analysis/SKILL.md"
+            }
+          ]
+        },
+        "cardDispositions": [
+          {
+            "id": "KB-SDP-001",
+            "outcome": "completed",
+            "remaining": "",
+            "summary": "Exact synthetic fixture verified"
+          }
+        ],
+        "dispositionId": "8ba70628-2b60-49a6-b3e1-8486025d0285",
+        "holds": [
+          "selected step completed; plan/Session closure and other steps remain separate"
+        ],
+        "id": "S1",
+        "progressEvidence": "0a5bec0a-66d4-4ad1-841d-81129dd4ec9a",
+        "reviewId": "e137f6b8-2733-475a-a372-396a6eb0b131",
+        "runId": "f86965be-d8b5-4730-93b2-66042bc2aa63",
+        "runState": "completed",
+        "selected": true,
+        "stage": "done",
+        "verificationEvidence": "0a5bec0a-66d4-4ad1-841d-81129dd4ec9a"
+      }
+    ],
+    "workflow": {
+      "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1",
+      "id": "session-lifecycle",
+      "version": "0.1"
+    }
+  }
+}

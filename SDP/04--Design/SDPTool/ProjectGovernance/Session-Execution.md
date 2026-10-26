@@ -432,3 +432,15 @@ receipts apply. CLI/JSON are exposed; privileged leader MCP and native integrati
 remain later checkpoints. Existing WORK :00002 covers these responsibilities and
 stays unreleased TARGET. [Evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2c2b.md)
 records passing full race, focused recovery/tamper, wire and compiled lab checks.
+
+
+## T048 common adapter boundary — PGF2-C1a
+
+A separate `sdp-mcp --session-controller` launcher capability selects one registered
+instance and a named, pinned project-local Project Leader skill. Twelve tools expose
+the supported core operations and receipts. Ordinary coordinator/worker grants do
+not expand. Instance switching and owner decisions refuse; adoption and host dispatch
+are absent. Each call checks the skill snapshot; actual native loading/application
+remains separately unverified. This implements ExternalLeaderMcp's shared-command
+boundary without making MCP the scheduler. [Evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF2-C1a.md)
+records final protocol, race and durable replay checks. WORK :00002 remains TARGET.

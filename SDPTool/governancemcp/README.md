@@ -103,3 +103,46 @@ MCP supplies operations on demand. It does not wake a host conversation, automat
 preload SDL context or schedule Project Leader turns. The separate terminal
 [coordination console](../governancecontroller/README.md#coordination-console--pgl3-c6)
 can poll while existing worker controllers progress.
+
+## Explicit Session controller adapter — PGF2-C1a
+
+The trusted launcher may grant the supported workflow operations for one registered
+Session instance:
+
+```sh
+sdp-mcp --project /absolute/project --state /private/operational-state \
+  --session-controller INSTANCE_UUID --leader-skill Skills/sdp-project-leader/SKILL.md
+```
+
+This capability cannot be combined with coordinator/run/attempt/epoch. The skill must
+be a bounded regular project-local file; its bytes are pinned at launch and checked
+on each operation. Presence and a digest do not prove an agent loaded or followed the
+skill. Native Project Leader scheduling and actual skill-consumption evidence remain
+separate obligations. Do not grant this capability to an implementation worker.
+
+The adapter exposes twelve tools using the same Session schema and core as the CLI:
+
+- `session_definition` and `session_read` take an empty object and inspect the selected
+  workflow/skill reference or current instance, stages, conditions and history.
+- `session_select`, `session_assess`, `session_start`, `session_progress`,
+  `session_verify`, `session_review`, `session_dispose`, `session_advance` and
+  `session_resume` take their corresponding strict Session requests. Every request
+  must name the launch-bound instance; project, checkout, revision, evidence and
+  scope checks remain in the core. A prepared operation requires explicit resume.
+- `session_owner_request` accepts only action `request`. Owner acceptance and changes
+  requests must come through the trusted owner adapter. Supplying an owner field or
+  another action does not grant authority.
+
+Keep operation IDs and exact request bytes after uncertain replies. Reconnection
+can inspect the same instance and recover/replay the same receipt. Only brief `busy`
+bookkeeping is retried automatically; stale requests require inspection. No tool here
+creates a new Session, approves a model, launches a host, changes the default MCP
+configuration or silently advances subsequent phases. `session_start` commits the
+bounded assignment/run records; the existing controller remains responsible for the
+separate host effect. Automatic scheduling is still unfinished PGF2 work.
+
+The launcher is a local authority boundary. Arbitrary commands from the same OS user
+are outside capability isolation. Changed canonical records hold core transitions;
+changed launcher-pinned skill bytes hold this adapter until explicitly reconciled.
+Canonical publication recovery preserves exact pre/postimages rather than overwriting
+external edits. CLI and MCP receipts are interchangeable for the same request.

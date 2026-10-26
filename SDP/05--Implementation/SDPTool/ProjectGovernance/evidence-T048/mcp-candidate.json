@@ -1,0 +1,22 @@
+{
+  "baseline": "f20f882b0adf43ed6cb503d39d77c2926c226a30",
+  "files": {
+    "SDPTool/cmd/sdp-mcp/main.go": "91937edd236465d6bd0b830cfaabd0c536469b36d7b3e17ab83db3c40952f6e7",
+    "SDPTool/governance/wire.go": "f560d1ea70c9b04180bba2e0b8128bb883babacd1934f7e3ab85b8fb6261d9c8",
+    "SDPTool/governance/session_leader.go": "720bf57f870da54565838624d3a213966dfea046fd18d99e9a9e3d49758a92a4",
+    "SDPTool/governance/session_mcp_cli_test.go": "90fdcf7a6fe10e15ebcb55f9bbc1eaa4fbd45cbcfd8ad7df56242ee76d7cc340",
+    "SDPTool/governancemcp/session.go": "bb8c5bd23fa6b34b4ad3f1e763025533ea7477d85cd4226108341bbe7cf4ea02",
+    "SDPTool/governance/session_advance_test.go": "8b0b234aef266674357b9886e1d853e1a97833499f68fe6d0e92cc17c453fbd2"
+  },
+  "binary": {
+    "path": "/home/warloc/.cache/sdp-workstation/T048/bin/sdp-mcp",
+    "sha256": "197c28c13e863777f3883fda4c01c79061f18261f95705ba95af7e04e08b80dc"
+  },
+  "checks": [
+    "targeted final adapter/core protocol race",
+    "vet",
+    "compiled durable final replay",
+    "Supplemental fresh-candidate next-step and test/review/owner-rejection rework race tests"
+  ],
+  "limitation": "No native leader/worker/model execution or full PG acceptance"
+}

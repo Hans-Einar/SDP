@@ -1,0 +1,5 @@
+{
+  "exitCode": 0,
+  "rawOutput": "=== RUN   TestSessionMCPFinalLabReplay\n--- PASS: TestSessionMCPFinalLabReplay (0.15s)\nPASS\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t0.152s\n",
+  "scope": "Final scoped Session MCP adapter; synthetic report/test/review inputs"
+}

@@ -1093,7 +1093,7 @@ policy. This turn delivers design/model preparation, not a runtime milestone.
 | --- | --- | --- | --- |
 | PGF1-C1 Session binding and durable instance | PGF1 foundation; PGF2 admission | Adopt a covered manual Session explicitly, read its selected steps/stages/holds, recover the same instance and reject stale/unsupported/cyclic bindings. Pin routine version and authority; leave legacy runs unchanged. New incomplete paths refuse action rather than simulate delivery | delivered T042 at bounded C1 scope; core, CLI/JSON, recovery and pg_lab evidence pass; later activation/leader/model gates remain |
 | PGF1-C2 Checked lifecycle effects and disposition | PGF1; PG-A25/27/28 | Use existing publication machinery for select/start/progress and eligible no-design closeout, including real card moves, metadata/history/links and partial-contribution handling. Reconcile own effects/unrelated ledger additions without weakening coverage. Crash matrix and shared writer/ID contention pass | in-progress; C2a selection/effects delivered T043; C2b1 assessment delivered T044; C2b2 no-design start/progress delivered T045; C2c1 verification/review gates delivered T046; C2c2a selected-step disposition/claim release delivered T047; C2c2b owner gates, rework/dependencies and eligible overall closure delivered T048; transfer/rebind/model gates remain |
-| PGF2-C1 Common owner/leader Session operations | PGF2/4; PG-A26/29/30 | CLI and explicitly privileged leader adapter use the same core/instance/receipts. Controller dispatch follows committed record effects; leader-free owner resume and later leader reconnect neither duplicate work nor bypass authority | C1/C2; implementation/native evidence required |
+| PGF2-C1 Common owner/leader Session operations | PGF2/4; PG-A26/29/30 | CLI and explicitly privileged leader adapter use the same core/instance/receipts. Controller dispatch follows committed record effects; leader-free owner resume and later leader reconnect neither duplicate work nor bypass authority | C1/C2; scoped MCP adapter C1a delivered T048; native scheduling/continuation and owner convenience remain |
 | PGF3-C1 Design and model-release workflow | PGF3; PG-A21/22/23/25 | SDL WORK, required Blueprint, design handoff, code verification/rework and exact accepted model release participate in Session gates. Combine compatible model WORKs, refresh affected evidence and refuse unresolved model release at closure | common Session operations; implementation/native evidence required |
 | PGF5-C1 Full recovery across effects and attempts | PGF5; PG-A27/28/29 | Recover at each canonical/model/host boundary; preserve pending work, external edits and whole-card scope. Different routine versions and legacy profiles stay explicit | prior functional increments; evidence required |
 | PGF7-C1 Integrated Session/KanBan lab | PGF7/8; PG-A01–30 | Same final candidate completes the card-to-Session workflow with deliberate rework, interruption and CLI takeover, plus no-design and shared-card cases. Independent product review and owner trial remain separate gates | PGF5/6 and all selected functional scope |
@@ -1269,11 +1269,21 @@ successor transfer/rebind and PGF3 model integration remain held. The selected a
 is an explicit launcher capability for one registered instance with a pinned Project
 Leader skill. Default coordinator/worker permissions remain separate. This makes
 CLI/MCP use the same core effects and receipts; it does not implement host scheduling,
-prove actual skill consumption or satisfy the two-native-Master exit. The adapter
-and protocol evidence are in progress, with a separate scoped milestone commit.
+prove actual skill consumption or satisfy the two-native-Master exit. The scoped adapter and compiled protocol/lab evidence pass, with a separate
+[PGF2-C1a delivery](Evidence-PGF2-C1a.md). Native scheduling and role consumption remain
+unverified; the default coordinator remains read/acknowledgement-only.
 
 Continue remaining transfer/replan, trusted dispatch/continuation, SDL handoff/release,
 owner usability, recovery/capacity and final native matrix. Real independent review,
 owner trial and remote-Steering disposition retain their existing gates. No repeated
 owner approval is needed for already authorized implementation; actual acceptance
 or release cannot be inferred from the instruction to continue.
+
+
+T048 PGF2-C1a closes the explicitly scoped common Session MCP entry point. Twelve
+strict tools share core effects/receipts with CLI; wrong instance, forged authority,
+owner decisions, changed/wrong skill and mixed launch roles refuse. Final targeted
+race/vet and actual-process lab/replay checks pass. No native Master/Leader scheduling
+or whole-PG acceptance is inferred. The remaining implementation route is explicit
+transfer/rebind, trusted host scheduling/continuation, SDL design/release integration,
+owner usability, complete recovery/capacity and the final native/review gates.

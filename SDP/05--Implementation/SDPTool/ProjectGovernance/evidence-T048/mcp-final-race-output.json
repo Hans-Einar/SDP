@@ -1,0 +1,5 @@
+{
+  "exitCode": 0,
+  "rawOutput": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t13.349s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t3.335s\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp\t[no test files]\n",
+  "scope": "Final scoped Session MCP adapter; synthetic report/test/review inputs"
+}

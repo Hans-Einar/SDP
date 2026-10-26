@@ -1,0 +1,10 @@
+{
+  "labCommit": "5301f9eb8e3622c15e6a97e295bc0789a747573a",
+  "fixtureCommit": "153b263",
+  "branch": "test/pgf1-c2c2b-lifecycle",
+  "fixture": "session-pgf2-c1a-mcp",
+  "finalReplayHeadUnchanged": true,
+  "earlierTrackedFilesUnchanged": true,
+  "privateState": "/home/warloc/.cache/sdp-workstation/T048/lab-mcp-state",
+  "limitation": "Synthetic skill/host/test/review fixture; no enabled native skill inventory or consumption claim"
+}

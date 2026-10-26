@@ -1,0 +1,6 @@
+{
+  "command": "go -C SDPTool test -race ./governance -run ^TestSessionAdvance(NextStep|OwnerRework|FailedResultRework)$ -count=1",
+  "exitCode": 0,
+  "rawOutput": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t122.111s\n",
+  "purpose": "Change the actual writable source between executions; old completion and failure evidence remain historical while the new candidate is verified."
+}

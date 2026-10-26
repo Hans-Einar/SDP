@@ -197,6 +197,7 @@ func finishSelectedStep(t *testing.T, s *Service, id string) SessionDisposeReque
 	q.ExpectedRevision = done.Revision
 	q.AssessmentID = a.OperationID
 	done, r := startWork(t, s, q)
+	evidenceFile(t, s, "target.txt", "Fresh implementation for execution "+q.OperationID+"\n")
 	r = reportWork(t, s, r)
 	pq := progressRequest(t, s, q, done, r)
 	done = commitResult(t, s, "progress", pq)

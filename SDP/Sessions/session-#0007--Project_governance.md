@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T048 — autonomous completion pass in progress: owner gates, rework/dependencies and eligible overall closure delivered; common MCP work in progress. Full PG remains unfinished.
+Latest recorded turn: T048 — autonomous completion pass in progress: owner gates, rework/dependencies and eligible overall closure delivered; scoped common MCP adapter delivered. Full PG remains unfinished.
 The native trial asks, receives a delayed fixture reply, starts one fresh attempt
 and implements/reports the selected behavior. Local acknowledgement, coordination and
 serialized leader delivery are implemented. C8 native single-worker/leader and completed
@@ -43,8 +43,8 @@ gantt
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-25 |
-| Current step | S3/S6 active: C2c2b owner decisions, rework/dependencies and eligible overall closure delivered. Common MCP operations in progress; transfer/rebind, leader scheduling and model gates remain |
-| Proposed next step | Complete common MCP operations, explicit remaining-scope transfer/rebind and PGF2–9 under T039/T041 gates: orchestration, SDL handoff, owner dialogue, recovery/capacity, native integration, independent review and explicit scope closeout. SDL-only; MVP1 deferred |
+| Current step | S3/S6 active: C2c2b owner decisions, rework/dependencies and eligible overall closure delivered. Scoped common MCP adapter delivered; transfer/rebind, leader scheduling and model gates remain |
+| Proposed next step | Complete explicit remaining-scope transfer/rebind, trusted host scheduling and PGF2–9 under T039/T041 gates: orchestration, SDL handoff, owner dialogue, recovery/capacity, native integration, independent review and explicit scope closeout. SDL-only; MVP1 deferred |
 | Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension; T026 assigns hub/webapp to a separate project and continues local SDP/SDPTool work; T027 continues local attention/replies; T028 continues guarded attention continuation; T029 selects stable Codex >=0.164.0 and compatible later hosts, preserving other scopes |
 
 ## Goal and ownership
@@ -2564,3 +2564,30 @@ unchanged; MVP1/Ponsse stays deferred. Next within the same authorized turn is t
 finish the common MCP increment, then remaining transfer/replan, trusted host
 scheduling, model integration and the later acceptance gates. This is a work summary,
 not a captured final response. Loaded/reused routines remain those listed at T048 start.
+
+
+T048 PGF2-C1a outcome: the explicit launch-scoped MCP adapter is implemented and
+verified with twelve shared-core tools, strict instance/authority checks, named skill
+pinning, restart/retry parity and owner-decision refusal. Final targeted race and vet
+pass. Actual compiled MCP lab 153b263 reaches completed whole-card/plan/Session; final
+5301f9e named-skill replay leaves the operational HEAD and receipts unchanged. Earlier
+tracked lab records remain unchanged. Synthetic evidence/host observations and a skill
+snapshot are not native execution, actual skill consumption or independent PG review.
+
+The first named-skill inspection identified and fixed possible mislabeling of another
+skill; both launcher and API now enforce the frontmatter identity. This is a refinement
+of the existing mandatory-role requirement, not a new board scope. Scoped Blueprint
+constraints pass against the same unreleased WORK :00002. C2c2b was committed/pushed
+as f20f882; this adapter receives its own milestone commit and authorized phase push.
+S3/S6 and KB038/052 remain active. Next is explicit remaining-scope transfer/rebind,
+trusted host scheduling/continuation, then SDL integration and the remaining PGF gates.
+The owner's all-plan continuation request remains the goal; these two increments do
+not constitute full PG completion. No owner trial, model/software release or merge
+is inferred. SDP/Master/Worker/Architect plus Planning/Verifier/Traceability routines
+were used or reused; this entry records work outcomes, not a captured final response.
+
+T048 final supplemental lifecycle check passes: each next-step/rework fixture now
+changes target.txt before the new report. Race-tested dependency progression and
+owner/test/review rework preserve history across different candidates (122.111s).
+Only the test changed; existing lifecycle implementation is unchanged. Final canonical
+validation passes with 73 cards, 47 management records and 705 events.

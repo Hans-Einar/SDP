@@ -1,0 +1,4 @@
+{
+  "rawOutput": "=== RUN   TestSessionMCPCompiledLifecycle\n--- PASS: TestSessionMCPCompiledLifecycle (2.13s)\n=== RUN   TestSessionMCPRejectsOwnerAndMixedLaunch\n--- PASS: TestSessionMCPRejectsOwnerAndMixedLaunch (1.92s)\nPASS\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t4.049s\n",
+  "claimLevel": "compiled adapter/protocol integration; synthetic agent/test/review observations"
+}
