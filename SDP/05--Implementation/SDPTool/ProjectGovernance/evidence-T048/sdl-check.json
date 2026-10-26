@@ -1,0 +1,25 @@
+{
+  "profile": "design-core/0.6",
+  "revision": "218aee7d9d9864d7cd47d3085563dd96448a86c6fcc4ed6648121ed510af0969",
+  "sources": [
+    {
+      "path": "Contracts.design",
+      "sha256": "b6f367149d229c7a09d3bae67677b77db7a79a3dbc230794bae254b8f6e36072"
+    },
+    {
+      "path": "Foundation.design",
+      "sha256": "b705dc3815ba8075001dbf2e4dbb46152b74abe1c6c8d85d89f968edddbd9edc"
+    },
+    {
+      "path": "System.design",
+      "sha256": "835abf7be06461e0dbcb2ad73c9250c9b5af2ca1924ec7e4ac0d6caac1076871"
+    },
+    {
+      "path": "Workflow.design",
+      "sha256": "cca9cf67c5a6e03fcacaaaa9036c5268ed6f03b41ef082f15cf4548e961b8d38"
+    }
+  ],
+  "system": "SDPTool",
+  "valid": true,
+  "warnings": []
+}

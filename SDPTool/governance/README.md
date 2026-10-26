@@ -8,8 +8,8 @@ The CLI and [MCP adapter](../governancemcp/README.md) use the same core.
 The [app-server adapter](../governancehost/README.md) supplies protocol inspection
 and bounded observed attempt recovery. The [owner controller candidate](../governancecontroller/README.md) adds durable
 input and bounded submission; full PGI3 verification remains open. Bounded result
-publication and Session registration are described below; final lifecycle disposition
-remains a later increment.
+publication, Session registration and bounded no-design lifecycle disposition are
+described below; full leader/model workflow integration remains unfinished.
 
 Current integrated-state responsibilities and the distinction between legacy
 Maintenance routing, prepared design packages and execution runs are summarized
@@ -694,9 +694,8 @@ independent PG review and native whole-workflow acceptance remain unfulfilled.
 
 `session-dispose --input disposition.json` prepares completion of the selected
 no-design step. It requires current committed verification and the exact committed
-review where the binding requires independent review. The selected binding must
-explicitly say owner acceptance is not required. A caller cannot provide an approval
-flag to bypass an owner decision. Outstanding host input/attention, contradictory
+review where the binding requires independent review. When the selected binding requires owner acceptance, a committed exact-result owner
+decision is required. A caller cannot provide an approval flag to bypass that decision. Outstanding host input/attention, contradictory
 results or changed run/candidate/test/skill/canonical inputs hold completion.
 
 The request uses `schema`, `projectRef`, `checkoutId`, `operationId`, `instanceId`,
@@ -706,8 +705,8 @@ is not required. `system` is the affected uppercase traceability namespace (for
 example `SDPTOOL`). Each card supplies `id`, `outcome`, `summary`, `remaining`, in
 selected binding order. Whole coverage requires `completed` and omitted or empty `remaining`;
 contribution coverage requires `contribution-completed` and explicit remaining work.
-A whole card referenced by another bound step cannot complete through this bounded
-operation. The trusted JSON action is `governance.session.dispose`; restricted
+A whole card referenced by another unfinished bound step cannot complete through
+this operation. Disposed earlier contributions remain available as history. The trusted JSON action is `governance.session.dispose`; restricted
 leader/worker MCP gains no authority.
 
 Preparation saves exact preimages and deterministic postimages in operational
@@ -729,8 +728,56 @@ edits are preserved and require reconciliation. Identical retries return histori
 receipts; inspect current state separately.
 
 Only the committed result makes the Run completed and the selected step `done`.
-Plan and Session remain active: explicit plan/Session closure, subsequent step
-selection/dependencies, failed-result rework and required owner decisions are later
-C2c2 work. No host launch or model release occurs. Retained snapshots are validated
+Plan and Session remain active until the separate checked continuation below. No host launch or model release occurs. Retained snapshots are validated
 against the same deterministic transformation used for preparation. Older supported
 stores remain readable without migration; old readers refuse profile 0.18.
+
+
+## Owner decisions and Session continuation — PGF1-C2c2b
+
+`session-owner --input request.json` prepares an exact-result owner gate. It uses
+`schema`, `projectRef`, `checkoutId`, `operationId`, `instanceId`, `expectedRevision`,
+`expectedRunRevision`, `action`, `gateId`, `resultId` and `reason`. `request` uses its
+operation ID as gate ID; `accept` and `changes-requested` reference that committed
+request with a fresh operation ID. The result is the current committed verification
+or required review operation. Resume publishes the gate artifact and moves selected
+cards to `gate-review`. A decision returns them to `in-progress`; disposition is
+still required for completion. Rejection permits checked rework, never completion.
+
+The human local CLI has owner authority. Trusted JSON invocation must explicitly
+supply an owner principal for decisions; a controller can only request review.
+`governance.session.owner` never derives authority from request JSON. This is a local
+adapter boundary, not isolation from arbitrary commands by the same operating-system
+user. Restricted leader/worker MCP still cannot make owner decisions. Operational
+profile 0.19 retains exact decision preimages, effects and receipts.
+
+`session-advance --input continuation.json` and `governance.session.advance` use
+`schema`, `projectRef`, `checkoutId`, `operationId`, `instanceId`, `expectedRevision`,
+`expectedRunRevision`, `action`, `stepId`, `basis`, `resultId` and `reason`:
+
+- `next`: identify an unfinished bound step whose dependencies have all completed;
+  use `basis: disposition` and the current committed disposition operation.
+- `rework`: retain the current step and identify its actual owner changes request,
+  failed test or completed nonpassing review with `basis: owner`, `test` or `review`.
+  The report, candidate and current run revision must still match. Any unresolved
+  host attempt or review holds continuation. The retired run and evidence remain.
+- `complete`: use an empty step ID and the current committed disposition. All bound
+  steps and whole-card obligations must be completed. A broader contribution with
+  remaining work refuses until explicit successor-transfer support is implemented.
+
+Resume publishes exact transition records, card/plan/Session journals and management
+history. Completion closes the selected plan and Session. Next/rework archive a flat
+execution snapshot and require selection, fresh assessment and fresh assignment;
+no agent starts implicitly and no old owner decision carries into new work. The
+same Session identity and old run/receipt lookup remain available. Operational profile
+0.20 holds this history; old readers refuse it. Current readers preserve supported
+older profiles on read and never downgrade them during new assessment.
+
+Activating a planned plan makes every bound execution card `ready`, including cards
+for later steps; only the selected step receives a claim or starts work. The view
+shows completed prior steps, execution history and `state: completed` separately from
+host status. Shared publication reservation, exact pre/postimage recovery and receipt
+idempotency apply to owner and continuation effects as to disposition. Finite limits
+remain explicit: eight owner records per execution, 64 archived executions and the
+existing overall store/receipt bounds. Rollover, manual rebind/replan, successor
+transfer, model release and privileged leader scheduling remain separate work.

@@ -1,0 +1,13 @@
+{
+  "labCommit": "831c060",
+  "latestLabCommit": "153b26370d4fc678caaf8bf6643f14ef2c0c613d",
+  "branch": "test/pgf1-c2c2b-lifecycle",
+  "priorTrackedFilesPreserved": 280,
+  "ownerFixture": "session-c2c2b-owner",
+  "closureFixture": "session-c2c2b-complete",
+  "privateStates": [
+    "/home/warloc/.cache/sdp-workstation/T048/lab-owner-state",
+    "/home/warloc/.cache/sdp-workstation/T048/lab-complete-state"
+  ],
+  "limitations": "Synthetic report/test/review/owner observations; not native agents or actual owner acceptance."
+}

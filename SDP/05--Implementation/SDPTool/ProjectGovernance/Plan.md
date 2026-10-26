@@ -864,13 +864,15 @@ Current foundation: core/CLI/MCP, bounded assignment activation, questions/repli
 report delivery/acknowledgement, serialized leader delivery, exact candidate evidence,
 native separate-context review and checked six-file result publication. These are
 real increments, but their combination is not yet a complete accepted workflow.
-In particular, complete still refuses; leader notices do not implement the full
-trusted scheduling/continuation policy; SAD dispatch and the owner-facing integrated
+T048 implements bounded no-design owner gates, rework, next-step continuation and
+whole-plan/Session closure; bounded C2c2b verification passes. Explicit
+remaining-scope transfers/rebind remain incomplete. Leader notices do not implement
+the full trusted scheduling/continuation policy; SAD dispatch and the owner-facing integrated
 workflow remain incomplete. Do not report a percentage from the count of increments.
 
 | Checkpoint | Existing scope | Dependency | Current status |
 | --- | --- | --- | --- |
-| PGF1 Final work disposition | PGI4; PG-A06/07/09/13/16/23 | C3 | next; implementation required |
+| PGF1 Final work disposition | PGI4; PG-A06/07/09/13/16/23 | C3 | C2c2b owner/continuation/whole-plan closure delivered T048; transfer/rebind/model gates remain |
 | PGF2 Leader-directed execution and continuation | PGL2/PGL3; PG-A19/20/24; handoff scenarios 1/3/4 | PGF1 | partial foundation; implementation and native evidence required |
 | PGF3 SDL design handoff and replan | PGL2/PGL4; scenario 2, PG-A05/07/17/21/22/23 | PGF2 | partial preparation/provider guards; integrated SAD flow required |
 | PGF4 Usable owner conversation and overview | PGL4; scenarios 4/5 | PGF2/3 | existing inspection/console; integrated workflow required |
@@ -1090,7 +1092,7 @@ policy. This turn delivers design/model preparation, not a runtime milestone.
 | Increment | Checkpoint mapping | Runnable outcome and exit evidence | Dependency/status |
 | --- | --- | --- | --- |
 | PGF1-C1 Session binding and durable instance | PGF1 foundation; PGF2 admission | Adopt a covered manual Session explicitly, read its selected steps/stages/holds, recover the same instance and reject stale/unsupported/cyclic bindings. Pin routine version and authority; leave legacy runs unchanged. New incomplete paths refuse action rather than simulate delivery | delivered T042 at bounded C1 scope; core, CLI/JSON, recovery and pg_lab evidence pass; later activation/leader/model gates remain |
-| PGF1-C2 Checked lifecycle effects and disposition | PGF1; PG-A25/27/28 | Use existing publication machinery for select/start/progress and eligible no-design closeout, including real card moves, metadata/history/links and partial-contribution handling. Reconcile own effects/unrelated ledger additions without weakening coverage. Crash matrix and shared writer/ID contention pass | in-progress; C2a selection/effects delivered T043; C2b1 assessment delivered T044; C2b2 no-design start/progress delivered T045; C2c1 verification/review gates delivered T046; C2c2a selected-step disposition/claim release delivered T047; owner decisions, rework/dependencies/replan and overall closure remain |
+| PGF1-C2 Checked lifecycle effects and disposition | PGF1; PG-A25/27/28 | Use existing publication machinery for select/start/progress and eligible no-design closeout, including real card moves, metadata/history/links and partial-contribution handling. Reconcile own effects/unrelated ledger additions without weakening coverage. Crash matrix and shared writer/ID contention pass | in-progress; C2a selection/effects delivered T043; C2b1 assessment delivered T044; C2b2 no-design start/progress delivered T045; C2c1 verification/review gates delivered T046; C2c2a selected-step disposition/claim release delivered T047; C2c2b owner gates, rework/dependencies and eligible overall closure delivered T048; transfer/rebind/model gates remain |
 | PGF2-C1 Common owner/leader Session operations | PGF2/4; PG-A26/29/30 | CLI and explicitly privileged leader adapter use the same core/instance/receipts. Controller dispatch follows committed record effects; leader-free owner resume and later leader reconnect neither duplicate work nor bypass authority | C1/C2; implementation/native evidence required |
 | PGF3-C1 Design and model-release workflow | PGF3; PG-A21/22/23/25 | SDL WORK, required Blueprint, design handoff, code verification/rework and exact accepted model release participate in Session gates. Combine compatible model WORKs, refresh affected evidence and refuse unresolved model release at closure | common Session operations; implementation/native evidence required |
 | PGF5-C1 Full recovery across effects and attempts | PGF5; PG-A27/28/29 | Recover at each canonical/model/host boundary; preserve pending work, external edits and whole-card scope. Different routine versions and legacy profiles stay explicit | prior functional increments; evidence required |
@@ -1252,3 +1254,26 @@ Backlog/onHold review retains KB036/037/042, separately paused KB050 and SDL-onl
 KB038/052 stay in-progress and MVP1/Ponsse stays deferred. BranchPolicy current /
 CommitPolicy milestone remain; no merge, installation, model/software release or
 independent PG review is implied.
+
+
+### T048 — Autonomous completion pass; C2c2b and common MCP boundary
+
+Owner authorizes continuation across the remaining selected plan in one turn. C2c2b
+implements trusted owner gates, retained executions, dependency-checked progression,
+failed-result rework and eligible whole-plan/Session closure. Focused service,
+recovery/tamper, compiled CLI/JSON, durable lab and full race checks pass. [Evidence](Evidence-PGF1-C2c2b.md) tracks the exact candidate and limits.
+Neither this plan nor KB038/052 closes from a bounded runtime fixture.
+
+PGF2-C1a can expose the already supported Session operations while PGF1's explicit
+successor transfer/rebind and PGF3 model integration remain held. The selected adapter
+is an explicit launcher capability for one registered instance with a pinned Project
+Leader skill. Default coordinator/worker permissions remain separate. This makes
+CLI/MCP use the same core effects and receipts; it does not implement host scheduling,
+prove actual skill consumption or satisfy the two-native-Master exit. The adapter
+and protocol evidence are in progress, with a separate scoped milestone commit.
+
+Continue remaining transfer/replan, trusted dispatch/continuation, SDL handoff/release,
+owner usability, recovery/capacity and final native matrix. Real independent review,
+owner trial and remote-Steering disposition retain their existing gates. No repeated
+owner approval is needed for already authorized implementation; actual acceptance
+or release cannot be inferred from the instruction to continue.

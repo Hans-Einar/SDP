@@ -1,0 +1,4 @@
+{
+  "rawOutput": "=== RUN   TestSessionOwnerCompiledJourney\n    session_owner_cli_test.go:100: PASS: 10 observed Session wire objects\n        \n--- PASS: TestSessionOwnerCompiledJourney (2.58s)\nPASS\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t2.587s\n",
+  "claimLevel": "compiled process and synthetic evidence/host observations"
+}

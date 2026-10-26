@@ -401,3 +401,34 @@ The existing WORK :00002 target already describes this responsibility; no model
 source is relabeled accepted or released by implementing this subset.
 [Evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2c2a.md)
 records the actual candidate, fault matrix and compiled lab trial.
+
+
+## T048 implementation boundary — PGF1-C2c2b
+
+Concrete owner gates now use the shared effect publisher. Controller authority may
+request an exact-result review; only the trusted local owner adapter can decide it.
+The JSON action propagates the actual host principal rather than silently replacing
+it with controller authority. Committed request/decision moves all selected cards
+through gate-review/in-progress. Passing tests/review do not substitute for acceptance.
+
+Continuation archives each selected execution with its own assessment, run, evidence,
+owner decisions and disposition. Dependency-checked next-step selection and rework
+from exact failed tests/reviews or owner rejection require fresh assessment and work.
+A completed prior contribution can satisfy a later step's dependency without losing
+its evidence. The failed run is retired only after canonical effects commit. History
+is flat and bounded; this is not the sustained-use archive/rollover solution.
+
+An initially activated plan readies all bound execution cards, satisfying the existing
+plan contract; only the selected step acquires a scope claim. Overall closure is a
+separate operation: every bound step and whole-card obligation must be satisfied.
+Remaining contribution scope still refuses without implemented successor transfer.
+Authoring a changed binding still requires the later explicit rebind/replan path.
+These retained boundaries are not waivers of the original transition table.
+
+Profiles 0.19/0.20 retain deterministic effects and flat execution history. Current
+readers accept prior profiles; mutators preserve newer profile requirements. Same
+candidate checks, exact pre/postimage recovery, shared reservation and immutable
+receipts apply. CLI/JSON are exposed; privileged leader MCP and native integration
+remain later checkpoints. Existing WORK :00002 covers these responsibilities and
+stays unreleased TARGET. [Evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2c2b.md)
+records passing full race, focused recovery/tamper, wire and compiled lab checks.

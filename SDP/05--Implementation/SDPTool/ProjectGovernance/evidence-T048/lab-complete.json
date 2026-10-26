@@ -1,0 +1,4 @@
+{
+  "rawOutput": "=== RUN   TestSessionAdvanceCompiledJourney\n    session_advance_cli_test.go:97: PASS: 6 observed Session wire objects\n        \n--- PASS: TestSessionAdvanceCompiledJourney (2.03s)\nPASS\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t2.038s\n",
+  "claimLevel": "compiled process and synthetic evidence/host observations"
+}

@@ -70,8 +70,8 @@ func dispositionEligibility(i SessionInstance, q SessionDisposeRequest) error {
 	}
 	step := selectedSessionStep(i)
 	w := dispositionResult(i)
-	if step.OwnerAcceptance != "not-required" {
-		return fail("missing_coverage", "actual owner acceptance required; decision adapter not implemented")
+	if step.OwnerAcceptance != "not-required" && !sessionOwnerAccepted(i) {
+		return fail("missing_coverage", "actual committed owner acceptance required")
 	}
 	if w.Effects.Status != "committed" || w.Request.OperationID != q.ResultID || (step.Review == "independent" && w.Kind != "review") || (w.Kind != "verify" && w.Kind != "review") {
 		return fail("missing_coverage", "exact committed result required")
@@ -86,7 +86,7 @@ func dispositionEligibility(i SessionInstance, q SessionDisposeRequest) error {
 		}
 		if c.Coverage == "whole" {
 			for _, other := range i.Context.Binding.Steps {
-				if other.ID == step.ID {
+				if other.ID == step.ID || sessionStepDone(i, other.ID) {
 					continue
 				}
 				for _, ref := range other.Cards {
@@ -111,6 +111,10 @@ func (s *Service) dispositionBasis(st snapshot, i SessionInstance, d SessionDisp
 }
 func dispositionArtifact(i SessionInstance, d SessionDisposition) []byte {
 	w := dispositionResult(i)
+	ownerLimit := "owner acceptance explicitly not required by selected binding"
+	if sessionOwnerAccepted(i) {
+		ownerLimit = "actual owner acceptance recorded at " + ownerGatePath(latestOwnerGate(i).Request)
+	}
 	b, _ := json.MarshalIndent(struct {
 		Schema        string                `json:"schema"`
 		Request       SessionDisposeRequest `json:"request"`
@@ -123,7 +127,7 @@ func dispositionArtifact(i SessionInstance, d SessionDisposition) []byte {
 		Review        *Review               `json:"review,omitempty"`
 		Tests         []EvidenceRecord      `json:"tests,omitempty"`
 		Limits        []string              `json:"limitations"`
-	}{"sdp-session-disposition/0.1", d.Request, d.Effects.CreatedAt, i.Context.Binding, i.Context.BindingDigest, i.Work[0].Request.OperationID, workPath(w), w.Evidence, w.Review, w.Tests, []string{"external tests and coverage judgment are controller-attributed", "owner acceptance explicitly not required by selected binding", "selected step only; plan/Session closure is separate"}}, "", "  ")
+	}{"sdp-session-disposition/0.1", d.Request, d.Effects.CreatedAt, i.Context.Binding, i.Context.BindingDigest, i.Work[0].Request.OperationID, workPath(w), w.Evidence, w.Review, w.Tests, []string{"external tests and coverage judgment are controller-attributed", ownerLimit, "selected step only; plan/Session closure is separate"}}, "", "  ")
 	return append(b, '\n')
 }
 func dispositionJournal(i SessionInstance, d SessionDisposition, path string, c *SessionCardDisposition) string {
@@ -142,7 +146,7 @@ func dispositionJournal(i SessionInstance, d SessionDisposition, path string, c 
 func dispositionInputs(i SessionInstance) ([]string, map[string]string, error) {
 	paths := []string{i.Context.Binding.Session.Path, i.Context.Binding.Plan.Path, managementLedger, "SDP/KanBan/README.md", dispositionTrace, dispositionClaim(i)}
 	cards := map[string]string{}
-	for _, src := range dispositionResult(i).Effects.Coverage {
+	for _, src := range dispositionPredecessor(i).Coverage {
 		if !strings.HasPrefix(src.Path, "SDP/KanBan/active/") {
 			continue
 		}
@@ -338,7 +342,7 @@ func dispositionChanges(before, after map[string]string) []PublicationChange {
 }
 func dispositionCoverage(i SessionInstance, d SessionDisposition) []Source {
 	pins := map[string]string{}
-	for _, src := range dispositionResult(i).Effects.Coverage {
+	for _, src := range dispositionPredecessor(i).Coverage {
 		pins[src.Path] = src.SHA256
 	}
 	for _, ch := range d.Effects.Changes {
@@ -360,7 +364,7 @@ func (s *Service) buildSessionDisposition(i SessionInstance, d SessionDispositio
 	if e != nil {
 		return d, e
 	}
-	for _, src := range dispositionResult(i).Effects.Coverage {
+	for _, src := range dispositionPredecessor(i).Coverage {
 		if _, ok := files[src.Path]; ok {
 			continue
 		}
@@ -444,7 +448,7 @@ func (s *Service) buildSessionDisposition(i SessionInstance, d SessionDispositio
 	for _, ch := range d.Effects.Changes {
 		pre[ch.Path] = ch.Before
 	}
-	for _, src := range dispositionResult(i).Effects.Coverage {
+	for _, src := range dispositionPredecessor(i).Coverage {
 		if _, ok := pre[src.Path]; !ok {
 			pre[src.Path] = src.SHA256
 		}
@@ -529,7 +533,9 @@ func (s *Service) DisposeSession(c Caller, q SessionDisposeRequest) (SessionMuta
 	i.Disposition = &d
 	i.Revision++
 	st.Sessions[i.ID] = i
-	st.Schema = sessionDispositionStateSchema
+	if st.Schema != sessionOwnerStateSchema && st.Schema != sessionLifecycleStateSchema {
+		st.Schema = sessionDispositionStateSchema
+	}
 	out := SessionMutationResult{Schema: SessionSchema, Operation: "session-dispose", OperationID: q.OperationID, InstanceID: i.ID, Revision: i.Revision, Registration: "committed", RecordEffects: "prepared"}
 	st.Receipts[q.OperationID] = receipt{requestDigest(q), Result{Schema: Schema, Operation: "session.dispose", OperationID: q.OperationID, ProjectRef: s.project, CheckoutID: st.CheckoutID, Session: &out}}
 	if e = validateSessionDispositions(st); e != nil {
@@ -558,7 +564,7 @@ func (s *Service) applySessionDisposition(st *snapshot, i *SessionInstance, tx *
 }
 func validateSessionDispositions(st snapshot) error {
 	seen := map[string]bool{}
-	for _, i := range st.Sessions {
+	for _, i := range sessionExecutions(st) {
 		d := i.Disposition
 		if d == nil {
 			if len(i.Work) > 0 && st.Runs[i.Work[0].Request.OperationID].State == "completed" {
@@ -567,7 +573,7 @@ func validateSessionDispositions(st snapshot) error {
 			continue
 		}
 		q, p := d.Request, d.Effects
-		if st.Schema != sessionDispositionStateSchema || validSessionDispose(q) != nil || dispositionEligibility(i, q) != nil || q.ProjectRef != st.Project || q.CheckoutID != st.CheckoutID || q.InstanceID != i.ID || q.ExpectedRevision >= i.Revision || q.ExpectedRevision <= dispositionResult(i).Request.ExpectedRevision || len(p.Inputs) > 2048 || len(p.Changes) > 128 || len(p.Coverage) > 512 || p.LedgerBytes <= 0 {
+		if !sessionDispositionProfile(st.Schema) || validSessionDispose(q) != nil || dispositionEligibility(i, q) != nil || q.ProjectRef != st.Project || q.CheckoutID != st.CheckoutID || q.InstanceID != i.ID || q.ExpectedRevision >= i.Revision || q.ExpectedRevision <= dispositionResult(i).Request.ExpectedRevision || len(p.Inputs) > 2048 || len(p.Changes) > 128 || len(p.Coverage) > 512 || p.LedgerBytes <= 0 {
 			return fail("reconciliation_required", "invalid Session disposition identity")
 		}
 		if _, e := time.Parse(time.RFC3339Nano, p.CreatedAt); e != nil {
@@ -606,7 +612,7 @@ func validateSessionDispositions(st snapshot) error {
 			}
 			inputs[src.Path] = src.SHA256
 		}
-		for _, src := range dispositionResult(i).Effects.Coverage {
+		for _, src := range dispositionPredecessor(i).Coverage {
 			if src.Path != managementLedger && inputs[src.Path] != src.SHA256 {
 				return fail("reconciliation_required", "disposition lost result coverage")
 			}

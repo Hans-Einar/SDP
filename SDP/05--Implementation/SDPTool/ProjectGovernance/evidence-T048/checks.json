@@ -1,0 +1,37 @@
+{
+  "scope": "PGF1-C2c2b; same-context service/process verification, not full PG acceptance",
+  "checks": [
+    {
+      "command": "go -C SDPTool test -race -timeout 35m ./...",
+      "exitCode": 0,
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool\t211.394s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprints\t52.998s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprintstate\t2.411s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t1.028s\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp\t[no test files]\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdptool\t1.021s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/codexcompat\t1.012s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t1159.244s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t71.222s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancehost\t1.155s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t5.999s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/install\t43.299s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/model\t18.573s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/presentation\t1.026s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/projecthistory\t1.533s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/tools/profile\t29.816s\n"
+    },
+    {
+      "command": "go -C SDPTool vet ./...",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "command": "go -C SDPTool test -race ./governance -run ^TestSessionAdvanceNextStep$ -count=1",
+      "exitCode": 0,
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t60.046s\n"
+    },
+    {
+      "command": "go -C SDPTool test -race ./governance -run ^TestSessionAdvanceExternalEditAndRemainingScope$ -count=1",
+      "exitCode": 0,
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t15.962s\n"
+    },
+    {
+      "command": "go -C SDPTool test ./governance -run ^TestSessionAdvance -count=1",
+      "exitCode": 0,
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t42.321s\n"
+    },
+    {
+      "command": "go -C SDPTool test ./governance -run ^TestSession(AdvanceCompiled|OwnerCompiled|AdvanceNext) -count=1",
+      "exitCode": 0,
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t9.715s\n"
+    }
+  ],
+  "toolchain": "/home/warloc/.cache/sdp-workstation/go1.27.1/go/bin/go",
+  "candidateBoundary": "Top-level full-race executables were built from race-candidate.json. Later supplemental tests affect only the advance test file. Separate MCP adapter development happened while this suite ran; nested compiled adapter checks may include those additions. The original pinned sdptool binary supplies the retained C2c2b lab evidence; later MCP additions have separate targeted race/process evidence."
+}

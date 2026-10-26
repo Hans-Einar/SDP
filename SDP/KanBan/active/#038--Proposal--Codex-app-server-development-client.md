@@ -8,7 +8,7 @@
 | CardState | in-progress |
 | created | 2026-09-28T15:10:13.034937+00:00 |
 | source | Owner conversation 2026-09-28: register app-server-based system development and assess SDPTool MCP |
-| next_review | C2c2 owner decisions, failed-result rework, dependencies/replan and overall closure, then PGF2/3 leader/model gates |
+| next_review | Common Session MCP, remaining-scope transfer/rebind, trusted scheduling and SDL model gates |
 | tags | codex, app-server, client, MCP, supervision, blueprints, observability |
 | Systems | SDPTOOL |
 | PlanId | PLAN-SDP-0018 |
@@ -509,3 +509,13 @@ This card remains in-progress for owner decisions, failed-result rework, depende
 progression/replan, overall closure and privileged leader/model gates. Existing WORK
 :00002 remains TARGET, not accepted/released. Backlog/onHold review preserves the
 related deferred cards; KB050/Session0008 is separately paused and MVP1 is deferred.
+
+
+## T048 — C2c2b owner and continuation delivery
+
+T048 PGF1-C2c2b delivers trusted exact-result owner gates, retained next-step/dependency progression, failed-test/review/owner-rejection rework and eligible whole-plan/Session closure. Full race, vet, recovery/tamper, wire and compiled lab checks pass. Transfer/rebind, leader scheduling, model integration and full PG acceptance remain; cards and plan stay active.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2c2b.md).
+
+The SDL WORK remains unreleased TARGET. Synthetic lab observations are not native
+agent execution, independent PG review or actual owner acceptance. The same Session
+continues; unrelated backlog/onHold and paused work retain their existing ownership.

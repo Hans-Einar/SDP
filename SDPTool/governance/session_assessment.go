@@ -60,8 +60,14 @@ func sessionEffectsProfile(schema string) bool {
 	return schema == sessionEffectsStateSchema || sessionAssessmentProfile(schema)
 }
 func sessionLatestEffects(i SessionInstance) *SessionRecordEffects {
+	if i.Advance != nil {
+		return &i.Advance.Effects
+	}
 	if i.Disposition != nil {
 		return &i.Disposition.Effects
+	}
+	if g := latestOwnerGate(i); g != nil {
+		return &g.Effects
 	}
 	if len(i.Work) > 0 {
 		return &i.Work[len(i.Work)-1].Effects
@@ -72,11 +78,23 @@ func sessionLatestEffects(i SessionInstance) *SessionRecordEffects {
 	if i.Selection != nil {
 		return &i.Selection.SessionRecordEffects
 	}
+	if len(i.Past) > 0 {
+		return &i.Past[len(i.Past)-1].Transition.Effects
+	}
 	return nil
 }
 func (s *Service) sessionPendingOwner(i SessionInstance) string {
+	if i.Advance != nil {
+		return s.state + "\n" + i.Advance.Request.OperationID + "\n"
+	}
+	if i.Selection == nil && len(i.Past) > 0 {
+		return s.state + "\n" + i.Past[len(i.Past)-1].Transition.Request.OperationID + "\n"
+	}
 	if i.Disposition != nil {
 		return s.state + "\n" + i.Disposition.Request.OperationID + "\n"
+	}
+	if g := latestOwnerGate(i); g != nil {
+		return s.state + "\n" + g.Request.OperationID + "\n"
 	}
 	if len(i.Work) > 0 {
 		return s.state + "\n" + i.Work[len(i.Work)-1].Request.OperationID + "\n"
@@ -396,7 +414,7 @@ func (s *Service) AssessSession(c Caller, q SessionAssessRequest) (SessionMutati
 	i.Assessments = append(i.Assessments, a)
 	i.Revision++
 	st.Sessions[i.ID] = i
-	if st.Schema != sessionWorkStateSchema {
+	if !sessionWorkProfile(st.Schema) {
 		st.Schema = sessionAssessmentStateSchema
 	}
 	out := SessionMutationResult{Schema: SessionSchema, Operation: "session-assess", OperationID: q.OperationID, InstanceID: i.ID, Revision: i.Revision, Registration: "committed", RecordEffects: "prepared"}
@@ -409,7 +427,7 @@ func (s *Service) AssessSession(c Caller, q SessionAssessRequest) (SessionMutati
 
 func validateSessionAssessments(st snapshot) error {
 	seen := map[string]bool{}
-	for _, i := range st.Sessions {
+	for _, i := range sessionExecutions(st) {
 		if len(i.Assessments) == 0 {
 			continue
 		}

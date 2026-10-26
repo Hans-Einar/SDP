@@ -373,7 +373,9 @@
             "session-progress",
             "session-verify",
             "session-review",
-            "session-dispose"
+            "session-dispose",
+            "session-owner",
+            "session-advance"
           ]
         },
         "operationId": {
@@ -490,7 +492,9 @@
                   "verification",
                   "review",
                   "disposition",
-                  "done"
+                  "done",
+                  "waiting-owner",
+                  "rework"
                 ]
               },
               "holds": {
@@ -537,6 +541,9 @@
                 },
                 "minItems": 1,
                 "maxItems": 16
+              },
+              "ownerGate": {
+                "$ref": "#/$defs/ownerRequest"
               }
             }
           },
@@ -555,7 +562,9 @@
               "session-progress",
               "session-verify",
               "session-review",
-              "session-dispose"
+              "session-dispose",
+              "session-owner",
+              "session-advance"
             ]
           }
         },
@@ -579,6 +588,51 @@
         },
         "binding": {
           "$ref": "#/$defs/binding"
+        },
+        "state": {
+          "enum": [
+            "active",
+            "completed"
+          ]
+        },
+        "history": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "stepId",
+              "runId",
+              "action",
+              "operationId",
+              "reason"
+            ],
+            "properties": {
+              "stepId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "runId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "action": {
+                "enum": [
+                  "next",
+                  "rework"
+                ]
+              },
+              "operationId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
         }
       }
     },
@@ -1311,6 +1365,150 @@
           },
           "minItems": 1,
           "maxItems": 16
+        }
+      }
+    },
+    "ownerRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "operationId",
+        "instanceId",
+        "expectedRevision",
+        "reason",
+        "expectedRunRevision",
+        "resultId",
+        "action",
+        "gateId"
+      ],
+      "properties": {
+        "schema": {
+          "const": "sdp-session-execution/0.1"
+        },
+        "projectRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "checkoutId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "operationId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "instanceId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 18446744073709551615
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "expectedRunRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 18446744073709551615
+        },
+        "resultId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "action": {
+          "enum": [
+            "request",
+            "accept",
+            "changes-requested"
+          ]
+        },
+        "gateId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "advanceRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "operationId",
+        "instanceId",
+        "expectedRevision",
+        "reason",
+        "expectedRunRevision",
+        "resultId",
+        "action",
+        "stepId",
+        "basis"
+      ],
+      "properties": {
+        "schema": {
+          "const": "sdp-session-execution/0.1"
+        },
+        "projectRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "checkoutId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "operationId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "instanceId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 18446744073709551615
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "expectedRunRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 18446744073709551615
+        },
+        "resultId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "action": {
+          "enum": [
+            "next",
+            "rework",
+            "complete"
+          ]
+        },
+        "stepId": {
+          "type": "string"
+        },
+        "basis": {
+          "enum": [
+            "disposition",
+            "owner",
+            "test",
+            "review"
+          ]
         }
       }
     }

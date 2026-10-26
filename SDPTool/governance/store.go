@@ -74,6 +74,9 @@ func (s *Service) load() (snapshot, string, error) {
 	if !uuidPattern.MatchString(state.CheckoutID) || state.Runs == nil || state.Receipts == nil {
 		return empty, "", fail("reconciliation_required", "invalid persisted state")
 	}
+	if e := validateSessionHistoryShape(state); e != nil {
+		return empty, "", e
+	}
 	if err := validateDesignDecisionState(state); err != nil {
 		return empty, "", err
 	}
@@ -113,7 +116,13 @@ func (s *Service) load() (snapshot, string, error) {
 	if e := validateSessionState(state); e != nil {
 		return empty, "", e
 	}
+	if e := validateSessionOwnerGates(state); e != nil {
+		return empty, "", e
+	}
 	if e := validateSessionDispositions(state); e != nil {
+		return empty, "", e
+	}
+	if e := validateSessionAdvances(state); e != nil {
 		return empty, "", e
 	}
 	return state, head, nil

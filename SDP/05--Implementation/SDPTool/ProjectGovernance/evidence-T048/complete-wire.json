@@ -1,0 +1,219 @@
+[
+  {
+    "definition": "advanceRequest",
+    "value": {
+      "schema": "sdp-session-execution/0.1",
+      "projectRef": "trial",
+      "checkoutId": "c9427db3-fca6-4f4c-ac34-c5233217d7d7",
+      "operationId": "b4c85426-0cca-4e54-bb7c-276b8c110cdc",
+      "instanceId": "bd7e41f0-93b6-48a7-a4cb-a133b6bd0118",
+      "expectedRevision": 16,
+      "expectedRunRevision": 7,
+      "action": "complete",
+      "stepId": "",
+      "basis": "disposition",
+      "resultId": "ac56e531-60dd-4734-89ed-5585547f95b3",
+      "reason": "Continue within the selected Session and preserve earlier evidence"
+    }
+  },
+  {
+    "definition": "mutation",
+    "value": {
+      "recordEffects": "prepared",
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-advance",
+      "operationId": "b4c85426-0cca-4e54-bb7c-276b8c110cdc",
+      "instanceId": "bd7e41f0-93b6-48a7-a4cb-a133b6bd0118",
+      "revision": 17,
+      "registration": "committed"
+    }
+  },
+  {
+    "definition": "mutation",
+    "value": {
+      "recordEffects": "prepared",
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-advance",
+      "operationId": "b4c85426-0cca-4e54-bb7c-276b8c110cdc",
+      "instanceId": "bd7e41f0-93b6-48a7-a4cb-a133b6bd0118",
+      "revision": 17,
+      "registration": "committed"
+    }
+  },
+  {
+    "definition": "mutation",
+    "value": {
+      "recordEffects": "committed",
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-resume",
+      "operationId": "6cabd426-85cc-46ae-ac51-770c0aa9b719",
+      "instanceId": "bd7e41f0-93b6-48a7-a4cb-a133b6bd0118",
+      "revision": 18,
+      "registration": "committed"
+    }
+  },
+  {
+    "definition": "mutation",
+    "value": {
+      "recordEffects": "committed",
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-resume",
+      "operationId": "6cabd426-85cc-46ae-ac51-770c0aa9b719",
+      "instanceId": "bd7e41f0-93b6-48a7-a4cb-a133b6bd0118",
+      "revision": 18,
+      "registration": "committed"
+    }
+  },
+  {
+    "definition": "view",
+    "value": {
+      "state": "completed",
+      "binding": {
+        "schema": "sdp-session-execution/0.1",
+        "session": {
+          "id": "SESSION-TEST-0001",
+          "path": "SDP/Sessions/session.md"
+        },
+        "plan": {
+          "id": "MAINT-SDP-0001",
+          "path": "SDP/Maintenance/Plan.md"
+        },
+        "authority": "SDP/authority.md",
+        "workflow": {
+          "id": "session-lifecycle",
+          "version": "0.1",
+          "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1"
+        },
+        "steps": [
+          {
+            "id": "S1",
+            "milestone": "M1",
+            "cards": [
+              {
+                "id": "KB-SDP-001",
+                "coverage": "whole"
+              }
+            ],
+            "dependsOn": [],
+            "writablePaths": [
+              "target.txt"
+            ],
+            "protectedPaths": [
+              "unrelated.txt"
+            ],
+            "review": "independent",
+            "ownerAcceptance": "not-required"
+          }
+        ]
+      },
+      "recordEffects": "committed",
+      "schema": "sdp-session-execution/0.1",
+      "operation": "session-read",
+      "instanceId": "bd7e41f0-93b6-48a7-a4cb-a133b6bd0118",
+      "revision": 18,
+      "sessionId": "SESSION-TEST-0001",
+      "planId": "MAINT-SDP-0001",
+      "workflow": {
+        "id": "session-lifecycle",
+        "version": "0.1",
+        "digest": "cdc4c2a5778f5c3cb124ffdb69980c50e705fb75aa73ab6ab3a3dfa89f7d1fb1"
+      },
+      "registration": "committed",
+      "coverage": "current",
+      "conditions": [],
+      "steps": [
+        {
+          "dispositionId": "ac56e531-60dd-4734-89ed-5585547f95b3",
+          "cardDispositions": [
+            {
+              "id": "KB-SDP-001",
+              "outcome": "completed",
+              "summary": "Selected synthetic fixture outcome verified",
+              "remaining": ""
+            }
+          ],
+          "verificationEvidence": "c0460476-d1a2-4a39-ad54-ee2038bf65fd",
+          "reviewId": "22a59460-20cb-47a4-b110-2ba60fcbf045",
+          "runId": "76f8686e-167c-4706-951d-cf84651431e3",
+          "runState": "completed",
+          "progressEvidence": "c0460476-d1a2-4a39-ad54-ee2038bf65fd",
+          "assessment": {
+            "operationId": "824d81e3-0d6b-40c4-ad57-619d24ec05f8",
+            "recordPath": "SDP/Sessions/execution/assessments/824d81e3-0d6b-40c4-ad57-619d24ec05f8.json",
+            "designImpact": "unchanged",
+            "blueprint": {
+              "requirement": "not-required",
+              "rationale": "No model or implementation contract changes in this documentation-only fixture"
+            },
+            "reason": "Assess the selected documentation correction with explicit impact criteria",
+            "criteria": [
+              {
+                "domain": "contracts",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "data-model",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "responsibilities",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "state-flow",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "interfaces",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "persistence",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              },
+              {
+                "domain": "deployment",
+                "impact": "unchanged",
+                "rationale": "Fixture changes explanatory wording only; this domain retains its current behavior"
+              }
+            ],
+            "evidence": [
+              {
+                "path": "evidence/design-scope.md",
+                "sha256": "6bbfa38ae969e5671186facb86c8f3b828c757badb32201385370708eb7a5716"
+              }
+            ],
+            "skills": [
+              {
+                "name": "sdp-project-leader",
+                "path": "/home/warloc/git/pg_lab/session-c2c2b-complete/Skills/sdp-project-leader/SKILL.md",
+                "digest": "8f903093e51638d6c1013b9ca3e51f0054f0a6a3173b686fd348b1ce794701ee"
+              },
+              {
+                "name": "sdp-change-analysis",
+                "path": "/home/warloc/git/pg_lab/session-c2c2b-complete/Skills/sdp-change-analysis/SKILL.md",
+                "digest": "0d55a9e318494eb8406721f428fd43f408bee32f7068d22f428a1c1c69db339a"
+              }
+            ]
+          },
+          "selected": true,
+          "id": "S1",
+          "stage": "done",
+          "holds": [
+            "selected step completed; plan/Session closure and other steps remain separate"
+          ]
+        }
+      ],
+      "nextActions": [
+        "session-read"
+      ],
+      "hostExecution": "completed"
+    }
+  }
+]

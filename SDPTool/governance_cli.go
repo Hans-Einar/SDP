@@ -19,8 +19,9 @@ const governanceHelp = `Usage: sdptool [PROJECT] governance context|route|bind|s
   --run UUID     run to read (read only)
   --instance UUID  Session instance for session-read
 Session operations: session-definition, session-context, session-adopt, session-read,
-session-list, session-select, session-assess, session-start, session-progress, session-verify, session-review, session-dispose, session-resume. Selection prepares checked ready-card effects; resume commits them.
-These operations do not launch agents or complete work.
+session-list, session-select, session-assess, session-start, session-progress, session-verify, session-review, session-dispose, session-owner, session-advance, session-resume. Selection prepares checked ready-card effects; resume commits them.
+Record effects commit through session-resume; host launch remains separate.
+session-owner records an actual owner decision or requests a concrete owner review.
   --state DIR    private operational state outside project (defaults to XDG state home)
   --json         machine output; human-readable output is the default
 context and route only read; bind is explicit. start/transition are trusted local
@@ -29,6 +30,9 @@ work, publish records or launch agents. See SDPTool/governance/README.md.
 `
 
 func governanceCommand(selected string, args []string, out, errs io.Writer, jsonMode bool) int {
+	return governanceCommandAs(selected, args, out, errs, jsonMode, governance.LocalOwner())
+}
+func governanceCommandAs(selected string, args []string, out, errs io.Writer, jsonMode bool, caller governance.Caller) int {
 	report := func(e error) int {
 		var domain *governance.Error
 		if !errors.As(e, &domain) {
@@ -73,7 +77,7 @@ func governanceCommand(selected string, args []string, out, errs io.Writer, json
 		if *input != "" || *run != "" || *instance == "" {
 			return report(fmt.Errorf("session-read requires --instance only"))
 		}
-	case "session-context", "session-adopt", "session-resume", "session-select", "session-assess", "session-start", "session-progress", "session-verify", "session-review", "session-dispose":
+	case "session-context", "session-adopt", "session-resume", "session-select", "session-assess", "session-start", "session-progress", "session-verify", "session-review", "session-dispose", "session-owner", "session-advance":
 		if *input == "" || *run != "" {
 			return report(fmt.Errorf("operation requires --input only"))
 		}
@@ -134,41 +138,51 @@ func governanceCommand(selected string, args []string, out, errs io.Writer, json
 	case "session-adopt":
 		var q governance.SessionAdoptRequest
 		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.AdoptSession(governance.LocalController(), q)
+			result, e = service.AdoptSession(caller, q)
 		}
 	case "session-resume":
 		var q governance.SessionResumeRequest
 		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.ResumeSession(governance.LocalController(), q)
+			result, e = service.ResumeSession(caller, q)
 		}
 	case "session-select":
 		var q governance.SessionSelectRequest
 		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.SelectSession(governance.LocalController(), q)
+			result, e = service.SelectSession(caller, q)
 		}
 	case "session-assess":
 		var q governance.SessionAssessRequest
 		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.AssessSession(governance.LocalController(), q)
+			result, e = service.AssessSession(caller, q)
 		}
 	case "session-start", "session-progress", "session-verify", "session-review":
 		kind := strings.TrimPrefix(op, "session-")
 		var q governance.SessionWorkRequest
 		if q, e = governance.DecodeSessionWork(b, kind); e == nil {
 			if kind == "start" {
-				result, e = service.StartSession(governance.LocalController(), q)
+				result, e = service.StartSession(caller, q)
 			} else if kind == "progress" {
-				result, e = service.ProgressSession(governance.LocalController(), q)
+				result, e = service.ProgressSession(caller, q)
 			} else if kind == "verify" {
-				result, e = service.VerifySession(governance.LocalController(), q)
+				result, e = service.VerifySession(caller, q)
 			} else {
-				result, e = service.ReviewSession(governance.LocalController(), q)
+				result, e = service.ReviewSession(caller, q)
 			}
+		}
+	case "session-advance":
+		var q governance.SessionAdvanceRequest
+		if e = governance.Decode(b, &q); e == nil {
+			result, e = service.AdvanceSession(caller, q)
+		}
+	case "session-owner":
+		var q governance.SessionOwnerRequest
+		if e = governance.Decode(b, &q); e == nil {
+			result, e = service.OwnerSession(caller, q)
 		}
 	case "session-dispose":
 		var q governance.SessionDisposeRequest
 		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.DisposeSession(governance.LocalController(), q)
+			result, e = service.DisposeSession(caller, q)
 		}
 	case "session-read":
 		result, e = service.ReadSession(*instance)
@@ -185,18 +199,18 @@ func governanceCommand(selected string, args []string, out, errs io.Writer, json
 			result, e = service.Route(q)
 		}
 	case "bind":
-		result, e = service.Bind(governance.LocalController())
+		result, e = service.Bind(caller)
 	case "start":
 		var q governance.StartRequest
 		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.Start(governance.LocalController(), q)
+			result, e = service.Start(caller, q)
 		}
 	case "read":
 		result, e = service.Read(*run)
 	case "transition":
 		var q governance.TransitionRequest
 		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.Transition(governance.LocalController(), q)
+			result, e = service.Transition(caller, q)
 		}
 	}
 	if e != nil {

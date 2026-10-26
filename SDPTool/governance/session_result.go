@@ -9,7 +9,7 @@ import (
 const sessionResultStateSchema = "sdp-project-governance-state/0.17"
 
 func sessionResultProfile(schema string) bool {
-	return schema == sessionResultStateSchema || schema == sessionDispositionStateSchema
+	return schema == sessionResultStateSchema || sessionDispositionProfile(schema)
 }
 func sessionWorkProfile(schema string) bool {
 	return schema == sessionWorkStateSchema || sessionResultProfile(schema)

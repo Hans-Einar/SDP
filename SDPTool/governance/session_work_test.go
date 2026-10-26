@@ -65,7 +65,7 @@ func reportWork(t *testing.T, s *Service, r Result) Result {
 	t.Helper()
 	at, epoch := newTestID(), newTestID()
 	host := func(action, kind, status string) {
-		q := HostRequest{Schema: Schema, ProjectRef: r.ProjectRef, CheckoutID: r.CheckoutID, OperationID: newTestID(), RunID: r.Run.ID, ExpectedRevision: r.Run.Revision, InputRevision: r.Run.InputRevision, Action: action, AttemptID: at, HostVersion: "0.164.0", ThreadID: "session-fixture-thread", Observation: Observation{Kind: kind, Epoch: epoch, ReceivedAt: time.Now().UTC().Format(time.RFC3339Nano), Status: status}}
+		q := HostRequest{Schema: Schema, ProjectRef: r.ProjectRef, CheckoutID: r.CheckoutID, OperationID: newTestID(), RunID: r.Run.ID, ExpectedRevision: r.Run.Revision, InputRevision: r.Run.InputRevision, Action: action, AttemptID: at, HostVersion: "0.164.0", ThreadID: "session-fixture-thread-" + r.Run.ID, Observation: Observation{Kind: kind, Epoch: epoch, ReceivedAt: time.Now().UTC().Format(time.RFC3339Nano), Status: status}}
 		if action != "bind" {
 			q.Observation.TurnID = "session-fixture-turn"
 		}

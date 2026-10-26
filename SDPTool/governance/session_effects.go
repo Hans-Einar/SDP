@@ -137,7 +137,7 @@ func (s *Service) buildSessionSelection(i SessionInstance, q SessionSelectReques
 	if e != nil {
 		return out, e
 	}
-	for _, src := range i.Context.Sources {
+	for _, src := range sessionSelectionSources(i) {
 		if _, ok := files[src.Path]; !ok {
 			b, e := readFile(filepath.Join(s.root, src.Path), maxState)
 			if os.IsNotExist(e) && src.SHA256 == "absent" {
@@ -158,8 +158,8 @@ func (s *Service) buildSessionSelection(i SessionInstance, q SessionSelectReques
 	if step.ID == "" {
 		return out, fail("missing_coverage", "selected step absent")
 	}
-	if len(step.DependsOn) > 0 {
-		return out, fail("conflict", "predecessor completion is not yet available")
+	if !sessionDependenciesSatisfied(i, step) || sessionStepDone(i, step.ID) {
+		return out, fail("conflict", "step already completed or predecessors incomplete")
 	}
 	if e = s.checkSelectionClaims(i, q, step); e != nil {
 		return out, e
@@ -215,6 +215,21 @@ func (s *Service) buildSessionSelection(i SessionInstance, q SessionSelectReques
 	plan := i.Context.Binding.Plan.Path
 	pm, _ := metadata(files[plan])
 	planState := pm["state"]
+	activationCards := append([]SessionCardRef{}, step.Cards...)
+	if planState == "planned" {
+		seen := map[string]bool{}
+		for _, c := range activationCards {
+			seen[c.ID] = true
+		}
+		for _, future := range i.Context.Binding.Steps {
+			for _, c := range future.Cards {
+				if !seen[c.ID] {
+					activationCards = append(activationCards, c)
+					seen[c.ID] = true
+				}
+			}
+		}
+	}
 	typ := "x-management:updated"
 	if planState == "planned" {
 		files[plan], e = replaceMetadata(files[plan], "state", "active")
@@ -240,7 +255,7 @@ func (s *Service) buildSessionSelection(i SessionInstance, q SessionSelectReques
 		}
 	}
 	moved := map[string]string{}
-	for _, card := range step.Cards {
+	for _, card := range activationCards {
 		old := cardPaths[card.ID]
 		if old == "" {
 			return out, fail("missing_coverage", "selected card absent")
@@ -270,7 +285,11 @@ func (s *Service) buildSessionSelection(i SessionInstance, q SessionSelectReques
 				return out, e
 			}
 		}
-		files[dest] = []byte(appendRecord(files[dest], journal+"\nCard contribution: "+card.Coverage+". Remaining outcome is not completed by selection.\n"))
+		cardJournal := journal + "\nCard contribution: " + card.Coverage + ". Remaining outcome is not completed by selection.\n"
+		if !slices.ContainsFunc(step.Cards, func(c SessionCardRef) bool { return c.ID == card.ID }) {
+			cardJournal = "\n## PG plan activation " + q.OperationID + "\n\nReady for a later bound step of " + i.Context.Binding.Plan.ID + "; no assignment started or scope completed.\n"
+		}
+		files[dest] = []byte(appendRecord(files[dest], cardJournal))
 		if e = addEvent(card.ID, "active", strings.TrimPrefix(dest, "SDP/KanBan/"), evtype, "Selected card: "+state+" -> "+map[bool]string{true: "ready", false: state}[dest != old]+"; no execution or completion."); e != nil {
 			return out, e
 		}
@@ -280,7 +299,7 @@ func (s *Service) buildSessionSelection(i SessionInstance, q SessionSelectReques
 	// silently broken links or rewriting arbitrary historical material.
 	for old, dest := range moved {
 		allowed := map[string]bool{plan: true, session: true, "SDP/KanBan/README.md": true}
-		for _, c := range step.Cards {
+		for _, c := range activationCards {
 			allowed[cardPaths[c.ID]] = true
 			if d, ok := moved[cardPaths[c.ID]]; ok {
 				allowed[d] = true
@@ -361,7 +380,7 @@ func (s *Service) buildSessionSelection(i SessionInstance, q SessionSelectReques
 		return strings.Compare(a.Path, b.Path)
 	})
 	coverage := map[string]bool{}
-	for _, src := range i.Context.Sources {
+	for _, src := range sessionSelectionSources(i) {
 		p := src.Path
 		if dest, ok := moved[p]; ok {
 			p = dest
@@ -451,7 +470,7 @@ func (s *Service) SelectSession(c Caller, q SessionSelectRequest) (SessionMutati
 	if i.Revision != q.ExpectedRevision {
 		return SessionMutationResult{}, fail("stale_revision", "instance revision changed")
 	}
-	if !i.Registered || i.Selection != nil {
+	if !i.Registered || i.Selection != nil || i.Advance != nil {
 		return SessionMutationResult{}, fail("conflict", "registered unselected instance required")
 	}
 	if i.Revision == ^uint64(0) || len(st.Receipts) >= 1024 {
@@ -459,6 +478,9 @@ func (s *Service) SelectSession(c Caller, q SessionSelectRequest) (SessionMutati
 	}
 	if e = s.sessionCurrent(i); e != nil {
 		return SessionMutationResult{}, e
+	}
+	if len(i.Past) > 0 && i.Past[len(i.Past)-1].Transition.Request.StepID != q.StepID {
+		return SessionMutationResult{}, fail("conflict", "selection differs from committed continuation")
 	}
 	selection, e := s.buildSessionSelection(i, q)
 	if e != nil {
@@ -563,13 +585,18 @@ func (s *Service) applySessionRecordEffects(p *SessionRecordEffects, tx *project
 func validateSessionSelections(st snapshot) error {
 	for _, receipt := range st.Receipts {
 		if r := receipt.Result.Session; r != nil && r.Operation == "session-select" {
-			i, ok := st.Sessions[r.InstanceID]
-			if !ok || i.Selection == nil || i.Selection.Request.OperationID != r.OperationID {
+			found := false
+			for _, i := range sessionExecutions(st) {
+				if i.ID == r.InstanceID && i.Selection != nil && i.Selection.Request.OperationID == r.OperationID {
+					found = true
+				}
+			}
+			if !found {
 				return fail("reconciliation_required", "orphan selection receipt")
 			}
 		}
 	}
-	for _, i := range st.Sessions {
+	for _, i := range sessionExecutions(st) {
 		p := i.Selection
 		if p == nil {
 			continue
@@ -584,11 +611,11 @@ func validateSessionSelections(st snapshot) error {
 
 		stepFound := false
 		for _, step := range i.Context.Binding.Steps {
-			if step.ID == p.Request.StepID && len(step.DependsOn) == 0 {
+			if step.ID == p.Request.StepID && sessionDependenciesSatisfied(i, step) {
 				stepFound = true
 			}
 		}
-		if !stepFound || !validLeaderText(p.Request.Reason, 2048) || p.Request.ExpectedRevision == 0 || len(p.Inputs) > 2048 || len(p.Coverage) > 73 {
+		if !stepFound || !validLeaderText(p.Request.Reason, 2048) || p.Request.ExpectedRevision == 0 || len(p.Inputs) > 2048 || len(p.Coverage) > 512 {
 			return fail("reconciliation_required", "invalid selection binding/limits")
 		}
 		if _, e := time.Parse(time.RFC3339Nano, p.CreatedAt); e != nil {
@@ -621,7 +648,7 @@ func validateSessionSelections(st snapshot) error {
 			post[ch.Path] = ch.After
 		}
 		required := map[string]bool{}
-		for _, src := range i.Context.Sources {
+		for _, src := range sessionSelectionSources(i) {
 			path := src.Path
 			if post[path] == "absent" {
 				path = "SDP/KanBan/active/" + filepath.Base(path)

@@ -94,7 +94,7 @@ func validSessionWork(kind string, q SessionWorkRequest) error {
 	return nil
 }
 func sessionRunBinding(st snapshot, id string) (SessionInstance, bool) {
-	for _, i := range st.Sessions {
+	for _, i := range sessionExecutions(st) {
 		if len(i.Work) > 0 && i.Work[0].Request.OperationID == id {
 			return i, true
 		}
@@ -464,7 +464,7 @@ func (s *Service) prepareSessionWork(c Caller, kind string, q SessionWorkRequest
 	if !ok || i.Selection == nil || len(i.Assessments) == 0 {
 		return SessionMutationResult{}, fail("missing_coverage", "assessed selected Session required")
 	}
-	if i.Disposition != nil {
+	if i.Disposition != nil || len(i.OwnerGates) > 0 {
 		return SessionMutationResult{}, fail("conflict", "Session disposition already prepared")
 	}
 	if i.Revision != q.ExpectedRevision {
@@ -538,7 +538,7 @@ func (s *Service) prepareSessionWork(c Caller, kind string, q SessionWorkRequest
 	i.Revision++
 	st.Sessions[i.ID] = i
 	if kind == "verify" || kind == "review" {
-		if st.Schema != sessionDispositionStateSchema {
+		if !sessionDispositionProfile(st.Schema) {
 			st.Schema = sessionResultStateSchema
 		}
 	} else if !sessionResultProfile(st.Schema) {
@@ -635,7 +635,7 @@ func (s *Service) projectSessionWork(i SessionInstance, st snapshot, v *SessionV
 
 func validateSessionWork(st snapshot) error {
 	seen := map[string]bool{}
-	for _, i := range st.Sessions {
+	for _, i := range sessionExecutions(st) {
 		if len(i.Work) == 0 {
 			continue
 		}

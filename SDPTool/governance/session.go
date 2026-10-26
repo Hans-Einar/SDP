@@ -83,6 +83,9 @@ type SessionResumeRequest struct {
 	Reason           string `json:"reason"`
 }
 type SessionInstance struct {
+	Past         []SessionPast       `json:"past,omitempty"`
+	Advance      *SessionAdvance     `json:"advance,omitempty"`
+	OwnerGates   []SessionOwnerGate  `json:"ownerGates,omitempty"`
 	Disposition  *SessionDisposition `json:"disposition,omitempty"`
 	Work         []SessionWork       `json:"work,omitempty"`
 	Assessments  []SessionAssessment `json:"assessments,omitempty"`
@@ -104,6 +107,7 @@ type SessionMutationResult struct {
 	Registration  string `json:"registration"`
 }
 type SessionStepView struct {
+	OwnerGate            *SessionOwnerRequest     `json:"ownerGate,omitempty"`
 	DispositionID        string                   `json:"dispositionId,omitempty"`
 	CardDispositions     []SessionCardDisposition `json:"cardDispositions,omitempty"`
 	VerificationEvidence string                   `json:"verificationEvidence,omitempty"`
@@ -118,21 +122,23 @@ type SessionStepView struct {
 	Holds                []string                 `json:"holds"`
 }
 type SessionView struct {
-	Binding       *SessionBinding    `json:"binding,omitempty"`
-	RecordEffects string             `json:"recordEffects,omitempty"`
-	Schema        string             `json:"schema"`
-	Operation     string             `json:"operation"`
-	InstanceID    string             `json:"instanceId"`
-	Revision      uint64             `json:"revision"`
-	SessionID     string             `json:"sessionId"`
-	PlanID        string             `json:"planId"`
-	Workflow      SessionWorkflowRef `json:"workflow"`
-	Registration  string             `json:"registration"`
-	Coverage      string             `json:"coverage"`
-	Conditions    []string           `json:"conditions"`
-	Steps         []SessionStepView  `json:"steps"`
-	NextActions   []string           `json:"nextActions"`
-	HostExecution string             `json:"hostExecution"`
+	State         string               `json:"state"`
+	History       []SessionHistoryView `json:"history,omitempty"`
+	Binding       *SessionBinding      `json:"binding,omitempty"`
+	RecordEffects string               `json:"recordEffects,omitempty"`
+	Schema        string               `json:"schema"`
+	Operation     string               `json:"operation"`
+	InstanceID    string               `json:"instanceId"`
+	Revision      uint64               `json:"revision"`
+	SessionID     string               `json:"sessionId"`
+	PlanID        string               `json:"planId"`
+	Workflow      SessionWorkflowRef   `json:"workflow"`
+	Registration  string               `json:"registration"`
+	Coverage      string               `json:"coverage"`
+	Conditions    []string             `json:"conditions"`
+	Steps         []SessionStepView    `json:"steps"`
+	NextActions   []string             `json:"nextActions"`
+	HostExecution string               `json:"hostExecution"`
 }
 type SessionList struct {
 	Schema     string        `json:"schema"`
@@ -373,7 +379,7 @@ func sessionRegistration(i SessionInstance) string {
 	return "pending"
 }
 func (s *Service) sessionCurrent(i SessionInstance) error {
-	if i.Selection != nil {
+	if sessionLatestEffects(i) != nil {
 		return s.selectionCoverage(i)
 	}
 	if _, e := s.publicationFiles(); e != nil {
@@ -506,7 +512,7 @@ func (s *Service) ResumeSession(c Caller, q SessionResumeRequest) (SessionMutati
 	}
 	if r, ok, e := sessionRetry(st, q.OperationID, requestDigest(q)); ok {
 		if e == nil {
-			if instance, ok := st.Sessions[q.InstanceID]; ok && instance.Selection != nil && sessionLatestEffects(instance).Status == "committed" {
+			if instance, ok := st.Sessions[q.InstanceID]; ok && sessionLatestEffects(instance) != nil && sessionLatestEffects(instance).Status == "committed" {
 				if err := tx.Release(s.sessionPendingOwner(instance)); err != nil {
 					return SessionMutationResult{}, err
 				}
@@ -531,7 +537,7 @@ func (s *Service) ResumeSession(c Caller, q SessionResumeRequest) (SessionMutati
 		return SessionMutationResult{}, fail("reconciliation_required", "another canonical publication is pending")
 	}
 	owner := ""
-	if i.Selection != nil {
+	if sessionLatestEffects(i) != nil {
 		owner = s.sessionPendingOwner(i)
 	}
 	if e = tx.Check(owner); e != nil {
@@ -541,8 +547,16 @@ func (s *Service) ResumeSession(c Caller, q SessionResumeRequest) (SessionMutati
 	if len(encoded) > maxState-8192 {
 		return SessionMutationResult{}, fail("limit", "insufficient receipt capacity before effects")
 	}
-	if i.Disposition != nil && i.Disposition.Effects.Status == "prepared" {
+	if i.Advance != nil && i.Advance.Effects.Status == "prepared" {
+		if e = s.applySessionAdvance(&st, &i, tx); e != nil {
+			return SessionMutationResult{}, e
+		}
+	} else if i.Disposition != nil && i.Disposition.Effects.Status == "prepared" {
 		if e = s.applySessionDisposition(&st, &i, tx); e != nil {
+			return SessionMutationResult{}, e
+		}
+	} else if g := latestOwnerGate(i); g != nil && g.Effects.Status == "prepared" {
+		if e = s.applyOwnerGate(st, &i, tx); e != nil {
 			return SessionMutationResult{}, e
 		}
 	} else if len(i.Work) > 0 && sessionLatestEffects(i).Status == "prepared" {
@@ -581,7 +595,7 @@ func (s *Service) ResumeSession(c Caller, q SessionResumeRequest) (SessionMutati
 	if e = s.sessionCurrent(i); e != nil {
 		return SessionMutationResult{}, e
 	}
-	if i.Selection != nil {
+	if sessionLatestEffects(i) != nil {
 		ledger, e := readFile(filepath.Join(s.root, managementLedger), maxState)
 		if e != nil {
 			return SessionMutationResult{}, e
@@ -596,15 +610,15 @@ func (s *Service) ResumeSession(c Caller, q SessionResumeRequest) (SessionMutati
 	i.Revision++
 	st.Sessions[i.ID] = i
 	out := SessionMutationResult{Schema: SessionSchema, Operation: "session-resume", OperationID: q.OperationID, InstanceID: i.ID, Revision: i.Revision, Registration: "committed"}
-	if i.Selection != nil {
+	if sessionLatestEffects(i) != nil {
 		out.RecordEffects = sessionLatestEffects(i).Status
 	}
 	st.Receipts[q.OperationID] = receipt{requestDigest(q), Result{Schema: Schema, Operation: "session.resume", OperationID: q.OperationID, ProjectRef: s.project, CheckoutID: st.CheckoutID, Session: &out}}
 	if e = s.save(st, head); e != nil {
 		return SessionMutationResult{}, e
 	}
-	if i.Selection != nil {
-		if e = tx.Release(s.sessionPendingOwner(i)); e != nil {
+	if owner != "" {
+		if e = tx.Release(owner); e != nil {
 			return SessionMutationResult{}, e
 		}
 	}
@@ -657,8 +671,10 @@ func (s *Service) sessionView(i SessionInstance, st snapshot) SessionView {
 		}
 		s.projectSessionWork(i, st, &v, &sv)
 		s.projectSessionDisposition(i, st, &v, &sv)
+		projectOwnerGate(i, &v, &sv)
 		v.Steps = append(v.Steps, sv)
 	}
+	s.projectSessionHistory(i, st, &v)
 	return v
 }
 func (s *Service) ReadSession(id string) (SessionView, error) {
@@ -748,7 +764,7 @@ func validateSessionState(st snapshot) error {
 			continue
 		}
 		i, ok := st.Sessions[v.InstanceID]
-		if !ok || !uuidPattern.MatchString(id) || id != v.OperationID || v.Schema != SessionSchema || v.Revision == 0 || v.Revision > i.Revision || !digestPattern.MatchString(r.Digest) || r.Result.ProjectRef != st.Project || r.Result.CheckoutID != st.CheckoutID || r.Result.OperationID != id || r.Result.Schema != Schema || !slices.Contains([]string{"session-adopt", "session-resume", "session-select", "session-assess", "session-start", "session-progress", "session-verify", "session-review", "session-dispose"}, v.Operation) || r.Result.Operation != strings.Replace(v.Operation, "-", ".", 1) || (v.Operation == "session-adopt" && (v.InstanceID != id || v.Registration != "pending")) || (v.Operation == "session-resume" && (v.Revision < 2 || v.Registration != "committed")) {
+		if !ok || !uuidPattern.MatchString(id) || id != v.OperationID || v.Schema != SessionSchema || v.Revision == 0 || v.Revision > i.Revision || !digestPattern.MatchString(r.Digest) || r.Result.ProjectRef != st.Project || r.Result.CheckoutID != st.CheckoutID || r.Result.OperationID != id || r.Result.Schema != Schema || !slices.Contains([]string{"session-adopt", "session-resume", "session-select", "session-assess", "session-start", "session-progress", "session-verify", "session-review", "session-dispose", "session-owner", "session-advance"}, v.Operation) || r.Result.Operation != strings.Replace(v.Operation, "-", ".", 1) || (v.Operation == "session-adopt" && (v.InstanceID != id || v.Registration != "pending")) || (v.Operation == "session-resume" && (v.Revision < 2 || v.Registration != "committed")) {
 			return fail("reconciliation_required", "invalid Session receipt")
 		}
 		if revisions[v.InstanceID][v.Revision] {

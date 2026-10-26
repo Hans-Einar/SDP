@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T047 — PGF1-C2c2a selected-step disposition/card effects/claim release delivered. Owner decisions, rework/dependencies/replan, overall closure and later leader/model gates remain.
+Latest recorded turn: T048 — autonomous completion pass in progress: owner gates, rework/dependencies and eligible overall closure delivered; common MCP work in progress. Full PG remains unfinished.
 The native trial asks, receives a delayed fixture reply, starts one fresh attempt
 and implements/reports the selected behavior. Local acknowledgement, coordination and
 serialized leader delivery are implemented. C8 native single-worker/leader and completed
@@ -43,8 +43,8 @@ gantt
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-25 |
-| Current step | S3/S6 active: PGF1-C2c2a selected-step/card disposition and claim release delivered. Owner decisions, rework/dependencies, overall closure, privileged leader operations and model gates remain |
-| Proposed next step | Finish C2c2 owner decisions, failed-result rework, dependencies/replan and explicit plan/Session closure, then PGF2–9 under T039/T041 gates: orchestration, SDL handoff, owner dialogue, recovery/capacity, native integration, independent review and explicit scope closeout. SDL-only; MVP1 deferred |
+| Current step | S3/S6 active: C2c2b owner decisions, rework/dependencies and eligible overall closure delivered. Common MCP operations in progress; transfer/rebind, leader scheduling and model gates remain |
+| Proposed next step | Complete common MCP operations, explicit remaining-scope transfer/rebind and PGF2–9 under T039/T041 gates: orchestration, SDL handoff, owner dialogue, recovery/capacity, native integration, independent review and explicit scope closeout. SDL-only; MVP1 deferred |
 | Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension; T026 assigns hub/webapp to a separate project and continues local SDP/SDPTool work; T027 continues local attention/replies; T028 continues guarded attention continuation; T029 selects stable Codex >=0.164.0 and compatible later hosts, preserving other scopes |
 
 ## Goal and ownership
@@ -2485,3 +2485,82 @@ work for whole-card completion while requiring nonempty contribution remaining w
 six boundary cases and both lab captures pass. Executable sources/binary match the
 full race candidate. Preparing the scoped milestone commit and authorized phase push;
 lab a9b4960 is clean/pushed. Full PG, native integration and model acceptance remain open.
+
+
+## T048 — Autonomous completion pass across the remaining PG plan
+
+Owner requests independent execution through the remaining PG plan in this turn,
+rather than stopping after each increment. This extends continuation across the
+selected PLAN-SDP-0018 checkpoints; actual owner trial/acceptance, independent product
+review and model/software publication remain distinct evidence/authority boundaries.
+Keep SDL-only scope, deferred MVP1/Ponsse and separately paused KB050/Session0008.
+
+Preflight: one local worktree, clean sdp/codex-forward-compatibility at
+8ca2d6238e0e1b866e65cf6f679c31483cfd8b04. Committed changes since main in the relevant
+core/controller/MCP and SessionWorkflow concern belong to this Session. No competing
+dirty writer or local identity collision observed. The shared board reports KB038/052
+in-progress, KB050 gate-review under its paused Session, KB036/037/042 backlog and
+KB059 onHold. Remote work not observed is outside this verdict. Green for the selected
+PG core/controller/MCP, CLI/actions/schema/tests, SessionWorkflow WORK and associated
+plan/card/evidence records. Recheck before expanding into another owning subsystem.
+
+Execution order: finish PGF1 owner decision/gate flow, rework and dependency/closure;
+then common privileged leader operations and SDL model handoff/release integration;
+then owner usability, complete recovery/capacity and native integration. Preserve the
+same Session and milestone commits. Do not report the whole plan complete from one
+passing increment. SDP/Master/Worker/Architect and reused Planning/Verifier/Traceability
+and document routines apply; current host delegation restrictions remain in force.
+
+The first implementation uses the existing canonical-effect publisher for concrete
+owner review requests and actual owner decisions. Controller/leader authority may
+request review but cannot author owner acceptance. Gate-review must correspond to a
+committed exact result, with revision-bound decisions; rejection returns affected
+cards to in-progress and keeps completion blocked until rework. This refines the
+existing Session-Execution contract and WORK :00002 responsibilities without selecting
+a second writer or accepting the aggregate model. Scope the Blueprint before edits.
+
+
+T048 implementation progress: owner gates, exact-result owner authority, dependency
+continuation, failed-test/review/owner-rejection rework and bounded overall closure
+are implemented. Multi-step and fresh rework executions pass focused tests. Initial
+extended tests found and corrected an assessment writer that downgraded the newer
+history profile; synthetic host thread identities are now unique per run. The initial
+owner suite parallelization conflicted with fixture environment isolation and was
+removed. No guard or acceptance obligation was relaxed. Plan activation now readies
+all bound execution cards while claiming only the selected step, as required by the
+existing plan contract. Full race checks and durable CLI lab evidence are in progress.
+Remaining contribution transfers, explicit rebind/replan and all later PGF gates
+remain open; this is not a complete-PG claim or owner acceptance.
+
+T048 continuation decision: while C2c2b receives its final broad verification, prepare
+PGF2-C1a common Session MCP operations as the next independent vertical boundary.
+The existing SessionWorkflow WORK defines ExternalLeaderMcp using WorkflowCommands;
+no second workflow engine or broadened default coordinator privilege is selected.
+Keep successor transfer/rebind and scheduler obligations open. A launcher must opt
+into one already registered instance and pin the required Project Leader skill.
+Expose only supported Session operations; core authority/revision/coverage checks
+remain authoritative. Owner decisions are excluded; host dispatch remains separate.
+This supplies a useful shared entry point without pretending that MCP is a scheduler.
+
+Scoped preflight refresh: current tracked and new PG lifecycle edits are this turn's
+own C2c2b candidate; no competing local worktree/dirty owner was found. Board/Session
+owners are unchanged from the opening preflight. Green for the existing governance
+wire/service adapter, governancemcp, sdp-mcp launcher and protocol tests. Stage the
+C2c2b delivery separately from this next increment and retain milestone evidence.
+
+
+T048 C2c2b verification outcome: full SDPTool race suite passes (governance 1159.244s),
+as do vet, supplemental disjoint-step/external-edit/remaining-scope race cases, strict
+wire checks, SDL and diagnostic Blueprint constraints. CLI owner/closure lab fixtures
+are committed/pushed as 831c060; all 280 prior tracked paths remain unchanged. New
+reader accepts prior 0.18 without mutation; old reader refuses the new store unchanged.
+Top-level race executables pin the C2c2b source; concurrent adapter-only development
+and supplemental tests are explicitly distinguished in the evidence. No final native
+whole-PG candidate, independent review, actual owner decision or model release claim.
+
+C2c2b is delivered at its bounded scope. S3/S6 and KB038/052 remain active/in-progress.
+Backlog/onHold review leaves KB036/037/042, paused KB050/Session0008 and SDL-only KB059
+unchanged; MVP1/Ponsse stays deferred. Next within the same authorized turn is to
+finish the common MCP increment, then remaining transfer/replan, trusted host
+scheduling, model integration and the later acceptance gates. This is a work summary,
+not a captured final response. Loaded/reused routines remain those listed at T048 start.

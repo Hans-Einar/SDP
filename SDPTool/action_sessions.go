@@ -28,7 +28,7 @@ func sessionActionCall(ctx context.Context, c actionContext, op, state, input, i
 	if e := ctx.Err(); e != nil {
 		return nil, 130, e
 	}
-	if write && (c.Caller.Principal.Authority != "controller" || strings.TrimSpace(c.Caller.Principal.Actor) == "") {
+	if write && ((c.Caller.Principal.Authority != "controller" && c.Caller.Principal.Authority != "owner") || strings.TrimSpace(c.Caller.Principal.Actor) == "") {
 		return nil, 2, &actionFailure{code: "unauthorized", exit: 2, message: "trusted controller principal required"}
 	}
 	args := []string{op}
@@ -42,7 +42,11 @@ func sessionActionCall(ctx context.Context, c actionContext, op, state, input, i
 		args = append(args, "--instance", instance)
 	}
 	var out, errs bytes.Buffer
-	code := governanceCommand(c.Root, args, &out, &errs, true)
+	caller := governance.LocalController()
+	if c.Caller.Principal.Authority == "owner" {
+		caller = governance.LocalOwner()
+	}
+	code := governanceCommandAs(c.Root, args, &out, &errs, true, caller)
 	if code != 0 {
 		var envelope struct {
 			Error governance.Error `json:"error"`
@@ -73,7 +77,7 @@ func sessionActions() []actionSpec {
 			return sessionActionCall(ctx, c, "session-read", q.State, "", q.Instance, false)
 		}),
 	}
-	for _, op := range []string{"context", "adopt", "resume", "select", "assess", "start", "progress", "verify", "review", "dispose"} {
+	for _, op := range []string{"context", "adopt", "resume", "select", "assess", "start", "progress", "verify", "review", "dispose", "owner", "advance"} {
 		mutation := "none"
 		desc := "Read and validate the binding and canonical coverage."
 		if op == "adopt" {
@@ -83,6 +87,14 @@ func sessionActions() []actionSpec {
 		if op == "verify" || op == "review" {
 			mutation = "state"
 			desc = "Prepare exact candidate test or observed review intake; resume commits canonical records."
+		}
+		if op == "advance" {
+			mutation = "state"
+			desc = "Prepare checked rework, next-step continuation or overall Session closure with retained history."
+		}
+		if op == "owner" {
+			mutation = "state"
+			desc = "Request concrete owner review or record an owner-authorized exact-result decision."
 		}
 		if op == "dispose" {
 			mutation = "state"

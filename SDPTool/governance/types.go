@@ -42,11 +42,15 @@ func identifier() (string, error) {
 // Caller is supplied by a trusted local adapter, never decoded from a request.
 // Same-user shell access is outside this API's authority boundary.
 type Caller struct {
+	owner      bool
 	controller bool
 	runID      string
 	attemptID  string
 	epoch      string
 }
+
+// LocalOwner is supplied only by the trusted owner CLI/adapter, never model arguments.
+func LocalOwner() Caller { return Caller{controller: true, owner: true} }
 
 func LocalController() Caller { return Caller{controller: true} }
 
