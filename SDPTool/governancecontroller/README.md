@@ -814,3 +814,48 @@ The T048 native pg_lab trial on Codex 0.164.0 completed one bounded wording task
 with only its target changed and the run awaiting verification. Exact skill inputs
 and host acceptance were observed; complete skill compliance, an autonomous Project
 Leader, two-Master concurrency and full PG acceptance are not established by it.
+
+
+## Terminal Session workflow — PGF4-C1
+
+The `session` subcommand uses canonical Session IDs for everyday inspection and
+supported workflow operations. An ambiguous ID refuses; `session list` exposes
+instance IDs for selecting one explicitly. These commands never start a model turn.
+Use the separate `run`/`continue`/`recover` host commands described above.
+
+```sh
+sdp-controller session list --project ROOT --state DIR
+sdp-controller session status --project ROOT --state DIR --session SESSION-PROJECT-0001
+sdp-controller session resume --project ROOT --state DIR --session SESSION-PROJECT-0001 --reason "Reconcile interrupted records"
+sdp-controller session select --project ROOT --state DIR --session SESSION-PROJECT-0001 --step S1 --reason "Begin the selected step"
+sdp-controller session questions --project ROOT --state DIR --session SESSION-PROJECT-0001
+sdp-controller session answer --project ROOT --state DIR --session SESSION-PROJECT-0001 --owner OWNER
+```
+
+`answer` displays the exact current question and captures an option and answer from
+stdin using existing attribution. With several open questions, supply `--question ID`.
+EOF or stale/replaced questions never invent a reply. This is recorded input, not
+authentication of a human or acceptance of completed work.
+
+`next --step ID` advances only after the current disposition and dependencies permit
+it. Select that next step before fresh assessment. `rework --step ID --basis
+owner|test|review --result ID` retains the rejected candidate and requires fresh work.
+`complete` requires all selected steps and whole-card outcomes to be disposed. These
+commands require `--reason`; `--prepare-only` retains pending canonical effects for
+an explicit `session resume`. Normal execution commits through that same resume path.
+An interrupted command prints its operation ID; inspect status and resume the prepared
+effects. Resume of already committed current records is read-only and does not consume
+another receipt. It cannot rebind stale authority or replay an unknown host send.
+
+`accept` and `changes-requested` require `--gate ID` from the inspected exact owner
+gate and a reason. They preserve current result/run/Session checks. The optional
+`--expected-revision N` pins a previously inspected Session revision. Structured
+inspection remains available with `--json`; complex design/evidence inputs retain the
+existing strict JSON/MCP interfaces. This is a bounded owner terminal increment, not
+the entire PGF4 conversation/admission surface.
+
+A reply selected by a continuation remains applicable to that exact mapped attempt
+while its assignment and sources remain current. A later owner input, changed sources,
+uncertain dispatch, observation gap or terminal routine state retains the stale boundary.
+`dispatch-acknowledged` proves host delivery, not semantic agent compliance. T048's
+native question/reply/continuation trial found and verified this projection correction.

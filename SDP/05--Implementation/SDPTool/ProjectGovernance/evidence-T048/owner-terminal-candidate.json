@@ -1,0 +1,33 @@
+{
+  "baseline": "971f1c2a2cf5b89eb3e4a03bb69e5626e6105024",
+  "files": {
+    "SDPTool/cmd/sdp-controller/main.go": "1a0c8a0abb471d8fa0fd8fadcd6c55df3aa3cd4deb6ebf615665069b8002b1fc",
+    "SDPTool/cmd/sdp-controller/session_terminal.go": "19a58b75f0191543e15148d44677b927e2a41ed7d25a61939e31aad3d364b3fb",
+    "SDPTool/cmd/sdp-controller/session_terminal_test.go": "d7e23e12b0137a32c277d98ee8ea4d7385e1c12de53fb1232c145a3fc624c967",
+    "SDPTool/governance/session_terminal_cli_test.go": "1e74f320e30fcb539c78cfbf56c6321c513e98077ddbb460021b57a1a1904583",
+    "SDPTool/governance/session_host_test.go": "9ee77f205c4e71d872614e3c2b09c31bc0ea2cc303bc85d7a243bea2d578a9c6",
+    "SDPTool/governance/attention.go": "a46ab3d69c7df3455927779f006850e40253b04ef1206ce21aa1867eaf41d740",
+    "SDPTool/governance/attention_continuation.go": "d4f226c08eaa5938d7d709e43a120e29f994f885e067b998ae5fe9400d1cf20b",
+    "SDPTool/governance/attention_applicability_test.go": "6ca74ed7a73c1a60cc0e5b54d52a8659a747ae2e99adb1a543de8da2155b81e5",
+    "SDPTool/governancecontroller/continuation_test.go": "eb27f380f311e22dc511a260e691b4d9887f64db4c55566c3d232e96d598c3c3"
+  },
+  "binaries": {
+    "sdp-controller": "04975491daf204082dae3f48c901eb2369f1dbd9fddd6497fbe1333bfc0f857d",
+    "sdp-mcp": "b54b08e8d62484119788df6ed86299fdf28f132af775bcdbb41c6b88ea551314"
+  },
+  "checks": {
+    "owner-terminal-race.log": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t1.012s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t23.117s\n",
+    "owner-terminal-continuation-race.log": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t23.752s\n",
+    "attention-applicability-race.log": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t9.717s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t15.779s\n",
+    "owner-terminal-final-adapters-race.log": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t62.897s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t4.317s\n"
+  },
+  "vetExitCode": 0,
+  "nativeFinalPassed": true,
+  "earlierNativeFailedRetained": true,
+  "blueprintRevision": "44a838b0c1f3fce5c8729caa711044b9423c9f55228a01f077c9f8b828a4ace3",
+  "constraintsPass": true,
+  "limits": "Synthetic setup history; actual native question/reply and two fresh attempts. Reply is fixture input. No full PG acceptance, model release or independent product review.",
+  "labCommit": "d0b92f7c99f1cf47ada3e6f7e0815ca34e84d155",
+  "priorRegularFilesUnchanged": 415,
+  "priorSymlinksUnchanged": 18
+}

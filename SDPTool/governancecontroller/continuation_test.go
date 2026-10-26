@@ -88,7 +88,7 @@ func TestAttentionContinuationPreservesRunAndPreventsDuplicates(t *testing.T) {
 		t.Fatal(payload, e)
 	}
 	view, e := c.Service.AttentionInbox(id)
-	if e != nil || view.Items[0].Consumption != "dispatch-acknowledged" {
+	if e != nil || view.Items[0].Consumption != "dispatch-acknowledged" || view.Items[0].Applicability != "current" {
 		t.Fatal(view, e)
 	}
 	for i := 0; i < 2; i++ {
@@ -104,6 +104,33 @@ func TestAttentionContinuationPreservesRunAndPreventsDuplicates(t *testing.T) {
 		if e = os.WriteFile(filepath.Join(dir, "continuation.json"), raw, 0600); e != nil {
 			t.Fatal(e)
 		}
+	}
+}
+
+func TestAttentionContinuationCurrentReplyBecomesStaleAfterChanges(t *testing.T) {
+	for _, change := range []string{"source", "steer", "scope-change"} {
+		t.Run(change, func(t *testing.T) {
+			c, _, id, q := waitingFixture(t)
+			answerFixture(t, c, q)
+			if _, e := c.ContinueAttention(context.Background(), id); e != nil {
+				t.Fatal(e)
+			}
+			if change == "source" {
+				coverage, e := c.Service.RunContext(id)
+				if e != nil {
+					t.Fatal(e)
+				}
+				if e = os.WriteFile(filepath.Join(coverage.Root, coverage.Selection.Authority), []byte("Changed owner mandate"), 0600); e != nil {
+					t.Fatal(e)
+				}
+			} else if _, e := c.Control(context.Background(), id, change, "Changed owner direction"); e != nil {
+				t.Fatal(e)
+			}
+			view, e := c.Service.AttentionInbox(id)
+			if e != nil || view.Items[0].Applicability != "stale" || view.Items[0].Consumption != "dispatch-acknowledged" {
+				t.Fatal(view, e)
+			}
+		})
 	}
 }
 func TestAttentionContinuationRefusesChangedOrUncertainWork(t *testing.T) {

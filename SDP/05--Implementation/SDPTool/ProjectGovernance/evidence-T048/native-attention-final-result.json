@@ -1,0 +1,156 @@
+{
+  "candidateControllerSHA256": "04975491daf204082dae3f48c901eb2369f1dbd9fddd6497fbe1333bfc0f857d",
+  "instanceId": "fdf93304-d1a8-4003-a017-b0bec45c48e8",
+  "runId": "7220e237-0124-487a-b384-63d3fae2d6c0",
+  "hostKind": "native",
+  "observedCLIVersion": "codex-cli 0.164.0",
+  "actualOwnerFeedback": false,
+  "replyAttribution": "fixture-owner",
+  "startedAt": "2026-10-26T01:56:07.536039+00:00",
+  "commands": [
+    [
+      "/home/warloc/.cache/sdp-workstation/T048/owner-terminal-final-bin/sdp-controller",
+      "run",
+      "--project",
+      "/home/warloc/git/pg_lab/session-pgf4-c1-native-attention-final",
+      "--state",
+      "/home/warloc/.cache/sdp-workstation/T048/lab-native-attention-final-state",
+      "--instance",
+      "fdf93304-d1a8-4003-a017-b0bec45c48e8",
+      "--codex",
+      "/home/warloc/.local/bin/codex",
+      "--mcp-binary",
+      "/home/warloc/.cache/sdp-workstation/T048/owner-terminal-final-bin/sdp-mcp",
+      "--sandbox",
+      "workspace-write",
+      "--approvals",
+      "never",
+      "--reporting",
+      "automatic",
+      "--timeout",
+      "6m"
+    ],
+    [
+      "/home/warloc/.cache/sdp-workstation/T048/owner-terminal-final-bin/sdp-controller",
+      "session",
+      "answer",
+      "--project",
+      "/home/warloc/git/pg_lab/session-pgf4-c1-native-attention-final",
+      "--state",
+      "/home/warloc/.cache/sdp-workstation/T048/lab-native-attention-final-state",
+      "--session",
+      "SESSION-TEST-0001",
+      "--owner",
+      "fixture-owner"
+    ],
+    [
+      "/home/warloc/.cache/sdp-workstation/T048/owner-terminal-final-bin/sdp-controller",
+      "continue",
+      "--project",
+      "/home/warloc/git/pg_lab/session-pgf4-c1-native-attention-final",
+      "--state",
+      "/home/warloc/.cache/sdp-workstation/T048/lab-native-attention-final-state",
+      "--instance",
+      "fdf93304-d1a8-4003-a017-b0bec45c48e8",
+      "--codex",
+      "/home/warloc/.local/bin/codex",
+      "--mcp-binary",
+      "/home/warloc/.cache/sdp-workstation/T048/owner-terminal-final-bin/sdp-mcp",
+      "--sandbox",
+      "workspace-write",
+      "--approvals",
+      "never",
+      "--reporting",
+      "automatic",
+      "--timeout",
+      "6m"
+    ]
+  ],
+  "run": {
+    "exitCode": 0,
+    "elapsedSeconds": 32.655
+  },
+  "firstAttemptCompletedWaiting": true,
+  "targetUnchangedBeforeReply": true,
+  "answerExitCode": 0,
+  "continue": {
+    "exitCode": 0,
+    "elapsedSeconds": 61.905
+  },
+  "finalRunState": "verifying",
+  "attempts": [
+    {
+      "id": "ce8ebb1f-4d8b-4fad-8cf4-9e162a649699",
+      "hostVersion": "0.164.0",
+      "threadId": "01a175ec-12e2-7731-b182-921df81b36b6",
+      "turnId": "01a175ec-1375-7de2-a34c-7866c3d1da5e",
+      "status": "completed",
+      "gap": false
+    },
+    {
+      "id": "827749ad-9bb8-4d0c-ad59-0aaf8dad132b",
+      "hostVersion": "0.164.0",
+      "threadId": "01a175ec-9303-7ce1-bbd4-05949a50a894",
+      "turnId": "01a175ec-93cc-7a02-8d14-e0f49b5d1795",
+      "status": "completed",
+      "gap": false
+    }
+  ],
+  "targetExact": true,
+  "changedOriginalPaths": [
+    "target.txt"
+  ],
+  "attention": [
+    {
+      "id": "308b96a9-e824-4c58-bc74-c384383102c2",
+      "basis": "62049fa8d4b76151166699e6e0fa63f52c2ca25c8747ffbace3ae768623f4706",
+      "inputRevision": "4d006a608e25b39681ce760fc743292cf1abfce4be93e299844016d3547a8e3e",
+      "raisedRevision": 17,
+      "raisedAt": "2026-10-26T01:56:30.688375509Z",
+      "origin": "agent",
+      "attemptId": "ce8ebb1f-4d8b-4fad-8cf4-9e162a649699",
+      "prompt": "Which sentence should replace all of target.txt (followed by exactly one newline) for SESSION-TEST-0001 step S1, milestone M1, card KB-SDP-001 (whole contribution)?",
+      "options": [
+        {
+          "id": "short",
+          "label": "PG Session native reply verified."
+        },
+        {
+          "id": "long",
+          "label": "PG Session native owner reply verified."
+        }
+      ],
+      "blocking": true,
+      "reply": {
+        "operationId": "0aaeae97-58eb-4927-86cf-61c5601b1bda",
+        "actor": "fixture-owner",
+        "source": "local-controller-stdin",
+        "optionId": "short",
+        "text": "Use the short sentence for this isolated test.",
+        "recordedAt": "2026-10-26T01:56:40.2416755Z"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "904acfd7-cff0-4555-920b-0b5971e49950",
+      "state": "acknowledged",
+      "attemptId": "ce8ebb1f-4d8b-4fad-8cf4-9e162a649699",
+      "attentionReplies": null
+    },
+    {
+      "id": "512b887b-2c14-49dc-a51f-18a42dc2d1be",
+      "state": "acknowledged",
+      "attemptId": "827749ad-9bb8-4d0c-ad59-0aaf8dad132b",
+      "attentionReplies": [
+        {
+          "questionId": "308b96a9-e824-4c58-bc74-c384383102c2",
+          "replyOperationId": "0aaeae97-58eb-4927-86cf-61c5601b1bda",
+          "basis": "62049fa8d4b76151166699e6e0fa63f52c2ca25c8747ffbace3ae768623f4706"
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "finishedAt": "2026-10-26T01:57:42.187202+00:00"
+}

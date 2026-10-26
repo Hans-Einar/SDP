@@ -43,7 +43,7 @@ gantt
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-25 |
-| Current step | S3/S6 active: C2c2b owner decisions, rework/dependencies and eligible overall closure delivered. Scoped common MCP adapter delivered; transfer/rebind, leader scheduling and model gates remain |
+| Current step | S3/S6 active: C2c2b owner decisions, rework/dependencies and eligible overall closure delivered. Scoped common MCP, Session host entry and terminal owner operations delivered; actual native reply/continuation verified. Transfer/rebind, leader scheduling and model gates remain |
 | Proposed next step | Complete explicit remaining-scope transfer/rebind, trusted host scheduling and PGF2–9 under T039/T041 gates: orchestration, SDL handoff, owner dialogue, recovery/capacity, native integration, independent review and explicit scope closeout. SDL-only; MVP1 deferred |
 | Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension; T026 assigns hub/webapp to a separate project and continues local SDP/SDPTool work; T027 continues local attention/replies; T028 continues guarded attention continuation; T029 selects stable Codex >=0.164.0 and compatible later hosts, preserving other scopes |
 
@@ -2627,3 +2627,64 @@ an execution summary using the same SDP/Master/Worker/Architect and verification
 planning and traceability routines, not a captured final response.
 
 Native lab fixture committed as cfbcae1; all 374 earlier tracked paths unchanged.
+
+
+T048 PGF4-C1 scoped decision/preflight: baseline 971f1c2, clean single worktree and
+unchanged Session/card ownership. Previous PG edits are this goal's committed work;
+no competing local writer or new identity collision observed. Remote work remains
+outside coverage. Green for the existing controller CLI dispatcher, a new terminal
+Session adapter, focused compiled tests and these documentation/evidence records.
+
+Select a thin terminal adapter over existing shared services: list/status, record
+resume, step selection/next/rework/completion, exact owner-gate decisions and current
+assignment questions/replies. Resolve canonical Session ID only when unambiguous;
+allow explicit instance selection. Mutations print operation identity before effects,
+use observed revisions and commit through ResumeSession. Interrupted preparation is
+recovered with explicit resume, never a new host send. Owner decisions reference the
+exact displayed gate; question capture displays the exact current question and uses
+existing stdin attribution. Do not infer design assessment, tests, review, acceptance
+or broad-card closure. Existing JSON remains for explicit complex evidence inputs.
+This implements ExternalOwnerCli/ObservationProjector from WORK :00002 without a new
+workflow writer or persistent UI state. A separate UI service would duplicate state
+and recovery ownership without a demonstrated benefit for this supported terminal path.
+
+
+T048 native continuation finding (PG-A11/29): the actual first attempt records a
+question and exits; the terminal reply succeeds; a fresh continuation receives the
+exact selected answer. However AttentionInbox compares only the predecessor question
+basis to the changed current run and labels the selected reply stale. The native
+agent correctly refuses to edit. The failed trial is retained, not counted as passed.
+
+Refinement within PGF4-C1: distinguish a reply selected for the current dispatched
+attempt from an unselected historical answer. Only the exact latest claimed/acknowledged
+launch references may retain current applicability while the same assignment is
+running, source coverage is current and the mapped attempt has no observation gap.
+Later steering/input, changed scope/source, different attempts, uncertain dispatch or
+terminal routine state cannot inherit that applicability. Dispatch acknowledgement
+still does not prove semantic consumption. Existing admission/claim checks and reply
+immutability remain unchanged. No new wire enum/profile or second decision authority.
+
+Preflight extension remains green for governance attention projection and existing
+controller continuation tests; all dirty edits are this goal's terminal increment,
+with no competing local worktree/owner. The existing scoped core ownership already
+covers this projection; include the controller test path in the refined Blueprint
+before edits. This repairs an existing continuation contract, not new owner scope.
+
+
+T048 PGF4-C1 outcome: the terminal adapter and current-attempt reply projection
+correction pass focused race checks, complete affected controller/MCP suites and vet.
+The first native trial remains failed with no target changes. The corrected trial on
+newly built binaries completes question -> first-attempt exit -> stdin fixture reply ->
+new controller/fresh attempt -> exact target edit -> assigned report. One run retains
+both attempts; no duplicate question or replayed unknown send. Only target.txt changes,
+and the run remains verifying. Test reply attribution is fixture-owner, not actual
+owner feedback or acceptance. Complete procedural compliance is not claimed.
+
+Lab d0b92f7 retains both scenarios; all 415 earlier regular files and three discovery
+symlinks are unchanged. The final scoped Blueprint constraints pass against the same
+unreleased WORK :00002. PM/KB history and traceability record the bounded delivery;
+KB038/052 and S3/S6 stay active. Backlog/onHold review retains KB036/037/042, paused
+KB050/Session0008 and SDL-only KB059; Ponsse/MVP1 remains deferred. Loaded/reused SDP,
+Master/Worker/Architect, Planning/Verifier/Traceability routines are unchanged. This is
+a work summary, not a captured final response. The owner's all-plan authorization
+remains in force; full PG is not complete from these four delivered increments.

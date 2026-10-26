@@ -455,3 +455,21 @@ start-pinned skills; it uses existing host leases, durable intents and uncertain
 reconciliation. Missing or pending start effects refuse launch. No Session transition
 or default coordinator privilege is added. This implements the existing WORK's
 HostActionGateway boundary; it does not provide autonomous leader scheduling.
+
+
+### T048 terminal projection and current-attempt replies
+
+PGF4-C1 exposes existing Session operations through a terminal adapter with unambiguous
+canonical-ID selection, guarded automatic record commitment and explicit recovery.
+It owns no new runtime state. Exact owner gates and current attention questions remain
+bound to the original result/basis; EOF is not input. An already committed record
+resume is read-only. Agent execution remains a separate host operation.
+
+A native continuation revealed that comparing only the old question basis to the new
+attempt falsely marked its selected reply stale. The attention projection now retains
+current applicability only for an exact reply referenced by the latest claimed or
+acknowledged launch, mapped to the current gap-free attempt of the same running
+assignment with current sources. Later input/scope/source changes, uncertainty or
+terminal routine state cannot inherit that exception. Admission, retry identity and
+semantic-consumption claims remain unchanged. The initial failed trial and corrected
+native trial are retained in PGF4-C1 evidence.

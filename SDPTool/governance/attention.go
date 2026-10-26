@@ -364,7 +364,7 @@ func (s *Service) AttentionInbox(runID string) (AttentionInbox, error) {
 		basis := attentionBasis(r)
 		for _, q := range r.Attention {
 			v := AttentionView{RunID: id, Question: q, Status: "open", Coverage: coverage, Applicability: "current", CurrentRevision: r.Revision, Consumption: attentionDispatch(r, q.ID)}
-			if q.Basis != basis || coverage != "known" {
+			if (q.Basis != basis && !currentDispatchedReply(r, q)) || coverage != "known" {
 				v.Applicability = "stale"
 			}
 			if q.Reply != nil {

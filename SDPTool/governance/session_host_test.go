@@ -9,7 +9,6 @@ import (
 	"path/filepath"
 	"reflect"
 	"runtime"
-	"strings"
 	"testing"
 )
 
@@ -134,13 +133,16 @@ func TestSessionHostNativeFixture(t *testing.T) {
 		q.Skills[n].Digest = hash(data)
 	}
 	q.Outcome = "Replace the entire contents of target.txt with exactly PG Session native execution verified. followed by one newline. Read the resulting file to verify exact bytes; preserve all other files. This is a wording-only correction with no design change. Report the outcome through assignment-bound MCP and return."
+	if os.Getenv("PG_SESSION_HOST_LAB_ATTENTION") == "1" {
+		q.Outcome = "Before editing target.txt, request a blocking owner answer through assignment-bound attention_request: ask which sentence to write, with option short for PG Session native reply verified. and option long for PG Session native owner reply verified. If no current reply is available, return waiting without editing or reporting completion. On a continuation, reuse the existing answered question; do not ask it again. After the recorded owner answer, replace all of target.txt with the chosen sentence followed by exactly one newline, inspect it to verify, preserve every other file, then report through assignment-bound MCP and return. This is a wording-only no-design task."
+	}
 	q.Reason = "Start the owner-authorized native Session entry-point trial"
 	_, r := startWork(t, s, q)
 	selected, e := s.SessionHostSelection(q.InstanceID)
 	if e != nil {
 		t.Fatal(e)
 	}
-	if !strings.HasPrefix(selected.Outcome, "Replace") || r.Run.State != "ready" {
+	if selected.Outcome != q.Outcome || r.Run.State != "ready" {
 		t.Fatal(selected)
 	}
 	out, _ := json.MarshalIndent(selected, "", "  ")

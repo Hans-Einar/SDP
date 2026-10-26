@@ -875,7 +875,7 @@ workflow remain incomplete. Do not report a percentage from the count of increme
 | PGF1 Final work disposition | PGI4; PG-A06/07/09/13/16/23 | C3 | C2c2b owner/continuation/whole-plan closure delivered T048; transfer/rebind/model gates remain |
 | PGF2 Leader-directed execution and continuation | PGL2/PGL3; PG-A19/20/24; handoff scenarios 1/3/4 | PGF1 | partial foundation; implementation and native evidence required |
 | PGF3 SDL design handoff and replan | PGL2/PGL4; scenario 2, PG-A05/07/17/21/22/23 | PGF2 | partial preparation/provider guards; integrated SAD flow required |
-| PGF4 Usable owner conversation and overview | PGL4; scenarios 4/5 | PGF2/3 | existing inspection/console; integrated workflow required |
+| PGF4 Usable owner conversation and overview | PGL4; scenarios 4/5 | PGF2/3 | terminal Session workflow C1 delivered T048 with real question/reply/continuation; broader conversation/admission remains |
 | PGF5 Recovery across the complete workflow | PGI3/PGI5/PGL5; PG-A08/09/11/12/13/14 | PGF1–4 | bounded cases delivered; active-host/full-flow gaps remain |
 | PGF6 Capacity and host compatibility | PGL3/PGL5; PG-A15/18 | PGF5 | limits explicit; sustained operation/rollover not proven |
 | PGF7 Native integrated acceptance in pg_lab | PGI5/PGL5; PG-A01–30 and handoff 1–5 | PGF1–6 | not verified as one final candidate |
@@ -1293,3 +1293,12 @@ T048 PGF2-C1b: T048 PGF2-C1b adds Session-selected owner host operations with ex
 [Evidence](Evidence-PGF2-C1b.md). This implements the existing HostActionGateway
 boundary without changing Session/model approval semantics. Continue remaining work
 under the owner's existing all-plan authorization.
+
+
+### T048 — PGF4-C1 terminal Session workflow and native reply correction
+
+T048 PGF4-C1 delivers terminal Session inspection, checked record resume, step continuation/rework/completion, exact owner decisions and stdin question replies. Native testing found and corrected stale projection of a reply selected for the current continuation. The retained failing trial and corrected two-attempt native trial establish the bounded result; focused race, adapter suites and vet pass. Full PG scheduling, transfer/rebind, model lifecycle, sustained recovery and final review/owner gates remain open.
+[Evidence](Evidence-PGF4-C1.md) preserves exact candidates, the failed observation
+and the corrected result. Lab d0b92f7 retains both scenarios. Full PGF4 remains open;
+complex design/evidence inputs still use strict JSON/MCP, and no unattended leader
+scheduler or active-host crash recovery is claimed by this bounded continuation.

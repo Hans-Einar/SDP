@@ -83,6 +83,28 @@ func attentionDispatch(r Run, questionID string) string {
 	}
 	return "not-tracked"
 }
+
+// Claim already checked this exact answer against the predecessor decision basis.
+// Replacing that completed attempt changes attentionBasis, but must not make the
+// answer unusable by the very attempt to which it was dispatched. This projection
+// does not permit another dispatch or establish semantic consumption. Any later
+// owner input, changed assignment, gap or uncertain send retains the stale boundary.
+func currentDispatchedReply(r Run, q AttentionQuestion) bool {
+	if r.State != "running" || q.Reply == nil || q.Withdrawal != nil || q.InputRevision != r.InputRevision || len(r.Inputs) == 0 || len(r.Attempts) == 0 {
+		return false
+	}
+	v := r.Inputs[len(r.Inputs)-1]
+	a := r.Attempts[len(r.Attempts)-1]
+	if v.Kind != "launch" || !slices.Contains([]string{"sending", "acknowledged"}, v.State) || v.AttemptID != a.ID || v.Epoch != a.CapabilityEpoch() || a.Gap || !slices.Contains([]string{"idle", "running", "completed"}, a.Status) {
+		return false
+	}
+	for _, ref := range v.AttentionReplies {
+		if ref.QuestionID == q.ID && ref.ReplyOperationID == q.Reply.OperationID && ref.Basis == q.Basis {
+			return true
+		}
+	}
+	return false
+}
 func validateAttentionContinuations(state snapshot) error {
 	count := 0
 	for _, r := range state.Runs {

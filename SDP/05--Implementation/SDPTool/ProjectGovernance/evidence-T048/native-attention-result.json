@@ -1,0 +1,154 @@
+{
+  "candidateControllerSHA256": "a7711655897372ed7a2ca05323b84757b0170e6f358d2b3779b20f1a47d9d26d",
+  "instanceId": "e3d3c755-50cf-467d-bc6b-81669c1414c2",
+  "runId": "34212173-9115-4a0b-ba5c-3a768f3a8385",
+  "hostKind": "native",
+  "observedCLIVersion": "codex-cli 0.164.0",
+  "actualOwnerFeedback": false,
+  "replyAttribution": "fixture-owner",
+  "startedAt": "2026-10-26T01:51:28.656262+00:00",
+  "commands": [
+    [
+      "/home/warloc/.cache/sdp-workstation/T048/owner-terminal-bin/sdp-controller",
+      "run",
+      "--project",
+      "/home/warloc/git/pg_lab/session-pgf4-c1-native-attention",
+      "--state",
+      "/home/warloc/.cache/sdp-workstation/T048/lab-native-attention-state",
+      "--instance",
+      "e3d3c755-50cf-467d-bc6b-81669c1414c2",
+      "--codex",
+      "/home/warloc/.local/bin/codex",
+      "--mcp-binary",
+      "/home/warloc/.cache/sdp-workstation/T048/host-entry-bin/sdp-mcp",
+      "--sandbox",
+      "workspace-write",
+      "--approvals",
+      "never",
+      "--reporting",
+      "automatic",
+      "--timeout",
+      "6m"
+    ],
+    [
+      "/home/warloc/.cache/sdp-workstation/T048/owner-terminal-bin/sdp-controller",
+      "session",
+      "answer",
+      "--project",
+      "/home/warloc/git/pg_lab/session-pgf4-c1-native-attention",
+      "--state",
+      "/home/warloc/.cache/sdp-workstation/T048/lab-native-attention-state",
+      "--session",
+      "SESSION-TEST-0001",
+      "--owner",
+      "fixture-owner"
+    ],
+    [
+      "/home/warloc/.cache/sdp-workstation/T048/owner-terminal-bin/sdp-controller",
+      "continue",
+      "--project",
+      "/home/warloc/git/pg_lab/session-pgf4-c1-native-attention",
+      "--state",
+      "/home/warloc/.cache/sdp-workstation/T048/lab-native-attention-state",
+      "--instance",
+      "e3d3c755-50cf-467d-bc6b-81669c1414c2",
+      "--codex",
+      "/home/warloc/.local/bin/codex",
+      "--mcp-binary",
+      "/home/warloc/.cache/sdp-workstation/T048/host-entry-bin/sdp-mcp",
+      "--sandbox",
+      "workspace-write",
+      "--approvals",
+      "never",
+      "--reporting",
+      "automatic",
+      "--timeout",
+      "6m"
+    ]
+  ],
+  "run": {
+    "exitCode": 0,
+    "elapsedSeconds": 36.821
+  },
+  "firstAttemptCompletedWaiting": true,
+  "targetUnchangedBeforeReply": true,
+  "answerExitCode": 0,
+  "continue": {
+    "exitCode": 0,
+    "elapsedSeconds": 27.841
+  },
+  "finalRunState": "running",
+  "attempts": [
+    {
+      "id": "4be7e171-c736-4ad9-b8d7-9bc8b858424b",
+      "hostVersion": "0.164.0",
+      "threadId": "01a175e7-d152-7fd3-8dcc-43ec48f29463",
+      "turnId": "01a175e7-d1e4-7e03-ad50-eb98f3ed38ec",
+      "status": "completed",
+      "gap": false
+    },
+    {
+      "id": "5e4f6f5f-a139-44d0-87f1-2d3b06b09a0d",
+      "hostVersion": "0.164.0",
+      "threadId": "01a175e8-6189-7900-9a1b-0b3d955ba3b9",
+      "turnId": "01a175e8-6248-7402-98d4-25fb18634555",
+      "status": "completed",
+      "gap": false
+    }
+  ],
+  "targetExact": false,
+  "changedOriginalPaths": [],
+  "attention": [
+    {
+      "id": "ef8793a8-4b23-4633-88c3-1923f57a1bb9",
+      "basis": "caf0e2f5ce25eba071b8a3b685672e0874bda2c3227fa1957bd59340a5e288cc",
+      "inputRevision": "bcec995b48cd0f015bc62f2d3495eacf91c926efa5c09dcad5fd203d4afa90e8",
+      "raisedRevision": 18,
+      "raisedAt": "2026-10-26T01:51:54.176364271Z",
+      "origin": "agent",
+      "attemptId": "4be7e171-c736-4ad9-b8d7-9bc8b858424b",
+      "prompt": "Which sentence should I write to target.txt, followed by exactly one newline? Select short for \"PG Session native reply verified.\" or long for \"PG Session native owner reply verified.\" The committed assignment requires your recorded answer before editing.",
+      "options": [
+        {
+          "id": "short",
+          "label": "PG Session native reply verified."
+        },
+        {
+          "id": "long",
+          "label": "PG Session native owner reply verified."
+        }
+      ],
+      "blocking": true,
+      "reply": {
+        "operationId": "d2ee1597-103e-41f3-ab19-c8ad80b442a3",
+        "actor": "fixture-owner",
+        "source": "local-controller-stdin",
+        "optionId": "short",
+        "text": "Use the short sentence for this isolated test.",
+        "recordedAt": "2026-10-26T01:52:05.520076336Z"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "86dde670-4317-4c4f-b91e-e5b787787907",
+      "state": "acknowledged",
+      "attemptId": "4be7e171-c736-4ad9-b8d7-9bc8b858424b",
+      "attentionReplies": null
+    },
+    {
+      "id": "ce428e9d-6ce4-49af-8501-f39ee318e7f8",
+      "state": "acknowledged",
+      "attemptId": "5e4f6f5f-a139-44d0-87f1-2d3b06b09a0d",
+      "attentionReplies": [
+        {
+          "questionId": "ef8793a8-4b23-4633-88c3-1923f57a1bb9",
+          "replyOperationId": "d2ee1597-103e-41f3-ab19-c8ad80b442a3",
+          "basis": "caf0e2f5ce25eba071b8a3b685672e0874bda2c3227fa1957bd59340a5e288cc"
+        }
+      ]
+    }
+  ],
+  "failure": "",
+  "finishedAt": "2026-10-26T01:52:33.393162+00:00"
+}

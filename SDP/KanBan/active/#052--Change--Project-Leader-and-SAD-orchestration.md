@@ -452,3 +452,9 @@ review are still separate obligations; these protocol fixtures do not satisfy th
 
 T048 PGF2-C1b adds Session-selected owner host operations with exact committed assignment/skills, prepared or stale launch refusal and retained-run separation. Focused race/vet pass. A real Codex 0.164.0 lab turn changes only its assigned target and returns verifying; complete skill compliance and whole-PG acceptance are not inferred. Remaining transfer/rebind, scheduling, model and final workflow gates stay open.
 [Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF2-C1b.md).
+
+
+## T048 — Terminal Session workflow and native continuation
+
+T048 PGF4-C1 delivers terminal Session inspection, checked record resume, step continuation/rework/completion, exact owner decisions and stdin question replies. Native testing found and corrected stale projection of a reply selected for the current continuation. The retained failing trial and corrected two-attempt native trial establish the bounded result; focused race, adapter suites and vet pass. Full PG scheduling, transfer/rebind, model lifecycle, sustained recovery and final review/owner gates remain open.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF4-C1.md).
