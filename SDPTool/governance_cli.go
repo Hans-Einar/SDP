@@ -19,7 +19,7 @@ const governanceHelp = `Usage: sdptool [PROJECT] governance context|route|bind|s
   --run UUID     run to read (read only)
   --instance UUID  Session instance for session-read
 Session operations: session-definition, session-context, session-successor, session-adopt, session-read,
-session-list, session-select, session-assess, session-start, session-progress, session-verify, session-review, session-dispose, session-owner, session-advance, session-resume. Selection prepares checked ready-card effects; resume commits them.
+session-list, session-rebind-context, session-rebind, session-select, session-assess, session-start, session-progress, session-verify, session-review, session-dispose, session-owner, session-advance, session-resume. Selection prepares checked ready-card effects; resume commits them.
 Record effects commit through session-resume; host launch remains separate.
 session-owner records an actual owner decision or requests a concrete owner review.
   --state DIR    private operational state outside project (defaults to XDG state home)
@@ -77,7 +77,7 @@ func governanceCommandAs(selected string, args []string, out, errs io.Writer, js
 		if *input != "" || *run != "" || *instance == "" {
 			return report(fmt.Errorf("session-read requires --instance only"))
 		}
-	case "session-context", "session-successor", "session-adopt", "session-resume", "session-select", "session-assess", "session-start", "session-progress", "session-verify", "session-review", "session-dispose", "session-owner", "session-advance":
+	case "session-context", "session-rebind-context", "session-rebind", "session-successor", "session-adopt", "session-resume", "session-select", "session-assess", "session-start", "session-progress", "session-verify", "session-review", "session-dispose", "session-owner", "session-advance":
 		if *input == "" || *run != "" {
 			return report(fmt.Errorf("operation requires --input only"))
 		}
@@ -134,6 +134,16 @@ func governanceCommandAs(selected string, args []string, out, errs io.Writer, js
 		var q governance.SessionContextRequest
 		if e = governance.Decode(b, &q); e == nil {
 			result, e = service.SessionContext(q)
+		}
+	case "session-rebind-context":
+		var q governance.SessionRebindContextRequest
+		if e = governance.Decode(b, &q); e == nil {
+			result, e = service.SessionRebindContext(q)
+		}
+	case "session-rebind":
+		var q governance.SessionRebindRequest
+		if e = governance.Decode(b, &q); e == nil {
+			result, e = service.RebindSession(caller, q)
 		}
 	case "session-successor":
 		var q governance.SessionSuccessorRequest

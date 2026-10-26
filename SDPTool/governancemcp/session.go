@@ -56,7 +56,21 @@ func NewSessionController(service *governance.Service, instance string, skill go
 		}
 		return service.SessionSuccessorContext(q)
 	})
+	addSessionTool(server, "session_rebind_context", "Inspect the exact proposed binding revision at a quiescent boundary. Earlier evidence is retained; prepare an attributed exact-context review before rebind.", governance.SessionWireDefinition("rebindContextRequest"), true, func(b []byte) (any, error) {
+		var q governance.SessionRebindContextRequest
+		if e := governance.Decode(b, &q); e != nil {
+			return nil, e
+		}
+		if q.InstanceID != instance {
+			return nil, &governance.Error{Code: "unauthorized", Message: "request outside launch-bound Session"}
+		}
+		if e := check(); e != nil {
+			return nil, e
+		}
+		return service.SessionRebindContext(q)
+	})
 	caller := governance.LocalController()
+	addSessionMutation(server, service, instance, skill, "rebind", "rebindRequest", func(q governance.SessionRebindRequest) (any, error) { return service.RebindSession(caller, q) })
 	addSessionMutation(server, service, instance, skill, "resume", "resumeRequest", func(q governance.SessionResumeRequest) (any, error) { return service.ResumeSession(caller, q) })
 	addSessionMutation(server, service, instance, skill, "select", "selectRequest", func(q governance.SessionSelectRequest) (any, error) { return service.SelectSession(caller, q) })
 	addSessionMutation(server, service, instance, skill, "assess", "assessRequest", func(q governance.SessionAssessRequest) (any, error) { return service.AssessSession(caller, q) })
@@ -76,6 +90,8 @@ func NewSessionController(service *governance.Service, instance string, skill go
 }
 func sessionRequestInstance(q any) string {
 	switch q := q.(type) {
+	case governance.SessionRebindRequest:
+		return q.InstanceID
 	case governance.SessionResumeRequest:
 		return q.InstanceID
 	case governance.SessionSelectRequest:

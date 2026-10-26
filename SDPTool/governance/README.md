@@ -779,7 +779,7 @@ shows completed prior steps, execution history and `state: completed` separately
 host status. Shared publication reservation, exact pre/postimage recovery and receipt
 idempotency apply to owner and continuation effects as to disposition. Finite limits
 remain explicit: eight owner records per execution, 64 archived executions and the
-existing overall store/receipt bounds. Rollover, manual rebind/replan, in-flight
+existing overall store/receipt bounds. Reviewed quiescent rebind is described below. Rollover and in-flight
 transfer, model release and privileged leader scheduling remain separate work.
 
 
@@ -809,3 +809,50 @@ retain supported older profiles and do not downgrade 0.21 during later work. Mis
 or extra cards, incomplete steps, active/adopted successor ownership, changed context
 and local/shared claims refuse. Cross-worktree preflight remains required; this is no
 distributed allocator or automatic replan of an edited active binding.
+
+
+### Reviewed binding revision — PGF1-C2c4
+
+Use a reviewed rebind when the remaining work belongs to the same Session and plan,
+but the selected binding or canonical prose must change. The Session must be quiescent:
+registration and all prepared effects are committed, and no unfinished step remains
+selected. Before first selection, after a committed disposition, or after a checked
+`next`/`rework` transition are supported boundaries. Running or uncertain work is not
+stopped implicitly. Existing scope-claim/run conflicts also refuse the new binding.
+
+1. Preserve existing step/card identities and the original PG journals while editing
+   the pending scope and its canonical Session/plan/card/authority descriptions.
+2. Call `session-rebind-context --input preview.json` with `{"instanceId":"<UUID>"}`.
+   Inspect `oldBindingDigest`, `expectedRevision` and the full proposed `next` context.
+3. Write a project-local JSON review artifact using schema
+   `sdp-session-rebind-review/0.1`, with `instanceId`, `expectedRevision`,
+   `oldBindingDigest`, `inputRevision` from `next`, `reviewer`, `verdict: passed` and
+   `summary`. This is an attributed controller review, not native independent review
+   or an actual owner decision. The reviewer must assess the exact proposed scope.
+4. Call `session-rebind --input rebind.json` with the usual Session `schema`,
+   `projectRef`, `checkoutId`, fresh `operationId`, `instanceId`, `expectedRevision`,
+   `reason`, the reviewed `inputRevision` and `review: {path, sha256}`.
+5. Inspect the prepared result, then use `session-resume` to commit the same effects.
+   Reuse operation IDs after an uncertain response. Select remaining work and perform
+   fresh assessment before creating another assignment.
+
+The JSON actions are `governance.session.rebind-context` and
+`governance.session.rebind`; the explicitly scoped Session MCP tools are
+`session_rebind_context` and `session_rebind`. They use the same core checks and
+publisher as the CLI. Default coordinator/worker tools gain no authority.
+
+Profile 0.22 retains up to eight flat binding epochs, original adoption, old execution
+receipts and prior context/evidence. Completed steps continue to satisfy dependencies
+and cannot be selected again. Their bindings, existing card coverage, required review/
+owner policy and protected paths cannot be weakened or removed. A completed card stays
+unchanged during rebind; later overall closure may append its own audit record. An
+existing WORK/Blueprint/design gate is not waived by the rebind review.
+
+Resume appends an immutable `SDP/Sessions/execution/rebindings/<operationId>.json`,
+Session/plan/live-card journals and management events. Rebind itself changes no card
+status. Exact pre/postimage checks preserve external edits and earlier journal/ledger
+bytes. Previous epochs remain inspectable, and `bindingRevisions` describes accepted
+binding changes. Older readers refuse the new profile. Existing store/receipt/effect
+limits still apply; eight epochs are a bounded history, not automatic rollover.
+Workflow migration, removing unfinished work, in-flight retirement/transfer and
+controller-owned leader scheduling remain separate obligations.

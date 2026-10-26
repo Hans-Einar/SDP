@@ -189,7 +189,15 @@ func finishSelectedStep(t *testing.T, s *Service, id string) SessionDisposeReque
 		t.Fatal(e)
 	}
 	i := st.Sessions[id]
-	old := i.Past[len(i.Past)-1].Execution
+	var old SessionInstance
+	for _, prior := range sessionExecutions(snapshot{Sessions: map[string]SessionInstance{id: i}}) {
+		if len(prior.Work) > 0 {
+			old = prior
+		}
+	}
+	if len(old.Work) == 0 {
+		t.Fatal("missing prior fixture execution")
+	}
 	a := old.Assessments[len(old.Assessments)-1].Request
 	a.OperationID = newTestID()
 	a.ExpectedRevision = i.Revision

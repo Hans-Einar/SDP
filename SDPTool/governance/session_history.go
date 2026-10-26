@@ -15,10 +15,11 @@ type SessionPast struct {
 // reading an earlier execution; old run/receipt identities remain addressable.
 func sessionExecutions(st snapshot) []SessionInstance {
 	out := []SessionInstance{}
-	for _, i := range st.Sessions {
+	for _, i := range sessionBindingEpochs(st) {
 		for n, p := range i.Past {
 			old := p.Execution
 			old.Past = i.Past[:n]
+			old.Rebindings = i.Rebindings
 			out = append(out, old)
 		}
 		out = append(out, i)
@@ -29,9 +30,20 @@ func sessionSelectionSources(i SessionInstance) []Source {
 	if len(i.Past) > 0 {
 		return i.Past[len(i.Past)-1].Transition.Effects.Coverage
 	}
+	if len(i.Rebindings) > 0 {
+		return i.Rebindings[len(i.Rebindings)-1].Transition.Effects.Coverage
+	}
 	return i.Context.Sources
 }
 func sessionStepDone(i SessionInstance, id string) bool {
+	for _, epoch := range i.Rebindings {
+		if sessionExecutionStepDone(epoch.Before, id) {
+			return true
+		}
+	}
+	return sessionExecutionStepDone(i, id)
+}
+func sessionExecutionStepDone(i SessionInstance, id string) bool {
 	if i.Selection != nil && i.Selection.Request.StepID == id && i.Disposition != nil && i.Disposition.Effects.Status == "committed" {
 		return true
 	}
@@ -51,7 +63,7 @@ func sessionDependenciesSatisfied(i SessionInstance, step SessionStepBinding) bo
 	return true
 }
 func validateSessionHistoryShape(st snapshot) error {
-	for _, i := range st.Sessions {
+	for _, i := range sessionBindingEpochs(st) {
 		if len(i.Past) > 64 {
 			return fail("reconciliation_required", "Session execution history capacity exceeded")
 		}
@@ -62,7 +74,7 @@ func validateSessionHistoryShape(st snapshot) error {
 		for _, p := range i.Past {
 			old := p.Execution
 			q := p.Transition.Request
-			if len(old.Past) != 0 || old.Advance != nil || old.ID != i.ID || old.Revision != q.ExpectedRevision || old.Revision <= previous || !old.Registered || !reflect.DeepEqual(old.Context, i.Context) || !reflect.DeepEqual(old.Registration, i.Registration) || old.Reason != i.Reason || p.Transition.Effects.Status != "committed" || terminalSessionAdvance(q.Action) {
+			if len(old.Past) != 0 || old.Advance != nil || len(old.Rebindings) != 0 || old.Rebind != nil || old.ID != i.ID || old.Revision != q.ExpectedRevision || old.Revision <= previous || !old.Registered || !reflect.DeepEqual(old.Context, i.Context) || !reflect.DeepEqual(old.Registration, i.Registration) || old.Reason != i.Reason || p.Transition.Effects.Status != "committed" || terminalSessionAdvance(q.Action) {
 				return fail("reconciliation_required", "invalid flat Session execution history")
 			}
 			previous = q.ExpectedRevision + 2

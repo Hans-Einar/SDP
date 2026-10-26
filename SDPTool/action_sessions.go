@@ -77,9 +77,13 @@ func sessionActions() []actionSpec {
 			return sessionActionCall(ctx, c, "session-read", q.State, "", q.Instance, false)
 		}),
 	}
-	for _, op := range []string{"context", "successor", "adopt", "resume", "select", "assess", "start", "progress", "verify", "review", "dispose", "owner", "advance"} {
+	for _, op := range []string{"context", "rebind-context", "rebind", "successor", "adopt", "resume", "select", "assess", "start", "progress", "verify", "review", "dispose", "owner", "advance"} {
 		mutation := "none"
 		desc := "Read and validate the binding and canonical coverage."
+		if op == "rebind" {
+			mutation = "state"
+			desc = "Prepare an exact reviewed binding revision at a quiescent boundary; retain earlier evidence and require fresh selection."
+		}
 		if op == "adopt" {
 			mutation = "state"
 			desc = "Persist adoption intent; no card activation or agent dispatch."
@@ -117,7 +121,7 @@ func sessionActions() []actionSpec {
 			desc = "Reconcile Session registration and coverage; no agent dispatch or later-stage execution."
 		}
 		out = append(out, defineAction(descriptor(op, "Session "+op, desc, mutation), func(ctx context.Context, c actionContext, q SessionActionInput) (any, int, error) {
-			return sessionActionCall(ctx, c, "session-"+op, q.State, q.RequestFile, "", op != "context" && op != "successor")
+			return sessionActionCall(ctx, c, "session-"+op, q.State, q.RequestFile, "", op != "context" && op != "successor" && op != "rebind-context")
 		}))
 	}
 	return out

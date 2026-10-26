@@ -1,0 +1,20 @@
+{
+  "bindingRevisions": [
+    {
+      "operationId": "6fe111b4-dde3-4776-9823-1d4cfaedd246",
+      "oldBindingDigest": "2a8a5df812ab1bff4bbf8ceed150aa9a70a290fe14056c51c0d31dd791053b63",
+      "newBindingDigest": "b82f9303775502670d8747406e213d11aebdb85b06370b49663feda7e1bd2d41",
+      "review": {
+        "path": "evidence/rebind-review-6fe111b4-dde3-4776-9823-1d4cfaedd246.json",
+        "sha256": "b1f418473b53d03f8bbbcc06d426cd3e3c4f13f1de27cbad29a3367105b4b46e"
+      },
+      "reason": "Replan remaining work and retain earlier completed evidence"
+    }
+  ],
+  "canonicalEffects": "committed",
+  "coverage": "current",
+  "crossAdapterRetry": "unchanged HEAD",
+  "instanceId": "464aa8b4-97e0-49c3-91c7-e058a7cad731",
+  "limitations": "Synthetic attributed review; compiled CLI/JSON/MCP binding revision only. Fresh selection/assessment required; no native implementation or owner acceptance claimed.",
+  "schema": "pg-rebind-lab/1"
+}

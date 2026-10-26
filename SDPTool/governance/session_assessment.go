@@ -60,6 +60,9 @@ func sessionEffectsProfile(schema string) bool {
 	return schema == sessionEffectsStateSchema || sessionAssessmentProfile(schema)
 }
 func sessionLatestEffects(i SessionInstance) *SessionRecordEffects {
+	if i.Rebind != nil {
+		return &i.Rebind.Effects
+	}
 	if i.Advance != nil {
 		return &i.Advance.Effects
 	}
@@ -81,9 +84,18 @@ func sessionLatestEffects(i SessionInstance) *SessionRecordEffects {
 	if len(i.Past) > 0 {
 		return &i.Past[len(i.Past)-1].Transition.Effects
 	}
+	if len(i.Rebindings) > 0 {
+		return &i.Rebindings[len(i.Rebindings)-1].Transition.Effects
+	}
 	return nil
 }
 func (s *Service) sessionPendingOwner(i SessionInstance) string {
+	if i.Rebind != nil {
+		return s.state + "\n" + i.Rebind.Request.OperationID + "\n"
+	}
+	if i.Selection == nil && len(i.Past) == 0 && len(i.Rebindings) > 0 {
+		return s.state + "\n" + i.Rebindings[len(i.Rebindings)-1].Transition.Request.OperationID + "\n"
+	}
 	if i.Advance != nil {
 		return s.state + "\n" + i.Advance.Request.OperationID + "\n"
 	}

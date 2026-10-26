@@ -495,3 +495,32 @@ provide retry/recovery; no delete-and-recreate or silent binding rewrite is perm
 Operational profile 0.21 represents this additive terminal action; prior profiles stay
 readable and older readers must refuse the new state. Reviewed active rebind/replan
 and in-flight transfer remain separate obligations.
+
+
+## T050 reviewed binding revision — PGF1-C2c4
+
+Replan preserves the adopted Session/plan identity and original registration. A bounded
+flat sequence of binding epochs retains earlier contexts, executions and receipts.
+Rebind is permitted before selection or after the selected work is disposed/retired
+through supported continuation. Pending effects, unfinished selected work and uncertain
+or live host work require reconciliation first. No stop or host retirement is inferred.
+
+A read-only rebind context pins the fresh binding, canonical records and authority.
+An external review artifact names the instance/revision, old binding digest and new
+input revision, reviewer, passing verdict and rationale. The trusted controller verifies
+that artifact; this is attributed review, not a claim of independent native review or
+a substitute for reserved owner decisions. Rebind commits the exact reviewed context
+through the shared writer reservation and appends a canonical transition/journal.
+
+Keep every old step; completed steps remain byte-equivalent in the typed binding and
+continue to satisfy unchanged dependencies. Existing owner/review requirements and
+protected paths cannot weaken. Remaining steps may revise scope/dependencies or add
+work under the same covered plan. Removed work, changed completed outcomes, workflow
+migration, different plan identity and in-flight retirement need separate disposition.
+The next selection starts without inherited assessment, assignment or owner acceptance.
+
+Allow reviewed editorial changes only to the binding, Session, plan, authority and live
+cards; preserve prior appended PG journals, completed cards, evidence/transition files,
+project instructions and ledger prefixes. Canonical metadata/history must validate.
+Changing reviewed inputs after preparation refuses rather than overwriting the edit.
+A changed design still requires the existing SDL WORK/Blueprint/model-release gates.

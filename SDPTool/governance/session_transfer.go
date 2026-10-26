@@ -10,7 +10,7 @@ import (
 const sessionTransferStateSchema = "sdp-project-governance-state/0.21"
 
 func sessionLifecycleProfile(schema string) bool {
-	return schema == sessionLifecycleStateSchema || schema == sessionTransferStateSchema
+	return schema == sessionLifecycleStateSchema || sessionTransferProfile(schema)
 }
 func terminalSessionAdvance(action string) bool { return action == "complete" || action == "transfer" }
 
@@ -43,6 +43,12 @@ func remainingSessionCards(i SessionInstance) (map[string]SessionCardDisposition
 				cards[c.ID] = c
 			}
 		}
+	}
+	for _, epoch := range i.Rebindings {
+		for _, p := range epoch.Before.Past {
+			record(p.Execution.Disposition)
+		}
+		record(epoch.Before.Disposition)
 	}
 	for _, p := range i.Past {
 		record(p.Execution.Disposition)

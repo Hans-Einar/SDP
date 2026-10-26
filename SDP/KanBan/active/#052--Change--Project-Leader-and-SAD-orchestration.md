@@ -471,3 +471,13 @@ T048 PGF7-C1a verifies the native no-design lab task through actual question/rep
 
 T048 PGF1-C2c3 delivers explicit remaining-scope transfer after all predecessor steps are disposed. Canonical effects close only the predecessor plan/Session and retain remaining cards ready under a planned manual successor; fresh adoption and assessment are required. CLI/JSON/MCP, per-effect/HEAD recovery, pending-adoption exclusion, final focused race/vet and complete per-package test coverage pass. Active rebind, in-flight transfer, autonomous scheduling, model gates and full PG acceptance remain open.
 [Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2c3.md).
+
+
+## T050 — Reviewed quiescent rebind
+
+T050 PGF1-C2c4 delivers reviewed quiescent Session rebind with original adoption, completed steps and flat binding/evidence history retained. Fresh selection/assessment is required; policy weakening, unfinished selected work, conflicting claims and history edits refuse. Full SDPTool regression, focused race/vet, canonical recovery, retained-state checks and compiled CLI/JSON/MCP lab pass. In-flight disposition, autonomous leader scheduling, model gates, capacity and combined native/independent review/owner acceptance remain open.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF1-C2c4.md);
+[current remaining scope](../../05--Implementation/SDPTool/ProjectGovernance/Completion-status-T048.md).
+
+This card remains in-progress. The synthetic review and protocol fixture do not
+substitute for native integrated acceptance or independent PG implementation review.

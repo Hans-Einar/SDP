@@ -1,0 +1,23 @@
+{
+  "canonical": {
+    "cards": 1,
+    "managementRecords": 1,
+    "lineageOperations": 0,
+    "events": 4,
+    "status": "passed"
+  },
+  "preservedTrackedLabPaths": 615,
+  "changedPreviousPaths": [],
+  "olderReader": {
+    "path": "/home/warloc/.cache/sdp-workstation/T048/transfer-bin/sdptool",
+    "exitCode": 2,
+    "output": "{\"error\":{\"code\":\"reconciliation_required\",\"message\":\"invalid_request: json: unknown field \\\"rebindings\\\"\",\"retryable\":false},\"operation\":\"error\",\"schema\":\"sdp-project-governance/0.1\",\"status\":\"error\"}\n"
+  },
+  "legacyRead": {
+    "root": "/home/warloc/git/pg_lab/session-pgf1-c2c3-transfer-final",
+    "state": "/home/warloc/.cache/sdp-workstation/T048/lab-transfer-final-state",
+    "exitCode": 0,
+    "headUnchanged": true
+  },
+  "limits": "Synthetic review; no native dispatch or independent PG source review. Existing prior native evidence retains its earlier candidate."
+}

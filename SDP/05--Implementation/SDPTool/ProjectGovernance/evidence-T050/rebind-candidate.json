@@ -1,0 +1,66 @@
+{
+  "baseline": "120ee5639868c34ff251584e099d51433771a4b0",
+  "changedFiles": {
+    "SDPTool/action_process_test.go": "107dcfbdc53eb0004d4309ff7e427d99c8829919d42dac61e291a4791add0c98",
+    "SDPTool/action_sessions.go": "b1d14c45c4bad474b6cc9cd43f7b4f9d341f289d060181dd5283aac336f163be",
+    "SDPTool/governance/README.md": "a5de63f9216dbf5e52a0813faffcbb19d240d94e705d0e8c8dcb5284110d68ae",
+    "SDPTool/governance/session.go": "89eaaacfcf784d4e34bd5aa918d4308478f806de1b07f191a435258b2250de07",
+    "SDPTool/governance/session.schema.json": "4d5e41354d0363b2f132b994c8c1c60d0876e9c6544b76152b5c1b15495efae4",
+    "SDPTool/governance/session_advance.go": "8839cec8824c9946142c4c26cf8e76e234fbc7a5f514677c1307b1117ec1cfef",
+    "SDPTool/governance/session_advance_test.go": "46ffe06818f1a68e05226289e7010af4af00989a9baa26c3581abaf92e074a61",
+    "SDPTool/governance/session_assessment.go": "9d747e420db7369fd42764f3190ac973f4e2964ca57663d256af39c6ee835bd2",
+    "SDPTool/governance/session_effects.go": "4bde0fc75c12ede28dee50382726d96a8a0f21357d836e44d1cfa7a760465a37",
+    "SDPTool/governance/session_history.go": "a48bee2d18281d43df065d72ed318cf33766f5b39674a57303bc76226cf5eb4e",
+    "SDPTool/governance/session_mcp_cli_test.go": "ee016d9c3dc6e3b9bef1b28f222d0d737feb32843c3f491b119c43d3595eb536",
+    "SDPTool/governance/session_rebind.go": "9c30e8ab94ad920c8175439a6fe60fb54fbc30632307401b9afa316ba36091dc",
+    "SDPTool/governance/session_rebind_cli_test.go": "3ad95a0deeda311b3ec7843e8eae1271616cb8be0fb264ad9beb53cfe04e4024",
+    "SDPTool/governance/session_rebind_test.go": "229424240fe4a5e7da0387c8f3790d20efeb9d73d77fb6adde15a5072a70d72a",
+    "SDPTool/governance/session_transfer.go": "6e57e858b107b451786ceef04feca9429d1f1c629dd147aff42dc8f6f81e78e3",
+    "SDPTool/governance/store.go": "5c6db4e11f43b5f1009658298dd6ebef9ef2cd25355a2a0fea113ef1d5966368",
+    "SDPTool/governance_cli.go": "6a5eeb3867d99d3de97e241aa03dac19f867f5782b0e9c5e95788bef56c04b42",
+    "SDPTool/governancemcp/README.md": "0bcffb2332870c2110153320350b57c1b575e067c48e9dc5e583cb03c4b62f98",
+    "SDPTool/governancemcp/session.go": "06d82a540a4aa5c9edc23e9d5e3a95456ff7e7a6afa764b7df7126de8de5dd06",
+    "SDPTool/presentation/presentation.go": "ba999da01e90a968b95cc22a06339650970d27d6c4f81e63fbcc14f8bcf537cd"
+  },
+  "binaries": {
+    "sdptool": "1b8892679a44af6717ee22cde5e9bbcce275a4441641be3a23c21ddf227987e2",
+    "sdp-mcp": "687269ae7f19534eb7386c93f6827601ba18b1c4bf2a3a2faec57113298576a1"
+  },
+  "toolchain": "Go 1.27.1 linux/amd64; local toolchain and isolated caches",
+  "labCommit": "a2dbe0e8c5283b4725b1841fa06d906d330496c8",
+  "blueprintRevision": "0a74343bd36803197c9e9565c46311c8fa5c9e0d4df4380ffbd9d57fc60dd672",
+  "model": "Unreleased WORK--SessionLifecycle :00002; unchanged SDL sources; no NOW acceptance or model release",
+  "limits": "Uncommitted source identified by baseline plus hashes; compiled precommit metadata is not relabeled as a later commit. Synthetic review does not prove native execution, independent PG review or actual owner acceptance. Earlier native evidence keeps its earlier candidate.",
+  "checks": {
+    "focused": {
+      "exitCode": 0,
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t31.658s\n"
+    },
+    "focusedRace": {
+      "exitCode": 0,
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t87.248s\n"
+    },
+    "vet": {
+      "exitCode": 0,
+      "output": ""
+    },
+    "compiledLab": {
+      "exitCode": 0,
+      "output": "=== RUN   TestSessionRebindCompiledCLIAndMCP\n--- PASS: TestSessionRebindCompiledCLIAndMCP (0.67s)\nPASS\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t0.678s\n"
+    },
+    "fullRegression": {
+      "exitCode": 0,
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool\t24.199s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprints\t11.225s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprintstate\t1.833s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t0.007s\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp\t[no test files]\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdptool\t0.005s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/codexcompat\t0.002s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t375.954s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t27.900s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancehost\t0.050s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t3.638s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/install\t16.696s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/model\t5.204s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/presentation\t0.009s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/projecthistory\t0.226s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/tools/profile\t2.804s\n"
+    },
+    "blueprint": {
+      "status": "diagnostic-preview",
+      "constraintsPass": true,
+      "revision": "0a74343bd36803197c9e9565c46311c8fa5c9e0d4df4380ffbd9d57fc60dd672"
+    },
+    "canonicalDocuments": {
+      "projectManagement": "PASS: 73 cards, 47 management records, 4 lineage operations, 721 events; schema/history/metadata/placement/grouping",
+      "toolkit": "SDP Toolkit validation passed",
+      "gitDiffCheck": "passed"
+    }
+  }
+}

@@ -120,12 +120,16 @@ on each operation. Presence and a digest do not prove an agent loaded or followe
 skill. Native Project Leader scheduling and actual skill-consumption evidence remain
 separate obligations. Do not grant this capability to an implementation worker.
 
-The adapter exposes thirteen tools using the same Session schema and core as the CLI:
+The adapter exposes fifteen tools using the same Session schema and core as the CLI:
 
 - `session_definition` and `session_read` take an empty object and inspect the selected
   workflow/skill reference or current instance, stages, conditions and history.
 - `session_successor` takes the launch-bound `instanceId` and a successor `bindingPath`;
   it returns the pinned manual successor context for explicit remaining-scope transfer.
+- `session_rebind_context` inspects the proposed exact context for the launch-bound
+  `instanceId`. `session_rebind` prepares a pinned, attributed reviewed binding revision
+  at a quiescent boundary. Resume retains prior epochs and requires fresh assessment;
+  this cannot retire live work, weaken owner/design gates or impersonate acceptance.
 - `session_select`, `session_assess`, `session_start`, `session_progress`,
   `session_verify`, `session_review`, `session_dispose`, `session_advance` and
   `session_resume` take their corresponding strict Session requests. Every request

@@ -44,6 +44,8 @@ func advancePath(q SessionAdvanceRequest) string {
 func advanceExecution(i SessionInstance, revision uint64) SessionInstance {
 	i.Past = nil
 	i.Advance = nil
+	i.Rebindings = nil
+	i.Rebind = nil
 	i.Revision = revision
 	return i
 }
@@ -571,9 +573,9 @@ func (s *Service) AdvanceSession(c Caller, q SessionAdvanceRequest) (SessionMuta
 	i.Advance = &a
 	i.Revision++
 	st.Sessions[i.ID] = i
-	if a.Successor != nil {
+	if a.Successor != nil && st.Schema != sessionRebindStateSchema {
 		st.Schema = sessionTransferStateSchema
-	} else if st.Schema != sessionTransferStateSchema {
+	} else if !sessionTransferProfile(st.Schema) {
 		st.Schema = sessionLifecycleStateSchema
 	}
 	out := SessionMutationResult{Schema: SessionSchema, Operation: "session-advance", OperationID: q.OperationID, InstanceID: i.ID, Revision: i.Revision, Registration: "committed", RecordEffects: "prepared"}
@@ -621,12 +623,12 @@ func (s *Service) applySessionAdvance(st *snapshot, i *SessionInstance, tx *proj
 }
 func validateSessionAdvances(st snapshot) error {
 	seen := map[string]bool{}
-	for _, root := range st.Sessions {
+	for _, root := range sessionBindingEpochs(st) {
 		validate := func(i SessionInstance, a SessionAdvance, current bool) error {
 			q, p := a.Request, a.Effects
 			prior := i
 			prior.Advance = nil
-			if !sessionLifecycleProfile(st.Schema) || (q.Action == "transfer" && st.Schema != sessionTransferStateSchema) || validSessionAdvance(q) != nil || advanceEligibility(prior, q) != nil || advanceStoredBasis(st, prior, q) != nil || a.PriorDigest != requestDigest(advanceExecution(prior, q.ExpectedRevision)) || q.ProjectRef != st.Project || q.CheckoutID != st.CheckoutID || q.InstanceID != root.ID || q.ExpectedRevision >= root.Revision || seen[q.OperationID] {
+			if !sessionLifecycleProfile(st.Schema) || (q.Action == "transfer" && !sessionTransferProfile(st.Schema)) || validSessionAdvance(q) != nil || advanceEligibility(prior, q) != nil || advanceStoredBasis(st, prior, q) != nil || a.PriorDigest != requestDigest(advanceExecution(prior, q.ExpectedRevision)) || q.ProjectRef != st.Project || q.CheckoutID != st.CheckoutID || q.InstanceID != root.ID || q.ExpectedRevision >= root.Revision || seen[q.OperationID] {
 				return fail("reconciliation_required", "invalid Session continuation identity/basis")
 			}
 			seen[q.OperationID] = true
@@ -725,6 +727,7 @@ func validateSessionAdvances(st snapshot) error {
 		for n, p := range root.Past {
 			i := p.Execution
 			i.Past = root.Past[:n]
+			i.Rebindings = root.Rebindings
 			if e := validate(i, p.Transition, false); e != nil {
 				return e
 			}

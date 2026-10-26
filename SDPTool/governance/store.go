@@ -74,6 +74,9 @@ func (s *Service) load() (snapshot, string, error) {
 	if !uuidPattern.MatchString(state.CheckoutID) || state.Runs == nil || state.Receipts == nil {
 		return empty, "", fail("reconciliation_required", "invalid persisted state")
 	}
+	if e := validateSessionRebinds(state); e != nil {
+		return empty, "", e
+	}
 	if e := validateSessionHistoryShape(state); e != nil {
 		return empty, "", e
 	}

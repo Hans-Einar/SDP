@@ -1,12 +1,12 @@
-# PG completion status after T048
+# PG completion status — updated T050
 
 This is a current evidence map for PLAN-SDP-0018, not a new plan or an acceptance
-certificate. The latest PGF1-C2c3 product candidate is pinned by baseline plus changed
-file hashes in [its evidence](Evidence-PGF1-C2c3.md). Earlier increments retain their
+certificate. The latest PGF1-C2c4 product candidate is pinned by baseline plus changed
+file hashes in [its evidence](Evidence-PGF1-C2c4.md). Earlier increments retain their
 own candidate and evidence limits; native no-design closeout used source 6e236c8.
 The selected full PG goal remains incomplete.
 
-## Delivered in this turn
+## Bounded deliveries in T048 and T050
 
 - [PGF1-C2c2b](Evidence-PGF1-C2c2b.md): actual-owner authority boundary, exact-result
   gates, retained failed-result rework, dependency progression and eligible overall
@@ -22,13 +22,16 @@ The selected full PG goal remains incomplete.
 
 - [PGF1-C2c3](Evidence-PGF1-C2c3.md): explicit transfer of disposed contributions' remaining
   cards to a pinned manual successor; fresh adoption/assessment, canonical recovery
-  and compiled CLI/JSON/MCP verification. Active rebind and in-flight transfer remain.
+  and compiled CLI/JSON/MCP verification.
+- [PGF1-C2c4](Evidence-PGF1-C2c4.md), T050: reviewed quiescent rebind of the same
+  Session/plan, retained flat binding epochs and completed work, fresh assessment,
+  exact canonical recovery and common CLI/JSON/MCP operations. In-flight replan remains.
 
 ## Remaining implementation and integration
 
 | Priority in the existing plan | Concrete remaining delivery | Why current behavior is insufficient |
 | --- | --- | --- |
-| PGF1 | Reviewed rebind/replan and in-flight remaining-scope disposition | Fully disposed contributions can now transfer to a manual successor; unfinished steps or an executing host cannot transfer, and manually changed binding/authority still needs a supported reviewed rebind path |
+| PGF1 | In-flight remaining-scope disposition and workflow migration | Quiescent reviewed rebind and fully disposed successor transfer are implemented; unfinished selected work, removed steps and an executing/uncertain host still require supported retirement/disposition before replan |
 | PGF2 | Controller-owned leader prepare/start/continue/stop, goal-fit admission and supervision | Session MCP can mutate supported records, and the owner can launch a committed run; the autonomous Project Leader does not yet schedule those host operations |
 | PGF3 | SDL WORK/design handoff, exact owner disposition, compatible WORK integration and model release in Session gates | The Session execution path still admits only explicit no-design/no-Blueprint work; standalone model/Blueprint services are not the complete integrated Session flow |
 | PGF4 | Complete normal owner conversation/admission and direct role dialogue | Common terminal operations work, but complex design/evidence inputs still require structured requests and the broader leader-directed conversation is incomplete |
@@ -50,12 +53,12 @@ bounded checks already delivered. The normative scenarios remain in
 | PG-A02 | Bound Session/card/plan core; current-assignment host entry | Complete leader-directed reuse without duplicate work |
 | PG-A03 | Strict route/schema/coverage refusals | Full new-goal/gap intake and deduplication journey |
 | PG-A04 | Actual bounded Master launch, target-only changes, explicit skills | Required native role/child mappings and combined multi-Master behavior |
-| PG-A05 | Scope-change/refusal and current-coverage guards | Supported replan/rebind and complete in-flight reconciliation |
+| PG-A05 | Scope-change/refusal, current-coverage guards and reviewed quiescent rebind | Complete in-flight reconciliation and native integrated design replan |
 | PG-A06 | Exact evidence/review gates; failed-result rework tests | Final native failed-review/repair journey with all selected model gates |
 | PG-A07 | Candidate/source drift and excluded-path tests | Combined design/model candidate changes in the final matrix |
 | PG-A08 | Core receipt/CAS/crash and orphan-generation tests | Final-candidate complete-workflow recovery and rollover |
 | PG-A09 | Every-effect canonical publication recovery tests | Integrated model promotion/closeout recovery |
-| PG-A10 | Routine pins, strict caller authority and owner-only decisions | Reviewed rebind/migration and final-case replay; bounded successor transfer now verified |
+| PG-A10 | Routine pins, strict caller authority, owner-only decisions, reviewed quiescent rebind and disposed successor transfer | Workflow migration and final-case replay |
 | PG-A11 | Existing observer/recovery checks; actual fresh-controller continuation | Actually active-host loss, uncertain creation/send and full recovery matrix |
 | PG-A12 | Durable host/input/report projections; actual recorded reply | Full concurrent steering, role-dialogue and interruption matrix |
 | PG-A13 | Same run/Session with two actual attempts and retained answer | Full design/replan/leader reconnect journey |
@@ -73,7 +76,7 @@ bounded checks already delivered. The normative scenarios remain in
 | PG-A25 | Actual native no-design task, external test, fresh review and checked card/plan/Session closure | Combined native SDL/rework/model-release journey and native successor transfer |
 | PG-A26 | Shared CLI/MCP receipts and owner terminal/host entry | Native Project Leader reconnect/dispatch without duplicate work |
 | PG-A27 | Canonical effects/fault matrix and launch-after-commit guard | Actual active-host and model-promotion interruption boundaries |
-| PG-A28 | Own-effect refresh, unrelated append and selected-edit refusal | Explicit reviewed rebind/replan after legitimate selected changes |
+| PG-A28 | Own-effect refresh, unrelated append, selected-edit refusal and explicit reviewed quiescent rebind | Complete in-flight reconciliation and final native combined-case evidence |
 | PG-A29 | Strict binding/dependency/version validation and retained history | Explicit migration and successor handling through the final native journey; bounded compiled transfer verified |
 | PG-A30 | Separate stage/card/host/effect/owner projections | Full native concurrent workflow and all selected completion obligations |
 

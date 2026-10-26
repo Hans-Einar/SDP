@@ -83,19 +83,21 @@ type SessionResumeRequest struct {
 	Reason           string `json:"reason"`
 }
 type SessionInstance struct {
-	Past         []SessionPast       `json:"past,omitempty"`
-	Advance      *SessionAdvance     `json:"advance,omitempty"`
-	OwnerGates   []SessionOwnerGate  `json:"ownerGates,omitempty"`
-	Disposition  *SessionDisposition `json:"disposition,omitempty"`
-	Work         []SessionWork       `json:"work,omitempty"`
-	Assessments  []SessionAssessment `json:"assessments,omitempty"`
-	Selection    *SessionSelection   `json:"selection,omitempty"`
-	ID           string              `json:"id"`
-	Revision     uint64              `json:"revision"`
-	Context      SessionContext      `json:"context"`
-	Reason       string              `json:"reason"`
-	Registration PublicationChange   `json:"registration"`
-	Registered   bool                `json:"registered"`
+	Rebindings   []SessionRebindEpoch `json:"rebindings,omitempty"`
+	Rebind       *SessionRebind       `json:"rebind,omitempty"`
+	Past         []SessionPast        `json:"past,omitempty"`
+	Advance      *SessionAdvance      `json:"advance,omitempty"`
+	OwnerGates   []SessionOwnerGate   `json:"ownerGates,omitempty"`
+	Disposition  *SessionDisposition  `json:"disposition,omitempty"`
+	Work         []SessionWork        `json:"work,omitempty"`
+	Assessments  []SessionAssessment  `json:"assessments,omitempty"`
+	Selection    *SessionSelection    `json:"selection,omitempty"`
+	ID           string               `json:"id"`
+	Revision     uint64               `json:"revision"`
+	Context      SessionContext       `json:"context"`
+	Reason       string               `json:"reason"`
+	Registration PublicationChange    `json:"registration"`
+	Registered   bool                 `json:"registered"`
 }
 type SessionMutationResult struct {
 	RecordEffects string `json:"recordEffects,omitempty"`
@@ -122,23 +124,24 @@ type SessionStepView struct {
 	Holds                []string                 `json:"holds"`
 }
 type SessionView struct {
-	State         string               `json:"state"`
-	History       []SessionHistoryView `json:"history,omitempty"`
-	Binding       *SessionBinding      `json:"binding,omitempty"`
-	RecordEffects string               `json:"recordEffects,omitempty"`
-	Schema        string               `json:"schema"`
-	Operation     string               `json:"operation"`
-	InstanceID    string               `json:"instanceId"`
-	Revision      uint64               `json:"revision"`
-	SessionID     string               `json:"sessionId"`
-	PlanID        string               `json:"planId"`
-	Workflow      SessionWorkflowRef   `json:"workflow"`
-	Registration  string               `json:"registration"`
-	Coverage      string               `json:"coverage"`
-	Conditions    []string             `json:"conditions"`
-	Steps         []SessionStepView    `json:"steps"`
-	NextActions   []string             `json:"nextActions"`
-	HostExecution string               `json:"hostExecution"`
+	BindingRevisions []SessionRebindView  `json:"bindingRevisions,omitempty"`
+	State            string               `json:"state"`
+	History          []SessionHistoryView `json:"history,omitempty"`
+	Binding          *SessionBinding      `json:"binding,omitempty"`
+	RecordEffects    string               `json:"recordEffects,omitempty"`
+	Schema           string               `json:"schema"`
+	Operation        string               `json:"operation"`
+	InstanceID       string               `json:"instanceId"`
+	Revision         uint64               `json:"revision"`
+	SessionID        string               `json:"sessionId"`
+	PlanID           string               `json:"planId"`
+	Workflow         SessionWorkflowRef   `json:"workflow"`
+	Registration     string               `json:"registration"`
+	Coverage         string               `json:"coverage"`
+	Conditions       []string             `json:"conditions"`
+	Steps            []SessionStepView    `json:"steps"`
+	NextActions      []string             `json:"nextActions"`
+	HostExecution    string               `json:"hostExecution"`
 }
 type SessionList struct {
 	Schema     string        `json:"schema"`
@@ -263,6 +266,9 @@ func sessionAnchor(body []byte, id string) bool {
 	return false
 }
 func (s *Service) sessionContext(path string) (SessionContext, error) {
+	return s.sessionContextRetaining(path, nil)
+}
+func (s *Service) sessionContextRetaining(path string, completed map[string]bool) (SessionContext, error) {
 	out := SessionContext{Schema: SessionSchema, Operation: "session-context", ProjectRef: s.project, BindingPath: path, Sources: []Source{}}
 	if !literalCandidatePath(path) || !strings.HasPrefix(path, "SDP/Sessions/execution/") || !strings.HasSuffix(path, ".json") {
 		return out, fail("path", "Session binding must be under SDP/Sessions/execution")
@@ -329,7 +335,7 @@ func (s *Service) sessionContext(path string) (SessionContext, error) {
 				return out, fail("missing_coverage", "selected card absent")
 			}
 			m, _ := metadata(files[p])
-			if m["PlanId"] != b.Plan.ID || !slices.Contains([]string{"backlog", "queued", "ready", "in-progress", "gate-review"}, m["CardState"]) {
+			if m["PlanId"] != b.Plan.ID || (!slices.Contains([]string{"backlog", "queued", "ready", "in-progress", "gate-review"}, m["CardState"]) && !(completed[c.ID] && m["CardState"] == "completed")) {
 				return out, fail("missing_coverage", "selected live card must reference plan")
 			}
 			paths[p] = true
@@ -550,7 +556,11 @@ func (s *Service) ResumeSession(c Caller, q SessionResumeRequest) (SessionMutati
 	if len(encoded) > maxState-8192 {
 		return SessionMutationResult{}, fail("limit", "insufficient receipt capacity before effects")
 	}
-	if i.Advance != nil && i.Advance.Effects.Status == "prepared" {
+	if i.Rebind != nil {
+		if e = s.applySessionRebind(&st, &i, tx); e != nil {
+			return SessionMutationResult{}, e
+		}
+	} else if i.Advance != nil && i.Advance.Effects.Status == "prepared" {
 		if e = s.applySessionAdvance(&st, &i, tx); e != nil {
 			return SessionMutationResult{}, e
 		}
@@ -678,6 +688,7 @@ func (s *Service) sessionView(i SessionInstance, st snapshot) SessionView {
 		v.Steps = append(v.Steps, sv)
 	}
 	s.projectSessionHistory(i, st, &v)
+	projectSessionRebindings(i, &v)
 	return v
 }
 func (s *Service) ReadSession(id string) (SessionView, error) {
@@ -729,7 +740,8 @@ func validateSessionState(st snapshot) error {
 	paths := map[string]bool{}
 	revisions := map[string]map[uint64]bool{}
 	for id, i := range st.Sessions {
-		c := i.Context
+		original := originalSessionBinding(i)
+		c := original.Context
 		if !uuidPattern.MatchString(id) || id != i.ID || i.Revision == 0 || validateSessionBinding(c.Binding) != nil || seen[c.Binding.Session.ID] || paths[c.Binding.Session.Path] || c.Operation != "session-context" || c.Schema != SessionSchema || c.ProjectRef != st.Project || c.CheckoutID != st.CheckoutID || c.BindingPath != "SDP/Sessions/execution/"+c.Binding.Session.ID+".json" || !digestPattern.MatchString(c.BindingDigest) || !validLeaderText(i.Reason, 2048) || len(c.Sources) < 5 || len(c.Sources) > 72 || c.InputRevision != sessionInputRevision(c.Sources) {
 			return fail("reconciliation_required", "invalid stored Session identity/binding")
 		}
@@ -737,7 +749,7 @@ func validateSessionState(st snapshot) error {
 		paths[c.Binding.Session.Path] = true
 		revisions[id] = map[uint64]bool{}
 		reg := i.Registration
-		prefix, ok := strings.CutSuffix(reg.Content, sessionJournal(i))
+		prefix, ok := strings.CutSuffix(reg.Content, sessionJournal(original))
 		if !ok || reg.Path != c.Binding.Session.Path || hash([]byte(prefix)) != reg.Before || hash([]byte(reg.Content)) != reg.After || len(reg.Content) > MaxRequest || (i.Registered && i.Revision < 2) {
 			return fail("reconciliation_required", "invalid Session registration intent")
 		}
@@ -767,7 +779,7 @@ func validateSessionState(st snapshot) error {
 			continue
 		}
 		i, ok := st.Sessions[v.InstanceID]
-		if !ok || !uuidPattern.MatchString(id) || id != v.OperationID || v.Schema != SessionSchema || v.Revision == 0 || v.Revision > i.Revision || !digestPattern.MatchString(r.Digest) || r.Result.ProjectRef != st.Project || r.Result.CheckoutID != st.CheckoutID || r.Result.OperationID != id || r.Result.Schema != Schema || !slices.Contains([]string{"session-adopt", "session-resume", "session-select", "session-assess", "session-start", "session-progress", "session-verify", "session-review", "session-dispose", "session-owner", "session-advance"}, v.Operation) || r.Result.Operation != strings.Replace(v.Operation, "-", ".", 1) || (v.Operation == "session-adopt" && (v.InstanceID != id || v.Registration != "pending")) || (v.Operation == "session-resume" && (v.Revision < 2 || v.Registration != "committed")) {
+		if !ok || !uuidPattern.MatchString(id) || id != v.OperationID || v.Schema != SessionSchema || v.Revision == 0 || v.Revision > i.Revision || !digestPattern.MatchString(r.Digest) || r.Result.ProjectRef != st.Project || r.Result.CheckoutID != st.CheckoutID || r.Result.OperationID != id || r.Result.Schema != Schema || !slices.Contains([]string{"session-adopt", "session-resume", "session-select", "session-assess", "session-start", "session-progress", "session-verify", "session-review", "session-dispose", "session-owner", "session-advance", "session-rebind"}, v.Operation) || r.Result.Operation != strings.Replace(v.Operation, "-", ".", 1) || (v.Operation == "session-adopt" && (v.InstanceID != id || v.Registration != "pending")) || (v.Operation == "session-resume" && (v.Revision < 2 || v.Registration != "committed")) {
 			return fail("reconciliation_required", "invalid Session receipt")
 		}
 		if revisions[v.InstanceID][v.Revision] {

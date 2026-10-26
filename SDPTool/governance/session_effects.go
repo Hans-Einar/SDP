@@ -470,7 +470,7 @@ func (s *Service) SelectSession(c Caller, q SessionSelectRequest) (SessionMutati
 	if i.Revision != q.ExpectedRevision {
 		return SessionMutationResult{}, fail("stale_revision", "instance revision changed")
 	}
-	if !i.Registered || i.Selection != nil || i.Advance != nil {
+	if !i.Registered || i.Selection != nil || i.Advance != nil || i.Rebind != nil {
 		return SessionMutationResult{}, fail("conflict", "registered unselected instance required")
 	}
 	if i.Revision == ^uint64(0) || len(st.Receipts) >= 1024 {
