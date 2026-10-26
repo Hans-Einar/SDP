@@ -444,3 +444,14 @@ are absent. Each call checks the skill snapshot; actual native loading/applicati
 remains separately unverified. This implements ExternalLeaderMcp's shared-command
 boundary without making MCP the scheduler. [Evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF2-C1a.md)
 records final protocol, race and durable replay checks. WORK :00002 remains TARGET.
+
+
+### T048 owner host entry through the current Session
+
+PGF2-C1b resolves the current committed Session assignment for existing owner host
+operations. Historical executions remain inspectable by run ID but are never selected
+implicitly. Dispatch still requires ready/current canonical coverage and the exact
+start-pinned skills; it uses existing host leases, durable intents and uncertain-send
+reconciliation. Missing or pending start effects refuse launch. No Session transition
+or default coordinator privilege is added. This implements the existing WORK's
+HostActionGateway boundary; it does not provide autonomous leader scheduling.

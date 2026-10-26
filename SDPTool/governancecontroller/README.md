@@ -752,8 +752,8 @@ Existing outbound-intent persistence, lease, host observations, report capabilit
 attention and candidate/evidence mechanisms remain authoritative. A lost start reply
 leaves unknown host execution and cannot trigger an automatic duplicate start.
 Session progress consumes the assigned report/current candidate and advances only
-to verification. Legacy result publication is refused for Session runs until checked
-Session disposition is implemented. C2b2 controller tests use a deterministic protocol
+to verification. Legacy result publication is refused for Session runs; use checked Session
+disposition instead. C2b2 controller tests use a deterministic protocol
 host, not a new native Codex/model execution or independent product review.
 
 
@@ -775,11 +775,42 @@ After exact verification/review intake commits, trusted local CLI/JSON
 `session-dispose` prepares per-card disposition and `session-resume` commits it.
 The controller does not launch another host turn for this operation. Current evidence,
 exact run revision and no outstanding host input/attention are required. Completion
-is available only when the selected binding does not require owner acceptance.
+requires the exact owner decision when the selected binding requires acceptance.
 See the [request and recovery contract](../governance/README.md#selected-step-disposition--pgf1-c2c2a).
 
 The existing Run becomes completed only after canonical whole/contribution outcomes,
 result evidence and claim release commit. The Session view exposes `done` for that
 step, not overall plan/Session closure. Restricted MCP cannot supply controller
-privileges. Owner-decision handling, failed-result rework, subsequent-step selection,
-privileged leader orchestration and design/model gates remain separate work.
+privileges. Trusted owner gates, failed-result rework, dependency progression and eligible
+whole-plan/Session closure are available through the Session core. Explicit successor
+transfer/rebind, privileged leader scheduling and design/model gates remain open.
+
+
+## Owner host operations by Session — PGF2-C1b
+
+Use `--instance UUID` instead of `--run UUID` with `run`, `status`, `continue`,
+`recover`, `attach` or `provenance`. This resolves only the current committed
+assignment. A past execution is never selected after progression/rework resets the
+current assignment. Pending canonical effects cannot launch a host. Status still
+shows a registered Session with no current run; with a run it emits the Session view
+and normal run view as separate JSON objects.
+
+```sh
+sdp-controller status --project ROOT --state DIR --instance SESSION_INSTANCE_UUID
+sdp-controller run --project ROOT --state DIR --instance SESSION_INSTANCE_UUID --mcp-binary /absolute/sdp-mcp --codex CODEX --sandbox workspace-write --reporting automatic
+sdp-controller provenance --project ROOT --state DIR --instance SESSION_INSTANCE_UUID
+sdp-controller recover --project ROOT --state DIR --instance SESSION_INSTANCE_UUID --codex CODEX
+```
+
+`run` derives the exact Master/Worker skill paths and initial task from the committed
+assignment. An explicit `--message FILE` can add owner input; required launch skill
+identity and canonical authority checks still apply. The default sandbox remains
+read-only. A non-ready run requires explicit inspection/continuation/recovery; this
+command does not replay unknown sends or automatically advance Session stages.
+Recovery reconciles history only. Continue retains the existing attention-response
+preconditions; attach still requires the separately running host socket.
+
+The T048 native pg_lab trial on Codex 0.164.0 completed one bounded wording task,
+with only its target changed and the run awaiting verification. Exact skill inputs
+and host acceptance were observed; complete skill compliance, an autonomous Project
+Leader, two-Master concurrency and full PG acceptance are not established by it.

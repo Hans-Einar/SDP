@@ -1,0 +1,40 @@
+{
+  "command": [
+    "/home/warloc/.cache/sdp-workstation/T048/host-entry-bin/sdp-controller",
+    "run",
+    "--project",
+    "/home/warloc/git/pg_lab/session-pgf2-c1b-native",
+    "--state",
+    "/home/warloc/.cache/sdp-workstation/T048/lab-native-state",
+    "--instance",
+    "65c356de-053a-44de-9541-d1863f8ef0e7",
+    "--codex",
+    "/home/warloc/.local/bin/codex",
+    "--mcp-binary",
+    "/home/warloc/.cache/sdp-workstation/T048/host-entry-bin/sdp-mcp",
+    "--sandbox",
+    "workspace-write",
+    "--approvals",
+    "never",
+    "--reporting",
+    "automatic",
+    "--timeout",
+    "6m"
+  ],
+  "hostKind": "native",
+  "observedCLIVersion": "codex-cli 0.164.0",
+  "instanceId": "65c356de-053a-44de-9541-d1863f8ef0e7",
+  "runId": "cb2a2099-be56-46eb-b6fe-1d97dbf1fd31",
+  "startedAt": "2026-10-26T01:38:48.858648+00:00",
+  "modelTurnObserved": true,
+  "actualOwnerAcceptance": false,
+  "exitCode": 0,
+  "elapsedSeconds": 48.959,
+  "runState": "verifying",
+  "attempts": 1,
+  "targetExact": true,
+  "changedOriginalPaths": [
+    "target.txt"
+  ],
+  "finishedAt": "2026-10-26T01:39:37.819173+00:00"
+}

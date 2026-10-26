@@ -1,0 +1,21 @@
+{
+  "baseline": "fdf72ea13b350e1001cded62eaf71df0d70da25c",
+  "files": {
+    "SDPTool/cmd/sdp-controller/session.go": "a424bc4eecab2ba49865b0478a4287041bb38a70083a41e44af5242ccea93108",
+    "SDPTool/governance/session_host.go": "995b04e279e59606f19c39f89173e2ff7174d592bd5086791cc48d76af0ed7a9",
+    "SDPTool/governance/session_host_test.go": "0c97cfee374def11d55fc461b4bf298893f058f334b8ed1413661b62d89c58d9",
+    "SDPTool/governance/session_advance_test.go": "70195f26bf3cc20cc5baca1c253bb7c7dc611db8653f700a26249dd6e4b8e942"
+  },
+  "binaries": {
+    "sdp-controller": "2abdfea226a46e24f2ab6680fca24cda23e70dfb653fb7f5492c22d4621a0f27",
+    "sdp-mcp": "482f5c095cf785d1949b1f61ec886c9f6c201f3a12711966e38c4e46b4ce4061"
+  },
+  "race": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t55.747s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t1.743s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t1.015s [no tests to run]\n",
+  "vetExitCode": 0,
+  "native": "native-host-result.json",
+  "blueprintRevision": "9de52007de4c4dc7d8e4aa0e9d46c8c8ee02f7665a94642a3d9d024ae7438b0a",
+  "constraintsPass": true,
+  "limitations": "One real native wording assignment, synthetic prerequisite history. No full procedural compliance, owner acceptance, independent review or whole-PG completion.",
+  "labCommit": "cfbcae12f42e1cd570f1b4b2446d89682b4768ca",
+  "earlierTrackedPathsUnchanged": 374
+}

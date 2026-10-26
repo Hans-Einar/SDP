@@ -26,6 +26,7 @@ func ownerCommand(args []string) error {
 	root := f.String("project", "", "explicit project root")
 	state := f.String("state", "", "private operational state directory")
 	run := f.String("run", "", "existing authorized Maintenance or implementation run UUID")
+	instance := f.String("instance", "", "registered Session instance instead of --run; resolves its current committed assignment")
 	socket := f.String("host-socket", "", "private local socket of separately running pinned host")
 	binary := f.String("codex", "codex", "pinned Codex executable")
 	mcp := f.String("mcp-binary", "", "sdp-mcp executable")
@@ -40,8 +41,8 @@ func ownerCommand(args []string) error {
 	if e := f.Parse(args[1:]); e != nil {
 		return e
 	}
-	if *root == "" || *state == "" || *run == "" || f.NArg() != 0 || *timeout <= 0 {
-		return fmt.Errorf("require --project ROOT --state DIR --run UUID")
+	if *root == "" || *state == "" || ((*run == "") == (*instance == "")) || f.NArg() != 0 || *timeout <= 0 {
+		return fmt.Errorf("require --project ROOT --state DIR and exactly one of --run UUID or --instance UUID")
 	}
 	if *continuations < 0 || *continuations > 8 || (*continuations > 0 && args[0] != "run" && args[0] != "continue") {
 		return fmt.Errorf("--attention-continuations requires run/continue and 0..8")
@@ -71,6 +72,48 @@ func ownerCommand(args []string) error {
 		return e
 	}
 	emit := func(v any) { _ = json.NewEncoder(os.Stdout).Encode(v) } // Observers do not own execution.
+	var sessionInput string
+	if *instance != "" {
+		view, err := service.ReadSession(*instance)
+		if err != nil {
+			return err
+		}
+		if args[0] == "status" {
+			emit(view)
+		}
+		selected, err := service.SessionHostSelection(*instance)
+		if err != nil {
+			var missing *governance.Error
+			if args[0] == "status" && errors.As(err, &missing) && missing.Code == "missing_coverage" {
+				return nil
+			}
+			return err
+		}
+		*run = selected.RunID
+		if args[0] == "run" {
+			current, err := service.Read(*run)
+			if err != nil {
+				return err
+			}
+			if current.Run.State != "ready" {
+				return &governance.Error{Code: "conflict", Message: "current Session run is not ready; inspect or use the explicit continuation/recovery operation"}
+			}
+			if err := service.CheckRunReady(*run); err != nil {
+				return err
+			}
+			if len(skillPaths) == 0 {
+				for _, skill := range selected.Skills {
+					rel, err := filepath.Rel(p.Root, skill.Path)
+					if err != nil {
+						return err
+					}
+					skillPaths = append(skillPaths, rel)
+				}
+			}
+			sessionInput = "Execute the committed Session assignment: " + selected.Outcome
+		}
+	}
+
 	if args[0] == "provenance" {
 		p, err := service.Provenance(*run)
 		if err == nil {
@@ -92,24 +135,26 @@ func ownerCommand(args []string) error {
 		}
 		return e
 	}
-	var text string
+	text := sessionInput
 	if args[0] == "run" {
-		if *message == "" || *mcp == "" {
-			return fmt.Errorf("run requires --message FILE --mcp-binary BINARY")
+		if (*message == "" && *instance == "") || *mcp == "" {
+			return fmt.Errorf("run requires --mcp-binary BINARY and --message FILE unless a committed --instance supplies its outcome")
 		}
-		file, e := os.Open(*message)
-		if e != nil {
-			return e
+		if *message != "" {
+			file, e := os.Open(*message)
+			if e != nil {
+				return e
+			}
+			defer file.Close()
+			b, e := io.ReadAll(io.LimitReader(file, (64<<10)+1))
+			if e != nil {
+				return e
+			}
+			if len(b) > 64<<10 {
+				return fmt.Errorf("owner input exceeds 64 KiB")
+			}
+			text = string(b)
 		}
-		defer file.Close()
-		b, e := io.ReadAll(io.LimitReader(file, (64<<10)+1))
-		if e != nil {
-			return e
-		}
-		if len(b) > 64<<10 {
-			return fmt.Errorf("owner input exceeds 64 KiB")
-		}
-		text = string(b)
 	}
 	unlock, e := service.RunLiveControllerLease(governance.LocalController(), *run)
 	if e != nil {

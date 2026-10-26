@@ -215,8 +215,11 @@ in-progress records before creating one ready run; explicit controller launch re
 separate. Progress consumes its assigned report/current candidate evidence and enters
 verification. PGF1-C2c1 checks passing tests and an exact observed review before
 disposition, preserving all selected contributions. PGF1-C2c2a completes eligible
-no-design steps, moves whole cards, records partial contributions and releases claims after checked publication. Required owner decisions,
-explicit plan/Session closure and design-changing dispatch remain open.
+no-design steps, moves whole cards, records partial contributions and releases claims after checked publication. C2c2b adds trusted owner gates, retained rework/dependency
+progression and eligible whole-plan/Session closure. The explicit Session MCP adapter
+uses the same core; `sdp-controller --instance` resolves the current committed
+assignment and launch skills. Successor transfer/rebind, leader scheduling and
+design/model integration remain open.
 Full lifecycle/model gates, integrated verification and independent product review
 remain in PLAN-SDP-0018. Development-source availability does not imply a published
 installer or consuming-project installation.

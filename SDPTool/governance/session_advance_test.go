@@ -110,6 +110,9 @@ func TestSessionAdvanceNextStep(t *testing.T) {
 				t.Fatal("execution not archived")
 			}
 			oldrun := i.Past[0].Execution.Work[0].Request.OperationID
+			if _, e = s.SessionHostSelection(q.InstanceID); e == nil {
+				t.Fatal("host entry selected a historical assignment after advancement")
+			}
 			if _, ok := sessionRunBinding(st, oldrun); !ok {
 				t.Fatal("lost historical run")
 			}

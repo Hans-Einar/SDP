@@ -2591,3 +2591,39 @@ changes target.txt before the new report. Race-tested dependency progression and
 owner/test/review rework preserve history across different candidates (122.111s).
 Only the test changed; existing lifecycle implementation is unchanged. Final canonical
 validation passes with 73 cards, 47 management records and 705 events.
+
+T048 next delivery boundary — PGF2-C1b: connect the existing owner host controller
+to an explicitly selected Session instance. Current CLI requires the owner to find
+its run UUID and repeat already pinned skill selections. Add --instance as an
+alternative to --run for existing run/status/continue/recover/attach/provenance
+operations; resolve only the current committed execution, preserve existing host
+leases/intent recovery, and derive launch skills from that assignment. A run invoked
+for the selected Session can use its committed outcome as input; explicit --message
+remains supported. This is a shared owner entry point, not automatic leader scheduling
+or implicit Session-stage advancement. Unknown/pending effects must refuse host launch.
+
+Preflight refresh: fdf72ea13b350e1001cded62eaf71df0d70da25c, one local worktree and
+clean product baseline after the two milestone commits. No new local owner or ID
+collision observed; unchanged board ownership and unobserved remote-work limit apply.
+Green for governance read-only Session/run mapping, the existing sdp-controller owner
+entry and scoped tests/docs. Existing SessionWorkflow WORK :00002 already assigns
+DispatchAfterCommittedEffects to HostActionGateway and includes owner recovery. Scope
+its Blueprint before edits; preserve the same native host version and authority gates.
+
+
+T048 PGF2-C1b outcome: Session-selected owner host operations are implemented and
+focused race/vet pass. The actual native Codex 0.164.0 pg_lab turn completes the exact
+wording assignment with only target.txt changed, one completed mapped attempt and
+run state verifying. Correct Master/Worker input and host acceptance are observed;
+full skill compliance remains not-observed. Fixture setup history is synthetic;
+actual owner acceptance and independent PG review remain unclaimed. Scope inspection
+caught an omitted CLI directory in the Blueprint task's allowed paths; the corrected
+task regenerates passing constraints. This late list correction is explicit in evidence.
+S3/S6 and KB038/052 remain in-progress. Backlog/onHold ownership and SDL-only/deferred
+Ponsse constraints are unchanged. Preparing the scoped milestone commit and phase push.
+The next increment improves the owner Session interface through the same core before
+remaining scheduling/model integration; no new owner permission is needed. This is
+an execution summary using the same SDP/Master/Worker/Architect and verification,
+planning and traceability routines, not a captured final response.
+
+Native lab fixture committed as cfbcae1; all 374 earlier tracked paths unchanged.

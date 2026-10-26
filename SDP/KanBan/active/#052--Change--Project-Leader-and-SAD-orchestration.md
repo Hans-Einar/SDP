@@ -446,3 +446,9 @@ T048 PGF2-C1a delivers an explicit one-instance Session MCP capability with twel
 
 Required native skill use, actual parallel Masters, model release and independent PG
 review are still separate obligations; these protocol fixtures do not satisfy them.
+
+
+## T048 — Session-selected owner host entry
+
+T048 PGF2-C1b adds Session-selected owner host operations with exact committed assignment/skills, prepared or stale launch refusal and retained-run separation. Focused race/vet pass. A real Codex 0.164.0 lab turn changes only its assigned target and returns verifying; complete skill compliance and whole-PG acceptance are not inferred. Remaining transfer/rebind, scheduling, model and final workflow gates stay open.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF2-C1b.md).
