@@ -2,8 +2,9 @@
 
 ## Session roadmap
 
-Latest recorded turn: T051 — owner requests current status and an estimate to finish
-the whole PG scope. Local HEAD and the remote working branch still match 6ed581e;
+Latest recorded turn: T052 — owner asks whether the last Session assignment was
+finished. Only the bounded T050 rebind milestone was completed; the broader
+authorized continuation and Session0007 remain unfinished. Local HEAD and the remote working branch still match 6ed581e;
 no later implementation is observed. T050 C2c4 implements reviewed quiescent rebind with retained
 completed work/evidence and fresh assessment, through common CLI/JSON/MCP operations.
 The [completion map](../05--Implementation/SDPTool/ProjectGovernance/Completion-status-T048.md)
@@ -2946,3 +2947,22 @@ Loaded/reused routines: SDP entrypoint, document workflow, Planning and Session
 continuity. S3/S6/S4 outcomes are unchanged. Next implementation remains scoped
 preflight for PGF2, then PGF3; existing authorization continues. This is a work
 summary, not a captured final response.
+
+
+## T052 — Clarify last-work-period completion
+
+Owner asks whether the work planned for the last Session was finished. Distinguish
+the last implementation work period (T050), the status discussion (T051), and the
+long-running SDP Session0007. T050 completed, tested, committed and pushed the bounded
+PGF1-C2c4 reviewed quiescent rebind milestone at 6ed581e. It did not complete the
+broader authorized continuation: controller-owned Project Leader execution and the
+subsequent model/integration obligations remain. T051 only assessed status/effort.
+
+The earlier final response reported a completed milestone, not completion of the
+whole assignment. No recorded technical blocker or requirement for fresh owner
+authorization caused the stop at that milestone. Do not retrospectively describe
+that stop as an owner-requested pause or a completed Session. Session0007, the plan
+and KB038/052 remain active; next implementation remains scoped PGF2 preflight, then
+PGF3. No product changes or new verification occurred in this clarification turn.
+Reused SDP entrypoint/document workflow and Session continuity routines. This is
+a work summary, not an already captured final response.
