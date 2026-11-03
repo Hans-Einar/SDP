@@ -24,12 +24,17 @@ type LeaderMessage struct {
 	Input      LeaderMessageInput `json:"input"`
 	RecordedAt string             `json:"recordedAt"`
 }
+type LeaderSessionGrant struct {
+	InstanceID string     `json:"instanceId"`
+	Skill      SkillInput `json:"skill"`
+}
 type LeaderConfig struct {
-	Coordinator  string       `json:"coordinator"`
-	HostVersion  string       `json:"hostVersion"`
-	MCPBinary    string       `json:"mcpBinary"`
-	Instructions string       `json:"instructions"`
-	Skills       []SkillInput `json:"skills"`
+	Sessions     []LeaderSessionGrant `json:"sessions,omitempty"`
+	Coordinator  string               `json:"coordinator"`
+	HostVersion  string               `json:"hostVersion"`
+	MCPBinary    string               `json:"mcpBinary"`
+	Instructions string               `json:"instructions"`
+	Skills       []SkillInput         `json:"skills"`
 }
 type LeaderDispatch struct {
 	ID         string       `json:"id"`
@@ -94,6 +99,16 @@ func validLeaderText(s string, limit int) bool {
 	return utf8.ValidString(s) && !strings.ContainsRune(s, 0) && boundedAttentionText(s, limit)
 }
 func validLeaderConfig(c LeaderConfig) bool {
+	if len(c.Sessions) > 8 {
+		return false
+	}
+	seen := map[string]bool{}
+	for _, g := range c.Sessions {
+		if !uuidPattern.MatchString(g.InstanceID) || seen[g.InstanceID] || g.Skill.Name != "sdp-project-leader" || !slices.Contains(c.Skills, g.Skill) {
+			return false
+		}
+		seen[g.InstanceID] = true
+	}
 	return validLeaderText(c.Coordinator, 256) && codexcompat.Supported(c.HostVersion) && filepath.IsAbs(c.MCPBinary) && filepath.Clean(c.MCPBinary) == c.MCPBinary && validLeaderText(c.MCPBinary, 4096) && validLeaderText(c.Instructions, 4096) && len(c.Skills) > 0 && ValidSkillInputs(c.Skills)
 }
 func (s *Service) LeaderRead() (LeaderView, error) {
@@ -180,13 +195,19 @@ func (s *Service) prepareLeader(l LeaderState, id string, c LeaderConfig) (Leade
 	if e := CheckSkillSnapshots(s.root, c.Skills); e != nil {
 		return d, e
 	}
+	for _, g := range c.Sessions {
+		if e := s.CheckSessionLeader(g.InstanceID, g.Skill); e != nil {
+			return d, e
+		}
+	}
 	messages, notices := leaderDelivered(l)
 	payload := struct {
-		Schema  string          `json:"schema"`
-		Project string          `json:"project"`
-		Owner   []LeaderMessage `json:"ownerMessages"`
-		Notices []leaderNotice  `json:"notices"`
-	}{"sdp-leader-context/1", s.project, []LeaderMessage{}, []leaderNotice{}}
+		Sessions []LeaderSessionGrant `json:"sessions,omitempty"`
+		Schema   string               `json:"schema"`
+		Project  string               `json:"project"`
+		Owner    []LeaderMessage      `json:"ownerMessages"`
+		Notices  []leaderNotice       `json:"notices"`
+	}{c.Sessions, "sdp-leader-context/1", s.project, []LeaderMessage{}, []leaderNotice{}}
 	for _, m := range l.Messages {
 		if !messages[m.ID] && len(payload.Owner) < 8 {
 			payload.Owner = append(payload.Owner, m)
@@ -235,6 +256,11 @@ func (s *Service) prepareLeader(l LeaderState, id string, c LeaderConfig) (Leade
 	return d, nil
 }
 func (s *Service) leaderBasis(l LeaderState, d LeaderDispatch) error {
+	for _, g := range d.Config.Sessions {
+		if e := s.CheckSessionLeader(g.InstanceID, g.Skill); e != nil {
+			return e
+		}
+	}
 	if leaderInputHead(l) != d.InputHead {
 		return fail("stale_revision", "new owner input precedes unsent leader work")
 	}
@@ -409,6 +435,9 @@ func (s *Service) LeaderWrite(c Caller, q LeaderRequest) (LeaderResult, error) {
 	if state.LeaderReceipts == nil {
 		state.LeaderReceipts = map[string]leaderReceipt{}
 	}
+	if q.Config != nil && len(q.Config.Sessions) > 0 {
+		state.Schema = sessionHostStateSchema
+	}
 	state.LeaderReceipts[q.OperationID] = leaderReceipt{Digest: digest, Result: out}
 	if e = s.save(state, head); e != nil {
 		return LeaderResult{}, e
@@ -442,6 +471,15 @@ func validateLeaderState(state snapshot) error {
 		messageIDs[m.ID] = true
 	}
 	for _, d := range l.Dispatches {
+		if len(d.Config.Sessions) > 0 && state.Schema != sessionHostStateSchema {
+			return fail("incompatible_profile", "Session leader grants require profile 0.23")
+		}
+		for _, g := range d.Config.Sessions {
+			i, ok := state.Sessions[g.InstanceID]
+			if !ok || !i.Registered {
+				return fail("reconciliation_required", "retained leader grant has no registered Session")
+			}
+		}
 		receipt, ok := state.LeaderReceipts[d.ID]
 		_, e := time.Parse(time.RFC3339Nano, d.UpdatedAt)
 		if !ok || receipt.Result.Action != "prepare" || !uuidPattern.MatchString(d.ID) || ids[d.ID] || !validLeaderConfig(d.Config) || !validLeaderText(d.Payload, 64<<10) || len(d.Answer) > 64<<10 || e != nil || !slices.Contains([]string{"prepared", "opening", "bound", "sending", "running", "completed", "failed", "interrupted", "superseded"}, d.State) {

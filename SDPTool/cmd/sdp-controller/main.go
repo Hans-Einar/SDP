@@ -89,7 +89,7 @@ func main() {
 		}
 		return
 	}
-	if len(os.Args) > 1 && (os.Args[1] == "run" || os.Args[1] == "continue" || os.Args[1] == "status" || os.Args[1] == "recover" || os.Args[1] == "attach" || os.Args[1] == "provenance") {
+	if len(os.Args) > 1 && (os.Args[1] == "execute" || os.Args[1] == "run" || os.Args[1] == "continue" || os.Args[1] == "status" || os.Args[1] == "recover" || os.Args[1] == "attach" || os.Args[1] == "provenance") {
 		if e := ownerCommand(os.Args[1:]); e != nil {
 			fmt.Fprintln(os.Stderr, e)
 			os.Exit(2)

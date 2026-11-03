@@ -152,3 +152,20 @@ are outside capability isolation. Changed canonical records hold core transition
 changed launcher-pinned skill bytes hold this adapter until explicitly reconciled.
 Canonical publication recovery preserves exact pre/postimages rather than overwriting
 external edits. CLI and MCP receipts are interchangeable for the same request.
+
+## Explicit Session host-request capability — PGF2-C1c
+
+Adding `--session-host-requests` to the Session-controller launcher adds three tools:
+`session_host_read`, `session_host_request` and `session_host_cancel`. The flag requires
+an explicitly selected Session and pinned named Project Leader skill. Ordinary
+Session, coordinator and worker launch modes retain their previous capabilities.
+
+Read returns all bounded retained commands plus the current project/checkout,
+Session revision and run revision/state. Request uses the strict `hostRequest`
+definition from the shared Session schema and must name that same Session and skill.
+Actions are `launch`, `continue`, `interrupt` and `scope-change`. Cancel names an
+`operationId` and refuses another instance, a live controller lease or any durable
+host input. No tool sends host RPCs. The trusted controller consumes the request.
+An uncertain reply must reuse the same operation ID; never create another launch to
+replace unknown delivery. These records use operational profile 0.23. There are at
+most 128 retained commands per store; archive/rotation is not yet implemented.

@@ -2,16 +2,17 @@
 
 ## Session roadmap
 
-Latest recorded turn: T052 — owner asks whether the last Session assignment was
-finished. Only the bounded T050 rebind milestone was completed; the broader
-authorized continuation and Session0007 remain unfinished. Local HEAD and the remote working branch still match 6ed581e;
-no later implementation is observed. T050 C2c4 implements reviewed quiescent rebind with retained
-completed work/evidence and fresh assessment, through common CLI/JSON/MCP operations.
-The [completion map](../05--Implementation/SDPTool/ProjectGovernance/Completion-status-T048.md)
-retains T048 native no-design closeout/transfer and all remaining PGF1–9/PG-A01–30
-obligations. In-flight replan, autonomous leader scheduling, integrated model gates,
-sustained recovery/capacity and final acceptance remain open. No full-PG readiness
-is claimed. Use the same Session; no duplicate plan or Session is needed.
+Latest recorded turn: T053 — owner instructs completion of this Session. PGF2-C1c
+now connects durable Session host requests, explicitly granted native Project Leader
+MCP and trusted worker controllers. A frozen-candidate native Codex 0.166.0 trial
+loaded the leader skill, checked the KB/Session/plan chain, queued one launch and
+returned one Master/Worker result for verification with only the assigned file changed.
+Focused race/vet and compatibility/replay checks pass; final regression evidence is
+recorded with the checkpoint. The [completion map](../05--Implementation/SDPTool/ProjectGovernance/Completion-status-T048.md)
+retains all selected PGF1–9/PG-A01–30 obligations. In-flight replan, full admission and
+multi-Master supervision, integrated model gates, sustained recovery/capacity and
+final acceptance remain open. Session0007 is active; no completed submilestone is
+reported as whole-PG completion. Existing implementation authorization continues.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
 
 ```mermaid
@@ -34,7 +35,7 @@ gantt
 | completed | S2 | Design the smallest common routing, run, Session and client contract | Owner continuation, T002 | [PGD1 / PLAN-SDP-0017](../04--Design/SDPTool/ProjectGovernance/Plan.md), contract, acceptance cases and protocol inspection |
 | on-going | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C6 verified; owner reports PGI3-U1 trial performed; native mapping remains unverified; PGI4-C1 evidence/rework, C2 native review and C3 checked result publication delivered; final disposition and integrated gates remain; PGF1-C1 binding/registration delivered in T042; C2a checked selection/ready-card effects delivered in T043; C2b1 design admission delivered in T044; C2b2 no-design start/progress delivered in T045; C2c1 verification/review gates delivered T046; C2c2a selected-step disposition/claim release delivered T047; T048 adds owner gates, retained continuation/closure, native no-design closeout and explicit disposed-scope successor transfer; T050 adds reviewed quiescent rebind; in-flight and integrated model gates remain |
 | completed | S7 | Codex 0.164.0 and compatible later hosts / PGC1 | Owner T029; KB057 and existing PLAN-SDP-0018 | 98b449c range/identity/recovery checks, full race/vet, 60 schema cases and real no-model 0.164.0 controller/MCP probe pass; full native/review gates remain |
-| on-going | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation, C2a lifecycle, C2b provider checks and C2c decisions and C2d activation/native code trial delivered; PGL3-C2 reports/inbox, C3 attention/replies and C4 guarded continuation delivered; C5 acknowledgement, C6 console/MCP and C7 serialized leader delivery/recovery and C8 native bounded workflow and C3 review/publication coordination delivered; final disposition, parallel/capacity and independent review gates remain |
+| on-going | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation, C2a lifecycle, C2b provider checks and C2c decisions and C2d activation/native code trial delivered; PGL3-C2 reports/inbox, C3 attention/replies and C4 guarded continuation delivered; C5 acknowledgement, C6 console/MCP and C7 serialized leader delivery/recovery and C8 native bounded workflow and C3 review/publication coordination delivered; T053 PGF2-C1c adds explicit leader Session grants, durable host requests and one native leader/Master chain; full admission, parallel/model/capacity and independent review gates remain |
 | planned | S4 | Verify interruption, resume, scope change and evidence disposition | S3 candidate | Evidence required before wider use |
 | planned | S5 | Project recorded activity into the KB043 timeline | Reliable S3/S4 capture and selected rendering scope | Full timeline remains deferred |
 
@@ -2966,3 +2967,87 @@ and KB038/052 remain active; next implementation remains scoped PGF2 preflight, 
 PGF3. No product changes or new verification occurred in this clarification turn.
 Reused SDP entrypoint/document workflow and Session continuity routines. This is
 a work summary, not an already captured final response.
+
+
+## T053 — Complete the authorized Session, beginning with trusted host requests
+
+Owner explicitly instructs completing Session0007 now. Continue the existing plan
+and all selected obligations; do not treat one bounded milestone as full completion.
+Recovered clean ebc5184 on sdp/codex-forward-compatibility and one worktree. Reviewed
+committed changes since main and active card/Session projections. PG038/052 own this
+work; paused KB050/Session0008 and KB032/XFMD are excluded. No local competing writer
+or ID collision is observed. Remote writers remain outside local observation.
+
+Scoped preflight green for PGF2-C1c: governance Session-host request core/state,
+controller execution adapter, scoped MCP and CLI/terminal adapters, tests, existing
+WORK-covered HostActionGateway contract and PG design/plan/evidence/skill guidance.
+Source paths include SDPTool/governance, governancecontroller, governancemcp,
+cmd/sdp-controller, cmd/sdp-mcp and the existing Session CLI/action/presentation
+adapters. Preserve original default coordinator/worker capabilities. Recheck before
+model authoring, broader admission or other scope expansion.
+
+Architect selection: retain a durable Session-bound host request with exact current
+assignment/revisions and launcher-pinned leader skill. The trusted controller claims
+the request before dispatch and correlates it to existing durable host input identity.
+The privileged adapter records intent only; it does not launch subprocess workers.
+An uncertain or claimed request is never blindly resent. Current scope/skills and
+record commitment are checked again at execution. This implements the existing
+HostActionGateway/PersistSessionInstance target responsibilities without inventing
+a second host runtime. Native trial agents remain bounded product tests.
+
+Reused SDP entrypoint/document workflow, Master, Architect, Planning and Worker
+routines. Whole-Session review, owner trial and remote-Steering disposition retain
+their actual evidence requirements. Continue independent authorized work while
+preparing any concrete owner decision; no fabricated acceptance.
+
+T053 implementation checkpoint: service/compiled-MCP tests pass for explicit host
+request grants, exact retries, stale scope/skills, lease exclusion, lost launch reply
+and scope-change interruption without duplicate send. Added current Session/run
+revision inspection so a leader can construct requests from MCP facts. An initial
+native fixture setup failed before dispatch because its assessment helper replaced
+the named leader skill with synthetic prose; corrected the opt-in fixture to pin
+canonical skill bytes before assessment, retained the failed setup, and started a
+fresh isolated native trial. Native host observed version is 0.166.0.
+
+Continued scoped preflight: extend the existing Leader launcher/configuration and
+host MCP inventory verification to explicitly grant up to eight selected registered
+Sessions. These paths are within the same PG workstream; current dirty files are
+this turn's changes, no additional local writer/worktree is observed. Existing
+coordinator-only default remains authoritative for earlier dispatches. New grants
+must pin the named Project Leader skill, survive restart as exact config, expose
+only selected Session MCP servers and preserve owner-decision separation. This is
+part of PGF2 host integration, not new unrelated scope. Reuse the existing WORK
+HostActionGateway/SessionCoordinator target and current Blueprint constraints.
+
+T053 native execution checkpoint: the first successful leader chain and a fresh
+frozen-candidate trial both completed on Codex 0.166.0. The final trial has one
+acknowledged host request, one mapped Master attempt and one outbound input; run
+state is verifying. External hashes establish exactly target.txt changed (38 bytes),
+with 38 other fixture files unchanged before controller evidence export. Retained
+native call records show the leader actually read sdp-project-leader/SKILL.md, its
+shared routines and current coverage, then used session_host_request. This proves
+that bounded decision path, not universal skill compliance or final acceptance.
+
+The final acknowledged request replays with deliberately missing host/MCP executable
+paths without opening a host or changing HEAD. The previous 0.22 binary refuses the
+new records; the new binary reads the earlier T050 store without rewriting HEAD.
+The final scoped Blueprint includes the existing host inventory adapter and invocation
+attribution path, passes constraints, and retains unchanged unreleased WORK :00002.
+The compiled JSON trial corrected an explicit attribution allow-list omission for
+host request/cancel and existing rebind. No unrelated authority was broadened.
+
+Lab commit 20cb4bc retains failed fixture setup/discovery results separately from the
+successful native trials and preserves all previously tracked lab files. Tests use
+process-local feature isolation; global Codex settings/account/model were not changed.
+S3/S6 remain active. Next work continues the selected full PGF2/PGF3 obligations;
+independent PG source review, actual final owner trial and remote-Steering disposition
+retain their original gates. No fresh implementation permission is needed.
+
+T053 milestone verification: full frozen SDPTool regression passes (governance
+406.942s), focused race checks pass (27.323s), full vet passes, and observed transport
+objects validate against local schemas. Backlog/onHold projections were inspected
+at the milestone; no separate workstream or owner deferral changed. Updated plan,
+completion map, KB038/052 working notes, management events 241/445/446 and product
+verification trace together. Cards and Session remain active/in-progress. Reused
+Verifier and Traceability routines for this checkpoint. This is a work summary, not
+an assertion that the owner's entire Session-completion request has been achieved.

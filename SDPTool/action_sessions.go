@@ -124,5 +124,18 @@ func sessionActions() []actionSpec {
 			return sessionActionCall(ctx, c, "session-"+op, q.State, q.RequestFile, "", op != "context" && op != "successor" && op != "rebind-context")
 		}))
 	}
+	hostDescriptor := func(op, mutation string) ActionDescriptor {
+		d := descriptor(op, "Session "+op, "Inspect, queue or cancel a durable host request; execution belongs to the trusted controller.", mutation)
+		d.OutputSchema = governance.SessionHostSchema
+		return d
+	}
+	out = append(out, defineAction(hostDescriptor("host-read", "none"), func(ctx context.Context, c actionContext, q SessionReadInput) (any, int, error) {
+		return sessionActionCall(ctx, c, "session-host-read", q.State, "", q.Instance, false)
+	}))
+	for _, op := range []string{"host-request", "host-cancel"} {
+		out = append(out, defineAction(hostDescriptor(op, "state"), func(ctx context.Context, c actionContext, q SessionActionInput) (any, int, error) {
+			return sessionActionCall(ctx, c, "session-"+op, q.State, q.RequestFile, "", true)
+		}))
+	}
 	return out
 }

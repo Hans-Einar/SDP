@@ -94,6 +94,9 @@ func (s *Service) DesignDecisionReceipt(caller Caller, q DesignDecisionRequest) 
 	return findDesignDecision(state, q)
 }
 func findDesignDecision(state snapshot, q DesignDecisionRequest) (*DesignDecisionResult, error) {
+	if _, ok := state.SessionHostCommands[q.OperationID]; ok {
+		return nil, fail("idempotency_conflict", "operation belongs to Session host request")
+	}
 	if _, ok := state.LeaderReceipts[q.OperationID]; ok {
 		return nil, fail("idempotency_conflict", "operationId belongs to leader delivery")
 	}

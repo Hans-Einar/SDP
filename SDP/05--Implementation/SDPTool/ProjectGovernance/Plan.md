@@ -1098,7 +1098,7 @@ policy. This turn delivers design/model preparation, not a runtime milestone.
 | --- | --- | --- | --- |
 | PGF1-C1 Session binding and durable instance | PGF1 foundation; PGF2 admission | Adopt a covered manual Session explicitly, read its selected steps/stages/holds, recover the same instance and reject stale/unsupported/cyclic bindings. Pin routine version and authority; leave legacy runs unchanged. New incomplete paths refuse action rather than simulate delivery | delivered T042 at bounded C1 scope; core, CLI/JSON, recovery and pg_lab evidence pass; later activation/leader/model gates remain |
 | PGF1-C2 Checked lifecycle effects and disposition | PGF1; PG-A25/27/28 | Use existing publication machinery for select/start/progress and eligible no-design closeout, including real card moves, metadata/history/links and partial-contribution handling. Reconcile own effects/unrelated ledger additions without weakening coverage. Crash matrix and shared writer/ID contention pass | in-progress; C2a selection/effects delivered T043; C2b1 assessment delivered T044; C2b2 no-design start/progress delivered T045; C2c1 verification/review gates delivered T046; C2c2a selected-step disposition/claim release delivered T047; C2c2b owner gates, rework/dependencies and eligible overall closure plus C2c3 explicit disposed-scope transfer delivered T048; T050 C2c4 quiescent rebind implemented; in-flight and model gates remain |
-| PGF2-C1 Common owner/leader Session operations | PGF2/4; PG-A26/29/30 | CLI and explicitly privileged leader adapter use the same core/instance/receipts. Controller dispatch follows committed record effects; leader-free owner resume and later leader reconnect neither duplicate work nor bypass authority | C1/C2; scoped MCP adapter C1a and Session-selected owner host entry C1b delivered T048; one native assignment verified; scheduling and remaining convenience stay open |
+| PGF2-C1 Common owner/leader Session operations | PGF2/4; PG-A26/29/30 | CLI and explicitly privileged leader adapter use the same core/instance/receipts. Controller dispatch follows committed record effects; leader-free owner resume and later leader reconnect neither duplicate work nor bypass authority | C1a/C1b delivered T048; T053 C1c durable host requests, explicit leader grants and one native leader/Master chain verified; complete admission, multi-Master supervision and remaining convenience stay open |
 | PGF3-C1 Design and model-release workflow | PGF3; PG-A21/22/23/25 | SDL WORK, required Blueprint, design handoff, code verification/rework and exact accepted model release participate in Session gates. Combine compatible model WORKs, refresh affected evidence and refuse unresolved model release at closure | common Session operations; implementation/native evidence required |
 | PGF5-C1 Full recovery across effects and attempts | PGF5; PG-A27/28/29 | Recover at each canonical/model/host boundary; preserve pending work, external edits and whole-card scope. Different routine versions and legacy profiles stay explicit | prior functional increments; evidence required |
 | PGF7-C1 Integrated Session/KanBan lab | PGF7/8; PG-A01–30 | Same final candidate completes the card-to-Session workflow with deliberate rework, interruption and CLI takeover, plus no-design and shared-card cases. Independent product review and owner trial remain separate gates | PGF5/6 and all selected functional scope |
@@ -1354,3 +1354,19 @@ controller-owned host effects (PGF2), then integrated SDL WORK/Blueprint/merge/r
 gates (PGF3). In-flight scope disposition, sustained capacity, combined native matrix
 and independent review/owner trial/final scope disposition remain explicit. Recheck
 concurrent work and the scoped Blueprint before changing host dispatch authority.
+
+### T053 — PGF2-C1c durable leader-directed host requests
+
+[Evidence](Evidence-PGF2-C1c.md) records durable Session/run/skill-bound host requests,
+shared CLI/JSON/MCP operations, exact input correlation, no resend after uncertain
+host delivery, and pending-request closeout holds. Explicit native Project Leader
+Session grants preserve the coordinator-only default and require a verified exact
+MCP inventory. The trusted launcher can execute queued work through separate bounded
+worker controllers while the leader retains its own queue and lifecycle.
+
+One native leader/Master chain on Codex 0.166.0 has exercised the new route with exact
+file preservation and reported verification. This checkpoint does not close PGF2:
+the two actual disjoint Masters/conflicting-third case, full admission and continued
+supervision remain. PGF3 model integration, in-flight lifecycle, complete recovery,
+capacity, independent PG review, owner trial and final scope/PR gates stay selected.
+No owner authorization for continued implementation is missing.

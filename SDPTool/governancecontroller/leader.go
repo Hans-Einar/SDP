@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"reflect"
 	"slices"
 	"time"
 
@@ -21,6 +22,7 @@ type LeaderHost interface {
 	ReadThread(context.Context, string) (governancehost.Thread, error)
 }
 type LeaderController struct {
+	SessionIDs                             []string
 	Service                                *governance.Service
 	Host                                   LeaderHost
 	Root, StateDir, MCPBinary, Coordinator string
@@ -99,7 +101,29 @@ func (c *LeaderController) Step(ctx context.Context) (governance.LeaderView, err
 		if e != nil {
 			return view, e
 		}
-		_, e = leaderWrite(c.Service, governance.LeaderRequest{Action: "prepare", Config: &governance.LeaderConfig{Coordinator: c.Coordinator, HostVersion: c.Host.Version(), MCPBinary: c.MCPBinary, Instructions: LeaderInstructions, Skills: skills}})
+		config := governance.LeaderConfig{Coordinator: c.Coordinator, HostVersion: c.Host.Version(), MCPBinary: c.MCPBinary, Instructions: LeaderInstructions, Skills: skills}
+		if len(c.SessionIDs) > 0 {
+			if len(c.SessionIDs) > 8 {
+				return view, fmt.Errorf("at most eight explicit Session grants")
+			}
+			var skill governance.SkillInput
+			for _, selected := range skills {
+				if selected.Name == "sdp-project-leader" {
+					skill = selected
+				}
+			}
+			if skill.Name == "" {
+				return view, fmt.Errorf("explicit sdp-project-leader skill required for Session grants")
+			}
+			config.Instructions = LeaderSessionInstructions
+			for _, id := range c.SessionIDs {
+				if e := c.Service.CheckSessionLeader(id, skill); e != nil {
+					return view, e
+				}
+				config.Sessions = append(config.Sessions, governance.LeaderSessionGrant{InstanceID: id, Skill: skill})
+			}
+		}
+		_, e = leaderWrite(c.Service, governance.LeaderRequest{Action: "prepare", Config: &config})
 		var ge *governance.Error
 		if errors.As(e, &ge) && ge.Code == "no_work" {
 			return view, nil
@@ -111,6 +135,13 @@ func (c *LeaderController) Step(ctx context.Context) (governance.LeaderView, err
 	}
 	if d.Config.HostVersion != c.Host.Version() || d.Config.Coordinator != c.Coordinator || d.Config.MCPBinary != c.MCPBinary {
 		return view, fmt.Errorf("reconciliation_required: leader launcher differs from retained dispatch")
+	}
+	granted := []string{}
+	for _, g := range d.Config.Sessions {
+		granted = append(granted, g.InstanceID)
+	}
+	if !slices.Equal(granted, c.SessionIDs) {
+		return view, fmt.Errorf("reconciliation_required: retained Session grants differ from launcher")
 	}
 	write := func(q governance.LeaderRequest) error {
 		q.DispatchID = d.ID
@@ -138,6 +169,13 @@ func (c *LeaderController) Step(ctx context.Context) (governance.LeaderView, err
 			return current, nil
 		}
 		config := map[string]any{"sdp_governance": map[string]any{"command": d.Config.MCPBinary, "args": []string{"--project", c.Root, "--state", c.StateDir, "--coordinator", d.Config.Coordinator}, "tools": map[string]any{"report_acknowledge": map[string]any{"approval_mode": "approve"}}}}
+		for n, g := range d.Config.Sessions {
+			toolPolicy := map[string]any{}
+			for _, name := range sessionLeaderToolNames {
+				toolPolicy[name] = map[string]any{"approval_mode": "approve"}
+			}
+			config[fmt.Sprintf("sdp_session_%d", n+1)] = map[string]any{"command": d.Config.MCPBinary, "args": []string{"--project", c.Root, "--state", c.StateDir, "--session-controller", g.InstanceID, "--leader-skill", g.Skill.Path, "--session-host-requests"}, "tools": toolPolicy}
+		}
 		thread, err := c.Host.StartWorkThread(ctx, c.Root, "read-only", d.Config.Instructions, "never", config)
 		if err != nil {
 			return view, err
@@ -170,12 +208,37 @@ func (c *LeaderController) Step(ctx context.Context) (governance.LeaderView, err
 		if mode != "chatgpt" {
 			return view, fmt.Errorf("managed ChatGPT mode required")
 		}
-		names, _, err := c.Host.CoordinatorTools(ctx, d.ThreadID)
-		if err != nil {
-			return view, err
-		}
-		if !slices.Equal(names, []string{"coordination_read", "report_acknowledge"}) {
-			return view, fmt.Errorf("coordinator-only MCP tools required")
+		if len(d.Config.Sessions) == 0 {
+			names, _, err := c.Host.CoordinatorTools(ctx, d.ThreadID)
+			if err != nil {
+				return view, err
+			}
+			if !slices.Equal(names, []string{"coordination_read", "report_acknowledge"}) {
+				return view, fmt.Errorf("coordinator-only MCP tools required")
+			}
+		} else {
+			inspector, ok := c.Host.(interface {
+				SessionLeaderTools(context.Context, string, map[string][]string) error
+			})
+			if !ok {
+				return view, fmt.Errorf("host cannot verify exclusive Session leader tools")
+			}
+			expected := map[string][]string{"sdp_governance": {"coordination_read", "report_acknowledge"}}
+			for n := range d.Config.Sessions {
+				expected[fmt.Sprintf("sdp_session_%d", n+1)] = append([]string{}, sessionLeaderToolNames...)
+			}
+			if err := inspector.SessionLeaderTools(ctx, d.ThreadID, expected); err != nil {
+				return view, err
+			}
+			// Skills are pinned at prepare and checked again immediately before send.
+			selector := Controller{Host: c.Host, Root: c.Root, SkillPaths: c.SkillPaths}
+			_, selected, err := selector.selectSkills(ctx)
+			if err != nil {
+				return view, err
+			}
+			if !reflect.DeepEqual(selected, d.Config.Skills) {
+				return view, fmt.Errorf("stale_revision: selected leader skills changed")
+			}
 		}
 		if e = claim("send"); e != nil {
 			return view, e
@@ -214,3 +277,7 @@ func (c *LeaderController) Step(ctx context.Context) (governance.LeaderView, err
 	}
 	return c.Service.LeaderRead()
 }
+
+const LeaderSessionInstructions = "You are the Project Leader for the explicitly granted SDP Sessions. Load and apply sdp-project-leader on this turn. Read owner input before reports; assess goal fit, canonical KB/Session/plan coverage, design/Blueprint need and scope conflicts before dispatch. Read session_definition and session_read on each relevant granted server. Session servers sdp_session_1 onward correspond in order to the session grants in your context. You may use their checked workflow operations and session_host_read/request/cancel. Host requests queue trusted controller work; they never prove execution or completion. Inspect exact current Session/run revisions and pinned skill before constructing a request. Preserve a request operation ID for retries; uncertain host delivery requires recovery, never another launch. A separate idea requires its own KB cards, Session and plan before any agent assignment; report missing coverage rather than broadening current work. Never impersonate owner acceptance, grant design approval, mutate files directly, spawn native children or bypass tool scopes. Use coordinator reports for receipt only; evidence and exact owner gates remain distinct. Return after this decision turn; the controller schedules future input."
+
+var sessionLeaderToolNames = []string{"session_advance", "session_assess", "session_definition", "session_dispose", "session_host_cancel", "session_host_read", "session_host_request", "session_owner_request", "session_progress", "session_read", "session_rebind", "session_rebind_context", "session_resume", "session_review", "session_select", "session_start", "session_successor", "session_verify"}

@@ -856,3 +856,11 @@ binding changes. Older readers refuse the new profile. Existing store/receipt/ef
 limits still apply; eight epochs are a bounded history, not automatic rollover.
 Workflow migration, removing unfinished work, in-flight retirement/transfer and
 controller-owned leader scheduling remain separate obligations.
+
+PGF2-C1c adds operational profile 0.23 for durable Session host commands and explicit
+leader Session grants. Historical stores remain readable without rewriting their
+profile; old binaries must refuse the new records. Queue/claim/settle/cancel preserve
+an exact request identity. Settlement derives delivery solely from its mapped durable
+host input. Pending commands hold Session closeout and rebind, while completed host
+requests remain addressable across retained Session history. These operational events
+do not assert code verification, independent review, owner acceptance or model release.

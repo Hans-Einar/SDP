@@ -1846,6 +1846,85 @@
           "maxLength": 4096
         }
       }
+    },
+    "hostRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "checkoutId",
+        "operationId",
+        "instanceId",
+        "runId",
+        "schema",
+        "projectRef",
+        "expectedRevision",
+        "expectedRunRevision",
+        "action",
+        "reason",
+        "leaderSkill"
+      ],
+      "properties": {
+        "checkoutId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "operationId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "instanceId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "runId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "schema": {
+          "const": "sdp-session-host/0.1"
+        },
+        "projectRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "expectedRunRevision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "action": {
+          "enum": [
+            "launch",
+            "continue",
+            "interrupt",
+            "scope-change"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "leaderSkill": {
+          "$ref": "#/$defs/skillPin"
+        }
+      }
+    },
+    "hostCancelRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "operationId"
+      ],
+      "properties": {
+        "operationId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
     }
   }
 }

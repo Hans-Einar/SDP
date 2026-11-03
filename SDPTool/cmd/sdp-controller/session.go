@@ -26,6 +26,7 @@ func ownerCommand(args []string) error {
 	root := f.String("project", "", "explicit project root")
 	state := f.String("state", "", "private operational state directory")
 	run := f.String("run", "", "existing authorized Maintenance or implementation run UUID")
+	hostRequest := f.String("host-request", "", "exact durable Session host request; execute only")
 	instance := f.String("instance", "", "registered Session instance instead of --run; resolves its current committed assignment")
 	socket := f.String("host-socket", "", "private local socket of separately running pinned host")
 	binary := f.String("codex", "codex", "pinned Codex executable")
@@ -41,10 +42,17 @@ func ownerCommand(args []string) error {
 	if e := f.Parse(args[1:]); e != nil {
 		return e
 	}
-	if *root == "" || *state == "" || ((*run == "") == (*instance == "")) || f.NArg() != 0 || *timeout <= 0 {
+	if *root == "" || *state == "" || f.NArg() != 0 || *timeout <= 0 {
 		return fmt.Errorf("require --project ROOT --state DIR and exactly one of --run UUID or --instance UUID")
 	}
-	if *continuations < 0 || *continuations > 8 || (*continuations > 0 && args[0] != "run" && args[0] != "continue") {
+	if args[0] == "execute" {
+		if *hostRequest == "" || *run != "" || *instance != "" || *message != "" || len(skillPaths) > 0 || *mcp == "" {
+			return fmt.Errorf("execute requires --host-request UUID --mcp-binary PATH; stored assignment supplies run, input and skills")
+		}
+	} else if *hostRequest != "" || ((*run == "") == (*instance == "")) {
+		return fmt.Errorf("require exactly one of --run UUID or --instance UUID")
+	}
+	if *continuations < 0 || *continuations > 8 || (*continuations > 0 && args[0] != "run" && args[0] != "continue" && args[0] != "execute") {
 		return fmt.Errorf("--attention-continuations requires run/continue and 0..8")
 	}
 	if args[0] == "continue" && (*message != "" || len(skillPaths) > 0 || *mcp == "") {
@@ -56,7 +64,7 @@ func ownerCommand(args []string) error {
 	if *approvals != "never" && *approvals != "ask" {
 		return fmt.Errorf("unsupported approval mode")
 	}
-	if (*reporting != "manual" && *reporting != "automatic") || (*reporting != "manual" && args[0] != "run" && args[0] != "continue") {
+	if (*reporting != "manual" && *reporting != "automatic") || (*reporting != "manual" && args[0] != "run" && args[0] != "continue" && args[0] != "execute") {
 		return fmt.Errorf("--reporting requires run/continue and manual or automatic")
 	}
 	p, e := sdptool.Discover(*root)
@@ -72,6 +80,24 @@ func ownerCommand(args []string) error {
 		return e
 	}
 	emit := func(v any) { _ = json.NewEncoder(os.Stdout).Encode(v) } // Observers do not own execution.
+	if args[0] == "execute" {
+		command, err := service.ReadSessionHostCommand(*hostRequest)
+		if err != nil {
+			return err
+		}
+		if command.State != "queued" {
+			// Receipt/reconciliation paths never open a host connection.
+			ctl := &governancecontroller.Controller{Service: service}
+			settled, err := ctl.ExecuteSessionHost(context.Background(), *hostRequest)
+			emit(settled)
+			return err
+		}
+		if command.Request.Action != "launch" && command.Request.Action != "continue" {
+			return fmt.Errorf("mapped interrupt/scope-change must be consumed by the existing live Session controller")
+		}
+		*instance = command.Request.InstanceID
+		*run = command.Request.RunID
+	}
 	var sessionInput string
 	if *instance != "" {
 		view, err := service.ReadSession(*instance)
@@ -210,11 +236,18 @@ func ownerCommand(args []string) error {
 		emit(r)
 		return nil // History reconciliation only; never resume/resend a model turn.
 	}
-	if args[0] != "run" && args[0] != "attach" && args[0] != "continue" {
+	if args[0] != "run" && args[0] != "attach" && args[0] != "continue" && args[0] != "execute" {
 		return fmt.Errorf("unknown owner command")
 	}
 	var r governance.Result
-	if args[0] == "attach" {
+	if args[0] == "execute" {
+		command, err := ctl.ExecuteSessionHost(ctx, *hostRequest)
+		emit(command)
+		if err != nil {
+			return err
+		}
+		r, e = service.Read(*run)
+	} else if args[0] == "attach" {
 		recovery, err := client.PrepareAttachment(ctx, service, *run, p.Root, *approvals)
 		if err != nil {
 			return err
@@ -265,9 +298,10 @@ func ownerCommand(args []string) error {
 			}
 		}
 	}()
+	refusedHostRequests := map[string]bool{}
 	waitingForReply := false
 	var ticks <-chan time.Time
-	if *continuations > 0 {
+	if *continuations > 0 || *instance != "" {
 		ticker := time.NewTicker(time.Second)
 		defer ticker.Stop()
 		ticks = ticker.C
@@ -275,6 +309,36 @@ func ownerCommand(args []string) error {
 	for {
 		select {
 		case <-ticks:
+			if *instance != "" {
+				pending, err := service.ReadSessionHostCommands(*instance)
+				if err != nil {
+					return err
+				}
+				for _, command := range pending.Commands {
+					if command.Request.RunID != *run || command.State != "queued" || refusedHostRequests[command.Request.OperationID] {
+						continue
+					}
+					if command.Request.Action == "launch" {
+						continue
+					}
+					result, err := ctl.ExecuteSessionHost(ctx, command.Request.OperationID)
+					emit(result)
+					if err != nil {
+						emit(map[string]any{"error": err.Error()})
+						var ge *governance.Error
+						if !errors.As(err, &ge) || ge.Code != "busy" {
+							refusedHostRequests[command.Request.OperationID] = true
+						}
+					}
+					r, e = service.Read(*run)
+					if e != nil {
+						return e
+					}
+					if command.Request.Action == "continue" && err == nil {
+						waitingForReply = false
+					}
+				}
+			}
 			if !waitingForReply {
 				continue
 			}

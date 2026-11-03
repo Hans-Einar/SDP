@@ -11,6 +11,7 @@ type receipt struct {
 	Result Result `json:"result"`
 }
 type snapshot struct {
+	SessionHostCommands    map[string]SessionHostCommand    `json:"sessionHostCommands,omitempty"`
 	Sessions               map[string]SessionInstance       `json:"sessions,omitempty"`
 	Publications           map[string]Publication           `json:"publications,omitempty"`
 	Reviews                map[string]Review                `json:"reviews,omitempty"`
@@ -75,6 +76,9 @@ func (s *Service) load() (snapshot, string, error) {
 		return empty, "", fail("reconciliation_required", "invalid persisted state")
 	}
 	if e := validateSessionRebinds(state); e != nil {
+		return empty, "", e
+	}
+	if e := validateSessionHostCommands(state); e != nil {
 		return empty, "", e
 	}
 	if e := validateSessionHistoryShape(state); e != nil {

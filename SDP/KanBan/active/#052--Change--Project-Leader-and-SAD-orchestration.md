@@ -481,3 +481,12 @@ T050 PGF1-C2c4 delivers reviewed quiescent Session rebind with original adoption
 
 This card remains in-progress. The synthetic review and protocol fixture do not
 substitute for native integrated acceptance or independent PG implementation review.
+
+
+## T053 — Durable leader-directed host execution
+
+T053 PGF2-C1c delivers durable Session host requests, exact input correlation/no duplicate resend, explicit native Project Leader Session grants and trusted controller dispatch. Full SDPTool regression, focused race/vet, shared CLI/JSON/MCP and schema checks pass. A final-candidate Codex 0.166.0 leader/Master trial loads the leader skill, checks coverage and changes only its assigned target; run remains verifying. Full admission, multi-Master supervision, SDL/model lifecycle, in-flight recovery, capacity and final independent/owner acceptance remain open.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF2-C1c.md);
+[current remaining scope](../../05--Implementation/SDPTool/ProjectGovernance/Completion-status-T048.md).
+
+This card remains in-progress for the selected full PG goal.

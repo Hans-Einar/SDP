@@ -94,6 +94,9 @@ func TestSessionHostNativeFixture(t *testing.T) {
 	}
 	s, q := workConfigured(t, root, state, func(t *testing.T, s *Service, b *SessionBinding) {
 		evidenceFile(t, s, "AGENTS.md", "# Authorized native Session fixture\n\nThis isolated pg_lab task is authorized by its owner for PG development testing.\nUse the supplied existing Session/plan/card and pinned Master/Worker skills.\nChange only target.txt as the committed assignment requests; inspect its exact bytes\nto verify the result. This is a no-design wording change. Do not create another\nSession or plan, publish records, edit skills or configuration, spawn/delegate, use\nthe network, install packages, commit or push. The controller owns canonical\nSession/KanBan effects. Report through assignment-bound MCP and return.\nThe minimal manifest and fixture authority govern this trial; no full Toolkit\ninstallation or release claim is made. Preserve every other file.\n")
+		if os.Getenv("PG_SESSION_HOST_REQUEST") == "leader" {
+			evidenceFile(t, s, "AGENTS.md", "# Authorized Project Leader host-request trial\n\nThis isolated pg_lab task is authorized by the owner for PG development testing.\nThe explicitly launched Project Leader must load sdp-project-leader, read the\nselected Session and committed assignment through its granted MCP server, and\nmay queue exactly that assignment with session_host_request. Use the skill from\nsession_definition and current revisions from session_host_read. This specific\nfixture extends the earlier coordinator-only leader trial: the leader still may\nnot launch native children, directly edit files, grant owner acceptance, approve\ndesign, install packages, use the network, commit or push. The trusted controller\nexecutes queued requests. Other goals need separate KB/Session/plan coverage.\nA launched Master/Worker may change only target.txt as its committed assignment\nrequests, verify the exact bytes, report via assignment-bound MCP and return.\nCanonical records, skills and configuration are controller-owned. The minimal\nmanifest and fixture authority govern this trial; no full Toolkit or release claim.\n")
+		}
 		if e := filepath.WalkDir(source, func(path string, entry os.DirEntry, err error) error {
 			if err != nil {
 				return err
@@ -117,12 +120,23 @@ func TestSessionHostNativeFixture(t *testing.T) {
 		if e := os.MkdirAll(filepath.Join(s.root, ".agents/skills"), 0700); e != nil {
 			t.Fatal(e)
 		}
-		for _, name := range []string{"sdp", "sdp-master", "sdp-worker"} {
+		for _, name := range []string{"sdp", "sdp-master", "sdp-worker", "sdp-project-leader"} {
 			if e := os.Symlink(filepath.Join("../../Skills", name), filepath.Join(s.root, ".agents/skills", name)); e != nil {
 				t.Fatal(e)
 			}
 		}
-	}, nil)
+	}, func(a *SessionAssessRequest) {
+		if os.Getenv("PG_SESSION_HOST_REQUEST") == "" {
+			return
+		}
+		for n, skill := range a.Skills {
+			data := mustFile(t, filepath.Join(source, skill.Name, "SKILL.md"))
+			if err := os.WriteFile(skill.Path, data, 0600); err != nil {
+				t.Fatal(err)
+			}
+			a.Skills[n].Digest = hash(data)
+		}
+	})
 	// The generic service fixture creates synthetic launch skills. Replace only those
 	// uncommitted inputs with canonical copies before preparing this native assignment.
 	for n, sk := range q.Skills {
@@ -144,6 +158,21 @@ func TestSessionHostNativeFixture(t *testing.T) {
 	}
 	if selected.Outcome != q.Outcome || r.Run.State != "ready" {
 		t.Fatal(selected)
+	}
+	if os.Getenv("PG_SESSION_HOST_REQUEST") == "1" {
+		skill, err := s.SessionLeaderSkill(q.InstanceID, "Skills/sdp-project-leader/SKILL.md")
+		if err != nil {
+			t.Fatal(err)
+		}
+		hostRequest := SessionHostRequest{Schema: SessionHostSchema, ProjectRef: s.project, CheckoutID: r.CheckoutID, OperationID: newTestID(), InstanceID: q.InstanceID, ExpectedRevision: selected.Revision, RunID: r.Run.ID, ExpectedRunRevision: r.Run.Revision, Action: "launch", Reason: "Execute the authorized native Session host-request trial", LeaderSkill: skill}
+		command, err := s.RequestSessionHost(LocalController(), hostRequest)
+		if err != nil {
+			t.Fatal(err)
+		}
+		data, _ := json.MarshalIndent(command, "", "  ")
+		if err = os.WriteFile(filepath.Join(root, "evidence/native-host-request.json"), data, 0600); err != nil {
+			t.Fatal(err)
+		}
 	}
 	out, _ := json.MarshalIndent(selected, "", "  ")
 	if e = os.WriteFile(filepath.Join(root, "evidence/native-launch.json"), out, 0600); e != nil {

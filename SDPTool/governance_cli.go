@@ -65,7 +65,7 @@ func governanceCommandAs(selected string, args []string, out, errs io.Writer, js
 	if fs.NArg() != 0 {
 		return report(fmt.Errorf("unexpected argument"))
 	}
-	if *instance != "" && op != "session-read" {
+	if *instance != "" && op != "session-read" && op != "session-host-read" {
 		return report(fmt.Errorf("--instance is only valid for session-read"))
 	}
 	switch op {
@@ -73,11 +73,11 @@ func governanceCommandAs(selected string, args []string, out, errs io.Writer, js
 		if *input != "" || *run != "" {
 			return report(fmt.Errorf("operation takes no request/run"))
 		}
-	case "session-read":
+	case "session-read", "session-host-read":
 		if *input != "" || *run != "" || *instance == "" {
 			return report(fmt.Errorf("session-read requires --instance only"))
 		}
-	case "session-context", "session-rebind-context", "session-rebind", "session-successor", "session-adopt", "session-resume", "session-select", "session-assess", "session-start", "session-progress", "session-verify", "session-review", "session-dispose", "session-owner", "session-advance":
+	case "session-host-request", "session-host-cancel", "session-context", "session-rebind-context", "session-rebind", "session-successor", "session-adopt", "session-resume", "session-select", "session-assess", "session-start", "session-progress", "session-verify", "session-review", "session-dispose", "session-owner", "session-advance":
 		if *input == "" || *run != "" {
 			return report(fmt.Errorf("operation requires --input only"))
 		}
@@ -130,6 +130,22 @@ func governanceCommandAs(selected string, args []string, out, errs io.Writer, js
 	case "session-definition":
 		w := governance.SessionWorkflow()
 		result = map[string]any{"schema": governance.SessionSchema, "operation": op, "definition": w, "digest": w.Digest()}
+	case "session-host-read":
+		result, e = service.ReadSessionHostCommands(*instance)
+	case "session-host-request":
+		var q governance.SessionHostRequest
+		if e = governance.Decode(b, &q); e == nil {
+			result, e = service.RequestSessionHost(caller, q)
+		}
+		result = map[string]any{"schema": governance.SessionHostSchema, "operation": op, "command": result}
+	case "session-host-cancel":
+		var q struct {
+			OperationID string `json:"operationId"`
+		}
+		if e = governance.Decode(b, &q); e == nil {
+			result, e = service.CancelSessionHost(caller, q.OperationID)
+		}
+		result = map[string]any{"schema": governance.SessionHostSchema, "operation": op, "command": result}
 	case "session-context":
 		var q governance.SessionContextRequest
 		if e = governance.Decode(b, &q); e == nil {

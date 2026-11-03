@@ -24,6 +24,7 @@ type Host interface {
 }
 
 type Controller struct {
+	SessionHostInputID                                                            string // Set only by the trusted Session command executor.
 	SkillPaths                                                                    []string
 	Service                                                                       *governance.Service
 	Host                                                                          Host
@@ -172,7 +173,11 @@ func (c *Controller) launch(ctx context.Context, runID, text string, continuing 
 		}
 		wireText = markers + "\n" + wireText
 	}
-	v := governance.OwnerInput{AttentionReplies: continuation.References, Skills: selected, ID: governancehost.UUID(), Kind: "launch", Text: text, Payload: wireText, AttemptID: governancehost.UUID(), Epoch: c.Epoch, ReceivedAt: now()}
+	inputID := c.SessionHostInputID
+	if inputID == "" {
+		inputID = governancehost.UUID()
+	}
+	v := governance.OwnerInput{AttentionReplies: continuation.References, Skills: selected, ID: inputID, Kind: "launch", Text: text, Payload: wireText, AttemptID: governancehost.UUID(), Epoch: c.Epoch, ReceivedAt: now()}
 	if _, e = c.input(runID, "prepare", v); e != nil {
 		return r, e
 	}
@@ -271,7 +276,11 @@ func (c *Controller) Control(ctx context.Context, runID, kind, text string) (res
 	if a.Epoch != c.Epoch {
 		return r, fmt.Errorf("reconciliation_required: controller epoch changed")
 	}
-	v := governance.OwnerInput{ID: governancehost.UUID(), Kind: kind, Text: text, Payload: text, AttemptID: a.ID, Epoch: c.Epoch, ThreadID: a.ThreadID, TurnID: a.TurnID, ReceivedAt: now()}
+	inputID := c.SessionHostInputID
+	if inputID == "" {
+		inputID = governancehost.UUID()
+	}
+	v := governance.OwnerInput{ID: inputID, Kind: kind, Text: text, Payload: text, AttemptID: a.ID, Epoch: c.Epoch, ThreadID: a.ThreadID, TurnID: a.TurnID, ReceivedAt: now()}
 	if _, e = c.input(runID, "prepare", v); e != nil {
 		return r, e
 	}

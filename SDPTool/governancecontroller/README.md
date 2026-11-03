@@ -859,3 +859,59 @@ while its assignment and sources remain current. A later owner input, changed so
 uncertain dispatch, observation gap or terminal routine state retains the stale boundary.
 `dispatch-acknowledged` proves host delivery, not semantic agent compliance. T048's
 native question/reply/continuation trial found and verified this projection correction.
+
+## Session host requests and explicit leader grants — PGF2-C1c
+
+A trusted caller can queue an exact `sdp-session-host/0.1` request through
+`sdptool governance session-host-request --input REQUEST.json`. Inspect the selected
+instance with `session-host-read --instance UUID`; its `current` fields supply the
+project, checkout, Session and run revisions from one stored snapshot. Cancel an
+undispatched request using `session-host-cancel --input REQUEST.json`, where the
+request contains its `operationId`. CLI and JSON actions share these core operations.
+
+Execute a queued launch or attention continuation with:
+
+```sh
+sdp-controller execute --project ROOT --state DIR --host-request REQUEST_UUID \
+  --mcp-binary /absolute/sdp-mcp --codex /absolute/codex \
+  --sandbox workspace-write --reporting automatic
+```
+
+The committed assignment supplies the task and explicit skills. Replaying an
+acknowledged request reads its receipt without opening a host. Claimed/uncertain
+requests inspect their exact durable host input and never resend. Use existing run
+recovery to establish delivery, then execute the request again to settle the proof.
+A claimed request without any durable input can be canceled under its controller
+lease. A pending request blocks Session disposition, advance and rebind. Delivery
+acknowledgement is separate from observed work completion and evidence acceptance.
+
+Active controllers launched with a Session instance consume its queued interrupt or
+scope-change requests on their existing host connection. Standalone execution cannot
+interrupt a different live connection. A stale request remains visible for inspection
+and explicit cancellation; the controller does not rewrite its requested basis.
+
+An owner may grant the Project Leader up to eight registered Sessions explicitly:
+
+```sh
+sdp-controller leader run --project ROOT --state DIR --coordinator LEADER_ID \
+  --mcp-binary /absolute/sdp-mcp --codex /absolute/codex \
+  --skill Skills/sdp-project-leader/SKILL.md --session INSTANCE_UUID \
+  --execute-session-requests --worker-sandbox workspace-write --max-turns 4
+```
+
+Repeat `--session` for additional authorized instances. Each grant adds one scoped
+MCP server (`sdp_session_1`, etc.) in the recorded grant order. The default coordinator
+remains read-only except report acknowledgement. The launcher pins the named leader
+skill, verifies the exact full MCP server/tool inventory and refuses changed grants
+on a retained dispatch. The leader stays read-only on the filesystem; its explicitly
+granted tools perform checked workflow mutations and queue host requests. Owner
+acceptance is never delegated.
+
+`--execute-session-requests` starts up to two separate trusted worker controllers,
+using durable request identities and per-run leases. Without that flag, requests stay
+queued for an explicit executor. Per-request controller output is retained in the
+private state's `session-controller-logs/`; the leader terminal reports log locations
+and controller exit, while MCP shows durable state. The launcher's timeout also bounds
+its children. Process loss requires existing run recovery; this is not an unattended
+service or an archival/rotation solution. New-goal admission, integrated SDL Session
+work and the full recovery/workload matrix remain separate plan obligations.

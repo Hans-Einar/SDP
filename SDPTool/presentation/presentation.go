@@ -44,6 +44,9 @@ func Default() Registry {
 	for _, op := range []string{"install", "upgrade"} {
 		r[Key{"sdp-install-command/1", op}] = installation
 	}
+	for _, op := range []string{"session-host-read", "session-host-request", "session-host-cancel"} {
+		r[Key{"sdp-session-host/0.1", op}] = fields
+	}
 	return r
 }
 

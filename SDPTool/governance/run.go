@@ -23,6 +23,9 @@ func (s *Service) authorize(c Caller, schema, project, checkout, operation strin
 	return nil
 }
 func retry(state snapshot, id, digest string) (Result, bool, error) {
+	if _, ok := state.SessionHostCommands[id]; ok {
+		return Result{}, true, fail("idempotency_conflict", "operationId belongs to Session host request")
+	}
 	if _, ok := state.LeaderReceipts[id]; ok {
 		return Result{}, true, fail("idempotency_conflict", "operationId belongs to leader delivery")
 	}

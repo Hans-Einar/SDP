@@ -126,6 +126,13 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 		return Result{}, e
 	}
 	if q.Action == "prepare" {
+		if v.Kind == "launch" || v.Kind == "steer" {
+			for id, command := range state.SessionHostCommands {
+				if command.Request.RunID == q.RunID && sessionHostPending(command.State) && (id != v.ID || command.State != "claimed") {
+					return Result{}, fail("reconciliation_required", "pending Session host request owns dispatch; execute or reconcile it first")
+				}
+			}
+		}
 		if index >= 0 {
 			return Result{}, fail("conflict", "input already exists")
 		}

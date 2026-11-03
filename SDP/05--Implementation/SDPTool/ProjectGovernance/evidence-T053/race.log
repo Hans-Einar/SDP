@@ -1,0 +1,5 @@
+ok  	github.com/Hans-Einar/SDP/SDPTool/governance	27.323s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancecontroller	2.265s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancehost	1.036s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancemcp	1.024s [no tests to run]
+ok  	github.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller	1.025s [no tests to run]

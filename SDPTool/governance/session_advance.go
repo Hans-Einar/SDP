@@ -550,6 +550,9 @@ func (s *Service) AdvanceSession(c Caller, q SessionAdvanceRequest) (SessionMuta
 	if i.Advance != nil {
 		return SessionMutationResult{}, fail("conflict", "continuation already prepared or Session completed")
 	}
+	if e = sessionHostHold(st, i.ID); e != nil {
+		return SessionMutationResult{}, e
+	}
 	if i.Revision == ^uint64(0) || len(st.Receipts) >= 1024 || len(i.Past) >= 64 {
 		return SessionMutationResult{}, fail("limit", "Session continuation capacity reached")
 	}
@@ -573,7 +576,7 @@ func (s *Service) AdvanceSession(c Caller, q SessionAdvanceRequest) (SessionMuta
 	i.Advance = &a
 	i.Revision++
 	st.Sessions[i.ID] = i
-	if a.Successor != nil && st.Schema != sessionRebindStateSchema {
+	if a.Successor != nil && !sessionRebindProfile(st.Schema) {
 		st.Schema = sessionTransferStateSchema
 	} else if !sessionTransferProfile(st.Schema) {
 		st.Schema = sessionLifecycleStateSchema

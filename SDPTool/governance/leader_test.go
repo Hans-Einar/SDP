@@ -255,3 +255,44 @@ func TestLeaderMessageBoundsAndEncodedBatch(t *testing.T) {
 		code(t, e, "invalid_request")
 	}
 }
+
+func TestLeaderSessionGrantPinsAndProfile(t *testing.T) {
+	s, host := hostCommandFixture(t)
+	leaderApply(t, s, leaderRequest(t, s, "message", ""))
+	config := LeaderConfig{Coordinator: "leader", HostVersion: "0.166.0", MCPBinary: "/fixture/sdp-mcp", Instructions: "Use the explicit Session tools", Skills: []SkillInput{host.LeaderSkill}, Sessions: []LeaderSessionGrant{{InstanceID: host.InstanceID, Skill: host.LeaderSkill}}}
+	q := leaderRequest(t, s, "prepare", "")
+	q.Config = &config
+	prepared := leaderApply(t, s, q)
+	st, _, e := s.load()
+	if e != nil || st.Schema != sessionHostStateSchema {
+		t.Fatal(st.Schema, e)
+	}
+	if !strings.Contains(prepared.Dispatch.Payload, host.InstanceID) {
+		t.Fatal("grant missing from input")
+	}
+	bad := st
+	bad.Schema = sessionRebindStateSchema
+	if validateLeaderState(bad) == nil {
+		t.Fatal("old profile accepted grants")
+	}
+	leaderApply(t, s, leaderRequest(t, s, "supersede", prepared.Dispatch.ID))
+	changed := config
+	changed.Sessions = append(append([]LeaderSessionGrant{}, config.Sessions...), config.Sessions[0])
+	q = leaderRequest(t, s, "prepare", "")
+	q.Config = &changed
+	if _, e = s.LeaderWrite(LocalController(), q); e == nil {
+		t.Fatal("duplicate grants")
+	}
+	changed = config
+	changed.Sessions = []LeaderSessionGrant{{InstanceID: newTestID(), Skill: host.LeaderSkill}}
+	q = leaderRequest(t, s, "prepare", "")
+	q.Config = &changed
+	if _, e = s.LeaderWrite(LocalController(), q); e == nil {
+		t.Fatal("unregistered grant")
+	}
+	changed = config
+	changed.Skills = nil
+	if validLeaderConfig(changed) {
+		t.Fatal("missing mandatory selected leader skill")
+	}
+}

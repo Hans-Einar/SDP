@@ -26,7 +26,7 @@ func sessionMCPBinary(t *testing.T) string {
 	}
 	return b
 }
-func sessionMCPConnect(t *testing.T, binary string, s *Service, id string) *mcp.ClientSession {
+func sessionMCPConnect(t *testing.T, binary string, s *Service, id string, extra ...string) *mcp.ClientSession {
 	t.Helper()
 	// A named launcher skill is separate from synthetic assessment evidence;
 	// this fixture makes no native enabled-skill inventory/consumption claim.
@@ -36,7 +36,8 @@ func sessionMCPConnect(t *testing.T, binary string, s *Service, id string) *mcp.
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), 120*time.Second)
 	t.Cleanup(cancel)
-	cmd := exec.CommandContext(ctx, binary, "--project", s.root, "--state", s.state, "--session-controller", id, "--leader-skill", "evidence/launcher-leader/SKILL.md")
+	args := []string{"--project", s.root, "--state", s.state, "--session-controller", id, "--leader-skill", "evidence/launcher-leader/SKILL.md"}
+	cmd := exec.CommandContext(ctx, binary, append(args, extra...)...)
 	cs, e := mcp.NewClient(&mcp.Implementation{Name: "session-protocol-fixture", Version: "1"}, nil).Connect(ctx, &mcp.CommandTransport{Command: cmd}, nil)
 	if e != nil {
 		t.Fatal(e)
@@ -239,5 +240,49 @@ func TestSessionMCPFinalLabReplay(t *testing.T) {
 	out, _ := json.MarshalIndent(map[string]any{"headUnchanged": true, "advance": p, "resume": done, "view": json.RawMessage(raw), "limitation": "actual compiled MCP replay; synthetic earlier agent/test/review observations"}, "", "  ")
 	if e = os.WriteFile(filepath.Join(root, "evidence/mcp-final-replay.json"), out, 0600); e != nil {
 		t.Fatal(e)
+	}
+}
+
+func TestSessionHostMCPExplicitGrant(t *testing.T) {
+	s, q := hostCommandFixture(t)
+	binary := sessionMCPBinary(t)
+	ordinary := sessionMCPConnect(t, binary, s, q.InstanceID)
+	sessionMCPCall(t, ordinary, "session_host_request", q, true)
+	granted := sessionMCPConnect(t, binary, s, q.InstanceID, "--session-host-requests")
+	list, e := granted.ListTools(context.Background(), nil)
+	if e != nil || len(list.Tools) != 18 {
+		t.Fatal(list, e)
+	}
+	q.LeaderSkill, e = s.SessionLeaderSkill(q.InstanceID, "evidence/launcher-leader/SKILL.md")
+	if e != nil {
+		t.Fatal(e)
+	}
+	bad := q
+	bad.InstanceID = newTestID()
+	sessionMCPCall(t, granted, "session_host_request", bad, true)
+	bad = q
+	bad.LeaderSkill.Digest = string(bytes.Repeat([]byte("0"), 64))
+	sessionMCPCall(t, granted, "session_host_request", bad, true)
+	var command SessionHostCommand
+	b := sessionMCPCall(t, granted, "session_host_request", q, false)
+	if e = json.Unmarshal(b, &command); e != nil || command.State != "queued" {
+		t.Fatal(string(b), e)
+	}
+	b2 := sessionMCPCall(t, granted, "session_host_request", q, false)
+	if !bytes.Equal(b, b2) {
+		t.Fatal("MCP retry differs")
+	}
+	sessionMCPCall(t, granted, "session_host_read", map[string]any{}, false)
+	sessionMCPCall(t, granted, "session_host_cancel", map[string]any{"operationId": q.OperationID}, false)
+	command, e = s.ReadSessionHostCommand(q.OperationID)
+	if e != nil || command.State != "canceled" {
+		t.Fatal(command, e)
+	}
+	run, e := s.Read(q.RunID)
+	if e != nil || len(run.Run.Attempts) != 0 || len(run.Run.Inputs) != 0 {
+		t.Fatal("MCP dispatched host", run, e)
+	}
+	if b, e := exec.Command(binary, "--project", s.root, "--state", s.state, "--session-host-requests").CombinedOutput(); e == nil {
+		t.Fatal("unscoped grant", string(b))
 	}
 }

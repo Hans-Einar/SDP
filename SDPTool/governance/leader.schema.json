@@ -82,6 +82,27 @@
           },
           "maxItems": 8,
           "minItems": 1
+        },
+        "sessions": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "instanceId",
+              "skill"
+            ],
+            "properties": {
+              "instanceId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "skill": {
+                "$ref": "schema.json#/$defs/SkillInput"
+              }
+            }
+          }
         }
       },
       "required": [
@@ -369,6 +390,27 @@
           },
           "maxItems": 8,
           "minItems": 0
+        },
+        "sessions": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "instanceId",
+              "skill"
+            ],
+            "properties": {
+              "instanceId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "skill": {
+                "$ref": "schema.json#/$defs/SkillInput"
+              }
+            }
+          }
         }
       },
       "required": [

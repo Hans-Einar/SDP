@@ -524,3 +524,30 @@ cards; preserve prior appended PG journals, completed cards, evidence/transition
 project instructions and ledger prefixes. Canonical metadata/history must validate.
 Changing reviewed inputs after preparation refuses rather than overwriting the edit.
 A changed design still requires the existing SDL WORK/Blueprint/model-release gates.
+
+
+## T053 trusted host request boundary — PGF2-C1c
+
+A launcher may explicitly grant Session host-request capability in addition to
+Session record operations. Each request pins the current Session revision, committed
+run and run revision, action and named Project Leader skill. Only existing covered
+assignments can be launched/continued or interrupted. A durable command separates
+requested, claimed, acknowledged and uncertain delivery from observed host status.
+Stable request identity correlates with the existing OwnerInput record; it does not
+turn leader prose into owner input/acceptance. Scope-change requests hold the routine
+before interruption and never broaden its assignment.
+
+The existing controller alone performs host effects using existing account/host
+compatibility, skill, scope, launch-claim and attempt checks. Request retries return
+the same stored command. Claims prevent duplicate sends; unresolved dispatch remains
+a visible recovery obligation. Later canonical progression and rebind must not hide
+a pending host command. Restricted coordinator/worker MCP rights remain unchanged.
+
+The Project Leader launcher may explicitly select a bounded set of registered
+Sessions. Each grant pins the named leader skill and is retained in the dispatch
+configuration. A separate Session MCP server per grant preserves single-instance
+capabilities; the coordinator server continues to provide cross-assignment reports.
+The host must expose exactly this server/tool inventory before the leader turn is
+sent. Defaults and retained coordinator-only dispatches receive no new authority.
+The leader queues controller work through these grants, while native child spawning,
+owner decisions and unrestricted filesystem publication remain outside its role.

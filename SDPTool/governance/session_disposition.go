@@ -507,6 +507,9 @@ func (s *Service) DisposeSession(c Caller, q SessionDisposeRequest) (SessionMuta
 	if !ok {
 		return SessionMutationResult{}, fail("missing_coverage", "Session absent")
 	}
+	if e = sessionHostHold(st, i.ID); e != nil {
+		return SessionMutationResult{}, e
+	}
 	if i.Revision != q.ExpectedRevision {
 		return SessionMutationResult{}, fail("stale_revision", "Session revision changed")
 	}

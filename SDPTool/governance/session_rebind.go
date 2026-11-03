@@ -19,7 +19,7 @@ import (
 const sessionRebindStateSchema = "sdp-project-governance-state/0.22"
 
 func sessionTransferProfile(schema string) bool {
-	return schema == sessionTransferStateSchema || schema == sessionRebindStateSchema
+	return schema == sessionTransferStateSchema || sessionRebindProfile(schema)
 }
 
 type SessionRebindContextRequest struct {
@@ -634,6 +634,9 @@ func (s *Service) RebindSession(c Caller, q SessionRebindRequest) (SessionMutati
 	if !ok || i.Revision != q.ExpectedRevision {
 		return SessionMutationResult{}, fail("stale_revision", "Session revision changed")
 	}
+	if e = sessionHostHold(st, i.ID); e != nil {
+		return SessionMutationResult{}, e
+	}
 	if e = rebindEligible(i); e != nil {
 		return SessionMutationResult{}, e
 	}
@@ -650,7 +653,9 @@ func (s *Service) RebindSession(c Caller, q SessionRebindRequest) (SessionMutati
 	i.Rebind = &a
 	i.Revision++
 	st.Sessions[i.ID] = i
-	st.Schema = sessionRebindStateSchema
+	if !sessionRebindProfile(st.Schema) {
+		st.Schema = sessionRebindStateSchema
+	}
 	out := SessionMutationResult{Schema: SessionSchema, Operation: "session-rebind", OperationID: q.OperationID, InstanceID: i.ID, Revision: i.Revision, Registration: "committed", RecordEffects: "prepared"}
 	st.Receipts[q.OperationID] = receipt{requestDigest(q), Result{Schema: Schema, Operation: "session.rebind", OperationID: q.OperationID, ProjectRef: s.project, CheckoutID: st.CheckoutID, Session: &out}}
 	if e = validateSessionRebinds(st); e != nil {
@@ -747,7 +752,7 @@ func validateRebindEffects(i SessionInstance, a SessionRebind) error {
 func validateSessionRebinds(st snapshot) error {
 	seen := map[string]bool{}
 	for _, root := range st.Sessions {
-		if len(root.Rebindings) > 8 || ((len(root.Rebindings) > 0 || root.Rebind != nil) && st.Schema != sessionRebindStateSchema) {
+		if len(root.Rebindings) > 8 || ((len(root.Rebindings) > 0 || root.Rebind != nil) && !sessionRebindProfile(st.Schema)) {
 			return fail("incompatible_profile", "bounded binding epochs require profile 0.22")
 		}
 		validate := func(i SessionInstance, a SessionRebind, committed bool) error {

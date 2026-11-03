@@ -1,0 +1,32 @@
+{
+  "acknowledgedReplayWithoutHost": {
+    "request": {
+      "schema": "sdp-session-host/0.1",
+      "projectRef": "trial",
+      "checkoutId": "2ae4d7fa-b100-47a6-b61c-39292f229e34",
+      "operationId": "68a37035-6a6f-4beb-ab82-116910082ebe",
+      "instanceId": "49760f1b-e09d-44eb-921a-f919db59a333",
+      "expectedRevision": 8,
+      "runId": "a5eafd7d-e564-4497-b73f-55aad67a6b87",
+      "expectedRunRevision": 1,
+      "action": "launch",
+      "reason": "Owner input 29e66d3a-fdc8-418b-987d-7ff9d2ff4994 authorizes exactly this committed assignment. Loaded and applied sdp-project-leader 1.1.0 and its shared role/document contracts; pinned skill and assessment evidence hashes match. Covered work: KB-SDP-001 -> SESSION-TEST-0001/S1 -> MAINT-SDP-0001/M1 -> run a5eafd7d-e564-4497-b73f-55aad67a6b87. Launch only the assigned Master/Worker wording correction: replace target.txt with exactly PG Session native execution verified. plus one newline, verify exact bytes, preserve every other file including unrelated.txt, report via assignment-bound MCP and return. Current assessment is design unchanged and Blueprint not-required; no SDL WORK/model release needed for this prose-only fixture. Current Session coverage is current, run is ready with no conditions, and host request list is empty. Coordinator shows only this ready run and a canceled predecessor; stale predecessor report/review provide no current verification or acceptance. Local fixture is untracked in its containing Git worktree; controller-committed records and the explicit fixture authority govern. Host liveness/role remains unobserved until controller delivery. Queue receipt is not execution or completion. Assignment report, exact-candidate verification and independent review remain outstanding; ownerAcceptance is not-required. Controller owns canonical records and subsequent lifecycle transitions. Return after queueing without worker polling.",
+      "leaderSkill": {
+        "name": "sdp-project-leader",
+        "path": "/home/warloc/git/pg_lab/session-pgf2-c1c-leader-final/Skills/sdp-project-leader/SKILL.md",
+        "digest": "fa4ed0b4240e7544d37a80b72ad755c796ae660c38a6d356f8553be0dde7d636"
+      }
+    },
+    "inputRevision": "7f1f125e9f42db25c9468825c1ed8c21f3090bbbe7e69bd7b27815f12881356c",
+    "state": "acknowledged",
+    "createdAt": "2026-11-03T21:19:54.940106806Z",
+    "updatedAt": "2026-11-03T21:19:56.919182295Z",
+    "detail": "Exact host input acknowledged; observed work completion is separate"
+  },
+  "replayHeadUnchanged": true,
+  "previousBinaryRefusal": {
+    "exit": 2,
+    "stderr": "{\"error\":{\"code\":\"reconciliation_required\",\"message\":\"invalid_request: json: unknown field \\\"sessionHostCommands\\\"\",\"retryable\":false},\"operation\":\"error\",\"schema\":\"sdp-project-governance/0.1\",\"status\":\"error\"}\n"
+  },
+  "olderStoreReadWithoutRewrite": true
+}

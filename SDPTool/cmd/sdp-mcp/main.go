@@ -22,10 +22,11 @@ func main() {
 	attempt := flag.String("attempt", "", "controller-selected observed attempt")
 	coordinator := flag.String("coordinator", "", "explicit coordinator identity; read all registered work and acknowledge reports (excludes run/attempt/epoch)")
 	session := flag.String("session-controller", "", "explicit registered Session instance; privileged Session operations without owner decisions or host dispatch")
+	hostRequests := flag.Bool("session-host-requests", false, "explicit permission to queue host requests for --session-controller; trusted controller executes them")
 	leaderSkill := flag.String("leader-skill", "", "project-local Project Leader SKILL.md; mandatory for session-controller")
 	epoch := flag.String("epoch", "", "controller connection epoch")
 	flag.Parse()
-	if *root == "" || *state == "" || flag.NArg() != 0 || (*coordinator != "" && (*run != "" || *attempt != "" || *epoch != "")) || (*session != "" && (*coordinator != "" || *run != "" || *attempt != "" || *epoch != "")) || ((*session == "") != (*leaderSkill == "")) {
+	if (*hostRequests && *session == "") || *root == "" || *state == "" || flag.NArg() != 0 || (*coordinator != "" && (*run != "" || *attempt != "" || *epoch != "")) || (*session != "" && (*coordinator != "" || *run != "" || *attempt != "" || *epoch != "")) || ((*session == "") != (*leaderSkill == "")) {
 		fmt.Fprintln(os.Stderr, "require --project ROOT --state DIR [--run UUID [--attempt UUID --epoch UUID] | --coordinator ID | --session-controller UUID --leader-skill PATH]")
 		os.Exit(2)
 	}
@@ -43,7 +44,11 @@ func main() {
 	if *session != "" {
 		skill, err := service.SessionLeaderSkill(*session, *leaderSkill)
 		check(err)
-		server, e = governancemcp.NewSessionController(service, *session, skill)
+		if *hostRequests {
+			server, e = governancemcp.NewSessionHostController(service, *session, skill)
+		} else {
+			server, e = governancemcp.NewSessionController(service, *session, skill)
+		}
 	} else if *coordinator != "" {
 		server, e = governancemcp.NewCoordinator(service, *coordinator)
 	} else {

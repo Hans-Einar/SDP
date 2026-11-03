@@ -1,0 +1,17 @@
+[
+  {
+    "schema": "SDPTool/governance/session.schema.json",
+    "definition": "hostRequest",
+    "valid": true
+  },
+  {
+    "schema": "SDPTool/governance/leader.schema.json",
+    "definition": "LeaderView",
+    "valid": true
+  },
+  {
+    "schema": "SDPTool/governance/leader.schema.json",
+    "definition": "LeaderContext",
+    "valid": true
+  }
+]
