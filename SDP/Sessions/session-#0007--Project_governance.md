@@ -2,8 +2,9 @@
 
 ## Session roadmap
 
-Latest recorded turn: T050 — owner authorizes autonomous continuation of the same
-Session and PLAN-SDP-0018. C2c4 implements reviewed quiescent rebind with retained
+Latest recorded turn: T051 — owner requests current status and an estimate to finish
+the whole PG scope. Local HEAD and the remote working branch still match 6ed581e;
+no later implementation is observed. T050 C2c4 implements reviewed quiescent rebind with retained
 completed work/evidence and fresh assessment, through common CLI/JSON/MCP operations.
 The [completion map](../05--Implementation/SDPTool/ProjectGovernance/Completion-status-T048.md)
 retains T048 native no-design closeout/transfer and all remaining PGF1–9/PG-A01–30
@@ -41,9 +42,9 @@ gantt
 | Session reference | SESSION-SDP-0007 |
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
-| Snapshot date | 2026-10-27 |
-| Current step | S3/S6 active: owner decisions, retained continuation/closure, Session MCP/host/terminal entry and bounded native no-design closeout delivered. C2c3 now transfers disposed contributions to an explicit successor. Reviewed active rebind, autonomous leader scheduling and model gates remain |
-| Proposed next step | Continue reviewed active rebind and trusted host scheduling, followed by integrated SDL handoff/merge/release, recovery/capacity and PGF7–9 acceptance. Reuse this Session and existing owner authorization; SDL-only and MVP1 deferred |
+| Snapshot date | 2026-11-03 |
+| Current step | S3/S6 active: owner decisions, continuation/closure, Session MCP/host/terminal entry, native no-design closeout, disposed-scope transfer and quiescent reviewed rebind delivered. Autonomous leader scheduling, integrated model gates and in-flight reconciliation remain |
+| Proposed next step | Implement trusted Project Leader host scheduling/admission/supervision, then integrated SDL handoff/merge/release, in-flight reconciliation, recovery/capacity and PGF7–9 acceptance. Reuse this Session and existing owner authorization; SDL-only and MVP1 deferred |
 | Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension; T026 assigns hub/webapp to a separate project and continues local SDP/SDPTool work; T027 continues local attention/replies; T028 continues guarded attention continuation; T029 selects stable Codex >=0.164.0 and compatible later hosts, preserving other scopes |
 
 ## Goal and ownership
@@ -2910,3 +2911,38 @@ product review, actual owner trial and remote-Steering/final disposition remain.
 Existing implementation authorization continues; no permission barrier is inferred.
 This is a work summary, not an already captured final response. No merge, installation,
 software publication or model acceptance/release was performed.
+
+
+## T051 — Whole-PG status and effort assessment
+
+Owner input (summary): asks where the project stands and how long remains until the
+whole PG goal is finished. This is a status/forecast turn, not a new implementation
+milestone. Checked a clean working tree, the single local worktree, recent commits,
+current completion map, plan exit conditions and remote working-branch head. Both
+local and remote heads are 6ed581e; no later implementation is observed. Earlier test
+results remain evidence for T050, not a claim of tests rerun in this turn.
+
+The Session/KanBan/CLI/MCP foundation and a bounded native no-design workflow are
+delivered. Whole PG still needs leader-directed execution/admission/supervision,
+integrated SDL WORK/Blueprint/merge/release, in-flight replan/disposition, complete
+recovery and sustained capacity, the combined native matrix, independent product
+review, actual owner trial and final scope/remote-Steering disposition. These are
+material features and integration work, not only polish or final testing.
+
+Planning judgment: reserve approximately 8–15 substantial active implementation and
+verification work periods for the remaining scope, with low confidence. This is a
+rough effort allowance, not a measured throughput forecast, a fixed number of chat
+turns, a calendar deadline or a completion promise. It assumes stable scope, existing
+components remain reusable, the test environment is available, and no major redesign
+emerges. Owner/reviewer availability and significant integration findings can extend
+elapsed time. Re-estimate after the leader-driven and SDL end-to-end flows work; do
+not infer completion percentage from counts of increments. No background execution
+or progress between completed assistant turns is claimed.
+
+Corrected two stale current Session metadata rows that still listed all reviewed
+rebind as future work despite C2c4. The plan and KB038/052 remain active/in-progress;
+no scope is dropped, moved to a new card or treated as owner-approved deferral.
+Loaded/reused routines: SDP entrypoint, document workflow, Planning and Session
+continuity. S3/S6/S4 outcomes are unchanged. Next implementation remains scoped
+preflight for PGF2, then PGF3; existing authorization continues. This is a work
+summary, not a captured final response.
