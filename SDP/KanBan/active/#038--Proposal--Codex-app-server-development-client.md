@@ -572,3 +572,9 @@ T053 PGF2-C1c delivers durable Session host requests, exact input correlation/no
 [current remaining scope](../../05--Implementation/SDPTool/ProjectGovernance/Completion-status-T048.md).
 
 This card remains in-progress for the selected full PG goal.
+
+## T053 — Session design inspection and resource policy
+
+T053 PGF3-C1a delivers read-only Session-bound SDL WORK/task/Blueprint inspection with current-source and pending-model-recovery holds. Focused model/core and compiled CLI/JSON/MCP checks pass; no design approval, dispatch or release is inferred. Integrated owner design disposition/start/model-release gates remain open. Owner quota policy consolidates reviews/regression and selects GPT-6.1 Sol/medium for useful bounded delegation.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGF3-C1a.md).
+CardState remains in-progress.

@@ -220,6 +220,10 @@ progression and eligible whole-plan/Session closure. The explicit Session MCP ad
 uses the same core; `sdp-controller --instance` resolves the current committed
 assignment and launch skills. Successor transfer/rebind, leader scheduling and
 design/model integration remain open.
+PGF3-C1a adds read-only `governance session-design-context` and JSON/MCP equivalents
+for an exact assessed Session, clean committed SDL WORK, task and required retained
+Blueprint. The review revision grants no design acceptance, start or release; the
+existing no-design start gate remains.
 Full lifecycle/model gates, integrated verification and independent product review
 remain in PLAN-SDP-0018. Development-source availability does not imply a published
 installer or consuming-project installation.

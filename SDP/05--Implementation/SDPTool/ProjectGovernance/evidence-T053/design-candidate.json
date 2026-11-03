@@ -1,0 +1,31 @@
+{
+  "schema": "pgf3-c1a-candidate/1",
+  "baseline": "5f1bb9239e30d54befdc3edf1d5479825d056290",
+  "changedFiles": {
+    "SDPTool/README.md": "022bb386303f1b4985cbdcf25188a375674af82add85aeedc49c106faaf64ce1",
+    "SDPTool/action_process_test.go": "64bdb04b184d00ad1c0c01c9ce9e5ce4e49950355a217664e6772af958e4ac6e",
+    "SDPTool/action_sessions.go": "b224e9cab214ab8d3786b3fceac876b9726fdd97a1e937617abe53229682666d",
+    "SDPTool/governance/README.md": "b14aaf9db8657e296c93e28d6b38b56cc1b222a1551f8a81b3854bd5b980e23e",
+    "SDPTool/governance/session.schema.json": "90ba89480651a2d3296b7d8f0bab96dd6341e36eb75cc232ebe1b8f53d7333dd",
+    "SDPTool/governance/session_design.go": "464f8d284c7065fea227f411e937b7543a3044ba530f95a5fe4246ab3688f731",
+    "SDPTool/governance/session_design_test.go": "8583f3991c08b30a3bc1c72ba0187ab5e20895f2b3516816f055ae4753029545",
+    "SDPTool/governance/session_mcp_cli_test.go": "22d2ab72d460a789c7934e3a03a201b4072cee7c5a7ce1e4e814e11a60833c0c",
+    "SDPTool/governance_cli.go": "28f8d6482f039024e4cb01e832cf75f13b9f07efc43a18c2f4ef1414fb85e247",
+    "SDPTool/governancecontroller/leader.go": "65c2780668065ec34d65bdc16f7dccf8a2f9bbabaa3921f744d5c1d3f951ef1a",
+    "SDPTool/governancemcp/README.md": "e678e9ee7e68150628b6991885f402ad4c5248a376fffe2d0453c7019092752d",
+    "SDPTool/governancemcp/session.go": "7632e4ca7275f4792a0fe0cefc1909e42e3c8ca699e51b5b51b89220df2fe381",
+    "SDPTool/model/validation.go": "844da1d5e8ee668fc13de4c57ea47417d5a4e423a78eafd0b7d2df07db0de9f2",
+    "SDPTool/model/validation_test.go": "be1b5e695c0ac15eecb44b2abcfd949a5835b061ac71796b696b244848dbdfc4"
+  },
+  "workHead": "29973936-d34d-4751-b15a-66c2d0f64a2b:00003",
+  "blueprintRevision": "aa957d7045b0adacb188e6360c0de37d01277cd236c767b3f2fd77ac906ec428",
+  "blueprintConstraintsPass": true,
+  "checks": "Targeted model/core, existing design gates, compiled CLI/JSON/MCP and request schema. No full regression, native model run or independent review for this increment.",
+  "logs": {
+    "inspection-core.log": "3e319683e984cbc5cb04f342fc989f93351a624fce9f16036cb02865e204d55b",
+    "inspection-targeted.log": "bd39ab570c7ff9ac723dca0d2b4affb203696518c6bd6650b69de942e391b6a9",
+    "inspection-basis.log": "5e82d835347ecbbc4c35a5bdf790cb3d0d15cea12fbc38ce9f0dca1e16b2e073",
+    "inspection-adapters-blueprint.log": "86ed8e779dfad6f79b2c7fb522573e717efbb052c6cfa1e488ec8a69a725d2b7",
+    "design-blueprint.log": "29ba5d7eda0d0d3408d3c76b2c34e782fde39cebc9ed775ae0e3e7bacd3d7e6d"
+  }
+}

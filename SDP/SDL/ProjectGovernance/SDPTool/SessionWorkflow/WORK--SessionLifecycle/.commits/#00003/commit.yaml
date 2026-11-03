@@ -1,0 +1,17 @@
+author: warloc
+artifactName: SessionLifecycle
+id: 29973936-d34d-4751-b15a-66c2d0f64a2b:00003
+parents:
+    - 29973936-d34d-4751-b15a-66c2d0f64a2b:00002
+kind: commit
+message: 'PGF3-C1a: define exact Session model-basis inspection before owner disposition'
+recordedAt: "2026-11-03T21:33:08.841334731Z"
+sourceDigest: 3ca418bedb135935605b75a7aa88647ef5fe01098777b323a69e30b8b946e495
+inventory:
+    Contracts.design: b6f367149d229c7a09d3bae67677b77db7a79a3dbc230794bae254b8f6e36072
+    DesignGate.design: 0ec5e2490de59c28ff1bb1366af7b14075b2060b8be49a59f0d773b72f331f8f
+    Foundation.design: b705dc3815ba8075001dbf2e4dbb46152b74abe1c6c8d85d89f968edddbd9edc
+    System.design: c92607cb3cfe7a835e371c8f8ca3c659588cbf78d75dafd9829ddd4bcb227eeb
+    Workflow.design: cca9cf67c5a6e03fcacaaaa9036c5268ed6f03b41ef082f15cf4548e961b8d38
+deleted: []
+payload: .commits/#00003

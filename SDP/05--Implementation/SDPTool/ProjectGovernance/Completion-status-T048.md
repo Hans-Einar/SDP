@@ -32,6 +32,10 @@ The selected full PG goal remains incomplete.
   leader/Master chain reaches reported verification with only the assigned file changed.
   Final-candidate checks and their limits are pinned in the evidence record.
 
+- [PGF3-C1a](Evidence-PGF3-C1a.md), T053: read-only exact Session/SDL WORK/task/Blueprint
+  inspection and pending model-recovery holds; focused adapter checks pass. Actual
+  owner design disposition and design-changing execution/release remain open.
+
 ## Remaining implementation and integration
 
 | Priority in the existing plan | Concrete remaining delivery | Why current behavior is insufficient |

@@ -20,7 +20,7 @@ func NewSessionController(service *governance.Service, instance string, skill go
 	if e := service.CheckSessionLeader(instance, skill); e != nil {
 		return nil, e
 	}
-	server := mcp.NewServer(&mcp.Implementation{Name: "sdptool-session-controller", Version: "PGF2-C1a"}, &mcp.ServerOptions{SupportedProtocolVersions: []string{ProtocolVersion}})
+	server := mcp.NewServer(&mcp.Implementation{Name: "sdptool-session-controller", Version: "PGF3-C1a"}, &mcp.ServerOptions{SupportedProtocolVersions: []string{ProtocolVersion}})
 	check := func() error { return service.CheckSessionLeader(instance, skill) }
 	empty := map[string]any{"type": "object", "properties": map[string]any{}, "additionalProperties": false}
 	addSessionTool(server, "session_read", "Read the launch-bound Session, stages, holds and history. No host dispatch or owner acceptance is inferred.", empty, true, func(b []byte) (any, error) {
@@ -68,6 +68,19 @@ func NewSessionController(service *governance.Service, instance string, skill go
 			return nil, e
 		}
 		return service.SessionRebindContext(q)
+	})
+	addSessionTool(server, "session_design_context", "Inspect current SDL WORK, task and required Blueprint for this assessed Session. No approval, mutation or dispatch.", governance.SessionWireDefinition("designContextRequest"), true, func(b []byte) (any, error) {
+		var q governance.SessionDesignRequest
+		if e := governance.Decode(b, &q); e != nil {
+			return nil, e
+		}
+		if q.InstanceID != instance {
+			return nil, &governance.Error{Code: "unauthorized", Message: "request outside launch-bound Session"}
+		}
+		if e := check(); e != nil {
+			return nil, e
+		}
+		return service.InspectSessionDesign(q)
 	})
 	caller := governance.LocalController()
 	addSessionMutation(server, service, instance, skill, "rebind", "rebindRequest", func(q governance.SessionRebindRequest) (any, error) { return service.RebindSession(caller, q) })

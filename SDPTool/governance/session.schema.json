@@ -1925,6 +1925,69 @@
           "format": "uuid"
         }
       }
+    },
+    "designContextRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "instanceId",
+        "expectedRevision",
+        "assessmentId",
+        "modelArea",
+        "workRef",
+        "entry",
+        "taskPath"
+      ],
+      "properties": {
+        "schema": {
+          "const": "sdp-session-execution/0.1"
+        },
+        "instanceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assessmentId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "modelArea": {
+          "type": "string",
+          "minLength": 1
+        },
+        "workRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entry": {
+          "type": "string",
+          "minLength": 1
+        },
+        "taskPath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blueprintAssignment": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blueprintEvent": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "dependentRequired": {
+        "blueprintAssignment": [
+          "blueprintEvent"
+        ],
+        "blueprintEvent": [
+          "blueprintAssignment"
+        ]
+      }
     }
   }
 }

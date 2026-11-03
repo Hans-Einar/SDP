@@ -156,3 +156,13 @@ pins the final scoped diagnostic Blueprint and unchanged WORK :00002. No new sou
 semantics, accepted NOW, model release or independent model review is claimed.
 SessionWorkflowDelivery remains planned until the integrated model/host/recovery and
 acceptance obligations in PLAN-SDP-0018 are satisfied.
+
+## T053 — Session-bound model inspection
+
+WORK :00003 adds DesignGate.design and its System.design include. ModelGateAdapter
+captures an exact assessed Session design basis before owner disposition. The SDL
+scenario describes request/reply ownership; it does not grant approval or prove
+runtime recovery. [Handoff contract](../../../../04--Design/SDPTool/ProjectGovernance/Session-Model-Handoff.md)
+keeps impact assessment, actual design disposition, code verification and accepted
+model release distinct. The phase task for PGF3-C1a passes Blueprint structural
+constraints against proposal:ObservedBaseline; WORK remains preliminary and unreleased.

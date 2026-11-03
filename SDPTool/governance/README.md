@@ -864,3 +864,19 @@ an exact request identity. Settlement derives delivery solely from its mapped du
 host input. Pending commands hold Session closeout and rebind, while completed host
 requests remain addressable across retained Session history. These operational events
 do not assert code verification, independent review, owner acceptance or model release.
+
+### Read-only Session model handoff — PGF3-C1a
+
+`session-design-context --input request.json` (JSON action
+`governance.session.design-context`, MCP `session_design_context`) inspects a selected,
+committed assessment using `instanceId`, `expectedRevision`, `assessmentId`, SDP-relative
+`modelArea`, `workRef`, `entry` and project-relative `taskPath`. Supply both
+`blueprintAssignment` and `blueprintEvent` for the retained Blueprint when required.
+The task code paths must exactly match the selected Session scope. WORK must be clean,
+committed and semantically valid; pending model recovery holds inspection. Blueprint
+entry, task bytes, target capture and plan/milestone binding must match this basis.
+
+A current response supplies the exact sources and `reviewRevision`; a blocked response
+supplies explicit holds. Inspection writes no records and grants no design disposition,
+start, host dispatch or model release. Source changes invalidate the basis; existing
+Session coverage checks still require reconciliation of new Blueprint history.

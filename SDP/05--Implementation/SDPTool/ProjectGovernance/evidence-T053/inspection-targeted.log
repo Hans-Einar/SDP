@@ -1,0 +1,7 @@
+ok  	github.com/Hans-Einar/SDP/SDPTool/model	0.220s
+--- FAIL: TestSessionDesignContextRequiredBlueprint (0.25s)
+    session_design_test.go:59: assignment requires an active canonical plan: PLAN-SDP-0001
+FAIL
+FAIL	github.com/Hans-Einar/SDP/SDPTool/governance	8.258s
+ok  	github.com/Hans-Einar/SDP/SDPTool	0.879s
+FAIL

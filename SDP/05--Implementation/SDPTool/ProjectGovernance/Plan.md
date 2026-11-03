@@ -1370,3 +1370,18 @@ the two actual disjoint Masters/conflicting-third case, full admission and conti
 supervision remain. PGF3 model integration, in-flight lifecycle, complete recovery,
 capacity, independent PG review, owner trial and final scope/PR gates stay selected.
 No owner authorization for continued implementation is missing.
+
+### T053 — Owner resource policy for remaining delivery
+
+Apply root [AGENTS.md](../../../../AGENTS.md#agent-usage-and-verification-budget):
+one accountable main agent, useful bounded delegation on GPT-6.1 Sol/medium,
+focused checks during implementation, and consolidated independent review/broad
+regression at an integrated delivery boundary. The owner monitors weekly quota.
+No additional review round is required merely because a submilestone is committed.
+Existing design, recovery and actual-owner gates remain mandatory.
+
+PGF3-C1a is implemented with targeted verification: read-only Session-bound SDL WORK/task/Blueprint inspection.
+The current WORK checkpoint is :00003. Owner design disposition, design-changing
+start and exact model-release closeout remain separate unfinished PGF3 obligations.
+
+[PGF3-C1a evidence](Evidence-PGF3-C1a.md) pins the actual candidate and check limits.

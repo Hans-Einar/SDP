@@ -120,7 +120,7 @@ on each operation. Presence and a digest do not prove an agent loaded or followe
 skill. Native Project Leader scheduling and actual skill-consumption evidence remain
 separate obligations. Do not grant this capability to an implementation worker.
 
-The adapter exposes fifteen tools using the same Session schema and core as the CLI:
+The adapter exposes sixteen tools using the same Session schema and core as the CLI:
 
 - `session_definition` and `session_read` take an empty object and inspect the selected
   workflow/skill reference or current instance, stages, conditions and history.
@@ -130,6 +130,9 @@ The adapter exposes fifteen tools using the same Session schema and core as the 
   `instanceId`. `session_rebind` prepares a pinned, attributed reviewed binding revision
   at a quiescent boundary. Resume retains prior epochs and requires fresh assessment;
   this cannot retire live work, weaken owner/design gates or impersonate acceptance.
+- `session_design_context` inspects the exact current assessment, clean committed SDL WORK,
+  task scope and any required retained Blueprint. It returns a review revision or
+  explicit holds; it neither accepts design nor starts work or releases a model.
 - `session_select`, `session_assess`, `session_start`, `session_progress`,
   `session_verify`, `session_review`, `session_dispose`, `session_advance` and
   `session_resume` take their corresponding strict Session requests. Every request
@@ -155,7 +158,7 @@ external edits. CLI and MCP receipts are interchangeable for the same request.
 
 ## Explicit Session host-request capability — PGF2-C1c
 
-Adding `--session-host-requests` to the Session-controller launcher adds three tools:
+Adding `--session-host-requests` to the Session-controller launcher exposes nineteen tools in total, adding three tools:
 `session_host_read`, `session_host_request` and `session_host_cancel`. The flag requires
 an explicitly selected Session and pinned named Project Leader skill. Ordinary
 Session, coordinator and worker launch modes retain their previous capabilities.

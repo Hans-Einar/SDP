@@ -1,0 +1,6 @@
+ok  	github.com/Hans-Einar/SDP/SDPTool/model	0.191s
+--- FAIL: TestSessionDesignContextReadOnlyAndStable (0.40s)
+    session_design_test.go:62: {sdp-session-execution/0.1 session-design-context 00f1cfae-bbb4-4e88-99e9-986fbf891443 6 blocked <nil>  [invalid_request: unknown JSON field: ID] not-recorded unavailable} <nil>
+FAIL
+FAIL	github.com/Hans-Einar/SDP/SDPTool/governance	4.447s
+FAIL

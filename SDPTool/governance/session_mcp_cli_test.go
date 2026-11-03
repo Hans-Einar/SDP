@@ -80,11 +80,11 @@ func TestSessionMCPCompiledLifecycle(t *testing.T) {
 	binary := sessionMCPBinary(t)
 	c := sessionMCPConnect(t, binary, s, q.InstanceID)
 	list, e := c.ListTools(context.Background(), nil)
-	if e != nil || len(list.Tools) != 15 {
+	if e != nil || len(list.Tools) != 16 {
 		t.Fatal(list, e)
 	}
 	for _, tool := range list.Tools {
-		if tool.Annotations.ReadOnlyHint != (tool.Name == "session_read" || tool.Name == "session_definition" || tool.Name == "session_successor" || tool.Name == "session_rebind_context") {
+		if tool.Annotations.ReadOnlyHint != (tool.Name == "session_read" || tool.Name == "session_definition" || tool.Name == "session_successor" || tool.Name == "session_rebind_context" || tool.Name == "session_design_context") {
 			t.Fatal(tool.Name)
 		}
 	}
@@ -250,7 +250,7 @@ func TestSessionHostMCPExplicitGrant(t *testing.T) {
 	sessionMCPCall(t, ordinary, "session_host_request", q, true)
 	granted := sessionMCPConnect(t, binary, s, q.InstanceID, "--session-host-requests")
 	list, e := granted.ListTools(context.Background(), nil)
-	if e != nil || len(list.Tools) != 18 {
+	if e != nil || len(list.Tools) != 19 {
 		t.Fatal(list, e)
 	}
 	q.LeaderSkill, e = s.SessionLeaderSkill(q.InstanceID, "evidence/launcher-leader/SKILL.md")
@@ -284,5 +284,94 @@ func TestSessionHostMCPExplicitGrant(t *testing.T) {
 	}
 	if b, e := exec.Command(binary, "--project", s.root, "--state", s.state, "--session-host-requests").CombinedOutput(); e == nil {
 		t.Fatal("unscoped grant", string(b))
+	}
+}
+
+func TestSessionDesignContextCompiledAdapters(t *testing.T) {
+	s, q := sessionDesignFixture(t)
+	binary := sessionMCPBinary(t)
+	c := sessionMCPConnect(t, binary, s, q.InstanceID)
+	list, err := c.ListTools(context.Background(), nil)
+	if err != nil || len(list.Tools) != 16 {
+		t.Fatal(list, err)
+	}
+	granted := sessionMCPConnect(t, binary, s, q.InstanceID, "--session-host-requests")
+	list, err = granted.ListTools(context.Background(), nil)
+	if err != nil || len(list.Tools) != 19 {
+		t.Fatal(list, err)
+	}
+
+	cli := filepath.Join(t.TempDir(), "sdptool")
+	if b, e := exec.Command(filepath.Join(runtime.GOROOT(), "bin", "go"), "build", "-o", cli, "../cmd/sdptool").CombinedOutput(); e != nil {
+		t.Fatal(e, string(b))
+	}
+	requestPath := filepath.Join(s.root, "evidence/design-request.json")
+	raw, _ := json.Marshal(q)
+	if e := os.WriteFile(requestPath, raw, 0600); e != nil {
+		t.Fatal(e)
+	}
+
+	capture := filepath.Join(t.TempDir(), "request-schema.json")
+	cases, _ := json.Marshal([]map[string]any{{"definition": "designContextRequest", "value": q}})
+	if err := os.WriteFile(capture, cases, 0600); err != nil {
+		t.Fatal(err)
+	}
+	if b, err := exec.Command("python3", "check_session_schema.py", capture).CombinedOutput(); err != nil {
+		t.Fatal(err, string(b))
+	}
+	before := inventoryDesign(t, filepath.Dir(s.root))
+	direct, e := s.InspectSessionDesign(q)
+	if e != nil || direct.Status != "current" {
+		t.Fatal(direct, e)
+	}
+	expected, _ := json.Marshal(direct)
+	var want any
+	json.Unmarshal(expected, &want)
+	check := func(name string, raw []byte) {
+		t.Helper()
+		var got any
+		if e := json.Unmarshal(raw, &got); e != nil || !reflect.DeepEqual(want, got) {
+			t.Fatalf("%s differs: %s (%v)", name, raw, e)
+		}
+	}
+	check("MCP", sessionMCPCall(t, c, "session_design_context", q, false))
+	b, e := exec.Command(cli, s.root, "governance", "session-design-context", "--state", s.state, "--input", requestPath, "--json").CombinedOutput()
+	if e != nil {
+		t.Fatal(e, string(b))
+	}
+	check("CLI", b)
+	invoke, _ := json.Marshal(map[string]any{"schema": "sdptool.invoke/1", "requestId": "design-parity", "action": "governance.session.design-context", "context": map[string]any{"project": s.root}, "parameters": map[string]any{"state": s.state, "requestFile": requestPath}})
+	cmd := exec.Command(cli, "invoke", "--request", "-")
+	cmd.Stdin = bytes.NewReader(invoke)
+	b, e = cmd.CombinedOutput()
+	if e != nil {
+		t.Fatal(e, string(b))
+	}
+	var response struct {
+		Result   json.RawMessage `json:"result"`
+		ExitCode int             `json:"exitCode"`
+	}
+	if e = json.Unmarshal(b, &response); e != nil || response.ExitCode != 0 {
+		t.Fatal(string(b), e)
+	}
+	check("JSON invocation", response.Result)
+	bad := q
+	bad.InstanceID = newTestID()
+	sessionMCPCall(t, c, "session_design_context", bad, true)
+	forged := map[string]any{}
+	json.Unmarshal(raw, &forged)
+	forged["authority"] = "owner"
+	sessionMCPCall(t, c, "session_design_context", forged, true)
+	skill := filepath.Join(s.root, "evidence/launcher-leader/SKILL.md")
+	original := mustFile(t, skill)
+	if e = os.WriteFile(skill, append(original, []byte("\nChanged pinned procedure.\n")...), 0600); e != nil {
+		t.Fatal(e)
+	}
+	sessionMCPCall(t, c, "session_design_context", q, true)
+	if e = os.WriteFile(skill, original, 0600); e != nil {
+		t.Fatal(e)
+	}
+	if !reflect.DeepEqual(before, inventoryDesign(t, filepath.Dir(s.root))) {
+		t.Fatal("read-only adapters or refusal wrote files")
 	}
 }

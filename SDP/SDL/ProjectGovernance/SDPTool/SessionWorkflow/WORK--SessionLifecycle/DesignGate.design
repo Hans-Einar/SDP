@@ -1,0 +1,63 @@
+language design-core version 0.6.
+functionality CaptureSessionDesignBasis.
+message CheckCurrentDesignBasis.
+contract DesignBasisQuery.
+field DesignBasisQueryAssessment.
+field DesignBasisQueryBlueprint.
+field DesignBasisQuerySession.
+field DesignBasisQueryTask.
+field DesignBasisQueryWork.
+contract DesignBasisResult.
+field DesignBasisResultHolds.
+field DesignBasisResultRevision.
+scenario InspectDesignBeforeOwnerDisposition.
+message SessionDesignBasisChecked.
+channel SessionModelChecks.
+contract SessionModelChecksProtocol.
+CaptureSessionDesignBasis allocated-to SdpToolHost in mode RoutineHandling.
+CaptureSessionDesignBasis contributes-to SessionExecution.
+CaptureSessionDesignBasis realizes GovernedSessionLifecycle.
+CheckCurrentDesignBasis has message-kind = request.
+CheckCurrentDesignBasis upholds DesignBasisQuery.
+DesignBasisQuery has completeness = closed.
+DesignBasisQuery has-field DesignBasisQueryAssessment.
+DesignBasisQuery has-field DesignBasisQueryBlueprint.
+DesignBasisQuery has-field DesignBasisQuerySession.
+DesignBasisQuery has-field DesignBasisQueryTask.
+DesignBasisQuery has-field DesignBasisQueryWork.
+DesignBasisQueryAssessment has presence = required.
+DesignBasisQueryAssessment has value-type = text.
+DesignBasisQueryBlueprint has presence = required.
+DesignBasisQueryBlueprint has value-type = text.
+DesignBasisQuerySession has presence = required.
+DesignBasisQuerySession has value-type = text.
+DesignBasisQueryTask has presence = required.
+DesignBasisQueryTask has value-type = text.
+DesignBasisQueryWork has presence = required.
+DesignBasisQueryWork has value-type = text.
+DesignBasisResult has completeness = closed.
+DesignBasisResult has-field DesignBasisResultHolds.
+DesignBasisResult has-field DesignBasisResultRevision.
+DesignBasisResultHolds has presence = required.
+DesignBasisResultHolds has value-type = text.
+DesignBasisResultRevision has presence = required.
+DesignBasisResultRevision has value-type = text.
+InspectDesignBeforeOwnerDisposition exercises ExecuteCardDerivedSession.
+InspectDesignBeforeOwnerDisposition has completeness = closed.
+InspectDesignBeforeOwnerDisposition illustrates SessionWorkflowDelivery.
+InspectDesignBeforeOwnerDisposition runs-in RoutineHandling.
+InspectDesignBeforeOwnerDisposition step 1 sends CheckCurrentDesignBasis from SessionCoordinator to ModelGateAdapter via SessionModelChecks.
+InspectDesignBeforeOwnerDisposition step 2 sends SessionDesignBasisChecked from ModelGateAdapter to SessionCoordinator via SessionModelChecks reply-to 1.
+ModelGateAdapter owns CaptureSessionDesignBasis.
+ModelGateAdapter uses SessionModelChecks as receiver of CheckCurrentDesignBasis in mode RoutineHandling.
+ModelGateAdapter uses SessionModelChecks as sender of SessionDesignBasisChecked in mode RoutineHandling.
+SessionCoordinator uses SessionModelChecks as receiver of SessionDesignBasisChecked in mode RoutineHandling.
+SessionCoordinator uses SessionModelChecks as sender of CheckCurrentDesignBasis in mode RoutineHandling.
+SessionDesignBasisChecked has message-kind = result.
+SessionDesignBasisChecked replies-to CheckCurrentDesignBasis.
+SessionDesignBasisChecked upholds DesignBasisResult.
+SessionModelChecks upholds SessionModelChecksProtocol.
+SessionModelChecksProtocol has completeness = closed.
+SessionModelChecksProtocol permits CheckCurrentDesignBasis.
+SessionModelChecksProtocol permits SessionDesignBasisChecked.
+SessionWorkflowDelivery addresses CaptureSessionDesignBasis.

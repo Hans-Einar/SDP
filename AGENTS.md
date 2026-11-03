@@ -29,6 +29,36 @@ The [development history](SDP/Development-Branch-Stack.md) describes the branch
 stack and handling of earlier uncommitted work. Read applicable subdirectory
 AGENTS.md files before making changes.
 
+## Agent usage and verification budget
+
+Owner decision of 2026-11-03: conserve the shared weekly quota while completing
+authorized work. The owner monitors weekly quota remaining and will report when
+consumption requires further reduction.
+
+- Use one accountable main agent by default. Delegate a bounded task only when
+  it is expected to reduce total work or provide necessary independent review;
+  do not add agents or separate reviews to every implementation step.
+- When delegation is useful, use **gpt-6.1-sol with medium reasoning** for bounded
+  implementation and routine review. Give the sub-agent a concise assignment,
+  relevant file references, constraints and acceptance criteria; avoid inheriting
+  the full conversation when those inputs suffice. Reserve Astra/high for a
+  concrete difficult architecture decision, unresolved debugging or similarly
+  demanding work. Do not change the active conversation model or global settings
+  implicitly.
+- Run targeted checks for changed behavior during implementation. Reuse valid
+  evidence for unchanged inputs. Repeat successful checks only after relevant
+  changes, failures or a specific unresolved concern. Local test execution is
+  distinct from model usage; minimize repeated agent analysis and native-agent
+  test runs as well as unnecessary test expansion.
+- Consolidate broad regression and independent review at a coherent delivery or
+  final integration boundary. Do not commission a separate reviewer for each
+  small increment. Add tests for material risks and requirements, not reversible
+  documentation edits or tests that merely mirror implementation.
+- Keep progress reports, handoffs and durable records concise. Update required
+  Session, plan, card and evidence records without duplicating long narratives.
+  Resource discipline does not waive correctness, actual owner decisions,
+  required model release, recovery safeguards or honest completion status.
+
 ## Documentation language — English
 
 Owner decision of 2026-09-24: **all maintained documentation must be in English**.

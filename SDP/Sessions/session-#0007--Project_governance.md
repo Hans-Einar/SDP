@@ -12,7 +12,10 @@ recorded with the checkpoint. The [completion map](../05--Implementation/SDPTool
 retains all selected PGF1–9/PG-A01–30 obligations. In-flight replan, full admission and
 multi-Master supervision, integrated model gates, sustained recovery/capacity and
 final acceptance remain open. Session0007 is active; no completed submilestone is
-reported as whole-PG completion. Existing implementation authorization continues.
+reported as whole-PG completion. Existing implementation authorization continues. PGF3-C1a now provides read-only
+Session-bound model inspection against validated WORK :00003; implementation and
+model release gates remain closed. The owner has selected quota-conscious execution
+under root AGENTS.md, with useful bounded sub-agents on GPT-6.1 Sol/medium.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
 
 ```mermaid
@@ -3051,3 +3054,58 @@ completion map, KB038/052 working notes, management events 241/445/446 and produ
 verification trace together. Cards and Session remain active/in-progress. Reused
 Verifier and Traceability routines for this checkpoint. This is a work summary, not
 an assertion that the owner's entire Session-completion request has been achieved.
+
+T053 continuation after C1c delivery: product checkpoint 5f1bb92 is committed and
+pushed; the working tree is clean and the same sole worktree is selected. Recovered
+PGF3 and inspected its current rejection in prepareSessionWork/validateSessionWork:
+only explicit no-design/no-Blueprint assessment can start. Existing standalone
+preparation/provider approval has a different input-generation owner and cannot be
+attached by simply removing this guard. Its checked model/Blueprint providers should
+be reused without a second independent assignment state machine.
+
+Scoped PGF3 preflight is green for the existing SessionWorkflow WORK, PG design/plan
+records, SDPTool/governance and its existing CLI/MCP/controller adapters, plus a
+read-only ModelGovernance source-validation adapter using its existing validator.
+The WORK is clean at :00002; no competing local model/code writer or new identifier
+collision was found. KB050 remains owner-paused, unrelated systems/Ponsse/XFMD remain
+excluded, and remote writers remain outside local observation. Before changing model
+semantics, retain a new validated WORK checkpoint; never modify metadata by hand.
+
+Selected next boundary: inspect exact Session-bound SDL WORK and optional required
+Blueprint basis, expose actual holds and revision pins, then bind actual owner design
+disposition before implementation. Design-changing work must stay blocked until that
+basis is current. Code verification cannot waive exact model release at closeout.
+A read-only provider validation result must not assert design approval or release.
+
+T053 owner resource correction: the owner reports 66% weekly quota remaining and
+requests fewer separate reviews, less agent time and proportionate testing. Continue
+the authorized Session work with one implementation agent, focused checks for changed
+behavior, and one consolidated independent review plus broad regression at an integrated
+candidate boundary. Do not repeat successful checks without changed inputs, failures
+or a concrete unresolved concern. Preserve exact-model, authority and recovery gates;
+reduce repeated ceremony rather than declaring unverified work complete. Recommend
+GPT-6.1 Sol/medium for bounded implementation and reserve Astra/high for difficult
+architecture/debugging. No active model or global configuration was changed. OpenAI
+Docs was loaded for this advice; official model-selection/reasoning guidance supports
+this recommendation but does not establish an exact weekly-quota saving.
+
+T053 owner follow-up: explicitly select GPT-6.1 Sol/medium for useful bounded
+sub-agent work and persist the quota-conscious method in root AGENTS.md for future
+sessions. Added that policy with minimal handoff context, consolidated review,
+proportionate testing and concise records. The owner monitors remaining weekly quota.
+This refines execution method, not PG scope or acceptance requirements. No sub-agent
+has been started for this correction and no model settings were changed.
+
+T053 bounded delegation: assigned the existing PGF3-C1a read-only inspection and
+its targeted core/adapter checks to pgf3_inspection, explicitly GPT-6.1 Sol/medium
+with a concise fresh-context assignment. Parent retains lifecycle records and
+integration. No separate review agent or broad/native regression was commissioned.
+
+T053 PGF3-C1a work summary: the bounded Sol/medium worker completed inspection,
+recovery holds and targeted adapter/core checks. Parent inspected the actual changes,
+regenerated the scoped Blueprint (constraints pass), and recorded candidate hashes,
+evidence and management/verification links. No separate review, broad regression or
+native agent test was added for this increment. Root AGENTS.md now persists the
+owner's resource policy. S3/S6 and both cards remain active; next implementation is
+actual Session-bound owner design disposition followed by design-changing start and
+exact model-release closeout. Whole Session0007 is not yet complete.
