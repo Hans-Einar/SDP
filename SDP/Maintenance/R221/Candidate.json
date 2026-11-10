@@ -1,0 +1,16 @@
+{
+  "sourceCommit": "c3377121acd24013aab01a33067b9b1d976b8713",
+  "baseline": "34ee535fbf6257b73d2fa0c7fbe4f9d5131aaf5e",
+  "version": "2.2.1",
+  "platform": "linux/amd64",
+  "CGO_ENABLED": "0",
+  "GOAMD64": "v1",
+  "files": {
+    "sdptool": "7129c83b8586627cffdacd06e882b115ef45ce009f21272a393feb68a27e5049",
+    "sdptool.manifest.json": "0aa45f7ab301b40596f35e5b942e3bf2251ecca36985b399bc7da7e97d247a23",
+    "SHA256SUMS": "5570b47756a470394168e930023d24ab55bc5c1aa602bd5cca2c3eee4b005830"
+  },
+  "artifactDirectory": "/home/warloc/.local/state/sdp-release-2.2.1/package-c337712",
+  "productionSigned": false,
+  "published": false
+}

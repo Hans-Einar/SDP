@@ -148,6 +148,10 @@ slices:
     verification: [VER-SDP-005-001, VER-SDP-005-002, VER-SDP-005-003]
 fixes: {}
 reviews:
+  REV-SDPTOOL-R221:
+    status: local-preparation-approved-publication-pending
+    path: Maintenance/R221/Review.md
+    release: REL-2.2.1
   REV-SDPTOOL-RSP2:
     status: approved
     path: Maintenance/RSP2/Review.md
@@ -240,6 +244,10 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-R221:
+    status: local-checks-passed-signed-publication-pending
+    path: Maintenance/R221/Evidence.md
+    release: REL-2.2.1
   SDPTOOL-VER-PGI4-C3:
     status: passed-bounded-publication-and-review-coordination
     path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI4-C3.md
@@ -662,8 +670,8 @@ releases:
     releaseNotes: RELEASE-NOTES.md
     manifest: SDP.manifest.yaml
     releaseRecord: SDP/Releases/REL-2.2.1.yaml
-    verification: []
-    reviews: []
+    verification: [SDPTOOL-VER-R221]
+    reviews: [REV-SDPTOOL-R221]
     releaseCommit: null
     gitTag: null
     githubRelease: null

@@ -1,0 +1,12 @@
+$ python Toolkit/scripts/validate_sdp.py --base-ref origin/main
+SDP Toolkit validation passed
+exit=0
+$ python SDP/ProjectManagement/validate.py
+PASS: 73 cards, 48 management records, 4 lineage operations, 728 events; schema/history/metadata/placement/grouping
+exit=0
+$ /home/warloc/.local/state/sdp-release-2.2.1/package-final/sdptool . release-log --all --output Releases --check
+7 release log(s) verified
+exit=0
+$ /home/warloc/.local/state/sdp-release-2.2.1/package-final/sdptool --version --json
+{"installationProtocol":"sdp-install-command/1","installedFactSchemas":["1.0","2.0","3.0"],"operation":"version","revision":"224e6676fd06730263aa2bf103a6067ce6b151f7","schema":"sdptool/0.2","version":"2.2.1"}
+exit=0

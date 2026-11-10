@@ -1,4 +1,7 @@
-# SDP2.2.1 checklist — pending exact candidate evidence
+# SDP2.2.1 checklist — local preparation reviewed; publication pending
+
+Candidate: `c3377121acd24013aab01a33067b9b1d976b8713`. See [Evidence](Evidence.md),
+[Review](Review.md) and [Candidate](Candidate.json). Signing key unavailable.
 
 # ReleaseChecklist
 
@@ -9,25 +12,25 @@ release log is not proof of publication. The project release contract governs.
 
 ## Scope and content
 
-- [ ] Select product version from compatibility impact. Keep language/profile,
+- [x] Select product version from compatibility impact. Keep language/profile,
   process/management schema and client versions distinct.
-- [ ] Enumerate included work and remaining exclusions; validate selected model,
+- [x] Enumerate included work and remaining exclusions; validate selected model,
   tests, review dispositions and links on the actual candidate.
-- [ ] Update canonical RELEASE-NOTES.md Unreleased entries with stable work IDs.
+- [x] Update canonical RELEASE-NOTES.md Unreleased entries with stable work IDs.
   Freeze selected entries into a dated version section; preserve released bytes.
-- [ ] Run `sdptool release-log --version X.Y.Z --output Releases/X.Y.Z.md`.
+- [x] Run `sdptool release-log --version X.Y.Z --output Releases/X.Y.Z.md`.
   Check with the same command plus --check. Use --all --output Releases --check
   to check every recorded version. Generator extracts reviewed notes, not Git guesses.
 
 ## Installation distribution (SDP publisher)
 
-- [ ] Check Template/sdp-root and project-root guidance. Include Sessions guide and
+- [x] Check Template/sdp-root and project-root guidance. Include Sessions guide and
   blank template, never project conversations, boards or existing work records.
-- [ ] Review SDPTool/profiles/payload.json: every distributed file, destination,
+- [x] Review SDPTool/profiles/payload.json: every distributed file, destination,
   ownership and removed/moved path. Inventory completeness tests must pass.
-- [ ] Review SDPTool/profiles/five-phase.json: capabilities, schema/profile versions
+- [x] Review SDPTool/profiles/five-phase.json: capabilities, schema/profile versions
   and exact supported predecessor descriptor digests, including current stable.
-- [ ] Reconcile SDP.manifest.yaml, Toolkit/SDP-install.manifest.json compatibility
+- [x] Reconcile SDP.manifest.yaml, Toolkit/SDP-install.manifest.json compatibility
   metadata, package version, release record and notes. Retained legacy metadata
   does not replace the current Go inventory or signed descriptor.
 - [ ] Build package and immutable sdp-release.json from a clean exact commit using
@@ -49,7 +52,7 @@ release log is not proof of publication. The project release contract governs.
   executable and checksums; verify downloaded assets against exact release.
 - [ ] Reconcile actual tag/commit/time and append truthful release events only after
   success. Do not rewrite a released log or silently correct released notes.
-- [ ] Verify gh-sdp selection: its compiled default is pinned. Either publish/update
+- [x] Verify gh-sdp selection: its compiled default is pinned. Either publish/update
   the client default or document an explicit SDP_RELEASE selecting this release.
 - [ ] Provide preview/apply commands and expected receipt. Owner-requested manual
   project upgrade remains manual; never confuse updating the gh extension with
@@ -58,3 +61,7 @@ release log is not proof of publication. The project release contract governs.
 Consuming projects reuse the scope/content/publication checks; mark SDP publisher
 inventory/signing steps N/A if they do not distribute SDP itself. Keep their own
 application/package/installer acceptance checks alongside this list.
+
+Unchecked distribution steps have partial local evidence only: portable package,
+unsigned development target, test signer and Git-less release-log validation.
+They remain open until the actual production-signed candidate is checked.

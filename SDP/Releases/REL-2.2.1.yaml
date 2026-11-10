@@ -5,8 +5,10 @@ state: unreleased
 releaseNotesPath: RELEASE-NOTES.md
 includedCapabilities:
 - sdp.install.v1
-verificationRecords: []
-reviewRecords: []
+verificationRecords:
+- SDPTOOL-VER-R221
+reviewRecords:
+- REV-SDPTOOL-R221
 migrationRecord: SDP/Maintenance/R221/Plan.md
 releasePreparationCommit: null
 gitTag: null

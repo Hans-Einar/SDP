@@ -1,0 +1,52 @@
+# SDP 2.2.1 independent release-preparation review
+
+Reviewed candidate: `224e6676fd06730263aa2bf103a6067ce6b151f7`, existing `sdp/release-2.2.1` checkout. Producer baseline: `34ee535fbf6257b73d2fa0c7fbe4f9d5131aaf5e`. Read-only review; only this external report and review-checks.log were written. Loaded SDP entrypoint, release, reviewer and shared document workflow; read repository authority, R221 plan/checklist, release lifecycle and Session0014. Parent owns Session/checklist/evidence reconciliation.
+
+## Provisional disposition
+
+Source/release-metadata preparation is supported, but final release-artifact approval is **changes required / pending**. No implementation-source divergence from the selected producer was found. Signing, final descriptor, exact-candidate remaining CI and publication/download checks are not approved by this review.
+
+## Finding R221-REV-1 — medium: generic Linux amd64 artifact has narrower runtime prerequisites
+
+`package-final/sdptool` hash `ce1c28819aab6e97c2204b087843f8b3aeec8e8bb7309743a800bfb4602b3759` is built with `GOAMD64=v3`, `CGO_ENABLED=1`, Red Hat Go1.26.10. `file`/`ldd` confirm dynamic glibc linkage; `readelf --version-info` requires GLIBC_2.34. The unsigned development descriptor advertises only `linux/amd64`; bootstrap.go selects binaries by GOOS/GOARCH, with no CPU/libc qualification. Consumers with older amd64 CPUs, older glibc or musl can receive an executable they cannot run. This is a credible distribution regression risk, not evidence of failure on the owner's current host. Before signing, rebuild with a portable baseline (for example GOAMD64=v1 and CGO_ENABLED=0 where supported), or explicitly settle/document the narrower platform contract. Refresh binary-dependent hashes/descriptors and artifact smoke evidence. Runtime source changes are unnecessary.
+
+## Supported observations
+
+- `git diff --name-status 34ee535..224e667` contains release notes/log, version/installation metadata/examples, predecessor inventory and R221 management/traceability/Session documentation. No runtime implementation changed. SDPTool except five-phase.json, SDL, SDUI, Template and Skills match producer baseline.
+- five-phase.json retains all five existing predecessor digests and adds exactly the downloaded public2.2.0 descriptor digest `d47ce2be184c680422958f6c161e1e4ed19dff06cfd471c0ed0872d1445ec61b`; independently recomputed SHA256 matches. Signature verification of that original descriptor is not independently re-executed here.
+- Release notes explicitly disclose owner-selected patch numbering despite additive public capabilities and list incomplete ProjectGovernance obligations. Explicit gh-sdp pinned-default override is documented. Public2.2.0 released-note bytes remain unchanged.
+- Current Toolkit validator, project-management validator and all7 generated release logs pass. The earlier validate.log contains pre-candidate scaffolding failures and is not current gate evidence; independent current results are in review-checks.log.
+- Package checksum verification passes. `--version --json` reports2.2.1 and exact224e667 revision; Go build metadata reports vcs.modified=false. This establishes executable provenance metadata, not equality of compiled bytes with a differently versioned development build.
+- Unsigned development-descriptor.json reports exact224e667 source, development-2.2.1 identity, matching binary hash,66 payload files and all6 predecessor digests. Its only Session payloads are reusable README/template, with no project conversations. Inventory sources are unchanged from producer baseline.
+- Available logs report Toolkit85 tests, bootstrap tests, SDPTool packages and SDL packages passing; no duplicate full suite was launched. Vet log is empty and no command exit provenance was supplied, so no independent vet-pass assertion. Root reports PR57 contracts passed and Go installation CI still running.
+
+## Remaining release gates / handoff
+
+Actual2.2.1 production descriptor/signature and trusted-key verification are absent; do not substitute the unsigned development descriptor. Final upgrade/preservation/no-op/conflict and extracted-source results are still being produced by parent. R221 checklist is unchecked and release record has empty verification/review references: reconcile concrete evidence before marking M1 complete. Record actual source/preparation commit and reviewed artifact hash, retain explicit PG exclusions, and preserve null publication identities until observed. After any artifact rebuild, this review's binary approval remains pending focused artifact follow-up; unchanged source review need not be repeated. Signed final descriptor and downloaded public assets require focused final verification. No merge, publication, owner acceptance or complete PG claim is implied.
+
+## Focused artifact correction — same review context
+
+R221-REV-1 is **resolved for replacement package-portable**, independently inspected after parent rebuilt the unchanged224e667 source. This supersedes the earlier artifact disposition, while retaining its finding as construction history. The corrected sdptool is statically linked, CGO_ENABLED=0, GOAMD64=v1; reports version2.2.1/revision224e667; Go provenance remains vcs.modified=false. SHA256SUMS validates both executable and version manifest. Executable SHA256 is `203c580928a3279beaf79507bbddd12af8c7d38c3d52236947283ddb3cdebf87`, size15,797,370 bytes. `development-portable.json` independently matches that hash/size and exact source commit. The previous package-final and development-descriptor.json refer to the superseded construction executable and must not be published.
+
+No unresolved source/metadata or corrected portable-artifact defect is presently identified. Provisional preparation approval remains conditional on remaining exact-candidate CI/trial evidence and current record reconciliation. Production signing, final signed descriptor and publication/download gates remain pending; portable development evidence does not waive them.
+
+## Focused candidate update c337712 — same review context
+
+Reviewed `c3377121acd24013aab01a33067b9b1d976b8713` against224e667: exactly one insertion in `SDPTool/tools/profile/sign_test.go`, adding the original published2.2.0 descriptor digest to TestProfileRetainsExplicitReleasePredecessor's expected list. This strengthens the existing predecessor completeness assertion to match the authorized inventory addition; no accepted predecessor is removed and no runtime implementation changes. No issue found in this test correction. Parent reports the targeted profile check passes; final broader suite remains pending at this inspection.
+
+Replacement `package-c337712/sdptool` reports2.2.1 and exactc337712 revision; Go build metadata confirms CGO_ENABLED=0, GOAMD64=v1, vcs.modified=false. Its executable SHA256 is `7129c83b8586627cffdacd06e882b115ef45ce009f21272a393feb68a27e5049`, size15,797,370 bytes. Independently verified package SHA256SUMS and `development-c337712.json` source/hash/size all match. Earlier portable224e667 artifacts are now superseded for the selected candidate. A checksum invocation initially used repository cwd and found no SHA256SUMS; immediately rerun in the package directory, both entries passed.
+
+Provisional source/metadata/artifact preparation disposition carries forward to c337712 with no unresolved defect identified. Final exact-candidate suite,22 overview checks and predecessor preservation/no-op evidence are still pending parent handoff. Production key/descriptor/signature and public download gates remain unavailable and unapproved. Parent must record this final candidate and evidence in the canonical checklist/release/Session before preparation closeout.
+
+## Final bounded preparation disposition
+
+**Approved for local preparation scope at c337712, with no unresolved material finding. Release readiness remains pending exact-candidate CI, production signing and publication verification.** This disposition supersedes the earlier local-suite/trial pending statements; it does not certify complete ProjectGovernance or owner acceptance. Parent is reconciling canonical evidence/checklist/Session records.
+
+Saved evidence inspected in this continuation, without launching further checks:
+
+- `sdptool-tests-final.log` records PASS for every SDPTool package, including tools/profile; cached unchanged results are appropriately reused after the one-line inventory-test correction. Earlier bootstrap, SDL and Toolkit logs remain applicable to unchanged source.
+- `viewpoints-c337712/results.json` contains22 successful overview requests across two authored systems, covering VP01–VP11 for each. Every exit is0; both available and empty states are present. This establishes reachable generation for the tested models, not completeness of their authored content or all possible model semantics.
+- `upgrade-results-c337712.json` records six verified original signed predecessors (0.2.0,0.2.1,1.0.0,2.0.0,2.1.0,2.2.0) upgraded to explicitly unsigned development-c337712. Each preserves owner Session, navigation and SDL fixture and reports zero repeat actions. The saved2.2.0 apply record reports completed upgrade and MAINT-PROJECT-0002; corresponding no-op record identifies the development target. Original-signature status is recorded by the parent-run harness; signatures were not independently rerun during this saved-file review. Parent reports the initially incorrect local-predecessor helper was rejected and original cached provenance used, without product changes.
+- `packaged-test-c337712.log` records TestPackagedSignedInstall PASS using a test signer. `extracted-source-c337712.log` records all7 release logs verified from the extracted candidate. These cover their stated bounded checks; the latter log alone does not establish every extracted-source installation obligation.
+
+The selected prepared executable remains package-c337712, SHA256 `7129c83b8586627cffdacd06e882b115ef45ce009f21272a393feb68a27e5049`. Earlier construction artifacts are superseded. Production-key trust, actual2.2.1 signed descriptor/receipt identity, remote exact-candidate CI, annotated tag/GitHub Release and downloaded asset identity remain unapproved and must remain explicit pending gates. Unsigned-target rehearsals and a packaged test signer cannot close production signing/publication gates. No further review campaign or repeated full suites are required merely to preserve this bounded result; final production artifacts require focused verification once available.

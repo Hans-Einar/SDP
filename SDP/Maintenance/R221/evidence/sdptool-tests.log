@@ -1,0 +1,29 @@
+go: downloading github.com/modelcontextprotocol/go-sdk v1.8.0
+go: downloading github.com/coder/websocket v1.8.15
+go: downloading golang.org/x/sync v0.23.0
+go: downloading github.com/google/jsonschema-go v0.4.3
+go: downloading golang.org/x/time v0.15.0
+go: downloading github.com/segmentio/encoding v0.5.4
+go: downloading github.com/yosida95/uritemplate/v3 v3.0.2
+go: downloading golang.org/x/oauth2 v0.35.0
+go: downloading github.com/segmentio/asm v1.1.3
+ok  	github.com/Hans-Einar/SDP/SDPTool	45.748s
+ok  	github.com/Hans-Einar/SDP/SDPTool/blueprints	23.941s
+ok  	github.com/Hans-Einar/SDP/SDPTool/blueprintstate	3.923s
+ok  	github.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller	0.014s
+?   	github.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp	[no test files]
+ok  	github.com/Hans-Einar/SDP/SDPTool/cmd/sdptool	0.013s
+ok  	github.com/Hans-Einar/SDP/SDPTool/codexcompat	0.013s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governance	481.206s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancecontroller	41.593s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancehost	0.050s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancemcp	9.435s
+ok  	github.com/Hans-Einar/SDP/SDPTool/install	21.286s
+ok  	github.com/Hans-Einar/SDP/SDPTool/model	9.809s
+ok  	github.com/Hans-Einar/SDP/SDPTool/presentation	0.006s
+ok  	github.com/Hans-Einar/SDP/SDPTool/projecthistory	0.541s
+--- FAIL: TestProfileRetainsExplicitReleasePredecessor (0.04s)
+    sign_test.go:61: unexpected predecessor inventory: [edc0c72101a437c6e12c40a081ef59ae41cf0db32bcaedb73824ec48495aaee5 66590e8e967ede6b36d8fa45cdbee1cd80f69505cca698b0e4a9bd960842735a 767527e0d7f54866bab95f4642ffffb2a344024c1805f44b3d5ea9c024829125 f7aac5a703c4d296a3474d90c682be5c96733ba1f46aed94817954cbc864f367 d8436398ff6ed1cf74b7754106792075203dc3745f91d19c56450951b7302dde d47ce2be184c680422958f6c161e1e4ed19dff06cfd471c0ed0872d1445ec61b]
+FAIL
+FAIL	github.com/Hans-Einar/SDP/SDPTool/tools/profile	6.911s
+FAIL

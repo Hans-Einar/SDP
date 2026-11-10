@@ -1,0 +1,112 @@
+[
+  {
+    "id": "sdl/system-3373b3c3f2d2fa02/VP01",
+    "state": "available",
+    "exit": 0
+  },
+  {
+    "id": "sdl/system-3373b3c3f2d2fa02/VP02",
+    "state": "available",
+    "exit": 0
+  },
+  {
+    "id": "sdl/system-3373b3c3f2d2fa02/VP03",
+    "state": "empty",
+    "exit": 0
+  },
+  {
+    "id": "sdl/system-3373b3c3f2d2fa02/VP04",
+    "state": "empty",
+    "exit": 0
+  },
+  {
+    "id": "sdl/system-3373b3c3f2d2fa02/VP05",
+    "state": "empty",
+    "exit": 0
+  },
+  {
+    "id": "sdl/system-3373b3c3f2d2fa02/VP06",
+    "state": "empty",
+    "exit": 0
+  },
+  {
+    "id": "sdl/system-3373b3c3f2d2fa02/VP07",
+    "state": "available",
+    "exit": 0
+  },
+  {
+    "id": "sdl/system-3373b3c3f2d2fa02/VP08",
+    "state": "empty",
+    "exit": 0
+  },
+  {
+    "id": "sdl/system-3373b3c3f2d2fa02/VP09",
+    "state": "empty",
+    "exit": 0
+  },
+  {
+    "id": "sdl/system-3373b3c3f2d2fa02/VP10",
+    "state": "empty",
+    "exit": 0
+  },
+  {
+    "id": "sdl/system-3373b3c3f2d2fa02/VP11",
+    "state": "available",
+    "exit": 0
+  },
+  {
+    "id": "sdl/system-73eb1d442fbde83f/VP01",
+    "state": "empty",
+    "exit": 0
+  },
+  {
+    "id": "sdl/system-73eb1d442fbde83f/VP02",
+    "state": "available",
+    "exit": 0
+  },
+  {
+    "id": "sdl/system-73eb1d442fbde83f/VP03",
+    "state": "empty",
+    "exit": 0
+  },
+  {
+    "id": "sdl/system-73eb1d442fbde83f/VP04",
+    "state": "empty",
+    "exit": 0
+  },
+  {
+    "id": "sdl/system-73eb1d442fbde83f/VP05",
+    "state": "empty",
+    "exit": 0
+  },
+  {
+    "id": "sdl/system-73eb1d442fbde83f/VP06",
+    "state": "empty",
+    "exit": 0
+  },
+  {
+    "id": "sdl/system-73eb1d442fbde83f/VP07",
+    "state": "empty",
+    "exit": 0
+  },
+  {
+    "id": "sdl/system-73eb1d442fbde83f/VP08",
+    "state": "available",
+    "exit": 0
+  },
+  {
+    "id": "sdl/system-73eb1d442fbde83f/VP09",
+    "state": "available",
+    "exit": 0
+  },
+  {
+    "id": "sdl/system-73eb1d442fbde83f/VP10",
+    "state": "empty",
+    "exit": 0
+  },
+  {
+    "id": "sdl/system-73eb1d442fbde83f/VP11",
+    "state": "available",
+    "exit": 0
+  }
+]

@@ -24,3 +24,14 @@ confirmed and original signed descriptor downloaded; predecessor digest added.
 Publisher private key not located locally; owner asked for location only, not
 secret contents. Preparation continues. Public identities remain unset until
 observed. No ProjectGovernance completion or project-directory upgrade inferred.
+
+T002, 2026-11-10, manual summary. Local preparation reviewed at c337712;
+[Evidence](../Maintenance/R221/Evidence.md),
+[Review](../Maintenance/R221/Review.md) and exact package identity retained.
+All local suites and 22 actual viewpoint requests pass. Six signed predecessor
+installations preserve owner files through unsigned-target rehearsal and repeat
+no-op. Corrected a predecessor test expectation; runtime remains unchanged.
+Portable static amd64 v1 package replaces the narrower initial build. PR57 is
+pushed; exact CI remains pending. Owner is locating the separate publisher key,
+possibly on an offline laptop. No publication, main merge or project upgrade is
+claimed. Next: recover key, finish CI, sign/rehearse/publish/verify distribution.

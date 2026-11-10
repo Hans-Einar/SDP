@@ -1,0 +1,68 @@
+[
+  {
+    "from": "0.2.0",
+    "originalSignatureVerified": true,
+    "target": "unsigned development-c337712",
+    "preserved": [
+      "SDP/Sessions/owner.md",
+      "SDP/navigation.json",
+      "SDP/SDL/Fixture.design"
+    ],
+    "repeatActions": 0
+  },
+  {
+    "from": "0.2.1",
+    "originalSignatureVerified": true,
+    "target": "unsigned development-c337712",
+    "preserved": [
+      "SDP/Sessions/owner.md",
+      "SDP/navigation.json",
+      "SDP/SDL/Fixture.design"
+    ],
+    "repeatActions": 0
+  },
+  {
+    "from": "1.0.0",
+    "originalSignatureVerified": true,
+    "target": "unsigned development-c337712",
+    "preserved": [
+      "SDP/Sessions/owner.md",
+      "SDP/navigation.json",
+      "SDP/SDL/Fixture.design"
+    ],
+    "repeatActions": 0
+  },
+  {
+    "from": "2.0.0",
+    "originalSignatureVerified": true,
+    "target": "unsigned development-c337712",
+    "preserved": [
+      "SDP/Sessions/owner.md",
+      "SDP/navigation.json",
+      "SDP/SDL/Fixture.design"
+    ],
+    "repeatActions": 0
+  },
+  {
+    "from": "2.1.0",
+    "originalSignatureVerified": true,
+    "target": "unsigned development-c337712",
+    "preserved": [
+      "SDP/Sessions/owner.md",
+      "SDP/navigation.json",
+      "SDP/SDL/Fixture.design"
+    ],
+    "repeatActions": 0
+  },
+  {
+    "from": "2.2.0",
+    "originalSignatureVerified": true,
+    "target": "unsigned development-c337712",
+    "preserved": [
+      "SDP/Sessions/owner.md",
+      "SDP/navigation.json",
+      "SDP/SDL/Fixture.design"
+    ],
+    "repeatActions": 0
+  }
+]
