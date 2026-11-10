@@ -1,0 +1,71 @@
+{
+  "sdptoolSource": "643ec77a69a4303237f37dc87d804e24f54f665e",
+  "clientSource": "b3258f9d9b592bf6f251a32e69530432f4cc038c",
+  "clientBootstrap": "v0.0.0-20261110231554-643ec77a69a4",
+  "GOAMD64": "v1",
+  "productionSigned": true,
+  "published": false,
+  "checks": [
+    {
+      "name": "linux-key",
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "name": "linux-offline",
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "name": "old-client-refusal",
+      "exit": 4,
+      "expected": 4
+    },
+    {
+      "name": "old-production-default",
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "name": "tampered-descriptor",
+      "exit": 4,
+      "expected": 4
+    },
+    {
+      "name": "signed-install-preview",
+      "exit": 0,
+      "expected": 0
+    },
+    {
+      "name": "signed-install-apply",
+      "exit": 0,
+      "expected": 0
+    }
+  ],
+  "artifacts": {
+    "package-643ec77/sdptool": {
+      "sha256": "dd2cfab9c6116ad60c998b24f8d1985d08dde10b30cf2d2135a74e741984c23d",
+      "size": 15798074
+    },
+    "package-643ec77/sdp-release.json": {
+      "sha256": "3ab312c7ea8f9d82ebfdd48a6c557bb65bf00e73d06c3ea77ae4852e443ed3b1",
+      "size": 203901
+    },
+    "package-643ec77/sdp-release.json.sig": {
+      "sha256": "ec5229f11cd805813e6abb6760bc91bd0927c04363ca334e2d39c94abafe27a8",
+      "size": 180
+    },
+    "gh-sdp-0.2.3-amd64v1/gh-sdp-linux-amd64": {
+      "sha256": "274dfc2e2967a957d85571af39c1a2f89f5d4b95dcdd4fe1a9debca152204f0f",
+      "size": 9449901
+    },
+    "operational-checks-amd64v1.json": {
+      "sha256": "c0fe0c953f0651e2b7f8e9fadcc64e662b9730f104ec3453d90e357ed3695167",
+      "size": 484409
+    },
+    "packaged-tests-amd64v1.log": {
+      "sha256": "c06e8d52dc3dc30fd28e6dbd291ab406d642588b4f96a5f647f5a3fc08db805f",
+      "size": 464
+    }
+  }
+}

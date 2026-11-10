@@ -10,7 +10,8 @@ gantt
 
 | Step | State | Outcome |
 | --- | --- | --- |
-| R221-K1 / R221-M1 | active | Linux publisher trust, client bridge preparation, rebuilt candidate and review |
+| R221-K1 | completed | Independent Linux signer, overlapping trust, tested bridge candidate and scoped review |
+| R221-M1 | active | Final revised-candidate release checklist and predecessor-upgrade evidence |
 | R221-M2 | planned | Signed publication and verified explicit gh-sdp selection |
 
 Goal: publish the owner-selected2.2.1 corresponding to local34ee535, with truthful
@@ -46,3 +47,14 @@ Generated Linux-only key; existing laptop key untouched. Added overlapping trust
 and a public proof regression. R221's historical candidate/review no longer
 describe the changed bootstrap; rebuild and release checks remain required.
 Next: verify trust and prepare a pinned gh-sdp bridge; public release remains distinct.
+
+
+T003 closeout work summary: R221-K1 completed with clean producer643ec77 and
+clientb3258f9, public dependency pin and portable amd64/v1 package. Exact signed
+candidate, seven operational checks and packaged tests pass; independent reviewer
+approves bounded preparation. Linux key remains only on Linux, laptop key untouched.
+See Linux-Candidate.json, Linux-Signing.md and Linux-Review.md. The original R221
+release review is not reused for the trust change. No installed client replacement,
+published release, main merge or real project upgrade. Next: R221-M1 final release
+gates and bridge publication coordination, then R221-M2; full publication remains
+distinct from this completed signing prerequisite. Traceability routine also loaded.

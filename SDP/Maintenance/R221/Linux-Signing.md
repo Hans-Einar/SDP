@@ -34,5 +34,19 @@ Observed on Linux, 2026-11-11:
 - Linux key ID: `2c947457cffe015f870168cb332242c49606fdea378a13d875579544c2989c03`.
 - Positive Linux proof and tampered-data, truncated-signature, wrong-known-key,
   unknown-key and invalid-provenance regressions passed.
-Client build, exact signed package and independent review are pending.
+The clean source643ec77 package was signed with the Linux key. Exact identity and
+operational checks are in [Linux-Candidate.json](Linux-Candidate.json).
+The bridge client at b3258f9 imports immutable bootstrap643ec77 with no replace.
+Its final portable package was built with `GOAMD64=v1 bash scripts/package.sh
+0.2.3 ~/.local/state/sdp-linux-signing/gh-sdp-0.2.3-amd64v1`.
+New/old publisher acceptance, offline use, old-client refusal, corrupt-descriptor
+refusal and actual signed install preview/apply pass. Packaged integration through
+isolated gh routing passes. [Independent review](Linux-Review.md) approves this
+bounded preparation. No installed user extension was replaced.
+
+R221-K1 is complete. R221-M1/M2 retain final release work: full revised-candidate
+checks, supported predecessor upgrades with the signed target, CI and publication
+disposition. Candidate.json and earlier reviews describe the historical c337712
+package, not the new signer. The bridge client must be made available to consumers
+before they select Linux-signed releases.
 No private key backup, release publication or end-user client upgrade is claimed.

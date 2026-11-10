@@ -52,7 +52,7 @@ This supersedes the runtime-byte preservation constraint only for bootstrap
 trust. Existing candidate c337712, package and review remain historical evidence;
 the release needs a new clean-source package and final review after this edit.
 
-R221-K1 (active): Linux key, overlapping trust, regression proof, operator guide
+R221-K1 (completed; see Linux-Signing.md and Linux-Review.md): Linux key, overlapping trust, regression proof, operator guide
 and gh-sdp bridge candidate pinned to the new immutable bootstrap. Keep the
 2.2.0 default until a separately checked 2.2.1 release is available. Complete
 independent review and tests, without claiming published client adoption.
