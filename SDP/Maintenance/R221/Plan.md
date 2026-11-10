@@ -1,0 +1,40 @@
+# SDP 2.2.1 — publish the local producer capability set
+
+| Field | Value |
+| --- | --- |
+| id | MAINT-SDP-0019 |
+| project | SDP |
+| state | active |
+| PlanType | MaintenancePlan |
+| BranchPolicy | current checkout, sdp/release-2.2.1; no new worktree |
+| CommitPolicy | milestone |
+| SessionId | SESSION-SDP-0014 |
+
+Owner explicitly requests SDP2.2.1 equivalent to the local producer built from
+34ee535fbf6257b73d2fa0c7fbe4f9d5131aaf5e. Prepare, verify, independently review and
+publish the signed Linux amd64 release. Preserve runtime implementation bytes;
+change release metadata, notes, generated release log and predecessor inventory
+only. Final release provenance differs from the local development build.
+
+Version2.2.1 is an explicit owner selection. Relative to public2.2.0 this includes
+additive viewpoint/governance changes, so do not describe it as solely a bugfix
+or infer complete governance acceptance. Existing PG obligations remain open.
+No new feature implementation, client release, project upgrade or machine I/O.
+
+Use the existing checklist and a single final independent release review. Check
+exact source, complete product tests and actual published2.2.0 upgrade path,
+preserved owner documents, signatures, downloaded asset identity and explicit
+gh-sdp selection. Retain earlier supported predecessors. If the publisher key is
+unavailable, finish a reviewable candidate but never substitute an untrusted key
+or claim signed/public completion. Ask only for the existing key location.
+
+| Milestone | State | Done criteria |
+| --- | --- | --- |
+| R221-M1 | active | Exact source/package, targeted/full release gates and independent review |
+| R221-M2 | planned | Signed tag/release/download verification and recorded consumer selection |
+
+Source checkout initially clean; only one SDP worktree exists. Previous PG branch
+is preserved. No concurrent dirty work observed. Release scope adds no runtime
+code changes to the local producer baseline. Publication is authorized by the
+current owner instruction; update main through normal integration after validation
+under the preceding consolidation direction, without force or unrelated edits.

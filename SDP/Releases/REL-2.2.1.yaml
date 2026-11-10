@@ -1,0 +1,13 @@
+schemaVersion: '1.0'
+releaseId: REL-2.2.1
+version: 2.2.1
+state: unreleased
+releaseNotesPath: RELEASE-NOTES.md
+includedCapabilities:
+- sdp.install.v1
+verificationRecords: []
+reviewRecords: []
+migrationRecord: SDP/Maintenance/R221/Plan.md
+releasePreparationCommit: null
+gitTag: null
+githubReleaseUrl: null
