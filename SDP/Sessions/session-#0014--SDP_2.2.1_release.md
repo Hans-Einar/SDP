@@ -71,3 +71,11 @@ gh-sdp14ebf4a are clean, prior publication tags absent. Inventory finds seven
 signed schema3 receipts and one legacy gh-sdp schema1 installation. Kitty and
 XFMD have pre-existing dirty files; these must remain intact. Evidence and
 root-bound plans live outside source in ~/.local/state/sdp-rollout-2.2.1.
+
+T004 gate finding: full local suite, vet and85 Toolkit tests pass. Existing CI
+race runs time out at the default10-minute package bound while recovery subtests
+continue. CI-Budget.md records the bounded30-minute test/45-minute job correction
+without skipping tests. Rebuild exact producer provenance; no product logic change.
+Fleet previews also expose pre-existing invalid histories in HEOS, emuSA80535-N
+and both Ponsse checkouts. Do not rewrite these histories; three other signed
+installations have applicable plans after verified predecessor cache priming.
