@@ -4,13 +4,13 @@
 gantt
     title Sequence only — release preparation and publication
     dateFormat YYYY-MM-DD
-    Prepare and verify candidate :active, a, 2026-11-10, 1d
+    Prepare Linux trust and revised candidate :active, a, 2026-11-10, 1d
     Publish and verify distribution :b, after a, 1d
 ```
 
 | Step | State | Outcome |
 | --- | --- | --- |
-| R221-M1 | active | Freeze equivalent source, validate metadata/package, independent review |
+| R221-K1 / R221-M1 | active | Linux publisher trust, client bridge preparation, rebuilt candidate and review |
 | R221-M2 | planned | Signed publication and verified explicit gh-sdp selection |
 
 Goal: publish the owner-selected2.2.1 corresponding to local34ee535, with truthful
@@ -35,3 +35,14 @@ Portable static amd64 v1 package replaces the narrower initial build. PR57 is
 pushed; exact CI remains pending. Owner is locating the separate publisher key,
 possibly on an offline laptop. No publication, main merge or project upgrade is
 claimed. Next: recover key, finish CI, sign/rehearse/publish/verify distribution.
+
+
+T003, 2026-11-11, manual work summary (host turn ID unavailable). Owner requires
+an independent Linux signing key, since the laptop is only intermittently online.
+Read SDP entry/document workflow, Architect, Planning, Master and Worker skills,
+local Git/Session/management rules and installation trust contract.
+Preflight and bounded refinement: [Linux signing](../Maintenance/R221/Linux-Signing.md).
+Generated Linux-only key; existing laptop key untouched. Added overlapping trust
+and a public proof regression. R221's historical candidate/review no longer
+describe the changed bootstrap; rebuild and release checks remain required.
+Next: verify trust and prepare a pinned gh-sdp bridge; public release remains distinct.

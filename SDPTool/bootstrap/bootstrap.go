@@ -31,11 +31,12 @@ const DefaultRelease = "https://github.com/Hans-Einar/SDP/releases/download/v2.2
 
 // Publisher trust is compiled into the distribution, never supplied by a descriptor.
 var trustedKeys = map[string]ed25519.PublicKey{
-	"bfc4838a7fbe7e7e3e84f86b9b435e69e6e503f4caf01a92319147e9ab701618": publisherKey(),
+	"bfc4838a7fbe7e7e3e84f86b9b435e69e6e503f4caf01a92319147e9ab701618": publisherKey("N9eFgkVFngWcVlW39UELu9R6J6+wIbisdHh6VFGfFao="),
+	"2c947457cffe015f870168cb332242c49606fdea378a13d875579544c2989c03": publisherKey("3c4v3py8MxlsZ0zGp0T2Wtmcl2rXQ4f4WEM/YBShBiw="),
 }
 
-func publisherKey() ed25519.PublicKey {
-	b, err := base64.StdEncoding.DecodeString("N9eFgkVFngWcVlW39UELu9R6J6+wIbisdHh6VFGfFao=")
+func publisherKey(encoded string) ed25519.PublicKey {
+	b, err := base64.StdEncoding.DecodeString(encoded)
 	if err != nil {
 		panic(err)
 	}

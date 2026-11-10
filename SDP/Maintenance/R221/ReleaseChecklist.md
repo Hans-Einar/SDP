@@ -1,7 +1,9 @@
 # SDP2.2.1 checklist — local preparation reviewed; publication pending
 
 Candidate: `c3377121acd24013aab01a33067b9b1d976b8713`. See [Evidence](Evidence.md),
-[Review](Review.md) and [Candidate](Candidate.json). Signing key unavailable.
+[Review](Review.md) and [Candidate](Candidate.json). Historical preparation only. The Linux trust addition requires a new candidate.
+See [Linux signing](Linux-Signing.md); the old package must not be published as
+the updated producer.
 
 # ReleaseChecklist
 

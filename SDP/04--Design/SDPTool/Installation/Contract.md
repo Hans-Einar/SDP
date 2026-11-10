@@ -131,8 +131,11 @@ The descriptor pins platform binary, profile payload and inventory hashes and
 protocol/capability requirements. Reject unknown signing keys, bad signatures,
 wrong digest/size/platform and unsupported protocol before executing a downloaded
 binary. A descriptor cannot supply its own new trusted key. Key rotation requires
-a client update carrying an overlap of trusted keys; publishing actual keys and
-releases belongs to the later release work, not this design.
+a client update carrying an overlap of trusted keys. Owner decision 2026-11-11
+adds the always-available Linux publisher while retaining the laptop publisher.
+The descriptor/signature formats and fail-closed verification remain unchanged.
+See [publisher operations](../../../../SDPTool/Publisher-Signing.md) for key
+identities, client rollout and the distinction from GitHub authentication.
 
 Release selection defaults to eligible stable process releases from the configured
 canonical publisher. Engine bootstrap selects a compatible platform binary from
