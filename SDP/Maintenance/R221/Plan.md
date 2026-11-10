@@ -6,7 +6,7 @@
 | project | SDP |
 | state | active |
 | PlanType | MaintenancePlan |
-| BranchPolicy | current checkout, sdp/release-2.2.1; no new worktree |
+| BranchPolicy | current |
 | CommitPolicy | milestone |
 | SessionId | SESSION-SDP-0014 |
 
@@ -15,6 +15,7 @@ Owner explicitly requests SDP2.2.1 equivalent to the local producer built from
 publish the signed Linux amd64 release. Preserve runtime implementation bytes;
 change release metadata, notes, generated release log and predecessor inventory
 only. Final release provenance differs from the local development build.
+Use branch sdp/release-2.2.1 in the existing checkout; no new worktree.
 
 Version2.2.1 is an explicit owner selection. Relative to public2.2.0 this includes
 additive viewpoint/governance changes, so do not describe it as solely a bugfix
