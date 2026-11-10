@@ -1,9 +1,7 @@
-# SDP2.2.1 checklist — local preparation reviewed; publication pending
+# SDP2.2.1 final candidate checklist
 
-Candidate: `c3377121acd24013aab01a33067b9b1d976b8713`. See [Evidence](Evidence.md),
-[Review](Review.md) and [Candidate](Candidate.json). Historical preparation only. The Linux trust addition requires a new candidate.
-See [Linux signing](Linux-Signing.md); the old package must not be published as
-the updated producer.
+Candidate6f33c68; see [Final evidence](Final-Evidence.md). Historical candidates
+remain preserved in their original records. Publication pending exact CI.
 
 # ReleaseChecklist
 
@@ -35,15 +33,15 @@ release log is not proof of publication. The project release contract governs.
 - [x] Reconcile SDP.manifest.yaml, Toolkit/SDP-install.manifest.json compatibility
   metadata, package version, release record and notes. Retained legacy metadata
   does not replace the current Go inventory or signed descriptor.
-- [ ] Build package and immutable sdp-release.json from a clean exact commit using
+- [x] Build package and immutable sdp-release.json from a clean exact commit using
   the Go profile builder. Verify file hashes, sourceCommit and executable identity.
   Never edit the built descriptor or use a project-local manifest as authority.
-- [ ] Sign descriptor with the trusted publisher key; verify signature, binary hash
+- [x] Sign descriptor with the trusted publisher key; verify signature, binary hash
   and SHA256SUMS. Store no private keys or secrets in evidence/repository.
-- [ ] Rehearse install and each supported upgrade from original verified descriptor
+- [x] Rehearse install and each supported upgrade from original verified descriptor
   bytes. Check new Sessions files, existing Session/document preservation, receipt,
   Maintenance entry/history, conflict handling and repeated no-op.
-- [ ] Test extracted-source operation, packaged signed child and normal bootstrap.
+- [x] Test extracted-source operation, packaged signed child and normal bootstrap.
   Development artifacts or test signers are not production signed evidence.
 
 ## Publish and consumer readiness
@@ -64,6 +62,3 @@ Consuming projects reuse the scope/content/publication checks; mark SDP publishe
 inventory/signing steps N/A if they do not distribute SDP itself. Keep their own
 application/package/installer acceptance checks alongside this list.
 
-Unchecked distribution steps have partial local evidence only: portable package,
-unsigned development target, test signer and Git-less release-log validation.
-They remain open until the actual production-signed candidate is checked.
