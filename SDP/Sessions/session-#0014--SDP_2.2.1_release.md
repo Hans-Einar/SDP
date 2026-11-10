@@ -6,13 +6,15 @@ gantt
     dateFormat YYYY-MM-DD
     Prepare Linux trust and revised candidate :active, a, 2026-11-10, 1d
     Publish and verify distribution :b, after a, 1d
+    Install clients and upgrade repositories :c, after b, 1d
 ```
 
 | Step | State | Outcome |
 | --- | --- | --- |
 | R221-K1 | completed | Independent Linux signer, overlapping trust, tested bridge candidate and scoped review |
 | R221-M1 | active | Final revised-candidate release checklist and predecessor-upgrade evidence |
-| R221-M2 | planned | Signed publication and verified explicit gh-sdp selection |
+| R221-M2 | active | Signed engine/client publication and download verification |
+| R221-M3 | planned | Three host client installs and Linux receipt-based project upgrades |
 
 Goal: publish the owner-selected2.2.1 corresponding to local34ee535, with truthful
 remaining PG limitations. Direct authorized Maintenance assignment:
@@ -58,3 +60,14 @@ release review is not reused for the trust change. No installed client replaceme
 published release, main merge or real project upgrade. Next: R221-M1 final release
 gates and bridge publication coordination, then R221-M2; full publication remains
 distinct from this completed signing prerequisite. Traceability routine also loaded.
+
+
+T004, 2026-11-11, manual work summary; host turn ID unavailable. Owner explicitly
+authorizes publication, installation on Linux/Beinerud/laptop and receipt-based
+Linux ~/git upgrades to2.2.1. Select client0.2.3 with2.2.1 default, superseding
+the unpublished bridge-only default. Release/Versioning/SDP routines loaded;
+reuse the existing R221 plan and required review. Preflight: SDP444f0aa and
+gh-sdp14ebf4a are clean, prior publication tags absent. Inventory finds seven
+signed schema3 receipts and one legacy gh-sdp schema1 installation. Kitty and
+XFMD have pre-existing dirty files; these must remain intact. Evidence and
+root-bound plans live outside source in ~/.local/state/sdp-rollout-2.2.1.

@@ -58,3 +58,14 @@ and gh-sdp bridge candidate pinned to the new immutable bootstrap. Keep the
 independent review and tests, without claiming published client adoption.
 BranchPolicy remains current (sdp/release-2.2.1), CommitPolicy milestone.
 The client uses its own working branch and record. R221-M2 remains pending.
+
+## Authorized publication and deployment — 2026-11-11
+
+Owner now requests publication and installation of gh-sdp on Linux, Beinerud and
+the laptop, followed by upgrades to2.2.1 of all gh-sdp-installed repositories under
+Linux ~/git. Publish the reviewed SDP2.2.1 first, then client0.2.3 with that default.
+This supersedes K1's preparation-only boundary; no main merge is required.
+R221-M3 (planned): inventory signed receipts, preview each upgrade, preserve
+owner files/dirty work, apply only applicable plans, verify receipts and repeat
+no-op. Legacy/manual receipts are reported separately, not silently adopted.
+No consumer application build/deployment or unrelated Git edits are selected.

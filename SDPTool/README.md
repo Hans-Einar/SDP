@@ -135,7 +135,7 @@ sdptool /path/to/project upgrade --resume install-OPERATION-ID --json
 ```
 
 The first command only previews. Local unsigned development inputs require
-`--artifact FILE --allow-unreleased`. The default selects signed SDP v0.2.0;
+`--artifact FILE --allow-unreleased`. The default selects signed SDP v2.2.1;
 --release or SDP_RELEASE may select another exact descriptor. Test-key inputs
 record test provenance only. Native Windows/macOS acceptance is outstanding. Root-bound plans
 cannot be applied to another project copy. Journals and backups are retained.

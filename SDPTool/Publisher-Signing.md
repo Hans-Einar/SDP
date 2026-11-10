@@ -40,9 +40,11 @@ as evidence of the new executable.
 
 Both bootstrap and SDPTool must contain the new trust anchor. gh-sdp imports a
 pinned bootstrap module: update that immutable dependency and build a new client.
-The bridge client can retain the existing signed SDP2.2.0 default while gaining
-both keys. It must be distributed before asking users to select Linux-signed
-releases. A later default-engine update is a separate release decision.
+The initial bridge candidate retained SDP2.2.0. The owner subsequently authorized
+publication and installation on Linux, Beinerud and the laptop, plus Linux project
+upgrades. The selected gh-sdp0.2.3 release now defaults to SDP2.2.1 with both keys.
+Publish and verify the engine distribution first, then the paired client; consumers
+must update the client before selecting Linux-signed releases.
 
 Old clients intentionally reject a Linux-only signature. Publishing a public key
 on GitHub, setting up SSH, or supplying a descriptor cannot teach them new trust.
