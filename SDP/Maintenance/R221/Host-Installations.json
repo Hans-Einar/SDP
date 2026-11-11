@@ -1,0 +1,53 @@
+[
+  {
+    "host": "labtop",
+    "extensions": "gh sdp\tHans-Einar/gh-sdp\tv0.2.3\ngh tree\tHans-Einar/gh-tree\tv0.3.14\n",
+    "binarySHA256": "5631dc2e849da5598606394319451be94f6023e0eb7e9b4edc6c82e1647e39c5",
+    "engine": {
+      "installationProtocol": "sdp-install-command/1",
+      "installedFactSchemas": [
+        "1.0",
+        "2.0",
+        "3.0"
+      ],
+      "operation": "version",
+      "revision": "6f33c68ce25fb344487f565d5611a51089357632",
+      "schema": "sdptool/0.2",
+      "version": "2.2.1"
+    }
+  },
+  {
+    "host": "beinerud",
+    "extensions": "gh sdp\tHans-Einar/gh-sdp\tv0.2.3\n",
+    "binarySHA256": "5631dc2e849da5598606394319451be94f6023e0eb7e9b4edc6c82e1647e39c5",
+    "engine": {
+      "installationProtocol": "sdp-install-command/1",
+      "installedFactSchemas": [
+        "1.0",
+        "2.0",
+        "3.0"
+      ],
+      "operation": "version",
+      "revision": "6f33c68ce25fb344487f565d5611a51089357632",
+      "schema": "sdptool/0.2",
+      "version": "2.2.1"
+    }
+  },
+  {
+    "host": "Linux",
+    "extensions": "gh sdp\tHans-Einar/gh-sdp\tv0.2.3\n",
+    "binarySHA256": "5631dc2e849da5598606394319451be94f6023e0eb7e9b4edc6c82e1647e39c5",
+    "engine": {
+      "installationProtocol": "sdp-install-command/1",
+      "installedFactSchemas": [
+        "1.0",
+        "2.0",
+        "3.0"
+      ],
+      "operation": "version",
+      "revision": "6f33c68ce25fb344487f565d5611a51089357632",
+      "schema": "sdptool/0.2",
+      "version": "2.2.1"
+    }
+  }
+]

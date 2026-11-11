@@ -35,15 +35,15 @@ trust anchor is retained. Portable static Linux amd64/v1 packages use clean sour
   chain verified with local descriptor selection. This is not public-default evidence.
 - final-extracted-check.log: all seven generated logs checked from exact Git-less source.
 - CI: https://github.com/Hans-Einar/SDP/actions/runs/42925278417
-  is the exact6f33 run; publication waits for success.
+  passed on exact source6f33.
 
 ## Independent review
 
 REV-SDPTOOL-R221-FINAL / REV-SPS-010: independent reviewer
 review_release_rollout inspected exact source, package provenance, public-key
 signature (including independent OpenSSL verification), predecessor trials and
-client evidence. No findings. Publication is conditional on exact CI success,
-record reconciliation and actual downloaded release/default verification.
+client evidence. No findings. The reviewer independently confirmed exact CI success before
+publication; downloaded assets and public-default verification subsequently passed.
 Review is distinct from owner publication authority, explicitly supplied2026-11-11.
 
 ## Consumer rollout scope
@@ -56,5 +56,14 @@ pre-existing invalid management history; do not rewrite immutable event bytes.
 The gh-sdp repository's schema1 manual Toolkit installation is excluded;
 adoption is a separate change. No application builds or main merges are selected.
 
-This record initially describes verified preparation. Actual publication,
-installation and per-repository results must be recorded separately below.
+Actual publication, installation and per-repository results are recorded below.
+
+## Final disposition
+
+Exact CI42925278417 passed. Public releases, downloaded bytes, fresh-cache
+client default and all three installed hosts verified. See Publication.json,
+Host-Installations.json and Rollout.md. Four consumer histories remain blocked.
+
+Independent postpublication reconciliation by review_release_rollout approved
+the exact annotated tags, public release/download evidence, three host identities,
+three signed receipts/no-op plans and truthful four-consumer blocker scope.

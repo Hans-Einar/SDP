@@ -1,0 +1,88 @@
+[
+  {
+    "repo": "/home/warloc/git/HEOS",
+    "status": "blocked-preexisting-invalid-history",
+    "from": "2.2.0"
+  },
+  {
+    "repo": "/home/warloc/git/emuSA80535-N",
+    "status": "blocked-preexisting-invalid-history",
+    "from": "2.2.0"
+  },
+  {
+    "repo": "/home/warloc/git/gh-sdp",
+    "status": "excluded-legacy-manual",
+    "from": "0.2.0"
+  },
+  {
+    "repo": "/home/warloc/git/kitty",
+    "from": "2.1.0",
+    "status": "upgraded",
+    "planDigest": "6384ef2952594caeba5559e1d80e419cab400db7a8ceac48292313c29b1ab0c1",
+    "to": "2.2.1",
+    "provenance": "signed",
+    "descriptorDigest": "11e76cffd507e06aa36e07d56f3cf4f121c47393bf8383786c47ccbd202b5ea1",
+    "operationId": "install-6384ef2952594caeba5559e1",
+    "ownerFilesPreserved": true,
+    "historyPrefixPreserved": true,
+    "indexPreserved": true,
+    "repeatNoChange": true,
+    "actions": 6
+  },
+  {
+    "repo": "/home/warloc/git/ponsse",
+    "status": "blocked-preexisting-invalid-history",
+    "from": "2.2.0"
+  },
+  {
+    "repo": "/home/warloc/git/ponsse-service-continuity",
+    "status": "blocked-preexisting-invalid-history",
+    "from": "2.2.0"
+  },
+  {
+    "repo": "/home/warloc/git/sdui_widget_lab",
+    "from": "2.1.0",
+    "status": "upgraded",
+    "planDigest": "45ed1f5661ef7663e2408c4bcd1f87a0052bb4982521841773ecd5609928fe75",
+    "to": "2.2.1",
+    "provenance": "signed",
+    "descriptorDigest": "11e76cffd507e06aa36e07d56f3cf4f121c47393bf8383786c47ccbd202b5ea1",
+    "operationId": "install-45ed1f5661ef7663e2408c4b",
+    "ownerFilesPreserved": true,
+    "historyPrefixPreserved": true,
+    "indexPreserved": true,
+    "repeatNoChange": true,
+    "actions": 6
+  },
+  {
+    "repo": "/home/warloc/git/xfmd",
+    "from": "2.0.0",
+    "status": "upgraded",
+    "planDigest": "cc6f0bffe91a5705d9f45eb9747f88e5523cce9d8dae9972dd427405daca4ced",
+    "to": "2.2.1",
+    "provenance": "signed",
+    "descriptorDigest": "11e76cffd507e06aa36e07d56f3cf4f121c47393bf8383786c47ccbd202b5ea1",
+    "operationId": "install-cc6f0bffe91a5705d9f45eb9",
+    "historyPrefixPreserved": true,
+    "indexPreserved": true,
+    "repeatNoChange": true,
+    "actions": 6,
+    "ownerFilesPreservedExceptConcurrentEdits": true,
+    "concurrentEditsOutsidePlan": [
+      {
+        "path": "packaging/repository/test-publisher.py",
+        "mtimeUTC": "2026-11-11T00:03:23.598935+00:00",
+        "sha256": "8c89d947c9aa04df1cbe88e3627c5716ed5ecaceee3d76a64b89e9ce7ad86f21",
+        "outsideInstallerPlan": true
+      },
+      {
+        "path": "packaging/rpm/Containerfile",
+        "mtimeUTC": "2026-11-11T00:04:09.195497+00:00",
+        "sha256": "6484ee078d106914d09c0833d67d0d243c87ebf86065a507170dd88fa64f5bb7",
+        "outsideInstallerPlan": true
+      }
+    ],
+    "initialHeadChanged": true,
+    "refreshedBackup": "fleet/xfmd/before"
+  }
+]

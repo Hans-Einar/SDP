@@ -1,7 +1,7 @@
 # SDP2.2.1 final candidate checklist
 
 Candidate6f33c68; see [Final evidence](Final-Evidence.md). Historical candidates
-remain preserved in their original records. Publication pending exact CI.
+remain preserved in their original records. Exact CI passed; publication and deployment results are recorded below.
 
 # ReleaseChecklist
 
@@ -46,15 +46,15 @@ release log is not proof of publication. The project release contract governs.
 
 ## Publish and consumer readiness
 
-- [ ] Exact candidate CI and required independent review pass; working tree clean;
+- [x] Exact candidate CI and required independent review pass; working tree clean;
   tag absent; merge/publication explicitly authorized.
-- [ ] Publish annotated tag and GitHub Release with generated log, signed descriptor,
+- [x] Publish annotated tag and GitHub Release with generated log, signed descriptor,
   executable and checksums; verify downloaded assets against exact release.
-- [ ] Reconcile actual tag/commit/time and append truthful release events only after
+- [x] Reconcile actual tag/commit/time and append truthful release events only after
   success. Do not rewrite a released log or silently correct released notes.
 - [x] Verify gh-sdp selection: its compiled default is pinned. Either publish/update
   the client default or document an explicit SDP_RELEASE selecting this release.
-- [ ] Provide preview/apply commands and expected receipt. Owner-requested manual
+- [x] Provide preview/apply commands and expected receipt. Owner-requested manual
   project upgrade remains manual; never confuse updating the gh extension with
   upgrading the project's SDP directory.
 
@@ -62,3 +62,11 @@ Consuming projects reuse the scope/content/publication checks; mark SDP publishe
 inventory/signing steps N/A if they do not distribute SDP itself. Keep their own
 application/package/installer acceptance checks alongside this list.
 
+
+## Observed publication outcome
+
+Exact candidate CI and independent review passed. Publication.json records the
+annotated tag, original source, public release and byte-verified downloads.
+Client public-default verification and all three installed-host checks passed.
+All producer distribution checks apply and passed; see Final-Evidence.md.
+Consumer rollout is partial as documented in Rollout.md.

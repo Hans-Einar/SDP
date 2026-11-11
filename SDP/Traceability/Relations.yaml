@@ -148,6 +148,11 @@ slices:
     verification: [VER-SDP-005-001, VER-SDP-005-002, VER-SDP-005-003]
 fixes: {}
 reviews:
+  REV-SDPTOOL-R221-FINAL:
+    status: approved
+    path: Maintenance/R221/Final-Evidence.md
+    release: REL-2.2.1
+    commit: 6f33c68ce25fb344487f565d5611a51089357632
   REV-SDPTOOL-R221:
     status: local-preparation-approved-publication-pending
     path: Maintenance/R221/Review.md
@@ -244,6 +249,10 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-R221-FINAL:
+    status: passed
+    path: Maintenance/R221/Final-Evidence.md
+    release: REL-2.2.1
   SDPTOOL-VER-R221:
     status: local-checks-passed-signed-publication-pending
     path: Maintenance/R221/Evidence.md
@@ -666,15 +675,15 @@ migrations: {}
 releases:
   REL-2.2.1:
     version: 2.2.1
-    state: unreleased
+    state: released
     releaseNotes: RELEASE-NOTES.md
     manifest: SDP.manifest.yaml
     releaseRecord: SDP/Releases/REL-2.2.1.yaml
-    verification: [SDPTOOL-VER-R221]
-    reviews: [REV-SDPTOOL-R221]
-    releaseCommit: null
-    gitTag: null
-    githubRelease: null
+    verification: [SDPTOOL-VER-R221-FINAL]
+    reviews: [REV-SDPTOOL-R221-FINAL]
+    releaseCommit: 6f33c68ce25fb344487f565d5611a51089357632
+    gitTag: v2.2.1
+    githubRelease: https://github.com/Hans-Einar/SDP/releases/tag/v2.2.1
   REL-2.2.0:
     version: 2.2.0
     state: released

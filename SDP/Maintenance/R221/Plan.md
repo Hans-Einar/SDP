@@ -33,8 +33,8 @@ or claim signed/public completion. Ask only for the existing key location.
 
 | Milestone | State | Done criteria |
 | --- | --- | --- |
-| R221-M1 | active | Exact source/package, targeted/full release gates and independent review |
-| R221-M2 | planned | Signed tag/release/download verification and recorded consumer selection |
+| R221-M1 | completed | Exact source/package, targeted/full release gates and independent review |
+| R221-M2 | completed | Signed tag/release/download verification and recorded consumer selection |
 
 Source checkout initially clean; only one SDP worktree exists. Previous PG branch
 is preserved. No concurrent dirty work observed. Release scope adds no runtime
@@ -69,3 +69,8 @@ R221-M3 (planned): inventory signed receipts, preview each upgrade, preserve
 owner files/dirty work, apply only applicable plans, verify receipts and repeat
 no-op. Legacy/manual receipts are reported separately, not silently adopted.
 No consumer application build/deployment or unrelated Git edits are selected.
+
+## Current rollout outcome
+
+R221-M1 and M2 completed; M3 partially complete with four blocked consumers.
+See [Rollout](Rollout.md). The plan remains active for explicit blocker resolution.

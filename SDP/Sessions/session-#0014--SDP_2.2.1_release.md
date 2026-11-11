@@ -4,17 +4,17 @@
 gantt
     title Sequence only — release preparation and publication
     dateFormat YYYY-MM-DD
-    Prepare Linux trust and revised candidate :active, a, 2026-11-10, 1d
-    Publish and verify distribution :b, after a, 1d
-    Install clients and upgrade repositories :c, after b, 1d
+    Prepare Linux trust and revised candidate :done, a, 2026-11-10, 1d
+    Publish and verify distribution :done, b, after a, 1d
+    Install clients and upgrade repositories :active, c, after b, 1d
 ```
 
 | Step | State | Outcome |
 | --- | --- | --- |
 | R221-K1 | completed | Independent Linux signer, overlapping trust, tested bridge candidate and scoped review |
-| R221-M1 | active | Final revised-candidate release checklist and predecessor-upgrade evidence |
-| R221-M2 | active | Signed engine/client publication and download verification |
-| R221-M3 | planned | Three host client installs and Linux receipt-based project upgrades |
+| R221-M1 | completed | Final revised-candidate release checklist and predecessor-upgrade evidence |
+| R221-M2 | completed | Signed engine/client publication and download verification |
+| R221-M3 | partial / blocked | Three host client installs and Linux receipt-based project upgrades |
 
 Goal: publish the owner-selected2.2.1 corresponding to local34ee535, with truthful
 remaining PG limitations. Direct authorized Maintenance assignment:
@@ -79,3 +79,11 @@ without skipping tests. Rebuild exact producer provenance; no product logic chan
 Fleet previews also expose pre-existing invalid histories in HEOS, emuSA80535-N
 and both Ponsse checkouts. Do not rewrite these histories; three other signed
 installations have applicable plans after verified predecessor cache priming.
+
+T004 outcome: exact CI and independent release review passed. Published signed
+SDP2.2.1 and gh-sdp0.2.3, verified public downloads/default and installed all three
+hosts. Upgraded kitty, sdui_widget_lab and xfmd with owner/index/history
+preservation and repeat no-op. Four invalid historical ledgers remain untouched;
+legacy manual gh-sdp SDP excluded. See R221/Rollout.md. Next: select a
+history-preserving reconciliation for four blocked consumers; no full-fleet
+completion or main merge claimed.
