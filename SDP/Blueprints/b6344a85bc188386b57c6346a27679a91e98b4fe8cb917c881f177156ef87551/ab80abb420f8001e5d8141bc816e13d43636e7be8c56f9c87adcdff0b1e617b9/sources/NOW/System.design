@@ -1,0 +1,7 @@
+language design-core version 0.6.
+system SDPTool.
+includes "Intent.design".
+includes "Responsibilities.design".
+SDPTool contains ControllerProcess.
+SDPTool contains McpProcess.
+SDPTool contains SdpToolHost.

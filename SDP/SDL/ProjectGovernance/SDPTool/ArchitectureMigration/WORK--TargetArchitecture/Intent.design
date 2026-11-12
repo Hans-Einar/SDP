@@ -1,0 +1,15 @@
+language design-core version 0.6.
+usecase CoordinateWork.
+feature GovernedProjectTools.
+usecase InspectProject.
+usecase MaintainDesign.
+usecase MaintainInstallation.
+actor ProjectUser.
+GovernedProjectTools supports CoordinateWork.
+GovernedProjectTools supports InspectProject.
+GovernedProjectTools supports MaintainDesign.
+GovernedProjectTools supports MaintainInstallation.
+ProjectUser pursues CoordinateWork.
+ProjectUser pursues InspectProject.
+ProjectUser pursues MaintainDesign.
+ProjectUser pursues MaintainInstallation.

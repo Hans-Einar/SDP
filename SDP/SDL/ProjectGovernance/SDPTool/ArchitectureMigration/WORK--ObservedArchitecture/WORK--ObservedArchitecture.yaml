@@ -1,0 +1,35 @@
+schema: sdp-model/0.1
+id: 57cb1e54-2f1d-4c90-b445-df21a0d54dfc
+kind: work
+name: ObservedArchitecture
+head: 57cb1e54-2f1d-4c90-b445-df21a0d54dfc:00001
+sequence: 1
+sourceDigest: fff270782d8e9afa8129ac5619ecba88ef5b2ea9bf1f6cbdf8e9b95930e6cbd8
+metadataDigest: e0a9bd07110410fea0ed2f0cc3780b9d63b68d9cd1faca716bd2ace765fc56e0
+ledger:
+    - author: warloc
+      artifactName: ObservedArchitecture
+      id: 57cb1e54-2f1d-4c90-b445-df21a0d54dfc:00000
+      parents: []
+      kind: baseline
+      message: WORK baseline
+      recordedAt: "2026-11-12T18:26:45.114398298Z"
+      sourceDigest: 4585f3ebe7e43550a374592cb06f5148d1d09a27601439b90a8daf263120561c
+      inventory: {}
+      deleted: []
+      payload: .commits/#00000
+    - author: warloc
+      artifactName: ObservedArchitecture
+      id: 57cb1e54-2f1d-4c90-b445-df21a0d54dfc:00001
+      parents:
+        - 57cb1e54-2f1d-4c90-b445-df21a0d54dfc:00000
+      kind: commit
+      message: 'M1: pin ObservedArchitecture for Activity1'
+      recordedAt: "2026-11-12T18:27:56.151728253Z"
+      sourceDigest: fff270782d8e9afa8129ac5619ecba88ef5b2ea9bf1f6cbdf8e9b95930e6cbd8
+      inventory:
+        Intent.design: 89590c9848c9d75b90f280b3f2ffacab67c81d6a885ecf81497e79baf50c0238
+        Responsibilities.design: c270f138e90055d4cb5020ec81bda7dbba0feba4f4f8a0857c712ef0696a87c8
+        System.design: d77bb8983257bf90f0880ca11d2646e3274b18e775cbf0efcaf2a66f5e7634d4
+      deleted: []
+      payload: .commits/#00001

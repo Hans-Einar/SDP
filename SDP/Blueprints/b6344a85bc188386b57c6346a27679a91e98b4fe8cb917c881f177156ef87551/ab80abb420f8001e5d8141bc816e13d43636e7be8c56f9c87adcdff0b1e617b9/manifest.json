@@ -1,0 +1,25 @@
+{
+  "version": "sdp-blueprint/1",
+  "revision": "0dee92d2afc787ab39c2e99e0bc7388b71a09c6e33f07db1dbd40382a644233a",
+  "renderer": "",
+  "diagrams": null,
+  "facts": null,
+  "model_gaps": null,
+  "outputs": {
+    "assignment.json": "b3b0f13f14f8190374bce78ffa5d7a819acc477438573571b310177303fbe499",
+    "blueprint.json": "ca362f7af238a6d671826a5e5339182573d7bfe8ca14fd463a1e2df042a66dec",
+    "changes.md": "9afd18eb122f6d38b3a5ad72ed35b5fa421f275541923ae9a5ec57e4c3132b83",
+    "changes.mmd": "0dbf405afd894aa80c180dfa5ee9fa8a81ff87178a8d36450d3c83d44b6d83ca",
+    "context.md": "95a3c927fe9742be053ddb7b06aced8f7249b8745e928f87a1517a105438b8fd",
+    "context.mmd": "acab58b2f8edbb6823b948f191c05868e4a6295e8ea47978ed1dd33b28e019ed",
+    "evidence.md": "aa79f2c6bf12b38ec6cae0017e243cf5dbe52b2fc6c55145d7c4e4c8e92272d1",
+    "index.md": "462001d81d6d2b51034b5a4ca76b998bdfa9211992c6c8a566173139bd1bd609",
+    "obligations.md": "1b0ee720891a1c0d19bf89196dab8164a6e25698c0b4e7f3d20cebe86708f741",
+    "sources/NOW/Intent.design": "89590c9848c9d75b90f280b3f2ffacab67c81d6a885ecf81497e79baf50c0238",
+    "sources/NOW/Responsibilities.design": "c270f138e90055d4cb5020ec81bda7dbba0feba4f4f8a0857c712ef0696a87c8",
+    "sources/NOW/System.design": "d77bb8983257bf90f0880ca11d2646e3274b18e775cbf0efcaf2a66f5e7634d4",
+    "sources/TARGET/Intent.design": "89590c9848c9d75b90f280b3f2ffacab67c81d6a885ecf81497e79baf50c0238",
+    "sources/TARGET/Responsibilities.design": "8a47a00585e7f8497a59e21a5dfd9f397d8db92e2a6f260414dc4b9659087c46",
+    "sources/TARGET/System.design": "d77bb8983257bf90f0880ca11d2646e3274b18e775cbf0efcaf2a66f5e7634d4"
+  }
+}

@@ -1,0 +1,15 @@
+author: warloc
+artifactName: TargetArchitecture
+id: 933efa2c-ca83-470d-919b-8f574899bfc0:00001
+parents:
+    - 933efa2c-ca83-470d-919b-8f574899bfc0:00000
+kind: commit
+message: 'M1: pin TargetArchitecture for Activity1'
+recordedAt: "2026-11-12T18:27:56.201952257Z"
+sourceDigest: 5180ecbba7df3a5cfda647fe3890278ade5220f723d11a7ea5d84da19fcd9abb
+inventory:
+    Intent.design: 89590c9848c9d75b90f280b3f2ffacab67c81d6a885ecf81497e79baf50c0238
+    Responsibilities.design: 8a47a00585e7f8497a59e21a5dfd9f397d8db92e2a6f260414dc4b9659087c46
+    System.design: d77bb8983257bf90f0880ca11d2646e3274b18e775cbf0efcaf2a66f5e7634d4
+deleted: []
+payload: .commits/#00001

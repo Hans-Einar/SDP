@@ -1,0 +1,80 @@
+{
+  "ID": "activity1-architecture",
+  "Intent": "Restructure existing SDPTool adapters without new public functionality; see Activity1 contracts and mandatory removal matrix.",
+  "Context": [],
+  "Exclude": [],
+  "Rules": [
+    {
+      "ID": "preserve-model-owner",
+      "Source": "ACTIVITY-SDP-0001 mandate",
+      "Fact": "ModelGovernance owns ManageModelArtifacts.",
+      "Now": true,
+      "Target": true
+    }
+  ],
+  "AllowedChanges": [
+    {
+      "Fact": "GovernanceApplication owns AdaptSessionInvocation.",
+      "Change": "added"
+    },
+    {
+      "Fact": "GovernanceApplication owns DispatchGovernanceOperation.",
+      "Change": "added"
+    },
+    {
+      "Fact": "McpProcess contains McpResponseAdapter.",
+      "Change": "added"
+    },
+    {
+      "Fact": "McpResponseAdapter owns FrameGeneralMcpResponse.",
+      "Change": "added"
+    },
+    {
+      "Fact": "McpResponseAdapter owns FrameSessionMcpResponse.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OperationRegistry owns CheckActionAttribution.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SdpToolHost contains GovernanceApplication.",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/unit/GovernanceApplication",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/unit/McpResponseAdapter",
+      "Change": "added"
+    },
+    {
+      "Fact": "CommandLineAdapter owns DispatchGovernanceOperation.",
+      "Change": "removed"
+    },
+    {
+      "Fact": "JsonInvocationAdapter owns AdaptSessionInvocation.",
+      "Change": "removed"
+    },
+    {
+      "Fact": "JsonInvocationAdapter owns CheckActionAttribution.",
+      "Change": "removed"
+    },
+    {
+      "Fact": "McpAdapter owns FrameGeneralMcpResponse.",
+      "Change": "removed"
+    },
+    {
+      "Fact": "McpAdapter owns FrameSessionMcpResponse.",
+      "Change": "removed"
+    }
+  ],
+  "AllowedModelPaths": [
+    "Responsibilities.design"
+  ],
+  "AllowedCodePaths": [
+    "SDPTool"
+  ],
+  "Protect": []
+}

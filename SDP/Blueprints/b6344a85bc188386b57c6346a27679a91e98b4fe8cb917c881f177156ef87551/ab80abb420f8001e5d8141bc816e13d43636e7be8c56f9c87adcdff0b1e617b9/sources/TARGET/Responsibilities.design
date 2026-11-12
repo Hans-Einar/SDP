@@ -1,0 +1,90 @@
+language design-core version 0.6.
+functionality AdaptSessionInvocation.
+functionality ApplyInstallation.
+functionality AssessBlueprint.
+unit BlueprintService.
+functionality BuildNavigation.
+functionality CheckActionAttribution.
+unit CommandLineAdapter.
+unit ControllerAdapter.
+container ControllerProcess.
+functionality CoordinateHostWork.
+functionality DecodeActionRequest.
+functionality DecodeCommandArguments.
+functionality DecodeControllerCommand.
+functionality DescribePublicActions.
+functionality DiscoverProject.
+functionality DispatchGovernanceOperation.
+functionality ExposeBoundCapabilities.
+functionality FrameGeneralMcpResponse.
+functionality FrameSessionMcpResponse.
+functionality GenerateBlueprint.
+unit GovernanceApplication.
+unit GovernanceService.
+unit HostCoordinator.
+unit InstallService.
+unit JsonInvocationAdapter.
+functionality LaunchIsolatedSessionController.
+functionality ManageBlueprintAssignments.
+functionality ManageGovernedWork.
+functionality ManageModelArtifacts.
+functionality ManageSessionExecution.
+unit McpAdapter.
+container McpProcess.
+unit McpResponseAdapter.
+unit ModelGovernance.
+unit OperationRegistry.
+functionality PersistCanonicalHistory.
+functionality PreviewInstallation.
+unit ProgramRunner.
+unit ProjectFacade.
+unit ProjectHistory.
+functionality ProjectReleaseNotes.
+functionality RecoverInstallation.
+unit ReleaseLogService.
+functionality RunSelectedProgram.
+container SdpToolHost.
+functionality SelectDocument.
+BlueprintService owns AssessBlueprint.
+BlueprintService owns GenerateBlueprint.
+BlueprintService owns ManageBlueprintAssignments.
+CommandLineAdapter owns DecodeCommandArguments.
+ControllerAdapter owns DecodeControllerCommand.
+ControllerProcess contains ControllerAdapter.
+ControllerProcess contains HostCoordinator.
+GovernanceApplication owns AdaptSessionInvocation.
+GovernanceApplication owns DispatchGovernanceOperation.
+GovernanceService owns ManageGovernedWork.
+GovernanceService owns ManageSessionExecution.
+HostCoordinator owns CoordinateHostWork.
+HostCoordinator owns LaunchIsolatedSessionController.
+InstallService owns ApplyInstallation.
+InstallService owns PreviewInstallation.
+InstallService owns RecoverInstallation.
+JsonInvocationAdapter owns DecodeActionRequest.
+McpAdapter owns ExposeBoundCapabilities.
+McpProcess contains McpAdapter.
+McpProcess contains McpResponseAdapter.
+McpResponseAdapter owns FrameGeneralMcpResponse.
+McpResponseAdapter owns FrameSessionMcpResponse.
+ModelGovernance owns ManageModelArtifacts.
+OperationRegistry owns CheckActionAttribution.
+OperationRegistry owns DescribePublicActions.
+ProgramRunner owns RunSelectedProgram.
+ProjectFacade owns BuildNavigation.
+ProjectFacade owns DiscoverProject.
+ProjectFacade owns SelectDocument.
+ProjectHistory owns PersistCanonicalHistory.
+ReleaseLogService owns ProjectReleaseNotes.
+SdpToolHost contains BlueprintService.
+SdpToolHost contains CommandLineAdapter.
+SdpToolHost contains GovernanceApplication.
+SdpToolHost contains GovernanceService.
+SdpToolHost contains InstallService.
+SdpToolHost contains JsonInvocationAdapter.
+SdpToolHost contains ModelGovernance.
+SdpToolHost contains OperationRegistry.
+SdpToolHost contains ProgramRunner.
+SdpToolHost contains ProjectFacade.
+SdpToolHost contains ProjectHistory.
+SdpToolHost contains ReleaseLogService.

@@ -1,0 +1,177 @@
+flowchart LR
+    f0["SdpToolHost contains ModelGovernance. (CONTEXT)"]
+    f1["GovernanceService owns ManageSessionExecution. (CONTEXT)"]
+    f10["BlueprintService owns ManageBlueprintAssignments. (CONTEXT)"]
+    f11["GovernanceApplication owns DispatchGovernanceOperation. (CHANGE added)"]
+    f12["ProjectFacade owns SelectDocument. (CONTEXT)"]
+    f13["OperationRegistry owns DescribePublicActions. (CONTEXT)"]
+    f14["SdpToolHost contains JsonInvocationAdapter. (CONTEXT)"]
+    f15["CommandLineAdapter owns DecodeCommandArguments. (CONTEXT)"]
+    f16["SdpToolHost contains GovernanceService. (CONTEXT)"]
+    f17["JsonInvocationAdapter owns DecodeActionRequest. (CONTEXT)"]
+    f18["SdpToolHost contains ProgramRunner. (CONTEXT)"]
+    f19["SdpToolHost contains OperationRegistry. (CONTEXT)"]
+    f2["SdpToolHost contains ProjectHistory. (CONTEXT)"]
+    f20["BlueprintService owns GenerateBlueprint. (CONTEXT)"]
+    f21["McpProcess contains McpAdapter. (CONTEXT)"]
+    f22["SdpToolHost contains ReleaseLogService. (CONTEXT)"]
+    f23["SdpToolHost contains BlueprintService. (CONTEXT)"]
+    f24["ProjectFacade owns BuildNavigation. (CONTEXT)"]
+    f25["McpAdapter owns ExposeBoundCapabilities. (CONTEXT)"]
+    f26["McpResponseAdapter owns FrameGeneralMcpResponse. (CHANGE added)"]
+    f27["CommandLineAdapter owns DispatchGovernanceOperation. (CHANGE removed)"]
+    f28["JsonInvocationAdapter owns CheckActionAttribution. (CHANGE removed)"]
+    f29["InstallService owns RecoverInstallation. (CONTEXT)"]
+    f3["McpResponseAdapter owns FrameSessionMcpResponse. (CHANGE added)"]
+    f30["BlueprintService owns AssessBlueprint. (CONTEXT)"]
+    f31["SDPTool contains SdpToolHost. (CONTEXT)"]
+    f32["SdpToolHost contains CommandLineAdapter. (CONTEXT)"]
+    f33["SdpToolHost contains InstallService. (CONTEXT)"]
+    f34["ReleaseLogService owns ProjectReleaseNotes. (CONTEXT)"]
+    f35["GovernanceApplication owns AdaptSessionInvocation. (CHANGE added)"]
+    f36["ProgramRunner owns RunSelectedProgram. (CONTEXT)"]
+    f37["ProjectFacade owns DiscoverProject. (CONTEXT)"]
+    f38["McpProcess contains McpResponseAdapter. (CHANGE added)"]
+    f39["InstallService owns PreviewInstallation. (CONTEXT)"]
+    f4["JsonInvocationAdapter owns AdaptSessionInvocation. (CHANGE removed)"]
+    f40["McpAdapter owns FrameGeneralMcpResponse. (CHANGE removed)"]
+    f41["InstallService owns ApplyInstallation. (CONTEXT)"]
+    f42["ModelGovernance owns ManageModelArtifacts. (PRESERVE unchanged)"]
+    f43["SdpToolHost contains ProjectFacade. (CONTEXT)"]
+    f44["McpAdapter owns FrameSessionMcpResponse. (CHANGE removed)"]
+    f5["OperationRegistry owns CheckActionAttribution. (CHANGE added)"]
+    f6["GovernanceService owns ManageGovernedWork. (CONTEXT)"]
+    f7["SDPTool contains McpProcess. (CONTEXT)"]
+    f8["SdpToolHost contains GovernanceApplication. (CHANGE added)"]
+    f9["ProjectHistory owns PersistCanonicalHistory. (CONTEXT)"]
+    n0["McpProcess (container CONTEXT)"]
+    n1["SdpToolHost (container CONTEXT)"]
+    n10["DiscoverProject (functionality CONTEXT)"]
+    n11["DispatchGovernanceOperation (functionality CONTEXT)"]
+    n12["ExposeBoundCapabilities (functionality CONTEXT)"]
+    n13["FrameGeneralMcpResponse (functionality CONTEXT)"]
+    n14["FrameSessionMcpResponse (functionality CONTEXT)"]
+    n15["GenerateBlueprint (functionality CONTEXT)"]
+    n16["ManageBlueprintAssignments (functionality CONTEXT)"]
+    n17["ManageGovernedWork (functionality CONTEXT)"]
+    n18["ManageModelArtifacts (functionality CONTEXT)"]
+    n19["ManageSessionExecution (functionality CONTEXT)"]
+    n2["AdaptSessionInvocation (functionality CONTEXT)"]
+    n20["PersistCanonicalHistory (functionality CONTEXT)"]
+    n21["PreviewInstallation (functionality CONTEXT)"]
+    n22["ProjectReleaseNotes (functionality CONTEXT)"]
+    n23["RecoverInstallation (functionality CONTEXT)"]
+    n24["RunSelectedProgram (functionality CONTEXT)"]
+    n25["SelectDocument (functionality CONTEXT)"]
+    n26["SDPTool (system CONTEXT)"]
+    n27["BlueprintService (unit CONTEXT)"]
+    n28["CommandLineAdapter (unit CONTEXT)"]
+    n29["GovernanceApplication (unit CHANGE added)"]
+    n3["ApplyInstallation (functionality CONTEXT)"]
+    n30["GovernanceService (unit CONTEXT)"]
+    n31["InstallService (unit CONTEXT)"]
+    n32["JsonInvocationAdapter (unit CONTEXT)"]
+    n33["McpAdapter (unit CONTEXT)"]
+    n34["McpResponseAdapter (unit CHANGE added)"]
+    n35["ModelGovernance (unit CONTEXT)"]
+    n36["OperationRegistry (unit CONTEXT)"]
+    n37["ProgramRunner (unit CONTEXT)"]
+    n38["ProjectFacade (unit CONTEXT)"]
+    n39["ProjectHistory (unit CONTEXT)"]
+    n4["AssessBlueprint (functionality CONTEXT)"]
+    n40["ReleaseLogService (unit CONTEXT)"]
+    n5["BuildNavigation (functionality CONTEXT)"]
+    n6["CheckActionAttribution (functionality CONTEXT)"]
+    n7["DecodeActionRequest (functionality CONTEXT)"]
+    n8["DecodeCommandArguments (functionality CONTEXT)"]
+    n9["DescribePublicActions (functionality CONTEXT)"]
+    n1 -->|operand| f0
+    n35 -->|operand| f0
+    n19 -->|operand| f1
+    n30 -->|operand| f1
+    n1 -->|operand| f2
+    n39 -->|operand| f2
+    n14 -->|operand| f3
+    n34 -->|operand| f3
+    n2 -->|operand| f4
+    n32 -->|operand| f4
+    n6 -->|operand| f5
+    n36 -->|operand| f5
+    n17 -->|operand| f6
+    n30 -->|operand| f6
+    n0 -->|operand| f7
+    n26 -->|operand| f7
+    n1 -->|operand| f8
+    n29 -->|operand| f8
+    n20 -->|operand| f9
+    n39 -->|operand| f9
+    n16 -->|operand| f10
+    n27 -->|operand| f10
+    n11 -->|operand| f11
+    n29 -->|operand| f11
+    n25 -->|operand| f12
+    n38 -->|operand| f12
+    n9 -->|operand| f13
+    n36 -->|operand| f13
+    n1 -->|operand| f14
+    n32 -->|operand| f14
+    n8 -->|operand| f15
+    n28 -->|operand| f15
+    n1 -->|operand| f16
+    n30 -->|operand| f16
+    n7 -->|operand| f17
+    n32 -->|operand| f17
+    n1 -->|operand| f18
+    n37 -->|operand| f18
+    n1 -->|operand| f19
+    n36 -->|operand| f19
+    n15 -->|operand| f20
+    n27 -->|operand| f20
+    n0 -->|operand| f21
+    n33 -->|operand| f21
+    n1 -->|operand| f22
+    n40 -->|operand| f22
+    n1 -->|operand| f23
+    n27 -->|operand| f23
+    n5 -->|operand| f24
+    n38 -->|operand| f24
+    n12 -->|operand| f25
+    n33 -->|operand| f25
+    n13 -->|operand| f26
+    n34 -->|operand| f26
+    n11 -->|operand| f27
+    n28 -->|operand| f27
+    n6 -->|operand| f28
+    n32 -->|operand| f28
+    n23 -->|operand| f29
+    n31 -->|operand| f29
+    n4 -->|operand| f30
+    n27 -->|operand| f30
+    n1 -->|operand| f31
+    n26 -->|operand| f31
+    n1 -->|operand| f32
+    n28 -->|operand| f32
+    n1 -->|operand| f33
+    n31 -->|operand| f33
+    n22 -->|operand| f34
+    n40 -->|operand| f34
+    n2 -->|operand| f35
+    n29 -->|operand| f35
+    n24 -->|operand| f36
+    n37 -->|operand| f36
+    n10 -->|operand| f37
+    n38 -->|operand| f37
+    n0 -->|operand| f38
+    n34 -->|operand| f38
+    n21 -->|operand| f39
+    n31 -->|operand| f39
+    n13 -->|operand| f40
+    n33 -->|operand| f40
+    n3 -->|operand| f41
+    n31 -->|operand| f41
+    n18 -->|operand| f42
+    n35 -->|operand| f42
+    n1 -->|operand| f43
+    n38 -->|operand| f43
+    n14 -->|operand| f44
+    n33 -->|operand| f44

@@ -1,0 +1,601 @@
+{
+  "baseline": "d0bf6dc37027bbb75f5f96fecc169e681a3a6c9b",
+  "rows": [
+    {
+      "operation": "discover",
+      "currentHandler": "performDiscover / DiscoverWithOptions",
+      "targetOwner": "ProjectFacade",
+      "disposition": "retain",
+      "actionExposure": "project.discover",
+      "milestone": "M3",
+      "evidence": "discovery.go; consumer_test.go; deferred_navigation_test.go"
+    },
+    {
+      "operation": "tree",
+      "currentHandler": "Navigation / ExpandModel",
+      "targetOwner": "ProjectFacade",
+      "disposition": "retain",
+      "actionExposure": "project.model-tree (model-only)",
+      "milestone": "M3",
+      "evidence": "navigation.go; tree_test.go; deferred_navigation_test.go"
+    },
+    {
+      "operation": "select",
+      "currentHandler": "SelectProject",
+      "targetOwner": "ProjectFacade",
+      "disposition": "retain",
+      "actionExposure": "none",
+      "milestone": "M3",
+      "evidence": "selection.go; consumer_test.go; source_links_test.go"
+    },
+    {
+      "operation": "preview",
+      "currentHandler": "Preview",
+      "targetOwner": "ProjectFacade",
+      "disposition": "retain",
+      "actionExposure": "none",
+      "milestone": "M3",
+      "evidence": "preview.go; preview_test.go"
+    },
+    {
+      "operation": "sdui-preview",
+      "currentHandler": "UIPreview",
+      "targetOwner": "ProjectFacade",
+      "disposition": "retain",
+      "actionExposure": "none",
+      "milestone": "M3",
+      "evidence": "sdui.go; sdui_test.go"
+    },
+    {
+      "operation": "view ip",
+      "currentHandler": "ViewIP",
+      "targetOwner": "ProjectFacade",
+      "disposition": "retain",
+      "actionExposure": "none",
+      "milestone": "M3",
+      "evidence": "viewer.go; viewer_test.go"
+    },
+    {
+      "operation": "run",
+      "currentHandler": "runProgramCommand / runProgram",
+      "targetOwner": "ProgramRunner",
+      "disposition": "retain",
+      "actionExposure": "none",
+      "milestone": "M3",
+      "evidence": "program_run.go; program_process_linux_test.go"
+    },
+    {
+      "operation": "install / upgrade (preview, apply, resume)",
+      "currentHandler": "install.Run / Preview / Executor",
+      "targetOwner": "InstallService",
+      "disposition": "retain",
+      "actionExposure": "none",
+      "milestone": "M3",
+      "evidence": "install/cli.go; install/*test.go"
+    },
+    {
+      "operation": "release-log",
+      "currentHandler": "ReleaseLogs",
+      "targetOwner": "ReleaseLogService",
+      "disposition": "retain",
+      "actionExposure": "none",
+      "milestone": "M3",
+      "evidence": "release_log.go; release_log_test.go"
+    },
+    {
+      "operation": "actions / invoke",
+      "currentHandler": "Actions / Invoke",
+      "targetOwner": "OperationRegistry",
+      "disposition": "migrate",
+      "actionExposure": "catalogue/protocol",
+      "milestone": "M3",
+      "evidence": "action_registry.go; action_invoke.go; action_process_test.go"
+    },
+    {
+      "operation": "model snapshot",
+      "currentHandler": "model_cli.go -> model/",
+      "targetOwner": "ModelGovernance",
+      "disposition": "retain",
+      "actionExposure": "none",
+      "milestone": "M3b",
+      "evidence": "model_cli_test.go; model/*test.go"
+    },
+    {
+      "operation": "model merge",
+      "currentHandler": "model_cli.go -> model/",
+      "targetOwner": "ModelGovernance",
+      "disposition": "retain",
+      "actionExposure": "none",
+      "milestone": "M3b",
+      "evidence": "model_cli_test.go; model/*test.go"
+    },
+    {
+      "operation": "model commit",
+      "currentHandler": "model_cli.go -> model/",
+      "targetOwner": "ModelGovernance",
+      "disposition": "retain",
+      "actionExposure": "none",
+      "milestone": "M3b",
+      "evidence": "model_cli_test.go; model/*test.go"
+    },
+    {
+      "operation": "model restore",
+      "currentHandler": "model_cli.go -> model/",
+      "targetOwner": "ModelGovernance",
+      "disposition": "retain",
+      "actionExposure": "none",
+      "milestone": "M3b",
+      "evidence": "model_cli_test.go; model/*test.go"
+    },
+    {
+      "operation": "model recover",
+      "currentHandler": "model_cli.go -> model/",
+      "targetOwner": "ModelGovernance",
+      "disposition": "retain",
+      "actionExposure": "none",
+      "milestone": "M3b",
+      "evidence": "model_cli_test.go; model/*test.go"
+    },
+    {
+      "operation": "model status",
+      "currentHandler": "model_cli.go -> model/",
+      "targetOwner": "ModelGovernance",
+      "disposition": "retain",
+      "actionExposure": "none",
+      "milestone": "M3b",
+      "evidence": "model_cli_test.go; model/*test.go"
+    },
+    {
+      "operation": "model history",
+      "currentHandler": "model_cli.go -> model/",
+      "targetOwner": "ModelGovernance",
+      "disposition": "retain",
+      "actionExposure": "none",
+      "milestone": "M3b",
+      "evidence": "model_cli_test.go; model/*test.go"
+    },
+    {
+      "operation": "model create work (initial/from release)",
+      "currentHandler": "model_cli.go -> model/",
+      "targetOwner": "ModelGovernance",
+      "disposition": "retain",
+      "actionExposure": "none",
+      "milestone": "M3b",
+      "evidence": "model_cli_test.go; model/*test.go"
+    },
+    {
+      "operation": "model create work (merge sources)",
+      "currentHandler": "model_cli.go -> model/",
+      "targetOwner": "ModelGovernance",
+      "disposition": "retain",
+      "actionExposure": "none",
+      "milestone": "M3b",
+      "evidence": "model_cli_test.go; model/*test.go"
+    },
+    {
+      "operation": "model create candidate",
+      "currentHandler": "model_cli.go -> model/",
+      "targetOwner": "ModelGovernance",
+      "disposition": "retain",
+      "actionExposure": "none",
+      "milestone": "M3b",
+      "evidence": "model_cli_test.go; model/*test.go"
+    },
+    {
+      "operation": "model create proposal",
+      "currentHandler": "model_cli.go -> model/",
+      "targetOwner": "ModelGovernance",
+      "disposition": "retain",
+      "actionExposure": "none",
+      "milestone": "M3b",
+      "evidence": "model_cli_test.go; model/*test.go"
+    },
+    {
+      "operation": "model create release",
+      "currentHandler": "model_cli.go -> model/",
+      "targetOwner": "ModelGovernance",
+      "disposition": "retain",
+      "actionExposure": "none",
+      "milestone": "M3b",
+      "evidence": "model_cli_test.go; model/*test.go"
+    },
+    {
+      "operation": "model create blueprint",
+      "currentHandler": "model_cli.go -> perform* -> blueprints/",
+      "targetOwner": "BlueprintService",
+      "disposition": "retain service; move per-action platform/attribution policy to registration",
+      "actionExposure": "existing blueprint actions only",
+      "milestone": "M3b",
+      "evidence": "action_blueprints_test.go; blueprints/*test.go"
+    },
+    {
+      "operation": "model assess blueprint",
+      "currentHandler": "model_cli.go -> perform* -> blueprints/",
+      "targetOwner": "BlueprintService",
+      "disposition": "retain service; move per-action platform/attribution policy to registration",
+      "actionExposure": "existing blueprint actions only",
+      "milestone": "M3b",
+      "evidence": "action_blueprints_test.go; blueprints/*test.go"
+    },
+    {
+      "operation": "model assignment list",
+      "currentHandler": "model_cli.go -> perform* -> blueprints/",
+      "targetOwner": "BlueprintService",
+      "disposition": "retain service; move per-action platform/attribution policy to registration",
+      "actionExposure": "existing blueprint actions only",
+      "milestone": "M3b",
+      "evidence": "action_blueprints_test.go; blueprints/*test.go"
+    },
+    {
+      "operation": "model assignment apply",
+      "currentHandler": "model_cli.go -> perform* -> blueprints/",
+      "targetOwner": "BlueprintService",
+      "disposition": "retain service; move per-action platform/attribution policy to registration",
+      "actionExposure": "existing blueprint actions only",
+      "milestone": "M3b",
+      "evidence": "action_blueprints_test.go; blueprints/*test.go"
+    },
+    {
+      "operation": "blueprint.assess",
+      "currentHandler": "registered typed handler",
+      "targetOwner": "OperationRegistry",
+      "disposition": "retain domain call; consolidate registration policy",
+      "actionExposure": "unchanged",
+      "mutation": "none",
+      "outputSchema": "sdp-blueprint-assessment/1",
+      "milestone": "M3",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "blueprint.assignment.apply",
+      "currentHandler": "registered typed handler",
+      "targetOwner": "OperationRegistry",
+      "disposition": "retain domain call; consolidate registration policy",
+      "actionExposure": "unchanged",
+      "mutation": "history",
+      "outputSchema": "sdp-blueprint-assignment/1",
+      "milestone": "M3",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "blueprint.assignment.list",
+      "currentHandler": "registered typed handler",
+      "targetOwner": "OperationRegistry",
+      "disposition": "retain domain call; consolidate registration policy",
+      "actionExposure": "unchanged",
+      "mutation": "none",
+      "outputSchema": "sdp-blueprint-assignment/1",
+      "milestone": "M3",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "blueprint.generate",
+      "currentHandler": "registered typed handler",
+      "targetOwner": "OperationRegistry",
+      "disposition": "retain domain call; consolidate registration policy",
+      "actionExposure": "unchanged",
+      "mutation": "documents",
+      "outputSchema": "sdp-blueprint/1",
+      "milestone": "M3",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.adopt",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "state",
+      "outputSchema": "sdp-session-execution/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.advance",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "state",
+      "outputSchema": "sdp-session-execution/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.assess",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "state",
+      "outputSchema": "sdp-session-execution/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.context",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "none",
+      "outputSchema": "sdp-session-execution/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.definition",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "none",
+      "outputSchema": "sdp-session-execution/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.design-context",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "none",
+      "outputSchema": "sdp-session-execution/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.dispose",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "state",
+      "outputSchema": "sdp-session-execution/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.host-cancel",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "state",
+      "outputSchema": "sdp-session-host/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.host-read",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "none",
+      "outputSchema": "sdp-session-host/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.host-request",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "state",
+      "outputSchema": "sdp-session-host/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.list",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "none",
+      "outputSchema": "sdp-session-execution/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.owner",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "state",
+      "outputSchema": "sdp-session-execution/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.progress",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "state",
+      "outputSchema": "sdp-session-execution/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.read",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "none",
+      "outputSchema": "sdp-session-execution/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.rebind",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "state",
+      "outputSchema": "sdp-session-execution/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.rebind-context",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "none",
+      "outputSchema": "sdp-session-execution/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.resume",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "documents",
+      "outputSchema": "sdp-session-execution/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.review",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "state",
+      "outputSchema": "sdp-session-execution/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.select",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "state",
+      "outputSchema": "sdp-session-execution/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.start",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "state",
+      "outputSchema": "sdp-session-execution/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.successor",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "none",
+      "outputSchema": "sdp-session-execution/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance.session.verify",
+      "currentHandler": "action_sessions.go -> governanceCommandAs",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate Session bridge and operation policy",
+      "actionExposure": "unchanged",
+      "mutation": "state",
+      "outputSchema": "sdp-session-execution/0.1",
+      "milestone": "M2",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "project.discover",
+      "currentHandler": "registered typed handler",
+      "targetOwner": "OperationRegistry",
+      "disposition": "retain domain call; consolidate registration policy",
+      "actionExposure": "unchanged",
+      "mutation": "none",
+      "outputSchema": "sdptool/0.2",
+      "milestone": "M3",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "project.model-tree",
+      "currentHandler": "registered typed handler",
+      "targetOwner": "OperationRegistry",
+      "disposition": "retain domain call; consolidate registration policy",
+      "actionExposure": "unchanged",
+      "mutation": "none",
+      "outputSchema": "sdptool/0.2",
+      "milestone": "M3",
+      "evidence": "session_actions_test.go; governance/session_*_cli_test.go; action_*test.go"
+    },
+    {
+      "operation": "governance context",
+      "currentHandler": "governanceCommandAs -> governance.Service",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate dispatch into typed operation definition; preserve service",
+      "actionExposure": "none",
+      "milestone": "M2",
+      "evidence": "governance_cli_test.go"
+    },
+    {
+      "operation": "governance route",
+      "currentHandler": "governanceCommandAs -> governance.Service",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate dispatch into typed operation definition; preserve service",
+      "actionExposure": "none",
+      "milestone": "M2",
+      "evidence": "governance_cli_test.go"
+    },
+    {
+      "operation": "governance bind",
+      "currentHandler": "governanceCommandAs -> governance.Service",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate dispatch into typed operation definition; preserve service",
+      "actionExposure": "none",
+      "milestone": "M2",
+      "evidence": "governance_cli_test.go"
+    },
+    {
+      "operation": "governance start",
+      "currentHandler": "governanceCommandAs -> governance.Service",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate dispatch into typed operation definition; preserve service",
+      "actionExposure": "none",
+      "milestone": "M2",
+      "evidence": "governance_cli_test.go"
+    },
+    {
+      "operation": "governance read",
+      "currentHandler": "governanceCommandAs -> governance.Service",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate dispatch into typed operation definition; preserve service",
+      "actionExposure": "none",
+      "milestone": "M2",
+      "evidence": "governance_cli_test.go"
+    },
+    {
+      "operation": "governance transition",
+      "currentHandler": "governanceCommandAs -> governance.Service",
+      "targetOwner": "GovernanceApplication",
+      "disposition": "migrate dispatch into typed operation definition; preserve service",
+      "actionExposure": "none",
+      "milestone": "M2",
+      "evidence": "governance_cli_test.go"
+    }
+  ]
+}

@@ -1,0 +1,1292 @@
+[
+  {
+    "path": "SDPTool/action_invoke.go",
+    "line": 66,
+    "declaration": "func Invoke(ctx context.Context, in io.Reader, caller ActionCaller) InvokeResponse {"
+  },
+  {
+    "path": "SDPTool/action_invoke.go",
+    "line": 156,
+    "declaration": "func (e *actionFailure) Error() string { return e.message }"
+  },
+  {
+    "path": "SDPTool/action_registry.go",
+    "line": 61,
+    "declaration": "func Actions(ctx context.Context, selected string) (ActionCatalogue, error) {"
+  },
+  {
+    "path": "SDPTool/blueprints/assessment.go",
+    "line": 105,
+    "declaration": "func Assess(bundlePath, evidencePath string) (Assessment, error) {"
+  },
+  {
+    "path": "SDPTool/blueprints/catalogue.go",
+    "line": 261,
+    "declaration": "func Scan(catalogue string) Catalogue {"
+  },
+  {
+    "path": "SDPTool/blueprints/catalogue.go",
+    "line": 344,
+    "declaration": "func GenerateRetained(ctx context.Context, o Options, catalogue string) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/blueprints/generate.go",
+    "line": 190,
+    "declaration": "func Generate(ctx context.Context, o Options) (Result, error) { return generate(ctx, o, nil) }"
+  },
+  {
+    "path": "SDPTool/blueprints/lifecycle.go",
+    "line": 226,
+    "declaration": "func ApplyAssignment(area string, principal blueprintstate.Principal, r blueprintstate.Request) (AssignmentResult, error) {"
+  },
+  {
+    "path": "SDPTool/blueprints/lifecycle.go",
+    "line": 356,
+    "declaration": "func AssignmentViews(area string) ([]AssignmentView, error) {"
+  },
+  {
+    "path": "SDPTool/blueprints/lifecycle.go",
+    "line": 441,
+    "declaration": "func LoadAssignmentRequest(path string) (blueprintstate.Request, error) {"
+  },
+  {
+    "path": "SDPTool/blueprintstate/state.go",
+    "line": 94,
+    "declaration": "func Relative(p string) bool {"
+  },
+  {
+    "path": "SDPTool/blueprintstate/state.go",
+    "line": 98,
+    "declaration": "func Strict(data []byte, out any) error {"
+  },
+  {
+    "path": "SDPTool/blueprintstate/state.go",
+    "line": 146,
+    "declaration": "func ValidateRequest(r Request) error {"
+  },
+  {
+    "path": "SDPTool/blueprintstate/state.go",
+    "line": 177,
+    "declaration": "func Next(old State, e Event) (State, error) {"
+  },
+  {
+    "path": "SDPTool/blueprintstate/state.go",
+    "line": 309,
+    "declaration": "func Replay(raw []byte) (map[string]State, map[string]Event, error) {"
+  },
+  {
+    "path": "SDPTool/bootstrap/bootstrap.go",
+    "line": 72,
+    "declaration": "func Verify(data, sig []byte, keyID, provenance string) error {"
+  },
+  {
+    "path": "SDPTool/bootstrap/bootstrap.go",
+    "line": 246,
+    "declaration": "func StrictJSON(b []byte, v any) error {"
+  },
+  {
+    "path": "SDPTool/bootstrap/bootstrap.go",
+    "line": 301,
+    "declaration": "func Resolve(ctx context.Context, c Config) (Verified, error) {"
+  },
+  {
+    "path": "SDPTool/bootstrap/bootstrap.go",
+    "line": 390,
+    "declaration": "func Bootstrap(ctx context.Context, c Config) (string, error) {"
+  },
+  {
+    "path": "SDPTool/bootstrap/bootstrap.go",
+    "line": 491,
+    "declaration": "func (b *limitedBuffer) Write(p []byte) (int, error) {"
+  },
+  {
+    "path": "SDPTool/cli.go",
+    "line": 15,
+    "declaration": "func Run(ctx context.Context, args []string, out, errs io.Writer) int {"
+  },
+  {
+    "path": "SDPTool/cli.go",
+    "line": 18,
+    "declaration": "func RunWithInput(ctx context.Context, args []string, in io.Reader, out, errs io.Writer) int {"
+  },
+  {
+    "path": "SDPTool/cmd/sdptool/main.go",
+    "line": 26,
+    "declaration": "func (in contextInput) Read(p []byte) (int, error) {"
+  },
+  {
+    "path": "SDPTool/codexcompat/version.go",
+    "line": 15,
+    "declaration": "func Supported(version string) bool {"
+  },
+  {
+    "path": "SDPTool/deferred_navigation.go",
+    "line": 14,
+    "declaration": "func DiscoverWithOptions(selected string, options DiscoverOptions) (Project, error) {"
+  },
+  {
+    "path": "SDPTool/deferred_navigation.go",
+    "line": 43,
+    "declaration": "func ExpandModel(selected string, options ModelTreeOptions) (Tree, error) {"
+  },
+  {
+    "path": "SDPTool/discovery.go",
+    "line": 55,
+    "declaration": "func Discover(selected string) (Project, error) { return discover(selected, true) }"
+  },
+  {
+    "path": "SDPTool/governance/activation.go",
+    "line": 29,
+    "declaration": "func Implementation() Routine {"
+  },
+  {
+    "path": "SDPTool/governance/activation.go",
+    "line": 35,
+    "declaration": "func (s *Service) ActivateAssignment(caller Caller, q ActivationRequest) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/governance/activation.go",
+    "line": 130,
+    "declaration": "func (s *Service) RunContext(runID string) (Context, error) {"
+  },
+  {
+    "path": "SDPTool/governance/activation.go",
+    "line": 185,
+    "declaration": "func (s *Service) RunDesign(runID string) (*DesignDecisionResult, error) {"
+  },
+  {
+    "path": "SDPTool/governance/activation.go",
+    "line": 231,
+    "declaration": "func (s *Service) CheckRunReady(runID string) error {"
+  },
+  {
+    "path": "SDPTool/governance/approval.go",
+    "line": 23,
+    "declaration": "func (v ApprovalReply) Valid() bool {"
+  },
+  {
+    "path": "SDPTool/governance/approval.go",
+    "line": 26,
+    "declaration": "func (p ApprovalPrompt) Valid() bool {"
+  },
+  {
+    "path": "SDPTool/governance/approval.go",
+    "line": 51,
+    "declaration": "func (s *Service) PendingApprovals(runID string) ([]ApprovalPrompt, error) {"
+  },
+  {
+    "path": "SDPTool/governance/attention.go",
+    "line": 190,
+    "declaration": "func (s *Service) RequestAttention(caller Caller, q AttentionRequest) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/governance/attention.go",
+    "line": 251,
+    "declaration": "func (s *Service) ReplyAttention(caller Caller, q AttentionDisposition, input OwnerAttentionInput) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/governance/attention.go",
+    "line": 257,
+    "declaration": "func (s *Service) WithdrawAttention(caller Caller, q AttentionDisposition, reason string) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/governance/attention.go",
+    "line": 341,
+    "declaration": "func (s *Service) AttentionInbox(runID string) (AttentionInbox, error) {"
+  },
+  {
+    "path": "SDPTool/governance/candidate.go",
+    "line": 43,
+    "declaration": "func (s *Service) CaptureCandidate(runID string, dependencies []string) (Candidate, error) {"
+  },
+  {
+    "path": "SDPTool/governance/context.go",
+    "line": 18,
+    "declaration": "func New(root, area, project, state string) (*Service, error) {"
+  },
+  {
+    "path": "SDPTool/governance/context.go",
+    "line": 89,
+    "declaration": "func (s *Service) Context(sel Selection) (Context, error) {"
+  },
+  {
+    "path": "SDPTool/governance/context.go",
+    "line": 216,
+    "declaration": "func (s *Service) Route(q RouteRequest) (Route, error) {"
+  },
+  {
+    "path": "SDPTool/governance/controller_lease.go",
+    "line": 7,
+    "declaration": "func (s *Service) RunControllerLease(c Caller, runID string) (func(), error) {"
+  },
+  {
+    "path": "SDPTool/governance/controller_lease.go",
+    "line": 13,
+    "declaration": "func (s *Service) RunLiveControllerLease(c Caller, runID string) (func(), error) {"
+  },
+  {
+    "path": "SDPTool/governance/coordination.go",
+    "line": 64,
+    "declaration": "func (s *Service) Coordination(q CoordinationRequest) (CoordinationView, error) {"
+  },
+  {
+    "path": "SDPTool/governance/design_check.go",
+    "line": 55,
+    "declaration": "func (s *Service) CheckAssignmentDesign(q DesignCheckRequest) (DesignCheckResult, error) {"
+  },
+  {
+    "path": "SDPTool/governance/design_decision.go",
+    "line": 83,
+    "declaration": "func (s *Service) DesignDecisionReceipt(caller Caller, q DesignDecisionRequest) (*DesignDecisionResult, error) {"
+  },
+  {
+    "path": "SDPTool/governance/design_decision.go",
+    "line": 118,
+    "declaration": "func (s *Service) RecordDesignDecision(caller Caller, q DesignDecisionRequest, input OwnerDesignInput) (DesignDecisionResult, error) {"
+  },
+  {
+    "path": "SDPTool/governance/design_decision.go",
+    "line": 194,
+    "declaration": "func (s *Service) ReviewAssignmentDesign(q DesignCheckRequest) (DesignReviewResult, error) {"
+  },
+  {
+    "path": "SDPTool/governance/dispatch.go",
+    "line": 41,
+    "declaration": "func (s *Service) ControllerLease(c Caller) (func(), error) {"
+  },
+  {
+    "path": "SDPTool/governance/dispatch.go",
+    "line": 48,
+    "declaration": "func (s *Service) OwnerInput(c Caller, runID, id string) (OwnerInput, error) {"
+  },
+  {
+    "path": "SDPTool/governance/dispatch.go",
+    "line": 64,
+    "declaration": "func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/governance/dispatch.go",
+    "line": 330,
+    "declaration": "func (s *Service) LiveControllerLease(c Caller) (func(), error) {"
+  },
+  {
+    "path": "SDPTool/governance/evidence.go",
+    "line": 99,
+    "declaration": "func (s *Service) Evidence(runID string) (EvidenceView, error) {"
+  },
+  {
+    "path": "SDPTool/governance/evidence.go",
+    "line": 137,
+    "declaration": "func (s *Service) AttachEvidence(caller Caller, q EvidenceRequest) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/governance/evidence.go",
+    "line": 218,
+    "declaration": "func (s *Service) ReworkEvidence(caller Caller, q EvidenceReworkRequest) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/governance/host.go",
+    "line": 66,
+    "declaration": "func (a Attempt) CapabilityEpoch() string {"
+  },
+  {
+    "path": "SDPTool/governance/host.go",
+    "line": 144,
+    "declaration": "func (s *Service) RecordHost(caller Caller, q HostRequest) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/governance/host.go",
+    "line": 372,
+    "declaration": "func (s *Service) Events(runID, attemptID, cursor string, limit int) (EventPage, error) {"
+  },
+  {
+    "path": "SDPTool/governance/host.go",
+    "line": 428,
+    "declaration": "func CheckWire(b []byte) error {"
+  },
+  {
+    "path": "SDPTool/governance/inbox.go",
+    "line": 37,
+    "declaration": "func (s *Service) ReportInbox(runID string) (ReportInbox, error) {"
+  },
+  {
+    "path": "SDPTool/governance/input.go",
+    "line": 14,
+    "declaration": "func Decode(b []byte, out any) error {"
+  },
+  {
+    "path": "SDPTool/governance/leader.go",
+    "line": 95,
+    "declaration": "func LeaderActive(state string) bool {"
+  },
+  {
+    "path": "SDPTool/governance/leader.go",
+    "line": 114,
+    "declaration": "func (s *Service) LeaderRead() (LeaderView, error) {"
+  },
+  {
+    "path": "SDPTool/governance/leader.go",
+    "line": 124,
+    "declaration": "func (s *Service) LeaderLease(c Caller) (func(), error) {"
+  },
+  {
+    "path": "SDPTool/governance/leader.go",
+    "line": 285,
+    "declaration": "func (s *Service) LeaderWrite(c Caller, q LeaderRequest) (LeaderResult, error) {"
+  },
+  {
+    "path": "SDPTool/governance/overview.go",
+    "line": 53,
+    "declaration": "func (s *Service) Overview() (Overview, error) {"
+  },
+  {
+    "path": "SDPTool/governance/preparation.go",
+    "line": 90,
+    "declaration": "func (s *Service) PreparationContext(q PreparationContextRequest) (PreparationContext, error) {"
+  },
+  {
+    "path": "SDPTool/governance/preparation.go",
+    "line": 228,
+    "declaration": "func (s *Service) PrepareAssignment(caller Caller, q PrepareRequest) (PreparationResult, error) {"
+  },
+  {
+    "path": "SDPTool/governance/preparation.go",
+    "line": 311,
+    "declaration": "func (s *Service) InspectAssignments(id string) (Preparations, error) {"
+  },
+  {
+    "path": "SDPTool/governance/preparation_lifecycle.go",
+    "line": 60,
+    "declaration": "func (s *Service) ReviseAssignment(caller Caller, q RevisePreparationRequest) (PreparationResult, error) {"
+  },
+  {
+    "path": "SDPTool/governance/preparation_lifecycle.go",
+    "line": 68,
+    "declaration": "func (s *Service) RetireAssignment(caller Caller, q RetirePreparationRequest) (PreparationResult, error) {"
+  },
+  {
+    "path": "SDPTool/governance/provenance.go",
+    "line": 41,
+    "declaration": "func (p ContextProvenance) Valid() bool {"
+  },
+  {
+    "path": "SDPTool/governance/provenance.go",
+    "line": 109,
+    "declaration": "func (s *Service) Provenance(runID string) (ProvenanceView, error) {"
+  },
+  {
+    "path": "SDPTool/governance/publication.go",
+    "line": 132,
+    "declaration": "func (s *Service) PreparePublication(c Caller, q PublicationRequest) (PublicationView, error) {"
+  },
+  {
+    "path": "SDPTool/governance/publication.go",
+    "line": 247,
+    "declaration": "func (s *Service) PublicationRead(id string) (PublicationView, error) {"
+  },
+  {
+    "path": "SDPTool/governance/publication.go",
+    "line": 283,
+    "declaration": "func (s *Service) ApplyPublication(c Caller, id string) (PublicationView, error) {"
+  },
+  {
+    "path": "SDPTool/governance/publication.go",
+    "line": 426,
+    "declaration": "func (s *Service) AbandonPublication(c Caller, id string) (PublicationView, error) {"
+  },
+  {
+    "path": "SDPTool/governance/report_acknowledgement.go",
+    "line": 47,
+    "declaration": "func (s *Service) AcknowledgeReport(caller Caller, q ReportAcknowledgementRequest) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/governance/review.go",
+    "line": 85,
+    "declaration": "func ReviewActive(state string) bool {"
+  },
+  {
+    "path": "SDPTool/governance/review.go",
+    "line": 164,
+    "declaration": "func (s *Service) ReviewRead(id string) (ReviewView, error) {"
+  },
+  {
+    "path": "SDPTool/governance/review.go",
+    "line": 224,
+    "declaration": "func (s *Service) ReviewWrite(c Caller, q ReviewRequest) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/governance/run.go",
+    "line": 47,
+    "declaration": "func (s *Service) Start(caller Caller, q StartRequest) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/governance/run.go",
+    "line": 148,
+    "declaration": "func (s *Service) Read(runID string) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/governance/run.go",
+    "line": 171,
+    "declaration": "func (s *Service) Transition(caller Caller, q TransitionRequest) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session.go",
+    "line": 18,
+    "declaration": "func SessionWorkflow() Routine {"
+  },
+  {
+    "path": "SDPTool/governance/session.go",
+    "line": 369,
+    "declaration": "func (s *Service) SessionContext(q SessionContextRequest) (SessionContext, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session.go",
+    "line": 429,
+    "declaration": "func (s *Service) AdoptSession(c Caller, q SessionAdoptRequest) (SessionMutationResult, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session.go",
+    "line": 500,
+    "declaration": "func (s *Service) ResumeSession(c Caller, q SessionResumeRequest) (SessionMutationResult, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session.go",
+    "line": 694,
+    "declaration": "func (s *Service) ReadSession(id string) (SessionView, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session.go",
+    "line": 708,
+    "declaration": "func (s *Service) ListSessions() (SessionList, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_advance.go",
+    "line": 518,
+    "declaration": "func (s *Service) AdvanceSession(c Caller, q SessionAdvanceRequest) (SessionMutationResult, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_assessment.go",
+    "line": 375,
+    "declaration": "func (s *Service) AssessSession(c Caller, q SessionAssessRequest) (SessionMutationResult, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_design.go",
+    "line": 57,
+    "declaration": "func (s *Service) InspectSessionDesign(q SessionDesignRequest) (SessionDesignContext, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_disposition.go",
+    "line": 478,
+    "declaration": "func (s *Service) DisposeSession(c Caller, q SessionDisposeRequest) (SessionMutationResult, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_effects.go",
+    "line": 424,
+    "declaration": "func (s *Service) SelectSession(c Caller, q SessionSelectRequest) (SessionMutationResult, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_host.go",
+    "line": 13,
+    "declaration": "func (s *Service) SessionHostSelection(id string) (SessionHostSelection, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_host_command.go",
+    "line": 75,
+    "declaration": "func (s *Service) ReadSessionHostCommands(id string) (SessionHostCommands, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_host_command.go",
+    "line": 106,
+    "declaration": "func (s *Service) ReadSessionHostCommand(id string) (SessionHostCommand, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_host_command.go",
+    "line": 164,
+    "declaration": "func (s *Service) RequestSessionHost(c Caller, q SessionHostRequest) (SessionHostCommand, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_host_command.go",
+    "line": 222,
+    "declaration": "func (s *Service) SessionHostCommandLease(c Caller, id string) (func(), error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_host_command.go",
+    "line": 228,
+    "declaration": "func (s *Service) ClaimSessionHost(c Caller, id string) (SessionHostCommand, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_host_command.go",
+    "line": 266,
+    "declaration": "func (s *Service) SettleSessionHost(c Caller, id string) (SessionHostCommand, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_host_command.go",
+    "line": 307,
+    "declaration": "func (s *Service) CancelSessionHost(c Caller, id string) (SessionHostCommand, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_leader.go",
+    "line": 14,
+    "declaration": "func (s *Service) SessionLeaderSkill(id, path string) (SkillInput, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_leader.go",
+    "line": 72,
+    "declaration": "func (s *Service) CheckSessionLeader(id string, skill SkillInput) error {"
+  },
+  {
+    "path": "SDPTool/governance/session_owner.go",
+    "line": 310,
+    "declaration": "func (s *Service) OwnerSession(c Caller, q SessionOwnerRequest) (SessionMutationResult, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_rebind.go",
+    "line": 423,
+    "declaration": "func (s *Service) SessionRebindContext(q SessionRebindContextRequest) (SessionRebindContext, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_rebind.go",
+    "line": 605,
+    "declaration": "func (s *Service) RebindSession(c Caller, q SessionRebindRequest) (SessionMutationResult, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_result.go",
+    "line": 18,
+    "declaration": "func (s *Service) VerifySession(c Caller, q SessionWorkRequest) (SessionMutationResult, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_result.go",
+    "line": 21,
+    "declaration": "func (s *Service) ReviewSession(c Caller, q SessionWorkRequest) (SessionMutationResult, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_transfer.go",
+    "line": 171,
+    "declaration": "func (s *Service) SessionSuccessorContext(q SessionSuccessorRequest) (SessionContext, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_work.go",
+    "line": 22,
+    "declaration": "func SessionImplementation() Routine { r := Maintenance(); r.ID = \"session-implementation\"; return r }"
+  },
+  {
+    "path": "SDPTool/governance/session_work.go",
+    "line": 144,
+    "declaration": "func (s *Service) RunSession(id string) (*SessionView, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_work.go",
+    "line": 429,
+    "declaration": "func (s *Service) StartSession(c Caller, q SessionWorkRequest) (SessionMutationResult, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_work.go",
+    "line": 432,
+    "declaration": "func (s *Service) ProgressSession(c Caller, q SessionWorkRequest) (SessionMutationResult, error) {"
+  },
+  {
+    "path": "SDPTool/governance/session_work.go",
+    "line": 812,
+    "declaration": "func DecodeSessionWork(b []byte, kind string) (SessionWorkRequest, error) {"
+  },
+  {
+    "path": "SDPTool/governance/skill_input.go",
+    "line": 21,
+    "declaration": "func ValidSkillInputs(skills []SkillInput) bool {"
+  },
+  {
+    "path": "SDPTool/governance/skill_input.go",
+    "line": 38,
+    "declaration": "func CheckSkillSnapshots(root string, skills []SkillInput) error {"
+  },
+  {
+    "path": "SDPTool/governance/skill_input.go",
+    "line": 74,
+    "declaration": "func TurnInputs(text string, skills []SkillInput) []map[string]string {"
+  },
+  {
+    "path": "SDPTool/governance/skill_input.go",
+    "line": 81,
+    "declaration": "func (v OwnerInput) WireDigest() string { return requestDigest(TurnInputs(v.Payload, v.Skills)) }"
+  },
+  {
+    "path": "SDPTool/governance/skill_input.go",
+    "line": 86,
+    "declaration": "func ObservedInputDigest(raw json.RawMessage) string {"
+  },
+  {
+    "path": "SDPTool/governance/store.go",
+    "line": 251,
+    "declaration": "func (s *Service) Bind(caller Caller) (Binding, error) {"
+  },
+  {
+    "path": "SDPTool/governance/testdata/session-host-executor/main.go",
+    "line": 25,
+    "declaration": "func (h *host) Version() string                             { return \"0.165.0\" }"
+  },
+  {
+    "path": "SDPTool/governance/testdata/session-host-executor/main.go",
+    "line": 26,
+    "declaration": "func (h *host) AccountMode(context.Context) (string, error) { return \"chatgpt\", nil }"
+  },
+  {
+    "path": "SDPTool/governance/testdata/session-host-executor/main.go",
+    "line": 27,
+    "declaration": "func (h *host) MCPTools(context.Context, string, string) ([]string, string, error) {"
+  },
+  {
+    "path": "SDPTool/governance/testdata/session-host-executor/main.go",
+    "line": 30,
+    "declaration": "func (h *host) InspectSkills(context.Context, string) (governance.SkillInventory, error) {"
+  },
+  {
+    "path": "SDPTool/governance/testdata/session-host-executor/main.go",
+    "line": 38,
+    "declaration": "func (h *host) StartWorkThread(context.Context, string, string, string, string, map[string]any) (governancehost.Thread, error) {"
+  },
+  {
+    "path": "SDPTool/governance/testdata/session-host-executor/main.go",
+    "line": 50,
+    "declaration": "func (h *host) StartTurn(context.Context, string, string, string) (governancehost.Turn, error) {"
+  },
+  {
+    "path": "SDPTool/governance/testdata/session-host-executor/main.go",
+    "line": 53,
+    "declaration": "func (h *host) StartSkillTurn(_ context.Context, thread, id, text string, skills []governance.SkillInput) (governancehost.Turn, error) {"
+  },
+  {
+    "path": "SDPTool/governance/testdata/session-host-executor/main.go",
+    "line": 64,
+    "declaration": "func (h *host) SteerTurn(context.Context, string, string, string, string) error {"
+  },
+  {
+    "path": "SDPTool/governance/testdata/session-host-executor/main.go",
+    "line": 67,
+    "declaration": "func (h *host) InterruptTurn(context.Context, string, string) error { h.interrupts++; return nil }"
+  },
+  {
+    "path": "SDPTool/governance/testdata/session_controller/main.go",
+    "line": 27,
+    "declaration": "func (h *host) AccountMode(context.Context) (string, error) { return \"chatgpt\", nil }"
+  },
+  {
+    "path": "SDPTool/governance/testdata/session_controller/main.go",
+    "line": 28,
+    "declaration": "func (h *host) Version() string                             { return \"0.164.0\" }"
+  },
+  {
+    "path": "SDPTool/governance/testdata/session_controller/main.go",
+    "line": 29,
+    "declaration": "func (h *host) MCPTools(context.Context, string, string) ([]string, string, error) {"
+  },
+  {
+    "path": "SDPTool/governance/testdata/session_controller/main.go",
+    "line": 32,
+    "declaration": "func (h *host) StartWorkThread(_ context.Context, root, sandbox, instructions, approval string, config map[string]any) (governancehost.Thread, error) {"
+  },
+  {
+    "path": "SDPTool/governance/testdata/session_controller/main.go",
+    "line": 51,
+    "declaration": "func (h *host) StartTurn(context.Context, string, string, string) (governancehost.Turn, error) {"
+  },
+  {
+    "path": "SDPTool/governance/testdata/session_controller/main.go",
+    "line": 54,
+    "declaration": "func (h *host) StartSkillTurn(_ context.Context, thread, id, text string, skills []governance.SkillInput) (governancehost.Turn, error) {"
+  },
+  {
+    "path": "SDPTool/governance/testdata/session_controller/main.go",
+    "line": 78,
+    "declaration": "func (h *host) SteerTurn(context.Context, string, string, string, string) error { return nil }"
+  },
+  {
+    "path": "SDPTool/governance/testdata/session_controller/main.go",
+    "line": 79,
+    "declaration": "func (h *host) InterruptTurn(context.Context, string, string) error             { return nil }"
+  },
+  {
+    "path": "SDPTool/governance/testdata/session_controller/main.go",
+    "line": 80,
+    "declaration": "func (h *host) InspectSkills(context.Context, string) (governance.SkillInventory, error) {"
+  },
+  {
+    "path": "SDPTool/governance/types.go",
+    "line": 27,
+    "declaration": "func (e *Error) Error() string { return e.Code + \": \" + e.Message }"
+  },
+  {
+    "path": "SDPTool/governance/types.go",
+    "line": 53,
+    "declaration": "func LocalOwner() Caller { return Caller{controller: true, owner: true} }"
+  },
+  {
+    "path": "SDPTool/governance/types.go",
+    "line": 55,
+    "declaration": "func LocalController() Caller { return Caller{controller: true} }"
+  },
+  {
+    "path": "SDPTool/governance/types.go",
+    "line": 60,
+    "declaration": "func AssignedAgent(runID, attemptID, epoch string) (Caller, error) {"
+  },
+  {
+    "path": "SDPTool/governance/types.go",
+    "line": 100,
+    "declaration": "func Maintenance() Routine {"
+  },
+  {
+    "path": "SDPTool/governance/types.go",
+    "line": 103,
+    "declaration": "func (r Routine) Digest() string { b, _ := json.Marshal(r); return hash(b) }"
+  },
+  {
+    "path": "SDPTool/governance/wire.go",
+    "line": 13,
+    "declaration": "func WireDefinition(name string) map[string]any {"
+  },
+  {
+    "path": "SDPTool/governance/wire.go",
+    "line": 31,
+    "declaration": "func SessionWireDefinition(name string) map[string]any {"
+  },
+  {
+    "path": "SDPTool/governancecontroller/approval.go",
+    "line": 11,
+    "declaration": "func (c *Controller) Approve(runID string, reply governance.ApprovalReply, exactInput string) (result governance.Result, err error) {"
+  },
+  {
+    "path": "SDPTool/governancecontroller/approval.go",
+    "line": 49,
+    "declaration": "func (c *Controller) ResolveApproval(runID string, event governancehost.Event) (governance.Result, error) {"
+  },
+  {
+    "path": "SDPTool/governancecontroller/continuation.go",
+    "line": 15,
+    "declaration": "func (c *Controller) ContinueAttention(ctx context.Context, runID string) (governance.Result, error) {"
+  },
+  {
+    "path": "SDPTool/governancecontroller/continuation.go",
+    "line": 21,
+    "declaration": "func (c *Controller) AttentionPending(runID string) (bool, bool, error) {"
+  },
+  {
+    "path": "SDPTool/governancecontroller/controller.go",
+    "line": 88,
+    "declaration": "func (c *Controller) Launch(ctx context.Context, runID, text string) (governance.Result, error) {"
+  },
+  {
+    "path": "SDPTool/governancecontroller/controller.go",
+    "line": 259,
+    "declaration": "func (c *Controller) Control(ctx context.Context, runID, kind, text string) (result governance.Result, err error) {"
+  },
+  {
+    "path": "SDPTool/governancecontroller/controller.go",
+    "line": 314,
+    "declaration": "func (c *Controller) Observe(runID string, event governancehost.Event) (governance.Result, error) {"
+  },
+  {
+    "path": "SDPTool/governancecontroller/controller.go",
+    "line": 328,
+    "declaration": "func (c *Controller) Disconnect(runID string) (governance.Result, error) {"
+  },
+  {
+    "path": "SDPTool/governancecontroller/leader.go",
+    "line": 35,
+    "declaration": "func LeaderMessage(s *governance.Service, operation, actor, source, text string) (governance.LeaderResult, error) {"
+  },
+  {
+    "path": "SDPTool/governancecontroller/leader.go",
+    "line": 71,
+    "declaration": "func (c *LeaderController) Step(ctx context.Context) (governance.LeaderView, error) {"
+  },
+  {
+    "path": "SDPTool/governancecontroller/review.go",
+    "line": 22,
+    "declaration": "func (c *ReviewController) Prepare(ctx context.Context, operation string, spec governance.ReviewSpec) (governance.Result, error) {"
+  },
+  {
+    "path": "SDPTool/governancecontroller/review.go",
+    "line": 47,
+    "declaration": "func (c *ReviewController) Step(ctx context.Context, id string) (governance.ReviewView, error) {"
+  },
+  {
+    "path": "SDPTool/governancecontroller/session_host.go",
+    "line": 14,
+    "declaration": "func (c *Controller) ExecuteSessionHost(ctx context.Context, id string) (governance.SessionHostCommand, error) {"
+  },
+  {
+    "path": "SDPTool/governancehost/approval.go",
+    "line": 127,
+    "declaration": "func (c *Client) ReplyApproval(v governance.ApprovalReply) error {"
+  },
+  {
+    "path": "SDPTool/governancehost/attach.go",
+    "line": 13,
+    "declaration": "func (c *Client) PrepareAttachment(ctx context.Context, service *governance.Service, runID, cwd, approvals string) (Recovery, error) {"
+  },
+  {
+    "path": "SDPTool/governancehost/attach.go",
+    "line": 103,
+    "declaration": "func (r Recovery) ReattachRequest(hostIdentity string) governance.HostRequest {"
+  },
+  {
+    "path": "SDPTool/governancehost/capture.go",
+    "line": 19,
+    "declaration": "func Visible(method string, params []byte, epoch string, received time.Time) (Event, bool, error) {"
+  },
+  {
+    "path": "SDPTool/governancehost/capture.go",
+    "line": 144,
+    "declaration": "func (b Binding) Request(action string, o governance.Observation) governance.HostRequest {"
+  },
+  {
+    "path": "SDPTool/governancehost/capture.go",
+    "line": 157,
+    "declaration": "func History(t Thread, turnID, epoch string, received time.Time) ([]Event, string, error) {"
+  },
+  {
+    "path": "SDPTool/governancehost/client.go",
+    "line": 26,
+    "declaration": "func UUID() string {"
+  },
+  {
+    "path": "SDPTool/governancehost/client.go",
+    "line": 73,
+    "declaration": "func (c *Client) Version() string {"
+  },
+  {
+    "path": "SDPTool/governancehost/client.go",
+    "line": 82,
+    "declaration": "func Open(ctx context.Context, binary, cwd string) (*Client, error) {"
+  },
+  {
+    "path": "SDPTool/governancehost/client.go",
+    "line": 229,
+    "declaration": "func (c *Client) Err() error { c.errMu.Lock(); defer c.errMu.Unlock(); return c.err }"
+  },
+  {
+    "path": "SDPTool/governancehost/client.go",
+    "line": 230,
+    "declaration": "func (c *Client) Close() error {"
+  },
+  {
+    "path": "SDPTool/governancehost/client.go",
+    "line": 293,
+    "declaration": "func (c *Client) AccountMode(ctx context.Context) (string, error) {"
+  },
+  {
+    "path": "SDPTool/governancehost/client.go",
+    "line": 331,
+    "declaration": "func (c *Client) StartProbeThread(ctx context.Context, cwd string, mcpConfig map[string]any) (Thread, error) {"
+  },
+  {
+    "path": "SDPTool/governancehost/client.go",
+    "line": 345,
+    "declaration": "func (c *Client) ReadThread(ctx context.Context, id string) (Thread, error) {"
+  },
+  {
+    "path": "SDPTool/governancehost/client.go",
+    "line": 358,
+    "declaration": "func (c *Client) MCPTools(ctx context.Context, name, threadID string) ([]string, string, error) {"
+  },
+  {
+    "path": "SDPTool/governancehost/client.go",
+    "line": 363,
+    "declaration": "func (c *Client) CoordinatorTools(ctx context.Context, threadID string) ([]string, string, error) {"
+  },
+  {
+    "path": "SDPTool/governancehost/leader.go",
+    "line": 14,
+    "declaration": "func LeaderObservation(t Thread, d governance.LeaderDispatch, root, version string) (turnID, status, answer string, err error) {"
+  },
+  {
+    "path": "SDPTool/governancehost/reconcile.go",
+    "line": 24,
+    "declaration": "func (c *Client) PrepareRecovery(ctx context.Context, service *governance.Service, runID, attemptID string) (Recovery, error) {"
+  },
+  {
+    "path": "SDPTool/governancehost/reconcile.go",
+    "line": 68,
+    "declaration": "func (r Recovery) ReconcileRequest() governance.HostRequest {"
+  },
+  {
+    "path": "SDPTool/governancehost/review.go",
+    "line": 13,
+    "declaration": "func ReviewObservation(t Thread, d governance.Review, root, version string) (turnID, status, answer string, err error) {"
+  },
+  {
+    "path": "SDPTool/governancehost/session_leader.go",
+    "line": 13,
+    "declaration": "func (c *Client) SessionLeaderTools(ctx context.Context, thread string, expected map[string][]string) error {"
+  },
+  {
+    "path": "SDPTool/governancehost/skills.go",
+    "line": 18,
+    "declaration": "func (c *Client) InspectSkills(ctx context.Context, cwd string) (governance.SkillInventory, error) {"
+  },
+  {
+    "path": "SDPTool/governancehost/socket_linux.go",
+    "line": 23,
+    "declaration": "func OpenSocket(ctx context.Context, path string) (*Client, error) {"
+  },
+  {
+    "path": "SDPTool/governancehost/socket_linux.go",
+    "line": 153,
+    "declaration": "func (w *socketWire) Read(p []byte) (int, error) {"
+  },
+  {
+    "path": "SDPTool/governancehost/socket_linux.go",
+    "line": 175,
+    "declaration": "func (w *socketWire) Write(p []byte) (int, error) {"
+  },
+  {
+    "path": "SDPTool/governancehost/socket_linux.go",
+    "line": 184,
+    "declaration": "func (w *socketWire) Close() error { return w.conn.CloseNow() }"
+  },
+  {
+    "path": "SDPTool/governancehost/socket_other.go",
+    "line": 10,
+    "declaration": "func OpenSocket(context.Context, string) (*Client, error) {"
+  },
+  {
+    "path": "SDPTool/governancehost/work.go",
+    "line": 12,
+    "declaration": "func (c *Client) StartWorkThread(ctx context.Context, cwd, sandbox, instructions, approvals string, config map[string]any) (Thread, error) {"
+  },
+  {
+    "path": "SDPTool/governancehost/work.go",
+    "line": 52,
+    "declaration": "func (c *Client) StartTurn(ctx context.Context, threadID, messageID, text string) (Turn, error) {"
+  },
+  {
+    "path": "SDPTool/governancehost/work.go",
+    "line": 56,
+    "declaration": "func (c *Client) StartSkillTurn(ctx context.Context, threadID, messageID, text string, skills []governance.SkillInput) (Turn, error) {"
+  },
+  {
+    "path": "SDPTool/governancehost/work.go",
+    "line": 69,
+    "declaration": "func (c *Client) SteerTurn(ctx context.Context, threadID, turnID, messageID, text string) error {"
+  },
+  {
+    "path": "SDPTool/governancehost/work.go",
+    "line": 81,
+    "declaration": "func (c *Client) InterruptTurn(ctx context.Context, threadID, turnID string) error {"
+  },
+  {
+    "path": "SDPTool/governancemcp/server.go",
+    "line": 21,
+    "declaration": "func New(service *governance.Service, runID, attemptID, epoch string) (*mcp.Server, error) {"
+  },
+  {
+    "path": "SDPTool/governancemcp/server.go",
+    "line": 27,
+    "declaration": "func NewCoordinator(service *governance.Service, coordinator string) (*mcp.Server, error) {"
+  },
+  {
+    "path": "SDPTool/governancemcp/session.go",
+    "line": 16,
+    "declaration": "func NewSessionController(service *governance.Service, instance string, skill governance.SkillInput) (*mcp.Server, error) {"
+  },
+  {
+    "path": "SDPTool/governancemcp/session_host.go",
+    "line": 10,
+    "declaration": "func NewSessionHostController(service *governance.Service, instance string, skill governance.SkillInput) (*mcp.Server, error) {"
+  },
+  {
+    "path": "SDPTool/install/cli.go",
+    "line": 13,
+    "declaration": "func Run(ctx context.Context, root, op string, args []string, out, errs io.Writer) int {"
+  },
+  {
+    "path": "SDPTool/install/cli.go",
+    "line": 132,
+    "declaration": "func ArgumentError(root, op string, jsonMode bool, out, errs io.Writer, err error) int {"
+  },
+  {
+    "path": "SDPTool/install/execute.go",
+    "line": 27,
+    "declaration": "func (x Executor) Apply(ctx context.Context, root string, p Plan) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/install/execute.go",
+    "line": 84,
+    "declaration": "func (x Executor) Resume(ctx context.Context, root, id string) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/install/history.go",
+    "line": 19,
+    "declaration": "func ValidateManagementHistory(history []byte, files map[string][]byte) error {"
+  },
+  {
+    "path": "SDPTool/install/inspect.go",
+    "line": 22,
+    "declaration": "func Inspect(root string, extra []string) (Tree, error) {"
+  },
+  {
+    "path": "SDPTool/install/inspect.go",
+    "line": 144,
+    "declaration": "func SameSnapshot(a, b map[string]Observation) bool {"
+  },
+  {
+    "path": "SDPTool/install/inspect.go",
+    "line": 149,
+    "declaration": "func Pending(root string) ([]string, error) {"
+  },
+  {
+    "path": "SDPTool/install/plan.go",
+    "line": 19,
+    "declaration": "func LocalInput(p string, allow bool) (Input, error) {"
+  },
+  {
+    "path": "SDPTool/install/plan.go",
+    "line": 48,
+    "declaration": "func Preview(o Options) (Plan, error) {"
+  },
+  {
+    "path": "SDPTool/install/plan.go",
+    "line": 101,
+    "declaration": "func Build(root, operation string, release Input, previous, adoption *Input) (Plan, error) {"
+  },
+  {
+    "path": "SDPTool/install/plan.go",
+    "line": 488,
+    "declaration": "func SavePlan(p Plan, destination string) error {"
+  },
+  {
+    "path": "SDPTool/install/plan.go",
+    "line": 518,
+    "declaration": "func LoadPlan(file string) (Plan, error) {"
+  },
+  {
+    "path": "SDPTool/install/records.go",
+    "line": 48,
+    "declaration": "func (e *Error) Error() string { return e.Code + \": \" + e.Message }"
+  },
+  {
+    "path": "SDPTool/install/records.go",
+    "line": 52,
+    "declaration": "func Hash(b []byte) string { v := sha256.Sum256(b); return hex.EncodeToString(v[:]) }"
+  },
+  {
+    "path": "SDPTool/install/records.go",
+    "line": 159,
+    "declaration": "func Canonical(v any) ([]byte, error) {"
+  },
+  {
+    "path": "SDPTool/install/records.go",
+    "line": 187,
+    "declaration": "func Decode(b []byte, limit int, v any) error {"
+  },
+  {
+    "path": "SDPTool/install/records.go",
+    "line": 354,
+    "declaration": "func Read(path string, limit int) ([]byte, error) {"
+  },
+  {
+    "path": "SDPTool/install/records.go",
+    "line": 383,
+    "declaration": "func SafeAbsolute(p string) error {"
+  },
+  {
+    "path": "SDPTool/install/records.go",
+    "line": 402,
+    "declaration": "func Root(selected string) (string, error) {"
+  },
+  {
+    "path": "SDPTool/install/records.go",
+    "line": 424,
+    "declaration": "func Relative(p string) error {"
+  },
+  {
+    "path": "SDPTool/install/records.go",
+    "line": 436,
+    "declaration": "func Reserved(p string) bool {"
+  },
+  {
+    "path": "SDPTool/install/records.go",
+    "line": 450,
+    "declaration": "func ValidateDescriptor(d Descriptor) error {"
+  },
+  {
+    "path": "SDPTool/install/records.go",
+    "line": 524,
+    "declaration": "func ValidateReceipt(r Receipt) error {"
+  },
+  {
+    "path": "SDPTool/kanban.go",
+    "line": 50,
+    "declaration": "func BoardNodes(p Project) ([]Node, string, error) {"
+  },
+  {
+    "path": "SDPTool/model/frozen.go",
+    "line": 144,
+    "declaration": "func Freeze(area, kind, name, ref, evidence string) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/model/merge.go",
+    "line": 209,
+    "declaration": "func Merge(area, source, target, newName string) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/model/records.go",
+    "line": 88,
+    "declaration": "func (e *Error) Error() string       { return e.Code + \": \" + e.Detail }"
+  },
+  {
+    "path": "SDPTool/model/records.go",
+    "line": 146,
+    "declaration": "func Digest(f Files) string {"
+  },
+  {
+    "path": "SDPTool/model/records.go",
+    "line": 559,
+    "declaration": "func Status(area, ref string) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/model/transaction.go",
+    "line": 309,
+    "declaration": "func Recover(area, id, action string) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/model/validation.go",
+    "line": 14,
+    "declaration": "func Validate(area, ref string) (Validation, error) {"
+  },
+  {
+    "path": "SDPTool/model/view.go",
+    "line": 16,
+    "declaration": "func Snapshot(area, ref string) (SourceView, error) {"
+  },
+  {
+    "path": "SDPTool/model/view.go",
+    "line": 30,
+    "declaration": "func Inspect(dir string) (*Artifact, error) {"
+  },
+  {
+    "path": "SDPTool/model/view.go",
+    "line": 53,
+    "declaration": "func OperationArea(dir string) bool {"
+  },
+  {
+    "path": "SDPTool/model/work.go",
+    "line": 65,
+    "declaration": "func CreateWork(area, name, from string, initial bool) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/model/work.go",
+    "line": 221,
+    "declaration": "func Commit(area, ref, message string, resolved bool) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/model/work.go",
+    "line": 314,
+    "declaration": "func Restore(area, ref, commit string) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/navigation.go",
+    "line": 11,
+    "declaration": "func Navigation(p Project, id string) (Tree, error) {"
+  },
+  {
+    "path": "SDPTool/presentation/presentation.go",
+    "line": 20,
+    "declaration": "func Default() Registry {"
+  },
+  {
+    "path": "SDPTool/presentation/presentation.go",
+    "line": 53,
+    "declaration": "func (r Registry) Write(w io.Writer, value any, jsonMode bool) error {"
+  },
+  {
+    "path": "SDPTool/presentation/presentation.go",
+    "line": 64,
+    "declaration": "func (r Registry) WriteJSON(w io.Writer, b json.RawMessage, jsonMode bool) error {"
+  },
+  {
+    "path": "SDPTool/preview.go",
+    "line": 28,
+    "declaration": "func (f *Failure) Error() string         { return f.Code + \": \" + f.Message }"
+  },
+  {
+    "path": "SDPTool/preview.go",
+    "line": 139,
+    "declaration": "func Preview(ctx context.Context, o PreviewOptions) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/projecthistory/history.go",
+    "line": 184,
+    "declaration": "func Validate(data []byte) error {"
+  },
+  {
+    "path": "SDPTool/projecthistory/history.go",
+    "line": 192,
+    "declaration": "func Read(path string) (Snapshot, error) {"
+  },
+  {
+    "path": "SDPTool/projecthistory/history.go",
+    "line": 215,
+    "declaration": "func Append(path, expectedRevision string, event []byte) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/projecthistory/transaction.go",
+    "line": 19,
+    "declaration": "func BeginTransaction(path string) (*Transaction, error) {"
+  },
+  {
+    "path": "SDPTool/projecthistory/transaction.go",
+    "line": 33,
+    "declaration": "func (t *Transaction) Close() {"
+  },
+  {
+    "path": "SDPTool/projecthistory/transaction.go",
+    "line": 81,
+    "declaration": "func (t *Transaction) Check(owner string) error {"
+  },
+  {
+    "path": "SDPTool/projecthistory/transaction.go",
+    "line": 99,
+    "declaration": "func (t *Transaction) Reserve(owner string) error {"
+  },
+  {
+    "path": "SDPTool/projecthistory/transaction.go",
+    "line": 135,
+    "declaration": "func (t *Transaction) Release(owner string) error {"
+  },
+  {
+    "path": "SDPTool/release_log.go",
+    "line": 20,
+    "declaration": "func ReleaseLogs(notes string) (map[string][]byte, error) {"
+  },
+  {
+    "path": "SDPTool/sdui.go",
+    "line": 32,
+    "declaration": "func UIPreview(ctx context.Context, p Project, id, entry, output, revision string) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/sdui.go",
+    "line": 104,
+    "declaration": "func UINodes(p Project) ([]Node, string, error) {"
+  },
+  {
+    "path": "SDPTool/selection.go",
+    "line": 9,
+    "declaration": "func SelectProject(ctx context.Context, p Project, id string, o PreviewOptions) (Result, error) {"
+  },
+  {
+    "path": "SDPTool/tree.go",
+    "line": 73,
+    "declaration": "func ModelTree(p Project, id string) (Tree, error) {"
+  },
+  {
+    "path": "SDPTool/viewer.go",
+    "line": 31,
+    "declaration": "func (b *boundedOutput) Write(p []byte) (int, error) {"
+  },
+  {
+    "path": "SDPTool/viewer.go",
+    "line": 37,
+    "declaration": "func ViewPlan(ctx context.Context, p Project, modelID string, h Host) error {"
+  }
+]

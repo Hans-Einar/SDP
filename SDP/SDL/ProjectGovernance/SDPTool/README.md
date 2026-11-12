@@ -1,5 +1,9 @@
 # SDPTool — project facade and shared governance core
 
+Current Activity0001 restructuring: [ArchitectureMigration](ArchitectureMigration/README.md)
+provides the inspected NOW/TARGET cross-entrypoint map. Existing detailed concerns
+retain their scope; Activity feature work remains on hold.
+
 Current Activity command design: [ActivityWorkflow](ActivityWorkflow/README.md)
 adds a bounded preliminary WORK for Activity/Session document creation, lifecycle
 and reading projections. It does not replace the existing model concerns or claim
