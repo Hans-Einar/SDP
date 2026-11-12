@@ -3,6 +3,7 @@ package sdptool
 import (
 	"context"
 	"reflect"
+	"runtime"
 
 	"github.com/Hans-Einar/SDP/SDPTool/blueprints"
 	"github.com/Hans-Einar/SDP/SDPTool/blueprintstate"
@@ -38,7 +39,12 @@ func blueprintActions() []actionSpec {
 		defineAction(ActionDescriptor{ID: "blueprint.generate", Label: "Generate blueprint", Description: "Capture model inputs and generate a preview or immutable retained revision.", Group: "Blueprints", IconKey: "blueprint-generate", Mutation: "documents", InputSchema: generation, OutputSchema: "sdp-blueprint/1"}, performGenerate),
 		defineAction(ActionDescriptor{ID: "blueprint.assess", Label: "Assess blueprint", Description: "Assess pinned evidence without executing checks or changing workflow state.", Group: "Blueprints", IconKey: "blueprint-assess", Mutation: "none", OutputSchema: "sdp-blueprint-assessment/1"}, performAssess),
 		defineAction(ActionDescriptor{ID: "blueprint.assignment.list", Label: "List assignments", Description: "Read revision-bound assignments from canonical project history.", Group: "Blueprints", IconKey: "blueprint-assignments", Mutation: "none", OutputSchema: blueprintstate.Schema}, performAssignmentList),
-		defineAction(ActionDescriptor{ID: "blueprint.assignment.apply", Label: "Apply assignment transition", Description: "Apply one attributed revision-bound transition; requires a trusted local principal.", Group: "Blueprints", IconKey: "blueprint-transition", Mutation: "history", InputSchema: assignment, OutputSchema: blueprintstate.Schema}, performAssignmentApply),
+		defineAction(ActionDescriptor{ID: "blueprint.assignment.apply", Label: "Apply assignment transition", Description: "Apply one attributed revision-bound transition; requires a trusted local principal.", Group: "Blueprints", IconKey: "blueprint-transition", Mutation: "history", InputSchema: assignment, OutputSchema: blueprintstate.Schema}, performAssignmentApply, actionPolicy{callerAttribution: true, availability: func() *ActionAvailability {
+			if runtime.GOOS != "linux" {
+				return &ActionAvailability{State: "unavailable", Reason: "unsupported-platform", Message: "Assignment writes currently require Linux."}
+			}
+			return nil
+		}}),
 	}
 }
 func performGenerate(ctx context.Context, c actionContext, p GenerateActionInput) (any, int, error) {

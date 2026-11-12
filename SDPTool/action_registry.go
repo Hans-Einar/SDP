@@ -8,7 +8,6 @@ import (
 	"fmt"
 	"path/filepath"
 	"reflect"
-	"runtime"
 	"sort"
 )
 
@@ -16,19 +15,28 @@ type actionContext struct {
 	Root, Area string
 	Caller     ActionCaller
 }
+type actionPolicy struct {
+	callerAttribution bool
+	availability      func() *ActionAvailability
+}
 type actionSpec struct {
+	policy     actionPolicy
 	descriptor ActionDescriptor
 	decode     func(json.RawMessage) (any, error)
 	run        func(context.Context, actionContext, any) (any, int, error)
 }
 
-func defineAction[T any](d ActionDescriptor, run func(context.Context, actionContext, T) (any, int, error)) actionSpec {
+func defineAction[T any](d ActionDescriptor, run func(context.Context, actionContext, T) (any, int, error), policies ...actionPolicy) actionSpec {
 	s := actionSchema(reflect.TypeOf((*T)(nil)).Elem())
 	if d.InputSchema != nil {
 		s = d.InputSchema
 	}
 	d.InputSchema = s
-	return actionSpec{d, func(raw json.RawMessage) (any, error) { return decodeAction[T](raw, s) }, func(ctx context.Context, c actionContext, v any) (any, int, error) { return run(ctx, c, v.(T)) }}
+	var policy actionPolicy
+	if len(policies) > 0 {
+		policy = policies[0]
+	}
+	return actionSpec{policy, d, func(raw json.RawMessage) (any, error) { return decodeAction[T](raw, s) }, func(ctx context.Context, c actionContext, v any) (any, int, error) { return run(ctx, c, v.(T)) }}
 }
 
 type noActionParameters struct{}
@@ -82,8 +90,10 @@ func Actions(ctx context.Context, selected string) (ActionCatalogue, error) {
 		if contextErr != nil {
 			d.Availability = ActionAvailability{State: "unavailable", Reason: "invalid-context", Message: contextErr.Error()}
 		}
-		if d.ID == "blueprint.assignment.apply" && runtime.GOOS != "linux" {
-			d.Availability = ActionAvailability{State: "unavailable", Reason: "unsupported-platform", Message: "Assignment writes currently require Linux."}
+		if s.policy.availability != nil {
+			if availability := s.policy.availability(); availability != nil {
+				d.Availability = *availability
+			}
 		}
 		r.Actions = append(r.Actions, d)
 	}

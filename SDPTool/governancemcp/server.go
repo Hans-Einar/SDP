@@ -3,12 +3,8 @@
 package governancemcp
 
 import (
-	"context"
-	"encoding/json"
-	"errors"
 	"fmt"
 	"strings"
-	"time"
 	"unicode/utf8"
 
 	"github.com/Hans-Einar/SDP/SDPTool/governance"
@@ -54,44 +50,7 @@ func newServer(service *governance.Service, runID, attemptID, epoch, coordinator
 	s := mcp.NewServer(&mcp.Implementation{Name: "sdptool-governance", Version: "PGI2"},
 		&mcp.ServerOptions{SupportedProtocolVersions: []string{ProtocolVersion}})
 	add := func(name, description string, schema map[string]any, readOnly bool, f func([]byte) (any, error)) {
-		s.AddTool(&mcp.Tool{Name: name, Description: description, InputSchema: schema,
-			Annotations: &mcp.ToolAnnotations{ReadOnlyHint: readOnly}},
-			func(ctx context.Context, req *mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-				if e := ctx.Err(); e != nil {
-					return nil, e
-				}
-				value, e := f(req.Params.Arguments)
-				// Core busy means no mutation occurred. Retain exact tool arguments
-				// and operation ID, and wait only for short local bookkeeping contention.
-				for attempt := 0; attempt < 99; attempt++ {
-					var busy *governance.Error
-					if !errors.As(e, &busy) || busy.Code != "busy" {
-						break
-					}
-					select {
-					case <-ctx.Done():
-						return nil, ctx.Err()
-					case <-time.After(20 * time.Millisecond):
-					}
-					value, e = f(req.Params.Arguments)
-				}
-				if e != nil {
-					var d *governance.Error
-					if !errors.As(e, &d) {
-						d = &governance.Error{Code: "invalid_request", Message: e.Error()}
-					}
-					value = map[string]any{"schema": governance.Schema, "error": d}
-				}
-				b, err := json.Marshal(value)
-				if err != nil {
-					return nil, err
-				}
-				if len(b) > 256<<10 {
-					e = &governance.Error{Code: "limit", Message: "use bounded observation pages"}
-					b, _ = json.Marshal(map[string]any{"schema": governance.Schema, "error": e})
-				}
-				return &mcp.CallToolResult{IsError: e != nil, StructuredContent: json.RawMessage(b), Content: []mcp.Content{&mcp.TextContent{Text: string(b)}}}, nil
-			})
+		addTool(s, name, description, schema, readOnly, responsePolicy{governance.Schema, "use bounded observation pages"}, f)
 	}
 	if coordinator != "" {
 		add("coordination_read", "Read a bounded page of registered work, questions and reports in the launch-selected checkout. No host liveness or acceptance is inferred. A stale cursor requires a fresh first page.", governance.WireDefinition("CoordinationRequest"), true, func(b []byte) (any, error) {

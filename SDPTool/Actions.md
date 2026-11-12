@@ -150,7 +150,10 @@ XFMD widgets, Preferences or menu code.
 returns a typed response. `RunWithInput` is the argv/stdin/output adapter; existing
 `Run` callers remain compatible with empty implicit stdin. The registry binds typed
 handlers and derives parameter schemas from those same types. Existing human commands
-share the included operation handlers. Human catalogue output uses the presentation
+share the included operation handlers. Session CLI/actions use the typed
+[governanceapp operation inventory](governanceapp/README.md); actions do not call
+the CLI or parse its output. Caller-attribution/platform policy is registered with
+the operation, while domain authorization remains in its service. Human catalogue output uses the presentation
 registry, with terminal-control escaping.
 
 [Integration handoff](XFMD-Blueprint-Integration.md) and

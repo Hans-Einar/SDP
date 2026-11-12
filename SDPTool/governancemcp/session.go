@@ -1,11 +1,7 @@
 package governancemcp
 
 import (
-	"context"
-	"encoding/json"
-	"errors"
 	"fmt"
-	"time"
 
 	"github.com/Hans-Einar/SDP/SDPTool/governance"
 	"github.com/modelcontextprotocol/go-sdk/mcp"
@@ -138,39 +134,5 @@ func addSessionMutation[T any](server *mcp.Server, service *governance.Service, 
 	})
 }
 func addSessionTool(server *mcp.Server, name, description string, schema map[string]any, readOnly bool, apply func([]byte) (any, error)) {
-	server.AddTool(&mcp.Tool{Name: name, Description: description, InputSchema: schema, Annotations: &mcp.ToolAnnotations{ReadOnlyHint: readOnly}}, func(ctx context.Context, req *mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-		if e := ctx.Err(); e != nil {
-			return nil, e
-		}
-		value, e := apply(req.Params.Arguments)
-		// Retry only busy bookkeeping, never stale requests or host effects.
-		for n := 0; n < 99; n++ {
-			var ge *governance.Error
-			if !errors.As(e, &ge) || ge.Code != "busy" {
-				break
-			}
-			select {
-			case <-ctx.Done():
-				return nil, ctx.Err()
-			case <-time.After(20 * time.Millisecond):
-			}
-			value, e = apply(req.Params.Arguments)
-		}
-		if e != nil {
-			var ge *governance.Error
-			if !errors.As(e, &ge) {
-				ge = &governance.Error{Code: "invalid_request", Message: e.Error()}
-			}
-			value = map[string]any{"schema": governance.SessionSchema, "error": ge}
-		}
-		b, err := json.Marshal(value)
-		if err != nil {
-			return nil, err
-		}
-		if len(b) > 256<<10 {
-			e = fmt.Errorf("bounded Session response exceeded")
-			b, _ = json.Marshal(map[string]any{"schema": governance.SessionSchema, "error": &governance.Error{Code: "limit", Message: e.Error()}})
-		}
-		return &mcp.CallToolResult{IsError: e != nil, StructuredContent: json.RawMessage(b), Content: []mcp.Content{&mcp.TextContent{Text: string(b)}}}, nil
-	})
+	addTool(server, name, description, schema, readOnly, responsePolicy{governance.SessionSchema, "bounded Session response exceeded"}, apply)
 }

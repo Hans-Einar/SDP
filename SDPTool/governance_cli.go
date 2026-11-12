@@ -1,16 +1,14 @@
 package sdptool
 
 import (
-	"crypto/sha256"
+	"context"
 	"errors"
 	"flag"
 	"fmt"
 	"io"
-	"os"
-	"path/filepath"
-	"strings"
 
 	"github.com/Hans-Einar/SDP/SDPTool/governance"
+	"github.com/Hans-Einar/SDP/SDPTool/governanceapp"
 	"github.com/Hans-Einar/SDP/SDPTool/presentation"
 )
 
@@ -65,56 +63,17 @@ func governanceCommandAs(selected string, args []string, out, errs io.Writer, js
 	if fs.NArg() != 0 {
 		return report(fmt.Errorf("unexpected argument"))
 	}
-	if *instance != "" && op != "session-read" && op != "session-host-read" {
-		return report(fmt.Errorf("--instance is only valid for session-read"))
-	}
-	switch op {
-	case "session-definition", "session-list":
-		if *input != "" || *run != "" {
-			return report(fmt.Errorf("operation takes no request/run"))
+	operation, ok := governanceapp.Find(op)
+	if !ok {
+		if *instance != "" {
+			return report(fmt.Errorf("--instance is only valid for session-read"))
 		}
-	case "session-read", "session-host-read":
-		if *input != "" || *run != "" || *instance == "" {
-			return report(fmt.Errorf("session-read requires --instance only"))
-		}
-	case "session-host-request", "session-host-cancel", "session-context", "session-design-context", "session-rebind-context", "session-rebind", "session-successor", "session-adopt", "session-resume", "session-select", "session-assess", "session-start", "session-progress", "session-verify", "session-review", "session-dispose", "session-owner", "session-advance":
-		if *input == "" || *run != "" {
-			return report(fmt.Errorf("operation requires --input only"))
-		}
-	case "bind":
-		if *input != "" || *run != "" {
-			return report(fmt.Errorf("bind takes no request/run"))
-		}
-	case "read":
-		if *input != "" || *run == "" {
-			return report(fmt.Errorf("read requires --run only"))
-		}
-	case "context", "route", "start", "transition":
-		if *input == "" || *run != "" {
-			return report(fmt.Errorf("operation requires --input only"))
-		}
-	default:
 		return report(fmt.Errorf("unknown governance command"))
 	}
-	p, e := Discover(selected)
-	if e != nil {
+	if e := operation.Validate(*input, *run, *instance); e != nil {
 		return report(e)
 	}
-	if *state == "" {
-		base := os.Getenv("XDG_STATE_HOME")
-		if base == "" {
-			home, e := os.UserHomeDir()
-			if e != nil {
-				return report(e)
-			}
-			base = filepath.Join(home, ".local", "state")
-		}
-		if !filepath.IsAbs(base) {
-			return report(fmt.Errorf("XDG_STATE_HOME must be absolute"))
-		}
-		*state = filepath.Join(base, "sdptool", "project-governance", fmt.Sprintf("%x", sha256.Sum256([]byte(p.Root))))
-	}
-	service, e := governance.New(p.Root, p.Area, p.Inventory.ProjectID, *state)
+	service, e := governanceService(selected, *state)
 	if e != nil {
 		return report(e)
 	}
@@ -125,130 +84,11 @@ func governanceCommandAs(selected string, args []string, out, errs io.Writer, js
 			return report(e)
 		}
 	}
-	var result any
-	switch op {
-	case "session-definition":
-		w := governance.SessionWorkflow()
-		result = map[string]any{"schema": governance.SessionSchema, "operation": op, "definition": w, "digest": w.Digest()}
-	case "session-host-read":
-		result, e = service.ReadSessionHostCommands(*instance)
-	case "session-host-request":
-		var q governance.SessionHostRequest
-		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.RequestSessionHost(caller, q)
-		}
-		result = map[string]any{"schema": governance.SessionHostSchema, "operation": op, "command": result}
-	case "session-host-cancel":
-		var q struct {
-			OperationID string `json:"operationId"`
-		}
-		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.CancelSessionHost(caller, q.OperationID)
-		}
-		result = map[string]any{"schema": governance.SessionHostSchema, "operation": op, "command": result}
-	case "session-context":
-		var q governance.SessionContextRequest
-		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.SessionContext(q)
-		}
-	case "session-design-context":
-		var q governance.SessionDesignRequest
-		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.InspectSessionDesign(q)
-		}
-	case "session-rebind-context":
-		var q governance.SessionRebindContextRequest
-		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.SessionRebindContext(q)
-		}
-	case "session-rebind":
-		var q governance.SessionRebindRequest
-		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.RebindSession(caller, q)
-		}
-	case "session-successor":
-		var q governance.SessionSuccessorRequest
-		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.SessionSuccessorContext(q)
-		}
-	case "session-adopt":
-		var q governance.SessionAdoptRequest
-		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.AdoptSession(caller, q)
-		}
-	case "session-resume":
-		var q governance.SessionResumeRequest
-		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.ResumeSession(caller, q)
-		}
-	case "session-select":
-		var q governance.SessionSelectRequest
-		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.SelectSession(caller, q)
-		}
-	case "session-assess":
-		var q governance.SessionAssessRequest
-		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.AssessSession(caller, q)
-		}
-	case "session-start", "session-progress", "session-verify", "session-review":
-		kind := strings.TrimPrefix(op, "session-")
-		var q governance.SessionWorkRequest
-		if q, e = governance.DecodeSessionWork(b, kind); e == nil {
-			if kind == "start" {
-				result, e = service.StartSession(caller, q)
-			} else if kind == "progress" {
-				result, e = service.ProgressSession(caller, q)
-			} else if kind == "verify" {
-				result, e = service.VerifySession(caller, q)
-			} else {
-				result, e = service.ReviewSession(caller, q)
-			}
-		}
-	case "session-advance":
-		var q governance.SessionAdvanceRequest
-		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.AdvanceSession(caller, q)
-		}
-	case "session-owner":
-		var q governance.SessionOwnerRequest
-		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.OwnerSession(caller, q)
-		}
-	case "session-dispose":
-		var q governance.SessionDisposeRequest
-		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.DisposeSession(caller, q)
-		}
-	case "session-read":
-		result, e = service.ReadSession(*instance)
-	case "session-list":
-		result, e = service.ListSessions()
-	case "context":
-		var q governance.Selection
-		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.Context(q)
-		}
-	case "route":
-		var q governance.RouteRequest
-		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.Route(q)
-		}
-	case "bind":
-		result, e = service.Bind(caller)
-	case "start":
-		var q governance.StartRequest
-		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.Start(caller, q)
-		}
-	case "read":
-		result, e = service.Read(*run)
-	case "transition":
-		var q governance.TransitionRequest
-		if e = governance.Decode(b, &q); e == nil {
-			result, e = service.Transition(caller, q)
-		}
+	identity := *run
+	if operation.Input == governanceapp.InstanceInput {
+		identity = *instance
 	}
+	result, e := operation.Execute(context.Background(), service, caller, b, identity)
 	if e != nil {
 		return report(e)
 	}

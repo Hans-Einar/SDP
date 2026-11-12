@@ -1,13 +1,11 @@
 package sdptool
 
 import (
-	"bytes"
 	"context"
-	"encoding/json"
-	"fmt"
-	"strings"
-
+	"errors"
 	"github.com/Hans-Einar/SDP/SDPTool/governance"
+	"github.com/Hans-Einar/SDP/SDPTool/governanceapp"
+	"strings"
 )
 
 type SessionActionInput struct {
@@ -22,123 +20,71 @@ type SessionListInput struct {
 	State string `json:"state,omitempty" pathBase:"project"`
 }
 
-// Use exactly the same strict domain decoder and service as the trusted CLI.
 // Authority is supplied by the invocation host, never by request JSON.
-func sessionActionCall(ctx context.Context, c actionContext, op, state, input, instance string, write bool) (any, int, error) {
+func sessionActionCall(ctx context.Context, c actionContext, op governanceapp.Operation, state, input, instance string) (any, int, error) {
 	if e := ctx.Err(); e != nil {
 		return nil, 130, e
 	}
-	if write && ((c.Caller.Principal.Authority != "controller" && c.Caller.Principal.Authority != "owner") || strings.TrimSpace(c.Caller.Principal.Actor) == "") {
+	if op.Write && ((c.Caller.Principal.Authority != "controller" && c.Caller.Principal.Authority != "owner") || strings.TrimSpace(c.Caller.Principal.Actor) == "") {
 		return nil, 2, &actionFailure{code: "unauthorized", exit: 2, message: "trusted controller principal required"}
 	}
-	args := []string{op}
-	if state != "" {
-		args = append(args, "--state", actionPath(c.Root, state))
-	}
-	if input != "" {
-		args = append(args, "--input", actionPath(c.Root, input))
-	}
-	if instance != "" {
-		args = append(args, "--instance", instance)
-	}
-	var out, errs bytes.Buffer
 	caller := governance.LocalController()
 	if c.Caller.Principal.Authority == "owner" {
 		caller = governance.LocalOwner()
 	}
-	code := governanceCommandAs(c.Root, args, &out, &errs, true, caller)
-	if code != 0 {
-		var envelope struct {
-			Error governance.Error `json:"error"`
-		}
-		if e := json.Unmarshal(errs.Bytes(), &envelope); e == nil && envelope.Error.Code != "" {
-			return nil, code, &actionFailure{code: envelope.Error.Code, exit: code, message: envelope.Error.Message}
-		}
-		return nil, code, fmt.Errorf("Session operation failed: %s", errs.String())
+	if state != "" {
+		state = actionPath(c.Root, state)
+	}
+	service, e := governanceService(c.Root, state)
+	var b []byte
+	if e == nil && input != "" {
+		b, e = boundedFile(actionPath(c.Root, input))
 	}
 	var result any
-	if e := json.Unmarshal(out.Bytes(), &result); e != nil {
-		return nil, 2, e
+	if e == nil {
+		result, e = op.Execute(ctx, service, caller, b, instance)
+	}
+	if e != nil {
+		if errors.Is(e, context.Canceled) || errors.Is(e, context.DeadlineExceeded) {
+			return nil, 130, e
+		}
+		var domain *governance.Error
+		if !errors.As(e, &domain) {
+			domain = &governance.Error{Code: "unavailable", Message: e.Error()}
+		}
+		return nil, 2, &actionFailure{code: domain.Code, exit: 2, message: domain.Message}
 	}
 	return result, 0, nil
 }
 func sessionActions() []actionSpec {
-	descriptor := func(id, label, desc, mutation string) ActionDescriptor {
-		return ActionDescriptor{ID: "governance.session." + id, Label: label, Description: desc, Group: "ProjectGovernance", IconKey: "session", Mutation: mutation, OutputSchema: governance.SessionSchema}
-	}
-	out := []actionSpec{
-		defineAction(descriptor("definition", "Session workflow definition", "Read the supported pinned workflow; no execution.", "none"), func(ctx context.Context, c actionContext, _ noActionParameters) (any, int, error) {
-			return sessionActionCall(ctx, c, "session-definition", "", "", "", false)
-		}),
-		defineAction(descriptor("list", "Session instances", "Inspect instances in one selected local store; no discovery of other stores.", "none"), func(ctx context.Context, c actionContext, q SessionListInput) (any, int, error) {
-			return sessionActionCall(ctx, c, "session-list", q.State, "", "", false)
-		}),
-		defineAction(descriptor("read", "Inspect Session instance", "Read stages, unmet conditions and coverage without starting work.", "none"), func(ctx context.Context, c actionContext, q SessionReadInput) (any, int, error) {
-			return sessionActionCall(ctx, c, "session-read", q.State, "", q.Instance, false)
-		}),
-	}
-	for _, op := range []string{"context", "design-context", "rebind-context", "rebind", "successor", "adopt", "resume", "select", "assess", "start", "progress", "verify", "review", "dispose", "owner", "advance"} {
-		mutation := "none"
-		desc := "Read and validate the binding and canonical coverage."
-		if op == "design-context" {
-			desc = "Inspect exact assessed SDL WORK, task and required Blueprint; no design acceptance or dispatch."
+	var out []actionSpec
+	for _, op := range governanceapp.Operations() {
+		if op.Action == nil {
+			continue
 		}
-		if op == "rebind" {
-			mutation = "state"
-			desc = "Prepare an exact reviewed binding revision at a quiescent boundary; retain earlier evidence and require fresh selection."
+		a := op.Action
+		descriptor := ActionDescriptor{ID: a.ID, Label: a.Label, Description: a.Description, Group: "ProjectGovernance", IconKey: "session", Mutation: a.Mutation, OutputSchema: a.OutputSchema}
+		policy := actionPolicy{callerAttribution: op.Write}
+		switch op.Input {
+		case governanceapp.NoInput:
+			if op.Name == "session-definition" {
+				out = append(out, defineAction(descriptor, func(ctx context.Context, c actionContext, _ noActionParameters) (any, int, error) {
+					return sessionActionCall(ctx, c, op, "", "", "")
+				}, policy))
+			} else {
+				out = append(out, defineAction(descriptor, func(ctx context.Context, c actionContext, q SessionListInput) (any, int, error) {
+					return sessionActionCall(ctx, c, op, q.State, "", "")
+				}, policy))
+			}
+		case governanceapp.InstanceInput:
+			out = append(out, defineAction(descriptor, func(ctx context.Context, c actionContext, q SessionReadInput) (any, int, error) {
+				return sessionActionCall(ctx, c, op, q.State, "", q.Instance)
+			}, policy))
+		case governanceapp.RequestInput:
+			out = append(out, defineAction(descriptor, func(ctx context.Context, c actionContext, q SessionActionInput) (any, int, error) {
+				return sessionActionCall(ctx, c, op, q.State, q.RequestFile, "")
+			}, policy))
 		}
-		if op == "adopt" {
-			mutation = "state"
-			desc = "Persist adoption intent; no card activation or agent dispatch."
-		}
-		if op == "verify" || op == "review" {
-			mutation = "state"
-			desc = "Prepare exact candidate test or observed review intake; resume commits canonical records."
-		}
-		if op == "advance" {
-			mutation = "state"
-			desc = "Prepare checked rework, next-step continuation or overall Session closure with retained history."
-		}
-		if op == "owner" {
-			mutation = "state"
-			desc = "Request concrete owner review or record an owner-authorized exact-result decision."
-		}
-		if op == "dispose" {
-			mutation = "state"
-			desc = "Prepare checked selected-step and card disposition; resume publishes results and releases the claim."
-		}
-		if op == "start" || op == "progress" {
-			mutation = "state"
-			desc = "Prepare Session-bound in-progress or candidate progress records; resume commits them."
-		}
-		if op == "assess" {
-			mutation = "state"
-			desc = "Prepare an attributed design assessment and checked canonical records; no host dispatch."
-		}
-		if op == "select" {
-			mutation = "state"
-			desc = "Prepare checked Session step selection and ready-card effects."
-		}
-		if op == "resume" {
-			mutation = "documents"
-			desc = "Reconcile Session registration and coverage; no agent dispatch or later-stage execution."
-		}
-		out = append(out, defineAction(descriptor(op, "Session "+op, desc, mutation), func(ctx context.Context, c actionContext, q SessionActionInput) (any, int, error) {
-			return sessionActionCall(ctx, c, "session-"+op, q.State, q.RequestFile, "", op != "context" && op != "design-context" && op != "successor" && op != "rebind-context")
-		}))
-	}
-	hostDescriptor := func(op, mutation string) ActionDescriptor {
-		d := descriptor(op, "Session "+op, "Inspect, queue or cancel a durable host request; execution belongs to the trusted controller.", mutation)
-		d.OutputSchema = governance.SessionHostSchema
-		return d
-	}
-	out = append(out, defineAction(hostDescriptor("host-read", "none"), func(ctx context.Context, c actionContext, q SessionReadInput) (any, int, error) {
-		return sessionActionCall(ctx, c, "session-host-read", q.State, "", q.Instance, false)
-	}))
-	for _, op := range []string{"host-request", "host-cancel"} {
-		out = append(out, defineAction(hostDescriptor(op, "state"), func(ctx context.Context, c actionContext, q SessionActionInput) (any, int, error) {
-			return sessionActionCall(ctx, c, "session-"+op, q.State, q.RequestFile, "", true)
-		}))
 	}
 	return out
 }
