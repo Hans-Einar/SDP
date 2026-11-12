@@ -1,4 +1,11 @@
-# Activity records — manual bootstrap contract 0.1
+# Activity records — preserved manual bootstrap contract 0.1
+
+Current implementation: Activity0002 now reads this unchanged contract and writes
+versioned0.2 records through SDPTool. See ../../SDPTool/Activities.md and
+../Activities/Activity-0002--Activity-Management/06-Verification/Verification.md.
+The integrated Python/Go validators support the full mixed history. The historical
+bootstrap limitations below describe the earlier manual creation, not the current
+qualified candidate; schemas/event bytes remain unchanged.
 
 Owner instruction, 2026-11-12: manually create the first Activity and the same
 canonical history that later tooling will produce. This selects a local record

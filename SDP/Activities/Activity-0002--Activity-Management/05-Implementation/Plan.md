@@ -28,12 +28,12 @@ Use a separate XFMD worktree when product integration requires changes.
 | Milestone | Outcome | Acceptance / current state |
 | --- | --- | --- |
 | A0 Executable design | Reconcile canonical schema/readers, transaction/recovery, retained descriptors, scope and producer contracts; validate/checkpoint SDL and pin Blueprint handoff | Completed: pinned concern checkpoints and Blueprint; transaction/recovery and host boundary contract selected |
-| A1 Creation and records | Activity and Session creation via typed CLI/actions, real manual compatibility, shared canonical history | Domain complete; adapters awaiting integrated qualification. Create/retry/stale/path/identity/crash checks pass; no dispatch on creation |
-| A2 Lifecycle | Activate/hold/resume/switch/complete/cancel/reopen with truthful quiescence and single-active rule | Domain complete; concurrency, interrupted/retried switch, quiescence and dispositions pass; host integration qualification remains |
-| A3 Navigation | Producer-owned Activities tree, readable landing/phase/history pages and legacy references; XFMD consumption | Implemented and native-tested; final integrated qualification in progress. Producer paging, model-free selection and legacy references retained |
+| A1 Creation and records | Activity and Session creation via typed CLI/actions, real manual compatibility, shared canonical history | Verified with integrated adapters. Create/retry/stale/path/identity/crash checks pass; no dispatch on creation |
+| A2 Lifecycle | Activate/hold/resume/switch/complete/cancel/reopen with truthful quiescence and single-active rule | Verified: concurrency, interrupted/retried switch, quiescence, dispositions and host integration |
+| A3 Navigation | Producer-owned Activities tree, readable landing/phase/history pages and legacy references; XFMD consumption | Verified in the actual native shell. Producer paging, model-free selection and legacy references retained |
 | A4 Timeline | Actual lifecycle intervals and explicitly attributed commit/ledger markers | Implemented; clock/unknown/dense/explicit marker tests pass; colored calendar SVG inspected in native shell |
 | A5 Governance and adoption | Activity-scoped execution admission across existing paths; read-only/capture allowed; installed readers/process integration | Implemented; direct/host admission, pending recovery, installed readers and explicit opt-in tests pass |
-| A6 Qualification | Full integrated candidate, independent review, native workflow, truthful records/docs | All selected design cases disposed, no deferred transition adapters, owner review on concrete result |
+| A6 Qualification | Full integrated candidate, independent review, native workflow, truthful records/docs | Technical qualification and independent review complete; owner disposition pending on the concrete result |
 
 Milestones may be refined into smaller runnable checks as source inspection resolves
 contracts; they may not silently drop selected behavior. The existing Design.md
@@ -49,3 +49,11 @@ regressions and actual XFMD behavior. Test each material change locally and cons
 broad suites/independent review at coherent boundaries. Session0018 records work
 and handoffs; this plan alone owns detailed milestone status. Final acceptance does
 not follow automatically from a passing parser or generated Blueprint.
+
+## Technical delivery disposition
+
+A1–A6 technical obligations are verified on producer eb11ac7 and consumer a558c31.
+See ../06-Verification/Verification.md and A6/Review.md. The plan remains active
+solely for the actual owner disposition; no incomplete implementation is hidden
+behind that boundary. Activity0002 is still the selected active Activity and
+Activity0003 has not been allocated. No live adoption, installation or merge.

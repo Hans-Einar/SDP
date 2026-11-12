@@ -5,7 +5,7 @@
 | id | KB-SDP-061 |
 | project | SDP |
 | type | Proposal |
-| CardState | in-progress |
+| CardState | gate-review |
 | created | 2026-11-11 |
 | PlanId | PLAN-SDP-0027 |
 | Systems | ProjectGovernance, SDPTOOL |
@@ -49,3 +49,11 @@ Owner accepts Activity0001 and selects ACTIVITY-SDP-0002 for implementation.
 [PLAN0027](../../Activities/Activity-0002--Activity-Management/05-Implementation/Plan.md)
 owns delivery; Session0018 coordinates execution. The prior hold is resolved by
 actual predecessor acceptance. Activity0003/browsing remains outside this scope.
+
+2026-11-12 Activity0002 technical delivery: producer eb11ac7 and isolated XFMD
+consumer a558c31 implement Activity/Session creation, guarded lifecycle/recovery,
+producer-owned Activities pages/timeline and explicit governance admission.
+[Qualification](../../Activities/Activity-0002--Activity-Management/06-Verification/Verification.md)
+records full regression, final delta race, native workflows and independent review.
+CardState gate-review; actual owner acceptance remains pending. No Activity0003,
+live admission, installation, merge or release is inferred.

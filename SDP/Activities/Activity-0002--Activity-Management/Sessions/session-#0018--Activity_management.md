@@ -4,14 +4,15 @@
 | --- | --- | --- |
 | completed | S1 Manual registration | Owner accepts predecessor and selects Activity0002 |
 | completed | S2 Design and implementation | A1–A5 candidate implemented; integrated qualification follows |
-| on-going | S3 Qualification and acceptance | Consolidated candidate verification and independent review |
+| completed | S3 Qualification | Candidate verification and independent review passed |
+| waiting | S4 Owner disposition | Concrete qualified result ready for owner review |
 
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0018 |
 | Activity | ACTIVITY-SDP-0002 |
 | Status | active |
-| Current step | S3 |
+| Current step | S4 |
 | Primary card | KB-SDP-061 |
 | Plan | PLAN-SDP-0027 |
 | Phase contributions | study, requirements, design, implementation, verification |
@@ -79,3 +80,22 @@ code paths, reflecting the actual source homes of installed schemas/readers.
 Original immutable artifacts/checkpoints remain. Source process skills now explain
 adopted scope, unrelated capture and explicit admission without migrating legacy
 projects. SDP Verifier is used for exact-candidate evidence and limitations.
+
+## T004 — Qualified candidate and handoff
+
+Producer eb11ac7 and isolated consumer a558c31 are technically qualified and
+independently approved. Full module regression passes on cc7eebc; final Activity/
+root deltas pass complete race checks. Native fixtures and the actual manual
+project open the Activities tree, pages, source links and colored calendar SVG.
+Installer/Python/Go reader parity and real manual-history copy adoption pass.
+
+Final review additionally closed ambiguous external reference keys and active
+execution-scope updates. An adopted active Activity must reach observed quiescence
+through hold before scope/reference/dependency changes. Ledger state never pretends
+to stop already-issued work. All findings and limits are retained in A6/Review.md.
+
+KB061 is gate-review; PLAN0027 and Activity0002 remain active pending actual owner
+need-level disposition. The real third Activity is still unallocated. No live policy
+adoption, installation, merge or release occurred. Existing primary XFMD RPM/process
+edits remain untouched. Final response will summarize this recorded work; this is
+not a claim of an already-captured response.

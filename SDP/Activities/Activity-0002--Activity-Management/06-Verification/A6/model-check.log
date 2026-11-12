@@ -1,0 +1,29 @@
+{
+  "profile": "design-core/0.6",
+  "revision": "35c1b76910eac0af13b767b344ef0873cc031ada67f0fbdc69b165b547984874",
+  "sources": [
+    {
+      "path": "Contracts.design",
+      "sha256": "1b583915a5f819d0520e0d272686bad795ffad9dc697cc92e4aee87fff148451"
+    },
+    {
+      "path": "Features.design",
+      "sha256": "11bf9e8cd4ca38019e6ab29c03d80247ef4445f5ba0f0215e7a80f93685e9526"
+    },
+    {
+      "path": "Responsibilities.design",
+      "sha256": "f6f10f091924ac6c16f1089f0aeca28948983de7bcf4fc8699d5626ef098f052"
+    },
+    {
+      "path": "Scenarios.design",
+      "sha256": "ad999403c21885c717db8248464f2e2ea3c9b799726499295c496a70e7be7ede"
+    },
+    {
+      "path": "System.design",
+      "sha256": "94124b6cc80007a43fa7852a7cc40ff38d2fe814e7ccd514ef1435919e9fb9c7"
+    }
+  ],
+  "system": "SDPTool",
+  "valid": true,
+  "warnings": []
+}

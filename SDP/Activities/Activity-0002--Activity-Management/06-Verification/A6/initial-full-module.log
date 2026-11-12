@@ -1,0 +1,24 @@
+--- FAIL: TestCompiledInvocationConsumer (1.31s)
+    action_process_test.go:30: catalogue actions: got [activity.activate activity.adopt activity.cancel activity.complete activity.create activity.history activity.hold activity.list activity.read activity.recover activity.reopen activity.resume activity.session.create activity.switch activity.timeline activity.tree activity.update activity.validate activity.view blueprint.assess blueprint.assignment.apply blueprint.assignment.list blueprint.generate governance.session.adopt governance.session.advance governance.session.assess governance.session.context governance.session.definition governance.session.design-context governance.session.dispose governance.session.host-cancel governance.session.host-read governance.session.host-request governance.session.list governance.session.owner governance.session.progress governance.session.read governance.session.rebind governance.session.rebind-context governance.session.resume governance.session.review governance.session.select governance.session.start governance.session.successor governance.session.verify project.discover project.model-tree], want [blueprint.assess blueprint.assignment.apply blueprint.assignment.list blueprint.generate governance.session.adopt governance.session.advance governance.session.assess governance.session.context governance.session.definition governance.session.design-context governance.session.dispose governance.session.host-cancel governance.session.host-read governance.session.host-request governance.session.list governance.session.owner governance.session.progress governance.session.read governance.session.rebind governance.session.rebind-context governance.session.resume governance.session.review governance.session.select governance.session.start governance.session.successor governance.session.verify project.discover project.model-tree]
+--- FAIL: TestCompiledGovernanceJourney (1.17s)
+    governance_cli_test.go:187: project records or unrelated inputs changed
+FAIL
+FAIL	github.com/Hans-Einar/SDP/SDPTool	36.258s
+ok  	github.com/Hans-Einar/SDP/SDPTool/activities	15.439s
+ok  	github.com/Hans-Einar/SDP/SDPTool/blueprints	13.642s
+ok  	github.com/Hans-Einar/SDP/SDPTool/blueprintstate	1.804s
+ok  	github.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller	0.009s
+?   	github.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp	[no test files]
+ok  	github.com/Hans-Einar/SDP/SDPTool/cmd/sdptool	0.007s
+ok  	github.com/Hans-Einar/SDP/SDPTool/codexcompat	0.006s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governance	487.522s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governanceapp	0.007s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancecontroller	37.396s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancehost	0.047s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancemcp	6.431s
+ok  	github.com/Hans-Einar/SDP/SDPTool/install	18.299s
+ok  	github.com/Hans-Einar/SDP/SDPTool/model	6.234s
+ok  	github.com/Hans-Einar/SDP/SDPTool/presentation	0.008s
+ok  	github.com/Hans-Einar/SDP/SDPTool/projecthistory	0.456s
+ok  	github.com/Hans-Einar/SDP/SDPTool/tools/profile	4.716s
+FAIL
