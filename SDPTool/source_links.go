@@ -21,6 +21,7 @@ func bindSourceLinks(v *viewpoint.Views, entry string) ([]SourceLink, map[string
 	links := []SourceLink{}
 	copies := map[string][]byte{}
 	v.SourceBindings = map[string]string{}
+	v.SourceLabels = map[string]string{}
 	for i, s := range v.Sources {
 		id := fmt.Sprintf("s%d", i)
 		snapshot := "source-inputs/" + id + ".design"
@@ -35,8 +36,10 @@ func bindSourceLinks(v *viewpoint.Views, entry string) ([]SourceLink, map[string
 		links = append(links, SourceLink{id, path, snapshot, s.SHA256})
 		copies[snapshot] = data
 		v.SourceBindings[s.Path] = id
+		v.SourceLabels[s.Path] = s.Path
 		if len(v.Sources) == 1 && v.Profile == "design-core/0.5" {
 			v.SourceBindings[""] = id
+			v.SourceLabels[""] = filepath.Base(s.Path)
 		}
 	}
 	return links, copies, nil

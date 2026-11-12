@@ -93,7 +93,7 @@ func ExpandActivity(p Project, uri, revision string) (Tree, error) {
 	if offset >= len(parent.Children) {
 		return bad("expansion offset outside source children")
 	}
-	result := Tree{Schema: Version, Operation: "activity-tree", Project: p.Inventory.ProjectID, Revision: revision, Roots: []string{placed}, ExpansionDepthLimit: 64}
+	result := Tree{Presentation: readingPresentation, Schema: Version, Operation: "activity-tree", Project: p.Inventory.ProjectID, Revision: revision, Roots: []string{placed}, ExpansionDepthLimit: 64}
 	children := parent.Children
 	parent.ID, parent.Children, parent.ChildrenDeferred, parent.ExpansionTarget = placed, nil, false, nil
 	end := offset + activityPageSize

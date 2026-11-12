@@ -8,6 +8,9 @@ import (
 )
 
 func Selected(ctx context.Context, v *viewpoint.Views, q viewpoint.Query, r Renderer) (*Bundle, error) {
+	if q.Projection == "reading" {
+		return selectedReading(ctx, v, q, r)
+	}
 	s, e := v.Select(q)
 	if e != nil {
 		return nil, e
@@ -18,11 +21,9 @@ func Selected(ctx context.Context, v *viewpoint.Views, q viewpoint.Query, r Rend
 	if r != nil {
 		b.Manifest.Renderer = r.Identity()
 	}
-	text := "# " + q.Viewpoint + " — " + spec.Title + "\n\nRevision: `" + v.Revision + "`.\n\n" + spec.Note + "\n\n"
+	text := "# " + q.Viewpoint + " — " + spec.Title + "\n\n" + spec.Note + "\n\n"
 	j, _ := json.Marshal(q.Canonical())
-	if q.Projection != "overview" {
-		text += "Selection: `" + string(j) + "`.\n\n"
-	}
+
 	b.Files["selection.json"] = append(j, '\n')
 	if len(s.Diagrams) == 0 && !(q.Projection == "overview" && (q.Viewpoint == "VP05" || q.Viewpoint == "VP06" || q.Viewpoint == "VP08" || q.Viewpoint == "VP09" || q.Viewpoint == "VP10" || q.Viewpoint == "VP11")) {
 		text += "No diagrams match this selection. This does not imply the concept is impossible or absent from the system.\n\n"

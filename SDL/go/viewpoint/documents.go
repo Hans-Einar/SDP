@@ -28,7 +28,7 @@ func (v *Views) Tables(vp string) string {
 		}
 	}
 	if vp == "VP09" {
-		b.WriteString("## Fields and contract properties\n\nDatabase means a persistent data source, not necessarily SQL.\n\n| Fact | ID |\n| --- | --- |\n")
+		b.WriteString("## Fields and contract properties\n\nDatabase means a persistent data source, not necessarily SQL.\n\n| Statement | Source statement |\n| --- | --- |\n")
 		for _, r := range v.Facts {
 			if r.S("verb") == "has" && has([]string{"field", "contract", "encoding"}, v.Kinds[r.S("subject")]) {
 				fmt.Fprintf(&b, "| %s | %s |\n", r.S("text"), v.FactReference(r.S("id")))
@@ -40,17 +40,17 @@ func (v *Views) Tables(vp string) string {
 		}
 	}
 	if vp == "VP08" {
-		b.WriteString("## Derived MessageSet\n\n| Channel | Mode | Datagram | Sender | Receiver | Source IDs |\n| --- | --- | --- | --- | --- | --- |\n")
+		b.WriteString("## Derived MessageSet\n\n| Channel | Mode | Datagram | Sender | Receiver | Source statements |\n| --- | --- | --- | --- | --- | --- |\n")
 		for _, r := range v.MessageSets {
 			fmt.Fprintf(&b, "| %s | %s | %s | %s | %s | %s |\n", r.S("channel"), r.S("mode"), r.S("message"), strings.Join(r["senders"].([]string), ", "), strings.Join(r["receivers"].([]string), ", "), v.FactReferences(r["source_facts"].([]string)))
 		}
 	}
 	if vp == "VP11" {
-		b.WriteString("## Complete fact registry\n\n| ID | Statement | Line |\n| --- | --- | --- |\n")
+		b.WriteString("## Complete fact registry\n\n| Source statement | Statement | Line |\n| --- | --- | --- |\n")
 		for _, r := range v.Facts {
 			fmt.Fprintf(&b, "| %s | %s | %d |\n", v.FactReference(r.S("id")), r.S("text"), r.N("line"))
 		}
-		b.WriteString("\n## Declarations\n\n| ID | Type | Line |\n| --- | --- | --- |\n")
+		b.WriteString("\n## Declarations\n\n| Name | Kind | Line |\n| --- | --- | --- |\n")
 		for _, d := range v.Model.Declarations {
 			fmt.Fprintf(&b, "| %s | %s | %d |\n", v.SpanReference(d.Name.Name, d.Span), d.Kind, d.Span.Line)
 		}
@@ -68,7 +68,7 @@ func (v *Views) Implementation() string {
 	addressed := values(v.Relations["addresses"], "object")
 	for _, a := range v.names("activity") {
 		fmt.Fprintf(&b, "## %s\n\nStatus: %s.\n\n", a, or(v.prop(a, "implementation-status"), "unspecified"))
-		b.WriteString("| Fact | Source ID |\n| --- | --- |\n")
+		b.WriteString("| Statement | Source statement |\n| --- | --- |\n")
 		for _, r := range v.Facts {
 			if r.S("subject") == a || r.S("object") == a {
 				fmt.Fprintf(&b, "| %s | %s |\n", r.S("text"), v.FactReference(r.S("id")))

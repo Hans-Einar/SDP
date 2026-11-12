@@ -175,6 +175,7 @@ func Preview(ctx context.Context, o PreviewOptions) (Result, error) {
 			return result, failure("selection", err)
 		}
 		q = s.Query
+		v.ReadingProject = s.Project
 		target = s.Target
 	}
 	if q.Viewpoint == "" {

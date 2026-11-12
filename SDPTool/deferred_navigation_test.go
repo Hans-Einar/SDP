@@ -62,7 +62,7 @@ func TestDeferredDiscoveryPreservesSourcesAndOtherTabs(t *testing.T) {
 				t.Fatal(n)
 			}
 			if source.State == "validated" {
-				if !n.ChildrenDeferred || len(n.Children) != 0 || n.Target == nil || n.Target.Revision != source.Revision || n.Target.Operation != "tree" {
+				if !n.ChildrenDeferred || len(n.Children) != 0 || n.Target == nil || n.Target.Revision != source.Revision || n.Target.Operation != "select" || n.ExpansionTarget == nil || n.ExpansionTarget.Operation != "tree" {
 					t.Fatal(n)
 				}
 				got, e := ExpandModel(root, ModelTreeOptions{Model: source.ID, Revision: source.Revision})
@@ -75,6 +75,10 @@ func TestDeferredDiscoveryPreservesSourcesAndOtherTabs(t *testing.T) {
 				}
 				if !reflect.DeepEqual(got, want) {
 					t.Fatal("expansion differs from full model tree")
+				}
+			} else if source.State == "context-required" {
+				if n.ChildrenDeferred || n.Target == nil || !strings.Contains(n.Target.URI, "projection=source") {
+					t.Fatal("orphan lacks local syntax reading", n)
 				}
 			} else if n.ChildrenDeferred || n.Target != nil || n.State != source.State || n.Diagnostic != source.Diagnostic {
 				t.Fatal("invalid source hidden/actionable", n)
@@ -138,7 +142,7 @@ func TestDeferredProjectExceedsOldCombinedNodeLimit(t *testing.T) {
 	if count <= 20000 {
 		t.Fatal("fixture does not exceed old cap", count)
 	}
-	if _, e = Discover(root); e == nil || !strings.Contains(e.Error(), "combined inventory") {
+	if _, e = Discover(root); e == nil || !strings.Contains(e.Error(), "20000 nodes") {
 		t.Fatal("legacy repro lost", e)
 	}
 	if len(p.Sources) != 12 || len(p.Navigation.Nodes) >= 20000 {

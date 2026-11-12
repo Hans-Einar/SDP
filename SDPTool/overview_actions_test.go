@@ -72,7 +72,7 @@ Display allocated-to Desktop in mode Online.
 		t.Fatal(err)
 	}
 	count := 0
-	for _, node := range discovery.Navigation.Nodes {
+	for _, node := range legacyOverviewFixture(discovery.Navigation).Nodes {
 		target := node.OverviewTarget
 		if target == nil && strings.Contains(node.ID, "/overview-mode/") {
 			target = node.Target

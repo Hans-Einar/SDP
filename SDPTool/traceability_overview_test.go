@@ -39,6 +39,7 @@ func TestTraceabilityComposedOverviewExactSourcesAndFreshness(t *testing.T) {
 	if e != nil {
 		t.Fatal(e)
 	}
+	tree = legacyOverviewFixture(tree)
 	var target *Target
 	for _, n := range tree.Nodes {
 		if n.Kind == "viewpoint" && strings.HasSuffix(n.ID, "/VP11") {
@@ -94,7 +95,7 @@ func TestTraceabilityComposedOverviewExactSourcesAndFreshness(t *testing.T) {
 		sources[l.ID] = original
 	}
 	covered := map[string]bool{}
-	for _, m := range regexp.MustCompile(`\[([^]]+)\]\(sdl-source://(s[0-9]+)/([0-9]+)/([0-9]+)\)`).FindAllStringSubmatch(text, -1) {
+	for _, m := range regexp.MustCompile(`\[((?:\\.|[^\]])+)\]\(sdl-source://(s[0-9]+)/([0-9]+)/([0-9]+)\)`).FindAllStringSubmatch(text, -1) {
 		b, ok := sources[m[2]]
 		if !ok {
 			t.Fatal(m)
@@ -107,7 +108,7 @@ func TestTraceabilityComposedOverviewExactSourcesAndFreshness(t *testing.T) {
 		covered[string(b[a:z])] = true
 	}
 	for _, f := range v.Facts {
-		if !covered[f.S("text")] || !strings.Contains(text, f.S("id")) {
+		if !covered[f.S("text")] || strings.Contains(text, f.S("id")) {
 			t.Fatal("fact lost source", f)
 		}
 	}

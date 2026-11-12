@@ -87,8 +87,9 @@ func TestExecutableConsumerJourney(t *testing.T) {
 		if n["kind"] == "viewpoint" {
 			vp++
 		}
-		if n["kind"] == "diagram" && strings.HasSuffix(n["id"].(string), expectations.Diagram) {
-			uri = n["target"].(map[string]any)["uri"].(string)
+		if n["kind"] == "viewpoint" && strings.HasSuffix(n["id"].(string), "/VP02") {
+			// Retained diagram URI remains addressable after removal of duplicate tree rows.
+			uri = selectionURI("trial", "VP02", "", expectations.Diagram)
 		}
 	}
 	if vp != expectations.Viewpoints || uri == "" {

@@ -76,7 +76,7 @@ func Build(ctx context.Context, v *viewpoint.Views, o Options) (*Bundle, error) 
 	if strings.ContainsAny(o.Project, "/?#@:") {
 		return nil, fmt.Errorf("invalid project ID")
 	}
-	nav := "# SDL — navigator\n\nRevision: `" + v.Revision + "`.\n\n[Overview](index.md)\n\n"
+	nav := "# SDL — navigator\n\n[Overview](index.md)\n\n"
 	full := "# SDL — generated viewpoints\n\nStructure and source claims; not observed execution.\n\n"
 	index := "# SDL — design overview\n\n[Navigator](navigator.md)\n\n"
 	for i := 0; i < 6; i++ {
@@ -128,7 +128,7 @@ func Build(ctx context.Context, v *viewpoint.Views, o Options) (*Bundle, error) 
 				b.Files["diagrams/"+d.ID+".svg"] = svg
 			}
 			page += "- [" + d.Title + "](" + d.ID + ".md)\n"
-			b.Put(vpdir+"/"+d.ID+".md", "# "+d.Title+"\n\n[Viewpoint](index.md) · [Navigator](../../navigator.md)\n\nRevision: `"+v.Revision+"`.\n\n"+v.DiagramMarkdown(d, "../../diagrams/", o.Renderer != nil))
+			b.Put(vpdir+"/"+d.ID+".md", "# "+d.Title+"\n\n[Viewpoint](index.md) · [Navigator](../../navigator.md)\n\n"+v.DiagramMarkdown(d, "../../diagrams/", o.Renderer != nil))
 			full += v.DiagramMarkdown(d, "diagrams/", o.Renderer != nil)
 		}
 		page += "\n" + v.Tables(s.ID)

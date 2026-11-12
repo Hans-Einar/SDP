@@ -14,6 +14,9 @@ func SelectProject(ctx context.Context, p Project, id string, o PreviewOptions) 
 	if o.URI == "" || o.Revision == "" {
 		return Result{}, failure("arguments", fmt.Errorf("selection requires URI and expected source revision"))
 	}
+	if isSourceSelection(o.URI) {
+		return selectSource(ctx, p, m, source, o)
+	}
 	selected, e := viewpoint.ParseURI(o.URI)
 	if e != nil {
 		return Result{}, failure("selection", e)

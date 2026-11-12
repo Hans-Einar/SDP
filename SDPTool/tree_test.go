@@ -29,7 +29,7 @@ func TestTreeCatalogCollectionsAndStableIdentity(t *testing.T) {
 		if n.Kind == "viewpoint" {
 			vp++
 		}
-		if n.Kind == "collection" && n.Label == "container" {
+		if n.Kind == "collection" && n.Label == "Containers" {
 			count++
 		}
 	}
@@ -91,8 +91,8 @@ func TestRelationshipReferencesAndSelectionRevision(t *testing.T) {
 			}
 		}
 	}
-	if relationships == 0 {
-		t.Fatal("no relations")
+	if relationships != 0 {
+		t.Fatal("reading tree must not duplicate relationships as child routes")
 	}
 	o := PreviewOptions{URI: selectionURI("trial", "VP02", "", "VP02-roots"), Revision: tree.Revision, Output: filepath.Join(t.TempDir(), "selected")}
 	if _, e = SelectProject(context.Background(), p, "model", o); e != nil {
@@ -130,7 +130,7 @@ func TestCyclicReferenceRepresentationIsFinite(t *testing.T) {
 			refs++
 		}
 	}
-	if refs != 2 {
+	if refs != 0 {
 		t.Fatal(refs)
 	}
 }

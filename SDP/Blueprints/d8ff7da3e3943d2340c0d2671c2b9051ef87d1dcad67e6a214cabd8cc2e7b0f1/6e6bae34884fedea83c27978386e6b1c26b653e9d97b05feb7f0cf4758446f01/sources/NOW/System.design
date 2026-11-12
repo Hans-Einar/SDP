@@ -1,0 +1,13 @@
+language design-core version 0.6.
+system SDPTool.
+container SdpToolHost.
+unit SdlSemanticLibrary.
+unit NavigationProjection.
+unit DocumentPublisher.
+unit ExternalXfmd.
+functionality ProjectDiagramInventory.
+SDPTool contains SdpToolHost.
+SdpToolHost contains SdlSemanticLibrary.
+SdpToolHost contains NavigationProjection.
+SdpToolHost contains DocumentPublisher.
+NavigationProjection owns ProjectDiagramInventory.

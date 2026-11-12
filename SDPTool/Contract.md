@@ -617,3 +617,27 @@ that omitted content does not exist.
 
 CLI/actions use the typed operations and request examples in [Activities.md](Activities.md).
 Canonical lifecycle history and operational PG execution state remain distinct.
+
+## Producer-owned reading navigation
+
+Discovery advertises `capabilities.readingNavigation: "1"`. Its navigation and
+subsequent model/Activity expansion trees carry `presentation: "producer-reading/1"`.
+For this presentation, node arrays supply exact sibling order and labels;
+`target` is the generic primary action and `expansionTarget` separately supplies
+children. A deferred model source therefore has a `select` primary action plus a
+revision-bound `tree` expansion target. Consumers retain validation and history,
+but do not flatten phases, deduplicate viewpoints or derive SDL categories.
+Older producer presentation remains a distinct consumer compatibility path.
+
+`projection=reading` on existing `sdl-view` selections supports a contextual
+`focus`, semantic `collection`, or explicit VP11 `register=facts|declarations`,
+with mode and bounded pagination where supported. The producer advertises all
+links; consumers must not manufacture query combinations. Old diagram/overview
+URIs remain valid. IDs and hashes remain wire identities, not displayed labels.
+
+`projection=source` selects the model's source composition overview; optional
+`source` is an exact checked source-graph path. For an unassigned parsed0.6
+fragment, the same action without `source` returns local syntax only. Its raw
+source hash is the revision, and the page explicitly lacks System validation.
+A broken System cannot use this path to pretend semantic validation. Both paths
+retain source snapshots, exact span links, output containment and freshness.

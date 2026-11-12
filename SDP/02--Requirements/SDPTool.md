@@ -167,3 +167,36 @@ legacy eager behavior. Changes to composed inputs invalidate prior expansion.
 No policy silently excludes ordinary evidence models. Native expansion/refresh and
 retirement of the remaining filesystem/source/per-model/GUI caps are subsequent
 work; this bounded producer service does not claim unlimited project scale.
+
+## Producer-owned reading — Activity0003
+
+The owner's Activity3 selection supersedes inventory-tree presentation and
+normal-page register appendices in earlier N increments. Existing selection URIs,
+model/source identity and freshness guarantees remain supported.
+
+- REQ-READ-001: discovery groups actual System entry files, supported standalone
+  designs and unassigned fragments; exposes direct/transitive include membership
+  in every owning context, retaining broken-root diagnostics.
+- REQ-READ-002: the producer supplies the final ordered tree and primary action;
+  VP01–VP11 appear numerically, using one collection/object route per viewpoint.
+  Expansion does not activate, and native clients do not infer SDL semantics.
+- REQ-READ-003: every visible collection opens a complete chaptered selection,
+  every object retains its contextual detail, and isolated declarations remain
+  visible. Pagination preserves total scope, mode and revision without omissions.
+- REQ-READ-004: explanatory pages answer the selected viewpoint question with
+  appropriate diagrams, local properties and relationships. Complete facts and
+  declarations are separately selected VP11 registers.
+- REQ-READ-005: source links display statements and file/line, not machine IDs;
+  exact original byte spans and full-source freshness still govern activation.
+- REQ-READ-006: container/unit/channel diagrams preserve explicit containment,
+  participant level, role, payload and mode. Boundary attachments are drawing
+  notation, never new ports, inferred runtime traffic or mode inheritance.
+- REQ-READ-007: unassigned parsed fragments have useful local syntax diagrams and
+  statements with explicit unresolved-context limits, never false validation.
+- REQ-READ-008: the shipped XFMD package contains the exact compatible producer
+  and passes actual native browsing and signed public DNF upgrade qualification.
+
+Canonical behavior design: HEOS NavigationDesign; executable responsibility model:
+SDP/SDL/ProjectGovernance/SDPTool/ReadingWorkflow. The Activity0003 contract and
+PLAN-SDP-0028 select implementation and verification; they do not duplicate the
+system's authoritative requirements or model sources.

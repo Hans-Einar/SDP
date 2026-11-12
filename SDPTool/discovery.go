@@ -17,13 +17,15 @@ import (
 
 type SourceInfo struct {
 	Model
-	Kind         string `json:"kind"`
-	ArtifactKind string `json:"artifactKind,omitempty"`
-	ArtifactID   string `json:"artifactId,omitempty"`
-	Preliminary  bool   `json:"preliminary,omitempty"`
-	State        string `json:"state"`
-	Revision     string `json:"revision,omitempty"`
-	Diagnostic   string `json:"diagnostic,omitempty"`
+	Kind           string   `json:"kind"`
+	DeclaresSystem bool     `json:"declaresSystem,omitempty"`
+	IncludedBy     []string `json:"includedBy,omitempty"`
+	ArtifactKind   string   `json:"artifactKind,omitempty"`
+	ArtifactID     string   `json:"artifactId,omitempty"`
+	Preliminary    bool     `json:"preliminary,omitempty"`
+	State          string   `json:"state"`
+	Revision       string   `json:"revision,omitempty"`
+	Diagnostic     string   `json:"diagnostic,omitempty"`
 }
 
 // Path identity is stable across edits and distinct for equal basenames.
@@ -135,6 +137,8 @@ func discover(selected string, withNavigation bool) (Project, error) {
 	if e = p.scanArea(); e != nil {
 		return bad("limit", e)
 	}
+	p.Capabilities["readingNavigation"] = "1"
+	p.discoverMembership()
 	for _, n := range p.Files {
 		if n.ID == "files/Blueprints" && n.Kind == "directory" {
 			p.Inventory.Blueprints = "SDP/Blueprints"
@@ -407,6 +411,7 @@ func inspectSource(rel, path string, b []byte, readErr error) SourceInfo {
 			return x
 		}
 		x.System = systems[0]
+		x.DeclaresSystem = true
 	}
 	v, _, err := loadModel(path)
 	if err != nil {

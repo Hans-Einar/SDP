@@ -465,6 +465,31 @@ func TestActivityIntegrationManualPilotAdoptionPreservesSourceHistory(t *testing
 	if e != nil {
 		t.Fatal(e)
 	}
+	// Freeze the actual manual bootstrap prefix. Later real Activity operations
+	// require retained descriptor/session images and must not contaminate this
+	// manual-adoption compatibility fixture.
+	var manual bytes.Buffer
+	for _, line := range bytes.Split(ledger, []byte{'\n'}) {
+		if len(line) == 0 {
+			continue
+		}
+		var event struct {
+			EventType string `json:"eventType"`
+			Payload   struct {
+				SchemaVersion string `json:"schemaVersion"`
+			} `json:"payload"`
+		}
+		if err := json.Unmarshal(line, &event); err != nil {
+			t.Fatal(err)
+		}
+		if strings.HasPrefix(event.EventType, "x-activity") && event.Payload.SchemaVersion != "0.1" {
+			break
+		}
+		manual.Write(line)
+		manual.WriteByte('\n')
+	}
+	ledger = manual.Bytes()
+
 	if e = os.WriteFile(filepath.Join(s.Area, "ProjectManagement/Ledger.ndjson"), ledger, 0600); e != nil {
 		t.Fatal(e)
 	}

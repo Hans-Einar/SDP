@@ -17,7 +17,7 @@ func navigation(p Project, id string, deferredSDL bool) (Tree, error) {
 		return Tree{}, failure("incomplete", fmt.Errorf("installation has not published navigation; resume its recorded operation"))
 	}
 
-	t := Tree{Schema: Version, Operation: "tree", Project: p.Inventory.ProjectID, Roots: []string{"sdl", "kanban", "sdui", "sessions", "blueprints"}, Nodes: []Node{}, ExpansionDepthLimit: 8}
+	t := Tree{Presentation: readingPresentation, Schema: Version, Operation: "tree", Project: p.Inventory.ProjectID, Roots: []string{"sdl", "kanban", "sdui", "sessions", "blueprints"}, Nodes: []Node{}, ExpansionDepthLimit: 8}
 	if id != "" {
 		mt, e := ModelTree(p, id)
 		if e != nil {
@@ -27,49 +27,13 @@ func navigation(p Project, id string, deferredSDL bool) (Tree, error) {
 		t.Revision = mt.Revision
 		t.Nodes = mt.Nodes
 	} else {
-		tab := Node{ID: "sdl", Kind: "tab", Label: "SDL", State: "absent"}
-		for _, m := range p.Inventory.Models {
-			key := "sdl/" + m.ID
-			n := Node{ID: key, Kind: "source", Label: m.Source, State: "available", Target: &Target{Operation: "tree", Project: p.Inventory.ProjectID, Model: m.ID}}
-			tab.Children = append(tab.Children, key)
-			tab.State = "available"
-			var info *SourceInfo
-			for i := range p.Sources {
-				if p.Sources[i].ID == m.ID {
-					info = &p.Sources[i]
-					break
-				}
-			}
-			if info != nil && info.State != "validated" {
-				n.State = info.State
-				n.Diagnostic = info.Diagnostic
-				n.Target = nil
-			} else if deferredSDL && info != nil {
-				n.State = "validated"
-				n.Target.Revision = info.Revision
-				n.ChildrenDeferred = true
-			} else {
-				mt, e := ModelTree(p, m.ID)
-				if e != nil {
-					n.State = "invalid"
-					n.Diagnostic = e.Error()
-					n.Target = nil
-				} else {
-					n.State = "validated"
-					n.Target.Revision = mt.Revision
-					for _, mn := range mt.Nodes {
-						if mn.ID == "sdl" {
-							n.Children = mn.Children
-						} else {
-							t.Nodes = append(t.Nodes, mn)
-						}
-					}
-				}
-			}
-			t.Nodes = append(t.Nodes, n)
+		nodes, e := readingSourceNodes(p, deferredSDL)
+		if e != nil {
+			return t, e
 		}
-		t.Nodes = append(t.Nodes, tab)
+		t.Nodes = append(t.Nodes, nodes...)
 	}
+
 	if len(p.Files) > 0 {
 		t.Roots = append([]string{"files"}, t.Roots...)
 		t.Nodes = append(t.Nodes, p.Files...)

@@ -13,7 +13,7 @@
 | Activity | ACTIVITY-SDP-0003 |
 | Phase | 02-Study |
 | Phase contributions | 02-Study, 03-Requirements, 04-Design, 05-Implementation, 06-Verification |
-| Plan | PLAN-SDP-0025 |
+| Plan | PLAN-SDP-0028 |
 
 ## Goal
 
@@ -45,3 +45,22 @@ Loaded SDP, Planning, Architect, Master, Worker, Versioning and Release. Bounded
 native/release reconnaissance confirms producer bundling is necessary.
 Canonical plan is PLAN0028; generated Session creation snapshot retains PLAN0025
 as initial design context. Next: pin model/handoff and implement B1–B3.
+
+## T002 — Producer/native integration and review corrections
+
+B1–B3 implement semantic collections for all viewpoints, producer-owned tree order,
+contextual source membership, local syntax pages, statement links and separate
+registers. Native generic activation/expansion passes real fixture and HEOS paths.
+The first independent review found ignored Unit containment and scope-self channel
+attachment; both now have explicit geometry regressions. Mixed-mode proof filtering
+was also corrected before publication. The original dense Kernel PDF was rejected
+for readability; producer-owned Channel+Mode panels with bounded participant
+continuations replace it, retaining every binding and adjacent payload rows.
+
+Old overview URI tests now request those retained URIs explicitly; they no longer
+assert removed duplicate diagram/mode tree rows. The manual Activity-adoption
+fixture freezes the real pre-automation history prefix instead of accidentally
+including newly-created Activity3 records without their retained images.
+Root regression and targeted SDL tests pass; broad regression, revised native
+print inspection and final independent qualification are in progress. RPM source
+pin and publication remain pending the final candidate.

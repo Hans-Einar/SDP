@@ -35,7 +35,10 @@ type Diagram struct {
 	Syntax      string         `json:"-"`
 }
 type Views struct {
+	// ReadingProject is supplied by the host for producer-owned reading actions.
+	ReadingProject  string
 	SourceBindings  map[string]string
+	SourceLabels    map[string]string
 	Profile, System string
 	Sources         []sourcegraph.Source
 	SourceEdges     []sourcegraph.Edge

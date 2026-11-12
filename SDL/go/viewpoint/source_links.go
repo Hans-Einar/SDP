@@ -23,11 +23,11 @@ func (v *Views) FactReference(id string) string {
 				start, _ := data["start"].(int)
 				end, _ := data["end"].(int)
 				source, _ := data["source"].(string)
-				return v.SpanReference(id, parser.Span{Source: source, Start: start, End: end})
+				return v.SpanReference(readingEscape(f.S("text"))+" — "+traceabilityPosition(v.sourceLabel(source), f.N("line")), parser.Span{Source: source, Start: start, End: end})
 			}
 		}
 	}
-	return id
+	return "Source statement unavailable"
 }
 func (v *Views) FactReferences(ids []string) string {
 	labels := make([]string, 0, len(ids))
@@ -56,4 +56,14 @@ func (v *Views) DeclarationReferences(d Diagram) string {
 	}
 	sort.Strings(labels)
 	return strings.Join(labels, ", ")
+}
+
+func (v *Views) sourceLabel(source string) string {
+	if label := v.SourceLabels[source]; label != "" {
+		return label
+	}
+	if source == "" && len(v.Sources) == 1 {
+		return v.Sources[0].Path
+	}
+	return source
 }

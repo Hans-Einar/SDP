@@ -34,6 +34,7 @@ func TestChannelOverviewComposedTargetAndSourceLinks(t *testing.T) {
 	if e != nil {
 		t.Fatal(e)
 	}
+	tree = legacyOverviewFixture(tree)
 	var target *Target
 	modes := 0
 	for _, n := range tree.Nodes {

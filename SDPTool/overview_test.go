@@ -27,6 +27,7 @@ func TestOverviewTargetGenerationAndFreshness(t *testing.T) {
 	if e != nil {
 		t.Fatal(e)
 	}
+	tree = legacyOverviewFixture(tree)
 	var overview *Target
 	for _, n := range tree.Nodes {
 		if n.OverviewTarget != nil {
@@ -104,6 +105,7 @@ Work allocated-to Remote in mode Online.
 	if e != nil {
 		t.Fatal(e)
 	}
+	tree = legacyOverviewFixture(tree)
 	modes := 0
 	logical := false
 	for _, n := range tree.Nodes {
@@ -172,6 +174,7 @@ func TestOverviewTargetsPreserveComposedSourceProvenance(t *testing.T) {
 	if e != nil {
 		t.Fatal(e)
 	}
+	tree = legacyOverviewFixture(tree)
 	targets := map[string]*Target{}
 	for _, n := range tree.Nodes {
 		if n.OverviewTarget != nil {

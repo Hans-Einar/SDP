@@ -34,6 +34,7 @@ func TestActivityOverviewComposedTargetAndSourceLinks(t *testing.T) {
 	if e != nil {
 		t.Fatal(e)
 	}
+	tree = legacyOverviewFixture(tree)
 	var target *Target
 	for _, n := range tree.Nodes {
 		if n.Kind == "viewpoint" && strings.HasSuffix(n.ID, "/VP06") {

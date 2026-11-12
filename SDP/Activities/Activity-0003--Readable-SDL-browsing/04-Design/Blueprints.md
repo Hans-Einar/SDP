@@ -12,3 +12,5 @@ Code mapping: NavigationProjection → SDPTool/navigation.go, tree.go and source
 membership; SdlSemanticLibrary → SDL/go/viewpoint and documents; DocumentPublisher
 → SDPTool/preview.go, selection.go; ExternalXfmd → collaborating native sdp
 protocol/display/navigation. Native model/blueprint is maintained in its repository.
+
+Immutable retained handoff: /home/warloc/git/SDP/SDP/Blueprints/d8ff7da3e3943d2340c0d2671c2b9051ef87d1dcad67e6a214cabd8cc2e7b0f1/6e6bae34884fedea83c27978386e6b1c26b653e9d97b05feb7f0cf4758446f01

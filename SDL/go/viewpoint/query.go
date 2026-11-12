@@ -10,6 +10,9 @@ import (
 
 type Query struct {
 	Projection string   `json:"projection,omitempty"`
+	Collection string   `json:"collection,omitempty"`
+	Register   string   `json:"register,omitempty"`
+	Page       int      `json:"page,omitempty"`
 	Viewpoint  string   `json:"viewpoint"`
 	Focus      string   `json:"focus,omitempty"`
 	Relations  []string `json:"relations,omitempty"`
@@ -46,6 +49,21 @@ func ParseURI(raw string) (Selection, error) {
 		switch k {
 		case "projection":
 			s.Query.Projection = value
+		case "collection":
+			if value == "" {
+				return s, fmt.Errorf("empty-reading-collection")
+			}
+			s.Query.Collection = value
+		case "register":
+			if value == "" {
+				return s, fmt.Errorf("empty-reading-register")
+			}
+			s.Query.Register = value
+		case "page":
+			s.Query.Page, e = strconv.Atoi(value)
+			if e != nil || s.Query.Page < 1 {
+				return s, fmt.Errorf("invalid-reading-page")
+			}
 		case "focus":
 			s.Query.Focus = value
 		case "relations":
@@ -82,6 +100,12 @@ func ParseURI(raw string) (Selection, error) {
 	return s, nil
 }
 func (q Query) Validate(v *Views) error {
+	if q.Projection == "reading" {
+		return q.validateReading(v)
+	}
+	if q.Collection != "" || q.Register != "" || q.Page != 0 {
+		return fmt.Errorf("reading-selector-without-reading-projection")
+	}
 	if q.Projection != "" && (q.Projection != "overview" || !HasOverview(q.Viewpoint) || q.Focus != "" || q.Diagram != "" || (q.Mode != "" && q.Viewpoint != "VP07" && q.Viewpoint != "VP05" && q.Viewpoint != "VP08") || q.Level != "" || len(q.Relations) > 0 || (q.Direction != "" && q.Direction != "both") || (q.Depth != 0 && q.Depth != 2)) {
 		return fmt.Errorf("unsupported-overview-selection")
 	}
@@ -130,6 +154,9 @@ func (q Query) Validate(v *Views) error {
 func (v *Views) Select(q Query) (*Views, error) {
 	if e := q.Validate(v); e != nil {
 		return nil, e
+	}
+	if q.Projection == "reading" {
+		return v.reading(q)
 	}
 	if q.Projection == "overview" {
 		return v.overview(q)
