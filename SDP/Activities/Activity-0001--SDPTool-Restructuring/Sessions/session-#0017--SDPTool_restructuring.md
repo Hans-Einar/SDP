@@ -83,3 +83,12 @@ no conflicting work was adopted. No push/merge/release or
 owner acceptance is claimed. Plan, inventory, traceability and card are reconciled to the passed candidate;
 KB062 enters gate-review. Next: owner acceptance of the restructuring result.
 Activity0002 is not created or started.
+
+## T003 — Owner-authorized branch push
+
+Owner requests pushing sdp/sdptool-architecture-migration to GitHub for local
+inspection. This explicitly authorizes branch publication after technical delivery
+22e2637; it does not grant merge, release or owner acceptance of Activity0001.
+Preflight: correct branch, clean worktree, origin points to Hans-Einar/SDP.
+Product code and verification are unchanged. Push this Session update with the
+delivery and verify the remote branch head. S4 remains awaiting owner acceptance.
