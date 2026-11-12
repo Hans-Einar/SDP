@@ -28,8 +28,8 @@ Use a separate XFMD worktree when product integration requires changes.
 | Milestone | Outcome | Acceptance / current state |
 | --- | --- | --- |
 | A0 Executable design | Reconcile canonical schema/readers, transaction/recovery, retained descriptors, scope and producer contracts; validate/checkpoint SDL and pin Blueprint handoff | Completed: pinned concern checkpoints and Blueprint; transaction/recovery and host boundary contract selected |
-| A1 Creation and records | Activity and Session creation via typed CLI/actions, real manual compatibility, shared canonical history | Create/retry/conflict/stale/path/identity checks and interruption recovery; no dispatch on creation |
-| A2 Lifecycle | Activate/hold/resume/switch/complete/cancel/reopen with truthful quiescence and single-active rule | Concurrent activation, interrupted/retried switch, running work and owner disposition cases |
+| A1 Creation and records | Activity and Session creation via typed CLI/actions, real manual compatibility, shared canonical history | Domain complete; adapters awaiting integrated qualification. Create/retry/stale/path/identity/crash checks pass; no dispatch on creation |
+| A2 Lifecycle | Activate/hold/resume/switch/complete/cancel/reopen with truthful quiescence and single-active rule | Domain complete; concurrency, interrupted/retried switch, quiescence and dispositions pass; host integration qualification remains |
 | A3 Navigation | Producer-owned Activities tree, readable landing/phase/history pages and legacy references; XFMD consumption | Native Activities tab, correct ordering and selection, no duplicate Sessions tab or lost legacy documents |
 | A4 Timeline | Actual lifecycle intervals and explicitly attributed commit/ledger markers | Unknown time/clock anomaly, dense markers, multiple references, no effort or unrelated-commit attribution |
 | A5 Governance and adoption | Activity-scoped execution admission across existing paths; read-only/capture allowed; installed readers/process integration | No out-of-scope/no-active dispatch after adoption; compatibility and pending-run/recovery evidence |
