@@ -76,3 +76,13 @@ Release worker prepares the exact pinned private producer, signed public
 predecessor upgrade and fresh install verification. Publication is authorized;
 package evidence and independent release disposition remain pending. No personal
 owner review or main merge is inferred.
+
+## T004 — Release scope reconciliation
+
+Corrected the previously missed generic Activity README requirement before public
+release (producerc3463b7, full activities tests pass). Existing retained creation
+bytes remain immutable; Activity3 working README is explicitly reconciled. The
+first native target-container suite passed88/89; StandaloneMermaidGuiTest failed
+at its fixture file-tree lookup, so publication remains blocked on diagnosis and
+the rebuilt exact candidate. Earlier product/native evidence remains retained;
+no failed package gate is described as passing.

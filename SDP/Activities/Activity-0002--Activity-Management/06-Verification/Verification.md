@@ -88,3 +88,15 @@ code-conformant. ../04-Design/CodeMapping.md maps its responsibilities to code/t
 the immutable original and revised handoffs remain retained. No accepted model
 release is inferred. Real Activity0003 is not created. Activity0002 remains active
 until the owner's actual need-level disposition.
+
+## Subsequent real adoption — Activity3
+
+The preceding limits describe the Activity2 qualification checkpoint. The owner
+subsequently authorized autonomous Activity3 completion/publication without time
+for personal review. SDPTool created ACTIVITY-SDP-0003 and SESSION-SDP-0019, the
+canonical PG store was explicitly inventoried/adopted, and a tool-recorded atomic
+switch held Activity2 and activated Activity3. See Activity3 Session0019/T001 and
+canonical management history. This later real adoption supersedes the checkpoint's
+statements that no real Activity3/admission existed; it does not rewrite earlier
+evidence or claim that a ledger transition stopped arbitrary agents. Activity2's
+personal owner review was not performed.

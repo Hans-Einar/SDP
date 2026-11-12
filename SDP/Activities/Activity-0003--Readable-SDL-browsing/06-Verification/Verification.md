@@ -60,3 +60,17 @@ Exact0.10 RPM candidate, pinned producer archive/provenance, package probes, ser
 signatures, public download validation, signed public predecessor DNF upgrade and
 fresh installation are pending. Record actual outputs in ReleaseChecklist and the
 XFMD release evidence before completing B5 or Activity3. No main merge is authorized.
+
+## Final scaffold correction
+
+During release reconciliation, the Activity README creation template was found to
+violate the owner's explicit generic-directory-guide requirement (Activity Design
+sections86–92/457). Producerc3463b78d53ebf984b0f553ebe93a556fb3ac6a8 embeds the
+standard guide with navigation for all six phases and root Sessions, preserving
+Activity-specific need only in Mandate.md. The existing create/retry regression
+now compares two distinct Activities and verifies separate mandate preservation;
+full activities tests pass8.459s (B4/scaffold-final.log). Existing documents are not
+silently overwritten by the command; Activity3's guide was explicitly reconciled.
+This delta leaves qualified reading/native behavior unchanged. The private RPM
+producer pin must usec3463b7; independent delta review approved this correction
+and independently reran the extended creation/retry regression.

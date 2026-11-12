@@ -61,7 +61,7 @@ application/package/installer acceptance checks alongside this list.
 
 Owner authority: Session0019/T001 and the Activity mandate authorize public RPM
 delivery and select XFMD0.10. Existing signed predecessor:0.9.0-71.el10_2,
-AlmaLinux10.2 x86_64. Exact private producer:5802355a8af6a89f9ea3fc035198c32d46d35567.
+AlmaLinux10.2 x86_64. Exact private producer:c3463b78d53ebf984b0f553ebe93a556fb3ac6a8.
 Native candidate/package identity and public results remain pending.
 
 The installed XFMD ReleaseChecklist and Activity3 native evidence are the
