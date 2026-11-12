@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0026 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | ImplementationPlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -108,11 +108,11 @@ status, not another independent plan.
 | M3c | Implemented/retained: common MCP response policy; existing capability, governance, controller and history boundaries preserved |
 | M3d | Implemented/retained: typed program execution split; installation/bootstrap/release utilities preserved |
 | M4 | Transferred by owner to the next Activity; no functionality implemented here |
-| M5 | Technical qualification complete: exact-candidate full suite, native gates, independent review and inventory closure pass; ready for owner acceptance |
+| M5 | Technical qualification complete: exact-candidate full suite, native gates, independent review and inventory closure pass; owner accepted |
 
 No temporary adapter or deferred migration cleanup remains. Technical delivery is
-complete. Plan and Activity remain active until the owner accepts the concrete
-527cc90 product result and linked evidence; no acceptance or publication is inferred.
+complete. Owner explicitly accepted the concrete result after branch publication and
+authorized Activity0002. Plan and Activity are completed; merge/release remain separate.
 
 ## Blueprint's bounded role
 

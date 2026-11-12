@@ -5,14 +5,14 @@
 | completed | S1 Manual Activity bootstrap | Owner-selected Activity registered and activated; future features split out |
 | completed | S2 Baseline, target and migration | PLAN-SDP-0026 M0–M3 executed; product candidate 527cc90 |
 | completed | S3 Whole-candidate qualification | Exact-candidate broad suite, six native gates and independent product review pass |
-| awaiting owner | S4 Acceptance | Concrete 527cc90 result and evidence ready; no next Activity or publication started |
+| completed | S4 Acceptance | Owner explicitly accepts restructuring and authorizes Activity0002 |
 
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0017 |
 | Activity | ACTIVITY-SDP-0001 |
 | Phase contributions | mandate, study, requirements, design, implementation, verification |
-| Status | awaiting owner acceptance |
+| Status | completed |
 | Primary card | KB-SDP-062 |
 | Plan | PLAN-SDP-0026 |
 | Snapshot date | 2026-11-12 |
@@ -92,3 +92,10 @@ inspection. This explicitly authorizes branch publication after technical delive
 Preflight: correct branch, clean worktree, origin points to Hans-Einar/SDP.
 Product code and verification are unchanged. Push this Session update with the
 delivery and verify the remote branch head. S4 remains awaiting owner acceptance.
+
+## T004 — Owner acceptance and successor selection
+
+Owner explicitly approves Activity0001 and instructs starting Activity0002. Close
+PLAN0026, KB062 and Activity0001 using actual acceptance time; preserve all technical
+evidence and original event bytes. Next Activity is registered manually for Activity
+support with a new Session. No merge or release is authorized by this disposition.

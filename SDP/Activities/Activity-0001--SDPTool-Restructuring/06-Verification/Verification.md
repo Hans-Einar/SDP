@@ -7,7 +7,8 @@ subsequent edits are documentation/evidence only. No new public capability, Acti
 Activity automation or browsing behavior was introduced.
 
 Status: technical qualification passed; all required Linux/native gates pass.
-Owner disposition is pending.
+Owner subsequently accepted this result in Session0017 T004. The retained M5
+manifest records its earlier qualification-time disposition without rewriting it.
 Owner acceptance, accepted model release, merge and publication are separate.
 
 ## Evidence and provenance
@@ -80,5 +81,5 @@ not automatic translation from SDL to verified Go or acceptance of a model relea
 management ledger remains append-only. Legacy-domain validation is filtered, with
 separate Activity schema/hash/causal/single-active checks; the existing unmodified
 validator is not claimed to support Activity; M5/records-validation.json records
-the checks. M5/manifest.json pins retained evidence bytes. Activity0001 remains active pending
-the actual owner disposition; Activities0002/0003 are not created or started.
+the checks. M5/manifest.json pins retained evidence bytes. Activity0001 is completed by the subsequent explicit owner disposition in
+Session0017 T004. Activity0002 is selected next; Activity0003 remains future work.

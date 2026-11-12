@@ -5,7 +5,7 @@
 | id | KB-SDP-062 |
 | project | SDP |
 | type | Proposal |
-| CardState | gate-review |
+| CardState | completed |
 | created | 2026-11-12 |
 | Systems | SDPTOOL |
 | PlanId | PLAN-SDP-0026 |
@@ -42,3 +42,7 @@ native gates pass. Independent product review approved with no material findings
 contains reproducible evidence and limitations. CardState gate-review requests the
 owner disposition on this concrete result. Plan/Activity stay active until that
 disposition; no new Activity functionality, merge or release is claimed.
+
+Session0017 T004: owner explicitly accepts the delivered restructuring and selects
+Activity0002. Card and PLAN0026 complete; Activity completion is appended to the
+canonical management history. This is acceptance, not a merge or release event.
