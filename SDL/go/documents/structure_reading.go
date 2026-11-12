@@ -250,11 +250,14 @@ func structureSVG(v *viewpoint.Views, scope, mode string, parents map[string]str
 			startX = 262
 		}
 		lane := top + laneH/2 + i*(height-150)/max(1, len(keys))
-		arrow := "marker-end"
+		arrow := `marker-end="url(#arrow)"`
 		if f.S("role") == "receiver" {
-			arrow = "marker-start"
+			arrow = `marker-start="url(#arrow)"`
 		}
-		fmt.Fprintf(&b, `<path d="M%d,%d L265,%d L280,%d L580,%d L590,%d L600,%d" fill="none" stroke="#42627d" stroke-width="1.5" %s="url(#arrow)"/><rect x="%d" y="%d" width="14" height="14" rx="2" fill="#fff" stroke="#42627d"/><rect x="280" y="%d" width="310" height="%d" rx="3" fill="#fff"/>`, startX, y, y, lane, lane, end, end, arrow, startX-7, y-7, lane-laneH/2, laneH)
+		if f.S("role") == "uses (aggregated)" {
+			arrow = ""
+		}
+		fmt.Fprintf(&b, `<path d="M%d,%d L265,%d L280,%d L580,%d L590,%d L600,%d" fill="none" stroke="#42627d" stroke-width="1.5" %s/><rect x="%d" y="%d" width="14" height="14" rx="2" fill="#fff" stroke="#42627d"/><rect x="280" y="%d" width="310" height="%d" rx="3" fill="#fff"/>`, startX, y, y, lane, lane, end, end, arrow, startX-7, y-7, lane-laneH/2, laneH)
 		labelEnd := svgText(&b, 288, lane-laneH/2+15, 34, 14, f.S("subject")+" · "+f.S("role"), "#203c52")
 		labelEnd = svgText(&b, 288, labelEnd+16, 34, 14, f.S("mode"), "#526b7d")
 		summary := structurePayloadSummary(payloads[k])

@@ -193,7 +193,23 @@ func TestRealManualReplayBytePreservationAndHistoricalSnapshots(t *testing.T) {
 	if e != nil {
 		t.Fatal(e)
 	}
-	c, e := Replay(area, "SDP", projecthistory.Snapshot{Bytes: ledger, Revision: digest(ledger)})
+	prefix := manualPilotPrefix(t, ledger)
+	manualArea := t.TempDir()
+	for _, home := range []string{"Activity-0001--SDPTool-Restructuring", "Activity-0002--Activity-Management"} {
+		rel := filepath.Join("Activities", home, "activity.yaml")
+		raw, err := os.ReadFile(filepath.Join(area, rel))
+		if err != nil {
+			t.Fatal(err)
+		}
+		target := filepath.Join(manualArea, rel)
+		if err = os.MkdirAll(filepath.Dir(target), 0700); err != nil {
+			t.Fatal(err)
+		}
+		if err = os.WriteFile(target, raw, 0600); err != nil {
+			t.Fatal(err)
+		}
+	}
+	c, e := Replay(manualArea, "SDP", projecthistory.Snapshot{Bytes: prefix, Revision: digest(prefix)})
 	if e != nil {
 		t.Fatal(e)
 	}

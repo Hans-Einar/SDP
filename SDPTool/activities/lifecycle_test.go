@@ -412,6 +412,7 @@ func TestManual01DescriptorUpgradeRetainsExactBytes(t *testing.T) {
 	if e != nil {
 		t.Fatal(e)
 	}
+	ledger = manualPilotPrefix(t, ledger)
 	if e = s.write("ProjectManagement/Ledger.ndjson", ledger); e != nil {
 		t.Fatal(e)
 	}

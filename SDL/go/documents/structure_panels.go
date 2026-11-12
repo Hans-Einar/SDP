@@ -31,6 +31,23 @@ func structurePanels(v *viewpoint.Views, scope, mode string, parents map[string]
 		return []structurePanel{{Title: "Declared structure and participation", SVG: svg, Facts: uses}}
 	}
 	panels := []structurePanel{}
+	if scope == "" && len(channels) <= 8 && len(names) <= 6 {
+		summary := *v
+		summary.Facts = nil
+		seen := map[string]bool{}
+		for _, f := range uses {
+			participant := structureVisible(f.S("subject"), "", parents)
+			key := participant + "/" + f.S("channel")
+			if seen[key] {
+				continue
+			}
+			seen[key] = true
+			summary.Facts = append(summary.Facts, viewpoint.Fact{"verb": "uses", "subject": participant, "channel": f.S("channel"), "role": "uses (aggregated)", "mode": mode, "message": "Role and payload details below"})
+		}
+		image, _, _ := structureSVG(&summary, "", mode, parents)
+		panels = append(panels, structurePanel{Title: "System collaboration — aggregated endpoints; roles and modes in the following figures", SVG: image})
+	}
+
 	declarations := []string{}
 	for n, k := range v.Kinds {
 		if (k == "unit" || k == "container") && ((scope == "" && parents[n] == "") || (scope != "" && parents[n] == scope) || n == scope && !structureHasChildren(scope, parents)) {
