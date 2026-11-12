@@ -99,3 +99,13 @@ need-level disposition. The real third Activity is still unallocated. No live po
 adoption, installation, merge or release occurred. Existing primary XFMD RPM/process
 edits remain untouched. Final response will summarize this recorded work; this is
 not a claim of an already-captured response.
+
+## T005 — Review branch handoff
+
+Under the established phase-push authorization and the owner's request to retrieve
+review branches locally, sdp/activity-management is pushed to origin in both SDP
+and XFMD. Initial published tips are SDP de3c53d and XFMD4c77944; qualified product
+candidates remain eb11ac7 and a558c31 respectively. The only subsequent SDP change
+is this handoff record. No main branch, installed binary or release was changed.
+The owner can fetch the same feature-branch name in both repositories. Activity0002
+remains active/gate-review; next is the owner's actual disposition.
