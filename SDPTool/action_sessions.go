@@ -67,15 +67,13 @@ func sessionActions() []actionSpec {
 		policy := actionPolicy{callerAttribution: op.Write}
 		switch op.Input {
 		case governanceapp.NoInput:
-			if op.Name == "session-definition" {
-				out = append(out, defineAction(descriptor, func(ctx context.Context, c actionContext, _ noActionParameters) (any, int, error) {
-					return sessionActionCall(ctx, c, op, "", "", "")
-				}, policy))
-			} else {
-				out = append(out, defineAction(descriptor, func(ctx context.Context, c actionContext, q SessionListInput) (any, int, error) {
-					return sessionActionCall(ctx, c, op, q.State, "", "")
-				}, policy))
-			}
+			out = append(out, defineAction(descriptor, func(ctx context.Context, c actionContext, _ noActionParameters) (any, int, error) {
+				return sessionActionCall(ctx, c, op, "", "", "")
+			}, policy))
+		case governanceapp.StateInput:
+			out = append(out, defineAction(descriptor, func(ctx context.Context, c actionContext, q SessionListInput) (any, int, error) {
+				return sessionActionCall(ctx, c, op, q.State, "", "")
+			}, policy))
 		case governanceapp.InstanceInput:
 			out = append(out, defineAction(descriptor, func(ctx context.Context, c actionContext, q SessionReadInput) (any, int, error) {
 				return sessionActionCall(ctx, c, op, q.State, "", q.Instance)

@@ -13,7 +13,8 @@ install, upgrade, preview, discover, view, tree, select, sdui-preview, plus help
 version options. Model syntax/variants are enumerated in Operations.json. All
 22 Session actions also have governance CLI paths; six non-Session governance
 operations remain CLI-only. The current Session action argv/output bridge and
-central attribution allowlist are migrated. Other services already use typed Go
+central attribution allowlist are migrated. Program run flag/execution responsibilities are split, and root command
+recognition/routing share one table. Other services already use typed Go
 calls and retain ownership. Model, install, Blueprint and PG stores remain separate
 bounded state owners, with projecthistory owning shared management persistence.
 

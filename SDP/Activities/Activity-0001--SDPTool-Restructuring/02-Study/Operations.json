@@ -48,7 +48,7 @@
     },
     {
       "operation": "view ip",
-      "currentHandler": "ViewIP",
+      "currentHandler": "ViewPlan",
       "targetOwner": "ProjectFacade",
       "disposition": "retain",
       "actionExposure": "none",
@@ -57,11 +57,11 @@
     },
     {
       "operation": "run",
-      "currentHandler": "runProgramCommand / runProgram",
+      "currentHandler": "runProgramCommand (flag parsing and process execution)",
       "targetOwner": "ProgramRunner",
-      "disposition": "retain",
+      "disposition": "migrate mixed CLI/execution responsibilities; retain process protocol",
       "actionExposure": "none",
-      "milestone": "M3",
+      "milestone": "M3d",
       "evidence": "program_run.go; program_process_linux_test.go"
     },
     {
@@ -597,5 +597,12 @@
       "milestone": "M2",
       "evidence": "governance_cli_test.go"
     }
-  ]
+  ],
+  "facadeRouting": {
+    "current": "cli.go repeats command names in isCommand and routing branches",
+    "target": "one typed CLI command-handler table used for recognition and dispatch",
+    "disposition": "migrate",
+    "milestone": "M3a",
+    "preserved": "early invoke, output formatting, project selection and all command/argument/error contracts"
+  }
 }

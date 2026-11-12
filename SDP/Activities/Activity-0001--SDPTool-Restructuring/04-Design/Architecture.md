@@ -76,3 +76,16 @@ It expresses structural ownership changes, not detailed runtime proof. This
 contract and the inventory supply missing behavioral/code context. New agents must
 read those artifacts, explain the ownership/removals and run required checks.
 Do not treat current transitional code as authority over this target.
+
+## M3 facade refinement from final inventory inspection
+
+The root CLI repeats top-level names between recognition and routing. Replace both
+with one typed command-to-handler registration, preserving early invoke, help,
+version, explicit project selection and error priority. Extract branch bodies into
+CLI handlers; do not force CLI grammar into the JSON action catalogue or add actions.
+
+ProgramRunner's existing ownership becomes explicit in code: split flag decoding
+from typed program execution, preserving selected program/revision/path validation,
+process groups, inherited input/output, cwd and child exit codes. This refines the
+existing SDL CommandLineAdapter/ProgramRunner mapping without changing model facts
+or public functionality. These removals belong to M3a/M3d in this plan, not backlog.

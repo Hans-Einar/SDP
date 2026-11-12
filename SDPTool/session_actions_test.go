@@ -124,3 +124,38 @@ func validPolicyParameters(id string) any {
 	}
 	return map[string]any{}
 }
+
+func TestSessionActionParameterMapping(t *testing.T) {
+	cases := []struct {
+		id                 string
+		kind               governanceapp.InputKind
+		accepted, rejected []string
+	}{
+		{"governance.session.definition", governanceapp.NoInput, []string{`{}`}, []string{`{"state":"state"}`}},
+		{"governance.session.list", governanceapp.StateInput, []string{`{}`, `{"state":"state"}`}, []string{`{"requestFile":"request.json"}`, `{"instance":"instance"}`}},
+		{"governance.session.read", governanceapp.InstanceInput, []string{`{"instance":"instance"}`, `{"state":"state","instance":"instance"}`}, []string{`{}`, `{"requestFile":"request.json"}`}},
+		{"governance.session.context", governanceapp.RequestInput, []string{`{"requestFile":"request.json"}`, `{"state":"state","requestFile":"request.json"}`}, []string{`{}`, `{"instance":"instance"}`}},
+	}
+	for _, tc := range cases {
+		t.Run(tc.id, func(t *testing.T) {
+			op, ok := governanceapp.Find("session-" + strings.TrimPrefix(tc.id, "governance.session."))
+			if !ok || op.Input != tc.kind {
+				t.Fatalf("operation input kind: got %v, want %v", op.Input, tc.kind)
+			}
+			spec, err := findAction(tc.id)
+			if err != nil {
+				t.Fatal(err)
+			}
+			for _, raw := range tc.accepted {
+				if _, err := spec.decode(json.RawMessage(raw)); err != nil {
+					t.Errorf("rejected %s: %v", raw, err)
+				}
+			}
+			for _, raw := range tc.rejected {
+				if _, err := spec.decode(json.RawMessage(raw)); err == nil {
+					t.Errorf("accepted %s", raw)
+				}
+			}
+		})
+	}
+}
