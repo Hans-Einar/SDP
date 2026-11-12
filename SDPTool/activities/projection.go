@@ -79,7 +79,8 @@ func Project(area string, c Catalog, asOf time.Time) (Projection, error) {
 		for _, r := range a.Descriptor.References {
 			key := referencePhase(r.Role)
 			if r.Availability == "unavailable" {
-				e.Documents[key] = append(e.Documents[key], Document{Key: "external/" + r.ProjectID + "/" + r.Role + "/" + r.ID, Path: r.Path, Label: r.ID, Diagnostic: r.UnavailableReason})
+				tuple, _ := json.Marshal([]string{r.ProjectID, r.Role, r.ID})
+				e.Documents[key] = append(e.Documents[key], Document{Key: "external:" + string(tuple), Path: r.Path, Label: r.ID, Diagnostic: r.UnavailableReason})
 				continue
 			}
 			add(key, r.Path)

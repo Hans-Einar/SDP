@@ -264,3 +264,9 @@ and day/week/month zoom through its producer links; calendar duration is not eff
 All `activity.*` action definitions come from the same operation table as the CLI.
 Actions accept their advertised parameter schema, such as `requestFile` plus
 `authoritySource`; request files contain the same typed domain request shown here.
+
+After admission adoption, hold an active Activity and wait for known implementation
+quiescence before updating its scope, references or dependencies. Metadata-only
+updates and equivalent array reorderings remain possible while active. The initial
+manual scope/membership mapping is allowed before adoption. Updating a descriptor
+cannot revoke permissions already issued to a host.

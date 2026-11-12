@@ -430,6 +430,9 @@ func TestActivityIntegrationUnavailableExternalReferencesRemainDistinct(t *testi
 	for _, project := range []string{"ALPHA", "BETA"} {
 		q.References = append(q.References, activities.Reference{ProjectID: project, Role: "study", ID: "STUDY-" + project + "-0001", Path: "Study.md", Availability: "unavailable", UnavailableReason: "External project offline"})
 	}
+	for _, pair := range [][2]string{{"context/a", "b"}, {"context", "a/b"}} {
+		q.References = append(q.References, activities.Reference{ProjectID: "OTHER", Role: pair[0], ID: pair[1], Path: "Study.md", Availability: "unavailable", UnavailableReason: "External project offline"})
+	}
 	if _, e := s.Create(q, activities.Caller{Actor: "test", Authority: activities.Authority{Role: "project-owner", Source: "owner.md"}}); e != nil {
 		t.Fatal(e)
 	}
@@ -451,7 +454,7 @@ func TestActivityIntegrationUnavailableExternalReferencesRemainDistinct(t *testi
 			}
 		}
 	}
-	if external != 2 {
+	if external != 4 {
 		t.Fatalf("missing external references: %d", external)
 	}
 }

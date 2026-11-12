@@ -6,6 +6,7 @@ import (
 	"github.com/Hans-Einar/SDP/SDPTool/projecthistory"
 	"gopkg.in/yaml.v3"
 	"os"
+	"sort"
 	"strings"
 )
 
@@ -308,6 +309,9 @@ func (s *Service) Update(q UpdateRequest, caller Caller) (Result, error) {
 	if e != nil {
 		return Result{}, e
 	}
+	if view.Enabled && a.State == "active" && executionContractChanged(a.Descriptor, q) {
+		return Result{}, fmt.Errorf("hold the active Activity and observe execution quiescence before changing scope, references or dependencies")
+	}
 	files, e := s.descriptorImage(a)
 	if e != nil {
 		return Result{}, e
@@ -433,4 +437,26 @@ func (s *Service) checkWholeScopeCompletion(d Descriptor, dispositions []Contrib
 		}
 	}
 	return nil
+}
+
+// Set ordering and nil-versus-empty representation do not alter execution grants
+// or selected memberships. Every field in a typed reference/dependency otherwise
+// participates in its canonical JSON identity.
+func executionContractChanged(before Descriptor, after UpdateRequest) bool {
+	return canonicalRecordSet(before.Scope) != canonicalRecordSet(after.Scope) || canonicalRecordSet(before.References) != canonicalRecordSet(after.References) || canonicalRecordSet(before.Dependencies) != canonicalRecordSet(after.Dependencies)
+}
+func canonicalRecordSet[T any](values []T) string {
+	items := make([]string, 0, len(values))
+	for _, value := range values {
+		raw, _ := json.Marshal(value)
+		items = append(items, string(raw))
+	}
+	sort.Strings(items)
+	unique := items[:0]
+	for _, item := range items {
+		if len(unique) == 0 || unique[len(unique)-1] != item {
+			unique = append(unique, item)
+		}
+	}
+	return strings.Join(unique, "\x00")
 }

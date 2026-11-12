@@ -8,6 +8,7 @@ import (
 	"github.com/Hans-Einar/SDP/SDPTool/projecthistory"
 	"os"
 	"path/filepath"
+	"strings"
 	"sync"
 	"testing"
 )
@@ -470,5 +471,104 @@ func TestWholeScopeDoesNotAcceptOpenRecordAsCompleted(t *testing.T) {
 	os.WriteFile(filepath.Join(s.Area, "plan.md"), []byte("| id | PLAN-TEST-0001 |\n| state | completed |\n"), 0600)
 	if _, e := s.Transition(done, c, knownEmpty()); e != nil {
 		t.Fatal(e)
+	}
+}
+
+func TestAdoptedActiveUpdateRequiresObservedHoldForContractChanges(t *testing.T) {
+	for _, kind := range []string{"scope", "references", "dependencies"} {
+		t.Run(kind, func(t *testing.T) {
+			s, c := lifecycleFixture(t)
+			id := "ACTIVITY-TEST-0001"
+			if _, e := s.Create(request(t, s, oid(3)), c); e != nil {
+				t.Fatal(e)
+			}
+			if _, e := s.Transition(transitionRequest(t, s, 10, id, "activate"), c, nil); e != nil {
+				t.Fatal(e)
+			}
+			s.write("Selected.md", []byte("| id | PLAN-TEST-0001 |\n"))
+			q := updateRequest(t, s, 11, id)
+			cat, _ := s.Read()
+			a, _ := cat.Find(id)
+			q.Scope = append([]string{}, a.Descriptor.Scope...)
+			q.References = append([]Reference{}, a.Descriptor.References...)
+			switch kind {
+			case "scope":
+				q.Scope = append(q.Scope, "Another")
+			case "references":
+				q.References = append(q.References, Reference{Role: "plan", ID: "PLAN-TEST-0001", Path: "Selected.md"})
+			case "dependencies":
+				q.Dependencies = []Dependency{{ActivityID: "ACTIVITY-TEST-0002"}}
+			}
+			before, _ := s.read("ProjectManagement/Ledger.ndjson")
+			if _, e := s.Update(q, c); e == nil || !strings.Contains(e.Error(), "hold the active Activity") {
+				t.Fatal("adopted active contract change was not refused with hold instruction", e)
+			}
+			after, _ := s.read("ProjectManagement/Ledger.ndjson")
+			if !bytes.Equal(before, after) {
+				t.Fatal("refused contract change appended history")
+			}
+			busy := admissionInspector{snapshot: ExecutionSnapshot{Known: true, InFlight: []ExecutionRef{{RunID: "actual-running"}}}}
+			hold := transitionRequest(t, s, 12, id, "hold")
+			if r, e := s.Transition(hold, c, busy); e != nil || !r.Pending {
+				t.Fatal(r, e)
+			}
+			if _, e := s.Update(q, c); e == nil {
+				t.Fatal("pending hold permitted contract rewrite")
+			}
+			if r, e := s.Transition(hold, c, knownEmpty()); e != nil || r.Pending {
+				t.Fatal(r, e)
+			}
+			cat, _ = s.Read()
+			a, _ = cat.Find(id)
+			q.ExpectedHistoryRevision = cat.HistoryRevision
+			q.ExpectedActivityEventID = a.LastEventID
+			q.ExpectedDescriptorRevision = a.DescriptorRef.SHA256
+			if _, e := s.Update(q, c); e != nil {
+				t.Fatal("observed-quiescent held contract update refused", e)
+			}
+		})
+	}
+}
+func TestAdoptedActiveUpdateAllowsMetadataAndSetReordering(t *testing.T) {
+	s, c := lifecycleFixture(t)
+	id := "ACTIVITY-TEST-0001"
+	for _, name := range []string{"First", "Second"} {
+		if e := s.write(name+".md", []byte("| id | PLAN-TEST-"+map[string]string{"First": "0001", "Second": "0002"}[name]+" |\n")); e != nil {
+			t.Fatal(e)
+		}
+	}
+	q := updateRequest(t, s, 3, id)
+	q.Scope = []string{"Source", "Another"}
+	q.References = []Reference{{Role: "plan", ID: "PLAN-TEST-0001", Path: "First.md"}, {Role: "plan", ID: "PLAN-TEST-0002", Path: "Second.md"}}
+	if _, e := s.Update(q, c); e != nil {
+		t.Fatal(e)
+	}
+	if _, e := s.Transition(transitionRequest(t, s, 10, id, "activate"), c, nil); e != nil {
+		t.Fatal(e)
+	}
+	cat, _ := s.Read()
+	a, _ := cat.Find(id)
+	q = updateRequest(t, s, 11, id)
+	q.Scope = append([]string{}, a.Descriptor.Scope...)
+	q.References = append([]Reference{}, a.Descriptor.References...)
+	q.Title = "Metadata rename"
+	q.Owner = "New accountable owner"
+	if _, e := s.Update(q, c); e != nil {
+		t.Fatal("metadata update refused", e)
+	}
+	q = updateRequest(t, s, 12, id)
+	q.Scope = []string{"Another", "Source"}
+	q.References = []Reference{{Role: "plan", ID: "PLAN-TEST-0002", Path: "Second.md"}, {Role: "plan", ID: "PLAN-TEST-0001", Path: "First.md"}}
+	if _, e := s.Update(q, c); e != nil {
+		t.Fatal("semantically unchanged reordered contract refused", e)
+	}
+	before := Descriptor{Dependencies: []Dependency{{ActivityID: "ACTIVITY-TEST-0002", SatisfiedByEventID: "EVT-TWO"}, {ActivityID: "ACTIVITY-TEST-0003", SatisfiedByEventID: "EVT-THREE"}}}
+	after := UpdateRequest{Scope: []string{}, References: []Reference{}, Dependencies: []Dependency{before.Dependencies[1], before.Dependencies[0]}}
+	if executionContractChanged(before, after) {
+		t.Fatal("dependency order or nil/empty representation changed execution semantics")
+	}
+	after.Dependencies[0].SatisfiedByEventID = "EVT-DIFFERENT"
+	if !executionContractChanged(before, after) {
+		t.Fatal("changed dependency satisfaction was ignored")
 	}
 }

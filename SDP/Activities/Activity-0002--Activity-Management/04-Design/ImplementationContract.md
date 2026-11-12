@@ -113,3 +113,14 @@ Workers explain ownership/deletions before editing; return contradictions here.
 Tests must cover real byte-preserving manual compatibility, stale/duplicate inputs,
 interrupted effects, concurrent activation, descriptor history, pending work and
 native selection. Final review must cover all A1–A6 outcomes, not just creation.
+
+## Active execution contract revision
+
+After explicit admission adoption, changing an active Activity's scope, reference
+membership or dependencies requires holding the Activity and observing actual
+implementation quiescence first. Metadata-only updates may proceed. Reordering the
+same contract sets is not a scope change. Pre-adoption manual mapping remains
+allowed, because existing active manual records need their scope declared before
+admission can be enabled. This rule prevents a descriptor update from removing
+coverage beneath an already-issued host execution permission; dispatch checks alone
+cannot revoke that permission. Existing hold/recovery owns the quiescence protocol.
