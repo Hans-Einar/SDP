@@ -7,6 +7,7 @@ import (
 	"github.com/Hans-Einar/SDP/SDPTool/projecthistory"
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 )
 
@@ -45,8 +46,30 @@ func TestCreateRetryStaleAndChangedContent(t *testing.T) {
 		t.Fatalf("%+v %v", c, e)
 	}
 	other := request(t, s, op2)
-	if _, e = s.Create(other, caller); e != nil {
+	other.Title, other.Mandate = "Another independent activity", "A distinct need"
+	second, e := s.Create(other, caller)
+	if e != nil {
 		t.Fatal(e)
+	}
+	firstReadme, e := os.ReadFile(filepath.Join(s.Area, r.Path, "README.md"))
+	if e != nil {
+		t.Fatal(e)
+	}
+	secondReadme, e := os.ReadFile(filepath.Join(s.Area, second.Path, "README.md"))
+	if e != nil {
+		t.Fatal(e)
+	}
+	if !bytes.Equal(firstReadme, secondReadme) || strings.Contains(string(firstReadme), q.Title) || strings.Contains(string(firstReadme), other.Mandate) {
+		t.Fatal("directory guidance must be independent of Activity narrative")
+	}
+	for _, folder := range []string{"01-Mandate", "02-Study", "03-Requirements", "04-Design", "05-Implementation", "06-Verification", "Sessions"} {
+		if !strings.Contains(string(firstReadme), "]("+folder+"/)") {
+			t.Fatalf("directory guidance has no navigation for %s", folder)
+		}
+	}
+	mandate, e := os.ReadFile(filepath.Join(s.Area, second.Path, "01-Mandate", "Mandate.md"))
+	if e != nil || strings.TrimSpace(string(mandate)) != other.Mandate {
+		t.Fatal("Activity need must remain in its mandate", e)
 	}
 	again, e := s.Create(q, caller)
 	if e != nil || again != r {

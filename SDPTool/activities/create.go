@@ -1,6 +1,7 @@
 package activities
 
 import (
+	_ "embed"
 	"encoding/json"
 	"fmt"
 	"github.com/Hans-Einar/SDP/SDPTool/projecthistory"
@@ -12,6 +13,9 @@ import (
 	"strings"
 	"time"
 )
+
+//go:embed activity-readme.md
+var activityReadme []byte
 
 func (s *Service) validateCaller(c Caller) error {
 	if !namespaceRE.MatchString(s.ProjectID) || strings.TrimSpace(c.Actor) == "" || c.Authority.Role != "project-owner" {
@@ -272,7 +276,7 @@ func (s *Service) Create(req CreateRequest, caller Caller) (Result, error) {
 	}
 	ref := DescriptorReference{Path: dir + "/activity.yaml", SHA256: digest(b)}
 	ev := s.event(req.OperationID, "x-activity:created", id, req.Reason, caller, dg, ref, nil, nil, "planned", nil)
-	files := []image{{Path: "Activities/.descriptors/" + ref.SHA256 + ".yaml", After: b}, {Path: ref.Path, After: b}, {Path: dir + "/01-Mandate/Mandate.md", After: []byte(req.Mandate + "\n")}, {Path: dir + "/README.md", After: []byte("# " + req.Title + "\n\nSee [Mandate](01-Mandate/Mandate.md) and the canonical Activity history.\n")}}
+	files := []image{{Path: "Activities/.descriptors/" + ref.SHA256 + ".yaml", After: b}, {Path: ref.Path, After: b}, {Path: dir + "/01-Mandate/Mandate.md", After: []byte(req.Mandate + "\n")}, {Path: dir + "/README.md", After: activityReadme}}
 	for _, phase := range []string{"02-Study", "03-Requirements", "04-Design", "05-Implementation", "06-Verification"} {
 		files = append(files, image{Path: dir + "/" + phase + "/README.md", After: []byte("# " + phase + "\n\nThis phase contains the Activity's relevant records and references. Readiness follows evidenced outputs and disposition.\n")})
 	}
