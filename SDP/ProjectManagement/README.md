@@ -137,3 +137,12 @@ Existing x-kanban and x-management histories retain their original meanings.
 Before implementation, apply [Concurrent-work preflight](Concurrent-Work-Preflight.md)
 and retain its verdict/evidence in the active Session. Local adoption is recorded
 in Session0011 T002; this is not a distributed locking implementation.
+
+## Manual Activity pilot
+
+Owner-selected ACTIVITY-SDP-0001 is recorded in this ledger using the separate
+x-activity domain and [manual record contract](Activity-records.md). The generic
+envelope is unchanged; management payload 0.2 is not extended with an Activity kind.
+Existing automated validators are not yet Activity-aware. See the contract and
+Activity bootstrap evidence for separate schema/replay checks and compatibility
+limitations. Future automated support must preserve these identities and bytes.

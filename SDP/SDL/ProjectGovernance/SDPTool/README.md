@@ -1,5 +1,11 @@
 # SDPTool — project facade and shared governance core
 
+Current Activity command design: [ActivityWorkflow](ActivityWorkflow/README.md)
+adds a bounded preliminary WORK for Activity/Session document creation, lifecycle
+and reading projections. It does not replace the existing model concerns or claim
+that the activity CLI/actions are implemented. Created through ModelGovernance in
+Session0016 T3, 2026-11-12; views remain on-demand.
+
 ## Boundary and implementation state
 
 SDPTool owns project discovery, command coordination, navigation and installation,

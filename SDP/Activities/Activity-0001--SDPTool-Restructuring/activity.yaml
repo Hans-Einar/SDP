@@ -1,0 +1,20 @@
+schema: sdp-activity/0.1
+id: ACTIVITY-SDP-0001
+projectId: SDP
+title: SDPTool restructuring
+owner: project-owner
+mandate: 01-Mandate/Mandate.md
+sourceCards:
+- KB-SDP-062
+systems:
+- SDPTOOL
+references:
+- role: implementation-plan
+  id: PLAN-SDP-0026
+  path: 05--Implementation/SDPTool/ArchitectureMigration/Plan.md
+- role: session
+  id: SESSION-SDP-0017
+  path: Activities/Activity-0001--SDPTool-Restructuring/Sessions/session-#0017--SDPTool_restructuring.md
+- role: prior-discussion
+  id: SESSION-SDP-0016
+  path: Sessions/session-#0016--Activity_design.md

@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Activity lifecycle payload 0.1 \u2014 manual bootstrap",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "projectId",
+    "operationId",
+    "recordedAt",
+    "authority",
+    "previousEventId",
+    "from",
+    "to",
+    "reason",
+    "descriptor",
+    "links"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "0.1"
+    },
+    "projectId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "operationId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recordedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "source"
+      ],
+      "properties": {
+        "role": {
+          "const": "project-owner"
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "previousEventId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^EVT-ACTIVITY-[A-Z][A-Z0-9]*-[0-9]{6,}$"
+    },
+    "from": {
+      "enum": [
+        null,
+        "planned",
+        "active",
+        "on-hold",
+        "completed",
+        "canceled"
+      ]
+    },
+    "to": {
+      "enum": [
+        "planned",
+        "active",
+        "on-hold",
+        "completed",
+        "canceled"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "descriptor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "links": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "previousEventId": {
+            "type": "null"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "from": {
+            "type": "null"
+          },
+          "to": {
+            "const": "planned"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "from": {
+            "enum": [
+              "planned",
+              "active",
+              "on-hold",
+              "completed",
+              "canceled"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
