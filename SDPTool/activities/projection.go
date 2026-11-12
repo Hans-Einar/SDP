@@ -26,7 +26,7 @@ type Phase struct{ Key, Label, Directory string }
 var Phases = []Phase{{"mandate", "Mandate", "01-Mandate"}, {"study", "Study", "02-Study"}, {"requirements", "Requirements", "03-Requirements"}, {"design", "Design", "04-Design"}, {"implementation", "Implementation", "05-Implementation"}, {"verification", "Verification", "06-Verification"}}
 var States = []string{"planned", "active", "on-hold", "completed", "canceled"}
 
-type Document struct{ Label, Path, Revision, Diagnostic string }
+type Document struct{ Key, Label, Path, Revision, Diagnostic string }
 type Entry struct {
 	Activity  Activity
 	Documents map[string][]Document
@@ -79,7 +79,7 @@ func Project(area string, c Catalog, asOf time.Time) (Projection, error) {
 		for _, r := range a.Descriptor.References {
 			key := referencePhase(r.Role)
 			if r.Availability == "unavailable" {
-				e.Documents[key] = append(e.Documents[key], Document{Path: r.Path, Label: r.ID, Diagnostic: r.UnavailableReason})
+				e.Documents[key] = append(e.Documents[key], Document{Key: "external/" + r.ProjectID + "/" + r.Role + "/" + r.ID, Path: r.Path, Label: r.ID, Diagnostic: r.UnavailableReason})
 				continue
 			}
 			add(key, r.Path)
@@ -625,7 +625,12 @@ func (p *Projection) indexLinks() {
 	if err != nil {
 		return
 	}
-	b, err := os.ReadFile(full)
+	f, err := os.Open(full)
+	if err != nil {
+		return
+	}
+	defer f.Close()
+	b, err := io.ReadAll(io.LimitReader(f, 64<<20+1))
 	if err != nil || len(b) > 64<<20 {
 		return
 	}

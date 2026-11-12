@@ -75,7 +75,7 @@ func activityNodes(p Project) []Node {
 			}
 			n.Children = append(n.Children, sid)
 			for _, d := range e.Documents[section.Key] {
-				did := sid + "/document/" + url.PathEscape(d.Path)
+				did := sid + "/document/" + url.PathEscape(activityDocumentKey(d))
 				dn := Node{ID: did, Kind: "document", Label: d.Label, State: "available"}
 				if d.Diagnostic != "" {
 					dn.State = "unavailable"
@@ -100,7 +100,7 @@ func activityNodes(p Project) []Node {
 		g := Node{ID: "activities/unassigned", Kind: "group", Label: "Unassigned sessions", State: "available", Target: target("unassigned")}
 		root.Children = append(root.Children, g.ID)
 		for _, d := range projection.Unassigned {
-			id := g.ID + "/" + url.PathEscape(d.Path)
+			id := g.ID + "/" + url.PathEscape(activityDocumentKey(d))
 			n := Node{ID: id, Kind: "document", Label: d.Label, State: "available", Diagnostic: d.Diagnostic}
 			if d.Diagnostic != "" {
 				n.State = "unavailable"
@@ -117,7 +117,7 @@ func activityNodes(p Project) []Node {
 func renderActivityView(p Project, selection string) (activities.Page, error) {
 	if strings.HasPrefix(selection, "activity-view://") {
 		u, e := url.Parse(selection)
-		if e != nil || u.Scheme != "activity-view" || u.Host != p.Inventory.ProjectID || u.Fragment != "" {
+		if e != nil || u.Scheme != "activity-view" || u.Host != p.Inventory.ProjectID || u.Fragment != "" || u.User != nil {
 			return activities.Page{}, fmt.Errorf("invalid Activity target")
 		}
 		selection = strings.TrimPrefix(u.Path, "/")
@@ -167,4 +167,11 @@ func activityStateLabel(state string) string {
 		return "Canceled"
 	}
 	return "Unknown"
+}
+
+func activityDocumentKey(d activities.Document) string {
+	if d.Key != "" {
+		return d.Key
+	}
+	return d.Path
 }

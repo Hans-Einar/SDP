@@ -423,3 +423,95 @@ func TestActivityIntegrationAdoptionUsesBoundGovernanceProjectIdentity(t *testin
 		t.Fatal("quiescent actual store failed hold", code, stderr)
 	}
 }
+
+func TestActivityIntegrationUnavailableExternalReferencesRemainDistinct(t *testing.T) {
+	root, s := activityIntegrationFixture(t)
+	q := activityIntegrationRequest(t, s, 1)
+	for _, project := range []string{"ALPHA", "BETA"} {
+		q.References = append(q.References, activities.Reference{ProjectID: project, Role: "study", ID: "STUDY-" + project + "-0001", Path: "Study.md", Availability: "unavailable", UnavailableReason: "External project offline"})
+	}
+	if _, e := s.Create(q, activities.Caller{Actor: "test", Authority: activities.Authority{Role: "project-owner", Source: "owner.md"}}); e != nil {
+		t.Fatal(e)
+	}
+	p, e := discover(root, false)
+	if e != nil {
+		t.Fatal(e)
+	}
+	seen := map[string]bool{}
+	external := 0
+	for _, n := range activityNodes(p) {
+		if seen[n.ID] {
+			t.Fatal("duplicate node", n.ID)
+		}
+		seen[n.ID] = true
+		if n.Diagnostic == "External project offline" {
+			external++
+			if n.Target != nil {
+				t.Fatal("external source opened locally")
+			}
+		}
+	}
+	if external != 2 {
+		t.Fatalf("missing external references: %d", external)
+	}
+}
+
+func TestActivityIntegrationManualPilotAdoptionPreservesSourceHistory(t *testing.T) {
+	root, s := activityIntegrationFixture(t)
+	ledger, e := os.ReadFile("../SDP/ProjectManagement/Ledger.ndjson")
+	if e != nil {
+		t.Fatal(e)
+	}
+	if e = os.WriteFile(filepath.Join(s.Area, "ProjectManagement/Ledger.ndjson"), ledger, 0600); e != nil {
+		t.Fatal(e)
+	}
+	if e = os.WriteFile(filepath.Join(s.Area, "KanBan/board.json"), []byte(`{"projectId":"SDP"}`), 0600); e != nil {
+		t.Fatal(e)
+	}
+	originals := map[string][]byte{}
+	for _, home := range []string{"Activity-0001--SDPTool-Restructuring", "Activity-0002--Activity-Management"} {
+		rel := "Activities/" + home + "/activity.yaml"
+		b, e := os.ReadFile(filepath.Join("../SDP", rel))
+		if e != nil {
+			t.Fatal(e)
+		}
+		originals[rel] = b
+		target := filepath.Join(s.Area, rel)
+		if e = os.MkdirAll(filepath.Dir(target), 0700); e != nil {
+			t.Fatal(e)
+		}
+		if e = os.WriteFile(target, b, 0600); e != nil {
+			t.Fatal(e)
+		}
+	}
+	s = activities.New(s.Area, "SDP")
+	catalog, e := s.Read()
+	if e != nil {
+		t.Fatal(e)
+	}
+	state := filepath.Join(t.TempDir(), "state")
+	var out, errs bytes.Buffer
+	if code := Run(context.Background(), []string{root, "governance", "bind", "--state", state, "--json"}, &out, &errs); code != 0 {
+		t.Fatal(code, errs.String())
+	}
+	q := activities.AdoptionRequest{OperationID: activityIntegrationID(90), ExpectedHistoryRevision: catalog.HistoryRevision, Stores: []activities.ExecutionStore{{StatePath: state}}}
+	req := activityIntegrationJSON(t, root, "adopt.json", q)
+	code, _, diagnostic := activityIntegrationCLI(t, root, "adopt", "--request", req, "--authority-source", "owner.md")
+	if code != 0 {
+		t.Fatal(code, diagnostic)
+	}
+	after, e := s.Read()
+	if e != nil || len(after.Activities) != 2 || after.Activities[1].State != "active" {
+		t.Fatal(after, e)
+	}
+	stream, _ := os.ReadFile(filepath.Join(s.Area, "ProjectManagement/Ledger.ndjson"))
+	if !bytes.HasPrefix(stream, ledger) {
+		t.Fatal("original history rewritten")
+	}
+	for rel, b := range originals {
+		after, _ := os.ReadFile(filepath.Join(s.Area, rel))
+		if !bytes.Equal(b, after) {
+			t.Fatal("original descriptor rewritten", rel)
+		}
+	}
+}
