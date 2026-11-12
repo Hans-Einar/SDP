@@ -2,6 +2,7 @@ package governance
 
 import (
 	"encoding/json"
+	"github.com/Hans-Einar/SDP/SDPTool/projecthistory"
 	"strings"
 )
 
@@ -80,7 +81,14 @@ func (s *Service) changePreparation(caller Caller, q PreparationChange, request 
 	if !uuidPattern.MatchString(q.AssignmentID) || !digestPattern.MatchString(q.ExpectedGeneration) || q.ExpectedRevision == 0 || !validPreparationReason(q.Reason) {
 		return out, fail("invalid_request", "assignment UUID, generation, positive revision and bounded reason required")
 	}
-	unlock, err := lock(s.state)
+	var tx *projecthistory.Transaction
+	var unlock func()
+	var err error
+	if revise != nil {
+		tx, unlock, err = s.lockActivityState()
+	} else {
+		unlock, err = lock(s.state)
+	}
 	if err != nil {
 		return out, err
 	}
@@ -155,6 +163,11 @@ func (s *Service) changePreparation(caller Caller, q PreparationChange, request 
 		if why := scopeConflictExcept(revise.Assignment.WritablePaths, state, p.ID); why != "" {
 			return out, fail("conflict", why)
 		}
+		binding, err := s.checkActivity(tx, "", p.Selection, revise.Assignment, false)
+		if err != nil {
+			return out, err
+		}
+		p.Activity = binding
 		p.InputRevision, p.Assignment = revise.InputRevision, revise.Assignment
 		p.Artifacts, p.ReturnCriteria = revise.Artifacts, revise.ReturnCriteria
 		p.State = "prepared"

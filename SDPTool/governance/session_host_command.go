@@ -199,6 +199,11 @@ func (s *Service) RequestSessionHost(c Caller, q SessionHostRequest) (SessionHos
 	if e != nil {
 		return SessionHostCommand{}, e
 	}
+	if q.Action == "launch" || q.Action == "continue" {
+		if _, e = s.checkActivity(tx, "", r.Selection, r.Assignment, false); e != nil {
+			return SessionHostCommand{}, e
+		}
+	}
 	if len(st.SessionHostCommands) >= 128 {
 		return SessionHostCommand{}, fail("limit", "Session host request capacity reached")
 	}
@@ -250,6 +255,12 @@ func (s *Service) ClaimSessionHost(c Caller, id string) (SessionHostCommand, err
 	}
 	if _, e = s.sessionHostBasis(st, cmd.Request); e != nil {
 		return cmd, e
+	}
+	if cmd.Request.Action == "launch" || cmd.Request.Action == "continue" {
+		r := st.Runs[cmd.Request.RunID]
+		if _, e = s.checkActivity(tx, "", r.Selection, r.Assignment, false); e != nil {
+			return cmd, e
+		}
 	}
 	cmd.State = "claimed"
 	cmd.UpdatedAt = time.Now().UTC().Format(time.RFC3339Nano)

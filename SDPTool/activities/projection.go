@@ -43,6 +43,7 @@ type Projection struct {
 	Unassigned   []Document
 	Revision     string
 	AsOf         time.Time
+	links        map[string]Document
 	markerFilter string
 	zoom         string
 	area         string
@@ -50,7 +51,7 @@ type Projection struct {
 
 // Project indexes sources only. Markdown pages and timelines are rendered on selection.
 func Project(area string, c Catalog, asOf time.Time) (Projection, error) {
-	p := Projection{Catalog: c, AsOf: asOf.UTC(), area: area}
+	p := Projection{Catalog: c, AsOf: asOf.UTC(), area: area, links: map[string]Document{}}
 	assigned := map[string]bool{}
 	for _, a := range c.Activities {
 		e := Entry{Activity: a, Documents: map[string][]Document{}}
@@ -106,11 +107,13 @@ func Project(area string, c Catalog, asOf time.Time) (Projection, error) {
 	}); err != nil {
 		return p, err
 	}
+	p.indexLinks()
 	b, _ := json.Marshal(struct {
+		Links      map[string]Document
 		History    string
 		Entries    []Entry
 		Unassigned []Document
-	}{c.HistoryRevision, p.Entries, p.Unassigned})
+	}{p.links, c.HistoryRevision, p.Entries, p.Unassigned})
 	sum := sha256.Sum256(b)
 	p.Revision = hex.EncodeToString(sum[:])
 	return p, nil
@@ -217,6 +220,13 @@ func text(s string) string {
 	return strings.NewReplacer("&", "&amp;", "<", "&lt;", ">", "&gt;", "[", "\\[", "]", "\\]", "\n", " ").Replace(s)
 }
 func (p Projection) sourceLink(label, name string) string {
+	if d, ok := p.links[name]; ok {
+		name = d.Path
+		if d.Diagnostic == "" && (label == "Attributed source" || label == "Supporting source") {
+			label = d.Label
+		}
+	}
+	name = strings.TrimPrefix(name, "SDP/")
 	if strings.HasPrefix(name, "git:commit/") && hashCommit(strings.TrimPrefix(name, "git:commit/")) {
 		return "[" + text(label) + "](commits/" + strings.TrimPrefix(name, "git:commit/") + ".md)"
 	}
@@ -590,4 +600,51 @@ func (p Projection) relatedEvents(a Activity) ([]Event, error) {
 		}
 	}
 	return result, nil
+}
+
+// Resolve record identities through explicit current canonical paths. Historical
+// links may name identities rather than filenames; never display a fake file link.
+func (p *Projection) indexLinks() {
+	wanted := map[string]bool{}
+	for _, entry := range p.Entries {
+		a := entry.Activity
+		p.links[a.Descriptor.ID] = p.document(path.Join(a.Path, a.Descriptor.Mandate))
+		for _, id := range a.Descriptor.SourceCards {
+			wanted[id] = true
+		}
+		for _, r := range a.Descriptor.References {
+			if r.Availability == "" {
+				p.links[r.ID] = p.document(r.Path)
+			}
+		}
+		for _, s := range a.Sessions {
+			p.links[s.ID] = p.document(s.Path)
+		}
+	}
+	full, err := p.source("ProjectManagement/Ledger.ndjson")
+	if err != nil {
+		return
+	}
+	b, err := os.ReadFile(full)
+	if err != nil || len(b) > 64<<20 {
+		return
+	}
+	for _, line := range strings.Split(string(b), "\n") {
+		var e struct {
+			EventType, SubjectID string
+			Payload              struct {
+				ToPath string `json:"toPath"`
+			}
+		}
+		if json.Unmarshal([]byte(line), &e) != nil || !wanted[e.SubjectID] || e.Payload.ToPath == "" {
+			continue
+		}
+		name := e.Payload.ToPath
+		if strings.HasPrefix(e.EventType, "x-kanban:") {
+			name = path.Join("KanBan", name)
+		} else if !strings.HasPrefix(e.EventType, "x-management:") {
+			continue
+		}
+		p.links[e.SubjectID] = p.document(name)
+	}
 }

@@ -233,7 +233,7 @@ func (c *Controller) launch(ctx context.Context, runID, text string, continuing 
 	if e = governance.CheckSkillSnapshots(c.Root, v.Skills); e != nil {
 		return r, e
 	}
-	if e = c.Service.CheckRunReady(runID); e != nil {
+	if e = c.Service.CheckActivityDispatch(governance.LocalController(), runID, v.ID); e != nil {
 		return r, e
 	}
 	var turn governancehost.Turn
@@ -295,6 +295,9 @@ func (c *Controller) Control(ctx context.Context, runID, kind, text string) (res
 		}
 	}()
 	if kind == "steer" {
+		if e = c.Service.CheckActivityDispatch(governance.LocalController(), runID, v.ID); e != nil {
+			return r, e
+		}
 		e = c.Host.SteerTurn(ctx, a.ThreadID, a.TurnID, v.ID, text)
 	} else {
 		action := "interrupt"

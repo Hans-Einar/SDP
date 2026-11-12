@@ -3,8 +3,10 @@ package install
 import (
 	"bytes"
 	"fmt"
+	"github.com/Hans-Einar/SDP/SDPTool/activities"
 	"github.com/Hans-Einar/SDP/SDPTool/blueprintstate"
 	"github.com/Hans-Einar/SDP/SDPTool/bootstrap"
+	"github.com/Hans-Einar/SDP/SDPTool/projecthistory"
 	"regexp"
 	"strings"
 	"time"
@@ -26,6 +28,44 @@ func validateHistory(history []byte, files map[string][]byte) error {
 func validateHistoryPolicy(history []byte, files map[string][]byte, recordedAdoption bool) error {
 	if _, _, err := blueprintstate.Replay(history); err != nil {
 		return err
+	}
+	// Domain extensions retain their own validators. They are never reinterpreted
+	// as management payloads, and installation validates captured bytes only.
+	namespace := ""
+	for _, line := range bytes.Split(history, []byte{'\n'}) {
+		if len(bytes.TrimSpace(line)) == 0 {
+			continue
+		}
+		var event map[string]any
+		if err := bootstrap.StrictJSON(line, &event); err != nil {
+			return err
+		}
+		typ, _ := event["eventType"].(string)
+		if strings.HasPrefix(typ, "x-activity:") || strings.HasPrefix(typ, "x-activity-admission:") {
+			payload, ok := event["payload"].(map[string]any)
+			if !ok {
+				return fmt.Errorf("invalid Activity payload")
+			}
+			project, ok := payload["projectId"].(string)
+			if !ok || project == "" || namespace != "" && namespace != project {
+				return fmt.Errorf("ambiguous Activity project identity")
+			}
+			namespace = project
+		}
+	}
+	if namespace != "" {
+		captured := map[string][]byte{}
+		for path, b := range files {
+			if strings.HasPrefix(path, "SDP/") {
+				captured[strings.TrimPrefix(path, "SDP/")] = b
+			}
+		}
+		if _, err := activities.ReplayRecords(namespace, projecthistory.Snapshot{Bytes: history, Revision: Hash(history)}, captured); err != nil {
+			return err
+		}
+		if err := activities.ValidateAdmissionRecords(history, captured); err != nil {
+			return err
+		}
 	}
 	latest := map[string]map[string]any{}
 	ids := map[string]bool{}
@@ -50,7 +90,7 @@ func validateHistoryPolicy(history []byte, files map[string][]byte, recordedAdop
 			return e
 		}
 		ids[id] = true
-		if strings.HasPrefix(typ, "x-blueprint:") {
+		if strings.HasPrefix(typ, "x-blueprint:") || strings.HasPrefix(typ, "x-activity:") || strings.HasPrefix(typ, "x-activity-admission:") {
 			continue
 		}
 		if payload["schemaVersion"] != "0.1" && payload["schemaVersion"] != "0.2" {

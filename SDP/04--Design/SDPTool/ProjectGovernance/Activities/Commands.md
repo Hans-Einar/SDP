@@ -1,10 +1,11 @@
 # Activity commands and SDPTool source ownership
 
-Design work selected by owner, Session0016 T3, 2026-11-12. Proposed commands below
-are **not implemented or advertised actions**. Their authored SDL WORK lives in
+Originally selected as design work in Session0016 T3; Activity0002/PLAN-SDP-0027
+now implements the contract. Current executable usage is maintained in
+[SDPTool Activities](../../../../../SDPTool/Activities.md). The authored SDL WORK lives in
 [ActivityWorkflow](../../../../SDL/ProjectGovernance/SDPTool/ActivityWorkflow/README.md).
 
-## Current source layout, observed at a96affd
+## Source responsibilities (updated after Activity0001)
 
 | Area under SDPTool | Responsibility |
 | --- | --- |
@@ -12,6 +13,8 @@ are **not implemented or advertised actions**. Their authored SDL WORK lives in
 | cli.go and *_cli.go | CLI routing and domain adapters; they are not separate service processes |
 | action_registry.go, action_*.go | Typed action catalogue, input schemas, JSON invocation and calls into shared handlers; not every existing CLI command is catalogued |
 | project.go, discovery.go, navigation.go, tree.go, selection.go, preview.go | Project/source discovery, final navigation, selected source-model view and document coordination |
+| activities/ | Activity lifecycle, record recovery, reference/dependency validation, projection and admission policy |
+| governanceapp/ | Shared typed Session application operations used by CLI/actions |
 | presentation/ | Human-readable output/JSON routing for command results; not XFMD's graphics renderer |
 | model/ | Mutable WORK, model checkpoints, proposals/candidates/releases, snapshots and recovery; distinct from project Git |
 | blueprints/, blueprintstate/ | Design-change context/bundles and assignment lifecycle reduction/evidence |
@@ -30,15 +33,20 @@ instances. session-successor validates a successor context and its prepared effe
 it is not a generic Activity-root Session document creation API. Reuse the existing
 execution/recovery path when a created Session is later adopted, not at creation.
 
-## Proposed facade and actions
+## Selected facade and actions
 
 Keep a single activity command family, including Activity-scoped Session records:
 
-| Proposed CLI under `sdptool PROJECT` | Proposed action | Effect |
+| CLI under `sdptool PROJECT` | Action | Effect |
 | --- | --- | --- |
 | activity create --request FILE | activity.create | Create planned Activity, standard layout, mandate from supplied need and one canonical creation event |
 | activity session create --request FILE | activity.session.create | Create/link one Session beneath Activity-root Sessions; no execution binding or agent start |
-| activity list / read / tree / history / timeline | activity.list/read/tree/history/timeline | Read/derive current records, ready navigation and on-demand history artifacts |
+| activity list / read / history / timeline / validate | activity.list/read/history/timeline/validate | Read/replay records or derive selected content |
+| activity view --uri URI --revision HASH --output DIR | activity.view | On-demand Markdown/SVG bundle, with source-bound selection and caller-owned output |
+| activity tree --uri URI --revision HASH | activity.tree | Bounded producer-owned Activity subtree, separate from view selection |
+| activity update --request FILE | activity.update | Retain descriptor versions and append metadata/scope/reference changes |
+| activity adopt --request FILE | activity.adopt | Explicit admission opt-in with initialized, known quiescent execution store inventory |
+| activity recover --operation UUID | activity.recover | Recover exact retained effects or resume pending quiescence |
 | activity activate / hold / resume / complete / cancel / reopen --request FILE | activity.<operation> | Checked lifecycle transition with current evidence/authority |
 | activity switch --request FILE | activity.switch | Atomic hold/activate selection with in-flight work disposition |
 
@@ -79,12 +87,12 @@ conflicts. Missing mandate, broken references, stale revisions, unsafe paths,
 unsupported schema, ID collision and pending recovery are explicit failures.
 Partial folder creation must not appear as a registered Activity/Session.
 
-## Code boundary to implement later
+## Implemented ownership boundary
 
 [Architecture assessment](ArchitectureReview.md) records existing adapter and
 catalogue gaps and the recommended boundary for Activity implementation.
 
-Proposed `activities/` package owns typed Activity application operations, pure
+The `activities/` package owns typed Activity application operations, pure
 lifecycle checks, descriptor/Session-document assembly, domain history replay and
 projections. Use projecthistory for canonical persistence. root activity_cli.go
 and action_activities.go remain thin adapters; presentation gains result formatters.
@@ -101,7 +109,7 @@ classification, ordering and source attribution; XFMD does not calculate these.
 Session creation and later execution use the same canonical identity and a current
 revision-bound handoff. Existing independent model/Blueprint stores stay separate.
 
-## Modeling and verification limits
+## Model and verification boundaries
 
 The first SDL increment models create Activity, create Session, guarded state
 change, implementation admission and projections, with explicit request/result
@@ -109,11 +117,17 @@ and record-effect boundaries. Accepted creation and refusal scenarios demonstrat
 ordering and result types; prose defines the actual predicates. Runtime atomicity,
 quiescence, permission and timeline attribution need implementation tests later.
 
-Source-only parser validation and a ModelGovernance checkpoint are the completion
-boundary for this turn. No Activity Go code, tool registration, preview export,
-model release or product publication is selected here.
+The original design-only turn ended at a validated WORK checkpoint. Activity0002
+now supplies implementation, retained Blueprint handoff and executable verification.
+The Blueprint's structural result does not claim runtime conformance; authored
+code mapping and candidate evidence supply that assessment. No accepted model
+release, product release or live installation is inferred from implementation.
 
-## Preflight — 2026-11-12
+Public writes require `--authority-source` (an existing SDP-relative owner decision)
+or an attributed trusted owner invocation. Command and action metadata share
+`activities.Operations`; CLI parsing is not an internal service interface.
+
+## Historical design-only preflight — Session0016 T3
 
 SDP has one registered worktree on sdp/sdl-browsing-planning at a96affd. Dirty files
 are this conversation's planning records; there are no existing SDL or Go edits.

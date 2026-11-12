@@ -6,6 +6,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"github.com/Hans-Einar/SDP/SDPTool/activities"
 	"io"
 	"sort"
 	"strconv"
@@ -19,6 +20,11 @@ type Registry map[Key]Renderer
 
 func Default() Registry {
 	r := Registry{}
+	for _, op := range activities.Operations() {
+		r[Key{activities.ApplicationSchema, op.Name}] = activityResult
+	}
+	r[Key{"sdptool/0.2", "activity-view"}] = fields
+	r[Key{"sdptool/0.2", "activity-tree"}] = tree
 	r[Key{"sdptool.actions/1", "actions"}] = actions
 	r[Key{"sdp-blueprint/1", "create-blueprint"}] = fields
 	r[Key{"sdp-blueprint-assessment/1", "assess-blueprint"}] = fields
@@ -241,4 +247,47 @@ func discovery(w io.Writer, b json.RawMessage) error {
 		}
 	}
 	return nil
+}
+
+// Human Activity output shows the work and result; full identities/revisions remain
+// in the machine contract for subsequent checked operations.
+func activityResult(w io.Writer, b json.RawMessage) error {
+	var r struct {
+		Operation string
+		Data      json.RawMessage
+	}
+	if e := json.Unmarshal(b, &r); e != nil {
+		return e
+	}
+	switch r.Operation {
+	case "list", "validate":
+		var c activities.Catalog
+		if e := json.Unmarshal(r.Data, &c); e != nil {
+			return e
+		}
+		if len(c.Activities) == 0 {
+			_, e := fmt.Fprintln(w, "No Activities recorded.")
+			return e
+		}
+		for _, a := range c.Activities {
+			fmt.Fprintf(w, "%s — %s\n", safe(a.Descriptor.Title), safe(a.State))
+		}
+		return nil
+	case "timeline":
+		var p activities.Page
+		if e := json.Unmarshal(r.Data, &p); e != nil {
+			return e
+		}
+		_, e := io.WriteString(w, p.Markdown)
+		return e
+	case "read":
+		var a activities.Activity
+		if e := json.Unmarshal(r.Data, &a); e != nil {
+			return e
+		}
+		_, e := fmt.Fprintf(w, "%s — %s\nOwner: %s\nMandate: %s/%s\n", safe(a.Descriptor.Title), safe(a.State), safe(a.Descriptor.Owner), safe(a.Path), safe(a.Descriptor.Mandate))
+		return e
+	default:
+		return fields(w, b)
+	}
 }

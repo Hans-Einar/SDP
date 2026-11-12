@@ -43,7 +43,7 @@ PLAN-SDP-0027 selects ActivityCommands checkpoint
 b3e45cab-c629-490b-9192-3ed2b4628387:00002 against the bounded absence baseline
 73a3ef6f-6869-4b83-a6d8-993d2a8c4bda:00001. The baseline represents the previously
 absent Activity services, not the absence of the existing SDPTool system.
-Blueprint revision 1a89439e3746316b60d959d95f9049f4efedbcc22a4dcabf5c82aea4a7e49a4a
+Blueprint revision 830b6836603b55b150e04d6f9018f636ce8332c144e7b7d01ee91349725b25ec
 passes structural constraints; runtime and code conformance remain unknown until
 implementation evidence is recorded. The Activity's 04-Design/Blueprints.md and
 ImplementationContract.md bind the worker scope and exact artifact locations.

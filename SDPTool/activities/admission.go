@@ -108,6 +108,16 @@ func (s *Service) admissionRecord() (*admissionEvent, error) {
 		if found != nil || event.EventType != admissionType || event.SchemaVersion != "1.0" || p.SchemaVersion != "0.1" || !namespaceRE.MatchString(p.ProjectID) || !uuidRE.MatchString(p.OperationID) || !hashRE.MatchString(p.RequestDigest) || p.Authority.Role != "project-owner" || p.Authority.Source == "" || event.Actor == "" || len(p.Stores) == 0 || len(p.Stores) > 128 || event.SubjectID != "ACTIVITY-ADMISSION-"+p.ProjectID {
 			return nil, fmt.Errorf("invalid or ambiguous Activity admission adoption")
 		}
+		if err = portable(p.Authority.Source); err != nil {
+			return nil, err
+		}
+		seenStores := map[string]bool{}
+		for _, store := range p.Stores {
+			if !filepath.IsAbs(store.StatePath) || filepath.Clean(store.StatePath) != store.StatePath || seenStores[store.StatePath] {
+				return nil, fmt.Errorf("invalid or duplicate adopted execution store")
+			}
+			seenStores[store.StatePath] = true
+		}
 		if s.ProjectID != "" && s.ProjectID != p.ProjectID {
 			return nil, fmt.Errorf("Activity admission project mismatch")
 		}

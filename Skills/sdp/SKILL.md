@@ -85,3 +85,22 @@ for an unrecorded multi-turn goal, following the project's Session guide, and ma
 retrospective entries as reconstructed summaries with unknown host IDs/timing.
 Do not claim to capture the eventual final response before sending it; record a
 labeled work summary. Do not start Sessions for trivial unrelated questions.
+
+## Adopted Activity workflow
+
+When the project has adopted Activity records, recover the active Activity from
+canonical ProjectManagement history through the available Activity reader. Link
+implementation to its mandate, selected plan and Activity-root Session. At most one
+Activity may be active per project. A folder name or an edited status field is not
+a lifecycle transition. Preserve earlier manual record identities and bytes.
+
+Unrelated discussion, read-only investigation and capture of future needs in KB
+cards remain allowed. Do not turn that capture into unrelated implementation;
+select/switch the Activity explicitly before admitting that work. Canonical system
+requirements and SDL keep one authoritative home; Activity documents link to them.
+
+Use the installed capable SDPTool for new Activity/Session records and transitions.
+If automation is unavailable, report that fact and follow only an explicitly
+selected manual bootstrap procedure. Viewing records or installing new framework
+files does not enable PG admission. Explicit adoption inventories the existing
+operational stores; a ledger status change does not stop a running host.

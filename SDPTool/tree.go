@@ -20,6 +20,7 @@ type Target struct {
 	Revision  string `json:"revision,omitempty"`
 }
 type Node struct {
+	ExpansionTarget    *Target  `json:"expansionTarget,omitempty"`
 	ChildrenDeferred   bool     `json:"childrenDeferred,omitempty"`
 	OverviewTarget     *Target  `json:"overviewTarget,omitempty"`
 	AssignmentID       string   `json:"assignmentId,omitempty"`

@@ -5,7 +5,7 @@ description: Coordinate an authorized SDP assignment, including deciding whether
   or Reviewer role.
 metadata:
   skillId: sdp-master
-  skillVersion: 2.1.0
+  skillVersion: 2.2.0
   minimumToolkitVersion: 0.2.0
   capabilities: sdp.coordinate,sdp.release.coordinate,sdp.traceability.coordinate
   compatibilityNotes: Profile-aware workflow; native skill metadata. Supersedes the legacy procedure.
@@ -81,3 +81,13 @@ idle when outside granted continuation scope; retain durable resume context. Exi
 permission for subsequent phases need not be requested again. Direct owner messages
 are valid, but material changes must be recorded and reconciled with the shared
 assignment before dependent work. Host-idle does not mean assignment accepted.
+
+## Activity scope when adopted
+
+Before implementation delegation, bind the assignment to the active Activity's
+selected Session/plan and writable scope. Capture unrelated findings as KB work;
+do not dispatch them as incidental implementation. Use checked lifecycle commands
+for switches/holds and reconcile pending implementation execution through existing
+PG stop/observation/recovery. Read-only coordination remains available. Completing
+a Session or plan does not accept the need or complete its Activity; retain the
+owner's actual need-level disposition and contribution evidence separately.

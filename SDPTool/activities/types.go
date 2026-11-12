@@ -119,16 +119,20 @@ type CreateRequest struct {
 	Reason                  string       `json:"reason"`
 }
 type CreateSessionRequest struct {
-	OperationID                string     `json:"operationId"`
-	ExpectedHistoryRevision    string     `json:"expectedHistoryRevision"`
-	ActivityID                 string     `json:"activityId"`
-	ExpectedActivityEventID    string     `json:"expectedActivityEventId"`
-	ExpectedDescriptorRevision string     `json:"expectedDescriptorRevision"`
-	Title                      string     `json:"title"`
-	Objective                  string     `json:"objective"`
-	Phase                      string     `json:"phase"`
-	Plan                       *Reference `json:"plan,omitempty"`
-	Reason                     string     `json:"reason"`
+	PhaseContributions         []string    `json:"phaseContributions,omitempty"`
+	MilestoneRefs              []Reference `json:"milestoneRefs,omitempty"`
+	Predecessor                *Reference  `json:"predecessor,omitempty"`
+	Handoff                    *Reference  `json:"handoff,omitempty"`
+	OperationID                string      `json:"operationId"`
+	ExpectedHistoryRevision    string      `json:"expectedHistoryRevision"`
+	ActivityID                 string      `json:"activityId"`
+	ExpectedActivityEventID    string      `json:"expectedActivityEventId"`
+	ExpectedDescriptorRevision string      `json:"expectedDescriptorRevision"`
+	Title                      string      `json:"title"`
+	Objective                  string      `json:"objective"`
+	Phase                      string      `json:"phase,omitempty"`
+	Plan                       *Reference  `json:"plan,omitempty"`
+	Reason                     string      `json:"reason"`
 }
 type Result struct {
 	OperationID        string `json:"operationId"`

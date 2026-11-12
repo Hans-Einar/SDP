@@ -1,0 +1,45 @@
+language design-core version 0.6.
+scenario CoordinatorCreatesSessionDocument.
+scenario OutOfScopeImplementationIsRefused.
+scenario OwnerChangesActivityState.
+scenario OwnerCreatesPlannedActivity.
+scenario StaleCreationIsRefused.
+scenario ViewerReadsActivityOverview.
+CoordinatorCreatesSessionDocument exercises PrepareActivitySession.
+CoordinatorCreatesSessionDocument has completeness = closed.
+CoordinatorCreatesSessionDocument runs-in ActivityManagement.
+CoordinatorCreatesSessionDocument step 1 sends CreateSessionCommand from ExternalCoordinatorCaller to ActivityService via ActivityCommands.
+CoordinatorCreatesSessionDocument step 2 sends ApplyActivityRecordSet from ActivityService to ActivityRecordRepository via ActivityRecordEffects.
+CoordinatorCreatesSessionDocument step 3 sends ActivityRecordsCommitted from ActivityRecordRepository to ActivityService via ActivityRecordEffects reply-to 2.
+CoordinatorCreatesSessionDocument step 4 sends SessionCreated from ActivityService to ExternalCoordinatorCaller via ActivityCommands reply-to 1.
+OutOfScopeImplementationIsRefused exercises AdmitScopedImplementation.
+OutOfScopeImplementationIsRefused has completeness = closed.
+OutOfScopeImplementationIsRefused runs-in ActivityManagement.
+OutOfScopeImplementationIsRefused step 1 sends RequestImplementationAdmission from ExternalCoordinatorCaller to ActivityService via ActivityCommands.
+OutOfScopeImplementationIsRefused step 2 sends ImplementationRefused from ActivityService to ExternalCoordinatorCaller via ActivityCommands reply-to 1.
+OwnerChangesActivityState exercises ControlActivityLifecycle.
+OwnerChangesActivityState has completeness = closed.
+OwnerChangesActivityState runs-in ActivityManagement.
+OwnerChangesActivityState step 1 sends ChangeActivityStateCommand from ExternalCliCaller to ActivityService via ActivityCommands.
+OwnerChangesActivityState step 2 sends ApplyActivityRecordSet from ActivityService to ActivityRecordRepository via ActivityRecordEffects.
+OwnerChangesActivityState step 3 sends ActivityRecordsCommitted from ActivityRecordRepository to ActivityService via ActivityRecordEffects reply-to 2.
+OwnerChangesActivityState step 4 sends ActivityStateChanged from ActivityService to ExternalCliCaller via ActivityCommands reply-to 1.
+OwnerCreatesPlannedActivity exercises CaptureActivityNeed.
+OwnerCreatesPlannedActivity has completeness = closed.
+OwnerCreatesPlannedActivity runs-in ActivityManagement.
+OwnerCreatesPlannedActivity step 1 sends CreateActivityCommand from ExternalCliCaller to ActivityService via ActivityCommands.
+OwnerCreatesPlannedActivity step 2 sends ApplyActivityRecordSet from ActivityService to ActivityRecordRepository via ActivityRecordEffects.
+OwnerCreatesPlannedActivity step 3 sends ActivityRecordsCommitted from ActivityRecordRepository to ActivityService via ActivityRecordEffects reply-to 2.
+OwnerCreatesPlannedActivity step 4 sends ActivityCreated from ActivityService to ExternalCliCaller via ActivityCommands reply-to 1.
+StaleCreationIsRefused exercises CaptureActivityNeed.
+StaleCreationIsRefused has completeness = closed.
+StaleCreationIsRefused runs-in ActivityManagement.
+StaleCreationIsRefused step 1 sends CreateActivityCommand from ExternalCliCaller to ActivityService via ActivityCommands.
+StaleCreationIsRefused step 2 sends ApplyActivityRecordSet from ActivityService to ActivityRecordRepository via ActivityRecordEffects.
+StaleCreationIsRefused step 3 sends ActivityRecordsConflicted from ActivityRecordRepository to ActivityService via ActivityRecordEffects reply-to 2.
+StaleCreationIsRefused step 4 sends ActivityCreationRefused from ActivityService to ExternalCliCaller via ActivityCommands reply-to 1.
+ViewerReadsActivityOverview exercises BrowseActivityDocuments.
+ViewerReadsActivityOverview has completeness = closed.
+ViewerReadsActivityOverview runs-in ActivityManagement.
+ViewerReadsActivityOverview step 1 sends InspectActivityCommand from ExternalViewer to ActivityProjectionService via ActivityViews.
+ViewerReadsActivityOverview step 2 sends ActivityViewReturned from ActivityProjectionService to ExternalViewer via ActivityViews reply-to 1.

@@ -3,10 +3,12 @@ package sdptool
 import (
 	"bytes"
 	"encoding/json"
+	"github.com/Hans-Einar/SDP/SDPTool/activities"
 	"os/exec"
 	"path/filepath"
 	"reflect"
 	"runtime"
+	"sort"
 	"testing"
 )
 
@@ -26,6 +28,10 @@ func TestCompiledInvocationConsumer(t *testing.T) {
 		ids = append(ids, action.ID)
 	}
 	wantIDs := []string{"blueprint.assess", "blueprint.assignment.apply", "blueprint.assignment.list", "blueprint.generate", "governance.session.adopt", "governance.session.advance", "governance.session.assess", "governance.session.context", "governance.session.definition", "governance.session.design-context", "governance.session.dispose", "governance.session.host-cancel", "governance.session.host-read", "governance.session.host-request", "governance.session.list", "governance.session.owner", "governance.session.progress", "governance.session.read", "governance.session.rebind", "governance.session.rebind-context", "governance.session.resume", "governance.session.review", "governance.session.select", "governance.session.start", "governance.session.successor", "governance.session.verify", "project.discover", "project.model-tree"}
+	for _, op := range activities.Operations() {
+		wantIDs = append(wantIDs, op.ActionID)
+	}
+	sort.Strings(wantIDs)
 	if !reflect.DeepEqual(ids, wantIDs) {
 		t.Fatalf("catalogue actions: got %v, want %v", ids, wantIDs)
 	}

@@ -3,6 +3,7 @@ package governance
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Hans-Einar/SDP/SDPTool/activities"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -40,12 +41,13 @@ type SessionWorkRequest struct {
 	ExpectedRunRevision    uint64       `json:"expectedRunRevision,omitempty"`
 }
 type SessionWork struct {
-	Review   *Review              `json:"review,omitempty"`
-	Tests    []EvidenceRecord     `json:"tests,omitempty"`
-	Kind     string               `json:"kind"`
-	Request  SessionWorkRequest   `json:"request"`
-	Evidence *EvidenceRecord      `json:"evidence,omitempty"`
-	Effects  SessionRecordEffects `json:"effects"`
+	Activity *activities.AdmissionBinding `json:"activity,omitempty"`
+	Review   *Review                      `json:"review,omitempty"`
+	Tests    []EvidenceRecord             `json:"tests,omitempty"`
+	Kind     string                       `json:"kind"`
+	Request  SessionWorkRequest           `json:"request"`
+	Evidence *EvidenceRecord              `json:"evidence,omitempty"`
+	Effects  SessionRecordEffects         `json:"effects"`
 }
 
 func workDigest(kind string, q SessionWorkRequest) string {
@@ -121,7 +123,7 @@ func sessionRun(i SessionInstance) Run {
 		Binding, Assessment, Routine string
 		Request                      SessionWorkRequest
 	}{i.Context.BindingDigest, requestDigest(a.Request), routine.Digest(), w.Request})
-	return Run{ID: w.Request.OperationID, RequestID: w.Request.OperationID, Revision: 1, State: "ready", Step: "implement", InputRevision: revision, Selection: sel, Assignment: Assignment{Outcome: w.Request.Outcome, WritablePaths: append([]string{}, step.WritablePaths...), ExcludedPaths: append([]string{}, step.ProtectedPaths...)}, Routine: routine, RoutineDigest: routine.Digest(), Reason: "Session start records committed; explicit controller launch required"}
+	return Run{Activity: w.Activity, ID: w.Request.OperationID, RequestID: w.Request.OperationID, Revision: 1, State: "ready", Step: "implement", InputRevision: revision, Selection: sel, Assignment: Assignment{Outcome: w.Request.Outcome, WritablePaths: append([]string{}, step.WritablePaths...), ExcludedPaths: append([]string{}, step.ProtectedPaths...)}, Routine: routine, RoutineDigest: routine.Digest(), Reason: "Session start records committed; explicit controller launch required"}
 }
 func (s *Service) sessionRunContext(r Run) (Context, error) {
 	st, _, e := s.load()
@@ -482,6 +484,11 @@ func (s *Service) prepareSessionWork(c Caller, kind string, q SessionWorkRequest
 	}
 	w := SessionWork{Kind: kind, Request: q, Effects: SessionRecordEffects{Status: "prepared", CreatedAt: time.Now().UTC().Format(time.RFC3339Nano)}}
 	if kind == "start" {
+		run := sessionRunForAdmission(i, w)
+		w.Activity, e = s.checkActivity(tx, "", run.Selection, run.Assignment, false)
+		if e != nil {
+			return SessionMutationResult{}, e
+		}
 		if len(i.Work) != 0 || q.AssessmentID != a.Request.OperationID {
 			return SessionMutationResult{}, fail("conflict", "unstarted Session and exact latest assessment required")
 		}
@@ -567,6 +574,16 @@ func (s *Service) applySessionWork(st *snapshot, i *SessionInstance, tx *project
 			return fail("limit", "run capacity reached before effects")
 		}
 		return nil
+	}
+	if w.Kind == "start" {
+		r := sessionRun(*i)
+		binding, err := s.checkActivity(tx, s.sessionPendingOwner(*i), r.Selection, r.Assignment, false)
+		if err != nil {
+			return err
+		}
+		if w.Activity != nil && (binding == nil || *w.Activity != *binding) {
+			return fail("activity_admission", "Session Activity basis changed")
+		}
 	}
 	if e := s.applySessionRecordEffects(&w.Effects, tx, s.sessionPendingOwner(*i), "session-"+w.Kind, check); e != nil {
 		return e
@@ -831,4 +848,9 @@ func DecodeSessionWork(b []byte, kind string) (SessionWorkRequest, error) {
 		}
 	}
 	return q, validSessionWork(kind, q)
+}
+
+func sessionRunForAdmission(i SessionInstance, w SessionWork) Run {
+	i.Work = []SessionWork{w}
+	return sessionRun(i)
 }

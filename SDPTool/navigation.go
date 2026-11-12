@@ -74,7 +74,20 @@ func navigation(p Project, id string, deferredSDL bool) (Tree, error) {
 		t.Roots = append([]string{"files"}, t.Roots...)
 		t.Nodes = append(t.Nodes, p.Files...)
 	}
-	t.Nodes = append(t.Nodes, sessionsNode(p))
+	if activityPresent(p) {
+		for i, root := range t.Roots {
+			if root == "sessions" {
+				t.Roots[i] = "activities"
+			}
+		}
+		nodes, e := initialActivityTree(p)
+		if e != nil {
+			nodes = []Node{{ID: "activities", Kind: "tab", Label: "Activities", State: "invalid", Diagnostic: e.Error()}}
+		}
+		t.Nodes = append(t.Nodes, nodes...)
+	} else {
+		t.Nodes = append(t.Nodes, sessionsNode(p))
+	}
 	t.Nodes = append(t.Nodes, blueprintNodes(p)...)
 	versions := []string{t.Revision}
 	if p.Inventory.KanBan != "" {

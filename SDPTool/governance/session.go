@@ -160,7 +160,7 @@ func validateSessionBinding(b SessionBinding) error {
 	if b.Schema != SessionSchema || b.Workflow.ID != w.ID || b.Workflow.Version != w.Version || b.Workflow.Digest != w.Digest() {
 		return fail("incompatible_profile", "unsupported Session binding or workflow definition")
 	}
-	if !sessionIDPattern.MatchString(b.Session.ID) || !sessionPlanPattern.MatchString(b.Plan.ID) || !strings.HasPrefix(b.Session.Path, "SDP/Sessions/") {
+	if !sessionIDPattern.MatchString(b.Session.ID) || !sessionPlanPattern.MatchString(b.Plan.ID) || !(strings.HasPrefix(b.Session.Path, "SDP/Sessions/") || strings.HasPrefix(b.Session.Path, "SDP/Activities/") && strings.Contains(b.Session.Path, "/Sessions/")) {
 		return fail("invalid_request", "canonical Session and plan identity required")
 	}
 	for _, p := range []string{b.Session.Path, b.Plan.Path, b.Authority} {
@@ -281,6 +281,9 @@ func (s *Service) sessionContextRetaining(path string, completed map[string]bool
 		return out, e
 	}
 	if e = validateSessionBinding(out.Binding); e != nil {
+		return out, e
+	}
+	if e = s.validateActivitySessionReference(out.Binding.Session); e != nil {
 		return out, e
 	}
 	if path != "SDP/Sessions/execution/"+out.Binding.Session.ID+".json" {

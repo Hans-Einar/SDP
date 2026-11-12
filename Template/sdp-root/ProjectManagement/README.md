@@ -25,3 +25,21 @@ BranchPolicy and CommitPolicy. Sprint payload 0.2 separates direct card members
 from plans; visible metadata must agree with both snapshots. Read managed
 SDP/Framework/planning/Plans.md and Plan-template.md for the complete contract.
 Historical project-owned notes may describe older rules; never rewrite history.
+
+Activities use their own descriptor and payload contracts beside this document;
+never add kind Activity to management payload 0.2. Manual Activity 0.1 history is
+retained unchanged. Runtime record operations use descriptor/payload 0.2, with
+immutable descriptor and Session creation snapshots. The managed `SDP/Framework/activities/activity_history.py` validates
+these records read-only; its standalone command accepts the SDP directory.
+Activity admission uses the separate x-activity-admission:adopted domain and payload
+0.1. Its registry locates governed operational stores without copying their run state.
+
+Runtime enforcement remains opt-in. Creating/viewing Activity documents or upgrading
+Toolkit files does not adopt admission. Before adoption, explicitly inventory and
+initialize the selected PG stores through their existing bind operation, then pass
+those exact stores to Activity adoption. Unavailable stores and uncertain execution
+require reconciliation. Keep pending lifecycle requests separate from canonical
+record reservations; stop/observation/recovery remain available while work drains.
+An older binary that cannot read Activity history must refuse the unsupported
+mutation or upgrade first. File presence alone proves neither a capable running
+binary nor a published/installed release.

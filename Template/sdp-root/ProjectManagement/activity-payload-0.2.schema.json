@@ -1,0 +1,301 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Activity lifecycle payload 0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "projectId",
+    "operationId",
+    "recordedAt",
+    "authority",
+    "previousEventId",
+    "from",
+    "to",
+    "reason",
+    "descriptor",
+    "links",
+    "requestDigest"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "0.2"
+    },
+    "projectId": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9]*$"
+    },
+    "operationId": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
+    },
+    "recordedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "source"
+      ],
+      "properties": {
+        "role": {
+          "const": "project-owner"
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "previousEventId": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^EVT-ACTIVITY-[A-Z][A-Z0-9]*-(?:[0-9]{6,}|[A-F0-9]{32}(?:-TARGET)?)$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "from": {
+      "enum": [
+        null,
+        "planned",
+        "active",
+        "on-hold",
+        "completed",
+        "canceled"
+      ]
+    },
+    "to": {
+      "enum": [
+        "planned",
+        "active",
+        "on-hold",
+        "completed",
+        "canceled"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "descriptor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "links": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "requestDigest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^SESSION-[A-Z][A-Z0-9]*-[0-9]{4,}$"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "batch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "index",
+        "count"
+      ],
+      "properties": {
+        "index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "count": {
+          "const": 2
+        }
+      }
+    },
+    "outcome": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "role",
+          "id",
+          "path"
+        ],
+        "properties": {
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "projectId": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9]*$"
+          },
+          "membership": {
+            "enum": [
+              "contribution",
+              "whole-scope"
+            ]
+          },
+          "revision": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "availability": {
+            "const": "unavailable"
+          },
+          "unavailableReason": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "required": [
+                "availability"
+              ]
+            },
+            "then": {
+              "required": [
+                "projectId",
+                "unavailableReason"
+              ]
+            },
+            "else": {
+              "not": {
+                "required": [
+                  "unavailableReason"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "resumeCondition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contributionDispositions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "referenceId",
+          "disposition",
+          "outcome"
+        ],
+        "properties": {
+          "referenceId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "disposition": {
+            "enum": [
+              "completed",
+              "not-applicable",
+              "returned-to-backlog",
+              "transferred"
+            ]
+          },
+          "outcome": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "previousEventId": {
+            "type": "null"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "from": {
+            "type": "null"
+          },
+          "to": {
+            "const": "planned"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "from": {
+            "enum": [
+              "planned",
+              "active",
+              "on-hold",
+              "completed",
+              "canceled"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

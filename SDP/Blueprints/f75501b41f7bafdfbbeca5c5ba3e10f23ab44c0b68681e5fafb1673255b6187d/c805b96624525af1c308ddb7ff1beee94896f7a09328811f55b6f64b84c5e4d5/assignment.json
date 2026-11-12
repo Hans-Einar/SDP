@@ -1,0 +1,1685 @@
+{
+  "ID": "activity2-management",
+  "Intent": "Implement selected need-driven Activity lifecycle, Session records, producer navigation, timelines and governed admission. Executable contract and PLAN0027 supply runtime obligations not encoded by SDL.",
+  "AllowedChanges": [
+    {
+      "Element": "SDPTool/contract/ActivityCommandProtocol",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/contract/ActivityCommandShape",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/channel/ActivityCommands",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/ActivityCreated",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/ActivityCreationRefused",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/contract/ActivityDocumentShape",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/contract/ActivityEventShape",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/channel/ActivityRecordEffects",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/contract/ActivityRecordProtocol",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/ActivityRecordsCommitted",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/ActivityRecordsConflicted",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/contract/ActivityResultShape",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/contract/ActivitySessionShape",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/ActivityStateChangeRefused",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/ActivityStateChanged",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/contract/ActivityViewProtocol",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/ActivityViewReturned",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/channel/ActivityViews",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/ApplyActivityRecordSet",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/AuthoredIntent",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/ChangeActivityStateCommand",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/CreateActivityCommand",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/CreateSessionCommand",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/DescriptorReference",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/EffectDisposition",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/EffectIdentity",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/EffectRevision",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/EventEvidence",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/EventTime",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/EventTransition",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/ExpectedHistoryRevision",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/ExpectedPreimages",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/unit/ExternalCliCaller",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/unit/ExternalCoordinatorCaller",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/unit/ExternalViewer",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/ImplementationAdmitted",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/ImplementationRefused",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/InspectActivityCommand",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/MandateReference",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/OperationIdentity",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/PlannedPostimages",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/contract/RecordEffectResultShape",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/contract/RecordEffectShape",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/RecordReference",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/RequestImplementationAdmission",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/ResultDisposition",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/ResultRevision",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/SelectedActivity",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/SessionCreated",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/message/SessionCreationRefused",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/SessionObjective",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/SessionPhase",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/field/SessionPlanReference",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandProtocol has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandProtocol permits ActivityCreated.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandProtocol permits ActivityCreationRefused.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandProtocol permits ActivityStateChangeRefused.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandProtocol permits ActivityStateChanged.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandProtocol permits ChangeActivityStateCommand.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandProtocol permits CreateActivityCommand.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandProtocol permits CreateSessionCommand.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandProtocol permits ImplementationAdmitted.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandProtocol permits ImplementationRefused.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandProtocol permits RequestImplementationAdmission.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandProtocol permits SessionCreated.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandProtocol permits SessionCreationRefused.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandShape has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandShape has-field AuthoredIntent.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandShape has-field ExpectedHistoryRevision.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandShape has-field OperationIdentity.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandShape has-field SelectedActivity.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommands upholds ActivityCommandProtocol.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCreated has message-kind = result.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCreated replies-to CreateActivityCommand.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCreated upholds ActivityResultShape.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCreationRefused has message-kind = result.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCreationRefused replies-to CreateActivityCommand.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCreationRefused upholds ActivityResultShape.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityDocumentShape has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityDocumentShape has-field DescriptorReference.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityDocumentShape has-field MandateReference.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityDocuments upholds ActivityDocumentShape.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityEventShape has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityEventShape has-field EventEvidence.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityEventShape has-field EventTime.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityEventShape has-field EventTransition.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityEventStream upholds ActivityEventShape.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityProjectionService uses ActivityViews as receiver of InspectActivityCommand in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityProjectionService uses ActivityViews as sender of ActivityViewReturned in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordEffects upholds ActivityRecordProtocol.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordProtocol has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordProtocol permits ActivityRecordsCommitted.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordProtocol permits ActivityRecordsConflicted.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordProtocol permits ApplyActivityRecordSet.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordRepository uses ActivityRecordEffects as receiver of ApplyActivityRecordSet in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordRepository uses ActivityRecordEffects as sender of ActivityRecordsCommitted in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordRepository uses ActivityRecordEffects as sender of ActivityRecordsConflicted in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordsCommitted has message-kind = result.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordsCommitted replies-to ApplyActivityRecordSet.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordsCommitted upholds RecordEffectResultShape.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordsConflicted has message-kind = result.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordsConflicted replies-to ApplyActivityRecordSet.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordsConflicted upholds RecordEffectResultShape.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityResultShape has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityResultShape has-field RecordReference.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityResultShape has-field ResultDisposition.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityResultShape has-field ResultRevision.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService uses ActivityCommands as receiver of ChangeActivityStateCommand in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService uses ActivityCommands as receiver of CreateActivityCommand in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService uses ActivityCommands as receiver of CreateSessionCommand in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService uses ActivityCommands as receiver of RequestImplementationAdmission in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService uses ActivityCommands as sender of ActivityCreated in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService uses ActivityCommands as sender of ActivityCreationRefused in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService uses ActivityCommands as sender of ActivityStateChangeRefused in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService uses ActivityCommands as sender of ActivityStateChanged in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService uses ActivityCommands as sender of ImplementationAdmitted in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService uses ActivityCommands as sender of ImplementationRefused in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService uses ActivityCommands as sender of SessionCreated in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService uses ActivityCommands as sender of SessionCreationRefused in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService uses ActivityRecordEffects as receiver of ActivityRecordsCommitted in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService uses ActivityRecordEffects as receiver of ActivityRecordsConflicted in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService uses ActivityRecordEffects as sender of ApplyActivityRecordSet in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivitySessionDocuments upholds ActivitySessionShape.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivitySessionShape has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivitySessionShape has-field SessionObjective.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivitySessionShape has-field SessionPhase.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivitySessionShape has-field SessionPlanReference.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityStateChangeRefused has message-kind = result.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityStateChangeRefused replies-to ChangeActivityStateCommand.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityStateChangeRefused upholds ActivityResultShape.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityStateChanged has message-kind = result.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityStateChanged replies-to ChangeActivityStateCommand.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityStateChanged upholds ActivityResultShape.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityViewProtocol has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityViewProtocol permits ActivityViewReturned.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityViewProtocol permits InspectActivityCommand.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityViewReturned has message-kind = result.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityViewReturned replies-to InspectActivityCommand.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityViewReturned upholds ActivityResultShape.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityViews upholds ActivityViewProtocol.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ApplyActivityRecordSet has message-kind = request.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ApplyActivityRecordSet upholds RecordEffectShape.",
+      "Change": "added"
+    },
+    {
+      "Fact": "AuthoredIntent has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Fact": "AuthoredIntent has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ChangeActivityStateCommand has message-kind = request.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ChangeActivityStateCommand upholds ActivityCommandShape.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CreateActivityCommand has message-kind = request.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CreateActivityCommand upholds ActivityCommandShape.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CreateSessionCommand has message-kind = request.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CreateSessionCommand upholds ActivityCommandShape.",
+      "Change": "added"
+    },
+    {
+      "Fact": "DescriptorReference has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Fact": "DescriptorReference has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Fact": "EffectDisposition has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Fact": "EffectDisposition has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Fact": "EffectIdentity has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Fact": "EffectIdentity has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Fact": "EffectRevision has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Fact": "EffectRevision has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Fact": "EventEvidence has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Fact": "EventEvidence has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Fact": "EventTime has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Fact": "EventTime has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Fact": "EventTransition has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Fact": "EventTransition has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExpectedHistoryRevision has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExpectedHistoryRevision has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExpectedPreimages has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExpectedPreimages has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCliCaller uses ActivityCommands as receiver of ActivityCreated in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCliCaller uses ActivityCommands as receiver of ActivityCreationRefused in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCliCaller uses ActivityCommands as receiver of ActivityStateChangeRefused in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCliCaller uses ActivityCommands as receiver of ActivityStateChanged in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCliCaller uses ActivityCommands as receiver of ImplementationAdmitted in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCliCaller uses ActivityCommands as receiver of ImplementationRefused in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCliCaller uses ActivityCommands as receiver of SessionCreated in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCliCaller uses ActivityCommands as receiver of SessionCreationRefused in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCliCaller uses ActivityCommands as sender of ChangeActivityStateCommand in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCliCaller uses ActivityCommands as sender of CreateActivityCommand in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCliCaller uses ActivityCommands as sender of CreateSessionCommand in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCliCaller uses ActivityCommands as sender of RequestImplementationAdmission in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCliCaller uses ActivityViews as receiver of ActivityViewReturned in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCliCaller uses ActivityViews as sender of InspectActivityCommand in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCoordinatorCaller uses ActivityCommands as receiver of ActivityCreated in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCoordinatorCaller uses ActivityCommands as receiver of ActivityCreationRefused in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCoordinatorCaller uses ActivityCommands as receiver of ActivityStateChangeRefused in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCoordinatorCaller uses ActivityCommands as receiver of ActivityStateChanged in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCoordinatorCaller uses ActivityCommands as receiver of ImplementationAdmitted in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCoordinatorCaller uses ActivityCommands as receiver of ImplementationRefused in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCoordinatorCaller uses ActivityCommands as receiver of SessionCreated in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCoordinatorCaller uses ActivityCommands as receiver of SessionCreationRefused in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCoordinatorCaller uses ActivityCommands as sender of ChangeActivityStateCommand in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCoordinatorCaller uses ActivityCommands as sender of CreateActivityCommand in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCoordinatorCaller uses ActivityCommands as sender of CreateSessionCommand in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalCoordinatorCaller uses ActivityCommands as sender of RequestImplementationAdmission in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalViewer uses ActivityViews as receiver of ActivityViewReturned in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalViewer uses ActivityViews as sender of InspectActivityCommand in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ImplementationAdmitted has message-kind = result.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ImplementationAdmitted replies-to RequestImplementationAdmission.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ImplementationAdmitted upholds ActivityResultShape.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ImplementationRefused has message-kind = result.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ImplementationRefused replies-to RequestImplementationAdmission.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ImplementationRefused upholds ActivityResultShape.",
+      "Change": "added"
+    },
+    {
+      "Fact": "InspectActivityCommand has message-kind = request.",
+      "Change": "added"
+    },
+    {
+      "Fact": "InspectActivityCommand upholds ActivityCommandShape.",
+      "Change": "added"
+    },
+    {
+      "Fact": "MandateReference has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Fact": "MandateReference has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OperationIdentity has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OperationIdentity has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Fact": "PlannedPostimages has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Fact": "PlannedPostimages has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RecordEffectResultShape has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RecordEffectResultShape has-field EffectDisposition.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RecordEffectResultShape has-field EffectRevision.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RecordEffectShape has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RecordEffectShape has-field EffectIdentity.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RecordEffectShape has-field ExpectedPreimages.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RecordEffectShape has-field PlannedPostimages.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RecordReference has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RecordReference has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RequestImplementationAdmission has message-kind = request.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RequestImplementationAdmission upholds ActivityCommandShape.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ResultDisposition has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ResultDisposition has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ResultRevision has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ResultRevision has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SelectedActivity has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SelectedActivity has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SessionCreated has message-kind = result.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SessionCreated replies-to CreateSessionCommand.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SessionCreated upholds ActivityResultShape.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SessionCreationRefused has message-kind = result.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SessionCreationRefused replies-to CreateSessionCommand.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SessionCreationRefused upholds ActivityResultShape.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SessionObjective has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SessionObjective has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SessionPhase has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SessionPhase has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SessionPlanReference has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SessionPlanReference has value-type = text.",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/usecase/AdmitScopedImplementation",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/usecase/BrowseActivityDocuments",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/usecase/CaptureActivityNeed",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/usecase/ControlActivityLifecycle",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/usecase/InspectActivityTimeline",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/feature/NeedScopedWork",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/usecase/PrepareActivitySession",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/actor/ProjectOwner",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/feature/ReadableActivityHistory",
+      "Change": "added"
+    },
+    {
+      "Fact": "NeedScopedWork supports AdmitScopedImplementation.",
+      "Change": "added"
+    },
+    {
+      "Fact": "NeedScopedWork supports CaptureActivityNeed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "NeedScopedWork supports ControlActivityLifecycle.",
+      "Change": "added"
+    },
+    {
+      "Fact": "NeedScopedWork supports PrepareActivitySession.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ProjectOwner pursues AdmitScopedImplementation.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ProjectOwner pursues BrowseActivityDocuments.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ProjectOwner pursues CaptureActivityNeed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ProjectOwner pursues ControlActivityLifecycle.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ProjectOwner pursues InspectActivityTimeline.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ProjectOwner pursues PrepareActivitySession.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ReadableActivityHistory supports BrowseActivityDocuments.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ReadableActivityHistory supports InspectActivityTimeline.",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/activity/ActivityCommandsDelivery",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/database/ActivityDocumentStore",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/dataset/ActivityDocuments",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/dataset/ActivityEventStream",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/interface/ActivityExecutionDispositionPort",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/mode/ActivityManagement",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/unit/ActivityProjectionService",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/capability/ActivityReading",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/capability/ActivityRecordManagement",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/unit/ActivityRecordRepository",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/unit/ActivityService",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/dataset/ActivitySessionDocuments",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/AdoptActivityRecords",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/database/CanonicalManagementHistory",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/interface/CanonicalProjectHistoryLibrary",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/CheckImplementationScope",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/CreateActivitySession",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/CreatePlannedActivity",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/ProjectActivityNavigation",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/ProjectActivityTimeline",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/PublishActivityRecordSet",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/RecoverActivityRecordOperation",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/RequestExecutionQuiescence",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/RetainDescriptorRevisions",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/functionality/ValidateActivityTransition",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandsDelivery addresses AdoptActivityRecords.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandsDelivery addresses CheckImplementationScope.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandsDelivery addresses CreateActivitySession.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandsDelivery addresses CreatePlannedActivity.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandsDelivery addresses ProjectActivityNavigation.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandsDelivery addresses ProjectActivityTimeline.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandsDelivery addresses PublishActivityRecordSet.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandsDelivery addresses RecoverActivityRecordOperation.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandsDelivery addresses RequestExecutionQuiescence.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandsDelivery addresses RetainDescriptorRevisions.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandsDelivery addresses ValidateActivityTransition.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandsDelivery delivers NeedScopedWork.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandsDelivery delivers ReadableActivityHistory.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityCommandsDelivery has implementation-status = planned.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityDocumentStore holds ActivityDocuments.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityDocumentStore holds ActivitySessionDocuments.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityProjectionService consumes CanonicalProjectHistoryLibrary.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityProjectionService owns ProjectActivityNavigation.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityProjectionService owns ProjectActivityTimeline.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityReading requires CanonicalProjectHistoryLibrary in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordManagement requires ActivityExecutionDispositionPort in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordManagement requires CanonicalProjectHistoryLibrary in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordRepository consumes CanonicalProjectHistoryLibrary.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordRepository owns ActivityDocumentStore.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordRepository owns CanonicalManagementHistory.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordRepository owns PublishActivityRecordSet.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordRepository owns RecoverActivityRecordOperation.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityRecordRepository owns RetainDescriptorRevisions.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService consumes ActivityExecutionDispositionPort.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService owns AdoptActivityRecords.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService owns CheckImplementationScope.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService owns CreateActivitySession.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService owns CreatePlannedActivity.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService owns RequestExecutionQuiescence.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivityService owns ValidateActivityTransition.",
+      "Change": "added"
+    },
+    {
+      "Fact": "AdoptActivityRecords allocated-to SdpToolHost in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "AdoptActivityRecords contributes-to NeedScopedWork.",
+      "Change": "added"
+    },
+    {
+      "Fact": "AdoptActivityRecords has state-retention = stateful.",
+      "Change": "added"
+    },
+    {
+      "Fact": "AdoptActivityRecords realizes ActivityRecordManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CanonicalManagementHistory holds ActivityEventStream.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CheckImplementationScope allocated-to SdpToolHost in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CheckImplementationScope contributes-to NeedScopedWork.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CheckImplementationScope has state-retention = stateless.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CheckImplementationScope realizes ActivityRecordManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CreateActivitySession allocated-to SdpToolHost in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CreateActivitySession contributes-to NeedScopedWork.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CreateActivitySession has state-retention = stateful.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CreateActivitySession realizes ActivityRecordManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CreatePlannedActivity allocated-to SdpToolHost in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CreatePlannedActivity contributes-to NeedScopedWork.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CreatePlannedActivity has state-retention = stateful.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CreatePlannedActivity realizes ActivityRecordManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ProjectActivityNavigation allocated-to SdpToolHost in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ProjectActivityNavigation contributes-to ReadableActivityHistory.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ProjectActivityNavigation has state-retention = stateless.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ProjectActivityNavigation realizes ActivityReading.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ProjectActivityTimeline allocated-to SdpToolHost in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ProjectActivityTimeline contributes-to ReadableActivityHistory.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ProjectActivityTimeline has state-retention = stateless.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ProjectActivityTimeline realizes ActivityReading.",
+      "Change": "added"
+    },
+    {
+      "Fact": "PublishActivityRecordSet allocated-to SdpToolHost in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "PublishActivityRecordSet contributes-to NeedScopedWork.",
+      "Change": "added"
+    },
+    {
+      "Fact": "PublishActivityRecordSet has state-retention = stateful.",
+      "Change": "added"
+    },
+    {
+      "Fact": "PublishActivityRecordSet realizes ActivityRecordManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RecoverActivityRecordOperation allocated-to SdpToolHost in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RecoverActivityRecordOperation contributes-to NeedScopedWork.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RecoverActivityRecordOperation has state-retention = stateful.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RecoverActivityRecordOperation realizes ActivityRecordManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RequestExecutionQuiescence allocated-to SdpToolHost in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RequestExecutionQuiescence contributes-to NeedScopedWork.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RequestExecutionQuiescence has state-retention = stateful.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RequestExecutionQuiescence realizes ActivityRecordManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RetainDescriptorRevisions allocated-to SdpToolHost in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RetainDescriptorRevisions contributes-to NeedScopedWork.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RetainDescriptorRevisions has state-retention = stateful.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RetainDescriptorRevisions realizes ActivityRecordManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SdpToolHost contains ActivityProjectionService.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SdpToolHost contains ActivityRecordRepository.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SdpToolHost contains ActivityService.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SdpToolHost provides ActivityReading.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SdpToolHost provides ActivityRecordManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ValidateActivityTransition allocated-to SdpToolHost in mode ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ValidateActivityTransition contributes-to NeedScopedWork.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ValidateActivityTransition has state-retention = stateless.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ValidateActivityTransition realizes ActivityRecordManagement.",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/scenario/CoordinatorCreatesSessionDocument",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/scenario/OutOfScopeImplementationIsRefused",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/scenario/OwnerChangesActivityState",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/scenario/OwnerCreatesPlannedActivity",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/scenario/StaleCreationIsRefused",
+      "Change": "added"
+    },
+    {
+      "Element": "SDPTool/scenario/ViewerReadsActivityOverview",
+      "Change": "added"
+    },
+    {
+      "Fact": "CoordinatorCreatesSessionDocument exercises PrepareActivitySession.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CoordinatorCreatesSessionDocument has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CoordinatorCreatesSessionDocument runs-in ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CoordinatorCreatesSessionDocument step 1 sends CreateSessionCommand from ExternalCoordinatorCaller to ActivityService via ActivityCommands.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CoordinatorCreatesSessionDocument step 2 sends ApplyActivityRecordSet from ActivityService to ActivityRecordRepository via ActivityRecordEffects.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CoordinatorCreatesSessionDocument step 3 sends ActivityRecordsCommitted from ActivityRecordRepository to ActivityService via ActivityRecordEffects reply-to 2.",
+      "Change": "added"
+    },
+    {
+      "Fact": "CoordinatorCreatesSessionDocument step 4 sends SessionCreated from ActivityService to ExternalCoordinatorCaller via ActivityCommands reply-to 1.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OutOfScopeImplementationIsRefused exercises AdmitScopedImplementation.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OutOfScopeImplementationIsRefused has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OutOfScopeImplementationIsRefused runs-in ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OutOfScopeImplementationIsRefused step 1 sends RequestImplementationAdmission from ExternalCoordinatorCaller to ActivityService via ActivityCommands.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OutOfScopeImplementationIsRefused step 2 sends ImplementationRefused from ActivityService to ExternalCoordinatorCaller via ActivityCommands reply-to 1.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OwnerChangesActivityState exercises ControlActivityLifecycle.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OwnerChangesActivityState has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OwnerChangesActivityState runs-in ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OwnerChangesActivityState step 1 sends ChangeActivityStateCommand from ExternalCliCaller to ActivityService via ActivityCommands.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OwnerChangesActivityState step 2 sends ApplyActivityRecordSet from ActivityService to ActivityRecordRepository via ActivityRecordEffects.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OwnerChangesActivityState step 3 sends ActivityRecordsCommitted from ActivityRecordRepository to ActivityService via ActivityRecordEffects reply-to 2.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OwnerChangesActivityState step 4 sends ActivityStateChanged from ActivityService to ExternalCliCaller via ActivityCommands reply-to 1.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OwnerCreatesPlannedActivity exercises CaptureActivityNeed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OwnerCreatesPlannedActivity has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OwnerCreatesPlannedActivity runs-in ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OwnerCreatesPlannedActivity step 1 sends CreateActivityCommand from ExternalCliCaller to ActivityService via ActivityCommands.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OwnerCreatesPlannedActivity step 2 sends ApplyActivityRecordSet from ActivityService to ActivityRecordRepository via ActivityRecordEffects.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OwnerCreatesPlannedActivity step 3 sends ActivityRecordsCommitted from ActivityRecordRepository to ActivityService via ActivityRecordEffects reply-to 2.",
+      "Change": "added"
+    },
+    {
+      "Fact": "OwnerCreatesPlannedActivity step 4 sends ActivityCreated from ActivityService to ExternalCliCaller via ActivityCommands reply-to 1.",
+      "Change": "added"
+    },
+    {
+      "Fact": "StaleCreationIsRefused exercises CaptureActivityNeed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "StaleCreationIsRefused has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "StaleCreationIsRefused runs-in ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "StaleCreationIsRefused step 1 sends CreateActivityCommand from ExternalCliCaller to ActivityService via ActivityCommands.",
+      "Change": "added"
+    },
+    {
+      "Fact": "StaleCreationIsRefused step 2 sends ApplyActivityRecordSet from ActivityService to ActivityRecordRepository via ActivityRecordEffects.",
+      "Change": "added"
+    },
+    {
+      "Fact": "StaleCreationIsRefused step 3 sends ActivityRecordsConflicted from ActivityRecordRepository to ActivityService via ActivityRecordEffects reply-to 2.",
+      "Change": "added"
+    },
+    {
+      "Fact": "StaleCreationIsRefused step 4 sends ActivityCreationRefused from ActivityService to ExternalCliCaller via ActivityCommands reply-to 1.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ViewerReadsActivityOverview exercises BrowseActivityDocuments.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ViewerReadsActivityOverview has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ViewerReadsActivityOverview runs-in ActivityManagement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ViewerReadsActivityOverview step 1 sends InspectActivityCommand from ExternalViewer to ActivityProjectionService via ActivityViews.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ViewerReadsActivityOverview step 2 sends ActivityViewReturned from ActivityProjectionService to ExternalViewer via ActivityViews reply-to 1.",
+      "Change": "added"
+    }
+  ],
+  "AllowedCodePaths": [
+    "SDPTool",
+    "Toolkit",
+    "Skills",
+    "Template",
+    "SDP/ProjectManagement"
+  ],
+  "AllowedModelPaths": [
+    "Features.design",
+    "Responsibilities.design",
+    "Contracts.design",
+    "Scenarios.design",
+    "System.design"
+  ],
+  "Rules": [
+    {
+      "ID": "preserve-host",
+      "Source": "Activity0001 accepted architecture",
+      "Fact": "SDPTool contains SdpToolHost.",
+      "Now": true,
+      "Target": true
+    }
+  ]
+}

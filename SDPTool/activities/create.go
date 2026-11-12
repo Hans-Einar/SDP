@@ -141,6 +141,21 @@ func (s *Service) allocate(kind string, c Catalog) (int, error) {
 			}
 			return nil
 		}
+		if kind == "SESSION" && strings.HasSuffix(strings.ToLower(d.Name()), ".md") {
+			b, e := s.read(rel)
+			if e != nil {
+				return e
+			}
+			for _, line := range strings.Split(string(b), "\n") {
+				cells := strings.Split(line, "|")
+				if len(cells) >= 4 {
+					key := strings.ToLower(strings.TrimSpace(cells[1]))
+					if key == "id" || key == "session reference" {
+						consume(strings.TrimSpace(cells[2]))
+					}
+				}
+			}
+		}
 		if kind == "SESSION" {
 			m := regexp.MustCompile(`^session-#([0-9]+)--`).FindStringSubmatch(d.Name())
 			if len(m) > 0 {
@@ -276,13 +291,38 @@ func (s *Service) CreateSession(req CreateSessionRequest, caller Caller) (Result
 	if strings.TrimSpace(req.Title) == "" || strings.TrimSpace(req.Objective) == "" || strings.TrimSpace(req.Reason) == "" {
 		return Result{}, fmt.Errorf("title, objective and reason required")
 	}
-	if req.Phase != "" && !regexp.MustCompile(`^(01-Mandate|02-Study|03-Requirements|04-Design|05-Implementation|06-Verification)$`).MatchString(req.Phase) {
-		return Result{}, fmt.Errorf("invalid phase")
+	phases, e := validateSessionPhases(req.Phase, req.PhaseContributions)
+	if e != nil {
+		return Result{}, e
+	}
+	refs := append([]Reference{}, req.MilestoneRefs...)
+	for _, ref := range req.MilestoneRefs {
+		if ref.Role != "milestone" {
+			return Result{}, fmt.Errorf("milestoneRefs require milestone role")
+		}
 	}
 	if req.Plan != nil {
-		if e = validateRefs(s, []Reference{*req.Plan}); e != nil {
-			return Result{}, e
+		if req.Plan.Role != "plan" && req.Plan.Role != "implementation-plan" {
+			return Result{}, fmt.Errorf("Session plan requires plan reference role")
 		}
+		refs = append(refs, *req.Plan)
+	}
+	if req.Predecessor != nil {
+		if req.Predecessor.Role != "session" && req.Predecessor.Role != "predecessor" {
+			return Result{}, fmt.Errorf("predecessor requires Session reference")
+		}
+		refs = append(refs, *req.Predecessor)
+	}
+	if req.Handoff != nil {
+		refs = append(refs, *req.Handoff)
+	}
+	for _, ref := range refs {
+		if ref.Availability == "unavailable" {
+			return Result{}, fmt.Errorf("Session links require available records")
+		}
+	}
+	if e = validateRefs(s, refs); e != nil {
+		return Result{}, e
 	}
 	snap, e := tx.Read("activity:" + req.OperationID)
 	if e != nil {
@@ -308,10 +348,42 @@ func (s *Service) CreateSession(req CreateSessionRequest, caller Caller) (Result
 	}
 	id := fmt.Sprintf("SESSION-%s-%04d", s.ProjectID, n)
 	p := a.Path + fmt.Sprintf("/Sessions/session-#%04d--%s.md", n, slug(req.Title))
-	text := fmt.Sprintf("# %s\n\n| Field | Value |\n| --- | --- |\n| Session reference | %s |\n| Status | planned |\n| Activity | %s |\n| Phase | %s |\n\n## Goal\n\n%s\n", req.Title, id, a.Descriptor.ID, req.Phase, req.Objective)
+	for _, ref := range refs {
+		if ref.ID == id {
+			return Result{}, fmt.Errorf("Session cannot refer to its allocated identity")
+		}
+		if strings.HasPrefix(ref.ID, "SESSION-") && ref.Path == p {
+			return Result{}, fmt.Errorf("Session cannot be its own predecessor or handoff")
+		}
+	}
+	primaryPhase := req.Phase
+	if primaryPhase == "" {
+		primaryPhase = phases[0]
+	}
+	text := fmt.Sprintf("# %s\n\n| Field | Value |\n| --- | --- |\n| Session reference | %s |\n| Status | planned |\n| Activity | %s |\n| Phase | %s |\n| Phase contributions | %s |\n", req.Title, id, a.Descriptor.ID, primaryPhase, strings.Join(phases, ", "))
 	if req.Plan != nil {
-		planPath, _ := filepath.Rel(filepath.Dir(filepath.FromSlash(p)), filepath.FromSlash(req.Plan.Path))
-		text += "\nPlan: [" + req.Plan.ID + "](" + filepath.ToSlash(planPath) + ")\n"
+		text += "| Plan | " + req.Plan.ID + " |\n"
+	}
+	if req.Predecessor != nil {
+		text += "| Predecessor | " + req.Predecessor.ID + " |\n"
+	}
+	if req.Handoff != nil {
+		text += "| Handoff | " + req.Handoff.ID + " |\n"
+	}
+	if len(req.MilestoneRefs) > 0 {
+		ids := []string{}
+		for _, ref := range req.MilestoneRefs {
+			ids = append(ids, ref.ID)
+		}
+		text += "| Milestones | " + strings.Join(ids, ", ") + " |\n"
+	}
+	text += "\n## Goal\n\n" + req.Objective + "\n"
+	if len(refs) > 0 {
+		text += "\n## Linked records\n\n"
+		for _, ref := range refs {
+			rel, _ := filepath.Rel(filepath.Dir(filepath.FromSlash(p)), filepath.FromSlash(ref.Path))
+			text += "- " + ref.Role + ": [" + ref.ID + "](" + filepath.ToSlash(rel) + ")\n"
+		}
 	}
 	b := []byte(text)
 	session := Session{ID: id, Path: p, SHA256: digest(b)}
@@ -322,4 +394,31 @@ func (s *Service) CreateSession(req CreateSessionRequest, caller Caller) (Result
 	}
 	files := []image{{Path: "Activities/.descriptors/" + a.DescriptorRef.SHA256 + ".yaml", After: old}, {Path: "Activities/.sessions/" + session.SHA256 + ".md", After: b}, {Path: p, After: b}}
 	return s.publish(tx, makeIntent(s.ProjectID, req.OperationID, dg, snap.Revision, files, ev, Result{OperationID: req.OperationID, ActivityID: a.Descriptor.ID, SessionID: id, Path: p, DescriptorRevision: a.DescriptorRef.SHA256}))
+}
+
+func validateSessionPhases(primary string, contributions []string) ([]string, error) {
+	phases := append([]string{}, contributions...)
+	if len(phases) == 0 && primary != "" {
+		phases = []string{primary}
+	}
+	if len(phases) == 0 {
+		return nil, fmt.Errorf("Session phase or phaseContributions required")
+	}
+	seen := map[string]bool{}
+	for _, phase := range phases {
+		valid := false
+		for _, allowed := range []string{"01-Mandate", "02-Study", "03-Requirements", "04-Design", "05-Implementation", "06-Verification"} {
+			if phase == allowed {
+				valid = true
+			}
+		}
+		if !valid || seen[phase] {
+			return nil, fmt.Errorf("invalid or duplicate Session phase contribution")
+		}
+		seen[phase] = true
+	}
+	if primary != "" && !seen[primary] {
+		return nil, fmt.Errorf("primary phase must be a declared contribution")
+	}
+	return phases, nil
 }

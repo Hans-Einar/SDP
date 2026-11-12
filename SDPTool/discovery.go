@@ -2,6 +2,7 @@ package sdptool
 
 import (
 	"fmt"
+	"github.com/Hans-Einar/SDP/SDPTool/activities"
 	"github.com/Hans-Einar/SDP/SDPTool/model"
 	"io/fs"
 	"os"
@@ -142,6 +143,20 @@ func discover(selected string, withNavigation bool) (Project, error) {
 			p.Inventory.Sessions = "SDP/Sessions"
 		}
 	}
+	if activityPresent(p) {
+		p.Capabilities["activities"] = "sdp-activities/1"
+		if ns, err := activityProjectID(p); err == nil {
+			if catalog, err := activities.New(p.Area, ns).Read(); err == nil {
+				for _, a := range catalog.Activities {
+					for _, r := range a.Descriptor.References {
+						if (r.Role == "plan" || strings.HasSuffix(r.Role, "-plan")) && r.Availability == "" && r.ProjectID == "" {
+							p.Plans = append(p.Plans, "SDP/"+r.Path)
+						}
+					}
+				}
+			}
+		}
+	}
 	if len(p.Plans) == 1 {
 		p.Inventory.ImplementationPlan = p.Plans[0]
 	}
@@ -202,6 +217,14 @@ func (p *Project) scanArea() error {
 				p.Files[i].Target = nil
 				return filepath.SkipDir
 			}
+		}
+		// Activity documents have their own paged domain catalog; avoid eagerly
+		// duplicating its complete filesystem under the legacy Files tree.
+		if strings.HasPrefix(rel, "Activities/") {
+			if d != nil && d.IsDir() {
+				return filepath.SkipDir
+			}
+			return nil
 		}
 		if len(p.Files) >= 10000 {
 			return fmt.Errorf("SDP discovery exceeds 10000 filesystem entries")

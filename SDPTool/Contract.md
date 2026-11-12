@@ -586,3 +586,34 @@ source can still report a graph-resource error when explicitly expanded.
 
 Native XFMD integration is N15b and is not delivered by the producer change alone.
 An old client continues to request the compatible eager form until upgraded.
+
+## Activity protocol 1
+
+Activity support is advertised as `capabilities.activities = sdp-activities/1`.
+The canonical Activity domain reads manual 0.1 and generated 0.2 records. It replaces
+the Sessions tab with producer-classified Activities when an Activity home exists;
+legacy Sessions stay accessible under Unassigned sessions or their explicit links.
+Projects without an Activity home keep the compatible Sessions projection.
+
+`activity-view` targets carry browser project, URI and source revision without an
+SDL model. `activity view` publishes the existing sdptool/0.2 Result with operation
+activity-view and profile activity/1. Source is the absolute SDP area; Markdown/SVG
+and provenance detail files are private caller-owned outputs outside SDP.
+
+A deferred Activity node has separate `expansionTarget` (activity-tree) and `target`
+(activity-view). Expansion URI placement and offset are opaque to consumers.
+`activity tree` returns sdptool/0.2 Tree, operation activity-tree, exact project and
+revision, one replacement parent plus at most 100 immediate children and a More
+node. Children remain deferred as needed. Parent/child identities and source
+revision are checked before atomic merge. This is independent of SDL model trees.
+
+Current XFMD implements both target operations. Earlier clients do not implement
+this protocol; the previously supported deferred-source parser refuses populated
+Activity trees. Update the consumer with the producer; an unsupported client is
+not evidence that an Activity is empty. No old-client automatic upgrade or released
+binary capability is claimed. Native visible-row/depth safeguards remain; collapse
+unneeded branches to browse other pages. Resource-limit diagnostics never imply
+that omitted content does not exist.
+
+CLI/actions use the typed operations and request examples in [Activities.md](Activities.md).
+Canonical lifecycle history and operational PG execution state remain distinct.

@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"github.com/Hans-Einar/SDP/SDPTool/install"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -100,6 +101,18 @@ func TestCurrentSessionDistributionAndPreservation(t *testing.T) {
 	}
 	if _, e = (install.Executor{}).Apply(context.Background(), root, p); e != nil {
 		t.Fatal(e)
+	}
+	utility := filepath.Join(root, "SDP/Framework/activities/activity_history.py")
+	if output, err := exec.Command("python3", utility, filepath.Join(root, "SDP")).CombinedOutput(); err != nil {
+		t.Fatalf("installed Activity validator: %v %s", err, output)
+	}
+	if _, err := os.Stat(filepath.Join(root, "SDP/Activities/.admission")); !os.IsNotExist(err) {
+		t.Fatal("installation implicitly adopted admission", err)
+	}
+	for _, name := range []string{"activity-descriptor-0.1.schema.json", "activity-descriptor-0.2.schema.json", "activity-payload-0.1.schema.json", "activity-payload-0.2.schema.json", "activity-admission-payload-0.1.schema.json"} {
+		if _, err := os.Stat(filepath.Join(root, "SDP/ProjectManagement", name)); err != nil {
+			t.Fatal("missing distributed Activity schema", name, err)
+		}
 	}
 	guide := filepath.Join(root, "SDP/Sessions/README.md")
 	os.WriteFile(guide, []byte("project-owned guide"), 0600)

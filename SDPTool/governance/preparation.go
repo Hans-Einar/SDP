@@ -2,6 +2,7 @@ package governance
 
 import (
 	"encoding/json"
+	"github.com/Hans-Einar/SDP/SDPTool/activities"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -40,16 +41,17 @@ type PrepareRequest struct {
 	ReturnCriteria     []string      `json:"returnCriteria"`
 }
 type PreparedAssignment struct {
-	ID             string        `json:"id"`
-	Revision       uint64        `json:"revision"`
-	State          string        `json:"state,omitempty"`
-	ChangeReason   string        `json:"changeReason,omitempty"`
-	Role           string        `json:"role"`
-	Selection      Selection     `json:"selection"`
-	Assignment     Assignment    `json:"assignment"`
-	InputRevision  string        `json:"inputRevision"`
-	Artifacts      []ArtifactPin `json:"artifacts"`
-	ReturnCriteria []string      `json:"returnCriteria"`
+	Activity       *activities.AdmissionBinding `json:"activity,omitempty"`
+	ID             string                       `json:"id"`
+	Revision       uint64                       `json:"revision"`
+	State          string                       `json:"state,omitempty"`
+	ChangeReason   string                       `json:"changeReason,omitempty"`
+	Role           string                       `json:"role"`
+	Selection      Selection                    `json:"selection"`
+	Assignment     Assignment                   `json:"assignment"`
+	InputRevision  string                       `json:"inputRevision"`
+	Artifacts      []ArtifactPin                `json:"artifacts"`
+	ReturnCriteria []string                     `json:"returnCriteria"`
 }
 type PreparationResult struct {
 	Schema           string             `json:"schema"`
@@ -236,7 +238,7 @@ func (s *Service) PrepareAssignment(caller Caller, q PrepareRequest) (Preparatio
 	if err := validatePreparation(q); err != nil {
 		return out, err
 	}
-	unlock, err := lock(s.state)
+	tx, unlock, err := s.lockActivityState()
 	if err != nil {
 		return out, err
 	}
@@ -287,7 +289,11 @@ func (s *Service) PrepareAssignment(caller Caller, q PrepareRequest) (Preparatio
 	if err != nil {
 		return out, err
 	}
-	prepared := PreparedAssignment{ID: id, Revision: 1, Role: q.Role, Selection: q.Selection, Assignment: q.Assignment, InputRevision: q.InputRevision, Artifacts: q.Artifacts, ReturnCriteria: q.ReturnCriteria}
+	binding, err := s.checkActivity(tx, "", q.Selection, q.Assignment, false)
+	if err != nil {
+		return out, err
+	}
+	prepared := PreparedAssignment{Activity: binding, ID: id, Revision: 1, Role: q.Role, Selection: q.Selection, Assignment: q.Assignment, InputRevision: q.InputRevision, Artifacts: q.Artifacts, ReturnCriteria: q.ReturnCriteria}
 	out = PreparationResult{Schema: PreparationSchema, OperationID: q.OperationID, Assignment: prepared, Dispatch: "unavailable", DesignAcceptance: "not-assessed"}
 	if state.Prepared == nil {
 		state.Prepared = map[string]PreparedAssignment{}

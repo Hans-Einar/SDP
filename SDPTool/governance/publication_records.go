@@ -87,6 +87,38 @@ func (s *Service) publicationFiles() (map[string][]byte, error) {
 	if e != nil {
 		return nil, e
 	}
+	// Capture Activity-owned records for the shared domain-aware history reader.
+	// External execution stores remain locators; this performs no host inspection.
+	activityRoot := filepath.Join(s.area, "Activities")
+	if _, err := os.Lstat(activityRoot); err == nil {
+		e = filepath.WalkDir(activityRoot, func(path string, d fs.DirEntry, err error) error {
+			if err != nil {
+				return err
+			}
+			if d.Type()&os.ModeSymlink != 0 {
+				return fail("path", "symlink in Activity records")
+			}
+			if !d.IsDir() {
+				rel, _ := filepath.Rel(s.root, path)
+				// Hidden descriptor/session snapshots are read-only domain inputs,
+				// not assignable PG candidate paths.
+				data, readErr := readFile(path, maxState)
+				if readErr != nil {
+					return readErr
+				}
+				files[filepath.ToSlash(rel)] = data
+			}
+			if len(files) > 2048 {
+				return fail("limit", "Activity publication record count exceeds 2048")
+			}
+			return nil
+		})
+		if e != nil {
+			return nil, e
+		}
+	} else if !os.IsNotExist(err) {
+		return nil, err
+	}
 	if e = validatePublicationHistory(files["SDP/ProjectManagement/Ledger.ndjson"], files); e != nil {
 		return nil, fail("incompatible_profile", "canonical record validation: "+e.Error())
 	}

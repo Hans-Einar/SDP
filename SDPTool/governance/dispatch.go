@@ -1,6 +1,7 @@
 package governance
 
 import (
+	"github.com/Hans-Einar/SDP/SDPTool/projecthistory"
 	"slices"
 	"strings"
 	"time"
@@ -89,7 +90,14 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 	if v.ThreadID != "" && !opaque(v.ThreadID) || v.TurnID != "" && !opaque(v.TurnID) {
 		return Result{}, fail("invalid_request", "invalid host identity")
 	}
-	unlock, e := lock(s.state)
+	var tx *projecthistory.Transaction
+	var unlock func()
+	var e error
+	if v.Kind == "interrupt" || v.Kind == "scope-change" || q.Action == "ack" || q.Action == "resolve" || q.Action == "uncertain" {
+		unlock, e = lock(s.state)
+	} else {
+		tx, unlock, e = s.lockActivityState()
+	}
 	if e != nil {
 		return Result{}, e
 	}
@@ -126,6 +134,11 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 		return Result{}, e
 	}
 	if q.Action == "prepare" {
+		if v.Kind == "launch" || v.Kind == "steer" || v.Kind == "approval" {
+			if _, err := s.checkActivity(tx, "", r.Selection, r.Assignment, false); err != nil {
+				return Result{}, err
+			}
+		}
 		if v.Kind == "launch" || v.Kind == "steer" {
 			for id, command := range state.SessionHostCommands {
 				if command.Request.RunID == q.RunID && sessionHostPending(command.State) && (id != v.ID || command.State != "claimed") {
@@ -213,6 +226,15 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 		}
 		switch q.Action {
 		case "claim":
+			if v.Kind == "launch" || v.Kind == "steer" || v.Kind == "approval" {
+				binding, err := s.checkActivity(tx, "", r.Selection, r.Assignment, false)
+				if err != nil {
+					return Result{}, err
+				}
+				if binding != nil && (r.Activity == nil || *r.Activity != *binding) {
+					return Result{}, fail("activity_admission", "run Activity basis changed")
+				}
+			}
 			if len(v.AttentionReplies) > 0 {
 				if e := checkAttentionContinuation(r, v, true); e != nil {
 					return Result{}, e

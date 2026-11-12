@@ -27,7 +27,7 @@ func architectureViolations(path string, source []byte) ([]string, error) {
 	}
 	var violations []string
 	parts := strings.Split(filepath.ToSlash(path), "/")
-	domain := map[string]bool{"governance": true, "governanceapp": true, "model": true, "blueprints": true, "blueprintstate": true, "projecthistory": true}
+	domain := map[string]bool{"activities": true, "governance": true, "governanceapp": true, "model": true, "blueprints": true, "blueprintstate": true, "projecthistory": true}
 	for _, im := range f.Imports {
 		name, _ := strconv.Unquote(im.Path.Value)
 		const prefix = "github.com/Hans-Einar/SDP/SDPTool"
@@ -37,10 +37,13 @@ func architectureViolations(path string, source []byte) ([]string, error) {
 		if path == "action_sessions.go" && (name == "bytes" || name == "encoding/json") {
 			violations = append(violations, "Session adapter must retain typed results")
 		}
+		if parts[0] == "activities" && name == prefix+"/governance" {
+			violations = append(violations, "Activity domain must use an execution port, not import governance")
+		}
 	}
 	ast.Inspect(f, func(n ast.Node) bool {
 		if call, ok := n.(*ast.CallExpr); ok {
-			if id, ok := call.Fun.(*ast.Ident); ok && (id.Name == "governanceCommand" || id.Name == "governanceCommandAs" || id.Name == "RunWithInput") && path != "cli.go" && path != "governance_cli.go" && !strings.HasPrefix(path, "cmd/") {
+			if id, ok := call.Fun.(*ast.Ident); ok && (id.Name == "activityCommand" || id.Name == "governanceCommand" || id.Name == "governanceCommandAs" || id.Name == "RunWithInput") && path != "cli.go" && path != "activity_cli.go" && path != "governance_cli.go" && !strings.HasPrefix(path, "cmd/") {
 				violations = append(violations, "non-CLI code calls CLI: "+id.Name)
 			}
 			if sel, ok := call.Fun.(*ast.SelectorExpr); ok && (sel.Sel.Name == "AddTool" || sel.Sel.Name == "Marshal") && strings.HasPrefix(path, "governancemcp/") && path != "governancemcp/response.go" {
@@ -94,6 +97,8 @@ func TestArchitectureChecksRejectViolatingSpecimens(t *testing.T) {
 	for _, tc := range []struct{ path, code string }{
 		{"governance/bad.go", `package governance; import _ "github.com/Hans-Einar/SDP/SDPTool/presentation"`},
 		{"governanceapp/bad.go", `package governanceapp; import _ "github.com/Hans-Einar/SDP/SDPTool"`},
+		{"activities/bad.go", `package activities; import _ "github.com/Hans-Einar/SDP/SDPTool/governance"`},
+		{"action_activities.go", `package sdptool; func bad(){activityCommand()}`},
 		{"action_sessions.go", `package sdptool; func bad(){governanceCommandAs()}`},
 		{"action_sessions.go", `package sdptool; import "encoding/json"; func bad(){json.Unmarshal(nil,nil)}`},
 		{"action_invoke.go", `package sdptool; func bad(){if req.Action == "privileged" {}}`},
@@ -106,7 +111,7 @@ func TestArchitectureChecksRejectViolatingSpecimens(t *testing.T) {
 	}
 }
 
-func TestMigrationPreservesPublicActionCatalogue(t *testing.T) {
+func TestMigrationPreservesExistingPublicActionContracts(t *testing.T) {
 	b, err := os.ReadFile("testdata/actions-before-migration.json")
 	if err != nil {
 		t.Fatal(err)
@@ -127,9 +132,17 @@ func TestMigrationPreservesPublicActionCatalogue(t *testing.T) {
 			}
 		}
 	}
+	// Activity0002 explicitly adds Activity operations. Keep the frozen obligations
+	// for every pre-existing action instead of replacing the compatibility fixture.
+	retained := []ActionDescriptor{}
+	for _, d := range after.Actions {
+		if !strings.HasPrefix(d.ID, "activity.") {
+			retained = append(retained, d)
+		}
+	}
 	beforeActions, _ := json.Marshal(before.Actions)
-	afterActions, _ := json.Marshal(after.Actions)
-	if before.Revision != after.Revision || !bytes.Equal(beforeActions, afterActions) || before.Schema != after.Schema || !reflect.DeepEqual(before.InvocationVersions, after.InvocationVersions) {
+	afterActions, _ := json.Marshal(retained)
+	if !bytes.Equal(beforeActions, afterActions) || before.Schema != after.Schema || !reflect.DeepEqual(before.InvocationVersions, after.InvocationVersions) {
 		t.Fatal("public action contract drifted")
 	}
 }

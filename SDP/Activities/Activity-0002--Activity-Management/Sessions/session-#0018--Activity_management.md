@@ -3,15 +3,15 @@
 | State | Step | Outcome / authority |
 | --- | --- | --- |
 | completed | S1 Manual registration | Owner accepts predecessor and selects Activity0002 |
-| on-going | S2 Design and implementation | Execute PLAN-SDP-0027 from concrete A0 contracts |
-| planned | S3 Qualification and acceptance | Integrated evidence and independent review before owner disposition |
+| completed | S2 Design and implementation | A1–A5 candidate implemented; integrated qualification follows |
+| on-going | S3 Qualification and acceptance | Consolidated candidate verification and independent review |
 
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0018 |
 | Activity | ACTIVITY-SDP-0002 |
 | Status | active |
-| Current step | S2 |
+| Current step | S3 |
 | Primary card | KB-SDP-061 |
 | Plan | PLAN-SDP-0027 |
 | Phase contributions | study, requirements, design, implementation, verification |
@@ -53,3 +53,29 @@ reentrant locks; exact retries verify bytes and the original prefix.
 A1–A5 remain in progress. Outstanding integration includes CLI/action end-to-end
 checks, large-tree expansion, native consumer, schema/installed reader adoption,
 and integrated independent qualification. No real Activity0003 is allocated.
+
+## T003 — Integrated implementation and review corrections
+
+CLI/actions now share Activity operation metadata and typed calls. Activity and
+root Session creation, lifecycle/recovery, revisions/dependencies/dispositions,
+producer pages/paging/calendar and explicit PG admission are implemented. Native
+XFMD consumes the producer protocol in an isolated worktree; actual disposable and
+real manual read-only browsing passes. The real third Activity remains unallocated.
+
+Independent review identified generated UUID IDs rejected by the Python reader/
+0.2 predecessor schema, and forbidden0.2 extensions accepted by Go's0.1 parser.
+Both are corrected with real generated-history parity and raw-shape regressions.
+The root bind/adopt journey also exposed and corrected confusion between the PG
+browser project identity and canonical Activity namespace. No approval is inferred
+from these fixes; final qualification remains in progress.
+
+The old compiled action-catalog test is extended for the intentionally new actions.
+The immutable-project test still checks every source byte; it excludes only the
+empty stable canonical flock inode required to serialize implementation admission
+with opt-in adoption. Removing that inode after unlock would make flock unsafe.
+
+The retained Blueprint is regenerated with Template and SDP/ProjectManagement
+code paths, reflecting the actual source homes of installed schemas/readers.
+Original immutable artifacts/checkpoints remain. Source process skills now explain
+adopted scope, unrelated capture and explicit admission without migrating legacy
+projects. SDP Verifier is used for exact-candidate evidence and limitations.

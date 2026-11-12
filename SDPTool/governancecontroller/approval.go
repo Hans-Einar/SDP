@@ -38,6 +38,9 @@ func (c *Controller) Approve(runID string, reply governance.ApprovalReply, exact
 		return r, e
 	}
 	v.State = "sending"
+	if e = c.Service.CheckActivityDispatch(governance.LocalController(), runID, v.ID); e != nil {
+		return r, e
+	}
 	sendErr := host.ReplyApproval(reply)
 	// Even a successful write has no host acknowledgment yet. Never retransmit.
 	r, e = c.input(runID, "uncertain", v)

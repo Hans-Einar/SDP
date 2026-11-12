@@ -5,7 +5,7 @@ description: Implement one authorized, bounded SDP milestone, Maintenance task, 
   the assignment.
 metadata:
   skillId: sdp-worker
-  skillVersion: 2.0.0
+  skillVersion: 2.1.0
   minimumToolkitVersion: 0.2.0
   capabilities: sdp.slice.implement,sdp.fix.implement
   compatibilityNotes: Profile-aware workflow; native skill metadata. Supersedes the legacy procedure.
@@ -44,3 +44,9 @@ linked requirements/design decisions and verification contract before editing.
 Update only the assigned notes and records. Return actual changed files,
 decisions, evidence, remaining uncertainty, discoveries and applicable safety
 implications. Do not claim independent approval, publish or start another unit.
+
+For an adopted Activity workflow, retain the assigned Activity/Session/plan scope
+and its reviewed revisions. A new idea outside that scope may be investigated and
+captured in KB; do not implement it under the current assignment. A pending hold
+blocks new implementation admissions, while observation and existing stop/recovery
+remain available. Never infer that a ledger entry terminated a host process.

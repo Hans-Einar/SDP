@@ -166,7 +166,11 @@ func (s *Service) readSuccessorContext(i SessionInstance, path string, files map
 		}
 		files[p] = raw
 	}
-	return successorContext(i, path, files)
+	out, err := successorContext(i, path, files)
+	if err == nil {
+		err = s.validateActivitySessionReference(out.Binding.Session)
+	}
+	return out, err
 }
 func (s *Service) SessionSuccessorContext(q SessionSuccessorRequest) (SessionContext, error) {
 	st, _, e := s.load()

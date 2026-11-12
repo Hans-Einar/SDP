@@ -7,6 +7,7 @@ import (
 	"crypto/sha256"
 	"encoding/json"
 	"fmt"
+	"github.com/Hans-Einar/SDP/SDPTool/activities"
 	"regexp"
 )
 
@@ -148,20 +149,21 @@ type TransitionRequest struct {
 	Reason           string `json:"reason"`
 }
 type Run struct {
-	Attention     []AttentionQuestion `json:"attention,omitempty"`
-	Inputs        []OwnerInput        `json:"inputs,omitempty"`
-	Attempts      []Attempt           `json:"attempts,omitempty"`
-	ID            string              `json:"id"`
-	Revision      uint64              `json:"revision"`
-	RequestID     string              `json:"requestId"`
-	State         string              `json:"state"`
-	Step          string              `json:"step"`
-	InputRevision string              `json:"inputRevision"`
-	Selection     Selection           `json:"selection"`
-	Assignment    Assignment          `json:"assignment"`
-	Routine       Routine             `json:"routine"`
-	RoutineDigest string              `json:"routineDigest"`
-	Reason        string              `json:"reason"`
+	Activity      *activities.AdmissionBinding `json:"activity,omitempty"`
+	Attention     []AttentionQuestion          `json:"attention,omitempty"`
+	Inputs        []OwnerInput                 `json:"inputs,omitempty"`
+	Attempts      []Attempt                    `json:"attempts,omitempty"`
+	ID            string                       `json:"id"`
+	Revision      uint64                       `json:"revision"`
+	RequestID     string                       `json:"requestId"`
+	State         string                       `json:"state"`
+	Step          string                       `json:"step"`
+	InputRevision string                       `json:"inputRevision"`
+	Selection     Selection                    `json:"selection"`
+	Assignment    Assignment                   `json:"assignment"`
+	Routine       Routine                      `json:"routine"`
+	RoutineDigest string                       `json:"routineDigest"`
+	Reason        string                       `json:"reason"`
 }
 type Result struct {
 	Session               *SessionMutationResult `json:"session,omitempty"`

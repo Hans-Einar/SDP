@@ -1,6 +1,7 @@
 package activities
 
 import (
+	"encoding/json"
 	"os"
 	"path/filepath"
 	"testing"
@@ -152,5 +153,38 @@ func TestAdmissionMembershipScopeAndDisabledCompatibility(t *testing.T) {
 	view.Pending = &PendingLifecycle{OperationID: op1}
 	if _, err := CheckAdmission(view, work); err == nil {
 		t.Fatal("pending admitted work")
+	}
+}
+
+func TestAdmissionRejectsMalformedRecordedAuthorityAndDuplicateInventory(t *testing.T) {
+	for _, mode := range []string{"authority", "inventory"} {
+		t.Run(mode, func(t *testing.T) {
+			service, _, _ := adoptedAdmission(t)
+			ledger := filepath.Join(service.Area, "ProjectManagement/Ledger.ndjson")
+			raw, err := os.ReadFile(ledger)
+			if err != nil {
+				t.Fatal(err)
+			}
+			var event admissionEvent
+			if err = Decode(raw, &event); err != nil {
+				t.Fatal(err)
+			}
+			if mode == "authority" {
+				event.Payload.Authority.Source = "../outside.md"
+			} else {
+				event.Payload.Stores = append(event.Payload.Stores, event.Payload.Stores[0])
+			}
+			raw, err = json.Marshal(event)
+			if err != nil {
+				t.Fatal(err)
+			}
+			raw = append(raw, '\n')
+			if err = os.WriteFile(ledger, raw, 0600); err != nil {
+				t.Fatal(err)
+			}
+			if _, err = service.AdmissionEnabled(); err == nil {
+				t.Fatal("malformed adopted state treated as valid")
+			}
+		})
 	}
 }

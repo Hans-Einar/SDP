@@ -330,6 +330,41 @@
       "source": "Skills/sdp/references/roles.md",
       "destination": ".codex/skills/sdp/references/roles.md",
       "ownership": "managed"
+    },
+    {
+      "source": "Template/sdp-root/ProjectManagement/activity-descriptor-0.1.schema.json",
+      "destination": "SDP/ProjectManagement/activity-descriptor-0.1.schema.json",
+      "ownership": "project"
+    },
+    {
+      "source": "Template/sdp-root/ProjectManagement/activity-descriptor-0.2.schema.json",
+      "destination": "SDP/ProjectManagement/activity-descriptor-0.2.schema.json",
+      "ownership": "project"
+    },
+    {
+      "source": "Template/sdp-root/ProjectManagement/activity-payload-0.1.schema.json",
+      "destination": "SDP/ProjectManagement/activity-payload-0.1.schema.json",
+      "ownership": "project"
+    },
+    {
+      "source": "Template/sdp-root/ProjectManagement/activity-payload-0.2.schema.json",
+      "destination": "SDP/ProjectManagement/activity-payload-0.2.schema.json",
+      "ownership": "project"
+    },
+    {
+      "source": "Template/sdp-root/ProjectManagement/activity-admission-payload-0.1.schema.json",
+      "destination": "SDP/ProjectManagement/activity-admission-payload-0.1.schema.json",
+      "ownership": "project"
+    },
+    {
+      "source": "Toolkit/scripts/activity_history.py",
+      "destination": "SDP/Framework/activities/activity_history.py",
+      "ownership": "managed"
+    },
+    {
+      "source": "Toolkit/payload/sdp-root/Framework/activities/Activity-records.md",
+      "destination": "SDP/Framework/activities/Activity-records.md",
+      "ownership": "managed"
     }
   ]
 }

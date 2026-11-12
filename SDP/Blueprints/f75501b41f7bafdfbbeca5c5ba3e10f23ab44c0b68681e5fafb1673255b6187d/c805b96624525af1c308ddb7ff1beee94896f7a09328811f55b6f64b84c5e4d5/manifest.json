@@ -1,0 +1,25 @@
+{
+  "version": "sdp-blueprint/1",
+  "revision": "830b6836603b55b150e04d6f9018f636ce8332c144e7b7d01ee91349725b25ec",
+  "renderer": "",
+  "diagrams": null,
+  "facts": null,
+  "model_gaps": null,
+  "outputs": {
+    "assignment.json": "9554053f13d170a3bf37225bed63229bf79d6cae63e4e5d2f4b3eb6d80e1ee67",
+    "blueprint.json": "a55c5252fd049d95d45cb5c2b700419d1cf1db62925e1b0c87704303757477fc",
+    "changes.md": "ab5acdd6f25b3d41a750a739f811e693113e8d1c1562ca88c6e8152a290dbab4",
+    "changes.mmd": "673657f43b981b8df73930143294be855afa8e0dc4fd48e590a61f8713c069ca",
+    "context.md": "9c32a8fb54097d32bab0f0330149e45cc98e4f29b86f7b339158876db1bfb52c",
+    "context.mmd": "350f3b37d28a0a14faa655ddbc392278f7f3881a2a24c9c370a6e3892f1f93c1",
+    "evidence.md": "d163da6732c7d6673ac606a3c89d4d4a115cffa6f81745341d09f272a61e3bc4",
+    "index.md": "4240544f66a0916eb02c27b90bda84a5bc3093ecc81159a4830c1107b46655cf",
+    "obligations.md": "b5f7e5d91da0e47f4a8fcc144abc7dc7cf639b1d797943e66f08034d2f92fa13",
+    "sources/NOW/System.design": "ef249aed59907712525f96d13c0ac6447ff3dee0a6b089ff3249e5a25ded988b",
+    "sources/TARGET/Contracts.design": "1b583915a5f819d0520e0d272686bad795ffad9dc697cc92e4aee87fff148451",
+    "sources/TARGET/Features.design": "11bf9e8cd4ca38019e6ab29c03d80247ef4445f5ba0f0215e7a80f93685e9526",
+    "sources/TARGET/Responsibilities.design": "f6f10f091924ac6c16f1089f0aeca28948983de7bcf4fc8699d5626ef098f052",
+    "sources/TARGET/Scenarios.design": "ad999403c21885c717db8248464f2e2ea3c9b799726499295c496a70e7be7ede",
+    "sources/TARGET/System.design": "94124b6cc80007a43fa7852a7cc40ff38d2fe814e7ccd514ef1435919e9fb9c7"
+  }
+}

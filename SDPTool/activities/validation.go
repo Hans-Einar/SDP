@@ -195,7 +195,7 @@ func validateRefs(s *Service, refs []Reference) error {
 			projectID = r.ProjectID
 		}
 		switch r.Role {
-		case "session", "prior-discussion":
+		case "session", "prior-discussion", "predecessor":
 			if !strings.HasPrefix(r.ID, "SESSION-"+projectID+"-") {
 				return fmt.Errorf("reference type/project mismatch")
 			}
@@ -224,9 +224,15 @@ func validateRefs(s *Service, refs []Reference) error {
 		if r.Revision != "" && digest(b) != r.Revision {
 			return fmt.Errorf("reviewed reference revision changed")
 		}
+		if r.Role == "milestone" {
+			if e := validateMilestoneRecord(s.ProjectID, r, b); e != nil {
+				return e
+			}
+			continue
+		}
 		expected := ""
 		switch r.Role {
-		case "session", "prior-discussion":
+		case "session", "prior-discussion", "predecessor":
 			expected = "SESSION-"
 		case "implementation-plan", "plan":
 			expected = "PLAN-"
@@ -300,8 +306,13 @@ func parseDescriptor(b []byte) (Descriptor, error) {
 	if !activityRE.MatchString(out.ID) || !namespaceRE.MatchString(out.ProjectID) || strings.TrimSpace(out.Title) == "" || strings.TrimSpace(out.Owner) == "" || out.References == nil || out.SourceCards == nil {
 		return out, fmt.Errorf("invalid descriptor")
 	}
-	if out.Schema == "sdp-activity/0.1" && (len(out.SourceCards) == 0 || len(out.Scope) > 0 || len(out.Dependencies) > 0) {
-		return out, fmt.Errorf("invalid legacy descriptor")
+	if out.Schema == "sdp-activity/0.1" {
+		if e := validateLegacyDescriptorShape(b); e != nil {
+			return out, e
+		}
+		if len(out.SourceCards) == 0 {
+			return out, fmt.Errorf("invalid legacy descriptor")
+		}
 	}
 	seen := map[string]bool{}
 	for _, c := range out.SourceCards {
@@ -323,9 +334,6 @@ func parseDescriptor(b []byte) (Descriptor, error) {
 		return out, e
 	}
 	for _, r := range out.References {
-		if out.Schema == "sdp-activity/0.1" && (r.ProjectID != "" || r.Membership != "" || r.Revision != "" || r.Availability != "" || r.UnavailableReason != "") {
-			return out, fmt.Errorf("legacy reference extension")
-		}
 		if e := validateReferenceShape(r); e != nil {
 			return out, e
 		}
@@ -516,4 +524,116 @@ func validateReferenceShape(r Reference) error {
 		return fmt.Errorf("unavailability reason requires disposition")
 	}
 	return nil
+}
+
+// Milestone references identify both their plan and selected child, for example
+// PLAN-SDP-0027:A1; the path names the actual plan record, not an invented output.
+func validateMilestoneRecord(projectID string, r Reference, data []byte) error {
+	parts := strings.Split(r.ID, ":")
+	if len(parts) != 2 || !regexp.MustCompile(`^(PLAN|MAINT)-`+regexp.QuoteMeta(projectID)+`-[0-9]{4,}$`).MatchString(parts[0]) || !regexp.MustCompile(`^[A-Za-z0-9][A-Za-z0-9._-]*$`).MatchString(parts[1]) || !identityInRecord(data, parts[0]) {
+		return fmt.Errorf("milestone plan identity/type mismatch")
+	}
+	for _, line := range strings.Split(string(data), "\n") {
+		cells := strings.Split(line, "|")
+		if len(cells) >= 4 {
+			label := strings.Trim(strings.TrimSpace(cells[1]), "`")
+			words := strings.Fields(label)
+			if len(words) > 0 && strings.TrimSuffix(strings.TrimSuffix(words[0], ":"), ".") == parts[1] {
+				return nil
+			}
+		}
+		heading := strings.TrimSpace(line)
+		if strings.HasPrefix(heading, "#") {
+			words := strings.Fields(strings.TrimLeft(heading, "# "))
+			if len(words) > 0 && strings.TrimSuffix(strings.TrimSuffix(words[0], ":"), ".") == parts[1] {
+				return nil
+			}
+		}
+	}
+	return fmt.Errorf("selected milestone is not present in plan")
+}
+
+// The immutable 0.1 schema forbids properties by presence, not by decoded Go
+// zero values. Inspect YAML nodes as well: decoding directly into string fields
+// would otherwise coerce numbers or erase explicit null/empty extension fields.
+func validateLegacyDescriptorShape(data []byte) error {
+	var document yaml.Node
+	if e := yaml.Unmarshal(data, &document); e != nil {
+		return e
+	}
+	if len(document.Content) != 1 {
+		return fmt.Errorf("legacy descriptor requires one mapping")
+	}
+	root := yamlAlias(document.Content[0])
+	if root == nil || root.Kind != yaml.MappingNode {
+		return fmt.Errorf("legacy descriptor requires mapping")
+	}
+	allowed := map[string]bool{"schema": true, "id": true, "projectId": true, "title": true, "owner": true, "mandate": true, "sourceCards": true, "systems": true, "references": true}
+	fields := map[string]*yaml.Node{}
+	for i := 0; i < len(root.Content); i += 2 {
+		key := root.Content[i].Value
+		if !allowed[key] {
+			return fmt.Errorf("legacy descriptor extension %s", key)
+		}
+		fields[key] = yamlAlias(root.Content[i+1])
+	}
+	for _, key := range []string{"schema", "id", "projectId", "title", "owner", "mandate"} {
+		if !yamlString(fields[key]) {
+			return fmt.Errorf("legacy descriptor %s requires string", key)
+		}
+	}
+	for _, key := range []string{"sourceCards", "references"} {
+		if fields[key] == nil || fields[key].Kind != yaml.SequenceNode {
+			return fmt.Errorf("legacy descriptor %s requires array", key)
+		}
+	}
+	if v, present := fields["systems"]; present && (v == nil || v.Kind != yaml.SequenceNode) {
+		return fmt.Errorf("legacy descriptor systems requires array")
+	}
+	for _, key := range []string{"sourceCards", "systems"} {
+		if fields[key] != nil {
+			for _, item := range fields[key].Content {
+				if !yamlString(yamlAlias(item)) {
+					return fmt.Errorf("legacy descriptor %s requires string items", key)
+				}
+			}
+		}
+	}
+	for _, entry := range fields["references"].Content {
+		entry = yamlAlias(entry)
+		if entry == nil || entry.Kind != yaml.MappingNode {
+			return fmt.Errorf("legacy reference requires mapping")
+		}
+		keys := map[string]bool{}
+		for i := 0; i < len(entry.Content); i += 2 {
+			key := entry.Content[i].Value
+			if key != "role" && key != "id" && key != "path" {
+				return fmt.Errorf("legacy reference extension %s", key)
+			}
+			keys[key] = true
+			if !yamlString(yamlAlias(entry.Content[i+1])) {
+				return fmt.Errorf("legacy reference %s requires string", key)
+			}
+		}
+		for _, key := range []string{"role", "id", "path"} {
+			if !keys[key] {
+				return fmt.Errorf("legacy reference missing %s", key)
+			}
+		}
+	}
+	return nil
+}
+func yamlAlias(n *yaml.Node) *yaml.Node {
+	seen := map[*yaml.Node]bool{}
+	for n != nil && n.Kind == yaml.AliasNode {
+		if seen[n] {
+			return nil
+		}
+		seen[n] = true
+		n = n.Alias
+	}
+	return n
+}
+func yamlString(n *yaml.Node) bool {
+	return n != nil && n.Kind == yaml.ScalarNode && n.ShortTag() == "!!str"
 }

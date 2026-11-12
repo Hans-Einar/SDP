@@ -27,7 +27,7 @@ func validatePublicationHistory(history []byte, files map[string][]byte) error {
 	when := map[string]time.Time{}
 	for _, ev := range events {
 		typ := fmt.Sprint(ev["eventType"])
-		if strings.HasPrefix(typ, "x-blueprint:") {
+		if strings.HasPrefix(typ, "x-blueprint:") || strings.HasPrefix(typ, "x-activity:") || strings.HasPrefix(typ, "x-activity-admission:") {
 			continue
 		}
 		id := fmt.Sprint(ev["eventId"])

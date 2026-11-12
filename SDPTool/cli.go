@@ -49,7 +49,7 @@ func RunWithInput(ctx context.Context, args []string, in io.Reader, out, errs io
 	}
 
 	if len(args) == 1 && (args[0] == "--help" || args[0] == "help") {
-		_, e := io.WriteString(out, "Usage: sdptool [PROJECT-OR-SDP-AREA] actions|invoke|governance|model|discover|run|tree|select|view ip|sdui-preview|install|upgrade|release-log [options]\n       sdptool preview FILE --output DIRECTORY [--renderer PROGRAM]\nDefault output is human-readable; add --json for machine clients.\nSee SDPTool/Contract.md for source, model, revision and resource contracts.\n")
+		_, e := io.WriteString(out, "Usage: sdptool [PROJECT-OR-SDP-AREA] actions|invoke|activity|governance|model|discover|run|tree|select|view ip|sdui-preview|install|upgrade|release-log [options]\n       sdptool preview FILE --output DIRECTORY [--renderer PROGRAM]\nDefault output is human-readable; add --json for machine clients.\nSee SDPTool/Contract.md for source, model, revision and resource contracts.\n")
 		if e != nil {
 			return report(errs, e)
 		}
@@ -103,6 +103,7 @@ type cliCommand struct {
 func cliCommands() map[string]cliCommand {
 	return map[string]cliCommand{
 		"governance":   {run: cliGovernance},
+		"activity":     {run: cliActivity},
 		"invoke":       {run: cliInvoke, early: func(c cliInvocation) int { return invocationCommand(c.ctx, c.args[1:], c.in, c.out, c.errs) }},
 		"actions":      {run: cliActions},
 		"model":        {run: cliModel},
@@ -125,6 +126,10 @@ func cliInstallArgumentError(c cliInvocation, e error) int {
 
 func cliGovernance(c cliInvocation) int {
 	return governanceCommand(c.selected, c.args[1:], c.out, c.errs, c.jsonMode)
+}
+
+func cliActivity(c cliInvocation) int {
+	return activityCommand(c.ctx, c.selected, c.args[1:], c.out, c.errs, c.jsonMode)
 }
 
 func cliInvoke(c cliInvocation) int {

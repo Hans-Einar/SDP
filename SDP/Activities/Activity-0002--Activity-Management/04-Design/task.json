@@ -1662,7 +1662,9 @@
   "AllowedCodePaths": [
     "SDPTool",
     "Toolkit",
-    "Skills"
+    "Skills",
+    "Template",
+    "SDP/ProjectManagement"
   ],
   "AllowedModelPaths": [
     "Features.design",

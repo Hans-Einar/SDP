@@ -16,7 +16,12 @@ Session references retain their declared paths; no relocation is inferred.
 `Create` creates a planned Activity and mandate without dispatching work.
 `CreateSession` creates an Activity-local working document, before any plan if
 needed, and requires both current Activity event and descriptor revisions. Session
-numbers include existing legacy and Activity homes and declared Session references.
+numbers include existing legacy and Activity homes, declared Session references,
+and actual primary Session identities in other Markdown homes. Phase contributions
+can span the six Activity phases; the legacy single phase remains supported.
+Optional milestone references pin a real plan identity and child milestone
+(`PLAN-…:A1`); predecessor and handoff inputs name actual available records. Their
+metadata and source links are retained in the hashed Session creation snapshot.
 `Recover(operationID, caller)` completes the same bounded operation after failure;
 changed requests with an existing operation ID fail. `Decode` rejects duplicate,
 unknown/noncanonical JSON properties and trailing values.

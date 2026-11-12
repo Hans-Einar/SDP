@@ -57,6 +57,14 @@ func TestCompiledGovernanceJourney(t *testing.T) {
 			if e != nil {
 				return e
 			}
+			// Implementation admissions now serialize with explicit Activity adoption.
+			// The stable flock inode is coordination metadata, never document history.
+			if p == filepath.Join(root, "SDP/ProjectManagement/Ledger.ndjson.lock") {
+				if len(b) != 0 {
+					t.Fatal("unexpected canonical lock contents")
+				}
+				return nil
+			}
 			result[p] = sha256.Sum256(b)
 			return nil
 		})

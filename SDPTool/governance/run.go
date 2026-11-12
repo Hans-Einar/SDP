@@ -1,6 +1,7 @@
 package governance
 
 import (
+	"github.com/Hans-Einar/SDP/SDPTool/projecthistory"
 	"strings"
 )
 
@@ -59,7 +60,7 @@ func (s *Service) Start(caller Caller, q StartRequest) (Result, error) {
 	if !uuidPattern.MatchString(q.RequestID) || !digestPattern.MatchString(q.InputRevision) {
 		return out, fail("invalid_request", "invalid requestId/inputRevision")
 	}
-	unlock, e := lock(s.state)
+	tx, unlock, e := s.lockActivityState()
 	if e != nil {
 		return out, e
 	}
@@ -115,7 +116,11 @@ func (s *Service) Start(caller Caller, q StartRequest) (Result, error) {
 	if e != nil {
 		return out, e
 	}
-	r := Run{ID: id, Revision: 1, RequestID: q.RequestID, State: "ready", Step: "implement", InputRevision: c.Revision, Selection: q.Selection, Assignment: q.Assignment, Routine: routine, RoutineDigest: routine.Digest(), Reason: "coverage resolved; trusted local controller selected bounded work"}
+	binding, e := s.checkActivity(tx, "", q.Selection, q.Assignment, false)
+	if e != nil {
+		return out, e
+	}
+	r := Run{Activity: binding, ID: id, Revision: 1, RequestID: q.RequestID, State: "ready", Step: "implement", InputRevision: c.Revision, Selection: q.Selection, Assignment: q.Assignment, Routine: routine, RoutineDigest: routine.Digest(), Reason: "coverage resolved; trusted local controller selected bounded work"}
 	out = Result{Schema: Schema, Operation: "start", ProjectRef: s.project, CheckoutID: state.CheckoutID, OperationID: q.OperationID, Run: summarizeRun(r), Coverage: "known"}
 	state.Runs[id] = r
 	state.Receipts[q.OperationID] = receipt{digest, out}
@@ -177,7 +182,14 @@ func (s *Service) Transition(caller Caller, q TransitionRequest) (Result, error)
 	if !uuidPattern.MatchString(q.RunID) || !digestPattern.MatchString(q.InputRevision) || q.ExpectedRevision == 0 || strings.TrimSpace(q.Reason) == "" || len(q.Reason) > 64<<10 {
 		return out, fail("invalid_request", "run, revision and bounded reason required")
 	}
-	unlock, e := lock(s.state)
+	var tx *projecthistory.Transaction
+	var unlock func()
+	var e error
+	if q.Action == "start" || q.Action == "resume" {
+		tx, unlock, e = s.lockActivityState()
+	} else {
+		unlock, e = lock(s.state)
+	}
 	if e != nil {
 		return out, e
 	}
@@ -235,6 +247,23 @@ func (s *Service) Transition(caller Caller, q TransitionRequest) (Result, error)
 	}
 	if (q.Action == "report" || q.Action == "start" || q.Action == "resume") && hasBlockingAttention(r) {
 		return out, fail("attention_required", "answer or withdraw blocking questions before advancing this run")
+	}
+	if q.Action == "start" || q.Action == "resume" {
+		settling := false
+		if q.Action == "start" {
+			for _, in := range r.Inputs {
+				if in.Kind == "launch" && in.State == "sending" {
+					settling = true
+				}
+			}
+		}
+		binding, err := s.checkActivity(tx, "", r.Selection, r.Assignment, settling)
+		if err != nil {
+			return out, err
+		}
+		if binding != nil && (r.Activity == nil || *binding != *r.Activity) {
+			return out, fail("activity_admission", "run Activity basis changed")
+		}
 	}
 	next := ""
 	switch q.Action {

@@ -83,8 +83,16 @@ func replayService(s *Service, snapshot projecthistory.Snapshot) (Catalog, error
 		if err := portable(p.Authority.Source); err != nil {
 			return c, err
 		}
-		if p.SchemaVersion == "0.1" && (p.RequestDigest != "" || p.Session != nil || p.Batch != nil || p.Outcome != "" || p.Evidence != nil) {
-			return c, fmt.Errorf("legacy payload extension")
+		if p.SchemaVersion == "0.1" {
+			allowed := map[string]bool{}
+			for _, key := range []string{"schemaVersion", "projectId", "operationId", "recordedAt", "authority", "previousEventId", "from", "to", "reason", "descriptor", "links"} {
+				allowed[key] = true
+			}
+			for key := range pf {
+				if !allowed[key] {
+					return c, fmt.Errorf("legacy payload extension %s", key)
+				}
+			}
 		}
 		if p.SchemaVersion == "0.2" && !hashRE.MatchString(p.RequestDigest) {
 			return c, fmt.Errorf("invalid request digest")

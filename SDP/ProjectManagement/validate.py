@@ -46,15 +46,17 @@ def metadata(path):
     return result
 
 
-def history(events):
+def history(events, sdp=SDP):
     runpy.run_path(str(AREA / "blueprint_history.py"))["validate"](events)
+    if any(e["eventType"].startswith(("x-activity:", "x-activity-admission:")) for e in events):
+        runpy.run_path(str(AREA / "activity_history.py"))["validate"](events, sdp)
     seen, last_numbers, management = set(), {}, {}
     for e in events:
         ENVELOPE.validate(e)
         ident = e['eventId']
         require(ident not in seen, 'duplicate event ID')
         seen.add(ident)
-        if e["eventType"].startswith("x-blueprint:"):
+        if e["eventType"].startswith(("x-blueprint:", "x-activity:", "x-activity-admission:")):
             continue
         prefix, number = ident.rsplit('-', 1)
         number = int(number)
@@ -118,7 +120,7 @@ def history(events):
 
 
 def validate_current(events, board=BOARD, sdp=SDP):
-    cards, management, operations = history(events)
+    cards, management, operations = history(events, sdp)
     actual, metas = {}, {}
     for folder, allowed in STATES.items():
         for path in (board / folder).glob('#*.md'):
@@ -170,7 +172,7 @@ def validate_current(events, board=BOARD, sdp=SDP):
 def main():
     descriptor = json.loads((BOARD / 'board.json').read_text())
     require(descriptor == {'schemaVersion': '0.2', 'projectId': 'SDP', 'namespaces': ['SDP', 'SDL', 'SDUI'], 'ledger': '../ProjectManagement/Ledger.ndjson', 'profile': 'sdp-project-management/0.2'}, 'unsupported board descriptor')
-    events = [json.loads(s) for s in (AREA / 'Ledger.ndjson').read_text().splitlines()]
+    events = runpy.run_path(str(AREA / 'activity_history.py'))['load_events'](AREA / 'Ledger.ndjson')
     c, m, o = validate_current(events)
     print(f'PASS: {c} cards, {m} management records, {o} lineage operations, {len(events)} events; schema/history/metadata/placement/grouping')
 

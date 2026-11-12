@@ -43,7 +43,7 @@ func (s *Service) ActivateAssignment(caller Caller, q ActivationRequest) (Result
 	if !uuidPattern.MatchString(q.RequestID) || !uuidPattern.MatchString(q.DecisionOperationID) || !digestPattern.MatchString(q.ReviewRevision) {
 		return out, fail("invalid_request", "request identity and exact decision/review required")
 	}
-	unlock, err := lock(s.state)
+	tx, unlock, err := s.lockActivityState()
 	if err != nil {
 		return out, err
 	}
@@ -92,7 +92,14 @@ func (s *Service) ActivateAssignment(caller Caller, q ActivationRequest) (Result
 		return out, err
 	}
 	routine := Implementation()
-	r := Run{ID: id, Revision: 1, RequestID: q.RequestID, State: "ready", Step: "implement", InputRevision: p.InputRevision, Selection: p.Selection, Assignment: p.Assignment, Routine: routine, RoutineDigest: routine.Digest(), Reason: "trusted controller activated exact approved implementation package"}
+	binding, err := s.checkActivity(tx, "", p.Selection, p.Assignment, false)
+	if err != nil {
+		return out, err
+	}
+	if p.Activity != nil && (binding == nil || *p.Activity != *binding) {
+		return out, fail("activity_admission", "prepared Activity basis changed")
+	}
+	r := Run{Activity: binding, ID: id, Revision: 1, RequestID: q.RequestID, State: "ready", Step: "implement", InputRevision: p.InputRevision, Selection: p.Selection, Assignment: p.Assignment, Routine: routine, RoutineDigest: routine.Digest(), Reason: "trusted controller activated exact approved implementation package"}
 	out = Result{Schema: Schema, Operation: "activate", ProjectRef: s.project, CheckoutID: state.CheckoutID, OperationID: q.OperationID, Run: summarizeRun(r), Coverage: "known"}
 	final, err := s.ReviewAssignmentDesign(q.Review)
 	if err != nil {

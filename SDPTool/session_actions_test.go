@@ -11,6 +11,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/Hans-Einar/SDP/SDPTool/activities"
 	"github.com/Hans-Einar/SDP/SDPTool/blueprintstate"
 )
 
@@ -89,6 +90,11 @@ func TestActionPolicyMatchesRegisteredMutation(t *testing.T) {
 	for _, spec := range actionRegistry() {
 		descriptor := spec.descriptor
 		want := descriptor.ID == "blueprint.assignment.apply" || (strings.HasPrefix(descriptor.ID, "governance.session.") && descriptor.Mutation != "none")
+		for _, op := range activities.Operations() {
+			if descriptor.ID == op.ActionID {
+				want = op.Write
+			}
+		}
 		if spec.policy.callerAttribution != want {
 			t.Fatalf("%s attribution=%v want %v", descriptor.ID, spec.policy.callerAttribution, want)
 		}
@@ -104,6 +110,12 @@ func TestActionPolicyMatchesRegisteredMutation(t *testing.T) {
 }
 func validPolicyParameters(id string) any {
 	switch id {
+	case "activity.read", "activity.history", "activity.timeline":
+		return ActivityReadInput{Activity: "ACTIVITY-TEST-0001"}
+	case "activity.view":
+		return ActivityViewInput{URI: "activity-view://test/overview", Output: "out"}
+	case "activity.tree":
+		return ActivityTreeInput{URI: "activity-tree://test/children", Revision: "revision"}
 	case "project.model-tree":
 		return ModelTreeOptions{Model: "model", Revision: "revision"}
 	case "blueprint.generate":

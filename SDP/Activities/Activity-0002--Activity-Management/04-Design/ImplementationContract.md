@@ -65,14 +65,26 @@ they have no Activity catalog. New create/adopt commands must explain which poli
 is enabled; merely viewing documents cannot change execution policy.
 
 Governance owns actual runs/attempts and their recovery. An injected inspection
-port supplies linked execution and uncertainty; no inspection must never mean no
-work. Active-exit/complete/switch operations require known execution disposition.
-When work is still active, retain a pending lifecycle request that blocks new
-admissions, permit observation/interrupt/recovery, and finish only after actual
-quiescence. Do not hold a filesystem lock or canonical record reservation for the
-lifetime of a running agent. Detailed admission serialization must be reconciled
-with existing project-coordination → canonical-history → operational-state ordering
-before A5 writes; never introduce the reverse lock order.
+port supplies linked implementation runs, outbound claims and uncertainty; no
+inspection must never mean no work. Active-exit/complete/switch operations require
+known implementation execution disposition across the explicitly registered PG
+stores. This is implementation quiescence, not a universal host-stop claim.
+The existing Reviewer and Project Leader hosts retain their read-only sandbox and
+restricted tool sets; unrelated read-only investigation, discussion and KB capture
+remain allowed without implementation admission.
+
+When implementation is still active, retain a pending lifecycle request that
+blocks new admissions/claims, permit observation/interrupt/recovery, and finish only
+after observed implementation quiescence. An exact existing OwnerInput in sending
+or uncertain state remains in-flight until existing host recovery settles it;
+never turn a pending hold into another permission to send. Do not hold a filesystem
+lock or canonical record reservation for the lifetime of an agent or host RPC.
+Admission takes canonical-history before operational-state locks; record writers
+retain project-coordination → canonical-history → operational-state ordering.
+Nested read/context helpers must not acquire canonical history while state is locked.
+Read-only Context/Route/Read retain their existing availability. Candidate inspection
+also retains its existing input-revision checks; any canonical ledger change may
+make a prior run's pinned inputs stale, independently of Activity admission.
 
 After adoption, prepare/start/activate and actual launch/retry check active Activity,
 explicit work membership and scope, not merely the CLI command name. Bind admitted

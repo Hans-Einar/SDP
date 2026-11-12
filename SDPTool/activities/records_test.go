@@ -340,3 +340,84 @@ func TestMissingDuplicateAndUnregisteredDescriptorHomes(t *testing.T) {
 		})
 	}
 }
+
+func TestSessionPhaseContributionsMilestonesAndHandoff(t *testing.T) {
+	s, c := fixture(t)
+	if _, e := s.Create(request(t, s, op1), c); e != nil {
+		t.Fatal(e)
+	}
+	if e := s.write("Plan.md", []byte("# Plan\n\n| Field | Value |\n| --- | --- |\n| id | PLAN-TEST-0001 |\n\n| Milestone | Outcome |\n| --- | --- |\n| A1 Study | Accepted study |\n")); e != nil {
+		t.Fatal(e)
+	}
+	if e := s.write("Archive/Prior.md", []byte("# Prior Session\n\n| Field | Value |\n| --- | --- |\n| Session reference | SESSION-TEST-0012 |\n")); e != nil {
+		t.Fatal(e)
+	}
+	if e := s.write("Handoff.md", []byte("# Handoff\n\n| Field | Value |\n| --- | --- |\n| id | HANDOFF-TEST-0001 |\n")); e != nil {
+		t.Fatal(e)
+	}
+	q := sessionRequest(t, s)
+	q.Phase = ""
+	q.PhaseContributions = []string{"02-Study", "04-Design"}
+	q.Plan = &Reference{Role: "plan", ID: "PLAN-TEST-0001", Path: "Plan.md"}
+	q.MilestoneRefs = []Reference{{Role: "milestone", ID: "PLAN-TEST-0001:A1", Path: "Plan.md"}}
+	q.Predecessor = &Reference{Role: "predecessor", ID: "SESSION-TEST-0012", Path: "Archive/Prior.md"}
+	q.Handoff = &Reference{Role: "handoff", ID: "HANDOFF-TEST-0001", Path: "Handoff.md"}
+	r, e := s.CreateSession(q, c)
+	if e != nil || r.SessionID != "SESSION-TEST-0013" {
+		t.Fatal(r, e)
+	}
+	b, e := s.read(r.Path)
+	if e != nil {
+		t.Fatal(e)
+	}
+	for _, text := range []string{"| Phase contributions | 02-Study, 04-Design |", "| Milestones | PLAN-TEST-0001:A1 |", "| Predecessor | SESSION-TEST-0012 |", "| Handoff | HANDOFF-TEST-0001 |", "../../../Plan.md", "../../../Archive/Prior.md"} {
+		if !bytes.Contains(b, []byte(text)) {
+			t.Fatal("missing real linked Session context", text, string(b))
+		}
+	}
+	cat, e := s.Read()
+	if e != nil {
+		t.Fatal(e)
+	}
+	last := cat.Activities[0].Events[len(cat.Activities[0].Events)-1]
+	if last.Payload.Session == nil || last.Payload.Session.SHA256 != digest(b) {
+		t.Fatal("Session event did not pin complete authored context")
+	}
+}
+func TestSessionRefusesInvalidPhaseAndSelectedRecordLinks(t *testing.T) {
+	for _, kind := range []string{"missing-phase", "duplicate-phase", "invalid-phase", "conflicting-phase", "wrong-plan", "missing-milestone", "wrong-predecessor", "unavailable-handoff"} {
+		t.Run(kind, func(t *testing.T) {
+			s, c := fixture(t)
+			if _, e := s.Create(request(t, s, op1), c); e != nil {
+				t.Fatal(e)
+			}
+			s.write("Plan.md", []byte("| id | PLAN-TEST-0001 |\n| A1 Study | Result |\n"))
+			q := sessionRequest(t, s)
+			switch kind {
+			case "missing-phase":
+				q.Phase = ""
+			case "duplicate-phase":
+				q.PhaseContributions = []string{"04-Design", "04-Design"}
+			case "invalid-phase":
+				q.PhaseContributions = []string{"03-Architecture"}
+			case "conflicting-phase":
+				q.PhaseContributions = []string{"02-Study"}
+			case "wrong-plan":
+				q.Plan = &Reference{Role: "plan", ID: "PLAN-TEST-9999", Path: "Plan.md"}
+			case "missing-milestone":
+				q.MilestoneRefs = []Reference{{Role: "milestone", ID: "PLAN-TEST-0001:A9", Path: "Plan.md"}}
+			case "wrong-predecessor":
+				q.Predecessor = &Reference{Role: "session", ID: "SESSION-TEST-9999", Path: "Plan.md"}
+			case "unavailable-handoff":
+				q.Handoff = &Reference{Role: "handoff", ID: "HANDOFF-OTHER-0001", Path: "missing.md", ProjectID: "OTHER", Availability: "unavailable", UnavailableReason: "not installed"}
+			}
+			if _, e := s.CreateSession(q, c); e == nil {
+				t.Fatal("invalid Session context accepted", kind)
+			}
+			cat, e := s.Read()
+			if e != nil || len(cat.Activities[0].Sessions) != 0 {
+				t.Fatal("invalid Session context produced records", e)
+			}
+		})
+	}
+}
