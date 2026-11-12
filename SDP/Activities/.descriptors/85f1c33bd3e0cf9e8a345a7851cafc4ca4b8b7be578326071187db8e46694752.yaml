@@ -1,0 +1,30 @@
+schema: sdp-activity/0.2
+id: ACTIVITY-SDP-0003
+projectId: SDP
+title: Readable SDL browsing
+owner: project-owner
+mandate: 01-Mandate/Mandate.md
+sourceCards:
+    - KB-SDP-060
+systems:
+    - SDL
+    - SDPTOOL
+    - XFMD
+references:
+    - role: design-plan
+      id: PLAN-SDP-0025
+      path: 04--Design/SDPTool/SDLBrowsing/Plan.md
+    - membership: whole-scope
+      role: implementation-plan
+      id: PLAN-SDP-0028
+      path: Activities/Activity-0003--Readable-SDL-browsing/05-Implementation/Plan.md
+    - membership: whole-scope
+      role: session
+      id: SESSION-SDP-0019
+      path: Activities/Activity-0003--Readable-SDL-browsing/Sessions/session-#0019--Readable-browsing-and-RPM-delivery.md
+scope:
+    - SDPTool
+    - SDL
+    - SDP
+    - Toolkit
+    - Template

@@ -86,3 +86,13 @@ first native target-container suite passed88/89; StandaloneMermaidGuiTest failed
 at its fixture file-tree lookup, so publication remains blocked on diagnosis and
 the rebuilt exact candidate. Earlier product/native evidence remains retained;
 no failed package gate is described as passing.
+
+## T005 — Reference reconciliation at quiescent boundary
+
+After the failed package pipeline stopped, the release worker explicitly confirmed
+no builds/tests/product edits running. SDPTool held Activity3, updated its retained
+descriptor with whole-scope PLAN0028 and SESSION0019 references, and resumed it.
+All three canonical events and operation images are retained;775 management events
+validate. This was an observed administrative checkpoint, not a claim that a ledger
+entry stopped a process. The worker resumed the bounded test timing correction and
+repackaging only after the resume event. Independent review approvedc3463b7.
