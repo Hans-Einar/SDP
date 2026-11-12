@@ -1,0 +1,411 @@
+{
+  "ID": "TASK-SDP-ACTIVITY0003",
+  "Intent": "Replace inventory navigation with semantic producer-owned reading across all viewpoints, preserving source freshness and generic native consumption.",
+  "AllowedChanges": [
+    {
+      "Change": "removed",
+      "Element": "SDPTool/functionality/ProjectDiagramInventory"
+    },
+    {
+      "Fact": "NavigationProjection owns ProjectDiagramInventory.",
+      "Change": "removed"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/feature/ReadableSystemDesign"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/feature/ProducerOwnedNavigation"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/usecase/UnderstandSystem"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/actor/DesignReader"
+    },
+    {
+      "Fact": "DesignReader pursues UnderstandSystem.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ReadableSystemDesign supports UnderstandSystem.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ProducerOwnedNavigation supports UnderstandSystem.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/mode/DesignBrowsing"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/interface/CheckedSourceGraph"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/interface/NativeDocumentRendering"
+    },
+    {
+      "Fact": "SdlSemanticLibrary consumes CheckedSourceGraph.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalXfmd consumes NativeDocumentRendering.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/functionality/DiscoverSystemMembership"
+    },
+    {
+      "Fact": "NavigationProjection owns DiscoverSystemMembership.",
+      "Change": "added"
+    },
+    {
+      "Fact": "DiscoverSystemMembership contributes-to ProducerOwnedNavigation.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/functionality/ProjectOrderedReadingTree"
+    },
+    {
+      "Fact": "NavigationProjection owns ProjectOrderedReadingTree.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ProjectOrderedReadingTree contributes-to ProducerOwnedNavigation.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/functionality/AdvertisePrimaryActivation"
+    },
+    {
+      "Fact": "NavigationProjection owns AdvertisePrimaryActivation.",
+      "Change": "added"
+    },
+    {
+      "Fact": "AdvertisePrimaryActivation contributes-to ProducerOwnedNavigation.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/functionality/KeepExpansionSeparate"
+    },
+    {
+      "Fact": "NavigationProjection owns KeepExpansionSeparate.",
+      "Change": "added"
+    },
+    {
+      "Fact": "KeepExpansionSeparate contributes-to ProducerOwnedNavigation.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/functionality/ProjectUnassignedSource"
+    },
+    {
+      "Fact": "NavigationProjection owns ProjectUnassignedSource.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ProjectUnassignedSource contributes-to ProducerOwnedNavigation.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/functionality/SelectSemanticCollections"
+    },
+    {
+      "Fact": "SdlSemanticLibrary owns SelectSemanticCollections.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SelectSemanticCollections contributes-to ReadableSystemDesign.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/functionality/ComposeViewpointExplanation"
+    },
+    {
+      "Fact": "SdlSemanticLibrary owns ComposeViewpointExplanation.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ComposeViewpointExplanation contributes-to ReadableSystemDesign.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/functionality/ComposeCollectionChapters"
+    },
+    {
+      "Fact": "SdlSemanticLibrary owns ComposeCollectionChapters.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ComposeCollectionChapters contributes-to ReadableSystemDesign.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/functionality/ComposeObjectDetail"
+    },
+    {
+      "Fact": "SdlSemanticLibrary owns ComposeObjectDetail.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ComposeObjectDetail contributes-to ReadableSystemDesign.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/functionality/SeparateCompleteRegisters"
+    },
+    {
+      "Fact": "SdlSemanticLibrary owns SeparateCompleteRegisters.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SeparateCompleteRegisters contributes-to ReadableSystemDesign.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/functionality/ExplainChannelParticipants"
+    },
+    {
+      "Fact": "SdlSemanticLibrary owns ExplainChannelParticipants.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExplainChannelParticipants contributes-to ReadableSystemDesign.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/functionality/ResolveReadableStatements"
+    },
+    {
+      "Fact": "SdlSemanticLibrary owns ResolveReadableStatements.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ResolveReadableStatements contributes-to ReadableSystemDesign.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/functionality/RetainCheckedSources"
+    },
+    {
+      "Fact": "DocumentPublisher owns RetainCheckedSources.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RetainCheckedSources contributes-to ReadableSystemDesign.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/functionality/RejectStaleSelection"
+    },
+    {
+      "Fact": "DocumentPublisher owns RejectStaleSelection.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RejectStaleSelection contributes-to ReadableSystemDesign.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/functionality/PublishOnDemandBundle"
+    },
+    {
+      "Fact": "DocumentPublisher owns PublishOnDemandBundle.",
+      "Change": "added"
+    },
+    {
+      "Fact": "PublishOnDemandBundle contributes-to ReadableSystemDesign.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/functionality/ConsumeProducerTree"
+    },
+    {
+      "Fact": "ExternalXfmd owns ConsumeProducerTree.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ConsumeProducerTree contributes-to ProducerOwnedNavigation.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/functionality/ActivateOpaqueTarget"
+    },
+    {
+      "Fact": "ExternalXfmd owns ActivateOpaqueTarget.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ActivateOpaqueTarget contributes-to ProducerOwnedNavigation.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/functionality/RenderReturnedDocument"
+    },
+    {
+      "Fact": "ExternalXfmd owns RenderReturnedDocument.",
+      "Change": "added"
+    },
+    {
+      "Fact": "RenderReturnedDocument contributes-to ProducerOwnedNavigation.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/channel/ReadingActions"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/message/SelectReadingNode"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/message/ReadingBundle"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/contract/ReadingActionContract"
+    },
+    {
+      "Fact": "ReadingActions upholds ReadingActionContract.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ReadingActionContract permits SelectReadingNode.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ReadingActionContract permits ReadingBundle.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SelectReadingNode has message-kind = request.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ReadingBundle has message-kind = result.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ReadingBundle replies-to SelectReadingNode.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalXfmd uses ReadingActions as sender of SelectReadingNode in mode DesignBrowsing.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ExternalXfmd uses ReadingActions as receiver of ReadingBundle in mode DesignBrowsing.",
+      "Change": "added"
+    },
+    {
+      "Fact": "DocumentPublisher uses ReadingActions as receiver of SelectReadingNode in mode DesignBrowsing.",
+      "Change": "added"
+    },
+    {
+      "Fact": "DocumentPublisher uses ReadingActions as sender of ReadingBundle in mode DesignBrowsing.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/scenario/ReaderOpensCollection"
+    },
+    {
+      "Fact": "ReaderOpensCollection exercises UnderstandSystem.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ReaderOpensCollection runs-in DesignBrowsing.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ReaderOpensCollection step 1 sends SelectReadingNode from ExternalXfmd to DocumentPublisher via ReadingActions.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ReaderOpensCollection step 2 sends ReadingBundle from DocumentPublisher to ExternalXfmd via ReadingActions reply-to 1.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ReadingActionContract has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ReaderOpensCollection has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/contract/ReadingPayload"
+    },
+    {
+      "Fact": "ReadingPayload has completeness = closed.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SelectReadingNode upholds ReadingPayload.",
+      "Change": "added"
+    },
+    {
+      "Fact": "ReadingBundle upholds ReadingPayload.",
+      "Change": "added"
+    },
+    {
+      "Change": "added",
+      "Element": "SDPTool/field/SelectedReadingResource"
+    },
+    {
+      "Fact": "ReadingPayload has-field SelectedReadingResource.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SelectedReadingResource has presence = required.",
+      "Change": "added"
+    },
+    {
+      "Fact": "SelectedReadingResource has value-type = text.",
+      "Change": "added"
+    }
+  ],
+  "AllowedCodePaths": [
+    "SDPTool",
+    "SDL/go/viewpoint",
+    "SDL/go/documents"
+  ],
+  "AllowedModelPaths": [
+    "System.design"
+  ],
+  "Rules": [
+    {
+      "ID": "preserve-host",
+      "Source": "Activity1 accepted architecture",
+      "Fact": "SDPTool contains SdpToolHost.",
+      "Now": true,
+      "Target": true
+    }
+  ]
+}

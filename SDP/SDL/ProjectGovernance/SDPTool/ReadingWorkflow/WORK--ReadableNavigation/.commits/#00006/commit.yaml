@@ -1,0 +1,13 @@
+author: warloc
+artifactName: ReadableNavigation
+id: 6fbb521b-120c-4c40-aebd-cf2713ddf462:00006
+parents:
+    - 6fbb521b-120c-4c40-aebd-cf2713ddf462:00005
+kind: commit
+message: B0 model explicit resource payload field
+recordedAt: "2026-11-12T22:51:29.147084445Z"
+sourceDigest: 0f4bafa53a4e0a00db9de8447cd7a3b0952826a59f6a703aba3c9108a4ba7efa
+inventory:
+    System.design: 66ee8fe5a461741a43687aac1b615f5618ab68d80d4e90b006980b31b6742ed8
+deleted: []
+payload: .commits/#00006

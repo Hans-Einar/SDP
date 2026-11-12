@@ -1,0 +1,85 @@
+schema: sdp-model/0.1
+id: 6fbb521b-120c-4c40-aebd-cf2713ddf462
+kind: work
+name: ReadableNavigation
+head: 6fbb521b-120c-4c40-aebd-cf2713ddf462:00005
+sequence: 5
+sourceDigest: a9423a0dbba3842c0af986744154c56434217165189a8f6e294ac130132ccedc
+metadataDigest: a0a0252f292867bc19af8b34eeb3df888cda9b9aa0467616ac15429fde57667a
+ledger:
+    - author: warloc
+      artifactName: ReadableNavigation
+      id: 6fbb521b-120c-4c40-aebd-cf2713ddf462:00000
+      parents: []
+      kind: baseline
+      message: WORK baseline
+      recordedAt: "2026-11-12T22:49:39.560740619Z"
+      sourceDigest: 4585f3ebe7e43550a374592cb06f5148d1d09a27601439b90a8daf263120561c
+      inventory: {}
+      deleted: []
+      payload: .commits/#00000
+    - author: warloc
+      artifactName: ReadableNavigation
+      id: 6fbb521b-120c-4c40-aebd-cf2713ddf462:00001
+      parents:
+        - 6fbb521b-120c-4c40-aebd-cf2713ddf462:00000
+      kind: commit
+      message: B0 producer-owned reading responsibility and workflow contract
+      recordedAt: "2026-11-12T22:49:39.628135383Z"
+      sourceDigest: 6ce4a823d76121c7f75d8c90d77668bd9328ef8772a6847af48be91323f02ad0
+      inventory:
+        System.design: 079b549bd5533304a7fce57d57ea8ce9fe0a3c2b7dc720e2fa4f45ae31045d12
+      deleted: []
+      payload: .commits/#00001
+    - author: warloc
+      artifactName: ReadableNavigation
+      id: 6fbb521b-120c-4c40-aebd-cf2713ddf462:00002
+      parents:
+        - 6fbb521b-120c-4c40-aebd-cf2713ddf462:00001
+      kind: commit
+      message: B0 normalize declarations before statements
+      recordedAt: "2026-11-12T22:49:57.826033616Z"
+      sourceDigest: 731b49a1636288cf1d5aaf63bd9ab4134afb1fe79cdafbae109d08c22aa04735
+      inventory:
+        System.design: aec119ba072c7039169dd4f05c74078fe8e4312e02fef2dd87c367ccf0f57eb1
+      deleted: []
+      payload: .commits/#00002
+    - author: warloc
+      artifactName: ReadableNavigation
+      id: 6fbb521b-120c-4c40-aebd-cf2713ddf462:00003
+      parents:
+        - 6fbb521b-120c-4c40-aebd-cf2713ddf462:00002
+      kind: commit
+      message: B0 declare protocol and scenario completeness
+      recordedAt: "2026-11-12T22:50:34.657634808Z"
+      sourceDigest: 40ae33b76cdf16af6f7b8f1acf7f41b69b4a519e57e5b8f0333efcf21d139b4b
+      inventory:
+        System.design: 1448717ef472c9d86545163f7989e024f7eacf26bbf0ed4b94033e30c0b79daf
+      deleted: []
+      payload: .commits/#00003
+    - author: warloc
+      artifactName: ReadableNavigation
+      id: 6fbb521b-120c-4c40-aebd-cf2713ddf462:00004
+      parents:
+        - 6fbb521b-120c-4c40-aebd-cf2713ddf462:00003
+      kind: commit
+      message: B0 explicit open payload contract
+      recordedAt: "2026-11-12T22:50:59.677072338Z"
+      sourceDigest: beac8bcea2876e334be5eb42ff575dec3bbe74dc4f8cd9387bbeabad1f629982
+      inventory:
+        System.design: b9f4de28998a3814875c4267508a6b6393393749b4233ce8846120eaf83767d6
+      deleted: []
+      payload: .commits/#00004
+    - author: warloc
+      artifactName: ReadableNavigation
+      id: 6fbb521b-120c-4c40-aebd-cf2713ddf462:00005
+      parents:
+        - 6fbb521b-120c-4c40-aebd-cf2713ddf462:00004
+      kind: commit
+      message: B0 close selected request result protocol
+      recordedAt: "2026-11-12T22:51:12.885640736Z"
+      sourceDigest: a9423a0dbba3842c0af986744154c56434217165189a8f6e294ac130132ccedc
+      inventory:
+        System.design: a52dc3b136ac738ad2abfb34487e1984237dcf59b7f77da2ae8e6da0d459ea6a
+      deleted: []
+      payload: .commits/#00005

@@ -26,3 +26,11 @@ the implemented candidate commands and current protocol. Creating/viewing these
 records does not adopt runtime admission; explicit inventory/adoption remains
 separate. No released binary, live installation or owner acceptance of Activity0002
 is inferred from these documents.
+
+## Current selection
+
+Activity0003 — Readable SDL browsing is now tool-created and active, under
+PLAN-SDP-0028 / SESSION-SDP-0019. Activity0002 is technically qualified and on hold
+for any later owner disposition; the owner explicitly proceeds without personal
+review. Runtime admission was explicitly adopted with the observed canonical
+local execution store before the atomic switch; see Session0019.

@@ -1,0 +1,46 @@
+schema: sdp-model/0.1
+id: 94d24550-d2ad-4d34-bf89-1677bbc85fd1
+kind: work
+name: InventoryNavigation
+head: 94d24550-d2ad-4d34-bf89-1677bbc85fd1:00002
+sequence: 2
+sourceDigest: 0fcc99a429a88d976a839214a7e07d7af360cf8c1a5ec8346e1d84c370441247
+metadataDigest: 2ccf9d32f83c7d775ec6c339b803fcc5b9f71f23932e63e129eeba36e76a407b
+ledger:
+    - author: warloc
+      artifactName: InventoryNavigation
+      id: 94d24550-d2ad-4d34-bf89-1677bbc85fd1:00000
+      parents: []
+      kind: baseline
+      message: WORK baseline
+      recordedAt: "2026-11-12T22:49:39.541592687Z"
+      sourceDigest: 4585f3ebe7e43550a374592cb06f5148d1d09a27601439b90a8daf263120561c
+      inventory: {}
+      deleted: []
+      payload: .commits/#00000
+    - author: warloc
+      artifactName: InventoryNavigation
+      id: 94d24550-d2ad-4d34-bf89-1677bbc85fd1:00001
+      parents:
+        - 94d24550-d2ad-4d34-bf89-1677bbc85fd1:00000
+      kind: commit
+      message: B0 observed inventory navigation boundary
+      recordedAt: "2026-11-12T22:49:39.603794357Z"
+      sourceDigest: 7b68e5e5121782601eca7e4b494ca4f8569d524fd356e6baa63b4ac928438dd5
+      inventory:
+        System.design: 00802eaf0ccd0e2f8c2484e67058e1603ffd7704f9d531d59f0456b8735ee2ed
+      deleted: []
+      payload: .commits/#00001
+    - author: warloc
+      artifactName: InventoryNavigation
+      id: 94d24550-d2ad-4d34-bf89-1677bbc85fd1:00002
+      parents:
+        - 94d24550-d2ad-4d34-bf89-1677bbc85fd1:00001
+      kind: commit
+      message: B0 normalize declarations before statements
+      recordedAt: "2026-11-12T22:49:57.79934624Z"
+      sourceDigest: 0fcc99a429a88d976a839214a7e07d7af360cf8c1a5ec8346e1d84c370441247
+      inventory:
+        System.design: cfb428f4dcd81982da5fe6850b92363e0e38d2de07f0731eb660e31961476164
+      deleted: []
+      payload: .commits/#00002

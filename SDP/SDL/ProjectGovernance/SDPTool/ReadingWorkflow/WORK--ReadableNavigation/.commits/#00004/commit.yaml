@@ -1,0 +1,13 @@
+author: warloc
+artifactName: ReadableNavigation
+id: 6fbb521b-120c-4c40-aebd-cf2713ddf462:00004
+parents:
+    - 6fbb521b-120c-4c40-aebd-cf2713ddf462:00003
+kind: commit
+message: B0 explicit open payload contract
+recordedAt: "2026-11-12T22:50:59.677072338Z"
+sourceDigest: beac8bcea2876e334be5eb42ff575dec3bbe74dc4f8cd9387bbeabad1f629982
+inventory:
+    System.design: b9f4de28998a3814875c4267508a6b6393393749b4233ce8846120eaf83767d6
+deleted: []
+payload: .commits/#00004

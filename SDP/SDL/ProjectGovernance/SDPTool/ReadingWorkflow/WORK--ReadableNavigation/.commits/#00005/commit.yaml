@@ -1,0 +1,13 @@
+author: warloc
+artifactName: ReadableNavigation
+id: 6fbb521b-120c-4c40-aebd-cf2713ddf462:00005
+parents:
+    - 6fbb521b-120c-4c40-aebd-cf2713ddf462:00004
+kind: commit
+message: B0 close selected request result protocol
+recordedAt: "2026-11-12T22:51:12.885640736Z"
+sourceDigest: a9423a0dbba3842c0af986744154c56434217165189a8f6e294ac130132ccedc
+inventory:
+    System.design: a52dc3b136ac738ad2abfb34487e1984237dcf59b7f77da2ae8e6da0d459ea6a
+deleted: []
+payload: .commits/#00005

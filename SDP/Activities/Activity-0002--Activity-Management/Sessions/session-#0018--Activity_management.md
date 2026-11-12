@@ -109,3 +109,14 @@ candidates remain eb11ac7 and a558c31 respectively. The only subsequent SDP chan
 is this handoff record. No main branch, installed binary or release was changed.
 The owner can fetch the same feature-branch name in both repositories. Activity0002
 remains active/gate-review; next is the owner's actual disposition.
+
+## T006 — Owner authorizes the next Activity and publication
+
+The owner has no time for personal review and authorizes completing Activity3,
+then building and publishing XFMD to the existing beinerud.ddns.net RPM repository
+for DNF upgrade. Activity2 technical qualification remains valid; no personal
+review is claimed. Hold Activity2 pending any later owner disposition while
+selecting the browsing need through the implemented Activity commands.
+The published package will include the qualified Activity2 capabilities.
+No main merge or unrelated primary XFMD work is selected. Product version is
+being clarified because the requested 9.1 differs from the current 0.9 series.

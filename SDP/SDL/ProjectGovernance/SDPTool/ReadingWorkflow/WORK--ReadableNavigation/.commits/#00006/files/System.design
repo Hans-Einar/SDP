@@ -1,0 +1,106 @@
+language design-core version 0.6.
+system SDPTool.
+container SdpToolHost.
+unit SdlSemanticLibrary.
+unit NavigationProjection.
+unit DocumentPublisher.
+unit ExternalXfmd.
+feature ReadableSystemDesign.
+feature ProducerOwnedNavigation.
+usecase UnderstandSystem.
+actor DesignReader.
+mode DesignBrowsing.
+interface CheckedSourceGraph.
+interface NativeDocumentRendering.
+functionality DiscoverSystemMembership.
+functionality ProjectOrderedReadingTree.
+functionality AdvertisePrimaryActivation.
+functionality KeepExpansionSeparate.
+functionality ProjectUnassignedSource.
+functionality SelectSemanticCollections.
+functionality ComposeViewpointExplanation.
+functionality ComposeCollectionChapters.
+functionality ComposeObjectDetail.
+functionality SeparateCompleteRegisters.
+functionality ExplainChannelParticipants.
+functionality ResolveReadableStatements.
+functionality RetainCheckedSources.
+functionality RejectStaleSelection.
+functionality PublishOnDemandBundle.
+functionality ConsumeProducerTree.
+functionality ActivateOpaqueTarget.
+functionality RenderReturnedDocument.
+channel ReadingActions.
+message SelectReadingNode.
+message ReadingBundle.
+contract ReadingActionContract.
+scenario ReaderOpensCollection.
+contract ReadingPayload.
+field SelectedReadingResource.
+SDPTool contains SdpToolHost.
+SdpToolHost contains SdlSemanticLibrary.
+SdpToolHost contains NavigationProjection.
+SdpToolHost contains DocumentPublisher.
+DesignReader pursues UnderstandSystem.
+ReadableSystemDesign supports UnderstandSystem.
+ProducerOwnedNavigation supports UnderstandSystem.
+SdlSemanticLibrary consumes CheckedSourceGraph.
+ExternalXfmd consumes NativeDocumentRendering.
+NavigationProjection owns DiscoverSystemMembership.
+DiscoverSystemMembership contributes-to ProducerOwnedNavigation.
+NavigationProjection owns ProjectOrderedReadingTree.
+ProjectOrderedReadingTree contributes-to ProducerOwnedNavigation.
+NavigationProjection owns AdvertisePrimaryActivation.
+AdvertisePrimaryActivation contributes-to ProducerOwnedNavigation.
+NavigationProjection owns KeepExpansionSeparate.
+KeepExpansionSeparate contributes-to ProducerOwnedNavigation.
+NavigationProjection owns ProjectUnassignedSource.
+ProjectUnassignedSource contributes-to ProducerOwnedNavigation.
+SdlSemanticLibrary owns SelectSemanticCollections.
+SelectSemanticCollections contributes-to ReadableSystemDesign.
+SdlSemanticLibrary owns ComposeViewpointExplanation.
+ComposeViewpointExplanation contributes-to ReadableSystemDesign.
+SdlSemanticLibrary owns ComposeCollectionChapters.
+ComposeCollectionChapters contributes-to ReadableSystemDesign.
+SdlSemanticLibrary owns ComposeObjectDetail.
+ComposeObjectDetail contributes-to ReadableSystemDesign.
+SdlSemanticLibrary owns SeparateCompleteRegisters.
+SeparateCompleteRegisters contributes-to ReadableSystemDesign.
+SdlSemanticLibrary owns ExplainChannelParticipants.
+ExplainChannelParticipants contributes-to ReadableSystemDesign.
+SdlSemanticLibrary owns ResolveReadableStatements.
+ResolveReadableStatements contributes-to ReadableSystemDesign.
+DocumentPublisher owns RetainCheckedSources.
+RetainCheckedSources contributes-to ReadableSystemDesign.
+DocumentPublisher owns RejectStaleSelection.
+RejectStaleSelection contributes-to ReadableSystemDesign.
+DocumentPublisher owns PublishOnDemandBundle.
+PublishOnDemandBundle contributes-to ReadableSystemDesign.
+ExternalXfmd owns ConsumeProducerTree.
+ConsumeProducerTree contributes-to ProducerOwnedNavigation.
+ExternalXfmd owns ActivateOpaqueTarget.
+ActivateOpaqueTarget contributes-to ProducerOwnedNavigation.
+ExternalXfmd owns RenderReturnedDocument.
+RenderReturnedDocument contributes-to ProducerOwnedNavigation.
+ReadingActions upholds ReadingActionContract.
+ReadingActionContract permits SelectReadingNode.
+ReadingActionContract permits ReadingBundle.
+SelectReadingNode has message-kind = request.
+ReadingBundle has message-kind = result.
+ReadingBundle replies-to SelectReadingNode.
+ExternalXfmd uses ReadingActions as sender of SelectReadingNode in mode DesignBrowsing.
+ExternalXfmd uses ReadingActions as receiver of ReadingBundle in mode DesignBrowsing.
+DocumentPublisher uses ReadingActions as receiver of SelectReadingNode in mode DesignBrowsing.
+DocumentPublisher uses ReadingActions as sender of ReadingBundle in mode DesignBrowsing.
+ReaderOpensCollection exercises UnderstandSystem.
+ReaderOpensCollection runs-in DesignBrowsing.
+ReaderOpensCollection step 1 sends SelectReadingNode from ExternalXfmd to DocumentPublisher via ReadingActions.
+ReaderOpensCollection step 2 sends ReadingBundle from DocumentPublisher to ExternalXfmd via ReadingActions reply-to 1.
+ReadingActionContract has completeness = closed.
+ReaderOpensCollection has completeness = closed.
+ReadingPayload has completeness = closed.
+SelectReadingNode upholds ReadingPayload.
+ReadingBundle upholds ReadingPayload.
+ReadingPayload has-field SelectedReadingResource.
+SelectedReadingResource has presence = required.
+SelectedReadingResource has value-type = text.

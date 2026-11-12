@@ -1,0 +1,13 @@
+author: warloc
+artifactName: ReadableNavigation
+id: 6fbb521b-120c-4c40-aebd-cf2713ddf462:00001
+parents:
+    - 6fbb521b-120c-4c40-aebd-cf2713ddf462:00000
+kind: commit
+message: B0 producer-owned reading responsibility and workflow contract
+recordedAt: "2026-11-12T22:49:39.628135383Z"
+sourceDigest: 6ce4a823d76121c7f75d8c90d77668bd9328ef8772a6847af48be91323f02ad0
+inventory:
+    System.design: 079b549bd5533304a7fce57d57ea8ce9fe0a3c2b7dc720e2fa4f45ae31045d12
+deleted: []
+payload: .commits/#00001

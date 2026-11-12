@@ -1,0 +1,13 @@
+author: warloc
+artifactName: ReadableNavigation
+id: 6fbb521b-120c-4c40-aebd-cf2713ddf462:00002
+parents:
+    - 6fbb521b-120c-4c40-aebd-cf2713ddf462:00001
+kind: commit
+message: B0 normalize declarations before statements
+recordedAt: "2026-11-12T22:49:57.826033616Z"
+sourceDigest: 731b49a1636288cf1d5aaf63bd9ab4134afb1fe79cdafbae109d08c22aa04735
+inventory:
+    System.design: aec119ba072c7039169dd4f05c74078fe8e4312e02fef2dd87c367ccf0f57eb1
+deleted: []
+payload: .commits/#00002

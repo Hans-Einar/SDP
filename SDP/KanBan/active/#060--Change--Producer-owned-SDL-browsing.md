@@ -5,10 +5,10 @@
 | id | KB-SDP-060 |
 | project | SDP |
 | type | Change |
-| CardState | queued |
+| CardState | in-progress |
 | created | 2026-11-11 |
 | Systems | SDL, SDPTOOL; collaborating XFMD |
-| PlanId | PLAN-SDP-0025 |
+| PlanId | PLAN-SDP-0028 |
 | source | HEOS browsing study and owner request to begin implementation planning |
 
 Need: readers understand system structure and behavior through coherent viewpoints.
@@ -34,3 +34,12 @@ PLAN-SDP-0025 remains planned; no browsing execution has started.
 then the separate Activity-support effort. Browsing is intended as the third
 Activity and the first created through SDPTool. No Activity identity is allocated
 for this future work yet.
+
+## Activity3 execution
+
+Owner authorizes autonomous completion and XFMD0.10 public RPM publication.
+ACTIVITY-SDP-0003 and SESSION-SDP-0019 were created through SDPTool.
+[ImplementationPlan](../../Activities/Activity-0003--Readable-SDL-browsing/05-Implementation/Plan.md)
+owns B0–B5, including all eleven viewpoints and exact packaged producer evidence.
+Earlier queued wording above records the predecessor sequence, now satisfied by
+Activity2 technical qualification and explicit owner continuation.

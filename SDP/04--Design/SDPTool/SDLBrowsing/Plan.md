@@ -49,7 +49,7 @@ No new SDL port entities and no hand-maintained generated viewpoints.
 
 ## Existing work and boundaries
 
-- [KB060](../../../KanBan/backlog/%23060--Change--Producer-owned-SDL-browsing.md)
+- [KB060](../../../KanBan/active/%23060--Change--Producer-owned-SDL-browsing.md)
   owns this new bounded change. [KB032](../../../KanBan/active/%23032--Study--Viewpoint-navigation-feedback.md)
   remains predecessor/context, retaining its unresolved historical work.
 - [Existing producer work](../../../05--Implementation/SDL/ViewpointNavigation/Plan.md)
@@ -146,3 +146,10 @@ Activity0001 restructures SDPTool without new functionality. Activity support wi
 be the next manually created Activity. Browsing follows as the third and first
 tool-created Activity. This plan remains planned and KB060 queued; no browsing
 execution starts during restructuring.
+
+## Selected execution
+
+Owner now authorizes Activity3 implementation and public XFMD0.10 RPM delivery.
+B0 of PLAN-SDP-0028 consolidates this design route; the Activity3 ImplementationContract
+and ReadingWorkflow WORK/Blueprint pin the selected boundary. Historical planning
+authority above is superseded for this selected scope; no main merge is authorized.

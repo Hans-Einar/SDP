@@ -1,0 +1,21 @@
+schema: sdp-activity/0.1
+id: ACTIVITY-SDP-0002
+projectId: SDP
+title: Activity management
+owner: project-owner
+mandate: 01-Mandate/Mandate.md
+sourceCards:
+- KB-SDP-061
+systems:
+- SDPTOOL
+- ProjectGovernance
+references:
+- role: implementation-plan
+  id: PLAN-SDP-0027
+  path: Activities/Activity-0002--Activity-Management/05-Implementation/Plan.md
+- role: session
+  id: SESSION-SDP-0018
+  path: Activities/Activity-0002--Activity-Management/Sessions/session-#0018--Activity_management.md
+- role: prior-discussion
+  id: SESSION-SDP-0016
+  path: Sessions/session-#0016--Activity_design.md
