@@ -60,7 +60,7 @@ func (p *Project) discoverMembership() {
 			if e != nil {
 				return
 			}
-			for _, inc := range m.Includes {
+			for _, inc := range sourcegraph.Dependencies(m) {
 				if !sourcegraph.ValidPath(inc.Path) {
 					continue
 				}

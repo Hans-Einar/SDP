@@ -126,3 +126,45 @@ func TestReadingUnassignedSyntaxNeverClaimsValidation(t *testing.T) {
 	}
 	t.Fatal("missing orphan")
 }
+
+func TestReadingQualifiedDependencyMembership(t *testing.T) {
+	root, _ := projectFixture(t)
+	for name, body := range map[string]string{
+		"System.design":             "system Demo.\nDemo contains Containers/Machine.\n",
+		"Containers/Machine.design": "container Machine.\nMachine contains Units/Worker.\n",
+		"Units/Worker.design":       "unit Worker.\n",
+	} {
+		path := filepath.Join(root, "SDP", name)
+		if err := os.MkdirAll(filepath.Dir(path), 0700); err != nil {
+			t.Fatal(err)
+		}
+		syntax, err := parser.Parse("language design-core version 0.6.\n" + body)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if err = os.WriteFile(path, []byte(parser.FormatFile(syntax)), 0600); err != nil {
+			t.Fatal(err)
+		}
+	}
+	p, err := DiscoverWithOptions(root, DiscoverOptions{Navigation: "lazy-sdl"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	found := 0
+	for _, source := range p.Sources {
+		if strings.HasSuffix(source.Source, "Containers/Machine.design") || strings.HasSuffix(source.Source, "Units/Worker.design") {
+			found++
+			if len(source.IncludedBy) != 1 {
+				t.Fatalf("qualified dependency has no owning System: %+v", source)
+			}
+			for _, node := range p.Navigation.Nodes {
+				if node.ID == "sdl/"+source.ID {
+					t.Fatalf("qualified dependency incorrectly advertised as unassigned: %+v", node)
+				}
+			}
+		}
+	}
+	if found != 2 {
+		t.Fatalf("expected both nested dependencies, got %d", found)
+	}
+}
