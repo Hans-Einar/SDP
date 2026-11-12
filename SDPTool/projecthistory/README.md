@@ -66,3 +66,35 @@ PG takes project coordination, canonical history, then operational state locks.
 Its durable intent owns exact effects and recovery; this package does not infer
 card semantics, repair external edits or treat reservation release as acceptance.
 A pending marker is recovery information, not a disposable lock file.
+
+## Transaction-owned reads and batch publication
+
+A held transaction can use `tx.Read(owner)` to obtain the same validated, exact-byte
+`Snapshot` as ordinary Read while its own reservation is present. A foreign
+reservation returns ErrBusy. A transaction without a reservation permits an empty
+owner. These methods do not reacquire the lock.
+
+`tx.AppendBatch(owner, expectedRevision, events)` validates each generic envelope,
+rejects duplicate batch IDs and atomically appends all compacted event lines in
+request order. `BatchResult` returns `Revision`, `EventIDs` and `Appended`. Existing
+bytes and permissions are preserved, the aggregate history remains bounded by
+MaxBytes, and the publication rechecks the exact original bytes before replacement.
+A stale initial revision returns ErrStale without publication. Different existing
+content, partial overlap or an existing batch with different order returns
+ErrConflict. A complete retry must match the exact contiguous compacted batch after
+the prefix identified by expectedRevision; it succeeds even after later events and
+returns the current revision with Appended false. Retain that original expected
+revision, event order and bytes for recovery rather than substituting a newer head.
+
+Batch publication shares the existing staged/synced replacement primitive with
+single-event Append. It neither releases nor creates a reservation, writes record
+files, persists domain intent nor interprets Activity transitions. Callers must
+persist their recovery intent and reserve before exposing multi-record effects;
+release only after those effects and their authoritative history are reconciled.
+An error after rename can still mean the batch was committed; retry the exact batch.
+No partial batch is exposed by a cooperating ledger reader. Direct file readers,
+manual editors, disconnected clones and older writers retain the limitations above.
+
+Close releases the process lock but retains any durable reservation. All operations
+on a closed transaction return ErrClosed. A Transaction is owned by one caller;
+its methods and Close must not be used concurrently.

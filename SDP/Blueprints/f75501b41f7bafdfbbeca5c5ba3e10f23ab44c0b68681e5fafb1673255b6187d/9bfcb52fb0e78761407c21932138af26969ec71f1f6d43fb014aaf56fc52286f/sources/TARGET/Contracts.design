@@ -1,0 +1,240 @@
+language design-core version 0.6.
+contract ActivityCommandProtocol.
+contract ActivityCommandShape.
+channel ActivityCommands.
+message ActivityCreated.
+message ActivityCreationRefused.
+contract ActivityDocumentShape.
+contract ActivityEventShape.
+channel ActivityRecordEffects.
+contract ActivityRecordProtocol.
+message ActivityRecordsCommitted.
+message ActivityRecordsConflicted.
+contract ActivityResultShape.
+contract ActivitySessionShape.
+message ActivityStateChangeRefused.
+message ActivityStateChanged.
+contract ActivityViewProtocol.
+message ActivityViewReturned.
+channel ActivityViews.
+message ApplyActivityRecordSet.
+field AuthoredIntent.
+message ChangeActivityStateCommand.
+message CreateActivityCommand.
+message CreateSessionCommand.
+field DescriptorReference.
+field EffectDisposition.
+field EffectIdentity.
+field EffectRevision.
+field EventEvidence.
+field EventTime.
+field EventTransition.
+field ExpectedHistoryRevision.
+field ExpectedPreimages.
+unit ExternalCliCaller.
+unit ExternalCoordinatorCaller.
+unit ExternalViewer.
+message ImplementationAdmitted.
+message ImplementationRefused.
+message InspectActivityCommand.
+field MandateReference.
+field OperationIdentity.
+field PlannedPostimages.
+contract RecordEffectResultShape.
+contract RecordEffectShape.
+field RecordReference.
+message RequestImplementationAdmission.
+field ResultDisposition.
+field ResultRevision.
+field SelectedActivity.
+message SessionCreated.
+message SessionCreationRefused.
+field SessionObjective.
+field SessionPhase.
+field SessionPlanReference.
+ActivityCommandProtocol has completeness = closed.
+ActivityCommandProtocol permits ActivityCreated.
+ActivityCommandProtocol permits ActivityCreationRefused.
+ActivityCommandProtocol permits ActivityStateChangeRefused.
+ActivityCommandProtocol permits ActivityStateChanged.
+ActivityCommandProtocol permits ChangeActivityStateCommand.
+ActivityCommandProtocol permits CreateActivityCommand.
+ActivityCommandProtocol permits CreateSessionCommand.
+ActivityCommandProtocol permits ImplementationAdmitted.
+ActivityCommandProtocol permits ImplementationRefused.
+ActivityCommandProtocol permits RequestImplementationAdmission.
+ActivityCommandProtocol permits SessionCreated.
+ActivityCommandProtocol permits SessionCreationRefused.
+ActivityCommandShape has completeness = closed.
+ActivityCommandShape has-field AuthoredIntent.
+ActivityCommandShape has-field ExpectedHistoryRevision.
+ActivityCommandShape has-field OperationIdentity.
+ActivityCommandShape has-field SelectedActivity.
+ActivityCommands upholds ActivityCommandProtocol.
+ActivityCreated has message-kind = result.
+ActivityCreated replies-to CreateActivityCommand.
+ActivityCreated upholds ActivityResultShape.
+ActivityCreationRefused has message-kind = result.
+ActivityCreationRefused replies-to CreateActivityCommand.
+ActivityCreationRefused upholds ActivityResultShape.
+ActivityDocumentShape has completeness = closed.
+ActivityDocumentShape has-field DescriptorReference.
+ActivityDocumentShape has-field MandateReference.
+ActivityDocuments upholds ActivityDocumentShape.
+ActivityEventShape has completeness = closed.
+ActivityEventShape has-field EventEvidence.
+ActivityEventShape has-field EventTime.
+ActivityEventShape has-field EventTransition.
+ActivityEventStream upholds ActivityEventShape.
+ActivityProjectionService uses ActivityViews as receiver of InspectActivityCommand in mode ActivityManagement.
+ActivityProjectionService uses ActivityViews as sender of ActivityViewReturned in mode ActivityManagement.
+ActivityRecordEffects upholds ActivityRecordProtocol.
+ActivityRecordProtocol has completeness = closed.
+ActivityRecordProtocol permits ActivityRecordsCommitted.
+ActivityRecordProtocol permits ActivityRecordsConflicted.
+ActivityRecordProtocol permits ApplyActivityRecordSet.
+ActivityRecordRepository uses ActivityRecordEffects as receiver of ApplyActivityRecordSet in mode ActivityManagement.
+ActivityRecordRepository uses ActivityRecordEffects as sender of ActivityRecordsCommitted in mode ActivityManagement.
+ActivityRecordRepository uses ActivityRecordEffects as sender of ActivityRecordsConflicted in mode ActivityManagement.
+ActivityRecordsCommitted has message-kind = result.
+ActivityRecordsCommitted replies-to ApplyActivityRecordSet.
+ActivityRecordsCommitted upholds RecordEffectResultShape.
+ActivityRecordsConflicted has message-kind = result.
+ActivityRecordsConflicted replies-to ApplyActivityRecordSet.
+ActivityRecordsConflicted upholds RecordEffectResultShape.
+ActivityResultShape has completeness = closed.
+ActivityResultShape has-field RecordReference.
+ActivityResultShape has-field ResultDisposition.
+ActivityResultShape has-field ResultRevision.
+ActivityService uses ActivityCommands as receiver of ChangeActivityStateCommand in mode ActivityManagement.
+ActivityService uses ActivityCommands as receiver of CreateActivityCommand in mode ActivityManagement.
+ActivityService uses ActivityCommands as receiver of CreateSessionCommand in mode ActivityManagement.
+ActivityService uses ActivityCommands as receiver of RequestImplementationAdmission in mode ActivityManagement.
+ActivityService uses ActivityCommands as sender of ActivityCreated in mode ActivityManagement.
+ActivityService uses ActivityCommands as sender of ActivityCreationRefused in mode ActivityManagement.
+ActivityService uses ActivityCommands as sender of ActivityStateChangeRefused in mode ActivityManagement.
+ActivityService uses ActivityCommands as sender of ActivityStateChanged in mode ActivityManagement.
+ActivityService uses ActivityCommands as sender of ImplementationAdmitted in mode ActivityManagement.
+ActivityService uses ActivityCommands as sender of ImplementationRefused in mode ActivityManagement.
+ActivityService uses ActivityCommands as sender of SessionCreated in mode ActivityManagement.
+ActivityService uses ActivityCommands as sender of SessionCreationRefused in mode ActivityManagement.
+ActivityService uses ActivityRecordEffects as receiver of ActivityRecordsCommitted in mode ActivityManagement.
+ActivityService uses ActivityRecordEffects as receiver of ActivityRecordsConflicted in mode ActivityManagement.
+ActivityService uses ActivityRecordEffects as sender of ApplyActivityRecordSet in mode ActivityManagement.
+ActivitySessionDocuments upholds ActivitySessionShape.
+ActivitySessionShape has completeness = closed.
+ActivitySessionShape has-field SessionObjective.
+ActivitySessionShape has-field SessionPhase.
+ActivitySessionShape has-field SessionPlanReference.
+ActivityStateChangeRefused has message-kind = result.
+ActivityStateChangeRefused replies-to ChangeActivityStateCommand.
+ActivityStateChangeRefused upholds ActivityResultShape.
+ActivityStateChanged has message-kind = result.
+ActivityStateChanged replies-to ChangeActivityStateCommand.
+ActivityStateChanged upholds ActivityResultShape.
+ActivityViewProtocol has completeness = closed.
+ActivityViewProtocol permits ActivityViewReturned.
+ActivityViewProtocol permits InspectActivityCommand.
+ActivityViewReturned has message-kind = result.
+ActivityViewReturned replies-to InspectActivityCommand.
+ActivityViewReturned upholds ActivityResultShape.
+ActivityViews upholds ActivityViewProtocol.
+ApplyActivityRecordSet has message-kind = request.
+ApplyActivityRecordSet upholds RecordEffectShape.
+AuthoredIntent has presence = required.
+AuthoredIntent has value-type = text.
+ChangeActivityStateCommand has message-kind = request.
+ChangeActivityStateCommand upholds ActivityCommandShape.
+CreateActivityCommand has message-kind = request.
+CreateActivityCommand upholds ActivityCommandShape.
+CreateSessionCommand has message-kind = request.
+CreateSessionCommand upholds ActivityCommandShape.
+DescriptorReference has presence = required.
+DescriptorReference has value-type = text.
+EffectDisposition has presence = required.
+EffectDisposition has value-type = text.
+EffectIdentity has presence = required.
+EffectIdentity has value-type = text.
+EffectRevision has presence = required.
+EffectRevision has value-type = text.
+EventEvidence has presence = required.
+EventEvidence has value-type = text.
+EventTime has presence = required.
+EventTime has value-type = text.
+EventTransition has presence = required.
+EventTransition has value-type = text.
+ExpectedHistoryRevision has presence = required.
+ExpectedHistoryRevision has value-type = text.
+ExpectedPreimages has presence = required.
+ExpectedPreimages has value-type = text.
+ExternalCliCaller uses ActivityCommands as receiver of ActivityCreated in mode ActivityManagement.
+ExternalCliCaller uses ActivityCommands as receiver of ActivityCreationRefused in mode ActivityManagement.
+ExternalCliCaller uses ActivityCommands as receiver of ActivityStateChangeRefused in mode ActivityManagement.
+ExternalCliCaller uses ActivityCommands as receiver of ActivityStateChanged in mode ActivityManagement.
+ExternalCliCaller uses ActivityCommands as receiver of ImplementationAdmitted in mode ActivityManagement.
+ExternalCliCaller uses ActivityCommands as receiver of ImplementationRefused in mode ActivityManagement.
+ExternalCliCaller uses ActivityCommands as receiver of SessionCreated in mode ActivityManagement.
+ExternalCliCaller uses ActivityCommands as receiver of SessionCreationRefused in mode ActivityManagement.
+ExternalCliCaller uses ActivityCommands as sender of ChangeActivityStateCommand in mode ActivityManagement.
+ExternalCliCaller uses ActivityCommands as sender of CreateActivityCommand in mode ActivityManagement.
+ExternalCliCaller uses ActivityCommands as sender of CreateSessionCommand in mode ActivityManagement.
+ExternalCliCaller uses ActivityCommands as sender of RequestImplementationAdmission in mode ActivityManagement.
+ExternalCliCaller uses ActivityViews as receiver of ActivityViewReturned in mode ActivityManagement.
+ExternalCliCaller uses ActivityViews as sender of InspectActivityCommand in mode ActivityManagement.
+ExternalCoordinatorCaller uses ActivityCommands as receiver of ActivityCreated in mode ActivityManagement.
+ExternalCoordinatorCaller uses ActivityCommands as receiver of ActivityCreationRefused in mode ActivityManagement.
+ExternalCoordinatorCaller uses ActivityCommands as receiver of ActivityStateChangeRefused in mode ActivityManagement.
+ExternalCoordinatorCaller uses ActivityCommands as receiver of ActivityStateChanged in mode ActivityManagement.
+ExternalCoordinatorCaller uses ActivityCommands as receiver of ImplementationAdmitted in mode ActivityManagement.
+ExternalCoordinatorCaller uses ActivityCommands as receiver of ImplementationRefused in mode ActivityManagement.
+ExternalCoordinatorCaller uses ActivityCommands as receiver of SessionCreated in mode ActivityManagement.
+ExternalCoordinatorCaller uses ActivityCommands as receiver of SessionCreationRefused in mode ActivityManagement.
+ExternalCoordinatorCaller uses ActivityCommands as sender of ChangeActivityStateCommand in mode ActivityManagement.
+ExternalCoordinatorCaller uses ActivityCommands as sender of CreateActivityCommand in mode ActivityManagement.
+ExternalCoordinatorCaller uses ActivityCommands as sender of CreateSessionCommand in mode ActivityManagement.
+ExternalCoordinatorCaller uses ActivityCommands as sender of RequestImplementationAdmission in mode ActivityManagement.
+ExternalViewer uses ActivityViews as receiver of ActivityViewReturned in mode ActivityManagement.
+ExternalViewer uses ActivityViews as sender of InspectActivityCommand in mode ActivityManagement.
+ImplementationAdmitted has message-kind = result.
+ImplementationAdmitted replies-to RequestImplementationAdmission.
+ImplementationAdmitted upholds ActivityResultShape.
+ImplementationRefused has message-kind = result.
+ImplementationRefused replies-to RequestImplementationAdmission.
+ImplementationRefused upholds ActivityResultShape.
+InspectActivityCommand has message-kind = request.
+InspectActivityCommand upholds ActivityCommandShape.
+MandateReference has presence = required.
+MandateReference has value-type = text.
+OperationIdentity has presence = required.
+OperationIdentity has value-type = text.
+PlannedPostimages has presence = required.
+PlannedPostimages has value-type = text.
+RecordEffectResultShape has completeness = closed.
+RecordEffectResultShape has-field EffectDisposition.
+RecordEffectResultShape has-field EffectRevision.
+RecordEffectShape has completeness = closed.
+RecordEffectShape has-field EffectIdentity.
+RecordEffectShape has-field ExpectedPreimages.
+RecordEffectShape has-field PlannedPostimages.
+RecordReference has presence = required.
+RecordReference has value-type = text.
+RequestImplementationAdmission has message-kind = request.
+RequestImplementationAdmission upholds ActivityCommandShape.
+ResultDisposition has presence = required.
+ResultDisposition has value-type = text.
+ResultRevision has presence = required.
+ResultRevision has value-type = text.
+SelectedActivity has presence = required.
+SelectedActivity has value-type = text.
+SessionCreated has message-kind = result.
+SessionCreated replies-to CreateSessionCommand.
+SessionCreated upholds ActivityResultShape.
+SessionCreationRefused has message-kind = result.
+SessionCreationRefused replies-to CreateSessionCommand.
+SessionCreationRefused upholds ActivityResultShape.
+SessionObjective has presence = required.
+SessionObjective has value-type = text.
+SessionPhase has presence = required.
+SessionPhase has value-type = text.
+SessionPlanReference has presence = required.
+SessionPlanReference has value-type = text.

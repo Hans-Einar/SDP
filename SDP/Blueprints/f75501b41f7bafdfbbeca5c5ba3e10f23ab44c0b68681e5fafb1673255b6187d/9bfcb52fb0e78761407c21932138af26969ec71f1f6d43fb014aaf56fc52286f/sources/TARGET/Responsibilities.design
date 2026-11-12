@@ -1,0 +1,112 @@
+language design-core version 0.6.
+activity ActivityCommandsDelivery.
+database ActivityDocumentStore.
+dataset ActivityDocuments.
+dataset ActivityEventStream.
+interface ActivityExecutionDispositionPort.
+mode ActivityManagement.
+unit ActivityProjectionService.
+capability ActivityReading.
+capability ActivityRecordManagement.
+unit ActivityRecordRepository.
+unit ActivityService.
+dataset ActivitySessionDocuments.
+functionality AdoptActivityRecords.
+database CanonicalManagementHistory.
+interface CanonicalProjectHistoryLibrary.
+functionality CheckImplementationScope.
+functionality CreateActivitySession.
+functionality CreatePlannedActivity.
+functionality ProjectActivityNavigation.
+functionality ProjectActivityTimeline.
+functionality PublishActivityRecordSet.
+functionality RecoverActivityRecordOperation.
+functionality RequestExecutionQuiescence.
+functionality RetainDescriptorRevisions.
+container SdpToolHost.
+functionality ValidateActivityTransition.
+ActivityCommandsDelivery addresses AdoptActivityRecords.
+ActivityCommandsDelivery addresses CheckImplementationScope.
+ActivityCommandsDelivery addresses CreateActivitySession.
+ActivityCommandsDelivery addresses CreatePlannedActivity.
+ActivityCommandsDelivery addresses ProjectActivityNavigation.
+ActivityCommandsDelivery addresses ProjectActivityTimeline.
+ActivityCommandsDelivery addresses PublishActivityRecordSet.
+ActivityCommandsDelivery addresses RecoverActivityRecordOperation.
+ActivityCommandsDelivery addresses RequestExecutionQuiescence.
+ActivityCommandsDelivery addresses RetainDescriptorRevisions.
+ActivityCommandsDelivery addresses ValidateActivityTransition.
+ActivityCommandsDelivery delivers NeedScopedWork.
+ActivityCommandsDelivery delivers ReadableActivityHistory.
+ActivityCommandsDelivery has implementation-status = planned.
+ActivityDocumentStore holds ActivityDocuments.
+ActivityDocumentStore holds ActivitySessionDocuments.
+ActivityProjectionService consumes CanonicalProjectHistoryLibrary.
+ActivityProjectionService owns ProjectActivityNavigation.
+ActivityProjectionService owns ProjectActivityTimeline.
+ActivityReading requires CanonicalProjectHistoryLibrary in mode ActivityManagement.
+ActivityRecordManagement requires ActivityExecutionDispositionPort in mode ActivityManagement.
+ActivityRecordManagement requires CanonicalProjectHistoryLibrary in mode ActivityManagement.
+ActivityRecordRepository consumes CanonicalProjectHistoryLibrary.
+ActivityRecordRepository owns ActivityDocumentStore.
+ActivityRecordRepository owns CanonicalManagementHistory.
+ActivityRecordRepository owns PublishActivityRecordSet.
+ActivityRecordRepository owns RecoverActivityRecordOperation.
+ActivityRecordRepository owns RetainDescriptorRevisions.
+ActivityService consumes ActivityExecutionDispositionPort.
+ActivityService owns AdoptActivityRecords.
+ActivityService owns CheckImplementationScope.
+ActivityService owns CreateActivitySession.
+ActivityService owns CreatePlannedActivity.
+ActivityService owns RequestExecutionQuiescence.
+ActivityService owns ValidateActivityTransition.
+AdoptActivityRecords allocated-to SdpToolHost in mode ActivityManagement.
+AdoptActivityRecords contributes-to NeedScopedWork.
+AdoptActivityRecords has state-retention = stateful.
+AdoptActivityRecords realizes ActivityRecordManagement.
+CanonicalManagementHistory holds ActivityEventStream.
+CheckImplementationScope allocated-to SdpToolHost in mode ActivityManagement.
+CheckImplementationScope contributes-to NeedScopedWork.
+CheckImplementationScope has state-retention = stateless.
+CheckImplementationScope realizes ActivityRecordManagement.
+CreateActivitySession allocated-to SdpToolHost in mode ActivityManagement.
+CreateActivitySession contributes-to NeedScopedWork.
+CreateActivitySession has state-retention = stateful.
+CreateActivitySession realizes ActivityRecordManagement.
+CreatePlannedActivity allocated-to SdpToolHost in mode ActivityManagement.
+CreatePlannedActivity contributes-to NeedScopedWork.
+CreatePlannedActivity has state-retention = stateful.
+CreatePlannedActivity realizes ActivityRecordManagement.
+ProjectActivityNavigation allocated-to SdpToolHost in mode ActivityManagement.
+ProjectActivityNavigation contributes-to ReadableActivityHistory.
+ProjectActivityNavigation has state-retention = stateless.
+ProjectActivityNavigation realizes ActivityReading.
+ProjectActivityTimeline allocated-to SdpToolHost in mode ActivityManagement.
+ProjectActivityTimeline contributes-to ReadableActivityHistory.
+ProjectActivityTimeline has state-retention = stateless.
+ProjectActivityTimeline realizes ActivityReading.
+PublishActivityRecordSet allocated-to SdpToolHost in mode ActivityManagement.
+PublishActivityRecordSet contributes-to NeedScopedWork.
+PublishActivityRecordSet has state-retention = stateful.
+PublishActivityRecordSet realizes ActivityRecordManagement.
+RecoverActivityRecordOperation allocated-to SdpToolHost in mode ActivityManagement.
+RecoverActivityRecordOperation contributes-to NeedScopedWork.
+RecoverActivityRecordOperation has state-retention = stateful.
+RecoverActivityRecordOperation realizes ActivityRecordManagement.
+RequestExecutionQuiescence allocated-to SdpToolHost in mode ActivityManagement.
+RequestExecutionQuiescence contributes-to NeedScopedWork.
+RequestExecutionQuiescence has state-retention = stateful.
+RequestExecutionQuiescence realizes ActivityRecordManagement.
+RetainDescriptorRevisions allocated-to SdpToolHost in mode ActivityManagement.
+RetainDescriptorRevisions contributes-to NeedScopedWork.
+RetainDescriptorRevisions has state-retention = stateful.
+RetainDescriptorRevisions realizes ActivityRecordManagement.
+SdpToolHost contains ActivityProjectionService.
+SdpToolHost contains ActivityRecordRepository.
+SdpToolHost contains ActivityService.
+SdpToolHost provides ActivityReading.
+SdpToolHost provides ActivityRecordManagement.
+ValidateActivityTransition allocated-to SdpToolHost in mode ActivityManagement.
+ValidateActivityTransition contributes-to NeedScopedWork.
+ValidateActivityTransition has state-retention = stateless.
+ValidateActivityTransition realizes ActivityRecordManagement.

@@ -1,0 +1,33 @@
+schema: sdp-model/0.1
+id: 73a3ef6f-6869-4b83-a6d8-993d2a8c4bda
+kind: work
+name: BeforeActivityCommands
+head: 73a3ef6f-6869-4b83-a6d8-993d2a8c4bda:00001
+sequence: 1
+sourceDigest: 848e29ed778b34ed7f4470f87de878249c9b412bd21c4b5fbb4bd9213f78f15b
+metadataDigest: 4e9fa1cfcdc1ad9c1ad7f6e3f5dcf19b7e8121836ddfa1fc12a9f0d4305ab000
+ledger:
+    - author: warloc
+      artifactName: BeforeActivityCommands
+      id: 73a3ef6f-6869-4b83-a6d8-993d2a8c4bda:00000
+      parents: []
+      kind: baseline
+      message: WORK baseline
+      recordedAt: "2026-11-12T21:28:05.374329344Z"
+      sourceDigest: 4585f3ebe7e43550a374592cb06f5148d1d09a27601439b90a8daf263120561c
+      inventory: {}
+      deleted: []
+      payload: .commits/#00000
+    - author: warloc
+      artifactName: BeforeActivityCommands
+      id: 73a3ef6f-6869-4b83-a6d8-993d2a8c4bda:00001
+      parents:
+        - 73a3ef6f-6869-4b83-a6d8-993d2a8c4bda:00000
+      kind: commit
+      message: 'Activity0002 A0: observed absence of Activity services in this concern'
+      recordedAt: "2026-11-12T21:28:56.01677724Z"
+      sourceDigest: 848e29ed778b34ed7f4470f87de878249c9b412bd21c4b5fbb4bd9213f78f15b
+      inventory:
+        System.design: ef249aed59907712525f96d13c0ac6447ff3dee0a6b089ff3249e5a25ded988b
+      deleted: []
+      payload: .commits/#00001

@@ -1,7 +1,7 @@
 # Activity management — lifecycle, documents and navigation
 
 Design candidate, 2026-11-11. Owner selects Activity integration **before** the SDL
-browsing redesign. [KB061](../../../../KanBan/onHold/%23061--Proposal--Need-driven-activities.md)
+browsing redesign. [KB061](../../../../KanBan/active/%23061--Proposal--Need-driven-activities.md)
 and [Session0016](../../../../Sessions/session-%230016--Activity_design.md) own this
 design. [Initial study](../../../../02--Requirements/ProjectGovernance/Activities/Study.md)
 records the need. Proposed wire names/layouts below are not installed capabilities.
@@ -465,3 +465,12 @@ No implementation/test/installation claim is made here. Candidate decisions stil
 to validate: exact schema compatibility, supported renderer output and platform
 writer support. This document recommends the conceptual ownership and behavior;
 the next design step binds them into SDL WORK and an executable implementation plan.
+
+## Activity0002 execution authority
+
+Owner accepted Activity0001 and selected Activity0002. PLAN-SDP-0027 now owns
+implementation and qualification. Earlier design-only/on-hold statements above
+record their original scope; they no longer restrict the authorized execution.
+The existing 0.1 manual records remain valid inputs. Exact implementation contracts
+are refined in Activities/Activity-0002--Activity-Management/04-Design while current
+requirements and SDL remain in their existing authoritative homes.

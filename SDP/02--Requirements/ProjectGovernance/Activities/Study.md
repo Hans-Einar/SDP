@@ -1,6 +1,6 @@
 # Need-driven Activities — workflow proposal
 
-2026-11-11. [KB-SDP-061](../../../KanBan/onHold/%23061--Proposal--Need-driven-activities.md),
+2026-11-11. [KB-SDP-061](../../../KanBan/active/%23061--Proposal--Need-driven-activities.md),
 [Session0015](../../../Sessions/session-%230015--SDL_browsing_planning.md).
 Proposed management extension, not an adopted schema, installed process migration,
 implemented Activity board or runtime enforcement claim.

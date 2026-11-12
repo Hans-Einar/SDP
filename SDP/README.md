@@ -7,14 +7,14 @@ records the planning handoff and the separate proposed
 [Activity workflow](02--Requirements/ProjectGovernance/Activities/Study.md).
 Neither product execution nor Activity schema adoption is implied.
 
-Current owner sequence, 2026-11-12: [Activity0001 — SDPTool restructuring](Activities/Activity-0001--SDPTool-Restructuring/01-Mandate/Mandate.md)
-is manually registered and selected. [Session0017](Activities/Activity-0001--SDPTool-Restructuring/Sessions/session-%230017--SDPTool_restructuring.md)
-coordinates [PLAN-SDP-0026](05--Implementation/SDPTool/ArchitectureMigration/Plan.md).
-Restructuring adds no new product functionality. KB061 Activity implementation is
-on hold for the next manually created Activity; KB060 browsing follows as the
-first tool-created Activity once that support is verified. Only Activity0001 is
-registered. See [Activity records](ProjectManagement/Activity-records.md) for manual
-bootstrap status and current tooling limitations.
+Current owner sequence: Activity0001 restructuring is accepted and completed.
+[Activity0002 — Activity management](Activities/Activity-0002--Activity-Management/01-Mandate/Mandate.md)
+is manually registered and active under
+[PLAN-SDP-0027](Activities/Activity-0002--Activity-Management/05-Implementation/Plan.md)
+and Session0018. KB061 owns implementation. KB060 browsing stays queued for
+Activity0003, the first real Activity to be created through the completed tool.
+[Activity records](ProjectManagement/Activity-records.md) describe the existing
+manual format; runtime capabilities are qualified milestone by milestone.
 
 This area gathers development work for the SDP product itself.
 

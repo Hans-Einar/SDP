@@ -1,0 +1,22 @@
+language design-core version 0.6.
+usecase AdmitScopedImplementation.
+usecase BrowseActivityDocuments.
+usecase CaptureActivityNeed.
+usecase ControlActivityLifecycle.
+usecase InspectActivityTimeline.
+feature NeedScopedWork.
+usecase PrepareActivitySession.
+actor ProjectOwner.
+feature ReadableActivityHistory.
+NeedScopedWork supports AdmitScopedImplementation.
+NeedScopedWork supports CaptureActivityNeed.
+NeedScopedWork supports ControlActivityLifecycle.
+NeedScopedWork supports PrepareActivitySession.
+ProjectOwner pursues AdmitScopedImplementation.
+ProjectOwner pursues BrowseActivityDocuments.
+ProjectOwner pursues CaptureActivityNeed.
+ProjectOwner pursues ControlActivityLifecycle.
+ProjectOwner pursues InspectActivityTimeline.
+ProjectOwner pursues PrepareActivitySession.
+ReadableActivityHistory supports BrowseActivityDocuments.
+ReadableActivityHistory supports InspectActivityTimeline.

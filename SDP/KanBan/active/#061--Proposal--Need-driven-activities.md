@@ -5,8 +5,9 @@
 | id | KB-SDP-061 |
 | project | SDP |
 | type | Proposal |
-| CardState | onHold |
+| CardState | in-progress |
 | created | 2026-11-11 |
+| PlanId | PLAN-SDP-0027 |
 | Systems | ProjectGovernance, SDPTOOL |
 | source | Owner proposes Activity as the link between a customer need and successive Sessions |
 
@@ -43,3 +44,8 @@ ACTIVITY-SDP-0001 restructures SDPTool without new functionality. Resume by manu
 creating the second Activity after restructuring acceptance. Preserve all existing
 study/design/model evidence. Review trigger: PLAN-SDP-0026 M5 acceptance or an
 explicit owner priority change; no arbitrary restart date is inferred.
+
+Owner accepts Activity0001 and selects ACTIVITY-SDP-0002 for implementation.
+[PLAN0027](../../Activities/Activity-0002--Activity-Management/05-Implementation/Plan.md)
+owns delivery; Session0018 coordinates execution. The prior hold is resolved by
+actual predecessor acceptance. Activity0003/browsing remains outside this scope.

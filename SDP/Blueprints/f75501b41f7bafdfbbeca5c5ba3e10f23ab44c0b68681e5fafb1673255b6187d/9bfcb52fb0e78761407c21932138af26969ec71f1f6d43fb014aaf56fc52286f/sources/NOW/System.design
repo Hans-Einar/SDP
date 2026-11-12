@@ -1,0 +1,4 @@
+language design-core version 0.6.
+system SDPTool.
+container SdpToolHost.
+SDPTool contains SdpToolHost.

@@ -13,8 +13,10 @@ The owner selected this sequence on 2026-11-12:
 3. SDP browsing in XFMD through SDPTool — first creation through the implemented
    command after Activity support is verified; KB-SDP-060.
 
-Only the first Activity is registered. Items 2 and 3 are owner-selected future
-route positions, not allocated identities or existing folders/events. New Session
+Activity0001 is owner-accepted and completed.
+[Activity0002](Activity-0002--Activity-Management/01-Mandate/Mandate.md) is now manually
+registered and active. Item 3 remains a future route position, not an allocated
+identity or existing folder/event. New Session
 logs live under their owning Activity. Existing Sessions remain at their original
 paths and can be referenced without inventing historical membership.
 

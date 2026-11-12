@@ -267,6 +267,12 @@ func appendEvent(path, expectedRevision string, event []byte, fault func(string)
 	if len(next) > MaxBytes {
 		return result, fmt.Errorf("history capacity exceeded")
 	}
+	return publish(path, original, next, result, fault)
+}
+
+// publish atomically replaces a ledger under its already-held canonical lock.
+// Callers validate envelopes, append-only bytes and reservation ownership.
+func publish(path string, original, next []byte, result Result, fault func(string) error) (Result, error) {
 	dir := filepath.Dir(path)
 	stage, err := os.CreateTemp(dir, ".ledger-stage-")
 	if err != nil {

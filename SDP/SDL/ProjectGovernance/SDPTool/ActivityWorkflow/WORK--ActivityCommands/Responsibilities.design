@@ -11,6 +11,7 @@ capability ActivityRecordManagement.
 unit ActivityRecordRepository.
 unit ActivityService.
 dataset ActivitySessionDocuments.
+functionality AdoptActivityRecords.
 database CanonicalManagementHistory.
 interface CanonicalProjectHistoryLibrary.
 functionality CheckImplementationScope.
@@ -20,8 +21,11 @@ functionality ProjectActivityNavigation.
 functionality ProjectActivityTimeline.
 functionality PublishActivityRecordSet.
 functionality RecoverActivityRecordOperation.
+functionality RequestExecutionQuiescence.
+functionality RetainDescriptorRevisions.
 container SdpToolHost.
 functionality ValidateActivityTransition.
+ActivityCommandsDelivery addresses AdoptActivityRecords.
 ActivityCommandsDelivery addresses CheckImplementationScope.
 ActivityCommandsDelivery addresses CreateActivitySession.
 ActivityCommandsDelivery addresses CreatePlannedActivity.
@@ -29,6 +33,8 @@ ActivityCommandsDelivery addresses ProjectActivityNavigation.
 ActivityCommandsDelivery addresses ProjectActivityTimeline.
 ActivityCommandsDelivery addresses PublishActivityRecordSet.
 ActivityCommandsDelivery addresses RecoverActivityRecordOperation.
+ActivityCommandsDelivery addresses RequestExecutionQuiescence.
+ActivityCommandsDelivery addresses RetainDescriptorRevisions.
 ActivityCommandsDelivery addresses ValidateActivityTransition.
 ActivityCommandsDelivery delivers NeedScopedWork.
 ActivityCommandsDelivery delivers ReadableActivityHistory.
@@ -46,11 +52,18 @@ ActivityRecordRepository owns ActivityDocumentStore.
 ActivityRecordRepository owns CanonicalManagementHistory.
 ActivityRecordRepository owns PublishActivityRecordSet.
 ActivityRecordRepository owns RecoverActivityRecordOperation.
+ActivityRecordRepository owns RetainDescriptorRevisions.
 ActivityService consumes ActivityExecutionDispositionPort.
+ActivityService owns AdoptActivityRecords.
 ActivityService owns CheckImplementationScope.
 ActivityService owns CreateActivitySession.
 ActivityService owns CreatePlannedActivity.
+ActivityService owns RequestExecutionQuiescence.
 ActivityService owns ValidateActivityTransition.
+AdoptActivityRecords allocated-to SdpToolHost in mode ActivityManagement.
+AdoptActivityRecords contributes-to NeedScopedWork.
+AdoptActivityRecords has state-retention = stateful.
+AdoptActivityRecords realizes ActivityRecordManagement.
 CanonicalManagementHistory holds ActivityEventStream.
 CheckImplementationScope allocated-to SdpToolHost in mode ActivityManagement.
 CheckImplementationScope contributes-to NeedScopedWork.
@@ -80,6 +93,14 @@ RecoverActivityRecordOperation allocated-to SdpToolHost in mode ActivityManageme
 RecoverActivityRecordOperation contributes-to NeedScopedWork.
 RecoverActivityRecordOperation has state-retention = stateful.
 RecoverActivityRecordOperation realizes ActivityRecordManagement.
+RequestExecutionQuiescence allocated-to SdpToolHost in mode ActivityManagement.
+RequestExecutionQuiescence contributes-to NeedScopedWork.
+RequestExecutionQuiescence has state-retention = stateful.
+RequestExecutionQuiescence realizes ActivityRecordManagement.
+RetainDescriptorRevisions allocated-to SdpToolHost in mode ActivityManagement.
+RetainDescriptorRevisions contributes-to NeedScopedWork.
+RetainDescriptorRevisions has state-retention = stateful.
+RetainDescriptorRevisions realizes ActivityRecordManagement.
 SdpToolHost contains ActivityProjectionService.
 SdpToolHost contains ActivityRecordRepository.
 SdpToolHost contains ActivityService.
