@@ -1,0 +1,32 @@
+[
+  {
+    "test": "SdpIntegrationTest",
+    "exit": 0,
+    "output": "PASS\n"
+  },
+  {
+    "test": "SdpNavigationGuiTest",
+    "exit": 0,
+    "output": "PASS\n"
+  },
+  {
+    "test": "SdpOverviewGuiTest",
+    "exit": 0,
+    "output": "PASS\n"
+  },
+  {
+    "test": "SdpDeferredGuiTest",
+    "exit": 0,
+    "output": "PASS\n"
+  },
+  {
+    "test": "SdlSourceGuiTest",
+    "exit": 0,
+    "output": "PASS\n"
+  },
+  {
+    "test": "SduiWorkflowGuiTest",
+    "exit": 1,
+    "output": "SDUI timeout: 845 bytes \u2014 saved\n"
+  }
+]

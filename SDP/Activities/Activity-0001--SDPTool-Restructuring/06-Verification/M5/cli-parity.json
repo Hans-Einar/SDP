@@ -1,0 +1,9 @@
+{
+  "cases": 187,
+  "differences": [],
+  "stateWritten": false,
+  "binaries": {
+    "/tmp/sdptool-activity1-baseline": "3101a67fa3664e1bcebccc1e09e6bbdce9ee53248526df3186cb4367d17b6190",
+    "/tmp/sdptool-activity1-final": "2900d723e861f4435f11540b45d1e68797264ae1d1f4abe858f8cadd8f147140"
+  }
+}

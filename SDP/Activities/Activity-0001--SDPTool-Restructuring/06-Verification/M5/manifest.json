@@ -1,0 +1,43 @@
+{
+  "productCandidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+  "baseline": "d0bf6dc37027bbb75f5f96fecc169e681a3a6c9b",
+  "recordedAt": "2026-11-12T19:00:57.305588+00:00",
+  "platform": "linux/amd64",
+  "goVersion": "go version go1.26.10 (Red Hat 1.26.10-1.el10_2.alma.1) linux/amd64",
+  "technicalQualification": "passed",
+  "ownerAcceptance": "pending",
+  "artifacts": {
+    "Review.md": "420f4c368d0f5cde359b8360e47038f6f406afa1a91f3609c4a946257301af04",
+    "baseline-tests.log": "261a1bc747abe95a28ab724a2686af2196cbd8cc6ed58116f5a3ea335c2a80a0",
+    "bootstrap.log": "a51fbd7dc7dfa8be2536fd704098cf9651c4f3ed5eee261c61808a6a217ed18c",
+    "cli-parity.json": "036f8d7d5ae441c76fa8b6c6c54f9b007f67c3b3888cdfd1fb9d70a8bee4a9ea",
+    "compare_cli.py": "74788b0da4e51e15faa21872a9c658c55bd9bdd102eccb156f48565f056cbade",
+    "compiled-final.log": "f96e58ed675bedd5dd95ba04b6a655f733f51751c41e4fefe077624c5fc634a1",
+    "gh-sdp.log": "0e471078609a6a92cfaf88b6314e0054b2f914bdd4aaa8e914dea8fba57ec0ed",
+    "inventory-closure.json": "8900a004af2d3dc85e683fe5c5d9a64687fb575553e164de4680ce732c174715",
+    "library-compatibility.json": "e15dd4454d7e9b0a1828b3f0b7783dd316c2146a0934efe4daba992d7e527a8c",
+    "migration-tests.log": "e2f248cb4ee746ab79191cabe8ac2bf6c5605a0d133a1baf2e2dc180c0123154",
+    "native-baseline-without-helpers.json": "4b74946d70961ba6c41c66c0664848f49084596a97c69e41bb7d23776c5cf156",
+    "native-qualified.json": "4693d4a5d3331355ba1f65aaf47f842afd6ddacb6dfe842b2e078020dd9a96b0",
+    "native-without-helpers.json": "4196e902a1be40e78d7f7d959a6921bcbff189c567de024c055587ebceea867d",
+    "pinned-tests.log": "8d926d9773125266ae8c5feb6a54a4860ddf8f47af77a603c61fda20ff1bf6fd",
+    "race-final.log": "08e6511f2820470ead3e5905537505d1584cc99d9805ae33c37a091796bba6e5",
+    "records-validation.json": "b5abe1e55d78389cbe4259da91e4630f0dc6e09f150f2f9b93c0f56f4168ccf9",
+    "root-final.log": "d913b6bcd2875718f6ab17c4a3cbb197eab0f48d17830f7619d170c6db66fc30",
+    "source-candidate.json": "493c4a8dec7b8a15d8172e342642999fbe36b7eb26315f1030c70440cb8ef296",
+    "vet-final.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "binarySHA256": {
+    "/tmp/sdptool-activity1-baseline": "3101a67fa3664e1bcebccc1e09e6bbdce9ee53248526df3186cb4367d17b6190",
+    "/tmp/sdptool-activity1-final": "2900d723e861f4435f11540b45d1e68797264ae1d1f4abe858f8cadd8f147140"
+  },
+  "sourceProvenance": "Product source frozen at 527cc90. Final delivery commit adds documentation and evidence only. Superseded migration suite retained as history; pinned-tests.log is final full-module proof.",
+  "commands": {
+    "full": "go test -count=1 -timeout 30m ./...",
+    "race": "go test -race -count=1 ./governanceapp ./governancemcp ./projecthistory",
+    "vet": "go vet ./...",
+    "bootstrap": "go test ./... (SDPTool/bootstrap)",
+    "gh-sdp": "go test ./... (unchanged sibling gh-sdp)",
+    "native": "python3 xfmd/tools/run_with_xvfb.py TEST with XFMD_SDP_TOOL=/tmp/sdptool-activity1-final; SDUI test uses private helper installation described in Verification.md"
+  }
+}

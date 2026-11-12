@@ -1,0 +1,6 @@
+{
+  "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+  "checkedDeclarations": 258,
+  "missingOrChanged": [],
+  "method": "Retained baseline declaration signature before function body must exist in its original source file. New governanceapp API is internal application composition, not a new public action."
+}

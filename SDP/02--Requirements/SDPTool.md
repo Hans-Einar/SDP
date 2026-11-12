@@ -9,6 +9,16 @@ Feature: **SdpTool**. Design record: **DES-SDPTOOL-001**. Status: initial design
 These requirement IDs are project records, not new SDL keywords. All describe
 target behavior; model validity does not establish their implementation.
 
+Activity0001 adds an internal architecture constraint, not a new user capability:
+existing entrypoints must use typed application/domain calls, operation policy must
+have one authoritative definition per capability, and domain/state services must
+not depend on presentation adapters. Permanent external process protocols retain
+their explicit lifetime and authority boundaries. Every replaced internal path
+must be removed within the selected migration. The exact obligations, unchanged
+behavior and executable acceptance checks are owned by
+[PLAN-SDP-0026](../05--Implementation/SDPTool/ArchitectureMigration/Plan.md) and its
+[architecture contract](../Activities/Activity-0001--SDPTool-Restructuring/04-Design/Architecture.md).
+
 | ID | Requirement / use case | Acceptance to implement |
 | --- | --- | --- |
 | REQ-SDPTOOL-001 | Preview a supported saved design file through one facade; PreviewDesign | A standalone valid .design produces a source-revision-tagged Markdown/Mermaid/SVG bundle using existing Go SDL services and Rust layout. Relevant default views are bounded; malformed/profile-invalid source gives positioned diagnostics. No domain execution or source overwrite. |

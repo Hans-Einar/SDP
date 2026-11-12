@@ -1,0 +1,16 @@
+{
+  "legacyRecords": [
+    76,
+    50,
+    4
+  ],
+  "activityEvents": 2,
+  "states": {
+    "ACTIVITY-SDP-0001": "active"
+  },
+  "appendOnlyPrefixPreserved": true,
+  "relationsSchema": "pass",
+  "evidenceLinks": "pass",
+  "productSourceMatchesCandidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+  "method": "Filtered legacy validator plus Activity schema/causal/hash checks; no claim that unmodified legacy validator supports Activity."
+}

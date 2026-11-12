@@ -5,7 +5,7 @@
 | id | KB-SDP-062 |
 | project | SDP |
 | type | Proposal |
-| CardState | in-progress |
+| CardState | gate-review |
 | created | 2026-11-12 |
 | Systems | SDPTOOL |
 | PlanId | PLAN-SDP-0026 |
@@ -30,3 +30,15 @@ not represented as product implementation.
 
 Session0017 T002: owner authorizes execution of Activity0001. PLAN0026 is active;
 M0 baseline/inventory begins on sdp/sdptool-architecture-migration.
+
+Session0017 T002 technical delivery: candidate 527cc9008bdf8f567f8b201b665b2960865518f1
+completes the selected restructuring. Typed governance operations, direct Session
+adapters, registered action policy, shared MCP framing, single CLI routing and
+typed program execution are implemented; no migration-only adapter remains.
+All 60 operation rows and external boundaries are reconciled. Exact-candidate full
+suite, focused race/vet, 187 CLI comparisons, nested/bootstrap checks and all six
+native gates pass. Independent product review approved with no material findings.
+[Qualification](../../Activities/Activity-0001--SDPTool-Restructuring/06-Verification/Verification.md)
+contains reproducible evidence and limitations. CardState gate-review requests the
+owner disposition on this concrete result. Plan/Activity stay active until that
+disposition; no new Activity functionality, merge or release is claimed.

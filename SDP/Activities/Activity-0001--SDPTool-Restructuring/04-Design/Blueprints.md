@@ -14,4 +14,7 @@ They supply actual source mapping, preservation rules and required deletions whi
 are not derivable from SDL ownership alone. A fresh-context worker received these
 artifacts and accurately restated direct typed calls, stable 28-action catalogue,
 strict domain authorization and mandatory old-bridge deletion before implementation.
-Independent candidate review remains required; worker interpretation is not approval.
+Independent review of candidate 527cc90 found the handoff sufficient and the product
+changes coherent; see ../06-Verification/M5/Review.md. Worker interpretation alone
+is not approval. [CodeMapping.md](CodeMapping.md) records the actual candidate
+implementation separately from this immutable generated bundle.

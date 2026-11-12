@@ -39,4 +39,5 @@ No runtime discovery, XFMD Activities tab, automatic scope gate, concurrent-writ
 or crash-recovery guarantee was implemented. This manual setup adds no Go code,
 SDL changes or generated views. Legacy sessions stay at their original paths.
 Activity 2 and 3 do not yet exist; the directory index records intentions only.
-M0 inventory remains next and PLAN-SDP-0026 remains planned.
+At this bootstrap checkpoint M0 was next and PLAN-SDP-0026 was planned. Subsequent
+execution and its current disposition are recorded in Verification.md and the plan.

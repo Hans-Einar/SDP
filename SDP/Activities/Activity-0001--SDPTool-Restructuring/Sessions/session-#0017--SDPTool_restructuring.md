@@ -3,18 +3,20 @@
 | State | Step | Outcome / authority |
 | --- | --- | --- |
 | completed | S1 Manual Activity bootstrap | Owner-selected Activity registered and activated; future features split out |
-| on-going | S2 Baseline and scope | Execute PLAN-SDP-0026 M0; scoped preflight and baseline capture |
+| completed | S2 Baseline, target and migration | PLAN-SDP-0026 M0–M3 executed; product candidate 527cc90 |
+| completed | S3 Whole-candidate qualification | Exact-candidate broad suite, six native gates and independent product review pass |
+| awaiting owner | S4 Acceptance | Concrete 527cc90 result and evidence ready; no next Activity or publication started |
 
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0017 |
 | Activity | ACTIVITY-SDP-0001 |
-| Phase contributions | mandate, study, design, implementation planning |
-| Status | active coordination |
+| Phase contributions | mandate, study, requirements, design, implementation, verification |
+| Status | awaiting owner acceptance |
 | Primary card | KB-SDP-062 |
 | Plan | PLAN-SDP-0026 |
 | Snapshot date | 2026-11-12 |
-| Current step | S2 |
+| Current step | S4 |
 | Execution authority | Owner authorizes execution through Activity0001; no publication or acceptance inferred |
 
 ## Goal and handoff
@@ -48,7 +50,7 @@ reader limits. Next is M0, not Activity feature implementation. Plan lifecycle i
 still planned; Activity activation denotes the selected need, not completed design
 or started agent dispatch. No Git commit, push or release.
 
-## T002 — Activity execution (in progress)
+## T002 — Activity execution and technical qualification
 
 Owner authorizes working through Activity0001. Loaded SDP, Master and Worker,
 reusing Architect/Planning/Vertical Refactor/Traceability instructions. Preflight:
@@ -58,3 +60,26 @@ unrelated RPM/process work is excluded. No conflict in selected SDPTool/SDL mode
 scope. Remote concurrent work remains outside observation. Scoped verdict green.
 Created execution branch sdp/sdptool-architecture-migration; preserve the setup as
 its first checkpoint. M0 baseline and complete operation inventory underway.
+
+Execution continuation: d0bf6dc preserves bootstrap/authority; a32d0d6 pins M0/M1
+inventory, validated NOW/TARGET and Blueprint; c47adb5 migrates Session/CLI/action
+policy and MCP framing; 527cc90 completes root routing and typed program execution.
+Bounded inventory and Worker assignments used the selected model/contract. A
+separate reviewer approved product changes and verified negative architecture
+specimens. No product functionality or generated viewpoint was added manually.
+
+Baseline and migration broad suites passed, including governance recovery. Final
+root tests, compiled Session CLI/MCP journeys, app/MCP/history race checks, vet,
+bootstrap and gh-sdp checks passed. 187 compiled CLI comparisons have zero wire/exit
+differences; all 258 baseline library signatures remain. Five native XFMD producer
+gates passed. SDUI native initially timed out on baseline and candidate because the
+local build lacks its required helper executables. With an isolated helper
+installation, the unchanged test passes with both baseline and final producer. The final frozen-source broad suite passed
+against 527cc90. Evidence and outstanding owner disposition are in ../06-Verification.
+
+Temporary baseline worktree /tmp/sdp-activity1-baseline-checkout was this assignment's
+read-only test checkout and was removed after passing tests and a clean status;
+no conflicting work was adopted. No push/merge/release or
+owner acceptance is claimed. Plan, inventory, traceability and card are reconciled to the passed candidate;
+KB062 enters gate-review. Next: owner acceptance of the restructuring result.
+Activity0002 is not created or started.

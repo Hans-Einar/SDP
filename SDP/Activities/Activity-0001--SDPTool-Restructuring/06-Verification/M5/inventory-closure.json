@@ -1,0 +1,872 @@
+{
+  "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+  "baseline": "d0bf6dc37027bbb75f5f96fecc169e681a3a6c9b",
+  "operationRows": [
+    {
+      "operation": "discover",
+      "disposition": "retain",
+      "targetOwner": "ProjectFacade",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log",
+        "cli-parity.json",
+        "native-qualified.json"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "tree",
+      "disposition": "retain",
+      "targetOwner": "ProjectFacade",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log",
+        "cli-parity.json",
+        "native-qualified.json"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "select",
+      "disposition": "retain",
+      "targetOwner": "ProjectFacade",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log",
+        "cli-parity.json",
+        "native-qualified.json"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "preview",
+      "disposition": "retain",
+      "targetOwner": "ProjectFacade",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log",
+        "cli-parity.json",
+        "native-qualified.json"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "sdui-preview",
+      "disposition": "retain",
+      "targetOwner": "ProjectFacade",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log",
+        "cli-parity.json",
+        "native-qualified.json"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "view ip",
+      "disposition": "retain",
+      "targetOwner": "ProjectFacade",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log",
+        "cli-parity.json"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "run",
+      "disposition": "migrate mixed CLI/execution responsibilities; retain process protocol",
+      "targetOwner": "ProgramRunner",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log",
+        "cli-parity.json"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "install / upgrade (preview, apply, resume)",
+      "disposition": "retain",
+      "targetOwner": "InstallService",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "bootstrap.log",
+        "gh-sdp.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "release-log",
+      "disposition": "retain",
+      "targetOwner": "ReleaseLogService",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log",
+        "cli-parity.json"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "actions / invoke",
+      "disposition": "migrate",
+      "targetOwner": "OperationRegistry",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log",
+        "cli-parity.json"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "model snapshot",
+      "disposition": "retain",
+      "targetOwner": "ModelGovernance",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "model merge",
+      "disposition": "retain",
+      "targetOwner": "ModelGovernance",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "model commit",
+      "disposition": "retain",
+      "targetOwner": "ModelGovernance",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "model restore",
+      "disposition": "retain",
+      "targetOwner": "ModelGovernance",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "model recover",
+      "disposition": "retain",
+      "targetOwner": "ModelGovernance",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "model status",
+      "disposition": "retain",
+      "targetOwner": "ModelGovernance",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "model history",
+      "disposition": "retain",
+      "targetOwner": "ModelGovernance",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "model create work (initial/from release)",
+      "disposition": "retain",
+      "targetOwner": "ModelGovernance",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "model create work (merge sources)",
+      "disposition": "retain",
+      "targetOwner": "ModelGovernance",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "model create candidate",
+      "disposition": "retain",
+      "targetOwner": "ModelGovernance",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "model create proposal",
+      "disposition": "retain",
+      "targetOwner": "ModelGovernance",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "model create release",
+      "disposition": "retain",
+      "targetOwner": "ModelGovernance",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "model create blueprint",
+      "disposition": "retain service; move per-action platform/attribution policy to registration",
+      "targetOwner": "BlueprintService",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "model assess blueprint",
+      "disposition": "retain service; move per-action platform/attribution policy to registration",
+      "targetOwner": "BlueprintService",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "model assignment list",
+      "disposition": "retain service; move per-action platform/attribution policy to registration",
+      "targetOwner": "BlueprintService",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "model assignment apply",
+      "disposition": "retain service; move per-action platform/attribution policy to registration",
+      "targetOwner": "BlueprintService",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "blueprint.assess",
+      "disposition": "retain domain call; consolidate registration policy",
+      "targetOwner": "OperationRegistry",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "blueprint.assignment.apply",
+      "disposition": "retain domain call; consolidate registration policy",
+      "targetOwner": "OperationRegistry",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "blueprint.assignment.list",
+      "disposition": "retain domain call; consolidate registration policy",
+      "targetOwner": "OperationRegistry",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "blueprint.generate",
+      "disposition": "retain domain call; consolidate registration policy",
+      "targetOwner": "OperationRegistry",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.adopt",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.advance",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.assess",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.context",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.definition",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.design-context",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.dispose",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.host-cancel",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.host-read",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.host-request",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.list",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.owner",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.progress",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.read",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.rebind",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.rebind-context",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.resume",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.review",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.select",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.start",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.successor",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance.session.verify",
+      "disposition": "migrate Session bridge and operation policy",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "project.discover",
+      "disposition": "retain domain call; consolidate registration policy",
+      "targetOwner": "OperationRegistry",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log",
+        "cli-parity.json",
+        "native-qualified.json"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "project.model-tree",
+      "disposition": "retain domain call; consolidate registration policy",
+      "targetOwner": "OperationRegistry",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "root-final.log",
+        "cli-parity.json",
+        "native-qualified.json"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance context",
+      "disposition": "migrate dispatch into typed operation definition; preserve service",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance route",
+      "disposition": "migrate dispatch into typed operation definition; preserve service",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance bind",
+      "disposition": "migrate dispatch into typed operation definition; preserve service",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance start",
+      "disposition": "migrate dispatch into typed operation definition; preserve service",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance read",
+      "disposition": "migrate dispatch into typed operation definition; preserve service",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    },
+    {
+      "operation": "governance transition",
+      "disposition": "migrate dispatch into typed operation definition; preserve service",
+      "targetOwner": "GovernanceApplication",
+      "candidate": "527cc9008bdf8f567f8b201b665b2960865518f1",
+      "codeMapping": "../../04-Design/CodeMapping.md",
+      "evidence": [
+        "pinned-tests.log",
+        "Review.md",
+        "compiled-final.log",
+        "cli-parity.json",
+        "race-final.log"
+      ],
+      "verification": "passed on final candidate"
+    }
+  ],
+  "additionalSurfaces": {
+    "rootCLI": "14 commands share cliCommands; help/version remain option handling",
+    "controller": "All 51 paths and stdin controls retained; Boundaries.md; pinned-tests.log",
+    "MCP": "28 names in six configurations, explicit guards retained; Boundaries.md; pinned-tests.log; race-final.log",
+    "library": "258 baseline signatures retained; library-compatibility.json",
+    "external": "Native XFMD integration and SDUI workflow passed with final producer; gh-sdp/bootstrap passed on unchanged source"
+  },
+  "temporaryAdapters": [],
+  "unclassifiedOperations": [],
+  "technicalQualification": "passed",
+  "ownerAcceptance": "pending"
+}

@@ -6,7 +6,7 @@ and [implementation plan](../SDP/05--Implementation/SDPTool.md) are delivered.
 The Go executable supports saved design preview, project discovery and configured
 plan viewing, typed navigation data and SDUI structural Markdown previews.
 
-The active feature assignment is
+The original navigation feature assignment is
 [KB-SDP-017](../SDP/KanBan/active/%23017--Proposal--sdptool-and-project-navigation.md).
 The feature is designed in the [shared SDP process](../SDP/README.md), using
 its five numbered phases and common Traceability/KanBan. Do not create a nested
@@ -16,6 +16,24 @@ in SDP/05--Implementation.
 SDPTool owns project discovery/configuration, command coordination, navigation
 inventory and viewer adapters. SDL and SDUI retain their parsers, runtimes and
 projection/export implementations. Prefer reuse of existing APIs/commands.
+
+## Architecture and operation ownership
+
+The [authored responsibility model](../SDP/SDL/ProjectGovernance/SDPTool/ArchitectureMigration/README.md)
+and [code mapping](../SDP/Activities/Activity-0001--SDPTool-Restructuring/04-Design/CodeMapping.md)
+describe the current boundaries. CLI and JSON invocation are adapters over typed
+operations. Root command recognition/routing share cliCommands; governance CLI
+and Session actions share [governanceapp](governanceapp/README.md). Action policy
+is registered beside its handler, not repeated in Invoke. MCP capability grants
+remain explicit and its response/retry framing has one implementation.
+
+Domain services own validation and durable state. Do not implement an internal
+call by constructing CLI arguments or parsing presentation output. Controller
+children, external clients and SDUI programs retain their real process protocols.
+Architecture tests include violating specimens; run them along with behavioral
+tests when changing these boundaries. There is no migration-only adapter to reuse.
+Activity creation/browsing remain future work; manual Activity documents are not
+an implemented tool capability.
 
 Current project operations:
 

@@ -91,6 +91,29 @@ M3 group removes its replaced paths before closing. M5 verifies the whole result
 External consumer work must have named ownership and verified integration; a
 headless fixture alone cannot prove native XFMD acceptance.
 
+## Execution disposition — Session0017
+
+Product candidate: 527cc9008bdf8f567f8b201b665b2960865518f1.
+[Verification and inventory closure](../../../Activities/Activity-0001--SDPTool-Restructuring/06-Verification/Verification.md)
+owns exact results and provenance; the following is the authoritative milestone
+status, not another independent plan.
+
+| Milestone | Current disposition |
+| --- | --- |
+| M0 | Complete: pinned code/library/action inventory, controller/MCP/consumer reconciliation, observed SDL and passing baseline suite |
+| M1 | Complete: validated target WORK, immutable Blueprint plus behavioral/removal contracts and authored source mapping |
+| M2 | Implemented and independently reviewed: typed governance application and direct Session adapters; negative architecture specimens detect prohibited paths |
+| M3a | Implemented/retained: one root CLI registration; existing navigation/selection services and native producer contracts preserved |
+| M3b | Retained with model/Blueprint/assignment package evidence; caller and availability policy consolidated without catalogue change |
+| M3c | Implemented/retained: common MCP response policy; existing capability, governance, controller and history boundaries preserved |
+| M3d | Implemented/retained: typed program execution split; installation/bootstrap/release utilities preserved |
+| M4 | Transferred by owner to the next Activity; no functionality implemented here |
+| M5 | Technical qualification complete: exact-candidate full suite, native gates, independent review and inventory closure pass; ready for owner acceptance |
+
+No temporary adapter or deferred migration cleanup remains. Technical delivery is
+complete. Plan and Activity remain active until the owner accepts the concrete
+527cc90 product result and linked evidence; no acceptance or publication is inferred.
+
 ## Blueprint's bounded role
 
 Current `SDPTool/blueprints` can capture NOW/TARGET, task rules/protection, retained

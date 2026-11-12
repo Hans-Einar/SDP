@@ -35,6 +35,13 @@ requirements:
     design: DES-SDPTOOL-001
     note: GIP delivers installation execution; RP1 owns signed publication and live adoption.
 designs:
+  SDPTOOL-DES-ARCHMIG-0001:
+    status: implemented-owner-acceptance-pending
+    path: Activities/Activity-0001--SDPTool-Restructuring/04-Design/Architecture.md
+    implementationPlan: 05--Implementation/SDPTool/ArchitectureMigration/Plan.md
+    kanban: KB-SDP-062
+    verification: SDPTOOL-VER-ARCHMIG-0001
+    note: Preliminary SDL WORK and retained Blueprint are supplemented by candidate code mapping; no accepted model release claimed.
   SDPTOOL-DES-ACT:
     status: verified
     path: 04--Design/SDPTool/Actions/Contract.md
@@ -148,6 +155,11 @@ slices:
     verification: [VER-SDP-005-001, VER-SDP-005-002, VER-SDP-005-003]
 fixes: {}
 reviews:
+  REV-SDPTOOL-ARCHMIG-0001:
+    status: approved
+    path: Activities/Activity-0001--SDPTool-Restructuring/06-Verification/M5/Review.md
+    commit: 527cc9008bdf8f567f8b201b665b2960865518f1
+    verification: SDPTOOL-VER-ARCHMIG-0001
   REV-SDPTOOL-R221-FINAL:
     status: approved
     path: Maintenance/R221/Final-Evidence.md
@@ -249,6 +261,13 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-ARCHMIG-0001:
+    status: passed-technical-qualification-owner-acceptance-pending
+    path: Activities/Activity-0001--SDPTool-Restructuring/06-Verification/Verification.md
+    managementId: PLAN-SDP-0026
+    card: KB-SDP-062
+    design: SDPTOOL-DES-ARCHMIG-0001
+    note: Full final suite, six native gates, parity, focused race/vet and independent review pass; no new capability or publication.
   SDPTOOL-VER-R221-FINAL:
     status: passed
     path: Maintenance/R221/Final-Evidence.md

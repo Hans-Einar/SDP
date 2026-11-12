@@ -35,9 +35,9 @@ publishing or release authority is inferred from an Activity state change.
 ## Route and completion
 
 [PLAN-SDP-0026](../../../05--Implementation/SDPTool/ArchitectureMigration/Plan.md)
-is the authoritative plan. KB-SDP-062 is the selected card. Session0017 establishes
-manual coordination; M0 inventory is next. The plan remains planned until execution
-actually starts. An active Activity may contain preparatory planning work.
+is the authoritative plan. KB-SDP-062 is the selected card. Session0017 records
+manual coordination and subsequent execution. The plan owns current milestone
+status; Activity activation alone does not imply implementation or acceptance.
 
 Completion requires the plan's complete finite inventory, verified target rules,
 all required behavior/integration evidence, zero migration-only paths and owner

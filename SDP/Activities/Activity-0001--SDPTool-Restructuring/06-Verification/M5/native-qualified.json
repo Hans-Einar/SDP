@@ -1,0 +1,24 @@
+[
+  {
+    "test": "SduiWorkflowGuiTest",
+    "producer": "/tmp/sdptool-activity1-baseline",
+    "exit": 0,
+    "output": "PASS\n",
+    "testSHA256": "0f413b8c93774c5e7c356e1bdb92906fe90bade3d2a5139764571e830c2fe761",
+    "helpers": {
+      "sdui-fyne": "a98595f78267e7c5ac52dc5fc5915bb5f08c520a39ddab9e30a54fc2bfa891ba",
+      "sdui-preview": "1a74e065c3149113e6ee32eb0e1ee6fb8640177944b5a5d3af79a324e25267e1"
+    }
+  },
+  {
+    "test": "SduiWorkflowGuiTest",
+    "producer": "/tmp/sdptool-activity1-final",
+    "exit": 0,
+    "output": "PASS\n",
+    "testSHA256": "0f413b8c93774c5e7c356e1bdb92906fe90bade3d2a5139764571e830c2fe761",
+    "helpers": {
+      "sdui-fyne": "a98595f78267e7c5ac52dc5fc5915bb5f08c520a39ddab9e30a54fc2bfa891ba",
+      "sdui-preview": "1a74e065c3149113e6ee32eb0e1ee6fb8640177944b5a5d3af79a324e25267e1"
+    }
+  }
+]
