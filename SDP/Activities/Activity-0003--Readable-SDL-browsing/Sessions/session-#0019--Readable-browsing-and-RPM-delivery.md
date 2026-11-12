@@ -2,9 +2,9 @@
 
 | State | Step | Outcome |
 | --- | --- | --- |
-| on-going | S1 Design and implementation | PLAN0028 B0–B3 |
-| planned | S2 Qualification | B4 |
-| planned | S3 RPM publication | B5 |
+| completed | S1 Design and implementation | PLAN0028 B0–B3 |
+| completed | S2 Qualification | B4 |
+| on-going | S3 RPM publication | B5 |
 
 | Field | Value |
 | --- | --- |
@@ -64,3 +64,15 @@ including newly-created Activity3 records without their retained images.
 Root regression and targeted SDL tests pass; broad regression, revised native
 print inspection and final independent qualification are in progress. RPM source
 pin and publication remain pending the final candidate.
+
+## T003 — Product qualification and release preparation
+
+Owner confirms XFMD0.10. Producer5802355 and native browsingd530aa7 receive
+independent code/product approval after actual PDF inspection and targeted tests.
+237 actual HEOS selections pass. Final qualified-dependency membership now uses
+the same dependency authority as the loader. B4/Verification.md retains layered
+regression results, original fixture failures, corrections and exact reuse limits.
+Release worker prepares the exact pinned private producer, signed public
+predecessor upgrade and fresh install verification. Publication is authorized;
+package evidence and independent release disposition remain pending. No personal
+owner review or main merge is inferred.

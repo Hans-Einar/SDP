@@ -25,8 +25,8 @@ viewpoints, new SDL port grammar, unrelated refactoring or main merge.
 | B1 | System/include/fragment navigation; ordered unique actionable VP collections | implemented |
 | B2 | All-VP explanatory pages, complete chapter collections, separate registers and readable exact source links | implemented |
 | B3 | Faithful container/unit/channel reading and generic native consumption; HEOS and edge fixtures | implemented |
-| B4 | Integrated regression, actual GUI/print checks and independent review | in-progress |
-| B5 | Exact committed0.10 package with matching producer, signed public repo and DNF verification | planned |
+| B4 | Integrated regression, actual GUI/print checks and independent review | completed |
+| B5 | Exact committed0.10 package with matching producer, signed public repo and DNF verification | in-progress |
 
 Use SDP branch sdp/readable-browsing and XFMD isolated branch of the same name.
 Milestone commits/pushes preserve the Activity2 history. Package publication is

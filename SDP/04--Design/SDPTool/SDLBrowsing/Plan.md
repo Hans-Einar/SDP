@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0025 |
 | project | SDP |
-| state | planned |
+| state | completed |
 | PlanType | DesignPlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -14,8 +14,9 @@
 ## Outcome and authority
 
 Prepare an implementable design for readable, producer-owned SDL browsing across
-VP01–VP11. The owner authorizes planning now. This plan is prepared, not executed;
-requirements/model changes, product implementation and publication remain unselected.
+VP01–VP11. The initial owner assignment authorized planning. The later Activity3 selection
+authorized execution; D1–D4 are now complete through PLAN-SDP-0028 B0.
+The dated planning checkpoints below retain their historical context.
 
 This is a functional navigation improvement with architectural refactoring inside
 it. It changes observable behavior and the producer/consumer contract, so a pure
@@ -69,14 +70,14 @@ No new SDL port entities and no hand-maintained generated viewpoints.
 
 | Phase | Milestone | Observable acceptance | State |
 | --- | --- | --- | --- |
-| Requirements and baseline | D1 Reading tasks and scope | Map NavigationDesign to existing/new requirements and reader acceptance tasks; inventory old targets/content and exact current producer/consumer baseline; distinguish bugs from new behavior | planned |
-| Architecture and WORK design | D2 Model and protocol | Reconcile SDL/SDPTool/XFMD ownership; update applicable WORK models and prose contracts for membership, ordered tree, generic activation, collection/register scope, compatibility and failure handling | planned |
-| Presentation design | D3 Reading and rendering | Define all eleven viewpoint dispositions, category membership and shared page rules; resolve representative VP01/VP04/VP08/fragment cases plus channel attachment feasibility in the native renderer | planned |
-| Handoff | D4 Blueprint and delivery plan | Prepare reviewable NOW/TARGET context and authored assignment, expose UNKNOWN code mappings, obtain applicable design disposition, and create the bounded ImplementationPlan with testable milestones/cards | planned |
+| Requirements and baseline | D1 Reading tasks and scope | Map NavigationDesign to existing/new requirements and reader acceptance tasks; inventory old targets/content and exact current producer/consumer baseline; distinguish bugs from new behavior | completed |
+| Architecture and WORK design | D2 Model and protocol | Reconcile SDL/SDPTool/XFMD ownership; update applicable WORK models and prose contracts for membership, ordered tree, generic activation, collection/register scope, compatibility and failure handling | completed |
+| Presentation design | D3 Reading and rendering | Define all eleven viewpoint dispositions, category membership and shared page rules; resolve representative VP01/VP04/VP08/fragment cases plus channel attachment feasibility in the native renderer | completed |
+| Handoff | D4 Blueprint and delivery plan | Prepare reviewable NOW/TARGET context and authored assignment, expose UNKNOWN code mappings, obtain applicable design disposition, and create the bounded ImplementationPlan with testable milestones/cards | completed |
 
 D3 examples validate the shared rules; they do not limit the implementation to
 three viewpoints. Readability must be checked in actual XFMD during implementation,
-not inferred from successful source parsing. No checks above are claimed passed.
+not inferred from successful source parsing. Current outcome and evidence follow below.
 
 ## Proposed successive Sessions
 
@@ -153,3 +154,17 @@ Owner now authorizes Activity3 implementation and public XFMD0.10 RPM delivery.
 B0 of PLAN-SDP-0028 consolidates this design route; the Activity3 ImplementationContract
 and ReadingWorkflow WORK/Blueprint pin the selected boundary. Historical planning
 authority above is superseded for this selected scope; no main merge is authorized.
+
+## Design completion — Activity3 B0/B4
+
+D1–D4 completed through SESSION-SDP-0019. Canonical REQ-READ-001–008,
+ReadingWorkflow NOW/TARGET WORK snapshots and the retained Blueprint are linked
+from [Activity3 handoff](../../../Activities/Activity-0003--Readable-SDL-browsing/04-Design/Blueprints.md).
+The [ImplementationContract](../../../Activities/Activity-0003--Readable-SDL-browsing/04-Design/ImplementationContract.md)
+and SDL/docs/integration/SDL-Reading-Pages.md define the all-viewpoint dispositions,
+producer-owned membership/actions, mode/freshness and collection/register behavior.
+Authored code mapping supplements explicitly unknown generic Blueprint mappings.
+The owner selected autonomous delivery; independent product review approved the
+resulting5802355/d530aa7 implementation and actual native print evidence.
+PLAN-SDP-0028 owns remaining RPM delivery; design completion does not imply a
+released SDL model, public Toolkit release or completed package publication.

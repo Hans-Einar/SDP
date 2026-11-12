@@ -1,0 +1,74 @@
+# ReleaseChecklist
+
+Copy this checklist into the selected release's work area. Record version,
+previous release, exact commit, owner publication authority, evidence paths and
+actual outcomes. Unchecked means pending; use N/A only with a reason. A generated
+release log is not proof of publication. The project release contract governs.
+
+## Scope and content
+
+- [ ] Select product version from compatibility impact. Keep language/profile,
+  process/management schema and client versions distinct.
+- [ ] Enumerate included work and remaining exclusions; validate selected model,
+  tests, review dispositions and links on the actual candidate.
+- [ ] Update canonical RELEASE-NOTES.md Unreleased entries with stable work IDs.
+  Freeze selected entries into a dated version section; preserve released bytes.
+- [ ] Run `sdptool release-log --version X.Y.Z --output Releases/X.Y.Z.md`.
+  Check with the same command plus --check. Use --all --output Releases --check
+  to check every recorded version. Generator extracts reviewed notes, not Git guesses.
+
+## Installation distribution (SDP publisher)
+
+- [ ] Check Template/sdp-root and project-root guidance. Include Sessions guide and
+  blank template, never project conversations, boards or existing work records.
+- [ ] Review SDPTool/profiles/payload.json: every distributed file, destination,
+  ownership and removed/moved path. Inventory completeness tests must pass.
+- [ ] Review SDPTool/profiles/five-phase.json: capabilities, schema/profile versions
+  and exact supported predecessor descriptor digests, including current stable.
+- [ ] Reconcile SDP.manifest.yaml, Toolkit/SDP-install.manifest.json compatibility
+  metadata, package version, release record and notes. Retained legacy metadata
+  does not replace the current Go inventory or signed descriptor.
+- [ ] Build package and immutable sdp-release.json from a clean exact commit using
+  the Go profile builder. Verify file hashes, sourceCommit and executable identity.
+  Never edit the built descriptor or use a project-local manifest as authority.
+- [ ] Sign descriptor with the trusted publisher key; verify signature, binary hash
+  and SHA256SUMS. Store no private keys or secrets in evidence/repository.
+- [ ] Rehearse install and each supported upgrade from original verified descriptor
+  bytes. Check new Sessions files, existing Session/document preservation, receipt,
+  Maintenance entry/history, conflict handling and repeated no-op.
+- [ ] Test extracted-source operation, packaged signed child and normal bootstrap.
+  Development artifacts or test signers are not production signed evidence.
+
+## Publish and consumer readiness
+
+- [ ] Exact candidate CI and required independent review pass; working tree clean;
+  tag absent; merge/publication explicitly authorized.
+- [ ] Publish annotated tag and GitHub Release with generated log, signed descriptor,
+  executable and checksums; verify downloaded assets against exact release.
+- [ ] Reconcile actual tag/commit/time and append truthful release events only after
+  success. Do not rewrite a released log or silently correct released notes.
+- [ ] Verify gh-sdp selection: its compiled default is pinned. Either publish/update
+  the client default or document an explicit SDP_RELEASE selecting this release.
+- [ ] Provide preview/apply commands and expected receipt. Owner-requested manual
+  project upgrade remains manual; never confuse updating the gh extension with
+  upgrading the project's SDP directory.
+
+Consuming projects reuse the scope/content/publication checks; mark SDP publisher
+inventory/signing steps N/A if they do not distribute SDP itself. Keep their own
+application/package/installer acceptance checks alongside this list.
+
+## Selected XFMD application distribution
+
+Owner authority: Session0019/T001 and the Activity mandate authorize public RPM
+delivery and select XFMD0.10. Existing signed predecessor:0.9.0-71.el10_2,
+AlmaLinux10.2 x86_64. Exact private producer:5802355a8af6a89f9ea3fc035198c32d46d35567.
+Native candidate/package identity and public results remain pending.
+
+The installed XFMD ReleaseChecklist and Activity3 native evidence are the
+application-specific execution of this template. SDP publisher descriptor,
+Toolkit profile upgrade, gh-sdp default, GitHub Release/tag and project installation
+checks above are N/A: this delivery distributes an application RPM with a private
+producer, not a public Toolkit release or framework upgrade. Product version,
+source/provenance, tests, independent review, predecessor DNF upgrade, server
+signing, downloaded signature validation and public DNF verification do apply.
+No unchecked publication is claimed complete.
