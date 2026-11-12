@@ -4,6 +4,20 @@
 
 Release-Date: unreleased
 
+### Added
+
+- [KB-SDP-061] Activity and Activity-root Session creation, lifecycle/history, recovery,
+  explicit execution admission and producer-owned Activity navigation/timelines.
+- [KB-SDP-060] Producer-owned Systems/include navigation and readable VP01–VP11
+  collections/details, separate paginated registers and exact statement links.
+  Dense collaboration drawings use Channel/Mode panels with complete payload scope.
+
+### Distribution
+
+- [ACTIVITY-SDP-0003] XFMD0.10 bundles an exact private development producer.
+  This is not a new public Toolkit release and does not change gh-sdp's pinned
+  default or automatically upgrade any project's SDP installation.
+
 ## [2.2.1] - 2026-11-11
 
 ### Fixed

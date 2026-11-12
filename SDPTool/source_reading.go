@@ -133,6 +133,13 @@ func selectSource(ctx context.Context, p Project, m Model, entry string, o Previ
 	raw, _ := json.MarshalIndent(result, "", "  ")
 	b.Files["sdptool.json"] = raw
 	b.Seal()
+	size := 0
+	for _, data := range b.Files {
+		size += len(data)
+	}
+	if len(b.Files) > 128 || size > 32<<20 {
+		return Result{}, failure("limit", fmt.Errorf("source bundle exceeds 128 files or 32 MiB"))
+	}
 	if e = b.CheckLinks(); e != nil {
 		return Result{}, e
 	}
