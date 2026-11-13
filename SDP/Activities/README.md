@@ -31,3 +31,10 @@ Activity3; that does not establish control over arbitrary manual/remote agents.
 [SDPTool Activity usage](../../SDPTool/Activities.md) describes commands and protocol.
 [Release verification](Activity-0003--Readable-SDL-browsing/06-Verification/ReleaseChecklist.md)
 retains the exact delivered app/private-producer pair and public qualification.
+
+## Planned next need
+
+[Activity0004 — Single SDPTool installation](Activity-0004--Single-SDPTool-installation/01-Mandate/Mandate.md)
+captures the owner's subsequent distribution correction. Initial analysis is
+recorded in Session0020; one shared engine updated through gh-sdp is the proposed
+boundary. The Activity remains planned, with no product implementation started.

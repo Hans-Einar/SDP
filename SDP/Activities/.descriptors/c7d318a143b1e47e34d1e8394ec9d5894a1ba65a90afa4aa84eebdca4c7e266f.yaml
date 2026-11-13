@@ -1,0 +1,17 @@
+schema: sdp-activity/0.2
+id: ACTIVITY-SDP-0004
+projectId: SDP
+title: Single SDPTool installation
+owner: project-owner
+mandate: 01-Mandate/Mandate.md
+sourceCards:
+    - KB-SDP-063
+systems:
+    - SDPTOOL
+    - GHSDP
+    - XFMD
+references: []
+scope:
+    - SDPTool
+    - SDP
+    - Toolkit
