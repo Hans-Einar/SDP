@@ -10,7 +10,7 @@ import (
 // existing string options, even when those values happen to be "--json".
 func outputArguments(args []string) ([]string, bool, error) {
 	values := map[string]bool{}
-	for _, name := range []string{"program", "plan", "model", "output", "uri", "revision", "renderer", "entry", "viewer", "sdl-tool", "viewpoint", "artifact", "previous-artifact", "manifest", "plan-output", "apply", "resume", "release", "test-key", "notes", "task", "catalogue", "bundle", "evidence", "request", "as", "authority", "input", "run", "state"} {
+	for _, name := range []string{"source", "program", "plan", "model", "output", "uri", "revision", "renderer", "entry", "viewer", "sdl-tool", "viewpoint", "artifact", "previous-artifact", "manifest", "plan-output", "apply", "resume", "release", "test-key", "notes", "task", "catalogue", "bundle", "evidence", "request", "as", "authority", "input", "run", "state"} {
 		values[name] = true
 	}
 	cleaned := make([]string, 0, len(args))
@@ -41,7 +41,7 @@ func outputArguments(args []string) ([]string, bool, error) {
 		if strings.HasPrefix(arg, "-") && !equal && (values[name] || name == "version" && releaseLog) && i+1 < len(args) {
 			i++
 			cleaned = append(cleaned, args[i])
-		} else if arg == "preview" && i+1 < len(args) {
+		} else if arg == "preview" && i+1 < len(args) && !(len(cleaned) > 1 && cleaned[len(cleaned)-2] == "sdui") {
 			// The required FILE positional can itself begin with a dash.
 			i++
 			cleaned = append(cleaned, args[i])

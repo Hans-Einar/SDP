@@ -124,3 +124,24 @@ func TestEmbeddedNativeCacheIntegrity(t *testing.T) {
 		t.Fatal("cached helper symlink accepted")
 	}
 }
+
+func TestSduiGlobalOutputArguments(t *testing.T) {
+	for _, args := range [][]string{
+		{"sdui", "preview", "--json", "-source", "Page.sdui"},
+		{"--json", "sdui", "preview", "-source", "Page.sdui"},
+		{"sdui", "preview", "-source", "Page.sdui", "--json"},
+	} {
+		got, mode, err := outputArguments(args)
+		if err != nil || !mode || strings.Join(got, " ") != "sdui preview -source Page.sdui" {
+			t.Fatal(got, mode, err)
+		}
+	}
+	got, mode, err := outputArguments([]string{"sdui", "check", "-source", "--json"})
+	if err != nil || mode || got[3] != "--json" {
+		t.Fatal(got, mode, err)
+	}
+	got, mode, err = outputArguments([]string{"preview", "--json"})
+	if err != nil || mode || got[1] != "--json" {
+		t.Fatal("existing FILE positional changed", got, mode, err)
+	}
+}
