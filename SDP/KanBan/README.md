@@ -5,8 +5,8 @@
 | ID | Type | Status | Document |
 | --- | --- | --- | --- |
 | KB-SDP-062 | Proposal | completed | [Complete SDPTool architecture migration](completed/%23062--Proposal--Complete-SDPTool-architecture-migration.md) |
-| KB-SDP-060 | Change | active | [Producer-owned readable SDL browsing](active/%23060--Change--Producer-owned-SDL-browsing.md) |
-| KB-SDP-061 | Proposal | active | [Need-driven Activities across successive Sessions](active/%23061--Proposal--Need-driven-activities.md) |
+| KB-SDP-060 | Change | completed | [Producer-owned readable SDL browsing](completed/%23060--Change--Producer-owned-SDL-browsing.md) |
+| KB-SDP-061 | Proposal | completed | [Need-driven Activities across successive Sessions](completed/%23061--Proposal--Need-driven-activities.md) |
 | KB-SDP-057 | Change | completed | [Codex 0.164.0 and compatible later hosts](completed/%23057--Change--Codex-forward-compatibility.md) |
 | KB-SDP-059 | Proposal | onHold | [Model-linked code and runtime context for agents](onHold/%23059--Proposal--Compiled-model-code-and-runtime-context.md) |
 | KB-SDP-058 | Proposal | backlog | [Measure PG usefulness and coordination overhead](backlog/%23058--Proposal--PG-usefulness-and-overhead-measures.md) |

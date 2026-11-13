@@ -1,36 +1,33 @@
 # Project Activities
 
 Activity folders collect change-work documents. Current system requirements and
-SDL remain in their existing authoritative homes. State is replayed from
-[ProjectManagement/Ledger.ndjson](../ProjectManagement/Ledger.ndjson); directory
-names and descriptors do not own lifecycle state.
+SDL remain in their authoritative homes. State is replayed from
+[ProjectManagement/Ledger.ndjson](../ProjectManagement/Ledger.ndjson); folder names
+and descriptors do not own lifecycle state.
 
-The owner selected this sequence on 2026-11-12:
+The owner-selected first three Activities are delivered:
 
 1. [SDPTool restructuring](Activity-0001--SDPTool-Restructuring/01-Mandate/Mandate.md)
-   — registered manually as ACTIVITY-SDP-0001; creation and activation are in the ledger.
-2. Activity support — manually registered as ACTIVITY-SDP-0002; KB-SDP-061.
-3. SDP browsing in XFMD through SDPTool — first creation through the implemented
-   command after Activity support is verified; KB-SDP-060.
+   — manually registered, owner-accepted and completed.
+2. [Activity management](Activity-0002--Activity-Management/01-Mandate/Mandate.md)
+   — manually registered, independently qualified and completed through the
+   owner-authorized application delivery without personal owner review.
+3. [Readable SDL browsing](Activity-0003--Readable-SDL-browsing/01-Mandate/Mandate.md)
+   — first created by SDPTool, independently qualified and completed with signed
+   XFMD0.10.0-76 publication and actual public DNF upgrade/fresh-install evidence.
 
-Activity0001 is owner-accepted and completed.
-[Activity0002](Activity-0002--Activity-Management/01-Mandate/Mandate.md) is now manually
-registered and active. Item 3 remains a future route position, not an allocated
-identity or existing folder/event. New Session
-logs live under their owning Activity. Existing Sessions remain at their original
-paths and can be referenced without inventing historical membership.
+There is no currently active Activity. Activity3's tool-recorded lifecycle includes
+an observed quiescent hold/update/resume to link its actual plan and Session.
+Activity2 was held while Activity3 executed, then resumed only for administrative
+closure after the shared release delivered its qualified outcome. No personal
+owner review, main merge or public Toolkit installation release is implied.
 
-[Manual record contract](../ProjectManagement/Activity-records.md) defines the
-bootstrap format. [SDPTool Activity usage](../../SDPTool/Activities.md) describes
-the implemented candidate commands and current protocol. Creating/viewing these
-records does not adopt runtime admission; explicit inventory/adoption remains
-separate. No released binary, live installation or owner acceptance of Activity0002
-is inferred from these documents.
+New Sessions live under their owning Activity. Existing Sessions retain their
+original paths and can be referenced without inventing historical membership.
+The canonical local execution store was explicitly inventoried/adopted during
+Activity3; that does not establish control over arbitrary manual/remote agents.
 
-## Current selection
-
-Activity0003 — Readable SDL browsing is now tool-created and active, under
-PLAN-SDP-0028 / SESSION-SDP-0019. Activity0002 is technically qualified and on hold
-for any later owner disposition; the owner explicitly proceeds without personal
-review. Runtime admission was explicitly adopted with the observed canonical
-local execution store before the atomic switch; see Session0019.
+[Record contract](../ProjectManagement/Activity-records.md) describes compatibility.
+[SDPTool Activity usage](../../SDPTool/Activities.md) describes commands and protocol.
+[Release verification](Activity-0003--Readable-SDL-browsing/06-Verification/ReleaseChecklist.md)
+retains the exact delivered app/private-producer pair and public qualification.

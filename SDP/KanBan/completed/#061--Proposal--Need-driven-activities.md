@@ -5,7 +5,7 @@
 | id | KB-SDP-061 |
 | project | SDP |
 | type | Proposal |
-| CardState | gate-review |
+| CardState | completed |
 | created | 2026-11-11 |
 | PlanId | PLAN-SDP-0027 |
 | Systems | ProjectGovernance, SDPTOOL |
@@ -57,3 +57,12 @@ producer-owned Activities pages/timeline and explicit governance admission.
 records full regression, final delta race, native workflows and independent review.
 CardState gate-review; actual owner acceptance remains pending. No Activity0003,
 live admission, installation, merge or release is inferred.
+
+## Delivered outcome
+
+Completed under the owner's autonomous implementation/publication authority.
+Signed public XFMD0.10.0-76 delivers the selected capability with exact private
+producer c3463b7. Independent source/package/public verification and actual signed
+DNF upgrade/fresh-install native workflows pass. Activity3/06-Verification holds
+evidence. Earlier queue/gate-review/no-adoption statements are historical. Personal
+owner review was not performed; no main merge or Toolkit installer release claimed.

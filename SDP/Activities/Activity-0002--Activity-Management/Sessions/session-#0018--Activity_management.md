@@ -5,13 +5,13 @@
 | completed | S1 Manual registration | Owner accepts predecessor and selects Activity0002 |
 | completed | S2 Design and implementation | A1–A5 candidate implemented; integrated qualification follows |
 | completed | S3 Qualification | Candidate verification and independent review passed |
-| waiting | S4 Owner disposition | Concrete qualified result ready for owner review |
+| completed | S4 Delivery disposition | Owner authorized autonomous continuation/publication without personal review; objective delivery verified |
 
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0018 |
 | Activity | ACTIVITY-SDP-0002 |
-| Status | active |
+| Status | completed |
 | Current step | S4 |
 | Primary card | KB-SDP-061 |
 | Plan | PLAN-SDP-0027 |
@@ -120,3 +120,14 @@ selecting the browsing need through the implemented Activity commands.
 The published package will include the qualified Activity2 capabilities.
 No main merge or unrelated primary XFMD work is selected. Product version is
 being clarified because the requested 9.1 differs from the current 0.9 series.
+
+## T007 — Objective delivery closure
+
+The owner-selected autonomous continuation is now delivered through Activity3.
+Real Activity/Session creation, guarded reference reconciliation and installed
+native Activity workflows pass with the signed public XFMD0.10.0-76 package.
+The generic README correction c3463b7 is tested and independently reviewed.
+PLAN0027 and KB061 close on this objectively verified authorized outcome. Personal
+owner review was not performed; no main merge or Toolkit installer release is
+claimed. The Activity is resumed only for administrative completion after Activity3
+closes, preserving the single-active rule and observed quiescence.

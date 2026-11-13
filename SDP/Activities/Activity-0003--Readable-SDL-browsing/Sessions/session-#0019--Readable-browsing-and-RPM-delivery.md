@@ -4,12 +4,12 @@
 | --- | --- | --- |
 | completed | S1 Design and implementation | PLAN0028 B0–B3 |
 | completed | S2 Qualification | B4 |
-| on-going | S3 RPM publication | B5 |
+| completed | S3 RPM publication | B5 |
 
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0019 |
-| Status | active |
+| Status | completed |
 | Activity | ACTIVITY-SDP-0003 |
 | Phase | 02-Study |
 | Phase contributions | 02-Study, 03-Requirements, 04-Design, 05-Implementation, 06-Verification |
@@ -96,3 +96,30 @@ All three canonical events and operation images are retained;775 management even
 validate. This was an observed administrative checkpoint, not a claim that a ledger
 entry stopped a process. The worker resumed the bounded test timing correction and
 repackaging only after the resume event. Independent review approvedc3463b7.
+
+## T006 — Public release and objective completion
+
+XFMD0.10.0-76.el10_2 is signed and published. Public DNF upgraded the verified
+signed0.9 predecessor and performed a fresh public install with both package and
+metadata signature checks forced. Exact native8546e95/private producer c3463b7,
+all11 reading landings, source/Back and real Activity workflows pass. Independent
+final release review approves with no findings; B5 retains receipts and logs.
+The real project Activity3 Implementation page also opens the linked PLAN0028.
+
+B0–B5 and the selected need are delivered. Activity2's previously qualified scope
+is also delivered in this package; the owner's autonomous continuation/publication
+authority permits objective closure without pretending personal review occurred.
+Reconcile both through the canonical Activity commands, preserve prior events,
+and push final records. No further implementation is selected; no main merge or
+public Toolkit installation release is inferred. Skills used remain SDP, Planning,
+Architect, Master/Worker, Verifier, Versioning, Release and independent Reviewer.
+This entry is a work summary, not a captured final response.
+
+## T007 — Canonical closeout
+
+The actual Activity commands completed Activity3, resumed Activity2 solely for
+administrative closure, then completed Activity2. All first three Activities now
+replay as completed; no Activity is active. The single-active rule and original
+append-only bytes are preserved. Canonical management validation passes with76
+cards,52 management records and782 events. Final repository reconciliation and
+phase push accompany this closeout; subsequent work requires a new selected need.

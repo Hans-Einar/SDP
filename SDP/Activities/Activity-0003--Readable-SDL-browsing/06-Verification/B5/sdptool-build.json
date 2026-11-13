@@ -1,0 +1,12 @@
+{
+  "repository": "Hans-Einar/SDP",
+  "commit": "c3463b78d53ebf984b0f553ebe93a556fb3ac6a8",
+  "version": "2.2.0-dev",
+  "archive": "third_party/sdptool-c3463b78d53ebf984b0f553ebe93a556fb3ac6a8.tar.gz",
+  "sha256": "2fba02c3e9ad713bc34c322c53968d8806edeac757208f2b67f8bc31fa69886d",
+  "binary_sha256": "d583f22669339e6a322c795e353c58cd7bd6be1ba650e066e05609b7352f036a",
+  "go_version": "go version go1.26.10 (Red Hat 1.26.10-1.el10_2.alma.1) linux/amd64",
+  "cgo_enabled": false,
+  "buildvcs": false,
+  "rpm_note_strip": true
+}

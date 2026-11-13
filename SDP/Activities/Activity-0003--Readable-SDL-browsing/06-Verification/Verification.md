@@ -1,10 +1,14 @@
 # Activity3 verification
 
+| Field | Value |
+| --- | --- |
+| id | SDPTOOL-VER-READING-0003 |
+
 ## Qualified product
 
 Independent reviewer approved producer `5802355a8af6a89f9ea3fc035198c32d46d35567`
 and native browsing implementation `d530aa7` for code/product qualification.
-The final package/release remains a separate pending gate.
+That initial product disposition was followed by final release qualification below.
 
 Producer ownership and acceptance are defined in ../04-Design/ImplementationContract.md
 and canonical SDP/02--Requirements/SDPTool.md (REQ-READ-001 through REQ-READ-008).
@@ -74,3 +78,20 @@ silently overwritten by the command; Activity3's guide was explicitly reconciled
 This delta leaves qualified reading/native behavior unchanged. The private RPM
 producer pin must usec3463b7; independent delta review approved this correction
 and independently reran the extended creation/retry regression.
+
+## Delivered application and final disposition
+
+[ReleaseChecklist](ReleaseChecklist.md) and [independent review](B5/Review.md)
+record the completed delivery. Native source8546e956d1a941ece9195d335b7196abea905289
+and private producer c3463b78d53ebf984b0f553ebe93a556fb3ac6a8 ship together in signed
+XFMD0.10.0-76.el10_2. Container89/89 tests, installed workflows, local upgrade and
+fresh-install checks pass. Public signed metadata/package verification, actual
+DNF upgrade from0.9.0-71 and fresh public install pass the same native workflows.
+The independent reviewer approved final public qualification with no findings.
+
+The owner authorized autonomous completion/publication and had no time for personal
+review. Closure records the objectively verified authorized delivery; it does not
+claim that personal review, a main merge, an accepted SDL model release or a public
+SDP Toolkit installation release occurred. Initial pending/checkpoint sections
+above are historical, superseded by this final disposition. No implementation or
+publication obligation remains in PLAN-SDP-0028.

@@ -1,0 +1,24 @@
+{
+  "commit": "8546e956d1a941ece9195d335b7196abea905289",
+  "display": "0.10",
+  "version": "0.10.0",
+  "release": "76.el10_2",
+  "package_version": "0.10.0-76.el10_2",
+  "channel": "stable",
+  "producer_pin": {
+    "repository": "Hans-Einar/SDP",
+    "commit": "c3463b78d53ebf984b0f553ebe93a556fb3ac6a8",
+    "version": "2.2.0-dev",
+    "archive": "third_party/sdptool-c3463b78d53ebf984b0f553ebe93a556fb3ac6a8.tar.gz",
+    "sha256": "2fba02c3e9ad713bc34c322c53968d8806edeac757208f2b67f8bc31fa69886d"
+  },
+  "source_ref": "HEAD",
+  "output": "/tmp/xfmd-activity3-rpm-candidate-76",
+  "cache": "/home/warloc/.cache/xfmd-build",
+  "publish": false,
+  "publish_existing": false,
+  "base_image": "docker.io/library/almalinux@sha256:ba31c3299856068f77bc10574cad51b0a4f6a3dafb882668656e1639bee63db6",
+  "build_host": "Linux",
+  "xvfb_sha256": "e8f24a85ba13624e583c4e62b473a3a56471a1d7dee2ae4bf74dabd271855271",
+  "builder_image": "a16d543cb0c68eae6d8568e5230c370b4da84f3339b31462de1f67fef5f1b378"
+}

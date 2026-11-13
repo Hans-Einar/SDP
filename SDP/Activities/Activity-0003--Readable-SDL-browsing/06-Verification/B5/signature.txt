@@ -1,0 +1,7 @@
+/tmp/xfmd-activity3-rpm-candidate-76/signed/xfmd-0.10.0-76.el10_2.x86_64.rpm:
+    Header V4 RSA/SHA256 Signature, key ID 901af029: OK
+    Header SHA256 digest: OK
+    Header SHA1 digest: OK
+    Payload SHA256 digest: OK
+    V4 RSA/SHA256 Signature, key ID 901af029: OK
+    MD5 digest: OK

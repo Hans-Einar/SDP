@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0028 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | ImplementationPlan |
 | BranchPolicy | phase |
 | CommitPolicy | milestone |
@@ -22,11 +22,11 @@ viewpoints, new SDL port grammar, unrelated refactoring or main merge.
 | Milestone | Observable acceptance | State |
 | --- | --- | --- |
 | B0 | Tool-created Activity/Session; requirements, WORK model and handoff pinned | completed |
-| B1 | System/include/fragment navigation; ordered unique actionable VP collections | implemented |
-| B2 | All-VP explanatory pages, complete chapter collections, separate registers and readable exact source links | implemented |
-| B3 | Faithful container/unit/channel reading and generic native consumption; HEOS and edge fixtures | implemented |
+| B1 | System/include/fragment navigation; ordered unique actionable VP collections | completed |
+| B2 | All-VP explanatory pages, complete chapter collections, separate registers and readable exact source links | completed |
+| B3 | Faithful container/unit/channel reading and generic native consumption; HEOS and edge fixtures | completed |
 | B4 | Integrated regression, actual GUI/print checks and independent review | completed |
-| B5 | Exact committed0.10 package with matching producer, signed public repo and DNF verification | in-progress |
+| B5 | Exact committed0.10 package with matching producer, signed public repo and DNF verification | completed |
 
 Use SDP branch sdp/readable-browsing and XFMD isolated branch of the same name.
 Milestone commits/pushes preserve the Activity2 history. Package publication is
@@ -41,3 +41,12 @@ expansion versus activation and Back/refresh; print readability. Reuse unchanged
 Activity2 evidence and run integration regressions for modified boundaries.
 Consolidate independent review before signing/publication. Actual delivered
 artifacts and limitations belong in 06-Verification, never preclaimed here.
+
+## Completion
+
+The authorized application delivery is complete and independently qualified.
+XFMD0.10.0-76.el10_2 is published; signed public predecessor DNF upgrade and fresh
+install pass. See [release verification](../../Activity-0003--Readable-SDL-browsing/06-Verification/ReleaseChecklist.md)
+and [independent review](../../Activity-0003--Readable-SDL-browsing/06-Verification/B5/Review.md).
+Closure is based on the objectively verified owner-authorized outcome, without
+claiming personal owner review or a main merge.

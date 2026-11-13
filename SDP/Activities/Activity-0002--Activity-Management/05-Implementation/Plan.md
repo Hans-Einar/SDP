@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0027 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | ImplementationPlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -33,7 +33,7 @@ Use a separate XFMD worktree when product integration requires changes.
 | A3 Navigation | Producer-owned Activities tree, readable landing/phase/history pages and legacy references; XFMD consumption | Verified in the actual native shell. Producer paging, model-free selection and legacy references retained |
 | A4 Timeline | Actual lifecycle intervals and explicitly attributed commit/ledger markers | Implemented; clock/unknown/dense/explicit marker tests pass; colored calendar SVG inspected in native shell |
 | A5 Governance and adoption | Activity-scoped execution admission across existing paths; read-only/capture allowed; installed readers/process integration | Implemented; direct/host admission, pending recovery, installed readers and explicit opt-in tests pass |
-| A6 Qualification | Full integrated candidate, independent review, native workflow, truthful records/docs | Technical qualification and independent review complete; owner disposition pending on the concrete result |
+| A6 Qualification | Full integrated candidate, independent review, native workflow, truthful records/docs | Completed: independent qualification and authorized public delivery; no personal owner review claimed |
 
 Milestones may be refined into smaller runnable checks as source inspection resolves
 contracts; they may not silently drop selected behavior. The existing Design.md
@@ -53,7 +53,16 @@ not follow automatically from a passing parser or generated Blueprint.
 ## Technical delivery disposition
 
 A1–A6 technical obligations are verified on producer eb11ac7 and consumer a558c31.
-See ../06-Verification/Verification.md and A6/Review.md. The plan remains active
-solely for the actual owner disposition; no incomplete implementation is hidden
-behind that boundary. Activity0002 is still the selected active Activity and
-Activity0003 has not been allocated. No live adoption, installation or merge.
+See ../06-Verification/Verification.md and A6/Review.md. That initial checkpoint
+awaited owner disposition. The later owner instruction selected autonomous Activity3
+and public delivery without personal review; real creation/adoption and the signed
+XFMD0.10 package now provide the final outcome. Main merge remains unselected.
+
+## Completion
+
+The authorized application delivery is complete and independently qualified.
+XFMD0.10.0-76.el10_2 is published; signed public predecessor DNF upgrade and fresh
+install pass. See [release verification](../../Activity-0003--Readable-SDL-browsing/06-Verification/ReleaseChecklist.md)
+and [independent review](../../Activity-0003--Readable-SDL-browsing/06-Verification/B5/Review.md).
+Closure is based on the objectively verified owner-authorized outcome, without
+claiming personal owner review or a main merge.

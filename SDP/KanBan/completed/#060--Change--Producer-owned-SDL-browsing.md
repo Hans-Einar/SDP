@@ -5,7 +5,7 @@
 | id | KB-SDP-060 |
 | project | SDP |
 | type | Change |
-| CardState | in-progress |
+| CardState | completed |
 | created | 2026-11-11 |
 | Systems | SDL, SDPTOOL; collaborating XFMD |
 | PlanId | PLAN-SDP-0028 |
@@ -43,3 +43,12 @@ ACTIVITY-SDP-0003 and SESSION-SDP-0019 were created through SDPTool.
 owns B0–B5, including all eleven viewpoints and exact packaged producer evidence.
 Earlier queued wording above records the predecessor sequence, now satisfied by
 Activity2 technical qualification and explicit owner continuation.
+
+## Delivered outcome
+
+Completed under the owner's autonomous implementation/publication authority.
+Signed public XFMD0.10.0-76 delivers the selected capability with exact private
+producer c3463b7. Independent source/package/public verification and actual signed
+DNF upgrade/fresh-install native workflows pass. Activity3/06-Verification holds
+evidence. Earlier queue/gate-review/no-adoption statements are historical. Personal
+owner review was not performed; no main merge or Toolkit installer release claimed.

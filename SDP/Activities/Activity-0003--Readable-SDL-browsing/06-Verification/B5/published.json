@@ -1,0 +1,7 @@
+{
+  "commit": "8546e956d1a941ece9195d335b7196abea905289",
+  "rpm": "xfmd-0.10.0-76.el10_2.x86_64.rpm",
+  "sha256": "e7e39924edaad957355e40210f1b8a7e3989ca1d920dbf107e556588c90af563",
+  "url": "https://beinerud.ddns.net/repo/AlmaLinux-10.2-apps/stable/x86_64/Packages/xfmd-0.10.0-76.el10_2.x86_64.rpm",
+  "signed_sha256": "8c5f2232d87c043bbae16b49e9fbe3815237d69fdb858efb7adb2d51f3587f2d"
+}

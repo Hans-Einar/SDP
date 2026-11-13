@@ -43,8 +43,8 @@ slots until selected, following the owner's successive-Session preference.
 
 | Card | Role | Initial / current state | Disposition |
 | --- | --- | --- | --- |
-| [KB060](../KanBan/backlog/%23060--Change--Producer-owned-SDL-browsing.md) | Primary browsing change | backlog / backlog | Implementation/design execution not started; plan prepared |
-| [KB061](../KanBan/onHold/%23061--Proposal--Need-driven-activities.md) | Separate governance proposal | backlog / backlog | Analysis captured for design decision; no adoption |
+| [KB060](../KanBan/completed/%23060--Change--Producer-owned-SDL-browsing.md) | Primary browsing change | backlog / backlog | Implementation/design execution not started; plan prepared |
+| [KB061](../KanBan/completed/%23061--Proposal--Need-driven-activities.md) | Separate governance proposal | backlog / backlog | Analysis captured for design decision; no adoption |
 | KB032, KB-XFMD-028 | Predecessor/consumer context | Existing states unchanged | Reconcile old obligations at design/preflight; not closed here |
 
 ## T1 — 2026-11-11 planning and workflow discussion

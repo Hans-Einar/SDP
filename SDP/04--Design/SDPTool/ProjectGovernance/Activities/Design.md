@@ -1,7 +1,7 @@
 # Activity management — lifecycle, documents and navigation
 
 Design candidate, 2026-11-11. Owner selects Activity integration **before** the SDL
-browsing redesign. [KB061](../../../../KanBan/active/%23061--Proposal--Need-driven-activities.md)
+browsing redesign. [KB061](../../../../KanBan/completed/%23061--Proposal--Need-driven-activities.md)
 and [Session0016](../../../../Sessions/session-%230016--Activity_design.md) own this
 design. [Initial study](../../../../02--Requirements/ProjectGovernance/Activities/Study.md)
 records the need. Proposed wire names/layouts below are not installed capabilities.

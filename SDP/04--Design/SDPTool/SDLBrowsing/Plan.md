@@ -50,7 +50,7 @@ No new SDL port entities and no hand-maintained generated viewpoints.
 
 ## Existing work and boundaries
 
-- [KB060](../../../KanBan/active/%23060--Change--Producer-owned-SDL-browsing.md)
+- [KB060](../../../KanBan/completed/%23060--Change--Producer-owned-SDL-browsing.md)
   owns this new bounded change. [KB032](../../../KanBan/active/%23032--Study--Viewpoint-navigation-feedback.md)
   remains predecessor/context, retaining its unresolved historical work.
 - [Existing producer work](../../../05--Implementation/SDL/ViewpointNavigation/Plan.md)
@@ -62,7 +62,7 @@ No new SDL port entities and no hand-maintained generated viewpoints.
   evidence that the source model fully captures code or that PG execution is ready.
 - [PG Session/model handoff](../ProjectGovernance/Session-Model-Handoff.md)
   governs exact WORK/task/Blueprint identity, design disposition and model release.
-- Proposed management Activity work is [KB061](../../../KanBan/onHold/%23061--Proposal--Need-driven-activities.md).
+- Proposed management Activity work is [KB061](../../../KanBan/completed/%23061--Proposal--Need-driven-activities.md).
   Owner decision 2026-11-11 now makes qualified Activity integration a predecessor
   of browsing work. This plan remains planned and KB060 queued until that outcome.
 

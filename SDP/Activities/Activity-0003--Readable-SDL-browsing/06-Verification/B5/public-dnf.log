@@ -1,0 +1,870 @@
+AlmaLinux 10.2 - AppStream                      4.0 MB/s | 2.9 MB     00:00    
+AlmaLinux 10.2 - BaseOS                         3.1 MB/s |  56 MB     00:18    
+AlmaLinux 10.2 - CRB                            1.3 MB/s | 683 kB     00:00    
+AlmaLinux 10.2 - Extras                          31 kB/s |  13 kB     00:00    
+Package python3-3.12.14-1.el10_2.x86_64 is already installed.
+Dependencies resolved.
+================================================================================
+ Package                Architecture Version                 Repository    Size
+================================================================================
+Installing:
+ dnf-plugins-core       noarch       4.7.0-10.el10           baseos        37 k
+ epel-release           noarch       10-6.el10               extras        18 k
+Upgrading:
+ python3                x86_64       3.12.15-1.el10_2        baseos        27 k
+ python3-libs           x86_64       3.12.15-1.el10_2        baseos       9.4 M
+
+Transaction Summary
+================================================================================
+Install  2 Packages
+Upgrade  2 Packages
+
+Total download size: 9.5 M
+Downloading Packages:
+(1/4): dnf-plugins-core-4.7.0-10.el10.noarch.rp 487 kB/s |  37 kB     00:00    
+(2/4): epel-release-10-6.el10.noarch.rpm        233 kB/s |  18 kB     00:00    
+(3/4): python3-3.12.15-1.el10_2.x86_64.rpm      335 kB/s |  27 kB     00:00    
+(4/4): python3-libs-3.12.15-1.el10_2.x86_64.rpm 3.5 MB/s | 9.4 MB     00:02    
+--------------------------------------------------------------------------------
+Total                                           2.8 MB/s | 9.5 MB     00:03     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1 
+  Upgrading        : python3-libs-3.12.15-1.el10_2.x86_64                   1/6 
+  Upgrading        : python3-3.12.15-1.el10_2.x86_64                        2/6 
+  Installing       : dnf-plugins-core-4.7.0-10.el10.noarch                  3/6 
+  Installing       : epel-release-10-6.el10.noarch                          4/6 
+  Running scriptlet: epel-release-10-6.el10.noarch                          4/6 
+Many EPEL packages require the CodeReady Builder (CRB) repository.
+It is recommended that you run /usr/bin/crb enable to enable the CRB repository.
+
+  Cleanup          : python3-3.12.14-1.el10_2.x86_64                        5/6 
+  Cleanup          : python3-libs-3.12.14-1.el10_2.x86_64                   6/6 
+  Running scriptlet: python3-libs-3.12.14-1.el10_2.x86_64                   6/6 
+
+Upgraded:
+  python3-3.12.15-1.el10_2.x86_64      python3-libs-3.12.15-1.el10_2.x86_64     
+Installed:
+  dnf-plugins-core-4.7.0-10.el10.noarch      epel-release-10-6.el10.noarch     
+
+Complete!
+AlmaLinux 10.2 - AppStream                      2.4 kB/s | 3.8 kB     00:01    
+AlmaLinux 10.2 - BaseOS                         2.7 kB/s | 3.8 kB     00:01    
+AlmaLinux 10.2 - CRB                            5.5 kB/s | 3.8 kB     00:00    
+AlmaLinux 10.2 - Extras                         6.4 kB/s | 3.3 kB     00:00    
+Beinerud apps - AlmaLinux 10.2 - stable          27 kB/s | 659  B     00:00    
+Beinerud apps - AlmaLinux 10.2 - stable         1.3 MB/s | 1.3 kB     00:00    
+Importing GPG key 0x901AF029:
+ Userid     : "Beinerud Apps Repository <repo@beinerud.ddns.net>"
+ Fingerprint: 8E0E 49A1 01DD F1C7 C155 32FC CB7B B881 901A F029
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-beinerud
+Beinerud apps - AlmaLinux 10.2 - stable         109 kB/s | 4.2 kB     00:00    
+Extra Packages for Enterprise Linux 10.2 - x86_ 4.3 MB/s | 6.7 MB     00:01    
+Dependencies resolved.
+================================================================================
+ Package                   Arch   Version                   Repository     Size
+================================================================================
+Installing:
+ libXdmcp                  x86_64 1.1.4-5.el10              appstream      36 k
+ libXfont2                 x86_64 2.0.6-5.el10_2.3          appstream     147 k
+ libglvnd-glx              x86_64 1:1.7.0-7.el10            appstream     132 k
+ libxshmfence              x86_64 1.3.2-5.el10              appstream      12 k
+ strace                    x86_64 6.12-3.el10               baseos        1.4 M
+ util-linux                x86_64 2.40.2-18.el10_2.20       baseos        1.2 M
+ xfmd                      x86_64 0.9.0-71.el10_2           beinerud-apps 159 M
+ xkbcomp                   x86_64 1.4.7-3.el10              appstream     100 k
+ xkeyboard-config          noarch 2.41-3.el10               appstream     998 k
+Upgrading:
+ libblkid                  x86_64 2.40.2-18.el10_2.20       baseos        124 k
+ libfdisk                  x86_64 2.40.2-18.el10_2.20       baseos        161 k
+ libmount                  x86_64 2.40.2-18.el10_2.20       baseos        158 k
+ libsmartcols              x86_64 2.40.2-18.el10_2.20       baseos         83 k
+ libuuid                   x86_64 2.40.2-18.el10_2.20       baseos         28 k
+ util-linux-core           x86_64 2.40.2-18.el10_2.20       baseos        545 k
+Installing dependencies:
+ authselect                x86_64 1.5.2-1.el10              baseos        205 k
+ authselect-libs           x86_64 1.5.2-1.el10              baseos        231 k
+ cairo                     x86_64 1.18.2-2.el10_2.1         appstream     712 k
+ cairo-gobject             x86_64 1.18.2-2.el10_2.1         appstream      16 k
+ cairomm                   x86_64 1.14.6-1.el10_2           epel           61 k
+ cracklib                  x86_64 2.9.11-8.el10             baseos         97 k
+ cracklib-dicts            x86_64 2.9.11-8.el10             baseos        3.6 M
+ default-fonts-core-sans   noarch 4.1-3.el10                baseos         34 k
+ dejavu-sans-fonts         noarch 2.37-25.el10              baseos        1.3 M
+ dejavu-sans-mono-fonts    noarch 2.37-25.el10              baseos        469 k
+ fontconfig                x86_64 2.15.0-7.el10             appstream     273 k
+ fonts-filesystem          noarch 1:2.0.5-18.el10           baseos        7.7 k
+ freetype                  x86_64 2.13.2-8.el10             baseos        412 k
+ fribidi                   x86_64 1.0.14-4.el10             appstream      91 k
+ gdbm                      x86_64 1:1.23-12.el10_0          baseos        154 k
+ gdk-pixbuf2               x86_64 2.42.12-4.el10_2.5        appstream     470 k
+ gdk-pixbuf2-modules       x86_64 2.42.12-4.el10_2.5        appstream      27 k
+ glibmm2.4                 x86_64 2.66.8-1.el10_1           epel          692 k
+ google-noto-fonts-common  noarch 20240401-5.el10           baseos         17 k
+ google-noto-sans-vf-fonts noarch 20240401-5.el10           baseos        593 k
+ graphite2                 x86_64 1.3.14-17.el10            baseos         95 k
+ harfbuzz                  x86_64 8.4.0-6.el10              baseos        1.0 M
+ hwdata                    noarch 0.379-10.8.el10           baseos        1.7 M
+ jbigkit-libs              x86_64 2.1-31.el10               appstream      53 k
+ libX11                    x86_64 1.8.10-1.el10_2.1         appstream     650 k
+ libX11-common             noarch 1.8.10-1.el10_2.1         appstream     187 k
+ libX11-xcb                x86_64 1.8.10-1.el10_2.1         appstream      10 k
+ libXau                    x86_64 1.0.11-8.el10             appstream      32 k
+ libXcursor                x86_64 1.2.1-9.el10              appstream      30 k
+ libXext                   x86_64 1.3.6-3.el10              appstream      39 k
+ libXfixes                 x86_64 6.0.1-5.el10              appstream      19 k
+ libXft                    x86_64 2.3.8-8.el10              appstream      72 k
+ libXrandr                 x86_64 1.5.4-5.el10              appstream      27 k
+ libXrender                x86_64 0.9.11-8.el10_2.1         appstream      27 k
+ libXxf86vm                x86_64 1.1.5-8.el10              appstream      18 k
+ libbrotli                 x86_64 1.1.0-8.el10_2.1          baseos        343 k
+ libdatrie                 x86_64 0.2.13-11.el10            appstream      32 k
+ libdrm                    x86_64 2.4.128-1.el10            baseos        160 k
+ libedit                   x86_64 3.1-52.20230828cvs.el10   baseos        105 k
+ libfontenc                x86_64 1.1.7-5.el10              appstream      32 k
+ libglvnd                  x86_64 1:1.7.0-7.el10            appstream     114 k
+ libjpeg-turbo             x86_64 3.0.2-4.el10              appstream     253 k
+ liblerc                   x86_64 4.0.0-8.el10              appstream     215 k
+ libpciaccess              x86_64 0.16-16.el10              baseos         27 k
+ libpng                    x86_64 2:1.6.40-11.el10_2.1      baseos        120 k
+ libpwquality              x86_64 1.4.5-12.el10             baseos        123 k
+ librsvg2                  x86_64 2.57.1-9.el10_2.10        appstream     1.5 M
+ libsigc++20               x86_64 2.12.1-5.el10_1           epel           39 k
+ libthai                   x86_64 0.1.29-10.el10            appstream     213 k
+ libtiff                   x86_64 4.6.0-8.el10_2.4          appstream     212 k
+ libutempter               x86_64 1.2.1-15.el10             baseos         26 k
+ libwebp                   x86_64 1.3.2-10.el10             appstream     287 k
+ libxcb                    x86_64 1.17.0-3.el10             appstream     238 k
+ libxkbfile                x86_64 1.1.3-3.el10              appstream      92 k
+ llvm-filesystem           x86_64 21.1.8-1.el10.alma.1      appstream     7.5 k
+ llvm-libs                 x86_64 21.1.8-1.el10.alma.1      appstream      31 M
+ mesa-dri-drivers          x86_64 25.2.7-4.el10.alma.5      appstream      11 M
+ mesa-filesystem           x86_64 25.2.7-4.el10.alma.5      appstream      11 k
+ mesa-libGL                x86_64 25.2.7-4.el10.alma.5      appstream     119 k
+ mesa-libgbm               x86_64 25.2.7-4.el10.alma.5      appstream      17 k
+ pam                       x86_64 1.6.1-9.el10_2.1          baseos        562 k
+ pango                     x86_64 1.54.0-3.el10             appstream     353 k
+ pangomm                   x86_64 2.46.4-3.el10_1           epel           68 k
+ pixman                    x86_64 0.43.4-2.el10             appstream     285 k
+ redhat-text-vf-fonts      noarch 4.1.0-1.el10              baseos        353 k
+ rsvg-pixbuf-loader        x86_64 2.57.1-9.el10_2.10        appstream      13 k
+ shared-mime-info          x86_64 2.3-8.el10                baseos        396 k
+ spirv-tools-libs          x86_64 2025.4-1.el10             appstream     1.6 M
+ tinyxml2                  x86_64 10.0.0-18.el10_1          epel           43 k
+ xml-common                noarch 0.6.3-65.el10             appstream      31 k
+
+Transaction Summary
+================================================================================
+Install  79 Packages
+Upgrade   6 Packages
+
+Total download size: 227 M
+Downloading Packages:
+(1/85): cairo-gobject-1.18.2-2.el10_2.1.x86_64. 223 kB/s |  16 kB     00:00    
+(2/85): fribidi-1.0.14-4.el10.x86_64.rpm        1.8 MB/s |  91 kB     00:00    
+(3/85): fontconfig-2.15.0-7.el10.x86_64.rpm     1.9 MB/s | 273 kB     00:00    
+(4/85): gdk-pixbuf2-modules-2.42.12-4.el10_2.5. 1.1 MB/s |  27 kB     00:00    
+(5/85): jbigkit-libs-2.1-31.el10.x86_64.rpm     1.4 MB/s |  53 kB     00:00    
+(6/85): gdk-pixbuf2-2.42.12-4.el10_2.5.x86_64.r 4.5 MB/s | 470 kB     00:00    
+(7/85): cairo-1.18.2-2.el10_2.1.x86_64.rpm      2.7 MB/s | 712 kB     00:00    
+(8/85): libX11-common-1.8.10-1.el10_2.1.noarch. 3.8 MB/s | 187 kB     00:00    
+(9/85): libX11-xcb-1.8.10-1.el10_2.1.x86_64.rpm 431 kB/s |  10 kB     00:00    
+(10/85): libXau-1.0.11-8.el10.x86_64.rpm        1.3 MB/s |  32 kB     00:00    
+(11/85): libXcursor-1.2.1-9.el10.x86_64.rpm     1.1 MB/s |  30 kB     00:00    
+(12/85): libXdmcp-1.1.4-5.el10.x86_64.rpm       1.3 MB/s |  36 kB     00:00    
+(13/85): libXext-1.3.6-3.el10.x86_64.rpm        1.5 MB/s |  39 kB     00:00    
+(14/85): libXfixes-6.0.1-5.el10.x86_64.rpm      732 kB/s |  19 kB     00:00    
+(15/85): libXft-2.3.8-8.el10.x86_64.rpm         2.3 MB/s |  72 kB     00:00    
+(16/85): libX11-1.8.10-1.el10_2.1.x86_64.rpm    3.5 MB/s | 650 kB     00:00    
+(17/85): libXfont2-2.0.6-5.el10_2.3.x86_64.rpm  2.1 MB/s | 147 kB     00:00    
+(18/85): libXrandr-1.5.4-5.el10.x86_64.rpm      1.1 MB/s |  27 kB     00:00    
+(19/85): libXrender-0.9.11-8.el10_2.1.x86_64.rp 1.0 MB/s |  27 kB     00:00    
+(20/85): libXxf86vm-1.1.5-8.el10.x86_64.rpm     724 kB/s |  18 kB     00:00    
+(21/85): libdatrie-0.2.13-11.el10.x86_64.rpm    1.2 MB/s |  32 kB     00:00    
+(22/85): libfontenc-1.1.7-5.el10.x86_64.rpm     1.0 MB/s |  32 kB     00:00    
+(23/85): libglvnd-1.7.0-7.el10.x86_64.rpm       3.2 MB/s | 114 kB     00:00    
+(24/85): libglvnd-glx-1.7.0-7.el10.x86_64.rpm   2.1 MB/s | 132 kB     00:00    
+(25/85): liblerc-4.0.0-8.el10.x86_64.rpm        4.4 MB/s | 215 kB     00:00    
+(26/85): libthai-0.1.29-10.el10.x86_64.rpm      4.1 MB/s | 213 kB     00:00    
+(27/85): libjpeg-turbo-3.0.2-4.el10.x86_64.rpm  1.8 MB/s | 253 kB     00:00    
+(28/85): libtiff-4.6.0-8.el10_2.4.x86_64.rpm    4.7 MB/s | 212 kB     00:00    
+(29/85): libxcb-1.17.0-3.el10.x86_64.rpm        5.0 MB/s | 238 kB     00:00    
+(30/85): libxkbfile-1.1.3-3.el10.x86_64.rpm     2.9 MB/s |  92 kB     00:00    
+(31/85): libxshmfence-1.3.2-5.el10.x86_64.rpm   507 kB/s |  12 kB     00:00    
+(32/85): llvm-filesystem-21.1.8-1.el10.alma.1.x 335 kB/s | 7.5 kB     00:00    
+(33/85): libwebp-1.3.2-10.el10.x86_64.rpm       1.7 MB/s | 287 kB     00:00    
+(34/85): librsvg2-2.57.1-9.el10_2.10.x86_64.rpm 1.8 MB/s | 1.5 MB     00:00    
+(35/85): mesa-filesystem-25.2.7-4.el10.alma.5.x 389 kB/s |  11 kB     00:00    
+(36/85): mesa-libGL-25.2.7-4.el10.alma.5.x86_64 1.5 MB/s | 119 kB     00:00    
+(37/85): mesa-libgbm-25.2.7-4.el10.alma.5.x86_6 662 kB/s |  17 kB     00:00    
+(38/85): pango-1.54.0-3.el10.x86_64.rpm         2.2 MB/s | 353 kB     00:00    
+(39/85): pixman-0.43.4-2.el10.x86_64.rpm        2.4 MB/s | 285 kB     00:00    
+(40/85): rsvg-pixbuf-loader-2.57.1-9.el10_2.10. 474 kB/s |  13 kB     00:00    
+(41/85): spirv-tools-libs-2025.4-1.el10.x86_64. 4.0 MB/s | 1.6 MB     00:00    
+(42/85): xkbcomp-1.4.7-3.el10.x86_64.rpm        2.6 MB/s | 100 kB     00:00    
+(43/85): xkeyboard-config-2.41-3.el10.noarch.rp 4.6 MB/s | 998 kB     00:00    
+(44/85): xml-common-0.6.3-65.el10.noarch.rpm    1.2 MB/s |  31 kB     00:00    
+(45/85): authselect-1.5.2-1.el10.x86_64.rpm     3.6 MB/s | 205 kB     00:00    
+(46/85): authselect-libs-1.5.2-1.el10.x86_64.rp 3.6 MB/s | 231 kB     00:00    
+(47/85): cracklib-2.9.11-8.el10.x86_64.rpm      2.4 MB/s |  97 kB     00:00    
+(48/85): cracklib-dicts-2.9.11-8.el10.x86_64.rp 6.7 MB/s | 3.6 MB     00:00    
+(49/85): default-fonts-core-sans-4.1-3.el10.noa 1.2 MB/s |  34 kB     00:00    
+(50/85): dejavu-sans-fonts-2.37-25.el10.noarch. 5.7 MB/s | 1.3 MB     00:00    
+(51/85): dejavu-sans-mono-fonts-2.37-25.el10.no 5.2 MB/s | 469 kB     00:00    
+(52/85): fonts-filesystem-2.0.5-18.el10.noarch. 330 kB/s | 7.7 kB     00:00    
+(53/85): freetype-2.13.2-8.el10.x86_64.rpm      5.0 MB/s | 412 kB     00:00    
+(54/85): gdbm-1.23-12.el10_0.x86_64.rpm         3.5 MB/s | 154 kB     00:00    
+(55/85): google-noto-fonts-common-20240401-5.el 687 kB/s |  17 kB     00:00    
+(56/85): google-noto-sans-vf-fonts-20240401-5.e 5.5 MB/s | 593 kB     00:00    
+(57/85): graphite2-1.3.14-17.el10.x86_64.rpm    2.6 MB/s |  95 kB     00:00    
+(58/85): harfbuzz-8.4.0-6.el10.x86_64.rpm       6.6 MB/s | 1.0 MB     00:00    
+(59/85): hwdata-0.379-10.8.el10.noarch.rpm      7.3 MB/s | 1.7 MB     00:00    
+(60/85): libbrotli-1.1.0-8.el10_2.1.x86_64.rpm  5.2 MB/s | 343 kB     00:00    
+(61/85): libdrm-2.4.128-1.el10.x86_64.rpm       3.7 MB/s | 160 kB     00:00    
+(62/85): libedit-3.1-52.20230828cvs.el10.x86_64 2.6 MB/s | 105 kB     00:00    
+(63/85): libpciaccess-0.16-16.el10.x86_64.rpm   1.0 MB/s |  27 kB     00:00    
+(64/85): libpng-1.6.40-11.el10_2.1.x86_64.rpm   3.3 MB/s | 120 kB     00:00    
+(65/85): libpwquality-1.4.5-12.el10.x86_64.rpm  3.4 MB/s | 123 kB     00:00    
+(66/85): libutempter-1.2.1-15.el10.x86_64.rpm   1.0 MB/s |  26 kB     00:00    
+(67/85): pam-1.6.1-9.el10_2.1.x86_64.rpm        7.1 MB/s | 562 kB     00:00    
+(68/85): redhat-text-vf-fonts-4.1.0-1.el10.noar 5.6 MB/s | 353 kB     00:00    
+(69/85): shared-mime-info-2.3-8.el10.x86_64.rpm 5.4 MB/s | 396 kB     00:00    
+(70/85): strace-6.12-3.el10.x86_64.rpm          7.1 MB/s | 1.4 MB     00:00    
+(71/85): util-linux-2.40.2-18.el10_2.20.x86_64. 6.3 MB/s | 1.2 MB     00:00    
+(72/85): mesa-dri-drivers-25.2.7-4.el10.alma.5. 1.8 MB/s |  11 MB     00:06    
+(73/85): cairomm-1.14.6-1.el10_2.x86_64.rpm     246 kB/s |  61 kB     00:00    
+(74/85): glibmm2.4-2.66.8-1.el10_1.x86_64.rpm   748 kB/s | 692 kB     00:00    
+(75/85): libsigc++20-2.12.1-5.el10_1.x86_64.rpm 330 kB/s |  39 kB     00:00    
+(76/85): pangomm-2.46.4-3.el10_1.x86_64.rpm     516 kB/s |  68 kB     00:00    
+(77/85): tinyxml2-10.0.0-18.el10_1.x86_64.rpm   437 kB/s |  43 kB     00:00    
+(78/85): libblkid-2.40.2-18.el10_2.20.x86_64.rp 1.6 MB/s | 124 kB     00:00    
+(79/85): libfdisk-2.40.2-18.el10_2.20.x86_64.rp 1.8 MB/s | 161 kB     00:00    
+(80/85): libmount-2.40.2-18.el10_2.20.x86_64.rp 2.2 MB/s | 158 kB     00:00    
+(81/85): libsmartcols-2.40.2-18.el10_2.20.x86_6 1.6 MB/s |  83 kB     00:00    
+(82/85): libuuid-2.40.2-18.el10_2.20.x86_64.rpm 946 kB/s |  28 kB     00:00    
+(83/85): util-linux-core-2.40.2-18.el10_2.20.x8 2.3 MB/s | 545 kB     00:00    
+(84/85): llvm-libs-21.1.8-1.el10.alma.1.x86_64. 3.1 MB/s |  31 MB     00:09    
+(85/85): xfmd-0.9.0-71.el10_2.x86_64.rpm        9.6 MB/s | 159 MB     00:16    
+--------------------------------------------------------------------------------
+Total                                            10 MB/s | 227 MB     00:22     
+Beinerud apps - AlmaLinux 10.2 - stable         1.3 MB/s | 1.3 kB     00:00    
+Importing GPG key 0x901AF029:
+ Userid     : "Beinerud Apps Repository <repo@beinerud.ddns.net>"
+ Fingerprint: 8E0E 49A1 01DD F1C7 C155 32FC CB7B B881 901A F029
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-beinerud
+Key imported successfully
+Extra Packages for Enterprise Linux 10.2 - x86_ 1.6 MB/s | 1.6 kB     00:00    
+Importing GPG key 0xE37ED158:
+ Userid     : "Fedora (epel10) <epel@fedoraproject.org>"
+ Fingerprint: 7D8D 15CB FC4E 6268 8591 FB26 33D9 8517 E37E D158
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-10
+Key imported successfully
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1 
+  Installing       : libpng-2:1.6.40-11.el10_2.1.x86_64                    1/91 
+  Upgrading        : libuuid-2.40.2-18.el10_2.20.x86_64                    2/91 
+  Installing       : fonts-filesystem-1:2.0.5-18.el10.noarch               3/91 
+  Upgrading        : libblkid-2.40.2-18.el10_2.20.x86_64                   4/91 
+  Installing       : libsigc++20-2.12.1-5.el10_1.x86_64                    5/91 
+  Installing       : libjpeg-turbo-3.0.2-4.el10.x86_64                     6/91 
+  Installing       : glibmm2.4-2.66.8-1.el10_1.x86_64                      7/91 
+  Upgrading        : libmount-2.40.2-18.el10_2.20.x86_64                   8/91 
+  Installing       : dejavu-sans-mono-fonts-2.37-25.el10.noarch            9/91 
+  Upgrading        : libsmartcols-2.40.2-18.el10_2.20.x86_64              10/91 
+  Installing       : cracklib-2.9.11-8.el10.x86_64                        11/91 
+  Installing       : authselect-libs-1.5.2-1.el10.x86_64                  12/91 
+  Installing       : libX11-xcb-1.8.10-1.el10_2.1.x86_64                  13/91 
+  Installing       : cracklib-dicts-2.9.11-8.el10.x86_64                  14/91 
+  Installing       : libpwquality-1.4.5-12.el10.x86_64                    15/91 
+  Upgrading        : util-linux-core-2.40.2-18.el10_2.20.x86_64           16/91 
+  Installing       : dejavu-sans-fonts-2.37-25.el10.noarch                17/91 
+  Upgrading        : libfdisk-2.40.2-18.el10_2.20.x86_64                  18/91 
+  Installing       : redhat-text-vf-fonts-4.1.0-1.el10.noarch             19/91 
+  Installing       : tinyxml2-10.0.0-18.el10_1.x86_64                     20/91 
+  Installing       : shared-mime-info-2.3-8.el10.x86_64                   21/91 
+  Running scriptlet: shared-mime-info-2.3-8.el10.x86_64                   21/91 
+  Installing       : gdk-pixbuf2-2.42.12-4.el10_2.5.x86_64                22/91 
+  Running scriptlet: libutempter-1.2.1-15.el10.x86_64                     23/91 
+  Installing       : libutempter-1.2.1-15.el10.x86_64                     23/91 
+  Installing       : libedit-3.1-52.20230828cvs.el10.x86_64               24/91 
+  Installing       : libbrotli-1.1.0-8.el10_2.1.x86_64                    25/91 
+  Installing       : hwdata-0.379-10.8.el10.noarch                        26/91 
+  Installing       : libpciaccess-0.16-16.el10.x86_64                     27/91 
+  Installing       : libdrm-2.4.128-1.el10.x86_64                         28/91 
+  Installing       : graphite2-1.3.14-17.el10.x86_64                      29/91 
+  Installing       : harfbuzz-8.4.0-6.el10.x86_64                         30/91 
+  Installing       : freetype-2.13.2-8.el10.x86_64                        31/91 
+  Installing       : google-noto-fonts-common-20240401-5.el10.noarch      32/91 
+  Installing       : google-noto-sans-vf-fonts-20240401-5.el10.noarch     33/91 
+  Installing       : default-fonts-core-sans-4.1-3.el10.noarch            34/91 
+  Installing       : gdbm-1:1.23-12.el10_0.x86_64                         35/91 
+  Installing       : pam-1.6.1-9.el10_2.1.x86_64                          36/91 
+  Running scriptlet: xml-common-0.6.3-65.el10.noarch                      37/91 
+  Installing       : xml-common-0.6.3-65.el10.noarch                      37/91 
+  Installing       : fontconfig-2.15.0-7.el10.x86_64                      38/91 
+  Running scriptlet: fontconfig-2.15.0-7.el10.x86_64                      38/91 
+  Installing       : spirv-tools-libs-2025.4-1.el10.x86_64                39/91 
+  Installing       : pixman-0.43.4-2.el10.x86_64                          40/91 
+  Installing       : mesa-filesystem-25.2.7-4.el10.alma.5.x86_64          41/91 
+  Installing       : llvm-filesystem-21.1.8-1.el10.alma.1.x86_64          42/91 
+  Installing       : llvm-libs-21.1.8-1.el10.alma.1.x86_64                43/91 
+  Installing       : libxshmfence-1.3.2-5.el10.x86_64                     44/91 
+  Installing       : libwebp-1.3.2-10.el10.x86_64                         45/91 
+  Installing       : liblerc-4.0.0-8.el10.x86_64                          46/91 
+  Installing       : libglvnd-1:1.7.0-7.el10.x86_64                       47/91 
+  Installing       : libfontenc-1.1.7-5.el10.x86_64                       48/91 
+  Installing       : libdatrie-0.2.13-11.el10.x86_64                      49/91 
+  Installing       : libthai-0.1.29-10.el10.x86_64                        50/91 
+  Installing       : libXau-1.0.11-8.el10.x86_64                          51/91 
+  Installing       : libxcb-1.17.0-3.el10.x86_64                          52/91 
+  Installing       : mesa-libgbm-25.2.7-4.el10.alma.5.x86_64              53/91 
+  Installing       : mesa-dri-drivers-25.2.7-4.el10.alma.5.x86_64         54/91 
+  Installing       : libX11-common-1.8.10-1.el10_2.1.noarch               55/91 
+  Installing       : libX11-1.8.10-1.el10_2.1.x86_64                      56/91 
+  Installing       : libXext-1.3.6-3.el10.x86_64                          57/91 
+  Installing       : libXrender-0.9.11-8.el10_2.1.x86_64                  58/91 
+  Installing       : cairo-1.18.2-2.el10_2.1.x86_64                       59/91 
+  Installing       : cairo-gobject-1.18.2-2.el10_2.1.x86_64               60/91 
+  Installing       : cairomm-1.14.6-1.el10_2.x86_64                       61/91 
+  Installing       : libXft-2.3.8-8.el10.x86_64                           62/91 
+  Installing       : libXfixes-6.0.1-5.el10.x86_64                        63/91 
+  Installing       : libXcursor-1.2.1-9.el10.x86_64                       64/91 
+  Installing       : libXrandr-1.5.4-5.el10.x86_64                        65/91 
+  Installing       : libXxf86vm-1.1.5-8.el10.x86_64                       66/91 
+  Installing       : libglvnd-glx-1:1.7.0-7.el10.x86_64                   67/91 
+  Installing       : mesa-libGL-25.2.7-4.el10.alma.5.x86_64               68/91 
+  Installing       : libxkbfile-1.1.3-3.el10.x86_64                       69/91 
+  Installing       : jbigkit-libs-2.1-31.el10.x86_64                      70/91 
+  Installing       : libtiff-4.6.0-8.el10_2.4.x86_64                      71/91 
+  Installing       : fribidi-1.0.14-4.el10.x86_64                         72/91 
+  Installing       : pango-1.54.0-3.el10.x86_64                           73/91 
+  Installing       : librsvg2-2.57.1-9.el10_2.10.x86_64                   74/91 
+  Installing       : rsvg-pixbuf-loader-2.57.1-9.el10_2.10.x86_64         75/91 
+  Installing       : gdk-pixbuf2-modules-2.42.12-4.el10_2.5.x86_64        76/91 
+  Installing       : pangomm-2.46.4-3.el10_1.x86_64                       77/91 
+  Installing       : xfmd-0.9.0-71.el10_2.x86_64                          78/91 
+  Installing       : xkbcomp-1.4.7-3.el10.x86_64                          79/91 
+  Installing       : libXfont2-2.0.6-5.el10_2.3.x86_64                    80/91 
+  Installing       : util-linux-2.40.2-18.el10_2.20.x86_64                81/91 
+warning: /etc/adjtime created as /etc/adjtime.rpmnew
+
+  Running scriptlet: util-linux-2.40.2-18.el10_2.20.x86_64                81/91 
+Created symlink '/etc/systemd/system/timers.target.wants/fstrim.timer' → '/usr/lib/systemd/system/fstrim.timer'.
+
+  Installing       : authselect-1.5.2-1.el10.x86_64                       82/91 
+  Installing       : strace-6.12-3.el10.x86_64                            83/91 
+  Installing       : xkeyboard-config-2.41-3.el10.noarch                  84/91 
+  Installing       : libXdmcp-1.1.4-5.el10.x86_64                         85/91 
+  Cleanup          : util-linux-core-2.40.2-18.el10.x86_64                86/91 
+  Cleanup          : libfdisk-2.40.2-18.el10.x86_64                       87/91 
+  Cleanup          : libmount-2.40.2-18.el10.x86_64                       88/91 
+  Cleanup          : libblkid-2.40.2-18.el10.x86_64                       89/91 
+  Cleanup          : libuuid-2.40.2-18.el10.x86_64                        90/91 
+  Cleanup          : libsmartcols-2.40.2-18.el10.x86_64                   91/91 
+  Running scriptlet: authselect-libs-1.5.2-1.el10.x86_64                  91/91 
+  Running scriptlet: fontconfig-2.15.0-7.el10.x86_64                      91/91 
+  Running scriptlet: libsmartcols-2.40.2-18.el10.x86_64                   91/91 
+
+Upgraded:
+  libblkid-2.40.2-18.el10_2.20.x86_64                                           
+  libfdisk-2.40.2-18.el10_2.20.x86_64                                           
+  libmount-2.40.2-18.el10_2.20.x86_64                                           
+  libsmartcols-2.40.2-18.el10_2.20.x86_64                                       
+  libuuid-2.40.2-18.el10_2.20.x86_64                                            
+  util-linux-core-2.40.2-18.el10_2.20.x86_64                                    
+Installed:
+  authselect-1.5.2-1.el10.x86_64                                                
+  authselect-libs-1.5.2-1.el10.x86_64                                           
+  cairo-1.18.2-2.el10_2.1.x86_64                                                
+  cairo-gobject-1.18.2-2.el10_2.1.x86_64                                        
+  cairomm-1.14.6-1.el10_2.x86_64                                                
+  cracklib-2.9.11-8.el10.x86_64                                                 
+  cracklib-dicts-2.9.11-8.el10.x86_64                                           
+  default-fonts-core-sans-4.1-3.el10.noarch                                     
+  dejavu-sans-fonts-2.37-25.el10.noarch                                         
+  dejavu-sans-mono-fonts-2.37-25.el10.noarch                                    
+  fontconfig-2.15.0-7.el10.x86_64                                               
+  fonts-filesystem-1:2.0.5-18.el10.noarch                                       
+  freetype-2.13.2-8.el10.x86_64                                                 
+  fribidi-1.0.14-4.el10.x86_64                                                  
+  gdbm-1:1.23-12.el10_0.x86_64                                                  
+  gdk-pixbuf2-2.42.12-4.el10_2.5.x86_64                                         
+  gdk-pixbuf2-modules-2.42.12-4.el10_2.5.x86_64                                 
+  glibmm2.4-2.66.8-1.el10_1.x86_64                                              
+  google-noto-fonts-common-20240401-5.el10.noarch                               
+  google-noto-sans-vf-fonts-20240401-5.el10.noarch                              
+  graphite2-1.3.14-17.el10.x86_64                                               
+  harfbuzz-8.4.0-6.el10.x86_64                                                  
+  hwdata-0.379-10.8.el10.noarch                                                 
+  jbigkit-libs-2.1-31.el10.x86_64                                               
+  libX11-1.8.10-1.el10_2.1.x86_64                                               
+  libX11-common-1.8.10-1.el10_2.1.noarch                                        
+  libX11-xcb-1.8.10-1.el10_2.1.x86_64                                           
+  libXau-1.0.11-8.el10.x86_64                                                   
+  libXcursor-1.2.1-9.el10.x86_64                                                
+  libXdmcp-1.1.4-5.el10.x86_64                                                  
+  libXext-1.3.6-3.el10.x86_64                                                   
+  libXfixes-6.0.1-5.el10.x86_64                                                 
+  libXfont2-2.0.6-5.el10_2.3.x86_64                                             
+  libXft-2.3.8-8.el10.x86_64                                                    
+  libXrandr-1.5.4-5.el10.x86_64                                                 
+  libXrender-0.9.11-8.el10_2.1.x86_64                                           
+  libXxf86vm-1.1.5-8.el10.x86_64                                                
+  libbrotli-1.1.0-8.el10_2.1.x86_64                                             
+  libdatrie-0.2.13-11.el10.x86_64                                               
+  libdrm-2.4.128-1.el10.x86_64                                                  
+  libedit-3.1-52.20230828cvs.el10.x86_64                                        
+  libfontenc-1.1.7-5.el10.x86_64                                                
+  libglvnd-1:1.7.0-7.el10.x86_64                                                
+  libglvnd-glx-1:1.7.0-7.el10.x86_64                                            
+  libjpeg-turbo-3.0.2-4.el10.x86_64                                             
+  liblerc-4.0.0-8.el10.x86_64                                                   
+  libpciaccess-0.16-16.el10.x86_64                                              
+  libpng-2:1.6.40-11.el10_2.1.x86_64                                            
+  libpwquality-1.4.5-12.el10.x86_64                                             
+  librsvg2-2.57.1-9.el10_2.10.x86_64                                            
+  libsigc++20-2.12.1-5.el10_1.x86_64                                            
+  libthai-0.1.29-10.el10.x86_64                                                 
+  libtiff-4.6.0-8.el10_2.4.x86_64                                               
+  libutempter-1.2.1-15.el10.x86_64                                              
+  libwebp-1.3.2-10.el10.x86_64                                                  
+  libxcb-1.17.0-3.el10.x86_64                                                   
+  libxkbfile-1.1.3-3.el10.x86_64                                                
+  libxshmfence-1.3.2-5.el10.x86_64                                              
+  llvm-filesystem-21.1.8-1.el10.alma.1.x86_64                                   
+  llvm-libs-21.1.8-1.el10.alma.1.x86_64                                         
+  mesa-dri-drivers-25.2.7-4.el10.alma.5.x86_64                                  
+  mesa-filesystem-25.2.7-4.el10.alma.5.x86_64                                   
+  mesa-libGL-25.2.7-4.el10.alma.5.x86_64                                        
+  mesa-libgbm-25.2.7-4.el10.alma.5.x86_64                                       
+  pam-1.6.1-9.el10_2.1.x86_64                                                   
+  pango-1.54.0-3.el10.x86_64                                                    
+  pangomm-2.46.4-3.el10_1.x86_64                                                
+  pixman-0.43.4-2.el10.x86_64                                                   
+  redhat-text-vf-fonts-4.1.0-1.el10.noarch                                      
+  rsvg-pixbuf-loader-2.57.1-9.el10_2.10.x86_64                                  
+  shared-mime-info-2.3-8.el10.x86_64                                            
+  spirv-tools-libs-2025.4-1.el10.x86_64                                         
+  strace-6.12-3.el10.x86_64                                                     
+  tinyxml2-10.0.0-18.el10_1.x86_64                                              
+  util-linux-2.40.2-18.el10_2.20.x86_64                                         
+  xfmd-0.9.0-71.el10_2.x86_64                                                   
+  xkbcomp-1.4.7-3.el10.x86_64                                                   
+  xkeyboard-config-2.41-3.el10.noarch                                           
+  xml-common-0.6.3-65.el10.noarch                                               
+
+Complete!
+AlmaLinux 10.2 - AppStream                       10 kB/s | 3.8 kB     00:00    
+AlmaLinux 10.2 - BaseOS                          11 kB/s | 3.8 kB     00:00    
+AlmaLinux 10.2 - CRB                             11 kB/s | 3.8 kB     00:00    
+AlmaLinux 10.2 - Extras                         7.6 kB/s | 3.3 kB     00:00    
+Beinerud apps - AlmaLinux 10.2 - stable          21 kB/s | 659  B     00:00    
+Extra Packages for Enterprise Linux 10.2 - x86_ 155 kB/s |  36 kB     00:00    
+Dependencies resolved.
+================================================================================
+ Package     Architecture  Version                   Repository            Size
+================================================================================
+Upgrading:
+ xfmd        x86_64        0.10.0-76.el10_2          beinerud-apps        172 M
+
+Transaction Summary
+================================================================================
+Upgrade  1 Package
+
+Total download size: 172 M
+Downloading Packages:
+xfmd-0.10.0-76.el10_2.x86_64.rpm                 11 MB/s | 172 MB     00:15    
+--------------------------------------------------------------------------------
+Total                                            11 MB/s | 172 MB     00:15     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1 
+  Upgrading        : xfmd-0.10.0-76.el10_2.x86_64                           1/2 
+  Cleanup          : xfmd-0.9.0-71.el10_2.x86_64                            2/2 
+  Running scriptlet: xfmd-0.9.0-71.el10_2.x86_64                            2/2 
+
+Upgraded:
+  xfmd-0.10.0-76.el10_2.x86_64                                                  
+
+Complete!
+_XSERVTransmkdir: ERROR: euid != 0,directory /tmp/.X11-unix will not be created.
+reading: discovered native tabs
+reading: deferred entry visible
+reading: entry document delivered
+reading: model children loaded
+reading: native VP01 landing admitted, diagrams 0, visuals 0
+reading: native VP02 landing admitted, diagrams 0, visuals 2
+reading: VP03 backend Libavoid; libavoid transaction 1: 345.81µs; label leaders omitted: 2
+reading: native VP03 landing admitted, diagrams 1, visuals 1
+reading: VP04 backend Libavoid; libavoid transaction 1: 226.263µs; label leaders omitted: 0
+reading: native VP04 landing admitted, diagrams 1, visuals 1
+reading: native VP05 landing admitted, diagrams 0, visuals 0
+reading: native VP06 landing admitted, diagrams 0, visuals 0
+reading: VP07 backend Libavoid; libavoid transaction 1: 291.356µs; label leaders omitted: 2
+reading: native VP07 landing admitted, diagrams 1, visuals 1
+reading: native VP08 landing admitted, diagrams 0, visuals 1
+reading: native VP09 landing admitted, diagrams 0, visuals 0
+reading: native VP10 landing admitted, diagrams 0, visuals 0
+reading: native VP11 landing admitted, diagrams 0, visuals 0
+PASS
+PASS
+Installed native window: /tmp/tmp9qjeub5y/package.md  xfmd 0.10
+Installed native private producer: c3463b78d53ebf984b0f553ebe93a556fb3ac6a8
+Installed native reading/render/source/history and real Activity workflows verified: c3463b78d53ebf984b0f553ebe93a556fb3ac6a8
+Verified signed public upgrade: 0.9.0-71.el10_2 -> 0.10.0-76.el10_2; producer c3463b78d53ebf984b0f553ebe93a556fb3ac6a8
+Dependencies resolved.
+================================================================================
+ Package                    Arch    Version               Repository       Size
+================================================================================
+Removing:
+ xfmd                       x86_64  0.10.0-76.el10_2      @beinerud-apps  198 M
+Removing unused dependencies:
+ cairo                      x86_64  1.18.2-2.el10_2.1     @appstream      1.7 M
+ cairo-gobject              x86_64  1.18.2-2.el10_2.1     @appstream       35 k
+ cairomm                    x86_64  1.14.6-1.el10_2       @epel           203 k
+ default-fonts-core-sans    noarch  4.1-3.el10            @baseos          12 k
+ dejavu-sans-fonts          noarch  2.37-25.el10          @baseos         5.5 M
+ dejavu-sans-mono-fonts     noarch  2.37-25.el10          @baseos         1.2 M
+ fontconfig                 x86_64  2.15.0-7.el10         @appstream      765 k
+ fonts-filesystem           noarch  1:2.0.5-18.el10       @baseos           0  
+ fribidi                    x86_64  1.0.14-4.el10         @appstream      367 k
+ gdk-pixbuf2                x86_64  2.42.12-4.el10_2.5    @appstream      2.5 M
+ gdk-pixbuf2-modules        x86_64  2.42.12-4.el10_2.5    @appstream       55 k
+ glibmm2.4                  x86_64  2.66.8-1.el10_1       @epel           2.9 M
+ google-noto-fonts-common   noarch  20240401-5.el10       @baseos          18 k
+ google-noto-sans-vf-fonts  noarch  20240401-5.el10       @baseos         1.2 M
+ jbigkit-libs               x86_64  2.1-31.el10           @appstream      117 k
+ libXcursor                 x86_64  1.2.1-9.el10          @appstream       49 k
+ libXfixes                  x86_64  6.0.1-5.el10          @appstream       30 k
+ libXft                     x86_64  2.3.8-8.el10          @appstream      164 k
+ libXrandr                  x86_64  1.5.4-5.el10          @appstream       52 k
+ libXrender                 x86_64  0.9.11-8.el10_2.1     @appstream       50 k
+ libdatrie                  x86_64  0.2.13-11.el10        @appstream       58 k
+ libjpeg-turbo              x86_64  3.0.2-4.el10          @appstream      849 k
+ liblerc                    x86_64  4.0.0-8.el10          @appstream      611 k
+ librsvg2                   x86_64  2.57.1-9.el10_2.10    @appstream      4.0 M
+ libsigc++20                x86_64  2.12.1-5.el10_1       @epel            90 k
+ libthai                    x86_64  0.1.29-10.el10        @appstream      783 k
+ libtiff                    x86_64  4.6.0-8.el10_2.4      @appstream      602 k
+ libwebp                    x86_64  1.3.2-10.el10         @appstream      785 k
+ pango                      x86_64  1.54.0-3.el10         @appstream      1.0 M
+ pangomm                    x86_64  2.46.4-3.el10_1       @epel           251 k
+ pixman                     x86_64  0.43.4-2.el10         @appstream      674 k
+ redhat-text-vf-fonts       noarch  4.1.0-1.el10          @baseos         454 k
+ rsvg-pixbuf-loader         x86_64  2.57.1-9.el10_2.10    @appstream       15 k
+ shared-mime-info           x86_64  2.3-8.el10            @baseos         5.2 M
+ tinyxml2                   x86_64  10.0.0-18.el10_1      @epel           105 k
+ xml-common                 noarch  0.6.3-65.el10         @appstream       78 k
+
+Transaction Summary
+================================================================================
+Remove  37 Packages
+
+Freed space: 231 M
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1 
+  Erasing          : xfmd-0.10.0-76.el10_2.x86_64                          1/37 
+  Erasing          : librsvg2-2.57.1-9.el10_2.10.x86_64                    2/37 
+  Erasing          : pangomm-2.46.4-3.el10_1.x86_64                        3/37 
+  Erasing          : gdk-pixbuf2-modules-2.42.12-4.el10_2.5.x86_64         4/37 
+  Erasing          : dejavu-sans-fonts-2.37-25.el10.noarch                 5/37 
+  Erasing          : rsvg-pixbuf-loader-2.57.1-9.el10_2.10.x86_64          6/37 
+  Erasing          : pango-1.54.0-3.el10.x86_64                            7/37 
+  Erasing          : libtiff-4.6.0-8.el10_2.4.x86_64                       8/37 
+  Erasing          : libXft-2.3.8-8.el10.x86_64                            9/37 
+  Erasing          : gdk-pixbuf2-2.42.12-4.el10_2.5.x86_64                10/37 
+  Erasing          : libthai-0.1.29-10.el10.x86_64                        11/37 
+  Erasing          : cairo-gobject-1.18.2-2.el10_2.1.x86_64               12/37 
+  Erasing          : cairomm-1.14.6-1.el10_2.x86_64                       13/37 
+  Erasing          : cairo-1.18.2-2.el10_2.1.x86_64                       14/37 
+  Erasing          : fontconfig-2.15.0-7.el10.x86_64                      15/37 
+  Running scriptlet: fontconfig-2.15.0-7.el10.x86_64                      15/37 
+  Erasing          : default-fonts-core-sans-4.1-3.el10.noarch            16/37 
+  Erasing          : google-noto-sans-vf-fonts-20240401-5.el10.noarch     17/37 
+  Erasing          : glibmm2.4-2.66.8-1.el10_1.x86_64                     18/37 
+  Erasing          : libXcursor-1.2.1-9.el10.x86_64                       19/37 
+  Erasing          : redhat-text-vf-fonts-4.1.0-1.el10.noarch             20/37 
+  Erasing          : dejavu-sans-mono-fonts-2.37-25.el10.noarch           21/37 
+  Erasing          : libXrandr-1.5.4-5.el10.x86_64                        22/37 
+  Erasing          : fonts-filesystem-1:2.0.5-18.el10.noarch              23/37 
+  Erasing          : google-noto-fonts-common-20240401-5.el10.noarch      24/37 
+  Erasing          : xml-common-0.6.3-65.el10.noarch                      25/37 
+warning: /etc/xml/catalog saved as /etc/xml/catalog.rpmsave
+
+  Erasing          : libXrender-0.9.11-8.el10_2.1.x86_64                  26/37 
+  Erasing          : libXfixes-6.0.1-5.el10.x86_64                        27/37 
+  Erasing          : libsigc++20-2.12.1-5.el10_1.x86_64                   28/37 
+  Erasing          : pixman-0.43.4-2.el10.x86_64                          29/37 
+  Erasing          : libdatrie-0.2.13-11.el10.x86_64                      30/37 
+  Erasing          : libjpeg-turbo-3.0.2-4.el10.x86_64                    31/37 
+  Erasing          : shared-mime-info-2.3-8.el10.x86_64                   32/37 
+  Erasing          : liblerc-4.0.0-8.el10.x86_64                          33/37 
+  Erasing          : jbigkit-libs-2.1-31.el10.x86_64                      34/37 
+  Erasing          : libwebp-1.3.2-10.el10.x86_64                         35/37 
+  Erasing          : fribidi-1.0.14-4.el10.x86_64                         36/37 
+  Erasing          : tinyxml2-10.0.0-18.el10_1.x86_64                     37/37 
+
+Removed:
+  cairo-1.18.2-2.el10_2.1.x86_64                                                
+  cairo-gobject-1.18.2-2.el10_2.1.x86_64                                        
+  cairomm-1.14.6-1.el10_2.x86_64                                                
+  default-fonts-core-sans-4.1-3.el10.noarch                                     
+  dejavu-sans-fonts-2.37-25.el10.noarch                                         
+  dejavu-sans-mono-fonts-2.37-25.el10.noarch                                    
+  fontconfig-2.15.0-7.el10.x86_64                                               
+  fonts-filesystem-1:2.0.5-18.el10.noarch                                       
+  fribidi-1.0.14-4.el10.x86_64                                                  
+  gdk-pixbuf2-2.42.12-4.el10_2.5.x86_64                                         
+  gdk-pixbuf2-modules-2.42.12-4.el10_2.5.x86_64                                 
+  glibmm2.4-2.66.8-1.el10_1.x86_64                                              
+  google-noto-fonts-common-20240401-5.el10.noarch                               
+  google-noto-sans-vf-fonts-20240401-5.el10.noarch                              
+  jbigkit-libs-2.1-31.el10.x86_64                                               
+  libXcursor-1.2.1-9.el10.x86_64                                                
+  libXfixes-6.0.1-5.el10.x86_64                                                 
+  libXft-2.3.8-8.el10.x86_64                                                    
+  libXrandr-1.5.4-5.el10.x86_64                                                 
+  libXrender-0.9.11-8.el10_2.1.x86_64                                           
+  libdatrie-0.2.13-11.el10.x86_64                                               
+  libjpeg-turbo-3.0.2-4.el10.x86_64                                             
+  liblerc-4.0.0-8.el10.x86_64                                                   
+  librsvg2-2.57.1-9.el10_2.10.x86_64                                            
+  libsigc++20-2.12.1-5.el10_1.x86_64                                            
+  libthai-0.1.29-10.el10.x86_64                                                 
+  libtiff-4.6.0-8.el10_2.4.x86_64                                               
+  libwebp-1.3.2-10.el10.x86_64                                                  
+  pango-1.54.0-3.el10.x86_64                                                    
+  pangomm-2.46.4-3.el10_1.x86_64                                                
+  pixman-0.43.4-2.el10.x86_64                                                   
+  redhat-text-vf-fonts-4.1.0-1.el10.noarch                                      
+  rsvg-pixbuf-loader-2.57.1-9.el10_2.10.x86_64                                  
+  shared-mime-info-2.3-8.el10.x86_64                                            
+  tinyxml2-10.0.0-18.el10_1.x86_64                                              
+  xfmd-0.10.0-76.el10_2.x86_64                                                  
+  xml-common-0.6.3-65.el10.noarch                                               
+
+Complete!
+AlmaLinux 10.2 - AppStream                       10 kB/s | 3.8 kB     00:00    
+AlmaLinux 10.2 - BaseOS                          10 kB/s | 3.8 kB     00:00    
+AlmaLinux 10.2 - CRB                            9.8 kB/s | 3.8 kB     00:00    
+AlmaLinux 10.2 - Extras                         8.7 kB/s | 3.3 kB     00:00    
+Beinerud apps - AlmaLinux 10.2 - stable          14 kB/s | 659  B     00:00    
+Extra Packages for Enterprise Linux 10.2 - x86_  70 kB/s |  36 kB     00:00    
+Dependencies resolved.
+================================================================================
+ Package                    Arch    Version                Repository      Size
+================================================================================
+Installing:
+ xfmd                       x86_64  0.10.0-76.el10_2       beinerud-apps  172 M
+Installing dependencies:
+ cairo                      x86_64  1.18.2-2.el10_2.1      appstream      712 k
+ cairo-gobject              x86_64  1.18.2-2.el10_2.1      appstream       16 k
+ cairomm                    x86_64  1.14.6-1.el10_2        epel            61 k
+ default-fonts-core-sans    noarch  4.1-3.el10             baseos          34 k
+ dejavu-sans-fonts          noarch  2.37-25.el10           baseos         1.3 M
+ dejavu-sans-mono-fonts     noarch  2.37-25.el10           baseos         469 k
+ fontconfig                 x86_64  2.15.0-7.el10          appstream      273 k
+ fonts-filesystem           noarch  1:2.0.5-18.el10        baseos         7.7 k
+ fribidi                    x86_64  1.0.14-4.el10          appstream       91 k
+ gdk-pixbuf2                x86_64  2.42.12-4.el10_2.5     appstream      470 k
+ gdk-pixbuf2-modules        x86_64  2.42.12-4.el10_2.5     appstream       27 k
+ glibmm2.4                  x86_64  2.66.8-1.el10_1        epel           692 k
+ google-noto-fonts-common   noarch  20240401-5.el10        baseos          17 k
+ google-noto-sans-vf-fonts  noarch  20240401-5.el10        baseos         593 k
+ jbigkit-libs               x86_64  2.1-31.el10            appstream       53 k
+ libXcursor                 x86_64  1.2.1-9.el10           appstream       30 k
+ libXfixes                  x86_64  6.0.1-5.el10           appstream       19 k
+ libXft                     x86_64  2.3.8-8.el10           appstream       72 k
+ libXrandr                  x86_64  1.5.4-5.el10           appstream       27 k
+ libXrender                 x86_64  0.9.11-8.el10_2.1      appstream       27 k
+ libdatrie                  x86_64  0.2.13-11.el10         appstream       32 k
+ libjpeg-turbo              x86_64  3.0.2-4.el10           appstream      253 k
+ liblerc                    x86_64  4.0.0-8.el10           appstream      215 k
+ librsvg2                   x86_64  2.57.1-9.el10_2.10     appstream      1.5 M
+ libsigc++20                x86_64  2.12.1-5.el10_1        epel            39 k
+ libthai                    x86_64  0.1.29-10.el10         appstream      213 k
+ libtiff                    x86_64  4.6.0-8.el10_2.4       appstream      212 k
+ libwebp                    x86_64  1.3.2-10.el10          appstream      287 k
+ pango                      x86_64  1.54.0-3.el10          appstream      353 k
+ pangomm                    x86_64  2.46.4-3.el10_1        epel            68 k
+ pixman                     x86_64  0.43.4-2.el10          appstream      285 k
+ redhat-text-vf-fonts       noarch  4.1.0-1.el10           baseos         353 k
+ rsvg-pixbuf-loader         x86_64  2.57.1-9.el10_2.10     appstream       13 k
+ shared-mime-info           x86_64  2.3-8.el10             baseos         396 k
+ tinyxml2                   x86_64  10.0.0-18.el10_1       epel            43 k
+ xml-common                 noarch  0.6.3-65.el10          appstream       31 k
+
+Transaction Summary
+================================================================================
+Install  37 Packages
+
+Total download size: 181 M
+Installed size: 231 M
+Downloading Packages:
+(1/37): cairo-gobject-1.18.2-2.el10_2.1.x86_64. 209 kB/s |  16 kB     00:00    
+(2/37): fribidi-1.0.14-4.el10.x86_64.rpm        1.9 MB/s |  91 kB     00:00    
+(3/37): fontconfig-2.15.0-7.el10.x86_64.rpm     1.8 MB/s | 273 kB     00:00    
+(4/37): gdk-pixbuf2-modules-2.42.12-4.el10_2.5. 1.0 MB/s |  27 kB     00:00    
+(5/37): jbigkit-libs-2.1-31.el10.x86_64.rpm     1.8 MB/s |  53 kB     00:00    
+(6/37): libXcursor-1.2.1-9.el10.x86_64.rpm      1.1 MB/s |  30 kB     00:00    
+(7/37): gdk-pixbuf2-2.42.12-4.el10_2.5.x86_64.r 3.9 MB/s | 470 kB     00:00    
+(8/37): cairo-1.18.2-2.el10_2.1.x86_64.rpm      2.8 MB/s | 712 kB     00:00    
+(9/37): libXfixes-6.0.1-5.el10.x86_64.rpm       582 kB/s |  19 kB     00:00    
+(10/37): libXrandr-1.5.4-5.el10.x86_64.rpm      1.0 MB/s |  27 kB     00:00    
+(11/37): libXft-2.3.8-8.el10.x86_64.rpm         2.1 MB/s |  72 kB     00:00    
+(12/37): libXrender-0.9.11-8.el10_2.1.x86_64.rp 1.0 MB/s |  27 kB     00:00    
+(13/37): libdatrie-0.2.13-11.el10.x86_64.rpm    1.2 MB/s |  32 kB     00:00    
+(14/37): libjpeg-turbo-3.0.2-4.el10.x86_64.rpm  3.2 MB/s | 253 kB     00:00    
+(15/37): liblerc-4.0.0-8.el10.x86_64.rpm        2.8 MB/s | 215 kB     00:00    
+(16/37): libthai-0.1.29-10.el10.x86_64.rpm      2.8 MB/s | 213 kB     00:00    
+(17/37): libtiff-4.6.0-8.el10_2.4.x86_64.rpm    2.3 MB/s | 212 kB     00:00    
+(18/37): libwebp-1.3.2-10.el10.x86_64.rpm       3.6 MB/s | 287 kB     00:00    
+(19/37): pixman-0.43.4-2.el10.x86_64.rpm        3.9 MB/s | 285 kB     00:00    
+(20/37): pango-1.54.0-3.el10.x86_64.rpm         2.7 MB/s | 353 kB     00:00    
+(21/37): rsvg-pixbuf-loader-2.57.1-9.el10_2.10. 539 kB/s |  13 kB     00:00    
+(22/37): xml-common-0.6.3-65.el10.noarch.rpm    1.2 MB/s |  31 kB     00:00    
+(23/37): default-fonts-core-sans-4.1-3.el10.noa 1.3 MB/s |  34 kB     00:00    
+(24/37): dejavu-sans-mono-fonts-2.37-25.el10.no 4.2 MB/s | 469 kB     00:00    
+(25/37): fonts-filesystem-2.0.5-18.el10.noarch. 309 kB/s | 7.7 kB     00:00    
+(26/37): google-noto-fonts-common-20240401-5.el 676 kB/s |  17 kB     00:00    
+(27/37): google-noto-sans-vf-fonts-20240401-5.e 4.8 MB/s | 593 kB     00:00    
+(28/37): librsvg2-2.57.1-9.el10_2.10.x86_64.rpm 2.4 MB/s | 1.5 MB     00:00    
+(29/37): redhat-text-vf-fonts-4.1.0-1.el10.noar 4.6 MB/s | 353 kB     00:00    
+(30/37): dejavu-sans-fonts-2.37-25.el10.noarch. 3.5 MB/s | 1.3 MB     00:00    
+(31/37): shared-mime-info-2.3-8.el10.x86_64.rpm 2.1 MB/s | 396 kB     00:00    
+(32/37): cairomm-1.14.6-1.el10_2.x86_64.rpm     221 kB/s |  61 kB     00:00    
+(33/37): libsigc++20-2.12.1-5.el10_1.x86_64.rpm 572 kB/s |  39 kB     00:00    
+(34/37): pangomm-2.46.4-3.el10_1.x86_64.rpm     303 kB/s |  68 kB     00:00    
+(35/37): tinyxml2-10.0.0-18.el10_1.x86_64.rpm   251 kB/s |  43 kB     00:00    
+(36/37): glibmm2.4-2.66.8-1.el10_1.x86_64.rpm   902 kB/s | 692 kB     00:00    
+(37/37): xfmd-0.10.0-76.el10_2.x86_64.rpm        11 MB/s | 172 MB     00:15    
+--------------------------------------------------------------------------------
+Total                                            10 MB/s | 181 MB     00:17     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1 
+  Installing       : libXrender-0.9.11-8.el10_2.1.x86_64                   1/37 
+  Installing       : fonts-filesystem-1:2.0.5-18.el10.noarch               2/37 
+  Installing       : libsigc++20-2.12.1-5.el10_1.x86_64                    3/37 
+  Installing       : libjpeg-turbo-3.0.2-4.el10.x86_64                     4/37 
+  Installing       : glibmm2.4-2.66.8-1.el10_1.x86_64                      5/37 
+  Installing       : dejavu-sans-mono-fonts-2.37-25.el10.noarch            6/37 
+  Installing       : libXfixes-6.0.1-5.el10.x86_64                         7/37 
+  Installing       : libXcursor-1.2.1-9.el10.x86_64                        8/37 
+  Installing       : dejavu-sans-fonts-2.37-25.el10.noarch                 9/37 
+  Installing       : redhat-text-vf-fonts-4.1.0-1.el10.noarch             10/37 
+  Installing       : libXrandr-1.5.4-5.el10.x86_64                        11/37 
+  Installing       : tinyxml2-10.0.0-18.el10_1.x86_64                     12/37 
+  Installing       : shared-mime-info-2.3-8.el10.x86_64                   13/37 
+  Running scriptlet: shared-mime-info-2.3-8.el10.x86_64                   13/37 
+  Installing       : gdk-pixbuf2-2.42.12-4.el10_2.5.x86_64                14/37 
+  Installing       : google-noto-fonts-common-20240401-5.el10.noarch      15/37 
+  Installing       : google-noto-sans-vf-fonts-20240401-5.el10.noarch     16/37 
+  Installing       : default-fonts-core-sans-4.1-3.el10.noarch            17/37 
+  Running scriptlet: xml-common-0.6.3-65.el10.noarch                      18/37 
+  Installing       : xml-common-0.6.3-65.el10.noarch                      18/37 
+  Installing       : fontconfig-2.15.0-7.el10.x86_64                      19/37 
+  Running scriptlet: fontconfig-2.15.0-7.el10.x86_64                      19/37 
+  Installing       : libXft-2.3.8-8.el10.x86_64                           20/37 
+  Installing       : pixman-0.43.4-2.el10.x86_64                          21/37 
+  Installing       : cairo-1.18.2-2.el10_2.1.x86_64                       22/37 
+  Installing       : cairo-gobject-1.18.2-2.el10_2.1.x86_64               23/37 
+  Installing       : cairomm-1.14.6-1.el10_2.x86_64                       24/37 
+  Installing       : libwebp-1.3.2-10.el10.x86_64                         25/37 
+  Installing       : liblerc-4.0.0-8.el10.x86_64                          26/37 
+  Installing       : libdatrie-0.2.13-11.el10.x86_64                      27/37 
+  Installing       : libthai-0.1.29-10.el10.x86_64                        28/37 
+  Installing       : jbigkit-libs-2.1-31.el10.x86_64                      29/37 
+  Installing       : libtiff-4.6.0-8.el10_2.4.x86_64                      30/37 
+  Installing       : fribidi-1.0.14-4.el10.x86_64                         31/37 
+  Installing       : pango-1.54.0-3.el10.x86_64                           32/37 
+  Installing       : librsvg2-2.57.1-9.el10_2.10.x86_64                   33/37 
+  Installing       : rsvg-pixbuf-loader-2.57.1-9.el10_2.10.x86_64         34/37 
+  Installing       : gdk-pixbuf2-modules-2.42.12-4.el10_2.5.x86_64        35/37 
+  Installing       : pangomm-2.46.4-3.el10_1.x86_64                       36/37 
+  Installing       : xfmd-0.10.0-76.el10_2.x86_64                         37/37 
+  Running scriptlet: fontconfig-2.15.0-7.el10.x86_64                      37/37 
+  Running scriptlet: xfmd-0.10.0-76.el10_2.x86_64                         37/37 
+
+Installed:
+  cairo-1.18.2-2.el10_2.1.x86_64                                                
+  cairo-gobject-1.18.2-2.el10_2.1.x86_64                                        
+  cairomm-1.14.6-1.el10_2.x86_64                                                
+  default-fonts-core-sans-4.1-3.el10.noarch                                     
+  dejavu-sans-fonts-2.37-25.el10.noarch                                         
+  dejavu-sans-mono-fonts-2.37-25.el10.noarch                                    
+  fontconfig-2.15.0-7.el10.x86_64                                               
+  fonts-filesystem-1:2.0.5-18.el10.noarch                                       
+  fribidi-1.0.14-4.el10.x86_64                                                  
+  gdk-pixbuf2-2.42.12-4.el10_2.5.x86_64                                         
+  gdk-pixbuf2-modules-2.42.12-4.el10_2.5.x86_64                                 
+  glibmm2.4-2.66.8-1.el10_1.x86_64                                              
+  google-noto-fonts-common-20240401-5.el10.noarch                               
+  google-noto-sans-vf-fonts-20240401-5.el10.noarch                              
+  jbigkit-libs-2.1-31.el10.x86_64                                               
+  libXcursor-1.2.1-9.el10.x86_64                                                
+  libXfixes-6.0.1-5.el10.x86_64                                                 
+  libXft-2.3.8-8.el10.x86_64                                                    
+  libXrandr-1.5.4-5.el10.x86_64                                                 
+  libXrender-0.9.11-8.el10_2.1.x86_64                                           
+  libdatrie-0.2.13-11.el10.x86_64                                               
+  libjpeg-turbo-3.0.2-4.el10.x86_64                                             
+  liblerc-4.0.0-8.el10.x86_64                                                   
+  librsvg2-2.57.1-9.el10_2.10.x86_64                                            
+  libsigc++20-2.12.1-5.el10_1.x86_64                                            
+  libthai-0.1.29-10.el10.x86_64                                                 
+  libtiff-4.6.0-8.el10_2.4.x86_64                                               
+  libwebp-1.3.2-10.el10.x86_64                                                  
+  pango-1.54.0-3.el10.x86_64                                                    
+  pangomm-2.46.4-3.el10_1.x86_64                                                
+  pixman-0.43.4-2.el10.x86_64                                                   
+  redhat-text-vf-fonts-4.1.0-1.el10.noarch                                      
+  rsvg-pixbuf-loader-2.57.1-9.el10_2.10.x86_64                                  
+  shared-mime-info-2.3-8.el10.x86_64                                            
+  tinyxml2-10.0.0-18.el10_1.x86_64                                              
+  xfmd-0.10.0-76.el10_2.x86_64                                                  
+  xml-common-0.6.3-65.el10.noarch                                               
+
+Complete!
+_XSERVTransmkdir: Owner of /tmp/.X11-unix should be set to root
+reading: discovered native tabs
+reading: deferred entry visible
+reading: entry document delivered
+reading: model children loaded
+reading: native VP01 landing admitted, diagrams 0, visuals 0
+reading: native VP02 landing admitted, diagrams 0, visuals 2
+reading: VP03 backend Libavoid; libavoid transaction 1: 333.583µs; label leaders omitted: 2
+reading: native VP03 landing admitted, diagrams 1, visuals 1
+reading: VP04 backend Libavoid; libavoid transaction 1: 299.723µs; label leaders omitted: 0
+reading: native VP04 landing admitted, diagrams 1, visuals 1
+reading: native VP05 landing admitted, diagrams 0, visuals 0
+reading: native VP06 landing admitted, diagrams 0, visuals 0
+reading: VP07 backend Libavoid; libavoid transaction 1: 297.443µs; label leaders omitted: 2
+reading: native VP07 landing admitted, diagrams 1, visuals 1
+reading: native VP08 landing admitted, diagrams 0, visuals 1
+reading: native VP09 landing admitted, diagrams 0, visuals 0
+reading: native VP10 landing admitted, diagrams 0, visuals 0
+reading: native VP11 landing admitted, diagrams 0, visuals 0
+PASS
+PASS
+Installed native window: /tmp/tmp_oi8ypvu/package.md  xfmd 0.10
+Installed native private producer: c3463b78d53ebf984b0f553ebe93a556fb3ac6a8
+Installed native reading/render/source/history and real Activity workflows verified: c3463b78d53ebf984b0f553ebe93a556fb3ac6a8
+Verified fresh signed public installation: 0.10.0-76.el10_2; producer c3463b78d53ebf984b0f553ebe93a556fb3ac6a8

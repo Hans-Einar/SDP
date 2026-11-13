@@ -1,5 +1,9 @@
 # Activity0002 qualification
 
+| Field | Value |
+| --- | --- |
+| id | SDPTOOL-VER-ACTIVITY-0002 |
+
 Producer candidate: eb11ac77b096587c9d4cbc8e7c85b634131098a3 in SDP.
 Consumer candidate: a558c31 in the isolated XFMD worktree.
 Both use branch sdp/activity-management. Technical qualification and independent review passed;
@@ -100,3 +104,19 @@ canonical management history. This later real adoption supersedes the checkpoint
 statements that no real Activity3/admission existed; it does not rewrite earlier
 evidence or claim that a ledger transition stopped arbitrary agents. Activity2's
 personal owner review was not performed.
+
+## Delivered through the authorized XFMD0.10 release
+
+Activity3 exercised real tool creation, Session creation, adoption and guarded
+hold/update/resume. The final generic README correction c3463b7 closes the scaffold
+requirement missed at the first qualification checkpoint. Full Activity tests and
+independent delta review pass. The exact private producer now ships in signed
+XFMD0.10.0-76.el10_2 with actual public upgrade/fresh-install native Activity tests.
+See [release evidence](../../Activity-0003--Readable-SDL-browsing/06-Verification/ReleaseChecklist.md).
+
+The owner authorized continuation and public delivery without personal review.
+This objectively verified delivery closes the selected Activity2 implementation
+scope under that authority; it does not assert personal owner acceptance, main
+merge, accepted SDL model release or a public Toolkit installer release. Earlier
+active/gate-review/on-hold statements describe prior checkpoints. No new Activity2
+implementation is selected by administrative closure.
