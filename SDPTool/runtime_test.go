@@ -86,7 +86,12 @@ func TestRuntimeActionsKeepContextAndSourceRevision(t *testing.T) {
 	}
 	var cli any
 	json.Unmarshal(out.Bytes(), &cli)
-	a, _ := json.Marshal(r.Result)
+	encoded, _ := json.Marshal(r.Result)
+	var wire any
+	if err := json.Unmarshal(encoded, &wire); err != nil {
+		t.Fatal(err)
+	}
+	a, _ := json.Marshal(wire)
 	b, _ := json.Marshal(cli)
 	if string(a) != string(b) {
 		t.Fatalf("CLI/action diverged: %s %s", a, b)
