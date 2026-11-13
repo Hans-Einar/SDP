@@ -501,7 +501,7 @@ class InstallationContractTests(unittest.TestCase):
         )
         self.assertEqual(self.validate_contract(self.contract), [])
         entries = self.contract["entries"]
-        self.assertEqual(len(entries), 50)  # Includes PLR1 Project Leader skill and role contract
+        self.assertEqual(len(entries), 51)  # PLR1 roles plus the Activity record guide
         sources = {entry.get("source") for entry in entries}
         self.assertIn("Skills/sdp-project-leader/SKILL.md", sources)
         self.assertIn("Skills/sdp/references/roles.md", sources)
