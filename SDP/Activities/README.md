@@ -16,7 +16,7 @@ The owner-selected first three Activities are delivered:
    — first created by SDPTool, independently qualified and completed with signed
    XFMD0.10.0-76 publication and actual public DNF upgrade/fresh-install evidence.
 
-There is no currently active Activity. Activity3's tool-recorded lifecycle includes
+Activity4 is active under PLAN-SDP-0029 and SESSION-SDP-0021. Activity3's tool-recorded lifecycle includes
 an observed quiescent hold/update/resume to link its actual plan and Session.
 Activity2 was held while Activity3 executed, then resumed only for administrative
 closure after the shared release delivered its qualified outcome. No personal
@@ -32,9 +32,11 @@ Activity3; that does not establish control over arbitrary manual/remote agents.
 [Release verification](Activity-0003--Readable-SDL-browsing/06-Verification/ReleaseChecklist.md)
 retains the exact delivered app/private-producer pair and public qualification.
 
-## Planned next need
+## Current distribution activity
 
 [Activity0004 — Single SDPTool installation](Activity-0004--Single-SDPTool-installation/01-Mandate/Mandate.md)
-captures the owner's subsequent distribution correction. Initial analysis is
-recorded in Session0020; one shared engine updated through gh-sdp is the proposed
-boundary. The Activity remains planned, with no product implementation started.
+captures the owner's subsequent distribution correction. Session0020 records the
+study; Session0021 executes the selected shared-engine migration. The public
+entrypoint is explicitly registered once; subsequent gh extension upgrades replace
+the same engine consumed directly by XFMD. Qualification and publication remain
+open until their exact-candidate evidence is recorded.

@@ -4,3 +4,8 @@ Outcome: one authoritative installed engine/version per user for the CLI and nat
 
 Current assignment: read-only architecture analysis and need capture. Proposed one-time registration, binary packaging shape and migration acceptance still need detailed design. This planned Activity does not start product implementation, main integration or replacement publication.
 
+
+Execution selection: the owner now instructs execution of Activity4. The prior
+analysis-only boundary is superseded for this need. Complete design, implementation,
+qualification and the studied shared-runtime/successor-package delivery. Preserve
+separate main-merge and unrelated live project-upgrade boundaries.

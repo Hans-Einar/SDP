@@ -1,0 +1,53 @@
+language design-core version 0.6.
+system SDPTool.
+container SdpToolHost.
+feature SingleRuntimeUpdatePath.
+usecase UseConsistentLocalTools.
+actor ToolUser.
+SDPTool contains SdpToolHost.
+ToolUser pursues UseConsistentLocalTools.
+SingleRuntimeUpdatePath supports UseConsistentLocalTools.
+unit RuntimeRegistration.
+SdpToolHost contains RuntimeRegistration.
+functionality RegisterCurrentExecutable.
+RuntimeRegistration owns RegisterCurrentExecutable.
+RegisterCurrentExecutable contributes-to SingleRuntimeUpdatePath.
+functionality RejectUnmanagedEntrypoint.
+RuntimeRegistration owns RejectUnmanagedEntrypoint.
+RejectUnmanagedEntrypoint contributes-to SingleRuntimeUpdatePath.
+functionality DiagnoseShellShadowing.
+RuntimeRegistration owns DiagnoseShellShadowing.
+DiagnoseShellShadowing contributes-to SingleRuntimeUpdatePath.
+unit SharedSduiFacade.
+SdpToolHost contains SharedSduiFacade.
+functionality PreviewCheckedSource.
+SharedSduiFacade owns PreviewCheckedSource.
+PreviewCheckedSource contributes-to SingleRuntimeUpdatePath.
+functionality CheckPrototypeReadiness.
+SharedSduiFacade owns CheckPrototypeReadiness.
+CheckPrototypeReadiness contributes-to SingleRuntimeUpdatePath.
+functionality RunBundledNativeHost.
+SharedSduiFacade owns RunBundledNativeHost.
+RunBundledNativeHost contributes-to SingleRuntimeUpdatePath.
+unit LocalHelperMaterializer.
+SdpToolHost contains LocalHelperMaterializer.
+functionality VerifyEmbeddedHelper.
+LocalHelperMaterializer owns VerifyEmbeddedHelper.
+VerifyEmbeddedHelper contributes-to SingleRuntimeUpdatePath.
+functionality PublishHashAddressedHelper.
+LocalHelperMaterializer owns PublishHashAddressedHelper.
+PublishHashAddressedHelper contributes-to SingleRuntimeUpdatePath.
+unit ExternalGh.
+functionality InstallCanonicalEngine.
+ExternalGh owns InstallCanonicalEngine.
+InstallCanonicalEngine contributes-to SingleRuntimeUpdatePath.
+functionality ReplaceCanonicalEngine.
+ExternalGh owns ReplaceCanonicalEngine.
+ReplaceCanonicalEngine contributes-to SingleRuntimeUpdatePath.
+unit ExternalXfmd.
+functionality ResolveRegisteredEntrypoint.
+ExternalXfmd owns ResolveRegisteredEntrypoint.
+ResolveRegisteredEntrypoint contributes-to SingleRuntimeUpdatePath.
+functionality BrowseWithoutGhOrNetwork.
+ExternalXfmd owns BrowseWithoutGhOrNetwork.
+BrowseWithoutGhOrNetwork contributes-to SingleRuntimeUpdatePath.

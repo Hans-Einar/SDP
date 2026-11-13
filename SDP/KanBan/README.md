@@ -4,7 +4,7 @@
 
 | ID | Type | Status | Document |
 | --- | --- | --- | --- |
-| KB-SDP-063 | Change | backlog | [One SDPTool installation and update path](backlog/%23063--Change--Single-SDPTool-installation.md) |
+| KB-SDP-063 | Change | active | [One SDPTool installation and update path](active/%23063--Change--Single-SDPTool-installation.md) |
 | KB-SDP-062 | Proposal | completed | [Complete SDPTool architecture migration](completed/%23062--Proposal--Complete-SDPTool-architecture-migration.md) |
 | KB-SDP-060 | Change | completed | [Producer-owned readable SDL browsing](completed/%23060--Change--Producer-owned-SDL-browsing.md) |
 | KB-SDP-061 | Proposal | completed | [Need-driven Activities across successive Sessions](completed/%23061--Proposal--Need-driven-activities.md) |

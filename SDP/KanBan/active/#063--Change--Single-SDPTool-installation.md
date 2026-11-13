@@ -5,7 +5,7 @@
 | id | KB-SDP-063 |
 | project | SDP |
 | type | Change |
-| CardState | backlog |
+| CardState | in-progress |
 | created | 2026-11-13 |
 | Systems | SDPTOOL, gh-sdp, XFMD |
 | source | Owner rejects XFMD-private SDPTool distribution and requests one gh-extension-owned update path |
@@ -27,3 +27,5 @@ proposal; no product implementation or replacement publication is selected here.
 and [initial study](../../Activities/Activity-0004--Single-SDPTool-installation/02-Study/Study.md)
 record the planned need and proposed architecture. SESSION-SDP-0020 completes the
 bounded initial study; product implementation is not started.
+
+Owner selects execution through PLAN-SDP-0029 and SESSION-SDP-0021; prior analysis-only wording is historical.

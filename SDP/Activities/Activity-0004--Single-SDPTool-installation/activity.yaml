@@ -10,7 +10,14 @@ systems:
     - SDPTOOL
     - GHSDP
     - XFMD
-references: []
+references:
+    - membership: whole-scope
+      role: implementation-plan
+      id: PLAN-SDP-0029
+      path: Activities/Activity-0004--Single-SDPTool-installation/05-Implementation/Plan.md
+    - role: session
+      id: SESSION-SDP-0020
+      path: Activities/Activity-0004--Single-SDPTool-installation/Sessions/session-#0020--Shared-SDPTool-installation-study.md
 scope:
     - SDPTool
     - SDP

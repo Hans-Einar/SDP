@@ -1,0 +1,13 @@
+author: warloc
+artifactName: SharedRuntime
+id: 3ae7a55c-3c56-4ea7-a238-b880e563c853:00001
+parents:
+    - 3ae7a55c-3c56-4ea7-a238-b880e563c853:00000
+kind: commit
+message: C0 selected single-engine registration and offline helper contract
+recordedAt: "2026-11-13T08:31:12.787915593Z"
+sourceDigest: 17b32b5c0eeb858157d5817f7bcf54e3814636bf33f1d54e4cbd3e4504e9def8
+inventory:
+    System.design: 29866cfdac50c969dcf609f538ed7e62ba24438e564c7967b9588907b04f11d9
+deleted: []
+payload: .commits/#00001
