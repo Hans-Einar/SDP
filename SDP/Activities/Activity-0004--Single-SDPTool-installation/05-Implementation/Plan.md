@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0029 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | ImplementationPlan |
 | BranchPolicy | phase |
 | CommitPolicy | milestone |
@@ -19,11 +19,11 @@ assignment; main merges and unrelated live project upgrades remain unselected.
 | Milestone | Outcome / acceptance | State |
 | --- | --- | --- |
 | C0 | Canonical design/model and bounded contracts; Activity/Session selected | complete |
-| C1 | Shared standalone entrypoint, diagnostics and exact engine identity; existing project operations preserved | in-progress |
-| C2 | gh extension payload is the canonical engine, no runtime bootstrap child/cache; actual extension install/upgrade checks | in-progress |
-| C3 | XFMD uses registered local runtime without gh/network/auth; removes private engine and reconciles all SDP helpers | in-progress |
-| C4 | Integrated offline/migration/native checks and fresh independent review on exact candidates | planned |
-| C5 | Signed canonical/shared extension publication then successor XFMD RPM; actual public update/install and truthful closeout | planned |
+| C1 | Shared standalone entrypoint, diagnostics and exact engine identity; existing project operations preserved | complete |
+| C2 | gh extension payload is the canonical engine, no runtime bootstrap child/cache; actual extension install/upgrade checks | complete |
+| C3 | XFMD uses registered local runtime without gh/network/auth; removes private engine and reconciles all SDP helpers | complete |
+| C4 | Integrated offline/migration/native checks and fresh independent review on exact candidates | complete |
+| C5 | Signed canonical/shared extension publication then successor XFMD RPM; actual public update/install and truthful closeout | complete |
 
 Use sdp/shared-tool-installation in all three repositories. SDP starts432c292;
 gh-sdp startsb177e14; isolated XFMD starts140be2b. Preserve primary XFMD main
@@ -42,3 +42,16 @@ updates; canonical signed framework previews/applies and unchanged project bytes
 prior RPM upgrade removes private helper; missing/incompatible engine diagnostics;
 whole helper inventory and preserved supported workflows. Linux amd64 is the
 existing native release boundary; other platform support must be stated honestly.
+
+## Completion evidence
+
+C0–C5 are complete. [Verification](../06-Verification/Verification.md),
+[release checklist](../06-Verification/ReleaseChecklist.md) and
+[independent review](../06-Verification/IndependentReview.md) bind exact sources,
+production signatures, actual public extension upgrade/fresh install and signed
+public XFMD DNF upgrade/fresh installation with real offline native workflows.
+The validated preliminary SDL checkpoint00002 corrects ordering/formatting at
+closeout without changing published engine bytes. Linux amd64 is the qualified
+release boundary; upstream interrupted-download repair remains documented.
+No remaining implementation or publication obligation is deferred. Main merge,
+personal owner review and live user upgrades are outside this selected delivery.

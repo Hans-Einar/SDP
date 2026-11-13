@@ -1,0 +1,362 @@
+{
+  "path": "Activities/Activity-0004--Single-SDPTool-installation",
+  "descriptor": {
+    "schema": "sdp-activity/0.2",
+    "id": "ACTIVITY-SDP-0004",
+    "projectId": "SDP",
+    "title": "Single SDPTool installation",
+    "owner": "project-owner",
+    "mandate": "01-Mandate/Mandate.md",
+    "sourceCards": [
+      "KB-SDP-063"
+    ],
+    "systems": [
+      "SDPTOOL",
+      "GHSDP",
+      "XFMD",
+      "SDUI"
+    ],
+    "references": [
+      {
+        "membership": "whole-scope",
+        "role": "implementation-plan",
+        "id": "PLAN-SDP-0029",
+        "path": "Activities/Activity-0004--Single-SDPTool-installation/05-Implementation/Plan.md"
+      },
+      {
+        "role": "session",
+        "id": "SESSION-SDP-0020",
+        "path": "Activities/Activity-0004--Single-SDPTool-installation/Sessions/session-#0020--Shared-SDPTool-installation-study.md"
+      },
+      {
+        "membership": "whole-scope",
+        "role": "session",
+        "id": "SESSION-SDP-0021",
+        "path": "Activities/Activity-0004--Single-SDPTool-installation/Sessions/session-#0021--Shared-runtime-implementation-and-delivery.md"
+      },
+      {
+        "role": "verification",
+        "id": "SDPTOOL-VER-DISTRIBUTION-0004",
+        "path": "Activities/Activity-0004--Single-SDPTool-installation/06-Verification/Verification.md"
+      }
+    ],
+    "scope": [
+      "SDPTool",
+      "SDP",
+      "Toolkit",
+      "SDUI"
+    ]
+  },
+  "descriptorRef": {
+    "path": "Activities/Activity-0004--Single-SDPTool-installation/activity.yaml",
+    "sha256": "90ac72445f9c49122c084b8d3812dec7f063d28248e4967821cd113e2160d5ae"
+  },
+  "state": "completed",
+  "lastEventId": "EVT-ACTIVITY-SDP-88492A836AAC4A83BA51BCABD24CD83F",
+  "events": [
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-23DC73091A5249E5B36FC101C1A3FA81",
+      "eventType": "x-activity:created",
+      "occurredAt": "2026-11-13T07:57:05.22661349Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0004",
+      "payload": {
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "23dc7309-1a52-49e5-b36f-c101c1a3fa81",
+        "recordedAt": "2026-11-13T07:57:05.22661349Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "KanBan/backlog/#063--Change--Single-SDPTool-installation.md"
+        },
+        "previousEventId": null,
+        "from": null,
+        "to": "planned",
+        "reason": "Capture the owner-selected distribution need and study before implementation",
+        "descriptor": {
+          "path": "Activities/Activity-0004--Single-SDPTool-installation/activity.yaml",
+          "sha256": "c7d318a143b1e47e34d1e8394ec9d5894a1ba65a90afa4aa84eebdca4c7e266f"
+        },
+        "links": [],
+        "requestDigest": "b73618b8dec6fb46647e8fb379662ab5f6c78770c55ea223ce5dcf73270bd745"
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-682691CBFDE94373ADF3C3B1811BDAFD",
+      "eventType": "x-activity:session-created",
+      "occurredAt": "2026-11-13T07:57:08.329307906Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0004",
+      "payload": {
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "682691cb-fde9-4373-adf3-c3b1811bdafd",
+        "recordedAt": "2026-11-13T07:57:08.329307906Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "KanBan/backlog/#063--Change--Single-SDPTool-installation.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-23DC73091A5249E5B36FC101C1A3FA81",
+        "from": "planned",
+        "to": "planned",
+        "reason": "Record the current owner discussion and bounded architecture investigation",
+        "descriptor": {
+          "path": "Activities/Activity-0004--Single-SDPTool-installation/activity.yaml",
+          "sha256": "c7d318a143b1e47e34d1e8394ec9d5894a1ba65a90afa4aa84eebdca4c7e266f"
+        },
+        "links": [],
+        "requestDigest": "e2258275d67b29178204f4ec73f9f239f91dcf366e22f41cc9795886914fedd2",
+        "session": {
+          "id": "SESSION-SDP-0020",
+          "path": "Activities/Activity-0004--Single-SDPTool-installation/Sessions/session-#0020--Shared-SDPTool-installation-study.md",
+          "sha256": "b0147b599f9171ef627e8f7c39242f8904709b10255819ef3de0fdbba6957138"
+        }
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-AB99582E3D8A4A92930BF2D7A994DFCB",
+      "eventType": "x-activity:updated",
+      "occurredAt": "2026-11-13T08:23:47.737644495Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0004",
+      "payload": {
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "ab99582e-3d8a-4a92-930b-f2d7a994dfcb",
+        "recordedAt": "2026-11-13T08:23:47.737644495Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Activities/Activity-0004--Single-SDPTool-installation/01-Mandate/Mandate.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-682691CBFDE94373ADF3C3B1811BDAFD",
+        "from": "planned",
+        "to": "planned",
+        "reason": "Select implementation plan and retain completed initial study",
+        "descriptor": {
+          "path": "Activities/Activity-0004--Single-SDPTool-installation/activity.yaml",
+          "sha256": "fce0517b4340e210850ed91207ab4ad8267171b7feab6f204bdd0bb9e8408e0d"
+        },
+        "links": [],
+        "requestDigest": "37612f2b9cd47eb9298f75f7f69bab163848c681fbee076b47b6a010edddf3b5"
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-D7FC1A86BF624977BF0D8F56723F2AF3",
+      "eventType": "x-activity:session-created",
+      "occurredAt": "2026-11-13T08:23:50.835015487Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0004",
+      "payload": {
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "d7fc1a86-bf62-4977-bf0d-8f56723f2af3",
+        "recordedAt": "2026-11-13T08:23:50.835015487Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Activities/Activity-0004--Single-SDPTool-installation/01-Mandate/Mandate.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-AB99582E3D8A4A92930BF2D7A994DFCB",
+        "from": "planned",
+        "to": "planned",
+        "reason": "Owner instructs Activity4 execution",
+        "descriptor": {
+          "path": "Activities/Activity-0004--Single-SDPTool-installation/activity.yaml",
+          "sha256": "fce0517b4340e210850ed91207ab4ad8267171b7feab6f204bdd0bb9e8408e0d"
+        },
+        "links": [],
+        "requestDigest": "0cd3f7b1f0eeed6d0fd1fff419aff8316b491d28c64ef4e10072c9e6e6541e2e",
+        "session": {
+          "id": "SESSION-SDP-0021",
+          "path": "Activities/Activity-0004--Single-SDPTool-installation/Sessions/session-#0021--Shared-runtime-implementation-and-delivery.md",
+          "sha256": "e0fdef3040b12480817de6cb855d800e134b3b0d5c202e3b748562dd4ba1e90a"
+        }
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-E715961E036B4B38B78759DF92C8F54C",
+      "eventType": "x-activity:transitioned",
+      "occurredAt": "2026-11-13T08:23:53.919144602Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0004",
+      "payload": {
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "e715961e-036b-4b38-b787-59df92c8f54c",
+        "recordedAt": "2026-11-13T08:23:53.919144602Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Activities/Activity-0004--Single-SDPTool-installation/01-Mandate/Mandate.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-D7FC1A86BF624977BF0D8F56723F2AF3",
+        "from": "planned",
+        "to": "active",
+        "reason": "Owner selects Activity4 execution; no other Activity is active",
+        "descriptor": {
+          "path": "Activities/Activity-0004--Single-SDPTool-installation/activity.yaml",
+          "sha256": "fce0517b4340e210850ed91207ab4ad8267171b7feab6f204bdd0bb9e8408e0d"
+        },
+        "links": [],
+        "requestDigest": "f57d291fb0da7623f1d346aca9ecf768032d09783436e0617724e8ede73fa5b9"
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-5A78113A90D84B8B9C011368A539DB3B",
+      "eventType": "x-activity:transitioned",
+      "occurredAt": "2026-11-13T09:47:27.097031511Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0004",
+      "payload": {
+        "resumeCondition": "Resume the same authorized Activity for completion after reconciling actual executed contribution references",
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "5a78113a-90d8-4b8b-9c01-1368a539db3b",
+        "recordedAt": "2026-11-13T09:47:27.097031511Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Activities/Activity-0004--Single-SDPTool-installation/01-Mandate/Mandate.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-E715961E036B4B38B78759DF92C8F54C",
+        "from": "active",
+        "to": "on-hold",
+        "reason": "Completed implementation and public qualification; observed quiescent checkpoint to link actual Session and evidence before closure",
+        "descriptor": {
+          "path": "Activities/Activity-0004--Single-SDPTool-installation/activity.yaml",
+          "sha256": "fce0517b4340e210850ed91207ab4ad8267171b7feab6f204bdd0bb9e8408e0d"
+        },
+        "links": [],
+        "requestDigest": "44c74d1293690fff727e2dddc5ec917fb47fa0338e6ece15e63c429ec654658f"
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-2095EC3143FD4B9D8E1565E074CF549D",
+      "eventType": "x-activity:updated",
+      "occurredAt": "2026-11-13T09:47:44.519776612Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0004",
+      "payload": {
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "2095ec31-43fd-4b9d-8e15-65e074cf549d",
+        "recordedAt": "2026-11-13T09:47:44.519776612Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Activities/Activity-0004--Single-SDPTool-installation/01-Mandate/Mandate.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-5A78113A90D84B8B9C011368A539DB3B",
+        "from": "on-hold",
+        "to": "on-hold",
+        "reason": "Reconcile actual whole-scope Session, public verification and shared SDUI helper responsibility already selected in the execution contract; no new implementation authorized",
+        "descriptor": {
+          "path": "Activities/Activity-0004--Single-SDPTool-installation/activity.yaml",
+          "sha256": "90ac72445f9c49122c084b8d3812dec7f063d28248e4967821cd113e2160d5ae"
+        },
+        "links": [],
+        "requestDigest": "255e7fb1a16c495ec7cb5d0a3bc51886b3f252401ad78acc4e41f97c6fff4b64"
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-EF8D554452524245807F88968723DF8E",
+      "eventType": "x-activity:transitioned",
+      "occurredAt": "2026-11-13T09:47:47.527089741Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0004",
+      "payload": {
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "ef8d5544-5252-4245-807f-88968723df8e",
+        "recordedAt": "2026-11-13T09:47:47.527089741Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Activities/Activity-0004--Single-SDPTool-installation/01-Mandate/Mandate.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-2095EC3143FD4B9D8E1565E074CF549D",
+        "from": "on-hold",
+        "to": "active",
+        "reason": "Resume only for evidenced administrative completion after quiescent descriptor reconciliation",
+        "descriptor": {
+          "path": "Activities/Activity-0004--Single-SDPTool-installation/activity.yaml",
+          "sha256": "90ac72445f9c49122c084b8d3812dec7f063d28248e4967821cd113e2160d5ae"
+        },
+        "links": [],
+        "requestDigest": "244bf4cf104c6bf4c8e5b25f352fa24a81f936b4c6975b5e5617975c6ec8ec8b"
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-88492A836AAC4A83BA51BCABD24CD83F",
+      "eventType": "x-activity:transitioned",
+      "occurredAt": "2026-11-13T09:47:51.434319806Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0004",
+      "payload": {
+        "contributionDispositions": [
+          {
+            "referenceId": "PLAN-SDP-0029",
+            "disposition": "completed",
+            "outcome": "C0-C5 implementation, exact independent qualification, public publication and consumer validation complete"
+          },
+          {
+            "referenceId": "SESSION-SDP-0021",
+            "disposition": "completed",
+            "outcome": "Cross-phase shared-runtime delivery goal complete; all roadmap steps have final evidence"
+          }
+        ],
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "88492a83-6aac-4a83-ba51-bcabd24cd83f",
+        "recordedAt": "2026-11-13T09:47:51.434319806Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Activities/Activity-0004--Single-SDPTool-installation/01-Mandate/Mandate.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-EF8D554452524245807F88968723DF8E",
+        "from": "active",
+        "to": "completed",
+        "reason": "All selected C0-C5 obligations are delivered and independently qualified, including actual public consumers",
+        "descriptor": {
+          "path": "Activities/Activity-0004--Single-SDPTool-installation/activity.yaml",
+          "sha256": "90ac72445f9c49122c084b8d3812dec7f063d28248e4967821cd113e2160d5ae"
+        },
+        "links": [],
+        "requestDigest": "ea5d3ca3c3f618f2f0b5dc97e65d03f759ec14db280b95d733648409595ed9d9",
+        "outcome": "One canonical2.3.0 engine is delivered through gh-sdp2.3.0 and consumed offline by signed public XFMD0.11.0-81; public upgrade/fresh installation and trust checks pass. No main merge or personal owner acceptance is claimed.",
+        "evidence": [
+          {
+            "role": "verification",
+            "id": "SDPTOOL-VER-DISTRIBUTION-0004",
+            "path": "Activities/Activity-0004--Single-SDPTool-installation/06-Verification/Verification.md"
+          }
+        ]
+      }
+    }
+  ],
+  "sessions": [
+    {
+      "id": "SESSION-SDP-0020",
+      "path": "Activities/Activity-0004--Single-SDPTool-installation/Sessions/session-#0020--Shared-SDPTool-installation-study.md",
+      "sha256": "b0147b599f9171ef627e8f7c39242f8904709b10255819ef3de0fdbba6957138"
+    },
+    {
+      "id": "SESSION-SDP-0021",
+      "path": "Activities/Activity-0004--Single-SDPTool-installation/Sessions/session-#0021--Shared-runtime-implementation-and-delivery.md",
+      "sha256": "e0fdef3040b12480817de6cb855d800e134b3b0d5c202e3b748562dd4ba1e90a"
+    }
+  ]
+}

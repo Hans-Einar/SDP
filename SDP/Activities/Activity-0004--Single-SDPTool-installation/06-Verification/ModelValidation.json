@@ -1,0 +1,13 @@
+{
+  "profile": "design-core/0.6",
+  "revision": "63c8662e00420afe75900d0f55903d8bc40ecd00c7b9a9eba836bbeebae4385f",
+  "sources": [
+    {
+      "path": "System.design",
+      "sha256": "4b34a6213ce501ab738a86f28e43f64f3b859f656673371fc1d6e830deccfa6f"
+    }
+  ],
+  "system": "SDPTool",
+  "valid": true,
+  "warnings": []
+}

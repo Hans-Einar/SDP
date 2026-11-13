@@ -1,14 +1,18 @@
 # SDPTool — project facade and shared governance core
 
-Current Activity0001 restructuring: [ArchitectureMigration](ArchitectureMigration/README.md)
-provides the inspected NOW/TARGET cross-entrypoint map. Existing detailed concerns
-retain their scope; Activity feature work remains on hold.
+[ArchitectureMigration](ArchitectureMigration/README.md) records the Activity1
+restructuring and shared service/operation boundaries. Activity1 and Activity2 are
+complete; the Activity/Session runtime is implemented and independently qualified.
+[ActivityWorkflow](ActivityWorkflow/README.md) retains its preliminary model
+lineage rather than retrospectively claiming an accepted model release.
 
-Current Activity command design: [ActivityWorkflow](ActivityWorkflow/README.md)
-adds a bounded preliminary WORK for Activity/Session document creation, lifecycle
-and reading projections. It does not replace the existing model concerns or claim
-that the activity CLI/actions are implemented. Created through ModelGovernance in
-Session0016 T3, 2026-11-12; views remain on-demand.
+[ReadingWorkflow](ReadingWorkflow/README.md) owns Activity3's producer-owned
+navigation/readable viewpoints, delivered with XFMD0.10 and selected for the shared
+2.3.0 engine. [RuntimeDistribution](RuntimeDistribution/README.md) owns Activity4's
+single-update-path concern: canonical engine republishing, explicit registration,
+typed SDUI services and direct offline native consumption. Release/verification
+records distinguish qualified source from publication; WORK status alone does not
+establish delivery or owner acceptance.
 
 ## Boundary and implementation state
 

@@ -1,0 +1,19 @@
+{
+  "capabilities": [
+    "sdp-install-command/1",
+    "sdp.process.five-phase.v1",
+    "sdp.project-management.v1",
+    "sdp.planning.v1",
+    "sdp.sessions.manual.v1",
+    "sdp.activities.records.v0.2"
+  ],
+  "descriptorDigest": "c7ef11e749eb2186ca6fee32e8dba1d96d160095f9e0221e1b70d4bd1b3b50b4",
+  "installedAt": "2026-11-13T09:34:32Z",
+  "managementProfile": "sdp-project-management/0.2",
+  "operationId": "install-7896036452f0203fe3b420a1",
+  "processProfile": "sdp-five-phase/0.1",
+  "provenance": "signed",
+  "release": "2.3.0",
+  "schemaVersion": "3.0",
+  "sourceCommit": "774e150774d184d0604ae78f274586eeb2bad495"
+}

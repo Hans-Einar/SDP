@@ -1,0 +1,18 @@
+ok  	github.com/Hans-Einar/SDP/SDPTool	35.141s
+ok  	github.com/Hans-Einar/SDP/SDPTool/activities	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/blueprints	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/blueprintstate	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller	(cached)
+?   	github.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp	[no test files]
+ok  	github.com/Hans-Einar/SDP/SDPTool/cmd/sdptool	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/codexcompat	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/governance	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/governanceapp	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancecontroller	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancehost	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancemcp	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/install	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/model	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/presentation	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/projecthistory	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/tools/profile	2.761s

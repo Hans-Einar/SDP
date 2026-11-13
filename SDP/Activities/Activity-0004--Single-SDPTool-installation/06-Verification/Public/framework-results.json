@@ -1,0 +1,12 @@
+{
+  "target": "2.3.0",
+  "provenance": "signed",
+  "descriptorDigest": "c7ef11e749eb2186ca6fee32e8dba1d96d160095f9e0221e1b70d4bd1b3b50b4",
+  "publicDefault": true,
+  "releaseOverridesAbsent": true,
+  "testTrustAbsent": true,
+  "previewApply": true,
+  "repeatNoChange": true,
+  "ownerFilePreserved": true,
+  "ownerSHA256": "0ae1c6434f7959598213c3c8c456c3746bae72c4ffc49c2036ec52e67d0c72a1"
+}

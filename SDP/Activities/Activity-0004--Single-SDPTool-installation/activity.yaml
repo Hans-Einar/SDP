@@ -10,6 +10,7 @@ systems:
     - SDPTOOL
     - GHSDP
     - XFMD
+    - SDUI
 references:
     - membership: whole-scope
       role: implementation-plan
@@ -18,7 +19,15 @@ references:
     - role: session
       id: SESSION-SDP-0020
       path: Activities/Activity-0004--Single-SDPTool-installation/Sessions/session-#0020--Shared-SDPTool-installation-study.md
+    - membership: whole-scope
+      role: session
+      id: SESSION-SDP-0021
+      path: Activities/Activity-0004--Single-SDPTool-installation/Sessions/session-#0021--Shared-runtime-implementation-and-delivery.md
+    - role: verification
+      id: SDPTOOL-VER-DISTRIBUTION-0004
+      path: Activities/Activity-0004--Single-SDPTool-installation/06-Verification/Verification.md
 scope:
     - SDPTool
     - SDP
     - Toolkit
+    - SDUI

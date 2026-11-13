@@ -1,0 +1,33 @@
+schema: sdp-activity/0.2
+id: ACTIVITY-SDP-0004
+projectId: SDP
+title: Single SDPTool installation
+owner: project-owner
+mandate: 01-Mandate/Mandate.md
+sourceCards:
+    - KB-SDP-063
+systems:
+    - SDPTOOL
+    - GHSDP
+    - XFMD
+    - SDUI
+references:
+    - membership: whole-scope
+      role: implementation-plan
+      id: PLAN-SDP-0029
+      path: Activities/Activity-0004--Single-SDPTool-installation/05-Implementation/Plan.md
+    - role: session
+      id: SESSION-SDP-0020
+      path: Activities/Activity-0004--Single-SDPTool-installation/Sessions/session-#0020--Shared-SDPTool-installation-study.md
+    - membership: whole-scope
+      role: session
+      id: SESSION-SDP-0021
+      path: Activities/Activity-0004--Single-SDPTool-installation/Sessions/session-#0021--Shared-runtime-implementation-and-delivery.md
+    - role: verification
+      id: SDPTOOL-VER-DISTRIBUTION-0004
+      path: Activities/Activity-0004--Single-SDPTool-installation/06-Verification/Verification.md
+scope:
+    - SDPTool
+    - SDP
+    - Toolkit
+    - SDUI

@@ -1,0 +1,291 @@
+[
+  {
+    "name": "old-public-release",
+    "command": [
+      "/usr/bin/gh",
+      "api",
+      "repos/Hans-Einar/gh-sdp/releases/tags/v0.2.3"
+    ],
+    "exitCode": 0,
+    "stdout": "{\"url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/441072857\",\"assets_url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/441072857/assets\",\"upload_url\":\"https://uploads.github.com/repos/Hans-Einar/gh-sdp/releases/441072857/assets{?name,label}\",\"html_url\":\"https://github.com/Hans-Einar/gh-sdp/releases/tag/v0.2.3\",\"id\":441072857,\"author\":{\"login\":\"Hans-Einar\",\"id\":36501395,\"node_id\":\"MDQ6VXNlcjM2NTAxMzk1\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/36501395?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Hans-Einar\",\"html_url\":\"https://github.com/Hans-Einar\",\"followers_url\":\"https://api.github.com/users/Hans-Einar/followers\",\"following_url\":\"https://api.github.com/users/Hans-Einar/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Hans-Einar/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Hans-Einar/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Hans-Einar/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Hans-Einar/orgs\",\"repos_url\":\"https://api.github.com/users/Hans-Einar/repos\",\"events_url\":\"https://api.github.com/users/Hans-Einar/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Hans-Einar/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"node_id\":\"RE_kwDOTW6W0M4aSjzZ\",\"tag_name\":\"v0.2.3\",\"target_commitish\":\"main\",\"name\":\"gh-sdp 0.2.3\",\"draft\":false,\"immutable\":false,\"prerelease\":false,\"created_at\":\"2026-11-11T00:01:40Z\",\"updated_at\":\"2026-11-11T00:01:45Z\",\"published_at\":\"2026-11-11T00:01:45Z\",\"assets\":[{\"url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/assets/733442115\",\"id\":733442115,\"node_id\":\"RA_kwDOTW6W0M4rt3BD\",\"name\":\"checksums.txt\",\"label\":\"\",\"uploader\":{\"login\":\"Hans-Einar\",\"id\":36501395,\"node_id\":\"MDQ6VXNlcjM2NTAxMzk1\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/36501395?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Hans-Einar\",\"html_url\":\"https://github.com/Hans-Einar\",\"followers_url\":\"https://api.github.com/users/Hans-Einar/followers\",\"following_url\":\"https://api.github.com/users/Hans-Einar/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Hans-Einar/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Hans-Einar/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Hans-Einar/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Hans-Einar/orgs\",\"repos_url\":\"https://api.github.com/users/Hans-Einar/repos\",\"events_url\":\"https://api.github.com/users/Hans-Einar/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Hans-Einar/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"content_type\":\"text/plain; charset=utf-8\",\"state\":\"uploaded\",\"size\":85,\"digest\":\"sha256:4e5b4c7b84d2d535a2e134bdc0f90fac7c22d64fd409f4f4931786f98279c7ca\",\"download_count\":2,\"created_at\":\"2026-11-11T00:01:43Z\",\"updated_at\":\"2026-11-11T00:01:43Z\",\"browser_download_url\":\"https://github.com/Hans-Einar/gh-sdp/releases/download/v0.2.3/checksums.txt\"},{\"url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/assets/733442112\",\"id\":733442112,\"node_id\":\"RA_kwDOTW6W0M4rt3BA\",\"name\":\"gh-sdp-linux-amd64\",\"label\":\"\",\"uploader\":{\"login\":\"Hans-Einar\",\"id\":36501395,\"node_id\":\"MDQ6VXNlcjM2NTAxMzk1\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/36501395?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Hans-Einar\",\"html_url\":\"https://github.com/Hans-Einar\",\"followers_url\":\"https://api.github.com/users/Hans-Einar/followers\",\"following_url\":\"https://api.github.com/users/Hans-Einar/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Hans-Einar/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Hans-Einar/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Hans-Einar/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Hans-Einar/orgs\",\"repos_url\":\"https://api.github.com/users/Hans-Einar/repos\",\"events_url\":\"https://api.github.com/users/Hans-Einar/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Hans-Einar/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"content_type\":\"application/octet-stream\",\"state\":\"uploaded\",\"size\":9449901,\"digest\":\"sha256:5631dc2e849da5598606394319451be94f6023e0eb7e9b4edc6c82e1647e39c5\",\"download_count\":5,\"created_at\":\"2026-11-11T00:01:43Z\",\"updated_at\":\"2026-11-11T00:01:44Z\",\"browser_download_url\":\"https://github.com/Hans-Einar/gh-sdp/releases/download/v0.2.3/gh-sdp-linux-amd64\"},{\"url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/assets/733442103\",\"id\":733442103,\"node_id\":\"RA_kwDOTW6W0M4rt3A3\",\"name\":\"gh-sdp.manifest.json\",\"label\":\"\",\"uploader\":{\"login\":\"Hans-Einar\",\"id\":36501395,\"node_id\":\"MDQ6VXNlcjM2NTAxMzk1\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/36501395?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Hans-Einar\",\"html_url\":\"https://github.com/Hans-Einar\",\"followers_url\":\"https://api.github.com/users/Hans-Einar/followers\",\"following_url\":\"https://api.github.com/users/Hans-Einar/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Hans-Einar/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Hans-Einar/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Hans-Einar/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Hans-Einar/orgs\",\"repos_url\":\"https://api.github.com/users/Hans-Einar/repos\",\"events_url\":\"https://api.github.com/users/Hans-Einar/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Hans-Einar/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"content_type\":\"application/json\",\"state\":\"uploaded\",\"size\":1138,\"digest\":\"sha256:eec5bc1a8aa665378955528a25e537762030b2864592505fab3e27248abbe4de\",\"download_count\":2,\"created_at\":\"2026-11-11T00:01:43Z\",\"updated_at\":\"2026-11-11T00:01:43Z\",\"browser_download_url\":\"https://github.com/Hans-Einar/gh-sdp/releases/download/v0.2.3/gh-sdp.manifest.json\"}],\"tarball_url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/tarball/v0.2.3\",\"zipball_url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/zipball/v0.2.3\",\"body\":\"## [0.2.3] \u2014 2026-11-11\\n\\nRelease-Date: 2026-11-11\\n\\n### Fixed\\n\\n- [SPS-010] Trust the independent Linux publisher alongside the existing laptop\\n  key and select signed SDP2.2.1 through an immutable bootstrap dependency.\\n- [SPS-010] Preserve the thin-client arguments, streams, cwd, exit status and\\n  offline workflow. Linux amd64 artifacts use the portable v1 CPU baseline.\\n\\n### Migration\\n\\nUpgrade the extension before selecting Linux-signed descriptors;0.2.2 does not\\nknow the new key. Client installation does not itself upgrade project SDP folders.\\n\"}",
+    "stderr": ""
+  },
+  {
+    "name": "old-public-asset",
+    "command": [
+      "/usr/bin/gh",
+      "release",
+      "download",
+      "v0.2.3",
+      "--repo",
+      "Hans-Einar/gh-sdp",
+      "--pattern",
+      "gh-sdp-linux-amd64",
+      "--dir",
+      "/tmp/activity4-public-consumer-results/control/old-download"
+    ],
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "name": "new-public-release",
+    "command": [
+      "/usr/bin/gh",
+      "api",
+      "repos/Hans-Einar/gh-sdp/releases/tags/v2.3.0"
+    ],
+    "exitCode": 0,
+    "stdout": "{\"url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/444045005\",\"assets_url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/444045005/assets\",\"upload_url\":\"https://uploads.github.com/repos/Hans-Einar/gh-sdp/releases/444045005/assets{?name,label}\",\"html_url\":\"https://github.com/Hans-Einar/gh-sdp/releases/tag/v2.3.0\",\"id\":444045005,\"author\":{\"login\":\"Hans-Einar\",\"id\":36501395,\"node_id\":\"MDQ6VXNlcjM2NTAxMzk1\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/36501395?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Hans-Einar\",\"html_url\":\"https://github.com/Hans-Einar\",\"followers_url\":\"https://api.github.com/users/Hans-Einar/followers\",\"following_url\":\"https://api.github.com/users/Hans-Einar/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Hans-Einar/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Hans-Einar/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Hans-Einar/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Hans-Einar/orgs\",\"repos_url\":\"https://api.github.com/users/Hans-Einar/repos\",\"events_url\":\"https://api.github.com/users/Hans-Einar/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Hans-Einar/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"node_id\":\"RE_kwDOTW6W0M4ad5bN\",\"tag_name\":\"v2.3.0\",\"target_commitish\":\"main\",\"name\":\"gh-sdp 2.3.0 \u2014 shared SDPTool runtime\",\"draft\":false,\"immutable\":false,\"prerelease\":false,\"created_at\":\"2026-11-13T09:32:44Z\",\"updated_at\":\"2026-11-13T09:32:55Z\",\"published_at\":\"2026-11-13T09:32:55Z\",\"assets\":[{\"url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/assets/743073444\",\"id\":743073444,\"node_id\":\"RA_kwDOTW6W0M4sSmak\",\"name\":\"checksums.txt\",\"label\":\"\",\"uploader\":{\"login\":\"Hans-Einar\",\"id\":36501395,\"node_id\":\"MDQ6VXNlcjM2NTAxMzk1\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/36501395?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Hans-Einar\",\"html_url\":\"https://github.com/Hans-Einar\",\"followers_url\":\"https://api.github.com/users/Hans-Einar/followers\",\"following_url\":\"https://api.github.com/users/Hans-Einar/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Hans-Einar/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Hans-Einar/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Hans-Einar/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Hans-Einar/orgs\",\"repos_url\":\"https://api.github.com/users/Hans-Einar/repos\",\"events_url\":\"https://api.github.com/users/Hans-Einar/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Hans-Einar/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"content_type\":\"text/plain; charset=utf-8\",\"state\":\"uploaded\",\"size\":85,\"digest\":\"sha256:0ad2cdc56836fb157160f5922f23972a5c415ae917977e50da1a5eb81b7c6e6e\",\"download_count\":0,\"created_at\":\"2026-11-13T09:32:49Z\",\"updated_at\":\"2026-11-13T09:32:49Z\",\"browser_download_url\":\"https://github.com/Hans-Einar/gh-sdp/releases/download/v2.3.0/checksums.txt\"},{\"url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/assets/743073447\",\"id\":743073447,\"node_id\":\"RA_kwDOTW6W0M4sSman\",\"name\":\"gh-sdp-linux-amd64\",\"label\":\"\",\"uploader\":{\"login\":\"Hans-Einar\",\"id\":36501395,\"node_id\":\"MDQ6VXNlcjM2NTAxMzk1\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/36501395?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Hans-Einar\",\"html_url\":\"https://github.com/Hans-Einar\",\"followers_url\":\"https://api.github.com/users/Hans-Einar/followers\",\"following_url\":\"https://api.github.com/users/Hans-Einar/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Hans-Einar/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Hans-Einar/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Hans-Einar/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Hans-Einar/orgs\",\"repos_url\":\"https://api.github.com/users/Hans-Einar/repos\",\"events_url\":\"https://api.github.com/users/Hans-Einar/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Hans-Einar/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"content_type\":\"application/octet-stream\",\"state\":\"uploaded\",\"size\":38604522,\"digest\":\"sha256:2cfcf12f8bfb0d6fa8d11391db874f68d9bc9210c85974ff3cecee50f915ced6\",\"download_count\":0,\"created_at\":\"2026-11-13T09:32:49Z\",\"updated_at\":\"2026-11-13T09:32:54Z\",\"browser_download_url\":\"https://github.com/Hans-Einar/gh-sdp/releases/download/v2.3.0/gh-sdp-linux-amd64\"},{\"url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/assets/743073448\",\"id\":743073448,\"node_id\":\"RA_kwDOTW6W0M4sSmao\",\"name\":\"gh-sdp.manifest.json\",\"label\":\"\",\"uploader\":{\"login\":\"Hans-Einar\",\"id\":36501395,\"node_id\":\"MDQ6VXNlcjM2NTAxMzk1\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/36501395?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Hans-Einar\",\"html_url\":\"https://github.com/Hans-Einar\",\"followers_url\":\"https://api.github.com/users/Hans-Einar/followers\",\"following_url\":\"https://api.github.com/users/Hans-Einar/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Hans-Einar/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Hans-Einar/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Hans-Einar/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Hans-Einar/orgs\",\"repos_url\":\"https://api.github.com/users/Hans-Einar/repos\",\"events_url\":\"https://api.github.com/users/Hans-Einar/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Hans-Einar/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"content_type\":\"application/json\",\"state\":\"uploaded\",\"size\":807,\"digest\":\"sha256:827964aa0210e4456edc286fad0c9cba91ec48cc38ef4905698b55d3443e114a\",\"download_count\":0,\"created_at\":\"2026-11-13T09:32:49Z\",\"updated_at\":\"2026-11-13T09:32:49Z\",\"browser_download_url\":\"https://github.com/Hans-Einar/gh-sdp/releases/download/v2.3.0/gh-sdp.manifest.json\"},{\"url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/assets/743073442\",\"id\":743073442,\"node_id\":\"RA_kwDOTW6W0M4sSmai\",\"name\":\"gh-sdp.packager-build.txt\",\"label\":\"\",\"uploader\":{\"login\":\"Hans-Einar\",\"id\":36501395,\"node_id\":\"MDQ6VXNlcjM2NTAxMzk1\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/36501395?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Hans-Einar\",\"html_url\":\"https://github.com/Hans-Einar\",\"followers_url\":\"https://api.github.com/users/Hans-Einar/followers\",\"following_url\":\"https://api.github.com/users/Hans-Einar/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Hans-Einar/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Hans-Einar/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Hans-Einar/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Hans-Einar/orgs\",\"repos_url\":\"https://api.github.com/users/Hans-Einar/repos\",\"events_url\":\"https://api.github.com/users/Hans-Einar/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Hans-Einar/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"content_type\":\"text/plain; charset=utf-8\",\"state\":\"uploaded\",\"size\":663,\"digest\":\"sha256:25155ae4b41582cec47bfa575ec4cc7677ee559d42db6068ba110545bd71100a\",\"download_count\":0,\"created_at\":\"2026-11-13T09:32:49Z\",\"updated_at\":\"2026-11-13T09:32:49Z\",\"browser_download_url\":\"https://github.com/Hans-Einar/gh-sdp/releases/download/v2.3.0/gh-sdp.packager-build.txt\"},{\"url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/assets/743073443\",\"id\":743073443,\"node_id\":\"RA_kwDOTW6W0M4sSmaj\",\"name\":\"sdp-release.json\",\"label\":\"\",\"uploader\":{\"login\":\"Hans-Einar\",\"id\":36501395,\"node_id\":\"MDQ6VXNlcjM2NTAxMzk1\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/36501395?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Hans-Einar\",\"html_url\":\"https://github.com/Hans-Einar\",\"followers_url\":\"https://api.github.com/users/Hans-Einar/followers\",\"following_url\":\"https://api.github.com/users/Hans-Einar/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Hans-Einar/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Hans-Einar/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Hans-Einar/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Hans-Einar/orgs\",\"repos_url\":\"https://api.github.com/users/Hans-Einar/repos\",\"events_url\":\"https://api.github.com/users/Hans-Einar/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Hans-Einar/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"content_type\":\"application/json\",\"state\":\"uploaded\",\"size\":254333,\"digest\":\"sha256:c7ef11e749eb2186ca6fee32e8dba1d96d160095f9e0221e1b70d4bd1b3b50b4\",\"download_count\":0,\"created_at\":\"2026-11-13T09:32:49Z\",\"updated_at\":\"2026-11-13T09:32:49Z\",\"browser_download_url\":\"https://github.com/Hans-Einar/gh-sdp/releases/download/v2.3.0/sdp-release.json\"},{\"url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/assets/743073483\",\"id\":743073483,\"node_id\":\"RA_kwDOTW6W0M4sSmbL\",\"name\":\"sdp-release.json.sig\",\"label\":\"\",\"uploader\":{\"login\":\"Hans-Einar\",\"id\":36501395,\"node_id\":\"MDQ6VXNlcjM2NTAxMzk1\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/36501395?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Hans-Einar\",\"html_url\":\"https://github.com/Hans-Einar\",\"followers_url\":\"https://api.github.com/users/Hans-Einar/followers\",\"following_url\":\"https://api.github.com/users/Hans-Einar/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Hans-Einar/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Hans-Einar/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Hans-Einar/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Hans-Einar/orgs\",\"repos_url\":\"https://api.github.com/users/Hans-Einar/repos\",\"events_url\":\"https://api.github.com/users/Hans-Einar/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Hans-Einar/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"content_type\":\"application/pgp-signature\",\"state\":\"uploaded\",\"size\":180,\"digest\":\"sha256:d8b91eb940e3a1e3700f2461889d1fd9b00c242d21d5eddd70f91b6ad6bdc670\",\"download_count\":0,\"created_at\":\"2026-11-13T09:32:50Z\",\"updated_at\":\"2026-11-13T09:32:50Z\",\"browser_download_url\":\"https://github.com/Hans-Einar/gh-sdp/releases/download/v2.3.0/sdp-release.json.sig\"},{\"url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/assets/743073489\",\"id\":743073489,\"node_id\":\"RA_kwDOTW6W0M4sSmbR\",\"name\":\"sdp-release.verification.json\",\"label\":\"\",\"uploader\":{\"login\":\"Hans-Einar\",\"id\":36501395,\"node_id\":\"MDQ6VXNlcjM2NTAxMzk1\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/36501395?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Hans-Einar\",\"html_url\":\"https://github.com/Hans-Einar\",\"followers_url\":\"https://api.github.com/users/Hans-Einar/followers\",\"following_url\":\"https://api.github.com/users/Hans-Einar/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Hans-Einar/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Hans-Einar/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Hans-Einar/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Hans-Einar/orgs\",\"repos_url\":\"https://api.github.com/users/Hans-Einar/repos\",\"events_url\":\"https://api.github.com/users/Hans-Einar/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Hans-Einar/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"content_type\":\"application/json\",\"state\":\"uploaded\",\"size\":339411,\"digest\":\"sha256:e891ca68bc8481a8b55bda8f414249943675622dc80ad1698ccef180cf05f429\",\"download_count\":0,\"created_at\":\"2026-11-13T09:32:50Z\",\"updated_at\":\"2026-11-13T09:32:50Z\",\"browser_download_url\":\"https://github.com/Hans-Einar/gh-sdp/releases/download/v2.3.0/sdp-release.verification.json\"}],\"tarball_url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/tarball/v2.3.0\",\"zipball_url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/zipball/v2.3.0\",\"body\":\"# SDPTool 2.3.0 \u2014 one shared runtime\\n\\nThe extension now contains the exact signed canonical SDPTool executable. There\\nis no runtime bootstrap or second engine download. Product version2.3.0 is separate\\nfrom the retained sdptool/0.2 JSON schema.\\n\\nFor an existing extension:\\n\\n```sh\\ngh extension upgrade sdp\\ngh sdp setup\\n```\\n\\nFor a new installation, run `gh extension install Hans-Einar/gh-sdp`, then\\n`gh sdp setup`. Setup registers `$HOME/.local/bin/sdptool` once. Later extension\\nupgrades replace that same engine for direct clients, including XFMD0.11. Local\\nbrowsing requires neither GitHub CLI nor credentials/network after installation.\\nAdd `$HOME/.local/bin` to PATH for shell use; setup diagnoses conflicts and older\\nPATH installations rather than overwriting them. XFMD uses the registered path.\\n\\nAll source SDUI preview/check/native prototype commands are reachable through\\n`gh sdp sdui`; the native prototype payload travels inside the same engine.\\nActivities and readable producer-owned SDL viewpoints are included. Project\\nFramework installation/upgrades remain separate explicit operations.\\n\\nCanonical source:774e150774d184d0604ae78f274586eeb2bad495.\\nEngine SHA256:2cfcf12f8bfb0d6fa8d11391db874f68d9bc9210c85974ff3cecee50f915ced6.\\nDistribution source:1753a11ffcbda3d6fd563456ee70db3c77e8d6c4.\\nLinux amd64 is the qualified platform. Native prototype launch needs OS GUI\\nlibraries; the XFMD0.11 RPM declares those dependencies.\\n\\nGitHub CLI owns binary replacement. If an interrupted download leaves a broken\\nextension and forced upgrade does not refetch, use the documented remove/reinstall\\nprocedure with a fresh gh HTTP cache. Direct consumers never silently select an\\nolder engine. See the source README for the tested recovery and its limits.\\n\"}",
+    "stderr": ""
+  },
+  {
+    "name": "public-latest",
+    "command": [
+      "/usr/bin/gh",
+      "api",
+      "repos/Hans-Einar/gh-sdp/releases/latest"
+    ],
+    "exitCode": 0,
+    "stdout": "{\"url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/444045005\",\"assets_url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/444045005/assets\",\"upload_url\":\"https://uploads.github.com/repos/Hans-Einar/gh-sdp/releases/444045005/assets{?name,label}\",\"html_url\":\"https://github.com/Hans-Einar/gh-sdp/releases/tag/v2.3.0\",\"id\":444045005,\"author\":{\"login\":\"Hans-Einar\",\"id\":36501395,\"node_id\":\"MDQ6VXNlcjM2NTAxMzk1\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/36501395?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Hans-Einar\",\"html_url\":\"https://github.com/Hans-Einar\",\"followers_url\":\"https://api.github.com/users/Hans-Einar/followers\",\"following_url\":\"https://api.github.com/users/Hans-Einar/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Hans-Einar/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Hans-Einar/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Hans-Einar/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Hans-Einar/orgs\",\"repos_url\":\"https://api.github.com/users/Hans-Einar/repos\",\"events_url\":\"https://api.github.com/users/Hans-Einar/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Hans-Einar/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"node_id\":\"RE_kwDOTW6W0M4ad5bN\",\"tag_name\":\"v2.3.0\",\"target_commitish\":\"main\",\"name\":\"gh-sdp 2.3.0 \u2014 shared SDPTool runtime\",\"draft\":false,\"immutable\":false,\"prerelease\":false,\"created_at\":\"2026-11-13T09:32:44Z\",\"updated_at\":\"2026-11-13T09:32:55Z\",\"published_at\":\"2026-11-13T09:32:55Z\",\"assets\":[{\"url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/assets/743073444\",\"id\":743073444,\"node_id\":\"RA_kwDOTW6W0M4sSmak\",\"name\":\"checksums.txt\",\"label\":\"\",\"uploader\":{\"login\":\"Hans-Einar\",\"id\":36501395,\"node_id\":\"MDQ6VXNlcjM2NTAxMzk1\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/36501395?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Hans-Einar\",\"html_url\":\"https://github.com/Hans-Einar\",\"followers_url\":\"https://api.github.com/users/Hans-Einar/followers\",\"following_url\":\"https://api.github.com/users/Hans-Einar/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Hans-Einar/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Hans-Einar/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Hans-Einar/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Hans-Einar/orgs\",\"repos_url\":\"https://api.github.com/users/Hans-Einar/repos\",\"events_url\":\"https://api.github.com/users/Hans-Einar/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Hans-Einar/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"content_type\":\"text/plain; charset=utf-8\",\"state\":\"uploaded\",\"size\":85,\"digest\":\"sha256:0ad2cdc56836fb157160f5922f23972a5c415ae917977e50da1a5eb81b7c6e6e\",\"download_count\":0,\"created_at\":\"2026-11-13T09:32:49Z\",\"updated_at\":\"2026-11-13T09:32:49Z\",\"browser_download_url\":\"https://github.com/Hans-Einar/gh-sdp/releases/download/v2.3.0/checksums.txt\"},{\"url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/assets/743073447\",\"id\":743073447,\"node_id\":\"RA_kwDOTW6W0M4sSman\",\"name\":\"gh-sdp-linux-amd64\",\"label\":\"\",\"uploader\":{\"login\":\"Hans-Einar\",\"id\":36501395,\"node_id\":\"MDQ6VXNlcjM2NTAxMzk1\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/36501395?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Hans-Einar\",\"html_url\":\"https://github.com/Hans-Einar\",\"followers_url\":\"https://api.github.com/users/Hans-Einar/followers\",\"following_url\":\"https://api.github.com/users/Hans-Einar/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Hans-Einar/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Hans-Einar/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Hans-Einar/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Hans-Einar/orgs\",\"repos_url\":\"https://api.github.com/users/Hans-Einar/repos\",\"events_url\":\"https://api.github.com/users/Hans-Einar/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Hans-Einar/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"content_type\":\"application/octet-stream\",\"state\":\"uploaded\",\"size\":38604522,\"digest\":\"sha256:2cfcf12f8bfb0d6fa8d11391db874f68d9bc9210c85974ff3cecee50f915ced6\",\"download_count\":0,\"created_at\":\"2026-11-13T09:32:49Z\",\"updated_at\":\"2026-11-13T09:32:54Z\",\"browser_download_url\":\"https://github.com/Hans-Einar/gh-sdp/releases/download/v2.3.0/gh-sdp-linux-amd64\"},{\"url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/assets/743073448\",\"id\":743073448,\"node_id\":\"RA_kwDOTW6W0M4sSmao\",\"name\":\"gh-sdp.manifest.json\",\"label\":\"\",\"uploader\":{\"login\":\"Hans-Einar\",\"id\":36501395,\"node_id\":\"MDQ6VXNlcjM2NTAxMzk1\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/36501395?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Hans-Einar\",\"html_url\":\"https://github.com/Hans-Einar\",\"followers_url\":\"https://api.github.com/users/Hans-Einar/followers\",\"following_url\":\"https://api.github.com/users/Hans-Einar/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Hans-Einar/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Hans-Einar/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Hans-Einar/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Hans-Einar/orgs\",\"repos_url\":\"https://api.github.com/users/Hans-Einar/repos\",\"events_url\":\"https://api.github.com/users/Hans-Einar/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Hans-Einar/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"content_type\":\"application/json\",\"state\":\"uploaded\",\"size\":807,\"digest\":\"sha256:827964aa0210e4456edc286fad0c9cba91ec48cc38ef4905698b55d3443e114a\",\"download_count\":0,\"created_at\":\"2026-11-13T09:32:49Z\",\"updated_at\":\"2026-11-13T09:32:49Z\",\"browser_download_url\":\"https://github.com/Hans-Einar/gh-sdp/releases/download/v2.3.0/gh-sdp.manifest.json\"},{\"url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/assets/743073442\",\"id\":743073442,\"node_id\":\"RA_kwDOTW6W0M4sSmai\",\"name\":\"gh-sdp.packager-build.txt\",\"label\":\"\",\"uploader\":{\"login\":\"Hans-Einar\",\"id\":36501395,\"node_id\":\"MDQ6VXNlcjM2NTAxMzk1\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/36501395?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Hans-Einar\",\"html_url\":\"https://github.com/Hans-Einar\",\"followers_url\":\"https://api.github.com/users/Hans-Einar/followers\",\"following_url\":\"https://api.github.com/users/Hans-Einar/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Hans-Einar/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Hans-Einar/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Hans-Einar/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Hans-Einar/orgs\",\"repos_url\":\"https://api.github.com/users/Hans-Einar/repos\",\"events_url\":\"https://api.github.com/users/Hans-Einar/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Hans-Einar/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"content_type\":\"text/plain; charset=utf-8\",\"state\":\"uploaded\",\"size\":663,\"digest\":\"sha256:25155ae4b41582cec47bfa575ec4cc7677ee559d42db6068ba110545bd71100a\",\"download_count\":0,\"created_at\":\"2026-11-13T09:32:49Z\",\"updated_at\":\"2026-11-13T09:32:49Z\",\"browser_download_url\":\"https://github.com/Hans-Einar/gh-sdp/releases/download/v2.3.0/gh-sdp.packager-build.txt\"},{\"url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/assets/743073443\",\"id\":743073443,\"node_id\":\"RA_kwDOTW6W0M4sSmaj\",\"name\":\"sdp-release.json\",\"label\":\"\",\"uploader\":{\"login\":\"Hans-Einar\",\"id\":36501395,\"node_id\":\"MDQ6VXNlcjM2NTAxMzk1\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/36501395?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Hans-Einar\",\"html_url\":\"https://github.com/Hans-Einar\",\"followers_url\":\"https://api.github.com/users/Hans-Einar/followers\",\"following_url\":\"https://api.github.com/users/Hans-Einar/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Hans-Einar/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Hans-Einar/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Hans-Einar/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Hans-Einar/orgs\",\"repos_url\":\"https://api.github.com/users/Hans-Einar/repos\",\"events_url\":\"https://api.github.com/users/Hans-Einar/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Hans-Einar/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"content_type\":\"application/json\",\"state\":\"uploaded\",\"size\":254333,\"digest\":\"sha256:c7ef11e749eb2186ca6fee32e8dba1d96d160095f9e0221e1b70d4bd1b3b50b4\",\"download_count\":0,\"created_at\":\"2026-11-13T09:32:49Z\",\"updated_at\":\"2026-11-13T09:32:49Z\",\"browser_download_url\":\"https://github.com/Hans-Einar/gh-sdp/releases/download/v2.3.0/sdp-release.json\"},{\"url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/assets/743073483\",\"id\":743073483,\"node_id\":\"RA_kwDOTW6W0M4sSmbL\",\"name\":\"sdp-release.json.sig\",\"label\":\"\",\"uploader\":{\"login\":\"Hans-Einar\",\"id\":36501395,\"node_id\":\"MDQ6VXNlcjM2NTAxMzk1\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/36501395?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Hans-Einar\",\"html_url\":\"https://github.com/Hans-Einar\",\"followers_url\":\"https://api.github.com/users/Hans-Einar/followers\",\"following_url\":\"https://api.github.com/users/Hans-Einar/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Hans-Einar/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Hans-Einar/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Hans-Einar/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Hans-Einar/orgs\",\"repos_url\":\"https://api.github.com/users/Hans-Einar/repos\",\"events_url\":\"https://api.github.com/users/Hans-Einar/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Hans-Einar/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"content_type\":\"application/pgp-signature\",\"state\":\"uploaded\",\"size\":180,\"digest\":\"sha256:d8b91eb940e3a1e3700f2461889d1fd9b00c242d21d5eddd70f91b6ad6bdc670\",\"download_count\":0,\"created_at\":\"2026-11-13T09:32:50Z\",\"updated_at\":\"2026-11-13T09:32:50Z\",\"browser_download_url\":\"https://github.com/Hans-Einar/gh-sdp/releases/download/v2.3.0/sdp-release.json.sig\"},{\"url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/releases/assets/743073489\",\"id\":743073489,\"node_id\":\"RA_kwDOTW6W0M4sSmbR\",\"name\":\"sdp-release.verification.json\",\"label\":\"\",\"uploader\":{\"login\":\"Hans-Einar\",\"id\":36501395,\"node_id\":\"MDQ6VXNlcjM2NTAxMzk1\",\"avatar_url\":\"https://avatars.githubusercontent.com/u/36501395?v=4\",\"gravatar_id\":\"\",\"url\":\"https://api.github.com/users/Hans-Einar\",\"html_url\":\"https://github.com/Hans-Einar\",\"followers_url\":\"https://api.github.com/users/Hans-Einar/followers\",\"following_url\":\"https://api.github.com/users/Hans-Einar/following{/other_user}\",\"gists_url\":\"https://api.github.com/users/Hans-Einar/gists{/gist_id}\",\"starred_url\":\"https://api.github.com/users/Hans-Einar/starred{/owner}{/repo}\",\"subscriptions_url\":\"https://api.github.com/users/Hans-Einar/subscriptions\",\"organizations_url\":\"https://api.github.com/users/Hans-Einar/orgs\",\"repos_url\":\"https://api.github.com/users/Hans-Einar/repos\",\"events_url\":\"https://api.github.com/users/Hans-Einar/events{/privacy}\",\"received_events_url\":\"https://api.github.com/users/Hans-Einar/received_events\",\"type\":\"User\",\"user_view_type\":\"public\",\"site_admin\":false},\"content_type\":\"application/json\",\"state\":\"uploaded\",\"size\":339411,\"digest\":\"sha256:e891ca68bc8481a8b55bda8f414249943675622dc80ad1698ccef180cf05f429\",\"download_count\":0,\"created_at\":\"2026-11-13T09:32:50Z\",\"updated_at\":\"2026-11-13T09:32:50Z\",\"browser_download_url\":\"https://github.com/Hans-Einar/gh-sdp/releases/download/v2.3.0/sdp-release.verification.json\"}],\"tarball_url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/tarball/v2.3.0\",\"zipball_url\":\"https://api.github.com/repos/Hans-Einar/gh-sdp/zipball/v2.3.0\",\"body\":\"# SDPTool 2.3.0 \u2014 one shared runtime\\n\\nThe extension now contains the exact signed canonical SDPTool executable. There\\nis no runtime bootstrap or second engine download. Product version2.3.0 is separate\\nfrom the retained sdptool/0.2 JSON schema.\\n\\nFor an existing extension:\\n\\n```sh\\ngh extension upgrade sdp\\ngh sdp setup\\n```\\n\\nFor a new installation, run `gh extension install Hans-Einar/gh-sdp`, then\\n`gh sdp setup`. Setup registers `$HOME/.local/bin/sdptool` once. Later extension\\nupgrades replace that same engine for direct clients, including XFMD0.11. Local\\nbrowsing requires neither GitHub CLI nor credentials/network after installation.\\nAdd `$HOME/.local/bin` to PATH for shell use; setup diagnoses conflicts and older\\nPATH installations rather than overwriting them. XFMD uses the registered path.\\n\\nAll source SDUI preview/check/native prototype commands are reachable through\\n`gh sdp sdui`; the native prototype payload travels inside the same engine.\\nActivities and readable producer-owned SDL viewpoints are included. Project\\nFramework installation/upgrades remain separate explicit operations.\\n\\nCanonical source:774e150774d184d0604ae78f274586eeb2bad495.\\nEngine SHA256:2cfcf12f8bfb0d6fa8d11391db874f68d9bc9210c85974ff3cecee50f915ced6.\\nDistribution source:1753a11ffcbda3d6fd563456ee70db3c77e8d6c4.\\nLinux amd64 is the qualified platform. Native prototype launch needs OS GUI\\nlibraries; the XFMD0.11 RPM declares those dependencies.\\n\\nGitHub CLI owns binary replacement. If an interrupted download leaves a broken\\nextension and forced upgrade does not refetch, use the documented remove/reinstall\\nprocedure with a fresh gh HTTP cache. Direct consumers never silently select an\\nolder engine. See the source README for the tested recovery and its limits.\\n\"}",
+    "stderr": ""
+  },
+  {
+    "name": "upgrade-normal-public-upgrade",
+    "command": [
+      "/usr/bin/gh",
+      "extension",
+      "upgrade",
+      "sdp"
+    ],
+    "exitCode": 0,
+    "stdout": "[sdp]: upgraded from v0.2.3 to v2.3.0\n",
+    "stderr": ""
+  },
+  {
+    "name": "upgrade-setup",
+    "command": [
+      "/usr/bin/gh",
+      "sdp",
+      "setup",
+      "--json"
+    ],
+    "exitCode": 0,
+    "stdout": "{\"schema\":\"sdptool/0.2\",\"operation\":\"setup\",\"entrypoint\":\"/tmp/activity4-public-consumer-results/upgrade/.local/bin/sdptool\",\"executable\":\"/tmp/activity4-public-consumer-results/upgrade/data/gh/extensions/gh-sdp/gh-sdp\",\"version\":\"2.3.0\",\"revision\":\"774e150774d184d0604ae78f274586eeb2bad495\",\"status\":\"registered\",\"warnings\":[\"Add $HOME/.local/bin to PATH for shell use; XFMD uses the registered absolute path directly.\"]}\n",
+    "stderr": ""
+  },
+  {
+    "name": "upgrade-gh-version",
+    "command": [
+      "/usr/bin/gh",
+      "sdp",
+      "--version",
+      "--json"
+    ],
+    "exitCode": 0,
+    "stdout": "{\"capabilities\":[\"runtime.setup/1\",\"sdui.source/1\"],\"installationProtocol\":\"sdp-install-command/1\",\"installedFactSchemas\":[\"1.0\",\"2.0\",\"3.0\"],\"nativePrototypeBundled\":true,\"operation\":\"version\",\"revision\":\"774e150774d184d0604ae78f274586eeb2bad495\",\"schema\":\"sdptool/0.2\",\"version\":\"2.3.0\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "upgrade-direct-version",
+    "command": [
+      "/tmp/activity4-public-consumer-results/upgrade/.local/bin/sdptool",
+      "--version",
+      "--json"
+    ],
+    "exitCode": 0,
+    "stdout": "{\"capabilities\":[\"runtime.setup/1\",\"sdui.source/1\"],\"installationProtocol\":\"sdp-install-command/1\",\"installedFactSchemas\":[\"1.0\",\"2.0\",\"3.0\"],\"nativePrototypeBundled\":true,\"operation\":\"version\",\"revision\":\"774e150774d184d0604ae78f274586eeb2bad495\",\"schema\":\"sdptool/0.2\",\"version\":\"2.3.0\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "upgrade-offline-version",
+    "command": [
+      "/usr/bin/unshare",
+      "--user",
+      "--map-root-user",
+      "--net",
+      "/tmp/activity4-public-consumer-results/upgrade/.local/bin/sdptool",
+      "--version",
+      "--json"
+    ],
+    "exitCode": 0,
+    "stdout": "{\"capabilities\":[\"runtime.setup/1\",\"sdui.source/1\"],\"installationProtocol\":\"sdp-install-command/1\",\"installedFactSchemas\":[\"1.0\",\"2.0\",\"3.0\"],\"nativePrototypeBundled\":true,\"operation\":\"version\",\"revision\":\"774e150774d184d0604ae78f274586eeb2bad495\",\"schema\":\"sdptool/0.2\",\"version\":\"2.3.0\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "upgrade-offline-discover",
+    "command": [
+      "/usr/bin/unshare",
+      "--user",
+      "--map-root-user",
+      "--net",
+      "/tmp/activity4-public-consumer-results/upgrade/.local/bin/sdptool",
+      "discover",
+      "--json"
+    ],
+    "exitCode": 0,
+    "stdout": "{\"schema\":\"sdptool/0.2\",\"operation\":\"discover\",\"status\":\"valid\",\"root\":\"/tmp/activity4-public-consumer-results/upgrade/project\",\"area\":\"/tmp/activity4-public-consumer-results/upgrade/project/SDP\",\"inventory\":{\"schemaVersion\":\"2.0\",\"projectId\":\"project\",\"processProfile\":\"sdp-five-phase/0.1\",\"models\":[],\"sdui\":[]},\"capabilities\":{\"blueprints\":\"absent\",\"implementation-plan\":\"absent\",\"kanban\":\"absent\",\"readingNavigation\":\"1\",\"sdl\":\"absent\",\"sdui\":\"absent\",\"sdui-programs\":\"absent\",\"sessions\":\"absent\"},\"installation\":{\"state\":\"unknown\"},\"sources\":[],\"programs\":[],\"programDiscovery\":{\"manifest\":\"SDP/programs.json\",\"state\":\"absent\"},\"navigation\":{\"presentation\":\"producer-reading/1\",\"inventoryRevision\":\"7aadb1c45c6067971d451b0cdd4d0394671dd748713d85b754b70f4da71e8842\",\"schema\":\"sdptool/0.2\",\"operation\":\"tree\",\"project\":\"project\",\"roots\":[\"files\",\"sdl\",\"kanban\",\"sdui\",\"sessions\",\"blueprints\"],\"nodes\":[{\"id\":\"sdl\",\"kind\":\"tab\",\"label\":\"SDL\",\"state\":\"absent\"},{\"id\":\"files\",\"kind\":\"directory\",\"label\":\"SDP\",\"state\":\"available\"},{\"id\":\"sessions\",\"kind\":\"tab\",\"label\":\"Sessions\",\"state\":\"absent\"},{\"id\":\"blueprints\",\"kind\":\"tab\",\"label\":\"Blueprints\",\"state\":\"absent\"},{\"id\":\"kanban\",\"kind\":\"tab\",\"label\":\"KanBan\",\"state\":\"absent\"},{\"id\":\"sdui\",\"kind\":\"tab\",\"label\":\"SDUI\",\"state\":\"absent\"}],\"expansionDepthLimit\":8},\"plans\":[]}\n",
+    "stderr": ""
+  },
+  {
+    "name": "upgrade-offline-sdui-check",
+    "command": [
+      "/usr/bin/unshare",
+      "--user",
+      "--map-root-user",
+      "--net",
+      "/tmp/activity4-public-consumer-results/upgrade/.local/bin/sdptool",
+      "sdui",
+      "check",
+      "--json",
+      "-source",
+      "/tmp/activity4-public-consumer-results/upgrade/page.sdui",
+      "-entry",
+      "page"
+    ],
+    "exitCode": 0,
+    "stdout": "{\"schema\":\"sdptool/0.2\",\"operation\":\"sdui-check\",\"status\":\"prototype\",\"revision\":\"52bb09ef5eb6ce22201e14ab28d9745790c131e0cc422958b4986c9c63c77db6\",\"entry\":\"page\",\"source\":\"/tmp/activity4-public-consumer-results/upgrade/page.sdui\",\"diagnostic\":\"Local Fyne prototype; no SDL runtime\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "upgrade-offline-sdui-preview",
+    "command": [
+      "/usr/bin/unshare",
+      "--user",
+      "--map-root-user",
+      "--net",
+      "/tmp/activity4-public-consumer-results/upgrade/.local/bin/sdptool",
+      "sdui",
+      "preview",
+      "--json",
+      "-source",
+      "/tmp/activity4-public-consumer-results/upgrade/page.sdui",
+      "-entry",
+      "page",
+      "-output",
+      "/tmp/activity4-public-consumer-results/upgrade/preview"
+    ],
+    "exitCode": 0,
+    "stdout": "{\"directory\":\"/tmp/activity4-public-consumer-results/upgrade/preview\",\"entry\":\"/tmp/activity4-public-consumer-results/upgrade/preview/entry.md\",\"operation\":\"sdui-preview\",\"revision\":\"52bb09ef5eb6ce22201e14ab28d9745790c131e0cc422958b4986c9c63c77db6\",\"schema\":\"sdptool/0.2\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "clean-install-public-install",
+    "command": [
+      "/usr/bin/gh",
+      "extension",
+      "install",
+      "Hans-Einar/gh-sdp"
+    ],
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "name": "clean-install-setup",
+    "command": [
+      "/usr/bin/gh",
+      "sdp",
+      "setup",
+      "--json"
+    ],
+    "exitCode": 0,
+    "stdout": "{\"schema\":\"sdptool/0.2\",\"operation\":\"setup\",\"entrypoint\":\"/tmp/activity4-public-consumer-results/clean-install/.local/bin/sdptool\",\"executable\":\"/tmp/activity4-public-consumer-results/clean-install/data/gh/extensions/gh-sdp/gh-sdp\",\"version\":\"2.3.0\",\"revision\":\"774e150774d184d0604ae78f274586eeb2bad495\",\"status\":\"registered\",\"warnings\":[\"Add $HOME/.local/bin to PATH for shell use; XFMD uses the registered absolute path directly.\"]}\n",
+    "stderr": ""
+  },
+  {
+    "name": "clean-install-gh-version",
+    "command": [
+      "/usr/bin/gh",
+      "sdp",
+      "--version",
+      "--json"
+    ],
+    "exitCode": 0,
+    "stdout": "{\"capabilities\":[\"runtime.setup/1\",\"sdui.source/1\"],\"installationProtocol\":\"sdp-install-command/1\",\"installedFactSchemas\":[\"1.0\",\"2.0\",\"3.0\"],\"nativePrototypeBundled\":true,\"operation\":\"version\",\"revision\":\"774e150774d184d0604ae78f274586eeb2bad495\",\"schema\":\"sdptool/0.2\",\"version\":\"2.3.0\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "clean-install-direct-version",
+    "command": [
+      "/tmp/activity4-public-consumer-results/clean-install/.local/bin/sdptool",
+      "--version",
+      "--json"
+    ],
+    "exitCode": 0,
+    "stdout": "{\"capabilities\":[\"runtime.setup/1\",\"sdui.source/1\"],\"installationProtocol\":\"sdp-install-command/1\",\"installedFactSchemas\":[\"1.0\",\"2.0\",\"3.0\"],\"nativePrototypeBundled\":true,\"operation\":\"version\",\"revision\":\"774e150774d184d0604ae78f274586eeb2bad495\",\"schema\":\"sdptool/0.2\",\"version\":\"2.3.0\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "clean-install-offline-version",
+    "command": [
+      "/usr/bin/unshare",
+      "--user",
+      "--map-root-user",
+      "--net",
+      "/tmp/activity4-public-consumer-results/clean-install/.local/bin/sdptool",
+      "--version",
+      "--json"
+    ],
+    "exitCode": 0,
+    "stdout": "{\"capabilities\":[\"runtime.setup/1\",\"sdui.source/1\"],\"installationProtocol\":\"sdp-install-command/1\",\"installedFactSchemas\":[\"1.0\",\"2.0\",\"3.0\"],\"nativePrototypeBundled\":true,\"operation\":\"version\",\"revision\":\"774e150774d184d0604ae78f274586eeb2bad495\",\"schema\":\"sdptool/0.2\",\"version\":\"2.3.0\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "clean-install-offline-discover",
+    "command": [
+      "/usr/bin/unshare",
+      "--user",
+      "--map-root-user",
+      "--net",
+      "/tmp/activity4-public-consumer-results/clean-install/.local/bin/sdptool",
+      "discover",
+      "--json"
+    ],
+    "exitCode": 0,
+    "stdout": "{\"schema\":\"sdptool/0.2\",\"operation\":\"discover\",\"status\":\"valid\",\"root\":\"/tmp/activity4-public-consumer-results/clean-install/project\",\"area\":\"/tmp/activity4-public-consumer-results/clean-install/project/SDP\",\"inventory\":{\"schemaVersion\":\"2.0\",\"projectId\":\"project\",\"processProfile\":\"sdp-five-phase/0.1\",\"models\":[],\"sdui\":[]},\"capabilities\":{\"blueprints\":\"absent\",\"implementation-plan\":\"absent\",\"kanban\":\"absent\",\"readingNavigation\":\"1\",\"sdl\":\"absent\",\"sdui\":\"absent\",\"sdui-programs\":\"absent\",\"sessions\":\"absent\"},\"installation\":{\"state\":\"unknown\"},\"sources\":[],\"programs\":[],\"programDiscovery\":{\"manifest\":\"SDP/programs.json\",\"state\":\"absent\"},\"navigation\":{\"presentation\":\"producer-reading/1\",\"inventoryRevision\":\"7aadb1c45c6067971d451b0cdd4d0394671dd748713d85b754b70f4da71e8842\",\"schema\":\"sdptool/0.2\",\"operation\":\"tree\",\"project\":\"project\",\"roots\":[\"files\",\"sdl\",\"kanban\",\"sdui\",\"sessions\",\"blueprints\"],\"nodes\":[{\"id\":\"sdl\",\"kind\":\"tab\",\"label\":\"SDL\",\"state\":\"absent\"},{\"id\":\"files\",\"kind\":\"directory\",\"label\":\"SDP\",\"state\":\"available\"},{\"id\":\"sessions\",\"kind\":\"tab\",\"label\":\"Sessions\",\"state\":\"absent\"},{\"id\":\"blueprints\",\"kind\":\"tab\",\"label\":\"Blueprints\",\"state\":\"absent\"},{\"id\":\"kanban\",\"kind\":\"tab\",\"label\":\"KanBan\",\"state\":\"absent\"},{\"id\":\"sdui\",\"kind\":\"tab\",\"label\":\"SDUI\",\"state\":\"absent\"}],\"expansionDepthLimit\":8},\"plans\":[]}\n",
+    "stderr": ""
+  },
+  {
+    "name": "clean-install-offline-sdui-check",
+    "command": [
+      "/usr/bin/unshare",
+      "--user",
+      "--map-root-user",
+      "--net",
+      "/tmp/activity4-public-consumer-results/clean-install/.local/bin/sdptool",
+      "sdui",
+      "check",
+      "--json",
+      "-source",
+      "/tmp/activity4-public-consumer-results/clean-install/page.sdui",
+      "-entry",
+      "page"
+    ],
+    "exitCode": 0,
+    "stdout": "{\"schema\":\"sdptool/0.2\",\"operation\":\"sdui-check\",\"status\":\"prototype\",\"revision\":\"52bb09ef5eb6ce22201e14ab28d9745790c131e0cc422958b4986c9c63c77db6\",\"entry\":\"page\",\"source\":\"/tmp/activity4-public-consumer-results/clean-install/page.sdui\",\"diagnostic\":\"Local Fyne prototype; no SDL runtime\"}\n",
+    "stderr": ""
+  },
+  {
+    "name": "clean-install-offline-sdui-preview",
+    "command": [
+      "/usr/bin/unshare",
+      "--user",
+      "--map-root-user",
+      "--net",
+      "/tmp/activity4-public-consumer-results/clean-install/.local/bin/sdptool",
+      "sdui",
+      "preview",
+      "--json",
+      "-source",
+      "/tmp/activity4-public-consumer-results/clean-install/page.sdui",
+      "-entry",
+      "page",
+      "-output",
+      "/tmp/activity4-public-consumer-results/clean-install/preview"
+    ],
+    "exitCode": 0,
+    "stdout": "{\"directory\":\"/tmp/activity4-public-consumer-results/clean-install/preview\",\"entry\":\"/tmp/activity4-public-consumer-results/clean-install/preview/entry.md\",\"operation\":\"sdui-preview\",\"revision\":\"52bb09ef5eb6ce22201e14ab28d9745790c131e0cc422958b4986c9c63c77db6\",\"schema\":\"sdptool/0.2\"}\n",
+    "stderr": ""
+  }
+]

@@ -5,7 +5,7 @@ SDL remain in their authoritative homes. State is replayed from
 [ProjectManagement/Ledger.ndjson](../ProjectManagement/Ledger.ndjson); folder names
 and descriptors do not own lifecycle state.
 
-The owner-selected first three Activities are delivered:
+The owner-selected first four Activities are delivered:
 
 1. [SDPTool restructuring](Activity-0001--SDPTool-Restructuring/01-Mandate/Mandate.md)
    — manually registered, owner-accepted and completed.
@@ -16,11 +16,16 @@ The owner-selected first three Activities are delivered:
    — first created by SDPTool, independently qualified and completed with signed
    XFMD0.10.0-76 publication and actual public DNF upgrade/fresh-install evidence.
 
-Activity4 is active under PLAN-SDP-0029 and SESSION-SDP-0021. Activity3's tool-recorded lifecycle includes
-an observed quiescent hold/update/resume to link its actual plan and Session.
-Activity2 was held while Activity3 executed, then resumed only for administrative
-closure after the shared release delivered its qualified outcome. No personal
-owner review, main merge or public Toolkit installation release is implied.
+4. [Single SDPTool installation](Activity-0004--Single-SDPTool-installation/01-Mandate/Mandate.md)
+   — completed with public SDPTool/gh-sdp2.3.0 and signed XFMD0.11.0-81;
+   actual public upgrade/fresh-install and offline native workflows verified.
+
+No Activity is active. Activity3 and Activity4 tool-recorded lifecycles include
+observed quiescent hold/update/resume to link actual executed contributions before
+completion. Activity2 was held while Activity3 executed, then resumed only for
+administrative closure. Personal owner review and main merge are not implied.
+Activity4 explicitly delivers the public Toolkit/extension release, replacing
+Activity3's former application-private distribution.
 
 New Sessions live under their owning Activity. Existing Sessions retain their
 original paths and can be referenced without inventing historical membership.
@@ -38,5 +43,6 @@ retains the exact delivered app/private-producer pair and public qualification.
 captures the owner's subsequent distribution correction. Session0020 records the
 study; Session0021 executes the selected shared-engine migration. The public
 entrypoint is explicitly registered once; subsequent gh extension upgrades replace
-the same engine consumed directly by XFMD. Qualification and publication remain
-open until their exact-candidate evidence is recorded.
+the same engine consumed directly by XFMD. Qualification and publication are complete;
+[Activity4 verification](Activity-0004--Single-SDPTool-installation/06-Verification/Verification.md)
+retains exact candidate, public consumer, independent review and lifecycle receipts.

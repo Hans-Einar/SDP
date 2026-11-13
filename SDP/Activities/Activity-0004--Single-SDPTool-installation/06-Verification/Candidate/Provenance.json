@@ -1,0 +1,13 @@
+{
+  "canonicalCommit": "774e150774d184d0604ae78f274586eeb2bad495",
+  "version": "2.3.0",
+  "engineSHA256": "2cfcf12f8bfb0d6fa8d11391db874f68d9bc9210c85974ff3cecee50f915ced6",
+  "descriptorSHA256": "c7ef11e749eb2186ca6fee32e8dba1d96d160095f9e0221e1b70d4bd1b3b50b4",
+  "signatureSHA256": "d8b91eb940e3a1e3700f2461889d1fd9b00c242d21d5eddd70f91b6ad6bdc670",
+  "distributionCommit": "1753a11ffcbda3d6fd563456ee70db3c77e8d6c4",
+  "buildScope": "Clean Linux amd64 source; static engine and embedded native GUI helper",
+  "goVcsStamp": false,
+  "sourceBinding": "Signed descriptor and explicit executed BuildRevision agree with clean checkout and retained build",
+  "ci": "https://github.com/Hans-Einar/SDP/actions/runs/43398054812",
+  "publication": "released and public consumer workflows verified; see ../Public"
+}

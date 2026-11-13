@@ -70,3 +70,8 @@ the bundled payload. Explicit native development overrides remain observable.
 Setup and these host operations use the common action registry with explicitly
 project-independent scope. Existing actions continue requiring project resolution;
 adding host scope must not weaken their context checks.
+
+The SDUI source service exposes typed `preview.Options` / `preview.Generate`.
+Both SDPTool actions and CLI call that service directly. The retained development
+`sdui-preview` executable only parses flags and serializes the same result; no
+new core operation reconstructs a legacy CLI command line to access the service.

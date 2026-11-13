@@ -1,0 +1,9 @@
+{
+  "operationId": "5a78113a-90d8-4b8b-9c01-1368a539db3b",
+  "expectedHistoryRevision": "5cec37a6d456d1a54eb578e0ac9c4196b6ced59fc25515e9ce3df6fe94659d4a",
+  "activityId": "ACTIVITY-SDP-0004",
+  "expectedActivityEventId": "EVT-ACTIVITY-SDP-E715961E036B4B38B78759DF92C8F54C",
+  "expectedDescriptorRevision": "fce0517b4340e210850ed91207ab4ad8267171b7feab6f204bdd0bb9e8408e0d",
+  "reason": "Completed implementation and public qualification; observed quiescent checkpoint to link actual Session and evidence before closure",
+  "resumeCondition": "Resume the same authorized Activity for completion after reconciling actual executed contribution references"
+}

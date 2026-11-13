@@ -155,6 +155,11 @@ slices:
     verification: [VER-SDP-005-001, VER-SDP-005-002, VER-SDP-005-003]
 fixes: {}
 reviews:
+  REV-SDPTOOL-DISTRIBUTION-0004:
+    status: approved
+    path: Activities/Activity-0004--Single-SDPTool-installation/06-Verification/IndependentReview.md
+    commit: 774e150774d184d0604ae78f274586eeb2bad495
+    release: REL-2.3.0
   REV-SDPTOOL-ARCHMIG-0001:
     status: approved
     path: Activities/Activity-0001--SDPTool-Restructuring/06-Verification/M5/Review.md
@@ -261,6 +266,12 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-DISTRIBUTION-0004:
+    status: passed
+    path: Activities/Activity-0004--Single-SDPTool-installation/06-Verification/Verification.md
+    managementId: PLAN-SDP-0029
+    card: KB-SDP-063
+    release: REL-2.3.0
   SDPTOOL-VER-ARCHMIG-0001:
     status: passed-technical-qualification-owner-acceptance-pending
     path: Activities/Activity-0001--SDPTool-Restructuring/06-Verification/Verification.md
@@ -694,15 +705,15 @@ migrations: {}
 releases:
   REL-2.3.0:
     version: 2.3.0
-    state: unreleased
+    state: released
     releaseNotes: RELEASE-NOTES.md
     manifest: SDP.manifest.yaml
     releaseRecord: SDP/Releases/REL-2.3.0.yaml
-    verification: []
-    reviews: []
-    releaseCommit: null
-    gitTag: null
-    githubRelease: null
+    verification: [SDPTOOL-VER-DISTRIBUTION-0004]
+    reviews: [REV-SDPTOOL-DISTRIBUTION-0004]
+    releaseCommit: 774e150774d184d0604ae78f274586eeb2bad495
+    gitTag: v2.3.0
+    githubRelease: https://github.com/Hans-Einar/SDP/releases/tag/v2.3.0
   REL-2.2.1:
     version: 2.2.1
     state: released

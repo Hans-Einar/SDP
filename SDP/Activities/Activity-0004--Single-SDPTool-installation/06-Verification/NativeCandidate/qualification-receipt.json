@@ -1,0 +1,40 @@
+{
+  "state": "qualified-awaiting-independent-artifact-review",
+  "time": "2026-11-13T09:17:40.378068+00:00",
+  "source": "16e57a34d5b0dd5f9f1ba8c49d96ab2fbe60048f",
+  "branch": "sdp/shared-tool-installation",
+  "rpm": "xfmd-0.11.0-81.el10_2.x86_64.rpm",
+  "unsigned_sha256": "2be51524843ac67c0b64ac405b1aff918d8340b1b0a3a3781365ffb881f42aad",
+  "shared_engine": {
+    "commit": "774e150774d184d0604ae78f274586eeb2bad495",
+    "version": "2.3.0",
+    "sha256": "2cfcf12f8bfb0d6fa8d11391db874f68d9bc9210c85974ff3cecee50f915ced6"
+  },
+  "checks": {
+    "target_ctest": "95/95 passed",
+    "policy_checks": "passed",
+    "signed_predecessor": "0.10.0-76.el10_2; trusted signature and pinned digest checked",
+    "upgrade": "passed; private engine absent after transaction",
+    "reinstall_remove_fresh": "passed; unrelated user marker/shared engine preserved",
+    "runtime_setup": "real setup from isolated HOME extension directory",
+    "offline": "network namespace rejects external sockets; gh absent; GH_/GITHUB_ variables removed",
+    "native_probes": [
+      "reading/render/source/history",
+      "SDUI preview/source/check/launch/lifetime/explicit overrides",
+      "real Activity fixture"
+    ]
+  },
+  "publication": "not executed",
+  "main_merge": "not authorized/not performed",
+  "publish_command": [
+    "python3",
+    "packaging/rpm/local-ci.py",
+    "--ref",
+    "16e57a34d5b0dd5f9f1ba8c49d96ab2fbe60048f",
+    "--output",
+    "/tmp/xfmd-activity4-rpm-final-81",
+    "--publish-existing",
+    "--host",
+    "beinerud"
+  ]
+}

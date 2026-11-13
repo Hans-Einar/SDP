@@ -36,7 +36,17 @@ refuses to overwrite a signature. Verify all assets and the signed consumer path
 before publication. Never reuse a descriptor or binary from before the trust edit
 as evidence of the new executable.
 
-## Client rollout and compatibility
+## Shared runtime distribution — Activity4
+
+The published2.3.0 release moves gh-sdp to build-time verification and exact
+canonical-engine republishing. Its bootstrap dependency verifies signed inputs
+while packaging; it no longer chooses or downloads an engine at runtime. Direct
+SDPTool installation commands still verify signed Framework descriptors through
+the shared verification library. The existing public key set remains unchanged.
+Qualified publication and consumer results are retained under Activity4; the
+following paragraph records the historical2.2.1 trust rollout.
+
+## Historical2.2.1 client rollout and compatibility
 
 Both bootstrap and SDPTool must contain the new trust anchor. gh-sdp imports a
 pinned bootstrap module: update that immutable dependency and build a new client.

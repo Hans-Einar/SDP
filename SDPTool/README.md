@@ -253,3 +253,20 @@ Use `sdptool actions --json` to discover supported operations and
 `sdptool invoke --request -` for one JSON request on stdin. Human CLI commands
 remain available. [Actions.md](Actions.md) documents schemas, local attribution,
 path bases, nonzero JSON results and the current operation catalogue.
+
+
+## Shared installation — Activity4 /2.3.0
+
+The2.3.0 distribution makes the gh extension asset the canonical executable.
+Run `gh sdp setup` once after extension installation/upgrade to register
+`$HOME/.local/bin/sdptool`; later extension upgrades replace its target. XFMD0.11
+uses that local path directly with capability checks, without gh/auth/network.
+Use `--version --json` for the product version; `sdptool/0.2` remains the wire schema.
+
+`gh sdp sdui preview`, `check` and `run` expose source preview/readiness and the
+native prototype. The production engine embeds its native helper; no separate
+helper updater is involved. For manual Linux CLI-only installations, native run
+needs OS GUI runtime libraries (X11/Xrandr/Xcursor/Xi/Xinerama/Xxf86vm, OpenGL,
+Wayland client/cursor/EGL and xkbcommon); the XFMD RPM declares these dependencies.
+Static browsing does not need them. Details, conflicts and interrupted-update
+recovery are in [the producer contract](Contract.md#shared-runtime-distribution--230).

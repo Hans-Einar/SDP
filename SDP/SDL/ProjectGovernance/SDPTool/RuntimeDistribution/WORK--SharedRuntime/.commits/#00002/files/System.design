@@ -1,0 +1,53 @@
+language design-core version 0.6.
+functionality BrowseWithoutGhOrNetwork.
+functionality CheckPrototypeReadiness.
+functionality DiagnoseShellShadowing.
+unit ExternalGh.
+unit ExternalXfmd.
+functionality InstallCanonicalEngine.
+unit LocalHelperMaterializer.
+functionality PreviewCheckedSource.
+functionality PublishHashAddressedHelper.
+functionality RegisterCurrentExecutable.
+functionality RejectUnmanagedEntrypoint.
+functionality ReplaceCanonicalEngine.
+functionality ResolveRegisteredEntrypoint.
+functionality RunBundledNativeHost.
+unit RuntimeRegistration.
+system SDPTool.
+container SdpToolHost.
+unit SharedSduiFacade.
+feature SingleRuntimeUpdatePath.
+actor ToolUser.
+usecase UseConsistentLocalTools.
+functionality VerifyEmbeddedHelper.
+BrowseWithoutGhOrNetwork contributes-to SingleRuntimeUpdatePath.
+CheckPrototypeReadiness contributes-to SingleRuntimeUpdatePath.
+DiagnoseShellShadowing contributes-to SingleRuntimeUpdatePath.
+ExternalGh owns InstallCanonicalEngine.
+ExternalGh owns ReplaceCanonicalEngine.
+ExternalXfmd owns BrowseWithoutGhOrNetwork.
+ExternalXfmd owns ResolveRegisteredEntrypoint.
+InstallCanonicalEngine contributes-to SingleRuntimeUpdatePath.
+LocalHelperMaterializer owns PublishHashAddressedHelper.
+LocalHelperMaterializer owns VerifyEmbeddedHelper.
+PreviewCheckedSource contributes-to SingleRuntimeUpdatePath.
+PublishHashAddressedHelper contributes-to SingleRuntimeUpdatePath.
+RegisterCurrentExecutable contributes-to SingleRuntimeUpdatePath.
+RejectUnmanagedEntrypoint contributes-to SingleRuntimeUpdatePath.
+ReplaceCanonicalEngine contributes-to SingleRuntimeUpdatePath.
+ResolveRegisteredEntrypoint contributes-to SingleRuntimeUpdatePath.
+RunBundledNativeHost contributes-to SingleRuntimeUpdatePath.
+RuntimeRegistration owns DiagnoseShellShadowing.
+RuntimeRegistration owns RegisterCurrentExecutable.
+RuntimeRegistration owns RejectUnmanagedEntrypoint.
+SDPTool contains SdpToolHost.
+SdpToolHost contains LocalHelperMaterializer.
+SdpToolHost contains RuntimeRegistration.
+SdpToolHost contains SharedSduiFacade.
+SharedSduiFacade owns CheckPrototypeReadiness.
+SharedSduiFacade owns PreviewCheckedSource.
+SharedSduiFacade owns RunBundledNativeHost.
+SingleRuntimeUpdatePath supports UseConsistentLocalTools.
+ToolUser pursues UseConsistentLocalTools.
+VerifyEmbeddedHelper contributes-to SingleRuntimeUpdatePath.

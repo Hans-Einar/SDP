@@ -5,7 +5,7 @@
 | id | KB-SDP-063 |
 | project | SDP |
 | type | Change |
-| CardState | in-progress |
+| CardState | completed |
 | created | 2026-11-13 |
 | Systems | SDPTOOL, gh-sdp, XFMD |
 | source | Owner rejects XFMD-private SDPTool distribution and requests one gh-extension-owned update path |
@@ -29,3 +29,13 @@ record the planned need and proposed architecture. SESSION-SDP-0020 completes th
 bounded initial study; product implementation is not started.
 
 Owner selects execution through PLAN-SDP-0029 and SESSION-SDP-0021; prior analysis-only wording is historical.
+
+## Delivered outcome
+
+SDPTool/gh-sdp2.3.0 and signed XFMD0.11.0-81 are publicly delivered. One explicit
+setup registers the extension engine; later extension upgrades replace that same
+engine consumed by gh sdp, standalone sdptool and offline XFMD. No private native
+SDP engine/helpers remain. Actual public upgrade and fresh-install qualification,
+production trust,95 native CTests and independent review pass. Activity4
+06-Verification retains evidence. All study-only statements above are historical;
+PLAN0029 and SESSION0021 complete the owner-selected implementation and delivery.

@@ -1,0 +1,22 @@
+{
+  "commit": "16e57a34d5b0dd5f9f1ba8c49d96ab2fbe60048f",
+  "display": "0.11",
+  "version": "0.11.0",
+  "release": "81.el10_2",
+  "package_version": "0.11.0-81.el10_2",
+  "channel": "stable",
+  "shared_identity": {
+    "commit": "774e150774d184d0604ae78f274586eeb2bad495",
+    "version": "2.3.0",
+    "sha256": "2cfcf12f8bfb0d6fa8d11391db874f68d9bc9210c85974ff3cecee50f915ced6"
+  },
+  "source_ref": "HEAD",
+  "output": "/tmp/xfmd-activity4-rpm-final-81",
+  "cache": "/home/warloc/.cache/xfmd-build",
+  "publish": false,
+  "publish_existing": false,
+  "base_image": "docker.io/library/almalinux@sha256:ba31c3299856068f77bc10574cad51b0a4f6a3dafb882668656e1639bee63db6",
+  "build_host": "Linux",
+  "xvfb_sha256": "e8f24a85ba13624e583c4e62b473a3a56471a1d7dee2ae4bf74dabd271855271",
+  "builder_image": "b719973cb393ab72e71a1dcc18c4d0e4c119348f8f1735208cec48f61f4ab723"
+}

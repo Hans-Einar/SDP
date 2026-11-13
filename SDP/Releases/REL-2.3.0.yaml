@@ -1,13 +1,13 @@
 schemaVersion: '1.0'
 releaseId: REL-2.3.0
 version: 2.3.0
-state: unreleased
+state: released
 releaseNotesPath: RELEASE-NOTES.md
 includedCapabilities:
 - sdp.install.v1
-verificationRecords: []
-reviewRecords: []
+verificationRecords: [SDPTOOL-VER-DISTRIBUTION-0004]
+reviewRecords: [REV-SDPTOOL-DISTRIBUTION-0004]
 migrationRecord: SDP/Activities/Activity-0004--Single-SDPTool-installation/05-Implementation/Plan.md
-releasePreparationCommit: null
-gitTag: null
-githubReleaseUrl: null
+releasePreparationCommit: 774e150774d184d0604ae78f274586eeb2bad495
+gitTag: v2.3.0
+githubReleaseUrl: https://github.com/Hans-Einar/SDP/releases/tag/v2.3.0

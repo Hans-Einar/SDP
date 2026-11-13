@@ -1,0 +1,21 @@
+{
+  "version": "2.3.0",
+  "commit": "774e150774d184d0604ae78f274586eeb2bad495",
+  "tag": "v2.3.0",
+  "tagObject": "f85b92798939c4ae98e32208a2874c9969eb978d",
+  "url": "https://github.com/Hans-Einar/SDP/releases/tag/v2.3.0",
+  "publishedAt": "2026-11-13T09:30:35Z",
+  "assetSHA256": {
+    "sdp-release.json": "c7ef11e749eb2186ca6fee32e8dba1d96d160095f9e0221e1b70d4bd1b3b50b4",
+    "sdp-release.json.sig": "d8b91eb940e3a1e3700f2461889d1fd9b00c242d21d5eddd70f91b6ad6bdc670",
+    "sdptool.manifest.json": "edc72793de2129a30ff0f2e45dbbf382ca4a64e4564c1306698c9d642b379d40",
+    "native-host.sha256": "ed8982a7a2fbcf96438defb180f300522abb620ac303e3f51e0e1028b3c7a84a",
+    "sdptool": "2cfcf12f8bfb0d6fa8d11391db874f68d9bc9210c85974ff3cecee50f915ced6",
+    "SHA256SUMS": "19e97855ad21bcf47ff2e1482fee01d6af1b80d490c56be0bd91984847d622fa"
+  },
+  "extensionSource": "1753a11ffcbda3d6fd563456ee70db3c77e8d6c4",
+  "extensionURL": "https://github.com/Hans-Einar/gh-sdp/releases/tag/v2.3.0",
+  "extensionPublishedAt": "2026-11-13T09:32:55Z",
+  "publicConsumerVerified": true,
+  "publicDefaultFrameworkVerified": true
+}
