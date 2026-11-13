@@ -17,6 +17,8 @@ func actionSchema(t reflect.Type) *InputSchema {
 		t = t.Elem()
 	}
 	switch t.Kind() {
+	case reflect.Bool:
+		return &InputSchema{Type: "boolean"}
 	case reflect.String:
 		return &InputSchema{Type: "string"}
 	case reflect.Struct:
@@ -48,6 +50,12 @@ func actionSchema(t reflect.Type) *InputSchema {
 func validateActionShape(raw json.RawMessage, s *InputSchema) error {
 	if bytes.Equal(bytes.TrimSpace(raw), []byte("null")) {
 		return fmt.Errorf("null is not allowed")
+	}
+	if s.Type == "boolean" {
+		var value bool
+		if err := json.Unmarshal(raw, &value); err != nil {
+			return fmt.Errorf("boolean required")
+		}
 	}
 	if s.Type == "string" {
 		var str string

@@ -1,0 +1,4 @@
+
+# Generated desktop payload for canonical release packaging
+/payload/
+/.payload-build.lock

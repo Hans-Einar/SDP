@@ -12,24 +12,35 @@ if [[ -e "$sdp_package_output" ]]; then
     exit 2
 fi
 sdp_package_go=${SDP_GO:-go}
-sdp_package_version=${SDP_VERSION:-2.2.0-dev}
+sdp_package_version=${SDP_VERSION:-2.3.0-dev}
 command -v -- "$sdp_package_go" >/dev/null || { echo "Go build tool unavailable; set SDP_GO" >&2; exit 2; }
 sdp_package_parent=$(dirname -- "$sdp_package_output")
 mkdir -p -- "$sdp_package_parent"
 sdp_package_temp=$(mktemp -d "$sdp_package_parent/.sdptool-package.XXXXXX")
 trap 'rm -rf -- "$sdp_package_temp"' EXIT
+# Serialize generation of the ignored desktop payload.
+exec 9>"$sdp_package_module/.payload-build.lock"
+flock 9
 sdp_package_revision=$(git -C "$sdp_package_module" rev-parse HEAD 2>/dev/null || echo unknown)
 if [[ -n "$(git -C "$sdp_package_module" status --porcelain 2>/dev/null)" ]]; then
     sdp_package_revision="$sdp_package_revision-dirty"
 fi
+mkdir -p -- "$sdp_package_module/payload"
+(
+    cd -- "$sdp_package_module/../SDUI/go"
+    GOWORK=off GOFLAGS= CGO_ENABLED=1 GOAMD64=v1 GOTOOLCHAIN=local "$sdp_package_go" build -buildvcs=true -trimpath -mod=readonly -tags desktop -o "$sdp_package_temp/sdui-fyne" ./cmd/sdui-fyne
+)
+gzip -n -c "$sdp_package_temp/sdui-fyne" > "$sdp_package_module/payload/sdui-fyne.gz"
+sha256sum "$sdp_package_temp/sdui-fyne" | awk '{print $1}' > "$sdp_package_temp/native-host.sha256"
+rm "$sdp_package_temp/sdui-fyne"
 (
     cd -- "$sdp_package_module"
-    GOTOOLCHAIN=local "$sdp_package_go" build -trimpath -mod=readonly         -ldflags "-X github.com/Hans-Einar/SDP/SDPTool.BuildRevision=$sdp_package_revision -X github.com/Hans-Einar/SDP/SDPTool.BuildVersion=$sdp_package_version"         -o "$sdp_package_temp/sdptool" ./cmd/sdptool
+    GOWORK=off GOFLAGS= CGO_ENABLED=0 GOAMD64=v1 GOTOOLCHAIN=local "$sdp_package_go" build -buildvcs=true -trimpath -mod=readonly -tags bundled         -ldflags "-X github.com/Hans-Einar/SDP/SDPTool.BuildRevision=$sdp_package_revision -X github.com/Hans-Einar/SDP/SDPTool.BuildVersion=$sdp_package_version"         -o "$sdp_package_temp/sdptool" ./cmd/sdptool
 )
 "$sdp_package_temp/sdptool" --version --json > "$sdp_package_temp/sdptool.manifest.json"
 (
     cd -- "$sdp_package_temp"
-    sha256sum sdptool sdptool.manifest.json > SHA256SUMS
+    sha256sum sdptool sdptool.manifest.json native-host.sha256 > SHA256SUMS
 )
 mv -- "$sdp_package_temp" "$sdp_package_output"
 trap - EXIT

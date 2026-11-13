@@ -114,9 +114,16 @@ func Invoke(ctx context.Context, in io.Reader, caller ActionCaller) InvokeRespon
 	if !spec.policy.callerAttribution && (caller.Principal.Actor != "" || caller.Principal.Authority != "") {
 		return invokeFailure(r, 2, "invalid-parameters", fmt.Errorf("caller attribution applies only to assignment or Session mutation"))
 	}
-	c, err := resolveActionContext(req.Context.Project, caller)
-	if err != nil {
-		return invokeFailure(r, 1, "invalid-context", err)
+	c := actionContext{Caller: caller}
+	if spec.policy.hostContext {
+		if req.Context.Project != "" {
+			return invokeFailure(r, 2, "invalid-context", fmt.Errorf("host operation does not accept a project context"))
+		}
+	} else {
+		c, err = resolveActionContext(req.Context.Project, caller)
+		if err != nil {
+			return invokeFailure(r, 1, "invalid-context", err)
+		}
 	}
 	if err = ctx.Err(); err != nil {
 		return invokeFailure(r, 130, "canceled", err)

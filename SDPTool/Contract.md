@@ -3,6 +3,56 @@
 This is the implemented local facade contract, not a new Toolkit release.
 Go language packages own parsing, validation, projection and presentation.
 
+## Shared runtime distribution — 2.3.0
+
+The gh-sdp extension asset is the exact signed canonical SDPTool executable,
+renamed for GitHub CLI discovery. `gh sdp` and direct `sdptool` execute the same
+engine; there is no runtime bootstrap download, second engine cache or fallback.
+The JSON `schema: sdptool/0.2` is a protocol identifier, not the product version.
+Use `--version --json` for version, source revision and capabilities.
+
+After `gh extension install Hans-Einar/gh-sdp` (or upgrading an existing extension),
+run `gh sdp setup` once. It registers `$HOME/.local/bin/sdptool` as a symlink to
+that executable's actual installed path. Ordinary extension upgrades replace the
+target in place; no first-run setup hook or GitHub login is required by XFMD.
+Registration is explicit and idempotent; it refuses unmanaged files/foreign links,
+non-real registration directories and temporary executable locations outside HOME.
+It never edits shell profiles. Missing/shadowed PATH produces a warning; XFMD uses
+the absolute registered path. After moving the extension itself, inspect/remove
+only the obsolete registration explicitly and rerun setup. `runtime.setup` exposes
+the same operation through the action registry, with an empty project context.
+Linux amd64 is the qualified release platform; setup rejects unsupported OSes.
+
+`sdptool sdui preview -source FILE -entry FRAME -revision SHA -output DIRECTORY`
+and `sdptool sdui check -source FILE -entry FRAME -revision SHA` reuse SDUI's source
+service. Preview requires an existing empty output directory; check writes no
+bundle. Both preserve source-revision and prototype-readiness diagnostics.
+`sdptool sdui run -entry FRAME -revision SHA -watch=true FILE` runs the native
+prototype bundled inside the release engine. It materializes the exact embedded
+bytes in a private hash-addressed cache, verifies them before execution and never
+downloads a helper. Corrupt cache entries fail closed; no arbitrary PATH helper is
+selected. GUI runtime libraries (OpenGL/X11) are OS dependencies. Unbundled source
+builds report `nativePrototypeBundled: false` and reject native run explicitly.
+Project `run --program` still launches an explicitly project-owned application.
+
+Host actions `sdui.source.preview`, `sdui.source.check` and `sdui.source.run` use
+absolute source/output paths and no project context; existing project actions keep
+their project validation. Run's optional boolean `watch` defaults to true. The
+shared action schema now includes the JSON boolean type. CLI output defaults to
+readable; native/machine callers add `--json`. Native helper output goes to stderr,
+keeping the invocation result stream parseable. `--version` advertises
+`runtime.setup/1` and `sdui.source/1`; XFMD validates this shared-runtime contract.
+
+GitHub CLI owns binary replacement. A failed or interrupted update is not covered
+by SDP's project installer journal. gh2.97.0 qualification observed a truncated
+HTTP200 accepted as an update despite size/digest metadata; the registered path
+then fails, with no hidden old-engine fallback. Forced upgrade/install did not
+refetch the already recorded tag. Remove and reinstall the extension using a
+fresh gh HTTP cache to repair it; the public symlink remains aimed at the same
+installation path. See gh-sdp's migration/evidence records for the tested procedure.
+Project `install`/`upgrade` remains a separate explicit signed Framework-data
+operation; its release selection never selects a different executing engine.
+
 ## Output presentation
 
 All result-producing operations default to human-readable output. Add `--json`

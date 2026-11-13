@@ -17,6 +17,7 @@ type actionContext struct {
 }
 type actionPolicy struct {
 	callerAttribution bool
+	hostContext       bool
 	availability      func() *ActionAvailability
 }
 type actionSpec struct {
@@ -42,7 +43,7 @@ func defineAction[T any](d ActionDescriptor, run func(context.Context, actionCon
 type noActionParameters struct{}
 
 func actionRegistry() []actionSpec {
-	return append(append(append([]actionSpec{discoveryAction(), modelTreeAction()}, blueprintActions()...), sessionActions()...), activityActions()...)
+	return append(append(append(append([]actionSpec{discoveryAction(), modelTreeAction()}, blueprintActions()...), sessionActions()...), activityActions()...), runtimeActions()...)
 }
 func performDiscover(ctx context.Context, c actionContext, options DiscoverOptions) (any, int, error) {
 	if err := ctx.Err(); err != nil {
@@ -89,6 +90,12 @@ func Actions(ctx context.Context, selected string) (ActionCatalogue, error) {
 		}
 		if contextErr != nil {
 			d.Availability = ActionAvailability{State: "unavailable", Reason: "invalid-context", Message: contextErr.Error()}
+		}
+		if s.policy.hostContext {
+			d.Availability = ActionAvailability{State: "requires-input", Reason: "host-operation", Message: "Local host operation; no project required."}
+			if len(d.InputSchema.Required) == 0 {
+				d.Availability.State = "available"
+			}
 		}
 		if s.policy.availability != nil {
 			if availability := s.policy.availability(); availability != nil {

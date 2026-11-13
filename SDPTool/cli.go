@@ -40,7 +40,7 @@ func RunWithInput(ctx context.Context, args []string, in io.Reader, out, errs io
 	if len(args) == 1 && args[0] == "--version" {
 		e := emit(map[string]any{
 			"schema": Version, "operation": "version", "version": BuildVersion,
-			"revision": BuildRevision, "installedFactSchemas": []string{"1.0", "2.0", "3.0"}, "installationProtocol": install.Protocol,
+			"revision": BuildRevision, "capabilities": []string{"runtime.setup/1", "sdui.source/1"}, "nativePrototypeBundled": len(bundledNativeHost) > 0, "installedFactSchemas": []string{"1.0", "2.0", "3.0"}, "installationProtocol": install.Protocol,
 		})
 		if e != nil {
 			return report(errs, e)
@@ -48,8 +48,8 @@ func RunWithInput(ctx context.Context, args []string, in io.Reader, out, errs io
 		return 0
 	}
 
-	if len(args) == 1 && (args[0] == "--help" || args[0] == "help") {
-		_, e := io.WriteString(out, "Usage: sdptool [PROJECT-OR-SDP-AREA] actions|invoke|activity|governance|model|discover|run|tree|select|view ip|sdui-preview|install|upgrade|release-log [options]\n       sdptool preview FILE --output DIRECTORY [--renderer PROGRAM]\nDefault output is human-readable; add --json for machine clients.\nSee SDPTool/Contract.md for source, model, revision and resource contracts.\n")
+	if len(args) == 0 || (len(args) == 1 && (args[0] == "--help" || args[0] == "help")) {
+		_, e := io.WriteString(out, "Usage: sdptool setup | sdui preview|check|run [options]\n       sdptool [PROJECT-OR-SDP-AREA] actions|invoke|activity|governance|model|discover|run|tree|select|view ip|sdui-preview|install|upgrade|release-log [options]\n       sdptool preview FILE --output DIRECTORY [--renderer PROGRAM]\nDefault output is human-readable; add --json for machine clients.\nSee SDPTool/Contract.md for source, model, revision and resource contracts.\n")
 		if e != nil {
 			return report(errs, e)
 		}
@@ -102,6 +102,8 @@ type cliCommand struct {
 // pre-output parsing and installer error paths.
 func cliCommands() map[string]cliCommand {
 	return map[string]cliCommand{
+		"setup":        {run: cliSetup},
+		"sdui":         {run: cliSdui},
 		"governance":   {run: cliGovernance},
 		"activity":     {run: cliActivity},
 		"invoke":       {run: cliInvoke, early: func(c cliInvocation) int { return invocationCommand(c.ctx, c.args[1:], c.in, c.out, c.errs) }},

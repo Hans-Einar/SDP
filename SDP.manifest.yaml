@@ -1,13 +1,13 @@
 schemaVersion: "1.0"
 toolkit:
-  version: "2.2.1"
-  releaseState: released
-  releaseTargetVersion: "2.2.1"
-  releaseDate: "2026-11-11"
+  version: "2.3.0"
+  releaseState: unreleased
+  releaseTargetVersion: "2.3.0"
+  releaseDate: unreleased
   minimumInstallerVersion: "0.2.0"
   compatibilityRange: ">=0.2.0 <3.0.0"
-  gitTag: v2.2.1
-  releaseCommit: 6f33c68ce25fb344487f565d5611a51089357632
+  gitTag: null
+  releaseCommit: null
 framework:
   version: "2.0.0"
 agentsContract:
@@ -19,7 +19,7 @@ skills:
   sdp-architect: "2.1.0"
   sdp-auditor: "2.0.0"
   sdp-change-analysis: "1.0.0"
-  sdp-master: "2.1.0"
+  sdp-master: "2.2.0"
   sdp-release: "2.0.0"
   sdp-reviewer: "2.0.0"
   sdp-steering: "1.1.0"
@@ -27,7 +27,7 @@ skills:
   sdp-verifier: "2.0.0"
   sdp-versioning: "2.0.0"
   sdp-vertical-refactor: "2.0.0"
-  sdp-worker: "2.0.0"
+  sdp-worker: "2.1.0"
 capabilities:
   - sdp.install.v1
   - sdp.install-plan.v1

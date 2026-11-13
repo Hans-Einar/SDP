@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "contractId": "sdp-install",
-  "toolkitVersion": "2.2.1",
+  "toolkitVersion": "2.3.0",
   "orderingPolicy": "migration-first-manifest-order-v1",
   "sources": {
     "repositoryRoot": "..",
@@ -29,7 +29,7 @@
       "format": "yaml",
       "facts": {
         "schemaVersion": "1.0",
-        "toolkitVersion": "2.2.1",
+        "toolkitVersion": "2.3.0",
         "frameworkVersion": "2.0.0",
         "agentsContractVersion": "2.1.0",
         "installerVersion": "2.2.1",
@@ -38,7 +38,7 @@
           "sdp-architect": "2.1.0",
           "sdp-auditor": "2.0.0",
           "sdp-change-analysis": "1.0.0",
-          "sdp-master": "2.1.0",
+          "sdp-master": "2.2.0",
           "sdp-release": "2.0.0",
           "sdp-reviewer": "2.0.0",
           "sdp-steering": "1.1.0",
@@ -46,7 +46,7 @@
           "sdp-verifier": "2.0.0",
           "sdp-versioning": "2.0.0",
           "sdp-vertical-refactor": "2.0.0",
-          "sdp-worker": "2.0.0",
+          "sdp-worker": "2.1.0",
           "sdp-planning": "1.0.0",
           "sdp-project-leader": "1.1.0"
         },
@@ -932,6 +932,23 @@
       "migrationPolicy": "none",
       "governing": {
         "capability": "sdp.skill-metadata.v2",
+        "schema": null
+      }
+    },
+    {
+      "id": "managed-activity-records",
+      "kind": "copied",
+      "source": "Toolkit/payload/sdp-root/Framework/activities/Activity-records.md",
+      "destination": "SDP/Framework/activities/Activity-records.md",
+      "ownership": "toolkit-managed",
+      "selectionPolicy": "default",
+      "installPolicy": "always",
+      "refreshPolicy": "upgrade-or-force",
+      "backupPolicy": "before-replace",
+      "forcePolicy": "replace-managed",
+      "migrationPolicy": "none",
+      "governing": {
+        "capability": "sdp.install.v1",
         "schema": null
       }
     }

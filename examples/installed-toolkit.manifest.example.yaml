@@ -1,8 +1,8 @@
 schemaVersion: "1.0"
-toolkitVersion: "2.2.1"
+toolkitVersion: "2.3.0"
 frameworkVersion: "2.0.0"
 agentsContractVersion: "2.1.0"
-installerVersion: "2.2.1"
+installerVersion: "2.3.0"
 toolkitInstalledAt: "2026-07-12T00:00:00Z"
 sourceCommit: null
 skills:
@@ -12,7 +12,7 @@ skills:
   sdp-architect: "2.1.0"
   sdp-auditor: "2.0.0"
   sdp-change-analysis: "1.0.0"
-  sdp-master: "2.1.0"
+  sdp-master: "2.2.0"
   sdp-release: "2.0.0"
   sdp-reviewer: "2.0.0"
   sdp-steering: "1.1.0"
@@ -20,7 +20,7 @@ skills:
   sdp-verifier: "2.0.0"
   sdp-versioning: "2.0.0"
   sdp-vertical-refactor: "2.0.0"
-  sdp-worker: "2.0.0"
+  sdp-worker: "2.1.0"
 capabilities:
   - sdp.install.v1
   - sdp.install-plan.v1

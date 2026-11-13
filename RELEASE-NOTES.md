@@ -4,6 +4,8 @@
 
 Release-Date: unreleased
 
+## [2.3.0] - 2026-11-13
+
 ### Added
 
 - [KB-SDP-061] Activity and Activity-root Session creation, lifecycle/history, recovery,
@@ -11,12 +13,23 @@ Release-Date: unreleased
 - [KB-SDP-060] Producer-owned Systems/include navigation and readable VP01–VP11
   collections/details, separate paginated registers and exact statement links.
   Dense collaboration drawings use Channel/Mode panels with complete payload scope.
+- [KB-SDP-063] Explicit setup registers the shared executable for direct offline
+  consumers; source SDUI preview/check and bundled native prototype are accessible
+  through both gh sdp and sdptool, with shared CLI/action handlers.
 
-### Distribution
+### Migration
 
-- [ACTIVITY-SDP-0003] XFMD0.10 bundles an exact private development producer.
-  This is not a new public Toolkit release and does not change gh-sdp's pinned
-  default or automatically upgrade any project's SDP installation.
+- [ACTIVITY-SDP-0004] gh-sdp2.3.0 republishes the exact canonical engine instead of
+  launching a separately downloaded engine. Run gh sdp setup once after extension
+  installation/upgrade; later extension upgrades update the registered target.
+  XFMD0.11 consumes it directly and removes its private engine/helpers. Product
+  version2.3.0 is independent of the retained sdptool/0.2 wire schema.
+- [KB-SDP-063] Linux amd64 is qualified. Browsing requires neither gh nor network
+  access; prototype GUI requires the usual OS OpenGL/X11 libraries. Project SDP
+  installation upgrades remain explicit and preserve owner documents. Native
+  setup refuses conflicting public entries; move obsolete manual installations
+  aside explicitly. Interrupted gh downloads have a documented remove/reinstall
+  recovery path; no silently selected older engine remains.
 
 ## [2.2.1] - 2026-11-11
 
