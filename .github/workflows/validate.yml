@@ -32,7 +32,7 @@ jobs:
       - run: go -C SDPTool test -race -count=1 -timeout 30m ./...
       - run: go -C SDPTool run ./cmd/sdptool .. release-log --all --output Releases --check
       - name: Native SDUI build dependencies
-        run: sudo apt-get update && sudo apt-get install -y libgl1-mesa-dev xorg-dev libxkbcommon-dev
+        run: sudo apt-get update && sudo apt-get install -y libgl1-mesa-dev xorg-dev libwayland-dev libxkbcommon-dev
       - run: SDPTool/package.sh build/go-installer
       - name: Signed test descriptor and actual packaged child
         env:
