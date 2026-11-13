@@ -110,6 +110,10 @@ func TestActionPolicyMatchesRegisteredMutation(t *testing.T) {
 }
 func validPolicyParameters(id string) any {
 	switch id {
+	case "sdui.source.check", "sdui.source.preview":
+		return sduiSourceParameters{Source: "/source.sdui", Entry: "page"}
+	case "sdui.source.run":
+		return sduiRunParameters{Source: "/source.sdui", Entry: "page"}
 	case "activity.read", "activity.history", "activity.timeline":
 		return ActivityReadInput{Activity: "ACTIVITY-TEST-0001"}
 	case "activity.view":

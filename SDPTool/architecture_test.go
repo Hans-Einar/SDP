@@ -132,11 +132,11 @@ func TestMigrationPreservesExistingPublicActionContracts(t *testing.T) {
 			}
 		}
 	}
-	// Activity0002 explicitly adds Activity operations. Keep the frozen obligations
+	// Activity0002 adds Activity operations; Activity0004 adds host runtime/SDUI operations. Keep the frozen obligations
 	// for every pre-existing action instead of replacing the compatibility fixture.
 	retained := []ActionDescriptor{}
 	for _, d := range after.Actions {
-		if !strings.HasPrefix(d.ID, "activity.") {
+		if !strings.HasPrefix(d.ID, "activity.") && !strings.HasPrefix(d.ID, "sdui.source.") && d.ID != "runtime.setup" {
 			retained = append(retained, d)
 		}
 	}
