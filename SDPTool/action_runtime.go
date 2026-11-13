@@ -1,9 +1,7 @@
 package sdptool
 
 import (
-	"bytes"
 	"context"
-	"encoding/json"
 	"fmt"
 	"github.com/Hans-Einar/SDP/SDUI/go/preview"
 )
@@ -47,18 +45,7 @@ func performSource(ctx context.Context, p sduiSourceParameters, check bool) (any
 	if check && p.Output != "" {
 		return nil, 0, fmt.Errorf("check does not accept an output directory")
 	}
-	args := []string{"-source", p.Source, "-entry", p.Entry, "-revision", p.Revision}
-	if check {
-		args = append(args, "-check")
-	} else {
-		args = append(args, "-output", p.Output)
-	}
-	var out bytes.Buffer
-	if err := preview.Execute(args, &out); err != nil {
-		return nil, 0, err
-	}
-	var result any
-	err := json.Unmarshal(out.Bytes(), &result)
+	result, err := preview.Generate(preview.Options{Source: p.Source, Entry: p.Entry, Revision: p.Revision, Output: p.Output, Check: check})
 	return result, 0, err
 }
 func performSduiRun(ctx context.Context, _ actionContext, p sduiRunParameters) (any, int, error) {
