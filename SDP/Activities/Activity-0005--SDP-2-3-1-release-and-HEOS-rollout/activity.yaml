@@ -18,6 +18,9 @@ references:
       role: session
       id: SESSION-SDP-0022
       path: Activities/Activity-0005--SDP-2-3-1-release-and-HEOS-rollout/Sessions/session-#0022--Release-and-HEOS-rollout.md
+    - role: verification
+      id: SDPTOOL-VER-R231
+      path: Maintenance/R231/Verification.md
 scope:
     - SDPTool
     - SDP
@@ -25,3 +28,4 @@ scope:
     - SDP.manifest.yaml
     - RELEASE-NOTES.md
     - Releases
+    - examples

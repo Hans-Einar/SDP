@@ -1,0 +1,17 @@
+{
+  "descriptor": "/tmp/sdp-r231-final-package/sdp-release.json",
+  "descriptorSHA256": "9c83225b3a5eae1762e5609965378b8c14d89fa676ae242856b323c1dd9facf6",
+  "distributionCommit": "ae7aa216c4343c6d4904078c8545cd1d2d8f7a64",
+  "distributionRepository": "https://github.com/Hans-Einar/gh-sdp",
+  "engineCommit": "84d5e46012fdc45a3690bd0b26b617501fd1caa7",
+  "engineRepository": "https://github.com/Hans-Einar/SDP",
+  "engineVersion": "2.3.1",
+  "file": "gh-sdp-linux-amd64",
+  "platform": "linux/amd64",
+  "provenance": "signed",
+  "schemaVersion": "gh-sdp-package/2",
+  "sha256": "04f78532a4e7ae8653df5b1e623e1407312713a90043f2ac36e7f68e0dc0495b",
+  "signingKeyId": "2c947457cffe015f870168cb332242c49606fdea378a13d875579544c2989c03",
+  "size": 38604522,
+  "version": "2.3.1"
+}

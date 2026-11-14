@@ -1,0 +1,17 @@
+{
+  "event": "EVT-PM-SDP-000267",
+  "field": "payload.links",
+  "before": [
+    "REL-2.3.1",
+    "ACTIVITY-SDP-0005"
+  ],
+  "after": [
+    "PLAN-SDP-0029",
+    "KB-SDP-063"
+  ],
+  "reason": "Correct newly authored unpublished completion record to allowed source management/card identities; cross-domain release/activity links remain in documents/Traceability",
+  "committedPrefixUnchanged": true,
+  "actualActivityEventBytesUnchanged": true,
+  "beforeSHA256": "5c309f41435a8369784d16d75d0f2630be8a9218a7371610cac467e399ece55c",
+  "afterSHA256": "8a3e9f2c84e4f5dea30a925ef653f6e8632a7dcd28c647b51321e67286122ef8"
+}

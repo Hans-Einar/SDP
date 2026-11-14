@@ -5,7 +5,10 @@ restructuring, Activity management, readable SDL browsing and one shared SDPTool
 installation. Canonical SDPTool/gh-sdp2.3.0 and XFMD0.11 are publicly delivered;
 [Activity4 verification](Activities/Activity-0004--Single-SDPTool-installation/06-Verification/Verification.md)
 retains exact-source tests, independent review and public consumer evidence.
-No Activity is currently active.
+[Activity5](Activities/Activity-0005--SDP-2-3-1-release-and-HEOS-rollout/01-Mandate/Mandate.md)
+is completed: signed SDP/gh-sdp2.3.1 is published and HEOS is upgraded from2.2.0.
+[MAINT-SDP-0020](Maintenance/R231/Plan.md) retains qualification and live-upgrade
+evidence. No Activity is currently active.
 
 The owner authorized integrating all SDP work into main on 2026-11-14.
 [Development history](Development-Branch-Stack.md) records the preserved branch

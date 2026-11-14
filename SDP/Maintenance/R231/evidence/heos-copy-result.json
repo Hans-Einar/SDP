@@ -1,0 +1,34 @@
+{
+  "receipt": {
+    "capabilities": [
+      "sdp-install-command/1",
+      "sdp.process.five-phase.v1",
+      "sdp.project-management.v1",
+      "sdp.planning.v1",
+      "sdp.sessions.manual.v1",
+      "sdp.activities.records.v0.2"
+    ],
+    "descriptorDigest": "9c83225b3a5eae1762e5609965378b8c14d89fa676ae242856b323c1dd9facf6",
+    "installedAt": "2026-11-14T02:13:54Z",
+    "managementProfile": "sdp-project-management/0.2",
+    "operationId": "install-8645d949b8808faa617b14f6",
+    "processProfile": "sdp-five-phase/0.1",
+    "provenance": "signed",
+    "release": "2.3.1",
+    "schemaVersion": "3.0",
+    "sourceCommit": "84d5e46012fdc45a3690bd0b26b617501fd1caa7"
+  },
+  "actions": 14,
+  "ownerFilesPreserved": true,
+  "originalLiveLedgerUnchanged": true,
+  "requiresExplicitHistoricalCorrection": true,
+  "correctedEvents": [
+    "EVT-KB-HEOS-000021",
+    "EVT-KB-HEOS-000022",
+    "EVT-PM-HEOS-000023",
+    "EVT-KB-HEOS-000024",
+    "EVT-KB-HEOS-000026"
+  ],
+  "correctedLedgerPrefixPreserved": true,
+  "repeatNoChange": true
+}
