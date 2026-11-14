@@ -1,0 +1,23 @@
+schema: sdp-activity/0.2
+id: ACTIVITY-SDP-0005
+projectId: SDP
+title: SDP 2.3.1 release and HEOS rollout
+owner: project-owner
+mandate: 01-Mandate/Mandate.md
+sourceCards: []
+systems:
+    - SDPTOOL
+    - GHSDP
+    - HEOS
+references:
+    - membership: whole-scope
+      role: plan
+      id: MAINT-SDP-0020
+      path: Maintenance/R231/Plan.md
+scope:
+    - SDPTool
+    - SDP
+    - Toolkit
+    - SDP.manifest.yaml
+    - RELEASE-NOTES.md
+    - Releases

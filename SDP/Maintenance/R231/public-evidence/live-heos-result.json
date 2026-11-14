@@ -1,0 +1,57 @@
+{
+  "receipt": {
+    "capabilities": [
+      "sdp-install-command/1",
+      "sdp.process.five-phase.v1",
+      "sdp.project-management.v1",
+      "sdp.planning.v1",
+      "sdp.sessions.manual.v1",
+      "sdp.activities.records.v0.2"
+    ],
+    "descriptorDigest": "9c83225b3a5eae1762e5609965378b8c14d89fa676ae242856b323c1dd9facf6",
+    "installedAt": "2026-11-14T02:36:29Z",
+    "managementProfile": "sdp-project-management/0.2",
+    "operationId": "install-3c3b028bc008b8f30e3afa5e",
+    "processProfile": "sdp-five-phase/0.1",
+    "provenance": "signed",
+    "release": "2.3.1",
+    "schemaVersion": "3.0",
+    "sourceCommit": "84d5e46012fdc45a3690bd0b26b617501fd1caa7"
+  },
+  "version": {
+    "capabilities": [
+      "runtime.setup/1",
+      "sdui.source/1"
+    ],
+    "installationProtocol": "sdp-install-command/1",
+    "installedFactSchemas": [
+      "1.0",
+      "2.0",
+      "3.0"
+    ],
+    "nativePrototypeBundled": true,
+    "operation": "version",
+    "revision": "84d5e46012fdc45a3690bd0b26b617501fd1caa7",
+    "schema": "sdptool/0.2",
+    "version": "2.3.1"
+  },
+  "registeredPath": "/home/warloc/.local/bin/sdptool",
+  "registeredTarget": "/home/warloc/.local/share/gh/extensions/gh-sdp/gh-sdp",
+  "engineSHA256": "04f78532a4e7ae8653df5b1e623e1407312713a90043f2ac36e7f68e0dc0495b",
+  "actions": 14,
+  "changedExistingPaths": [
+    "SDP/Framework/installed-toolkit.manifest.yaml",
+    "SDP/ProjectManagement/Ledger.ndjson",
+    ".codex/skills/sdp-architect/SKILL.md",
+    ".codex/skills/sdp-master/SKILL.md",
+    ".codex/skills/sdp-steering/SKILL.md",
+    ".codex/skills/sdp-worker/SKILL.md",
+    ".codex/skills/sdp/SKILL.md"
+  ],
+  "existingOwnerFilesPreserved": true,
+  "allManagedBytesMatchSignedDescriptor": true,
+  "correctedHistoryPrefixPreserved": true,
+  "repeatNoChange": true,
+  "defaultRelease": true,
+  "priorUncommittedWorkPreserved": true
+}
