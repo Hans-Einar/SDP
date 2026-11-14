@@ -157,3 +157,23 @@ added and a fresh request succeeded. No failed request is presented as success.
 Activity4 now replays as completed and no Activity is active. Receipts are retained
 in ../06-Verification/Lifecycle; prior descriptor snapshots and ledger bytes remain.
 Final validation and documentation commit/push conclude this reporting step.
+
+## Owner-authorized main integration — 2026-11-14
+
+Owner input: merge all SDP work into main. This is a subsequent explicit
+integration authorization; earlier no-merge statements describe their checkpoints.
+Recovered the completed Activity1–4 records and this Session; no new implementation
+or Activity activation is needed. Loaded canonical SDP entry and Traceability
+skills with the document workflow. Preflight found only the preserved untracked
+management lock, no tracked edits or overlapping product work. After origin fetch,
+main bfe3b40 had no divergent commits and the selected66e09a2 head contained all
+local/fetched remote branch tips. Local main was fast-forwarded successfully to
+that exact head, preserving all82 commits and the reviewed tree without conflicts.
+
+The working-branch follow-up updates the stale project overview and integration
+history. Run Toolkit/management validation, fast-forward main to include this
+administrative record, then push the branch and main under the owner's authority.
+Existing source/public qualification remains applicable; no source changed, no
+broad tests were repeated, and no consumer repository merge or new release is
+included. The Activity and C0–C5 remain completed. Final remote verification is the
+remaining administrative step; this journal does not pre-claim push success.

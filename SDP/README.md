@@ -1,20 +1,17 @@
 # Developing SDP
 
-Current planning from HEOS browsing feedback:
-[PLAN-SDP-0025](04--Design/SDPTool/SDLBrowsing/Plan.md) prepares producer-owned
-navigation and readable viewpoint design. [Session0015](Sessions/session-%230015--SDL_browsing_planning.md)
-records the planning handoff and the separate proposed
-[Activity workflow](02--Requirements/ProjectGovernance/Activities/Study.md).
-Neither product execution nor Activity schema adoption is implied.
+The first four [Activities](Activities/README.md) are completed: SDPTool
+restructuring, Activity management, readable SDL browsing and one shared SDPTool
+installation. Canonical SDPTool/gh-sdp2.3.0 and XFMD0.11 are publicly delivered;
+[Activity4 verification](Activities/Activity-0004--Single-SDPTool-installation/06-Verification/Verification.md)
+retains exact-source tests, independent review and public consumer evidence.
+No Activity is currently active.
 
-Current owner sequence: Activity0001 restructuring is accepted and completed.
-[Activity0002 — Activity management](Activities/Activity-0002--Activity-Management/01-Mandate/Mandate.md)
-is manually registered and active under
-[PLAN-SDP-0027](Activities/Activity-0002--Activity-Management/05-Implementation/Plan.md)
-and Session0018. KB061 owns implementation. KB060 browsing stays queued for
-Activity0003, the first real Activity to be created through the completed tool.
-[Activity records](ProjectManagement/Activity-records.md) describe the existing
-manual format; runtime capabilities are qualified milestone by milestone.
+The owner authorized integrating all SDP work into main on 2026-11-14.
+[Development history](Development-Branch-Stack.md) records the preserved branch
+stack and integration. Earlier planning and study records remain historical;
+current Activity commands and record contracts are described in
+[Activity records](ProjectManagement/Activity-records.md).
 
 This area gathers development work for the SDP product itself.
 

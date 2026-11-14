@@ -11,6 +11,23 @@ Use working branches and the selected plan's Git policy for new work, targeting
 main for review. Subsequent merges still require owner authorization.
 See [MergePlan](Maintenance/MP1/MergePlan.md) and [evidence](Maintenance/MP1/Evidence.md).
 
+## Activity1–4 integration — 2026-11-14
+
+The owner's explicit instruction selects all completed SDP work for main.
+After fetching origin, main bfe3b40 was an ancestor of
+sdp/shared-tool-installation66e09a2, with82 commits to integrate and no divergence.
+Every local and fetched origin branch tip was already contained in that head.
+A local fast-forward promoted main to66e09a2 without conflicts or tree changes;
+all milestone commits, branches, immutable release tags and ledger bytes remain.
+The final documentation follow-up records this actual local integration before
+pushing main. This scope is the SDP repository; gh-sdp and XFMD keep their current
+branches. No new product change, package rebuild or release is introduced.
+
+Existing exact-candidate qualification remains applicable because integration
+preserves the complete tree. SDP Toolkit and project-management validation are
+rerun for the documentation follow-up. Session0021 retains the owner decision and
+administrative closeout; completed Activity statuses are unchanged.
+
 ## Historical staging policy and deliveries
 
 The dated records below describe their original targets and authorization.
