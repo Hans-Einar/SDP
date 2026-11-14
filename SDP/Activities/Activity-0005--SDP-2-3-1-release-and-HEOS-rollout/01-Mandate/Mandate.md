@@ -1,0 +1,1 @@
+Publish the integrated SDP as a new installable patch and upgrade HEOS first. Preserve owner documents, existing dirty work, signed provenance and one shared runtime update path. See Maintenance/R231/Plan.md.

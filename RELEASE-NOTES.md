@@ -4,6 +4,24 @@
 
 Release-Date: unreleased
 
+## [2.3.1] - 2026-11-14
+
+### Fixed
+
+- [MAINT-SDP-0020] Publish the integrated main source with the shared-runtime
+  documentation and validated preliminary SDL handoff correction. Runtime APIs,
+  wire schemas and the one-engine distribution contract remain unchanged.
+- [ACTIVITY-SDP-0005] Accept the original signed2.3.0 descriptor as an upgrade
+  predecessor while preserving all seven previously supported releases. Default
+  Framework selection is2.3.1; owner project files remain installer-preserved.
+
+### Migration
+
+- [MAINT-SDP-0020] Update the gh extension for the shared2.3.1 engine. Project
+  Framework upgrades remain explicit preview/apply operations; HEOS is the first
+  selected rollout. Installing Activity records does not automatically adopt
+  project-governance execution admission or migrate existing Sessions.
+
 ## [2.3.0] - 2026-11-13
 
 ### Added
