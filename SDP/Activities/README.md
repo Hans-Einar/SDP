@@ -24,7 +24,7 @@ The owner-selected first five Activities are delivered:
    — signed public release and actual HEOS upgrade independently verified.
 
 Activity5 is completed: signed public SDP/gh-sdp2.3.1 and actual HEOS upgrade are
-independently verified. Activity0006 is active for the separately owner-authorized2.3.2 publication. Activity3 and Activity4 tool-recorded lifecycles include
+independently verified. Activity0006 completed the separately owner-authorized 2.3.2 publication. Activity3 and Activity4 tool-recorded lifecycles include
 observed quiescent hold/update/resume to link actual executed contributions before
 completion. Activity2 was held while Activity3 executed, then resumed only for
 administrative closure. Personal owner review and main merge are not implied.
@@ -70,3 +70,11 @@ The owner then authorized [R232](../Maintenance/R232/Plan.md), completed in
 SESSION-SDP-0024: signed public SDPTool and gh-sdp 2.3.2, verified downloaded assets
 and isolated ordinary extension upgrade. Activity0006 is completed. The live local
 extension and real project Frameworks remain for the owner to upgrade explicitly.
+
+## TimberFrame SDUI launch investigation
+
+[Activity0007](Activity-0007--TimberFrame-SDUI-launch-investigation/02-Study/Launch-readiness.md)
+completed the owner-requested reproduction. Standard standalone launch rejects
+CaseParameters tabs, while the existing consumer DocumentHost launcher passes its
+Analysis native smoke. KB-SDUI-007 and SESSION-SDP-0025 retain the result; a general
+launcher improvement is proposed, not selected or implemented.

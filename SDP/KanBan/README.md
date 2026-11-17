@@ -46,6 +46,7 @@
 | KB-SDUI-003 | Proposal | completed | [Capabilities and a bounded navigation pilot](completed/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | KB-SDP-005 | Ref | completed | [SDL: links through in SDP viewpoints](completed/%23005--Ref--SDL--002--Links-through.md) |
 | KB-SDP-006 | Ref | completed | [SDL: requirements models in the SDP process](completed/%23006--Ref--SDL--001--Requirements-narrative.md) |
+| KB-SDUI-007 | Study | completed | [TimberFrame SDUI launch readiness](completed/%23007--SDUI--Study--TimberFrame-launch-readiness.md) |
 | KB-SDUI-006 | Proposal | completed | [Runnable SDL and SDUI widget test project](completed/%23006--SDUI--Proposal--Runnable-widget-test-project.md) |
 | KB-SDP-007 | Change | completed | [K1-M1: establish KanBan and preserve conversation proposals](completed/%23007--Change--KanBan-foundation.md) |
 | KB-SDL-007 | Proposal | completed | [Composable file ASTs and context-dependent semantic analysis](completed/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md) |
