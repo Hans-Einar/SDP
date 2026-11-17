@@ -1,0 +1,8 @@
+{
+  "run": 44044114546,
+  "sourceCommit": "f7a6c9f4793b55de5d0017ae74210135f2a4d365",
+  "syntheticMerge": "d9849020f21ad52d06ad691b1dbf081670208ad7",
+  "tree": "69f74305e56e16e39905160f9325933cc810164d",
+  "equivalent": true,
+  "qualification": "CI source tree equality; actual signed package identity is checked separately"
+}

@@ -1,0 +1,45 @@
+{
+  "operationId": "eb719650-4a3d-4f26-af72-4f6ff98a9931",
+  "expectedHistoryRevision": "646d94f8055fb724429849ef62bfb19f2f8b68f6bfeed99b7586f8680729ef7e",
+  "activityId": "ACTIVITY-SDP-0005",
+  "expectedActivityEventId": "EVT-ACTIVITY-SDP-BEBBA60FBDF84D35A1A98C520BE0C403",
+  "expectedDescriptorRevision": "52d2c9a488bf02962a52d72c8892595c1ce3c1407896454455376b899e9f8d30",
+  "title": "SDP 2.3.1 release and HEOS rollout",
+  "owner": "project-owner",
+  "sourceCards": [],
+  "systems": [
+    "SDPTOOL",
+    "GHSDP",
+    "HEOS"
+  ],
+  "scope": [
+    "SDPTool",
+    "SDP",
+    "Toolkit",
+    "SDP.manifest.yaml",
+    "RELEASE-NOTES.md",
+    "Releases",
+    "examples"
+  ],
+  "dependencies": [],
+  "references": [
+    {
+      "membership": "whole-scope",
+      "role": "plan",
+      "id": "MAINT-SDP-0020",
+      "path": "Maintenance/R231/Plan.md"
+    },
+    {
+      "membership": "whole-scope",
+      "role": "session",
+      "id": "SESSION-SDP-0022",
+      "path": "Activities/Activity-0005--SDP-2-3-1-release-and-HEOS-rollout/Sessions/session-#0022--Release-and-HEOS-rollout.md"
+    },
+    {
+      "role": "verification",
+      "id": "SDPTOOL-VER-R231",
+      "path": "Maintenance/R231/Verification.md"
+    }
+  ],
+  "reason": "Record version-consistency examples already within the owner-authorized release obligation and link final evidence; no new implementation or publication scope"
+}

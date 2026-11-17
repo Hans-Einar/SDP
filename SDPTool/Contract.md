@@ -93,8 +93,10 @@ design-core/0.6 with canonical-source validation; unsupported language/profile i
 language diagnostic. Class/action/SDUI inputs are not structural design previews.
 No SDP folder is required. Default selection is one nonempty diagram, preferring
 architecture then use cases/responsibilities; an empty model uses VP11. Explicit
-selections retain SDL's query validation and depth bound (0–8). There is no fixed diagram-count cap. Publication is bounded by 128 files and
-32 MiB of generated resources, including retained source snapshots; larger
+selections retain SDL's query validation and depth bound (0–8). There is no fixed diagram-count cap. Preview and source-reading publication share a limit of 512 files and
+128 MiB of generated resources, including retained source snapshots and manifests.
+These inclusive limits bound output resource use; they are separate from SDL source
+graph and navigation inventory limits. Limit errors report actual usage; larger
 requests must select a diagram/focus. No automatic full export occurs.
 
 With --json, stdout is one JSON result with schema sdptool/0.2, operation, source, profile,

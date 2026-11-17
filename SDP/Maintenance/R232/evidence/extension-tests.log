@@ -1,0 +1,20 @@
+go version go1.27.1 linux/amd64
+go: downloading github.com/Hans-Einar/SDP/SDPTool/bootstrap v0.0.0-20261110232832-35bfdf8469e0
+=== RUN   TestRepublishesExactSignedEngine
+--- PASS: TestRepublishesExactSignedEngine (0.04s)
+=== RUN   TestRejectsUntrustedTamperedAndWrongIdentity
+=== RUN   TestRejectsUntrustedTamperedAndWrongIdentity/untrusted
+=== RUN   TestRejectsUntrustedTamperedAndWrongIdentity/descriptor
+=== RUN   TestRejectsUntrustedTamperedAndWrongIdentity/asset
+=== RUN   TestRejectsUntrustedTamperedAndWrongIdentity/version
+=== RUN   TestRejectsUntrustedTamperedAndWrongIdentity/revision
+--- PASS: TestRejectsUntrustedTamperedAndWrongIdentity (0.05s)
+    --- PASS: TestRejectsUntrustedTamperedAndWrongIdentity/untrusted (0.00s)
+    --- PASS: TestRejectsUntrustedTamperedAndWrongIdentity/descriptor (0.00s)
+    --- PASS: TestRejectsUntrustedTamperedAndWrongIdentity/asset (0.01s)
+    --- PASS: TestRejectsUntrustedTamperedAndWrongIdentity/version (0.02s)
+    --- PASS: TestRejectsUntrustedTamperedAndWrongIdentity/revision (0.02s)
+=== RUN   TestBuildTimeLinuxPublisherTrust
+--- PASS: TestBuildTimeLinuxPublisherTrust (0.00s)
+PASS
+ok  	github.com/Hans-Einar/gh-sdp/cmd/package	1.100s

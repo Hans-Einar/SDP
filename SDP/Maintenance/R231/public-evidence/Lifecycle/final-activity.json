@@ -1,0 +1,318 @@
+{
+  "path": "Activities/Activity-0005--SDP-2-3-1-release-and-HEOS-rollout",
+  "descriptor": {
+    "schema": "sdp-activity/0.2",
+    "id": "ACTIVITY-SDP-0005",
+    "projectId": "SDP",
+    "title": "SDP 2.3.1 release and HEOS rollout",
+    "owner": "project-owner",
+    "mandate": "01-Mandate/Mandate.md",
+    "sourceCards": [],
+    "systems": [
+      "SDPTOOL",
+      "GHSDP",
+      "HEOS"
+    ],
+    "references": [
+      {
+        "membership": "whole-scope",
+        "role": "plan",
+        "id": "MAINT-SDP-0020",
+        "path": "Maintenance/R231/Plan.md"
+      },
+      {
+        "membership": "whole-scope",
+        "role": "session",
+        "id": "SESSION-SDP-0022",
+        "path": "Activities/Activity-0005--SDP-2-3-1-release-and-HEOS-rollout/Sessions/session-#0022--Release-and-HEOS-rollout.md"
+      },
+      {
+        "role": "verification",
+        "id": "SDPTOOL-VER-R231",
+        "path": "Maintenance/R231/Verification.md"
+      }
+    ],
+    "scope": [
+      "SDPTool",
+      "SDP",
+      "Toolkit",
+      "SDP.manifest.yaml",
+      "RELEASE-NOTES.md",
+      "Releases",
+      "examples"
+    ]
+  },
+  "descriptorRef": {
+    "path": "Activities/Activity-0005--SDP-2-3-1-release-and-HEOS-rollout/activity.yaml",
+    "sha256": "d1bb8d1a15bf5b31103340e2987cf29d9a6f98ee44888d206a78f25d5a857ffe"
+  },
+  "state": "completed",
+  "lastEventId": "EVT-ACTIVITY-SDP-7DFB7412A2DC443C893C36578699260D",
+  "events": [
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-8F134951EBDE462BBE7789DC8E7B0ED8",
+      "eventType": "x-activity:created",
+      "occurredAt": "2026-11-14T02:06:58.550628056Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0005",
+      "payload": {
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "8f134951-ebde-462b-be77-89dc8e7b0ed8",
+        "recordedAt": "2026-11-14T02:06:58.550628056Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Maintenance/R231/Plan.md"
+        },
+        "previousEventId": null,
+        "from": null,
+        "to": "planned",
+        "reason": "Owner selects release and first consumer rollout",
+        "descriptor": {
+          "path": "Activities/Activity-0005--SDP-2-3-1-release-and-HEOS-rollout/activity.yaml",
+          "sha256": "29f44d6938b9b2c5efe0afc4b096d06729b96c61f2c46d570ad8231799e77e55"
+        },
+        "links": [],
+        "requestDigest": "eb17161808e33d6c20de335e2e40fabb54c884e7e43f7b1274f787fea078a618"
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-5F730BEBC232401A8E91FFFEBAE124BF",
+      "eventType": "x-activity:session-created",
+      "occurredAt": "2026-11-14T02:07:01.773453354Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0005",
+      "payload": {
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "5f730beb-c232-401a-8e91-fffebae124bf",
+        "recordedAt": "2026-11-14T02:07:01.773453354Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Maintenance/R231/Plan.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-8F134951EBDE462BBE7789DC8E7B0ED8",
+        "from": "planned",
+        "to": "planned",
+        "reason": "Owner-selected cross-phase release execution",
+        "descriptor": {
+          "path": "Activities/Activity-0005--SDP-2-3-1-release-and-HEOS-rollout/activity.yaml",
+          "sha256": "29f44d6938b9b2c5efe0afc4b096d06729b96c61f2c46d570ad8231799e77e55"
+        },
+        "links": [],
+        "requestDigest": "8509dc99b1f48c2066fac7524eddbaefc01c2a8cd08a1eb14d15fcaa2240e755",
+        "session": {
+          "id": "SESSION-SDP-0022",
+          "path": "Activities/Activity-0005--SDP-2-3-1-release-and-HEOS-rollout/Sessions/session-#0022--Release-and-HEOS-rollout.md",
+          "sha256": "c921df5a36832a92b55ad9e39279e3b88779adcfa34fee121768a904cc49fb9b"
+        }
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-1A3A9B5E7D354B10AA674A1739C3E947",
+      "eventType": "x-activity:updated",
+      "occurredAt": "2026-11-14T02:07:05.887825274Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0005",
+      "payload": {
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "1a3a9b5e-7d35-4b10-aa67-4a1739c3e947",
+        "recordedAt": "2026-11-14T02:07:05.887825274Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Maintenance/R231/Plan.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-5F730BEBC232401A8E91FFFEBAE124BF",
+        "from": "planned",
+        "to": "planned",
+        "reason": "Bind the release Session as a whole-scope contribution before activation",
+        "descriptor": {
+          "path": "Activities/Activity-0005--SDP-2-3-1-release-and-HEOS-rollout/activity.yaml",
+          "sha256": "52d2c9a488bf02962a52d72c8892595c1ce3c1407896454455376b899e9f8d30"
+        },
+        "links": [],
+        "requestDigest": "aba59a84c80e95a546bcb5578aaf04386a89c4ac34e50e4dd71d16463fb1ea83"
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-94F178DA18BA40FAA66E7416DDB2931D",
+      "eventType": "x-activity:transitioned",
+      "occurredAt": "2026-11-14T02:07:08.962199813Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0005",
+      "payload": {
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "94f178da-18ba-40fa-a66e-7416ddb2931d",
+        "recordedAt": "2026-11-14T02:07:08.962199813Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Maintenance/R231/Plan.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-1A3A9B5E7D354B10AA674A1739C3E947",
+        "from": "planned",
+        "to": "active",
+        "reason": "Execute owner-authorized release and HEOS rollout",
+        "descriptor": {
+          "path": "Activities/Activity-0005--SDP-2-3-1-release-and-HEOS-rollout/activity.yaml",
+          "sha256": "52d2c9a488bf02962a52d72c8892595c1ce3c1407896454455376b899e9f8d30"
+        },
+        "links": [],
+        "requestDigest": "3bba42b3bb305aa320c0722c90a33a69f46eec1473a1b94f76e6b60fcd7042f2"
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-BEBBA60FBDF84D35A1A98C520BE0C403",
+      "eventType": "x-activity:transitioned",
+      "occurredAt": "2026-11-14T02:37:47.852175854Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0005",
+      "payload": {
+        "resumeCondition": "Resume only to complete the evidenced release and rollout after descriptor reconciliation",
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "bebba60f-bdf8-4d35-a1a9-8c520be0c403",
+        "recordedAt": "2026-11-14T02:37:47.852175854Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Maintenance/R231/Plan.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-94F178DA18BA40FAA66E7416DDB2931D",
+        "from": "active",
+        "to": "on-hold",
+        "reason": "Completed public release and live HEOS qualification; quiescent administrative reconciliation of actual release metadata scope",
+        "descriptor": {
+          "path": "Activities/Activity-0005--SDP-2-3-1-release-and-HEOS-rollout/activity.yaml",
+          "sha256": "52d2c9a488bf02962a52d72c8892595c1ce3c1407896454455376b899e9f8d30"
+        },
+        "links": [],
+        "requestDigest": "91e3713bda5804125ed355a7d2183d38a452611c5a922e3446ec8c7442a5b413"
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-EB7196504A3D4F26AF724F6FF98A9931",
+      "eventType": "x-activity:updated",
+      "occurredAt": "2026-11-14T02:37:51.975416044Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0005",
+      "payload": {
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "eb719650-4a3d-4f26-af72-4f6ff98a9931",
+        "recordedAt": "2026-11-14T02:37:51.975416044Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Maintenance/R231/Plan.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-BEBBA60FBDF84D35A1A98C520BE0C403",
+        "from": "on-hold",
+        "to": "on-hold",
+        "reason": "Record version-consistency examples already within the owner-authorized release obligation and link final evidence; no new implementation or publication scope",
+        "descriptor": {
+          "path": "Activities/Activity-0005--SDP-2-3-1-release-and-HEOS-rollout/activity.yaml",
+          "sha256": "d1bb8d1a15bf5b31103340e2987cf29d9a6f98ee44888d206a78f25d5a857ffe"
+        },
+        "links": [],
+        "requestDigest": "4933a590bb419db7fa263a555ddb7288050d6eb36e37656cb0c7ee9b8474be1d"
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-4C495AF5ECD8436DA5A4672DFE0742E4",
+      "eventType": "x-activity:transitioned",
+      "occurredAt": "2026-11-14T02:37:55.062315719Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0005",
+      "payload": {
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "4c495af5-ecd8-436d-a5a4-672dfe0742e4",
+        "recordedAt": "2026-11-14T02:37:55.062315719Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Maintenance/R231/Plan.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-EB7196504A3D4F26AF724F6FF98A9931",
+        "from": "on-hold",
+        "to": "active",
+        "reason": "Resume solely for verified administrative completion",
+        "descriptor": {
+          "path": "Activities/Activity-0005--SDP-2-3-1-release-and-HEOS-rollout/activity.yaml",
+          "sha256": "d1bb8d1a15bf5b31103340e2987cf29d9a6f98ee44888d206a78f25d5a857ffe"
+        },
+        "links": [],
+        "requestDigest": "7e89672c158b2ffb0948caa3f95c4a0a7ab886ef7887ce1b7aa5fdca28b966c3"
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-7DFB7412A2DC443C893C36578699260D",
+      "eventType": "x-activity:transitioned",
+      "occurredAt": "2026-11-14T02:37:59.003668936Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0005",
+      "payload": {
+        "contributionDispositions": [
+          {
+            "referenceId": "MAINT-SDP-0020",
+            "disposition": "completed",
+            "outcome": "Both qualified release and actual first-consumer rollout complete"
+          },
+          {
+            "referenceId": "SESSION-SDP-0022",
+            "disposition": "completed",
+            "outcome": "Release/rollout goal delivered; no selected step remains"
+          }
+        ],
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "7dfb7412-a2dc-443c-893c-36578699260d",
+        "recordedAt": "2026-11-14T02:37:59.003668936Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Maintenance/R231/Plan.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-4C495AF5ECD8436DA5A4672DFE0742E4",
+        "from": "active",
+        "to": "completed",
+        "reason": "All release and first-consumer obligations fulfilled",
+        "descriptor": {
+          "path": "Activities/Activity-0005--SDP-2-3-1-release-and-HEOS-rollout/activity.yaml",
+          "sha256": "d1bb8d1a15bf5b31103340e2987cf29d9a6f98ee44888d206a78f25d5a857ffe"
+        },
+        "links": [],
+        "requestDigest": "09103a5e0560fbf406fc43c8b65bcedb4f156c2ca95b820d91c482bf66c0abc7",
+        "outcome": "Signed public SDPTool/gh-sdp2.3.1 and actual HEOS2.2.0-to2.3.1 upgrade verified, with exact owner-approved historical correction archived and other owner work preserved",
+        "evidence": [
+          {
+            "role": "verification",
+            "id": "SDPTOOL-VER-R231",
+            "path": "Maintenance/R231/Verification.md"
+          }
+        ]
+      }
+    }
+  ],
+  "sessions": [
+    {
+      "id": "SESSION-SDP-0022",
+      "path": "Activities/Activity-0005--SDP-2-3-1-release-and-HEOS-rollout/Sessions/session-#0022--Release-and-HEOS-rollout.md",
+      "sha256": "c921df5a36832a92b55ad9e39279e3b88779adcfa34fee121768a904cc49fb9b"
+    }
+  ]
+}

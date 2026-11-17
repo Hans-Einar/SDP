@@ -1,0 +1,422 @@
+{
+  "path": "Activities/Activity-0006--Generated-preview-bundle-capacity",
+  "descriptor": {
+    "schema": "sdp-activity/0.2",
+    "id": "ACTIVITY-SDP-0006",
+    "projectId": "SDP",
+    "title": "Generated preview bundle capacity",
+    "owner": "project-owner",
+    "mandate": "01-Mandate/Mandate.md",
+    "sourceCards": [
+      "KB-SDP-064"
+    ],
+    "systems": [
+      "SDPTOOL"
+    ],
+    "references": [
+      {
+        "membership": "whole-scope",
+        "role": "plan",
+        "id": "MAINT-SDP-0021",
+        "path": "Maintenance/BundleCapacity/Plan.md"
+      },
+      {
+        "membership": "whole-scope",
+        "role": "session",
+        "id": "SESSION-SDP-0023",
+        "path": "Activities/Activity-0006--Generated-preview-bundle-capacity/Sessions/session-#0023--Raise-preview-bundle-limits.md"
+      },
+      {
+        "membership": "whole-scope",
+        "role": "plan",
+        "id": "MAINT-SDP-0022",
+        "path": "Maintenance/R232/Plan.md"
+      },
+      {
+        "membership": "whole-scope",
+        "role": "session",
+        "id": "SESSION-SDP-0024",
+        "path": "Activities/Activity-0006--Generated-preview-bundle-capacity/Sessions/session-#0024--Publish-capacity-correction.md"
+      }
+    ],
+    "scope": [
+      "SDPTool",
+      "SDP",
+      "Toolkit",
+      "SDP.manifest.yaml",
+      "RELEASE-NOTES.md",
+      "Releases",
+      "examples"
+    ]
+  },
+  "descriptorRef": {
+    "path": "Activities/Activity-0006--Generated-preview-bundle-capacity/activity.yaml",
+    "sha256": "94f1902de74fdf8fafdcae907ef9db42a493387b54830834872eee235405970a"
+  },
+  "state": "completed",
+  "lastEventId": "EVT-ACTIVITY-SDP-4EF36C57DED14858B862F649FEFFC75A",
+  "events": [
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-D5971358F19F45C3880E97B06785DD5B",
+      "eventType": "x-activity:created",
+      "occurredAt": "2026-11-17T01:33:03.704062027Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0006",
+      "payload": {
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "d5971358-f19f-45c3-880e-97b06785dd5b",
+        "recordedAt": "2026-11-17T01:33:03.704062027Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Maintenance/BundleCapacity/Plan.md"
+        },
+        "previousEventId": null,
+        "from": null,
+        "to": "planned",
+        "reason": "Owner selects bounded capacity correction",
+        "descriptor": {
+          "path": "Activities/Activity-0006--Generated-preview-bundle-capacity/activity.yaml",
+          "sha256": "2847f8d6006bfc12e4656abaa621ef7722e8d75b57fef15502297f105dec6f2c"
+        },
+        "links": [],
+        "requestDigest": "0819a0a893c3b2c3d9c7cc893977630e8e50463e5d141bf03769f3844fdbc273"
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-5199348210414913BCB58513EE6AC3A1",
+      "eventType": "x-activity:session-created",
+      "occurredAt": "2026-11-17T01:33:06.03294732Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0006",
+      "payload": {
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "51993482-1041-4913-bcb5-8513ee6ac3a1",
+        "recordedAt": "2026-11-17T01:33:06.03294732Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Maintenance/BundleCapacity/Plan.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-D5971358F19F45C3880E97B06785DD5B",
+        "from": "planned",
+        "to": "planned",
+        "reason": "Execute the owner-selected bounded fix",
+        "descriptor": {
+          "path": "Activities/Activity-0006--Generated-preview-bundle-capacity/activity.yaml",
+          "sha256": "2847f8d6006bfc12e4656abaa621ef7722e8d75b57fef15502297f105dec6f2c"
+        },
+        "links": [],
+        "requestDigest": "da1d0ad3d0b78116a7452b4796683f53e83fa694841399872c42802f3e74fa96",
+        "session": {
+          "id": "SESSION-SDP-0023",
+          "path": "Activities/Activity-0006--Generated-preview-bundle-capacity/Sessions/session-#0023--Raise-preview-bundle-limits.md",
+          "sha256": "eed629c3c30e4b0f569310840b8d5ec1eb2cbf0df106239cf364caa6cea911f7"
+        }
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-C2D13B84641E4E9D83BCA8D7373D8B56",
+      "eventType": "x-activity:updated",
+      "occurredAt": "2026-11-17T01:33:08.385121725Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0006",
+      "payload": {
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "c2d13b84-641e-4e9d-83bc-a8d7373d8b56",
+        "recordedAt": "2026-11-17T01:33:08.385121725Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Maintenance/BundleCapacity/Plan.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-5199348210414913BCB58513EE6AC3A1",
+        "from": "planned",
+        "to": "planned",
+        "reason": "Bind the implementation Session before activation",
+        "descriptor": {
+          "path": "Activities/Activity-0006--Generated-preview-bundle-capacity/activity.yaml",
+          "sha256": "60a41754cd5155c47a2d928135aae562a4149c6e8383a910c752831fb854e2ec"
+        },
+        "links": [],
+        "requestDigest": "36e697ecbfeacc17d59e8cfe67cfe2550b2926cdc619a4989a75f8586f6bdbef"
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-5677009697CE448D98FDB481D7461502",
+      "eventType": "x-activity:transitioned",
+      "occurredAt": "2026-11-17T01:33:10.577750164Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0006",
+      "payload": {
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "56770096-97ce-448d-98fd-b481d7461502",
+        "recordedAt": "2026-11-17T01:33:10.577750164Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Maintenance/BundleCapacity/Plan.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-C2D13B84641E4E9D83BCA8D7373D8B56",
+        "from": "planned",
+        "to": "active",
+        "reason": "Execute owner-authorized output capacity correction",
+        "descriptor": {
+          "path": "Activities/Activity-0006--Generated-preview-bundle-capacity/activity.yaml",
+          "sha256": "60a41754cd5155c47a2d928135aae562a4149c6e8383a910c752831fb854e2ec"
+        },
+        "links": [],
+        "requestDigest": "f5b8cebf1770d42d7b5699d4d0631a772473648801ec27a74b745905f1f6f2fa"
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-D65AAC78920E4314B59B17505F75B912",
+      "eventType": "x-activity:transitioned",
+      "occurredAt": "2026-11-17T01:36:45.70366447Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0006",
+      "payload": {
+        "contributionDispositions": [
+          {
+            "referenceId": "MAINT-SDP-0021",
+            "disposition": "completed",
+            "outcome": "Bounded capacity correction implemented and verified; no public release selected"
+          },
+          {
+            "referenceId": "SESSION-SDP-0023",
+            "disposition": "completed",
+            "outcome": "Bounded capacity correction implemented and verified; no public release selected"
+          }
+        ],
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "d65aac78-920e-4314-b59b-17505f75b912",
+        "recordedAt": "2026-11-17T01:36:45.70366447Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Maintenance/BundleCapacity/Plan.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-5677009697CE448D98FDB481D7461502",
+        "from": "active",
+        "to": "completed",
+        "reason": "Owner-requested bounded source correction implemented and verified",
+        "descriptor": {
+          "path": "Activities/Activity-0006--Generated-preview-bundle-capacity/activity.yaml",
+          "sha256": "60a41754cd5155c47a2d928135aae562a4149c6e8383a910c752831fb854e2ec"
+        },
+        "links": [],
+        "requestDigest": "0a2624719403aec71abad581a4e00d4cf723cc3a43f8e82763638e4f529ac330",
+        "outcome": "Preview/source-reading publication now allows 512 files and 128 MiB with actual usage diagnostics; targeted tests pass. Public release remains outside this activity.",
+        "evidence": [
+          {
+            "role": "verification",
+            "id": "SDPTOOL-VER-BC1",
+            "path": "Maintenance/BundleCapacity/Verification.md"
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-144E01912B224A3CAE0D52D865FD4B63",
+      "eventType": "x-activity:transitioned",
+      "occurredAt": "2026-11-17T08:06:20.394202646Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0006",
+      "payload": {
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "144e0191-2b22-4a3c-ae0d-52d865fd4b63",
+        "recordedAt": "2026-11-17T08:06:20.394202646Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Maintenance/R232/Plan.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-D65AAC78920E4314B59B17505F75B912",
+        "from": "completed",
+        "to": "planned",
+        "reason": "Owner extends the same capacity-correction need to signed public distribution",
+        "descriptor": {
+          "path": "Activities/Activity-0006--Generated-preview-bundle-capacity/activity.yaml",
+          "sha256": "60a41754cd5155c47a2d928135aae562a4149c6e8383a910c752831fb854e2ec"
+        },
+        "links": [],
+        "requestDigest": "e09e845c58f3fbf4fe23eea3ece9d6a23288123b1694bec71690c14b6e429c14"
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-1463AF7E860F4124A15BFE5EA5F8C8ED",
+      "eventType": "x-activity:session-created",
+      "occurredAt": "2026-11-17T08:06:22.668088714Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0006",
+      "payload": {
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "1463af7e-860f-4124-a15b-fe5ea5f8c8ed",
+        "recordedAt": "2026-11-17T08:06:22.668088714Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Maintenance/R232/Plan.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-144E01912B224A3CAE0D52D865FD4B63",
+        "from": "planned",
+        "to": "planned",
+        "reason": "Owner authorizes paired publication",
+        "descriptor": {
+          "path": "Activities/Activity-0006--Generated-preview-bundle-capacity/activity.yaml",
+          "sha256": "60a41754cd5155c47a2d928135aae562a4149c6e8383a910c752831fb854e2ec"
+        },
+        "links": [],
+        "requestDigest": "8c60d1db36863cedd4c02168b5303e9c245ed6243350ed68caeb14695ad9e037",
+        "session": {
+          "id": "SESSION-SDP-0024",
+          "path": "Activities/Activity-0006--Generated-preview-bundle-capacity/Sessions/session-#0024--Publish-capacity-correction.md",
+          "sha256": "90e876b4804c04686b431a16aa46f9e2e7001815fdbb1227b0349be58281586e"
+        }
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-F40E309290A04800AF6B3724173AFD21",
+      "eventType": "x-activity:updated",
+      "occurredAt": "2026-11-17T08:06:25.012734152Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0006",
+      "payload": {
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "f40e3092-90a0-4800-af6b-3724173afd21",
+        "recordedAt": "2026-11-17T08:06:25.012734152Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Maintenance/R232/Plan.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-1463AF7E860F4124A15BFE5EA5F8C8ED",
+        "from": "planned",
+        "to": "planned",
+        "reason": "Select release plan and Session alongside completed BC1 contributions",
+        "descriptor": {
+          "path": "Activities/Activity-0006--Generated-preview-bundle-capacity/activity.yaml",
+          "sha256": "94f1902de74fdf8fafdcae907ef9db42a493387b54830834872eee235405970a"
+        },
+        "links": [],
+        "requestDigest": "1b4604aea28534e2661aa2921efadb5bcee6315cd7d509d900106119c9acc577"
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-69981EB48ED34AEAB850926908C78351",
+      "eventType": "x-activity:transitioned",
+      "occurredAt": "2026-11-17T08:06:27.207638619Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0006",
+      "payload": {
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "69981eb4-8ed3-4aea-b850-926908c78351",
+        "recordedAt": "2026-11-17T08:06:27.207638619Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Maintenance/R232/Plan.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-F40E309290A04800AF6B3724173AFD21",
+        "from": "planned",
+        "to": "active",
+        "reason": "Execute owner-authorized paired release",
+        "descriptor": {
+          "path": "Activities/Activity-0006--Generated-preview-bundle-capacity/activity.yaml",
+          "sha256": "94f1902de74fdf8fafdcae907ef9db42a493387b54830834872eee235405970a"
+        },
+        "links": [],
+        "requestDigest": "00ff8495c5d323f01aac74e1a7771e6a64c70c702bb1291875e3ab7f432610d9"
+      }
+    },
+    {
+      "schemaVersion": "1.0",
+      "eventId": "EVT-ACTIVITY-SDP-4EF36C57DED14858B862F649FEFFC75A",
+      "eventType": "x-activity:transitioned",
+      "occurredAt": "2026-11-17T08:39:24.887949701Z",
+      "actor": "local-cli",
+      "commit": null,
+      "subjectId": "ACTIVITY-SDP-0006",
+      "payload": {
+        "contributionDispositions": [
+          {
+            "referenceId": "MAINT-SDP-0021",
+            "disposition": "completed",
+            "outcome": "Selected source or release delivery completed; verification retained in its linked plan and Session"
+          },
+          {
+            "referenceId": "SESSION-SDP-0023",
+            "disposition": "completed",
+            "outcome": "Selected source or release delivery completed; verification retained in its linked plan and Session"
+          },
+          {
+            "referenceId": "MAINT-SDP-0022",
+            "disposition": "completed",
+            "outcome": "Selected source or release delivery completed; verification retained in its linked plan and Session"
+          },
+          {
+            "referenceId": "SESSION-SDP-0024",
+            "disposition": "completed",
+            "outcome": "Selected source or release delivery completed; verification retained in its linked plan and Session"
+          }
+        ],
+        "schemaVersion": "0.2",
+        "projectId": "SDP",
+        "operationId": "4ef36c57-ded1-4858-b862-f649feffc75a",
+        "recordedAt": "2026-11-17T08:39:24.887949701Z",
+        "authority": {
+          "role": "project-owner",
+          "source": "Maintenance/R232/Plan.md"
+        },
+        "previousEventId": "EVT-ACTIVITY-SDP-69981EB48ED34AEAB850926908C78351",
+        "from": "active",
+        "to": "completed",
+        "reason": "All source correction and owner-authorized paired publication obligations fulfilled",
+        "descriptor": {
+          "path": "Activities/Activity-0006--Generated-preview-bundle-capacity/activity.yaml",
+          "sha256": "94f1902de74fdf8fafdcae907ef9db42a493387b54830834872eee235405970a"
+        },
+        "links": [],
+        "requestDigest": "8056726f43a8efc962229bbdbf0f0d72112983bbd3bcbaeb23ade6d0fd39cf3d",
+        "outcome": "Signed public SDPTool and gh-sdp 2.3.2 verified with 512-file / 128-MiB capacity and isolated ordinary extension upgrade; live installation unchanged",
+        "evidence": [
+          {
+            "role": "verification",
+            "id": "SDPTOOL-VER-R232",
+            "path": "Maintenance/R232/Verification.md"
+          }
+        ]
+      }
+    }
+  ],
+  "sessions": [
+    {
+      "id": "SESSION-SDP-0023",
+      "path": "Activities/Activity-0006--Generated-preview-bundle-capacity/Sessions/session-#0023--Raise-preview-bundle-limits.md",
+      "sha256": "eed629c3c30e4b0f569310840b8d5ec1eb2cbf0df106239cf364caa6cea911f7"
+    },
+    {
+      "id": "SESSION-SDP-0024",
+      "path": "Activities/Activity-0006--Generated-preview-bundle-capacity/Sessions/session-#0024--Publish-capacity-correction.md",
+      "sha256": "90e876b4804c04686b431a16aa46f9e2e7001815fdbb1227b0349be58281586e"
+    }
+  ]
+}

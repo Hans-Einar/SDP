@@ -1,0 +1,17 @@
+{
+  "descriptor": "https://github.com/Hans-Einar/SDP/releases/download/v2.3.2/sdp-release.json",
+  "descriptorSHA256": "34e2fa36ad45047ca398612cbc99f0a30430c44250a5990e98bbaed2f13efac8",
+  "distributionCommit": "c1d86bd148e6ad24da55b03482000df68e3fa3d6",
+  "distributionRepository": "https://github.com/Hans-Einar/gh-sdp",
+  "engineCommit": "f7a6c9f4793b55de5d0017ae74210135f2a4d365",
+  "engineRepository": "https://github.com/Hans-Einar/SDP",
+  "engineVersion": "2.3.2",
+  "file": "gh-sdp-linux-amd64",
+  "platform": "linux/amd64",
+  "provenance": "signed",
+  "schemaVersion": "gh-sdp-package/2",
+  "sha256": "7eab2b30286fe1608e95cc8011d07632dca7b73750486979130cfa8094b5f5bf",
+  "signingKeyId": "2c947457cffe015f870168cb332242c49606fdea378a13d875579544c2989c03",
+  "size": 38827442,
+  "version": "2.3.2"
+}

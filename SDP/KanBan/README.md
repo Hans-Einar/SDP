@@ -4,6 +4,7 @@
 
 | ID | Type | Status | Document |
 | --- | --- | --- | --- |
+| KB-SDP-064 | Change | completed | [Raise generated preview bundle capacity](completed/%23064--Change--Preview-bundle-capacity.md) |
 | KB-SDP-063 | Change | completed | [One SDPTool installation and update path](completed/%23063--Change--Single-SDPTool-installation.md) |
 | KB-SDP-062 | Proposal | completed | [Complete SDPTool architecture migration](completed/%23062--Proposal--Complete-SDPTool-architecture-migration.md) |
 | KB-SDP-060 | Change | completed | [Producer-owned readable SDL browsing](completed/%23060--Change--Producer-owned-SDL-browsing.md) |

@@ -1,0 +1,35 @@
+schema: sdp-activity/0.2
+id: ACTIVITY-SDP-0006
+projectId: SDP
+title: Generated preview bundle capacity
+owner: project-owner
+mandate: 01-Mandate/Mandate.md
+sourceCards:
+    - KB-SDP-064
+systems:
+    - SDPTOOL
+references:
+    - membership: whole-scope
+      role: plan
+      id: MAINT-SDP-0021
+      path: Maintenance/BundleCapacity/Plan.md
+    - membership: whole-scope
+      role: session
+      id: SESSION-SDP-0023
+      path: Activities/Activity-0006--Generated-preview-bundle-capacity/Sessions/session-#0023--Raise-preview-bundle-limits.md
+    - membership: whole-scope
+      role: plan
+      id: MAINT-SDP-0022
+      path: Maintenance/R232/Plan.md
+    - membership: whole-scope
+      role: session
+      id: SESSION-SDP-0024
+      path: Activities/Activity-0006--Generated-preview-bundle-capacity/Sessions/session-#0024--Publish-capacity-correction.md
+scope:
+    - SDPTool
+    - SDP
+    - Toolkit
+    - SDP.manifest.yaml
+    - RELEASE-NOTES.md
+    - Releases
+    - examples

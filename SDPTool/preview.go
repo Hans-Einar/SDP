@@ -229,12 +229,8 @@ func Preview(ctx context.Context, o PreviewOptions) (Result, error) {
 	j, _ := json.MarshalIndent(result, "", "  ")
 	b.Files["sdptool.json"] = append(j, '\n')
 	b.Seal()
-	size := 0
-	for _, data := range b.Files {
-		size += len(data)
-	}
-	if len(b.Files) > 128 || size > 32<<20 {
-		return Result{}, failure("limit", fmt.Errorf("bundle exceeds 128 files or 32 MiB"))
+	if e = checkPreviewBundle(b.Files, "bundle"); e != nil {
+		return Result{}, e
 	}
 	if e = ctx.Err(); e != nil {
 		return Result{}, failure("canceled", e)

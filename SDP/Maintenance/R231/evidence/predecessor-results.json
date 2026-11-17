@@ -1,0 +1,82 @@
+[
+  {
+    "predecessor": "0.2.0",
+    "target": "2.3.1",
+    "provenance": "signed",
+    "descriptorDigest": "9c83225b3a5eae1762e5609965378b8c14d89fa676ae242856b323c1dd9facf6",
+    "actions": 21,
+    "preserved": true,
+    "conflictRefused": true,
+    "repeatNoChange": true
+  },
+  {
+    "predecessor": "0.2.1",
+    "target": "2.3.1",
+    "provenance": "signed",
+    "descriptorDigest": "9c83225b3a5eae1762e5609965378b8c14d89fa676ae242856b323c1dd9facf6",
+    "actions": 21,
+    "preserved": true,
+    "conflictRefused": true,
+    "repeatNoChange": true
+  },
+  {
+    "predecessor": "1.0.0",
+    "target": "2.3.1",
+    "provenance": "signed",
+    "descriptorDigest": "9c83225b3a5eae1762e5609965378b8c14d89fa676ae242856b323c1dd9facf6",
+    "actions": 18,
+    "preserved": true,
+    "conflictRefused": true,
+    "repeatNoChange": true
+  },
+  {
+    "predecessor": "2.0.0",
+    "target": "2.3.1",
+    "provenance": "signed",
+    "descriptorDigest": "9c83225b3a5eae1762e5609965378b8c14d89fa676ae242856b323c1dd9facf6",
+    "actions": 14,
+    "preserved": true,
+    "conflictRefused": true,
+    "repeatNoChange": true
+  },
+  {
+    "predecessor": "2.1.0",
+    "target": "2.3.1",
+    "provenance": "signed",
+    "descriptorDigest": "9c83225b3a5eae1762e5609965378b8c14d89fa676ae242856b323c1dd9facf6",
+    "actions": 14,
+    "preserved": true,
+    "conflictRefused": true,
+    "repeatNoChange": true
+  },
+  {
+    "predecessor": "2.2.0",
+    "target": "2.3.1",
+    "provenance": "signed",
+    "descriptorDigest": "9c83225b3a5eae1762e5609965378b8c14d89fa676ae242856b323c1dd9facf6",
+    "actions": 14,
+    "preserved": true,
+    "conflictRefused": true,
+    "repeatNoChange": true
+  },
+  {
+    "predecessor": "2.2.1",
+    "target": "2.3.1",
+    "provenance": "signed",
+    "descriptorDigest": "9c83225b3a5eae1762e5609965378b8c14d89fa676ae242856b323c1dd9facf6",
+    "actions": 10,
+    "preserved": true,
+    "conflictRefused": true,
+    "repeatNoChange": true
+  },
+  {
+    "predecessor": "2.3.0",
+    "target": "2.3.1",
+    "provenance": "signed",
+    "descriptorDigest": "9c83225b3a5eae1762e5609965378b8c14d89fa676ae242856b323c1dd9facf6",
+    "actions": 0,
+    "preserved": true,
+    "conflictRefused": true,
+    "repeatNoChange": true
+  }
+]
