@@ -60,3 +60,11 @@ five historical malformed fields requiring an explicit owner-approved exception;
 the owner explicitly approved the byte-preserved archival exception and exact
 five-field correction. That correction and the actual public-default Framework upgrade are completed,
 with independent verification and repeat no-op evidence.
+
+## Generated preview capacity correction
+
+[Activity0006](Activity-0006--Generated-preview-bundle-capacity/01-Mandate/Mandate.md)
+completes the owner-selected source correction from 128 files / 32 MiB to
+512 files / 128 MiB for preview and source-reading publication. MAINT-SDP-0021 and
+SESSION-SDP-0023 retain focused verification. This is verified source delivery;
+no new public release or installed engine replacement is claimed.

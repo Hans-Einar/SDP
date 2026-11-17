@@ -1,0 +1,1 @@
+Owner reports the 128-file/32-MiB preview failure and selects a fourfold increase. Deliver and verify 512 files / 128 MiB for preview and source-reading output. Publication and installed engine replacement are not selected.

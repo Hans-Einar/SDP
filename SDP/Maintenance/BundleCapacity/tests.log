@@ -1,0 +1,38 @@
+=== RUN   TestPreviewBundleCapacity
+=== RUN   TestPreviewBundleCapacity/file-boundary
+=== RUN   TestPreviewBundleCapacity/file-overflow
+=== RUN   TestPreviewBundleCapacity/byte-boundary
+=== RUN   TestPreviewBundleCapacity/byte-overflow
+--- PASS: TestPreviewBundleCapacity (0.00s)
+    --- PASS: TestPreviewBundleCapacity/file-boundary (0.00s)
+    --- PASS: TestPreviewBundleCapacity/file-overflow (0.00s)
+    --- PASS: TestPreviewBundleCapacity/byte-boundary (0.00s)
+    --- PASS: TestPreviewBundleCapacity/byte-overflow (0.00s)
+=== RUN   TestPreviewAndSourceReadingBeyondOldBundleLimit
+--- PASS: TestPreviewAndSourceReadingBeyondOldBundleLimit (0.12s)
+=== RUN   TestPreviewFreshSourceAndPreservation
+--- PASS: TestPreviewFreshSourceAndPreservation (0.00s)
+=== RUN   TestPreviewFailuresPreserveSource
+=== RUN   TestPreviewFailuresPreserveSource/invalid
+=== RUN   TestPreviewFailuresPreserveSource/unsupported
+=== RUN   TestPreviewFailuresPreserveSource/renderer
+=== RUN   TestPreviewFailuresPreserveSource/selection
+=== RUN   TestPreviewFailuresPreserveSource/containment
+=== RUN   TestPreviewFailuresPreserveSource/symlink
+=== RUN   TestPreviewFailuresPreserveSource/conflict
+=== RUN   TestPreviewFailuresPreserveSource/extra
+--- PASS: TestPreviewFailuresPreserveSource (0.00s)
+    --- PASS: TestPreviewFailuresPreserveSource/invalid (0.00s)
+    --- PASS: TestPreviewFailuresPreserveSource/unsupported (0.00s)
+    --- PASS: TestPreviewFailuresPreserveSource/renderer (0.00s)
+    --- PASS: TestPreviewFailuresPreserveSource/selection (0.00s)
+    --- PASS: TestPreviewFailuresPreserveSource/containment (0.00s)
+    --- PASS: TestPreviewFailuresPreserveSource/symlink (0.00s)
+    --- PASS: TestPreviewFailuresPreserveSource/conflict (0.00s)
+    --- PASS: TestPreviewFailuresPreserveSource/extra (0.00s)
+=== RUN   TestFailedRefreshKeepsPreviousBundle
+--- PASS: TestFailedRefreshKeepsPreviousBundle (0.00s)
+=== RUN   TestReadingMembershipCollectionsAndSources
+--- PASS: TestReadingMembershipCollectionsAndSources (0.01s)
+PASS
+ok  	github.com/Hans-Einar/SDP/SDPTool	0.148s
