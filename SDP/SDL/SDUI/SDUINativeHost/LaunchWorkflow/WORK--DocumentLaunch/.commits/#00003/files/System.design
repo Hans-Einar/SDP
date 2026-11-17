@@ -1,0 +1,58 @@
+language design-core version 0.5.
+feature ContextDrivenNativeLaunch.
+unit ContextLoader.
+unit DocumentController.
+unit DocumentHostAdapter.
+activity DocumentLaunchDelivery.
+functionality ForwardPinnedLaunchInputs.
+usecase LaunchDocumentPrototype.
+container NativePrototypeProcess.
+functionality ObserveContextAndResourceChanges.
+functionality PrepareNativeDocument.
+capability PreparedDocumentHosting.
+functionality PreserveLastValidView.
+mode PrototypeMode.
+actor PrototypeOwner.
+functionality PublishCoherentSnapshot.
+functionality ReportHeadlessPreflight.
+container SdpToolFacade.
+unit SourceWatcher.
+functionality ValidateExplicitContext.
+ContextDrivenNativeLaunch supports LaunchDocumentPrototype.
+ContextLoader owns ValidateExplicitContext.
+DocumentController owns PreserveLastValidView.
+DocumentController owns PublishCoherentSnapshot.
+DocumentHostAdapter owns PrepareNativeDocument.
+DocumentHostAdapter provides PreparedDocumentHosting.
+DocumentLaunchDelivery addresses ForwardPinnedLaunchInputs.
+DocumentLaunchDelivery addresses ObserveContextAndResourceChanges.
+DocumentLaunchDelivery addresses PrepareNativeDocument.
+DocumentLaunchDelivery addresses PreserveLastValidView.
+DocumentLaunchDelivery addresses PublishCoherentSnapshot.
+DocumentLaunchDelivery addresses ReportHeadlessPreflight.
+DocumentLaunchDelivery addresses ValidateExplicitContext.
+DocumentLaunchDelivery delivers ContextDrivenNativeLaunch.
+DocumentLaunchDelivery has implementation-status = implemented.
+ForwardPinnedLaunchInputs allocated-to SdpToolFacade in mode PrototypeMode.
+ForwardPinnedLaunchInputs contributes-to ContextDrivenNativeLaunch.
+NativePrototypeProcess contains ContextLoader.
+NativePrototypeProcess contains DocumentController.
+NativePrototypeProcess contains DocumentHostAdapter.
+NativePrototypeProcess contains SourceWatcher.
+ObserveContextAndResourceChanges allocated-to NativePrototypeProcess in mode PrototypeMode.
+ObserveContextAndResourceChanges contributes-to ContextDrivenNativeLaunch.
+PrepareNativeDocument allocated-to NativePrototypeProcess in mode PrototypeMode.
+PrepareNativeDocument contributes-to ContextDrivenNativeLaunch.
+PrepareNativeDocument realizes PreparedDocumentHosting.
+PreserveLastValidView allocated-to NativePrototypeProcess in mode PrototypeMode.
+PreserveLastValidView contributes-to ContextDrivenNativeLaunch.
+PrototypeOwner pursues LaunchDocumentPrototype.
+PublishCoherentSnapshot allocated-to NativePrototypeProcess in mode PrototypeMode.
+PublishCoherentSnapshot contributes-to ContextDrivenNativeLaunch.
+ReportHeadlessPreflight allocated-to SdpToolFacade in mode PrototypeMode.
+ReportHeadlessPreflight contributes-to ContextDrivenNativeLaunch.
+SdpToolFacade owns ForwardPinnedLaunchInputs.
+SdpToolFacade owns ReportHeadlessPreflight.
+SourceWatcher owns ObserveContextAndResourceChanges.
+ValidateExplicitContext allocated-to NativePrototypeProcess in mode PrototypeMode.
+ValidateExplicitContext contributes-to ContextDrivenNativeLaunch.

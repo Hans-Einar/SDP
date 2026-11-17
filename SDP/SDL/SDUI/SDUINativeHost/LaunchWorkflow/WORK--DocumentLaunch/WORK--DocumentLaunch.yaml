@@ -2,10 +2,10 @@ schema: sdp-model/0.1
 id: 56be1190-9ab7-47f0-9e96-587c33923e63
 kind: work
 name: DocumentLaunch
-head: 56be1190-9ab7-47f0-9e96-587c33923e63:00001
-sequence: 1
-sourceDigest: cafb7c44c6de8f844e4fb0a6a87335ea42b0d63614f947bc5240366543af9191
-metadataDigest: cb8782306f98ceb628dea80cffb8fc621b4c3196a4ca79772d21ff6a6e8fd31c
+head: 56be1190-9ab7-47f0-9e96-587c33923e63:00003
+sequence: 3
+sourceDigest: e25068bed99da37b9be97f944364a0918c592d34c80bb2fa58a29c0c0ac1762a
+metadataDigest: c92f5e487f1ef71091dabf41867c4013a0e99965113b7dd759c7bf912624a7e8
 ledger:
     - author: warloc
       artifactName: DocumentLaunch
@@ -31,3 +31,29 @@ ledger:
         System.design: b898028d1ec9fe20872f24baae8b7f3c9d7761f4abbdcf09ac7ce3a2011e6da5
       deleted: []
       payload: .commits/#00001
+    - author: warloc
+      artifactName: DocumentLaunch
+      id: 56be1190-9ab7-47f0-9e96-587c33923e63:00002
+      parents:
+        - 56be1190-9ab7-47f0-9e96-587c33923e63:00001
+      kind: commit
+      message: DL2 verified standard document launch and guarded reload
+      recordedAt: "2026-11-17T18:46:22.836038843Z"
+      sourceDigest: d05187fd76ae67af9ed37d5dffb39e46cd866c3eb86c80b6dae0a20c52ed8a15
+      inventory:
+        System.design: 5c71eacc4bb12fd856e6bc1cdb26a90fd3f6eecfd0e16da87ea16736b9e30bc7
+      deleted: []
+      payload: .commits/#00002
+    - author: warloc
+      artifactName: DocumentLaunch
+      id: 56be1190-9ab7-47f0-9e96-587c33923e63:00003
+      parents:
+        - 56be1190-9ab7-47f0-9e96-587c33923e63:00002
+      kind: commit
+      message: DL2 canonical verified model for release admission
+      recordedAt: "2026-11-17T18:48:51.569153588Z"
+      sourceDigest: e25068bed99da37b9be97f944364a0918c592d34c80bb2fa58a29c0c0ac1762a
+      inventory:
+        System.design: 7ed459ea386010f73b5d7118e3bdd2d33aa0aae18780ca5dcd533004be4d6185
+      deleted: []
+      payload: .commits/#00003

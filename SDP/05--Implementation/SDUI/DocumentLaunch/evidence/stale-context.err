@@ -1,0 +1,2 @@
+stale: prototype context/resource revision changed
+{"error":{"code":"io","message":"native SDUI prototype: exit status 2"},"schema":"sdptool/0.2"}

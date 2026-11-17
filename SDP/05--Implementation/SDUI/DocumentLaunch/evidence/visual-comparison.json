@@ -1,0 +1,7 @@
+{
+  "initialRecoveryPixelDifference": 0,
+  "rejectedContentPixelDifference": 0,
+  "contentRectangle": "1680x1150+0+0",
+  "method": "ImageMagick AE comparison and independent reviewer inspection",
+  "note": "Status row reports source rejection; no claim of OS mouse automation"
+}

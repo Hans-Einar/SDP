@@ -1,0 +1,13 @@
+{
+  "exitCode": 0,
+  "actualPackagedLauncher": true,
+  "windowObserved": true,
+  "resourceReloadProcessSurvived": true,
+  "invalidSourcePreservedProcess": true,
+  "recoveryProcessSurvived": true,
+  "closedByWindowProtocol": true,
+  "reloadAcknowledged": true,
+  "nonblankFramebuffer": true,
+  "noStartupMinimumDiagnostic": true,
+  "scope": "Actual native markers and nonblank captures; programmatic host/watcher tests establish state assertions"
+}

@@ -35,6 +35,12 @@ requirements:
     design: DES-SDPTOOL-001
     note: GIP delivers installation execution; RP1 owns signed publication and live adoption.
 designs:
+  SDUI-DES-DOCUMENT-LAUNCH:
+    status: verified
+    path: SDL/SDUI/SDUINativeHost/LaunchWorkflow/README.md
+    implementationPlan: 05--Implementation/SDUI/DocumentLaunch/Plan.md
+    kanban: KB-SDP-065
+    verification: SDUI-VER-DOCUMENT-LAUNCH
   SDPTOOL-DES-ARCHMIG-0001:
     status: implemented-owner-acceptance-pending
     path: Activities/Activity-0001--SDPTool-Restructuring/04-Design/Architecture.md
@@ -276,6 +282,12 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDUI-VER-DOCUMENT-LAUNCH:
+    status: passed
+    path: 05--Implementation/SDUI/DocumentLaunch/Verification.md
+    managementId: PLAN-SDP-0030
+    card: KB-SDP-065
+    design: SDUI-DES-DOCUMENT-LAUNCH
   SDPTOOL-VER-R232:
     status: passed
     path: Maintenance/R232/Verification.md

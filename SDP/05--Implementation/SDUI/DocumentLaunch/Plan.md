@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0030 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | ImplementationPlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -18,8 +18,8 @@ composition; parent owns facade, model, docs, integration and one final review.
 
 | Milestone | State | Acceptance |
 | --- | --- | --- |
-| DL1 | active | Validated WORK model and implementable design; common context and native DocumentHost route, facade CLI/actions and focused tests |
-| DL2 | planned | Packaged engine native TimberFrame reproduction succeeds; preservation/error checks, final review, model release and honest closeout |
+| DL1 | completed | Validated WORK model and implementable design; common context and native DocumentHost route, facade CLI/actions and focused tests |
+| DL2 | completed | Packaged engine native TimberFrame reproduction succeeds; preservation/error checks, final review, model release and honest closeout |
 
 ## Design decision
 
@@ -80,3 +80,13 @@ checks; CLI/action validation and native argument forwarding; one actual package
 engine against TimberFrame Analysis with explicit fixture context in isolated Xvfb.
 Exercise tabs/splits and reload failure preservation through bounded native harness.
 Consolidate independent review at DL2; do not repeat broad installation campaigns.
+
+## Delivery
+
+DL1 committed as 2db8ab1; final product candidate 735c865 includes the native startup
+correction. [Verification](Verification.md) and [independent review](IndependentReview.md)
+record the actual packaged TimberFrame launch, reload preservation and focused tests.
+LaunchWorkflow RELEASE--V0.1.0 carries verified model evidence. Selected scope is
+complete; publication and XFMD context-selection UI remain separate future work.
+Backlog/onHold reviewed for this boundary: existing broader governance/navigation
+work does not block this bounded launcher delivery and is not activated here.
