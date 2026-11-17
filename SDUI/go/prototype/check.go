@@ -11,14 +11,17 @@ import (
 )
 
 type Report struct {
-	Schema     string `json:"schema"`
-	Operation  string `json:"operation"`
-	Status     string `json:"status"`
-	Revision   string `json:"revision"`
-	Entry      string `json:"entry"`
-	Source     string `json:"source"`
-	Diagnostic string `json:"diagnostic"`
-	Profile    string `json:"profile,omitempty"`
+	Schema          string `json:"schema"`
+	Operation       string `json:"operation"`
+	Status          string `json:"status"`
+	Revision        string `json:"revision"`
+	Entry           string `json:"entry"`
+	Source          string `json:"source"`
+	Diagnostic      string `json:"diagnostic"`
+	Profile         string `json:"profile,omitempty"`
+	Host            string `json:"host,omitempty"`
+	ContextRevision string `json:"contextRevision,omitempty"`
+	NativeLayout    string `json:"nativeLayout,omitempty"`
 }
 
 func Check(path, entry, revision string) (reload.Candidate, Report, error) {

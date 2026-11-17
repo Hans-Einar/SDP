@@ -1,0 +1,13 @@
+author: warloc
+artifactName: DocumentLaunch
+id: 56be1190-9ab7-47f0-9e96-587c33923e63:00001
+parents:
+    - 56be1190-9ab7-47f0-9e96-587c33923e63:00000
+kind: commit
+message: DL1 document context, preflight and atomic native launch target
+recordedAt: "2026-11-17T18:29:26.711965715Z"
+sourceDigest: cafb7c44c6de8f844e4fb0a6a87335ea42b0d63614f947bc5240366543af9191
+inventory:
+    System.design: b898028d1ec9fe20872f24baae8b7f3c9d7761f4abbdcf09ac7ce3a2011e6da5
+deleted: []
+payload: .commits/#00001

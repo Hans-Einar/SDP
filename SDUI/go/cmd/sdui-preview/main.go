@@ -17,6 +17,8 @@ func execute(args []string, stdout io.Writer) error {
 	flags.StringVar(&options.Entry, "entry", "", "Root frame")
 	flags.StringVar(&options.Revision, "revision", "", "Required SHA256")
 	flags.StringVar(&options.Output, "output", "", "Caller-owned empty bundle directory")
+	flags.StringVar(&options.Context, "context", "", "Explicit prototype context JSON")
+	flags.StringVar(&options.ContextRevision, "context-revision", "", "Expected context and resource digest")
 	flags.BoolVar(&options.Check, "check", false, "Return local prototype readiness only")
 	if err := flags.Parse(args); err != nil {
 		return err

@@ -316,8 +316,10 @@ instance path and original source span, even when geometry is supplied. No colle
 snapshot renderer or automatic static fallback is provided. The CLI checks this
 before measurement/provider work and preserves an existing output on failure.
 Public pane SVG likewise rejects with `unsupported-pane-export`, including hidden
-panes and supplied measured geometry. Standalone prototype preflight rejects panes
-with `unsupported-pane`; static source support cannot establish native readiness.
+panes and supplied measured geometry. The legacy RuntimeView prototype preflight rejects panes
+with `unsupported-pane`. The standard launcher now selects DocumentHost for 0.3;
+its [context contract](prototype-context.md) separates headless semantic preflight
+from actual native admission. Static source support cannot establish native readiness.
 
 Native hosts may use SVG as a background behind actual controls. `svg.Options`
 then requires `SkipControls: true` and `NativeControls`, a map of exact normalized
@@ -412,7 +414,7 @@ it performs no preparation or rendering. Missing/mismatched/extra inventory or
 unprepared Markdown rejects even under label policy. No Markdown inventory kind
 is added. These are trusted prepared-host assertions, not public export support.
 
-The standalone prototype/check launcher explicitly rejects governed preview
+The legacy RuntimeView prototype checker explicitly rejects governed preview
 adapters with unsupported-preview, Host svg-resource/1 or markdown/1 and source
 provenance. Static source-preview/discovery support does not establish native or
 provider readiness. The connected document-host route must prepare immutable

@@ -35,9 +35,20 @@ selected. GUI runtime libraries (OpenGL/X11) are OS dependencies. Unbundled sour
 builds report `nativePrototypeBundled: false` and reject native run explicitly.
 Project `run --program` still launches an explicitly project-owned application.
 
+For SDUI 0.3, check/run select the existing DocumentHost path. Optional
+`--context FILE` supplies exact-path choices, SVG resources and viewport dimensions;
+`--context-revision SHA` pins their aggregate initial identity. Explicit context also
+selects DocumentHost for 0.2; absent context preserves the legacy 0.2 route.
+Document check returns `status: preflight`, `host: document`, `nativeLayout: pending`:
+actual native layout/resource acceptance occurs on launch, not in a headless check.
+Static preview rejects launch-context arguments. See
+[prototype context](../SDUI/docs/prototype-context.md) for the strict fixture schema,
+resource ownership and reload/error behavior. No application callbacks execute.
+
 Host actions `sdui.source.preview`, `sdui.source.check` and `sdui.source.run` use
 absolute source/output paths and no project context; existing project actions keep
-their project validation. Run's optional boolean `watch` defaults to true. The
+their project validation. Check/run accept optional `context` and `contextRevision` string parameters.
+Run's optional boolean `watch` defaults to true. The
 shared action schema now includes the JSON boolean type. CLI output defaults to
 readable; native/machine callers add `--json`. Native helper output goes to stderr,
 keeping the invocation result stream parseable. `--version` advertises

@@ -78,3 +78,7 @@ completed the owner-requested reproduction. Standard standalone launch rejects
 CaseParameters tabs, while the existing consumer DocumentHost launcher passes its
 Analysis native smoke. KB-SDUI-007 and SESSION-SDP-0025 retain the result; a general
 launcher improvement is proposed, not selected or implemented.
+
+The owner subsequently selected PLAN-SDP-0030 / KB-SDP-065 to implement the shared
+DocumentHost launch path. Activity0007 is reopened and active for Session0026;
+the earlier study remains completed evidence.

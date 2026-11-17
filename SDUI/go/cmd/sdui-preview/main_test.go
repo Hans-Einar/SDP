@@ -76,7 +76,7 @@ func TestCheckNeverClaimsCollectionProviderReadiness(t *testing.T) {
 		out := t.TempDir()
 		var stdout bytes.Buffer
 		err := execute([]string{"-source", path, "-entry", "page", "-check", "-output", out}, &stdout)
-		if err == nil || !strings.Contains(err.Error(), "unsupported-provider") || !strings.Contains(err.Error(), "page/items") || stdout.Len() != 0 {
+		if err == nil || !strings.Contains(err.Error(), "provider collection-data/1") || !strings.Contains(err.Error(), "page/items") || stdout.Len() != 0 {
 			t.Fatal("collection readiness or unsourced rejection", err, stdout.String())
 		}
 		files, err := os.ReadDir(out)

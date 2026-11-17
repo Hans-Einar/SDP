@@ -87,12 +87,15 @@ func TestPreviewCheckDoesNotClaimNativeAdapterReadiness(t *testing.T) {
 		out := t.TempDir()
 		var stdout bytes.Buffer
 		err := execute([]string{"-source", path, "-entry", "Main", "-check", "-output", out}, &stdout)
-		if err == nil || stdout.Len() != 0 || !strings.Contains(err.Error(), "unsupported-preview") || !strings.Contains(err.Error(), "Main/p") {
+		// DL1 selects DocumentHost for 0.3, but successful headless preflight
+		// must continue to distinguish itself from actual native admission.
+		var report map[string]any
+		if err != nil || json.Unmarshal(stdout.Bytes(), &report) != nil || report["status"] != "preflight" || report["host"] != "document" || report["nativeLayout"] != "pending" {
 			t.Fatal(err, stdout.String())
 		}
 		files, err := os.ReadDir(out)
 		if err != nil || len(files) != 0 {
-			t.Fatal("failed check published", files, err)
+			t.Fatal("headless check published output", files, err)
 		}
 	}
 }

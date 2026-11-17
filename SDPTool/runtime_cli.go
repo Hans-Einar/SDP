@@ -29,6 +29,8 @@ func cliSdui(c cliInvocation) int {
 	entry := fs.String("entry", "page", "Root frame")
 	revision := fs.String("revision", "", "Expected source SHA256")
 	output := fs.String("output", "", "Existing empty bundle directory")
+	launchContext := fs.String("context", "", "Explicit prototype context JSON")
+	contextRevision := fs.String("context-revision", "", "Expected context and resource digest")
 	watch := fs.Bool("watch", true, "Watch source while prototype runs")
 	if err := fs.Parse(c.args[2:]); err != nil {
 		return c.report(c.errs, err)
@@ -40,12 +42,12 @@ func cliSdui(c cliInvocation) int {
 		if fs.NArg() != 0 {
 			return c.report(c.errs, fmt.Errorf("preview/check accept no positional arguments"))
 		}
-		r, _, err = performSource(c.ctx, sduiSourceParameters{Source: *source, Entry: *entry, Revision: *revision, Output: *output}, c.args[1] == "check")
+		r, _, err = performSource(c.ctx, sduiSourceParameters{Source: *source, Entry: *entry, Revision: *revision, Output: *output, Context: *launchContext, ContextRevision: *contextRevision}, c.args[1] == "check")
 	case "run":
 		if fs.NArg() != 1 || *source != "" || *output != "" {
-			return c.report(c.errs, fmt.Errorf("usage: sdptool sdui run [-entry page] [-revision SHA] [-watch=true] SOURCE"))
+			return c.report(c.errs, fmt.Errorf("usage: sdptool sdui run [-entry page] [-revision SHA] [-context FILE] [-context-revision SHA] [-watch=true] SOURCE"))
 		}
-		r, _, err = performSduiRun(c.ctx, actionContext{}, sduiRunParameters{Source: fs.Arg(0), Entry: *entry, Revision: *revision, Watch: watch})
+		r, _, err = performSduiRun(c.ctx, actionContext{}, sduiRunParameters{Source: fs.Arg(0), Entry: *entry, Revision: *revision, Watch: watch, Context: *launchContext, ContextRevision: *contextRevision})
 	default:
 		return c.report(c.errs, fmt.Errorf("unknown sdui operation %q", c.args[1]))
 	}

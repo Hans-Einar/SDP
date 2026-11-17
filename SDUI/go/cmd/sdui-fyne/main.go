@@ -22,10 +22,36 @@ import (
 func main() {
 	entry := flag.String("entry", "page", "Root frame")
 	revision := flag.String("revision", "", "Required initial source SHA256")
-	watch := flag.Bool("watch", true, "Reload changed SDUI source")
+	watch := flag.Bool("watch", true, "Reload changed SDUI source and explicit context resources")
+	contextPath := flag.String("context", "", "Explicit local DocumentHost fixture context")
+	contextRevision := flag.String("context-revision", "", "Required initial aggregate context/resource SHA256")
 	flag.Parse()
 	if flag.NArg() != 1 {
 		fmt.Fprintln(os.Stderr, "Usage: sdui-fyne [-entry page] [-watch=true] source.sdui")
+		os.Exit(2)
+	}
+	probe := reload.Read(flag.Arg(0), *entry, 1, nil)
+	if probe.Err != nil {
+		fmt.Fprintln(os.Stderr, probe.Err)
+		os.Exit(2)
+	}
+	if *contextPath != "" || probe.Document.Profile == "sdui/0.3" {
+		initial, err := prototype.LoadDocument(flag.Arg(0), *entry, *revision, *contextPath)
+		if err == nil && *contextRevision != "" && initial.ContextRevision != *contextRevision {
+			err = fmt.Errorf("stale: prototype context/resource revision changed")
+		}
+		if err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			os.Exit(2)
+		}
+		if err = runDocument(flag.Arg(0), *entry, *contextPath, *watch, initial); err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			os.Exit(2)
+		}
+		return
+	}
+	if *contextRevision != "" {
+		fmt.Fprintln(os.Stderr, "context-revision requires an explicit context")
 		os.Exit(2)
 	}
 	initial, report, checkErr := prototype.Check(flag.Arg(0), *entry, *revision)
