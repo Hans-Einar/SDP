@@ -4,7 +4,7 @@
 | --- | --- |
 | id | MAINT-SDP-0022 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | MaintenancePlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -24,11 +24,14 @@ remain here. Other PG/Blueprint work and unknown remote writers are outside scop
 
 | Milestone | State | Acceptance |
 | --- | --- | --- |
-| R232-M1 | active | Exact clean signed candidate, focused tests and release CI, upgrade/extracted-source checks, one combined independent release review |
-| R232-M2 | planned | Canonical and extension publication downloaded and verified; isolated real gh upgrade from2.3.1 delivers the fixed same-byte engine |
+| R232-M1 | completed | Exact clean signed candidate, focused tests and release CI, upgrade/extracted-source checks, one combined independent release review |
+| R232-M2 | completed | Canonical and extension publication downloaded and verified; isolated real gh upgrade from2.3.1 delivers the fixed same-byte engine |
 
 Reuse BC1 targeted verification and existing evidence for unchanged native behavior.
 Run changed profile/bootstrap and packaging checks, all supported signed predecessor
 upgrades with preservation/conflict/no-op, and an isolated public install/upgrade.
 One final combined release review suffices. No private signing material is retained
 in evidence. Published notes/assets/history remain immutable.
+
+Both milestones completed with actual signed public 2.3.2 and isolated consumer evidence.
+See Verification.md and IndependentReview.md. No selected delivery remains.

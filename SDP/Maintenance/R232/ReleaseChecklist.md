@@ -7,52 +7,64 @@ release log is not proof of publication. The project release contract governs.
 
 ## Scope and content
 
-- [ ] Select product version from compatibility impact. Keep language/profile,
+- [x] Select product version from compatibility impact. Keep language/profile,
   process/management schema and client versions distinct.
-- [ ] Enumerate included work and remaining exclusions; validate selected model,
+- [x] Enumerate included work and remaining exclusions; validate selected model,
   tests, review dispositions and links on the actual candidate.
-- [ ] Update canonical RELEASE-NOTES.md Unreleased entries with stable work IDs.
+- [x] Update canonical RELEASE-NOTES.md Unreleased entries with stable work IDs.
   Freeze selected entries into a dated version section; preserve released bytes.
-- [ ] Run `sdptool release-log --version X.Y.Z --output Releases/X.Y.Z.md`.
+- [x] Run `sdptool release-log --version X.Y.Z --output Releases/X.Y.Z.md`.
   Check with the same command plus --check. Use --all --output Releases --check
   to check every recorded version. Generator extracts reviewed notes, not Git guesses.
 
 ## Installation distribution (SDP publisher)
 
-- [ ] Check Template/sdp-root and project-root guidance. Include Sessions guide and
+- [x] Check Template/sdp-root and project-root guidance. Include Sessions guide and
   blank template, never project conversations, boards or existing work records.
-- [ ] Review SDPTool/profiles/payload.json: every distributed file, destination,
+- [x] Review SDPTool/profiles/payload.json: every distributed file, destination,
   ownership and removed/moved path. Inventory completeness tests must pass.
-- [ ] Review SDPTool/profiles/five-phase.json: capabilities, schema/profile versions
+- [x] Review SDPTool/profiles/five-phase.json: capabilities, schema/profile versions
   and exact supported predecessor descriptor digests, including current stable.
-- [ ] Reconcile SDP.manifest.yaml, Toolkit/SDP-install.manifest.json compatibility
+- [x] Reconcile SDP.manifest.yaml, Toolkit/SDP-install.manifest.json compatibility
   metadata, package version, release record and notes. Retained legacy metadata
   does not replace the current Go inventory or signed descriptor.
-- [ ] Build package and immutable sdp-release.json from a clean exact commit using
+- [x] Build package and immutable sdp-release.json from a clean exact commit using
   the Go profile builder. Verify file hashes, sourceCommit and executable identity.
   Never edit the built descriptor or use a project-local manifest as authority.
-- [ ] Sign descriptor with the trusted publisher key; verify signature, binary hash
+- [x] Sign descriptor with the trusted publisher key; verify signature, binary hash
   and SHA256SUMS. Store no private keys or secrets in evidence/repository.
-- [ ] Rehearse install and each supported upgrade from original verified descriptor
+- [x] Rehearse install and each supported upgrade from original verified descriptor
   bytes. Check new Sessions files, existing Session/document preservation, receipt,
   Maintenance entry/history, conflict handling and repeated no-op.
-- [ ] Test extracted-source operation, packaged signed child and normal bootstrap.
+- [x] Test extracted-source operation, packaged signed child and normal bootstrap.
   Development artifacts or test signers are not production signed evidence.
 
 ## Publish and consumer readiness
 
-- [ ] Exact candidate CI and required independent review pass; working tree clean;
+- [x] Exact candidate CI and required independent review pass; working tree clean;
   tag absent; merge/publication explicitly authorized.
-- [ ] Publish annotated tag and GitHub Release with generated log, signed descriptor,
+- [x] Publish annotated tag and GitHub Release with generated log, signed descriptor,
   executable and checksums; verify downloaded assets against exact release.
-- [ ] Reconcile actual tag/commit/time and append truthful release events only after
+- [x] Reconcile actual tag/commit/time and append truthful release events only after
   success. Do not rewrite a released log or silently correct released notes.
-- [ ] Verify gh-sdp selection: its compiled default is pinned. Either publish/update
+- [x] Verify gh-sdp selection: its compiled default is pinned. Either publish/update
   the client default or document an explicit SDP_RELEASE selecting this release.
-- [ ] Provide preview/apply commands and expected receipt. Owner-requested manual
+- [x] Provide preview/apply commands and expected receipt. Owner-requested manual
   project upgrade remains manual; never confuse updating the gh extension with
   upgrading the project's SDP directory.
 
 Consuming projects reuse the scope/content/publication checks; mark SDP publisher
 inventory/signing steps N/A if they do not distribute SDP itself. Keep their own
 application/package/installer acceptance checks alongside this list.
+
+## Final gate disposition
+
+Version 2.3.2 is the compatible capacity correction to actual 2.3.1. Owner explicitly
+authorized both publications. Verification.md, IndependentReview.md and evidence/
+record all applicable gates. Distribution inventory is unchanged; nine predecessors
+include the current stable descriptor. Signed public defaults and isolated ordinary
+extension upgrade pass. Main merge and live project deployment are unselected;
+the retired standalone bootstrap runtime is N/A to the shared-engine extension.
+The native helper was rebuilt with Go 1.27.1 and received an isolated startup smoke;
+no new platform or interaction coverage is claimed. Frozen release notes/logs and
+published assets remain unchanged.

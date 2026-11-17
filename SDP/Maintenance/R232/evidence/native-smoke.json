@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "display": "isolated Xvfb",
+  "fixture": "SDUI/examples/prototype-controls.sdui",
+  "entry": "controls",
+  "toolchain": "go1.27.1",
+  "processAliveAfterSeconds": 5,
+  "scope": "startup smoke, not visual or interaction acceptance",
+  "initialAttempt": "default page entry refused; corrected to declared controls entry"
+}

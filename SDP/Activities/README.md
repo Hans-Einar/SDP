@@ -64,10 +64,9 @@ with independent verification and repeat no-op evidence.
 ## Generated preview capacity correction
 
 [Activity0006](Activity-0006--Generated-preview-bundle-capacity/01-Mandate/Mandate.md)
-completes the owner-selected source correction from 128 files / 32 MiB to
-512 files / 128 MiB for preview and source-reading publication. MAINT-SDP-0021 and
-SESSION-SDP-0023 retain focused verification. This is verified source delivery;
-no new public release or installed engine replacement is claimed.
-
-Activity0006 was reopened for [R232](../Maintenance/R232/Plan.md); the earlier
-source-only completion remains historical and its code evidence is retained.
+completed the source correction from 128 files / 32 MiB to 512 files / 128 MiB.
+MAINT-SDP-0021 and SESSION-SDP-0023 retain the initial source-only delivery.
+The owner then authorized [R232](../Maintenance/R232/Plan.md), completed in
+SESSION-SDP-0024: signed public SDPTool and gh-sdp 2.3.2, verified downloaded assets
+and isolated ordinary extension upgrade. Activity0006 is completed. The live local
+extension and real project Frameworks remain for the owner to upgrade explicitly.

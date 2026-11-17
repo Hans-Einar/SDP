@@ -23,3 +23,8 @@ error originates in SDPTool publication, not SDL parsing or gh-sdp transport.
 2026-11-17: implemented shared 512-file/128-MiB bounds; focused tests pass.
 [Verification](../../Maintenance/BundleCapacity/Verification.md). Public distribution
 is not claimed; the installed signed release is unchanged.
+
+2026-11-17: subsequent owner-authorized publication completed as signed SDPTool
+and gh-sdp 2.3.2. Public downloads and isolated ordinary extension upgrade pass.
+[R232 evidence](../../Maintenance/R232/Verification.md). The owner's live extension
+remains unchanged; no remaining work is selected for this card.

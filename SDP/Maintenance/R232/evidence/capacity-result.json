@@ -1,0 +1,8 @@
+{
+  "previousVersion": "2.3.1",
+  "previousOutcome": "limit: bundle exceeds 128 files or 32 MiB",
+  "version": "2.3.2",
+  "sourceCount": 128,
+  "outputFiles": 135,
+  "outcome": "passed"
+}
