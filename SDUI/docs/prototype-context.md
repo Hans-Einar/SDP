@@ -77,3 +77,8 @@ reads happen before UI dispatch; native guards compare the latest observed
 candidate identity. This is polling and guarded publication, not an atomic lock
 on files being edited by arbitrary external programs. Pins apply to initial
 launch; later watched changes are intentional. `--watch=false` disables reload.
+
+The document prototype uses the light native theme matching its current SVG/text
+presentation. Native startup/reload success and rejection diagnostics are written
+to stderr; machine results remain on stdout. A successful process start alone is
+not proof that a window or a later reload was accepted.

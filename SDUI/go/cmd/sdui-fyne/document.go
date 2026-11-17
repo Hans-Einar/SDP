@@ -5,6 +5,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"os"
 	"sync/atomic"
 	"time"
 
@@ -24,15 +25,18 @@ const documentStatus = "Local DocumentHost prototype · values in memory · acti
 // Native request guards read only watcher-observed generation identity.
 func runDocument(source, entry, contextPath string, watch bool, initial *prototype.DocumentInput) error {
 	a := app.NewWithID("no.sdp.sdui.prototype")
+	a.Settings().SetTheme(theme.LightTheme())
 	w := a.NewWindow("SDUI · " + entry + " · native document prototype")
 	w.SetPadded(false)
 	host := fynehost.NewDocumentHost(w.Canvas(), initial.Size)
 	status := widget.NewLabel(documentStatus)
-	host.OnStatus = func(err error) {
+	reportError := func(err error) {
 		if err != nil {
 			status.SetText(err.Error())
+			fmt.Fprintln(os.Stderr, err)
 		}
 	}
+	host.OnStatus = reportError
 	var observed atomic.Uint64
 	observed.Store(1)
 	var closed atomic.Bool
@@ -44,14 +48,18 @@ func runDocument(source, entry, contextPath string, watch bool, initial *prototy
 			return nil
 		}}
 	}
-	if err := host.Adopt(request(initial, 1)); err != nil {
-		host.Close()
-		return err
-	}
 	w.SetContent(container.NewBorder(nil, status, nil, nil, host.Container))
 	// The context viewport describes native document content; the status row
 	// occupies additional outer window space. BorderLayout adds one gap.
 	w.Resize(fyne.NewSize(float32(initial.Size.W), float32(initial.Size.H)+status.MinSize().Height+theme.Padding()))
+	// Establish the actual content viewport before preparing a native bundle.
+	// SetContent may first lay out a tiny not-yet-sized window; an empty host can
+	// accept that transient size without rejecting an already published document.
+	if err := host.Adopt(request(initial, 1)); err != nil {
+		host.Close()
+		return err
+	}
+	fmt.Fprintf(os.Stderr, "Document prototype ready: source=%s context=%s\n", initial.Candidate.Hash, initial.ContextRevision)
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	w.SetOnClosed(func() { closed.Store(true); cancel(); host.Close() })
@@ -62,14 +70,15 @@ func runDocument(source, entry, contextPath string, watch bool, initial *prototy
 					return
 				}
 				if err != nil {
-					status.SetText(err.Error())
+					reportError(err)
 					return
 				}
 				if err = host.Adopt(request(input, generation)); err != nil {
-					status.SetText(err.Error())
+					reportError(err)
 					return
 				}
 				status.SetText(documentStatus)
+				fmt.Fprintf(os.Stderr, "Document prototype reloaded: generation=%d source=%s context=%s\n", generation, input.Candidate.Hash, input.ContextRevision)
 			})
 		})
 	}
