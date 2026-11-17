@@ -24,7 +24,7 @@ The owner-selected first five Activities are delivered:
    — signed public release and actual HEOS upgrade independently verified.
 
 Activity5 is completed: signed public SDP/gh-sdp2.3.1 and actual HEOS upgrade are
-independently verified. No Activity is active. Activity3 and Activity4 tool-recorded lifecycles include
+independently verified. Activity0006 is active for the separately owner-authorized2.3.2 publication. Activity3 and Activity4 tool-recorded lifecycles include
 observed quiescent hold/update/resume to link actual executed contributions before
 completion. Activity2 was held while Activity3 executed, then resumed only for
 administrative closure. Personal owner review and main merge are not implied.
@@ -68,3 +68,6 @@ completes the owner-selected source correction from 128 files / 32 MiB to
 512 files / 128 MiB for preview and source-reading publication. MAINT-SDP-0021 and
 SESSION-SDP-0023 retain focused verification. This is verified source delivery;
 no new public release or installed engine replacement is claimed.
+
+Activity0006 was reopened for [R232](../Maintenance/R232/Plan.md); the earlier
+source-only completion remains historical and its code evidence is retained.
