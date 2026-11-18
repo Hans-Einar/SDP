@@ -35,6 +35,12 @@ requirements:
     design: DES-SDPTOOL-001
     note: GIP delivers installation execution; RP1 owns signed publication and live adoption.
 designs:
+  SDUI-DES-DOCUMENT-LAUNCH:
+    status: verified
+    path: SDL/SDUI/SDUINativeHost/LaunchWorkflow/README.md
+    implementationPlan: 05--Implementation/SDUI/DocumentLaunch/Plan.md
+    kanban: KB-SDP-065
+    verification: SDUI-VER-DOCUMENT-LAUNCH
   SDPTOOL-DES-ARCHMIG-0001:
     status: implemented-owner-acceptance-pending
     path: Activities/Activity-0001--SDPTool-Restructuring/04-Design/Architecture.md
@@ -155,6 +161,21 @@ slices:
     verification: [VER-SDP-005-001, VER-SDP-005-002, VER-SDP-005-003]
 fixes: {}
 reviews:
+  REV-SDPTOOL-R240:
+    status: approved
+    path: Maintenance/R240/IndependentReview.md
+    commit: 52888aaf96c657c0d6656b104c9594e06f99d46f
+    release: REL-2.4.0
+  REV-SDPTOOL-R232:
+    status: approved
+    path: Maintenance/R232/IndependentReview.md
+    commit: f7a6c9f4793b55de5d0017ae74210135f2a4d365
+    release: REL-2.3.2
+  REV-SDPTOOL-R231:
+    status: approved
+    path: Maintenance/R231/IndependentReview.md
+    commit: 84d5e46012fdc45a3690bd0b26b617501fd1caa7
+    release: REL-2.3.1
   REV-SDPTOOL-DISTRIBUTION-0004:
     status: approved
     path: Activities/Activity-0004--Single-SDPTool-installation/06-Verification/IndependentReview.md
@@ -266,6 +287,27 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-R240:
+    status: passed
+    path: Maintenance/R240/Verification.md
+    managementId: MAINT-SDP-0023
+    release: REL-2.4.0
+  SDUI-VER-DOCUMENT-LAUNCH:
+    status: passed
+    path: 05--Implementation/SDUI/DocumentLaunch/Verification.md
+    managementId: PLAN-SDP-0030
+    card: KB-SDP-065
+    design: SDUI-DES-DOCUMENT-LAUNCH
+  SDPTOOL-VER-R232:
+    status: passed
+    path: Maintenance/R232/Verification.md
+    managementId: MAINT-SDP-0022
+    release: REL-2.3.2
+  SDPTOOL-VER-R231:
+    status: passed
+    path: Maintenance/R231/Verification.md
+    managementId: MAINT-SDP-0020
+    release: REL-2.3.1
   SDPTOOL-VER-DISTRIBUTION-0004:
     status: passed
     path: Activities/Activity-0004--Single-SDPTool-installation/06-Verification/Verification.md
@@ -703,6 +745,39 @@ verification:
     corpusDigest: e346fc230b26c3045305c1ffee22ff43edfc61aa99597005134a314b210b8114
 migrations: {}
 releases:
+  REL-2.4.0:
+    version: 2.4.0
+    state: released
+    releaseNotes: RELEASE-NOTES.md
+    manifest: SDP.manifest.yaml
+    releaseRecord: SDP/Releases/REL-2.4.0.yaml
+    verification: [SDPTOOL-VER-R240]
+    reviews: [REV-SDPTOOL-R240]
+    releaseCommit: 52888aaf96c657c0d6656b104c9594e06f99d46f
+    gitTag: v2.4.0
+    githubRelease: https://github.com/Hans-Einar/SDP/releases/tag/v2.4.0
+  REL-2.3.2:
+    version: 2.3.2
+    state: released
+    releaseNotes: RELEASE-NOTES.md
+    manifest: SDP.manifest.yaml
+    releaseRecord: SDP/Releases/REL-2.3.2.yaml
+    verification: [SDPTOOL-VER-R232]
+    reviews: [REV-SDPTOOL-R232]
+    releaseCommit: f7a6c9f4793b55de5d0017ae74210135f2a4d365
+    gitTag: v2.3.2
+    githubRelease: https://github.com/Hans-Einar/SDP/releases/tag/v2.3.2
+  REL-2.3.1:
+    version: 2.3.1
+    state: released
+    releaseNotes: RELEASE-NOTES.md
+    manifest: SDP.manifest.yaml
+    releaseRecord: SDP/Releases/REL-2.3.1.yaml
+    verification: [SDPTOOL-VER-R231]
+    reviews: [REV-SDPTOOL-R231]
+    releaseCommit: 84d5e46012fdc45a3690bd0b26b617501fd1caa7
+    gitTag: v2.3.1
+    githubRelease: https://github.com/Hans-Einar/SDP/releases/tag/v2.3.1
   REL-2.3.0:
     version: 2.3.0
     state: released

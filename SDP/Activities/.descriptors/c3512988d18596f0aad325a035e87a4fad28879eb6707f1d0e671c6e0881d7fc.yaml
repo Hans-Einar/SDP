@@ -1,0 +1,24 @@
+schema: sdp-activity/0.2
+id: ACTIVITY-SDP-0007
+projectId: SDP
+title: TimberFrame SDUI launch investigation
+owner: project-owner
+mandate: 01-Mandate/Mandate.md
+sourceCards:
+    - KB-SDP-065
+systems:
+    - SDUI
+    - SDPTOOL
+references:
+    - membership: whole-scope
+      role: plan
+      id: PLAN-SDP-0030
+      path: 05--Implementation/SDUI/DocumentLaunch/Plan.md
+    - membership: whole-scope
+      role: session
+      id: SESSION-SDP-0026
+      path: Activities/Activity-0007--TimberFrame-SDUI-launch-investigation/Sessions/session-#0026--Implement-DocumentHost-prototype-launch.md
+scope:
+    - SDUI
+    - SDPTool
+    - SDP

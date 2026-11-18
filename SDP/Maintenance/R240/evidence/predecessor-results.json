@@ -1,0 +1,102 @@
+[
+  {
+    "predecessor": "0.2.0",
+    "target": "2.4.0",
+    "provenance": "signed",
+    "descriptorDigest": "7184efb8b5a4b1fa9280f61f5e9c839b4d6dc14ee58173a81478a7eaaa815908",
+    "actions": 21,
+    "preserved": true,
+    "conflictRefused": true,
+    "repeatNoChange": true
+  },
+  {
+    "predecessor": "0.2.1",
+    "target": "2.4.0",
+    "provenance": "signed",
+    "descriptorDigest": "7184efb8b5a4b1fa9280f61f5e9c839b4d6dc14ee58173a81478a7eaaa815908",
+    "actions": 21,
+    "preserved": true,
+    "conflictRefused": true,
+    "repeatNoChange": true
+  },
+  {
+    "predecessor": "1.0.0",
+    "target": "2.4.0",
+    "provenance": "signed",
+    "descriptorDigest": "7184efb8b5a4b1fa9280f61f5e9c839b4d6dc14ee58173a81478a7eaaa815908",
+    "actions": 18,
+    "preserved": true,
+    "conflictRefused": true,
+    "repeatNoChange": true
+  },
+  {
+    "predecessor": "2.0.0",
+    "target": "2.4.0",
+    "provenance": "signed",
+    "descriptorDigest": "7184efb8b5a4b1fa9280f61f5e9c839b4d6dc14ee58173a81478a7eaaa815908",
+    "actions": 14,
+    "preserved": true,
+    "conflictRefused": true,
+    "repeatNoChange": true
+  },
+  {
+    "predecessor": "2.1.0",
+    "target": "2.4.0",
+    "provenance": "signed",
+    "descriptorDigest": "7184efb8b5a4b1fa9280f61f5e9c839b4d6dc14ee58173a81478a7eaaa815908",
+    "actions": 14,
+    "preserved": true,
+    "conflictRefused": true,
+    "repeatNoChange": true
+  },
+  {
+    "predecessor": "2.2.0",
+    "target": "2.4.0",
+    "provenance": "signed",
+    "descriptorDigest": "7184efb8b5a4b1fa9280f61f5e9c839b4d6dc14ee58173a81478a7eaaa815908",
+    "actions": 14,
+    "preserved": true,
+    "conflictRefused": true,
+    "repeatNoChange": true
+  },
+  {
+    "predecessor": "2.2.1",
+    "target": "2.4.0",
+    "provenance": "signed",
+    "descriptorDigest": "7184efb8b5a4b1fa9280f61f5e9c839b4d6dc14ee58173a81478a7eaaa815908",
+    "actions": 10,
+    "preserved": true,
+    "conflictRefused": true,
+    "repeatNoChange": true
+  },
+  {
+    "predecessor": "2.3.0",
+    "target": "2.4.0",
+    "provenance": "signed",
+    "descriptorDigest": "7184efb8b5a4b1fa9280f61f5e9c839b4d6dc14ee58173a81478a7eaaa815908",
+    "actions": 0,
+    "preserved": true,
+    "conflictRefused": true,
+    "repeatNoChange": true
+  },
+  {
+    "predecessor": "2.3.1",
+    "target": "2.4.0",
+    "provenance": "signed",
+    "descriptorDigest": "7184efb8b5a4b1fa9280f61f5e9c839b4d6dc14ee58173a81478a7eaaa815908",
+    "actions": 0,
+    "preserved": true,
+    "conflictRefused": true,
+    "repeatNoChange": true
+  },
+  {
+    "predecessor": "2.3.2",
+    "target": "2.4.0",
+    "provenance": "signed",
+    "descriptorDigest": "7184efb8b5a4b1fa9280f61f5e9c839b4d6dc14ee58173a81478a7eaaa815908",
+    "actions": 0,
+    "preserved": true,
+    "conflictRefused": true,
+    "repeatNoChange": true
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "operationId": "4c495af5-ecd8-436d-a5a4-672dfe0742e4",
+  "expectedHistoryRevision": "33f28dd21b11fd92cbbf6164d0a8ac156310379bd48c24ec1e971cc6c987bd82",
+  "activityId": "ACTIVITY-SDP-0005",
+  "expectedActivityEventId": "EVT-ACTIVITY-SDP-EB7196504A3D4F26AF724F6FF98A9931",
+  "expectedDescriptorRevision": "d1bb8d1a15bf5b31103340e2987cf29d9a6f98ee44888d206a78f25d5a857ffe",
+  "reason": "Resume solely for verified administrative completion"
+}

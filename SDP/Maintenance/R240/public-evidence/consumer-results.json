@@ -1,0 +1,75 @@
+{
+  "publicTag": "v2.4.0",
+  "outcomes": [
+    {
+      "case": "upgrade",
+      "version": {
+        "capabilities": [
+          "runtime.setup/1",
+          "sdui.source/1"
+        ],
+        "installationProtocol": "sdp-install-command/1",
+        "installedFactSchemas": [
+          "1.0",
+          "2.0",
+          "3.0"
+        ],
+        "nativePrototypeBundled": true,
+        "operation": "version",
+        "revision": "52888aaf96c657c0d6656b104c9594e06f99d46f",
+        "schema": "sdptool/0.2",
+        "version": "2.4.0"
+      },
+      "engineSHA256": "2034c184c7443d7cb90bba6a30926ed0c7f99ae12063407c5ec0f282e415b9f9",
+      "registeredTarget": "/tmp/sdp-r240-public-consumers/upgrade/data/gh/extensions/gh-sdp/gh-sdp",
+      "networkNamespaceIsolated": true,
+      "authAbsent": true,
+      "ghAbsentFromPATH": true,
+      "projectUnchanged": true
+    },
+    {
+      "case": "clean-install",
+      "version": {
+        "capabilities": [
+          "runtime.setup/1",
+          "sdui.source/1"
+        ],
+        "installationProtocol": "sdp-install-command/1",
+        "installedFactSchemas": [
+          "1.0",
+          "2.0",
+          "3.0"
+        ],
+        "nativePrototypeBundled": true,
+        "operation": "version",
+        "revision": "52888aaf96c657c0d6656b104c9594e06f99d46f",
+        "schema": "sdptool/0.2",
+        "version": "2.4.0"
+      },
+      "engineSHA256": "2034c184c7443d7cb90bba6a30926ed0c7f99ae12063407c5ec0f282e415b9f9",
+      "registeredTarget": "/tmp/sdp-r240-public-consumers/clean-install/data/gh/extensions/gh-sdp/gh-sdp",
+      "networkNamespaceIsolated": true,
+      "authAbsent": true,
+      "ghAbsentFromPATH": true,
+      "projectUnchanged": true
+    }
+  ],
+  "liveInstallationUnchanged": true,
+  "packageManifest": {
+    "descriptor": "https://github.com/Hans-Einar/SDP/releases/download/v2.4.0/sdp-release.json",
+    "descriptorSHA256": "7184efb8b5a4b1fa9280f61f5e9c839b4d6dc14ee58173a81478a7eaaa815908",
+    "distributionCommit": "f7763acf27900c0fb51fd28d3f2b6edc8a40a5f7",
+    "distributionRepository": "https://github.com/Hans-Einar/gh-sdp",
+    "engineCommit": "52888aaf96c657c0d6656b104c9594e06f99d46f",
+    "engineRepository": "https://github.com/Hans-Einar/SDP",
+    "engineVersion": "2.4.0",
+    "file": "gh-sdp-linux-amd64",
+    "platform": "linux/amd64",
+    "provenance": "signed",
+    "schemaVersion": "gh-sdp-package/2",
+    "sha256": "2034c184c7443d7cb90bba6a30926ed0c7f99ae12063407c5ec0f282e415b9f9",
+    "signingKeyId": "2c947457cffe015f870168cb332242c49606fdea378a13d875579544c2989c03",
+    "size": 39789722,
+    "version": "2.4.0"
+  }
+}

@@ -207,3 +207,14 @@ Source profiles remain independent of the sdptool/0.2 protocol. Actual packaging
 configured XIM and all-family native/independent acceptance are recorded in the
 [implementation plan](../../SDP/05--Implementation/SDUI/Widgets/Plan.md); source
 presence is not evidence of completion, installation or publication.
+
+## Standard DocumentHost launch
+
+[Prototype context](prototype-context.md) defines the bounded standard launcher
+composition: prototype.LoadDocument owns explicit local input snapshots and guards;
+DocumentHost owns actual native preparation, state-preserving publication and UI
+lifetime; SDPTool forwards typed CLI/action inputs. Legacy 0.2 without context stays
+on RuntimeView. Source-based check reports semantic preflight with native layout
+pending for the document path. Runtime/parser packages do not acquire filesystem,
+GUI or domain-execution responsibilities. The selected model detail is
+SDP/SDL/SDUI/SDUINativeHost/LaunchWorkflow, PLAN-SDP-0030.

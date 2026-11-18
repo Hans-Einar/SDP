@@ -1,0 +1,46 @@
+schema: sdp-model/0.1
+id: 56be1190-9ab7-47f0-9e96-587c33923e63
+kind: work
+name: DocumentLaunch
+head: 56be1190-9ab7-47f0-9e96-587c33923e63:00002
+sequence: 2
+sourceDigest: d05187fd76ae67af9ed37d5dffb39e46cd866c3eb86c80b6dae0a20c52ed8a15
+metadataDigest: 0de892541080ed5c711402fb335ec3c529c3be606689c9776e1850b4f0cc5ccc
+ledger:
+    - author: warloc
+      artifactName: DocumentLaunch
+      id: 56be1190-9ab7-47f0-9e96-587c33923e63:00000
+      parents: []
+      kind: baseline
+      message: WORK baseline
+      recordedAt: "2026-11-17T18:27:36.194643432Z"
+      sourceDigest: 4585f3ebe7e43550a374592cb06f5148d1d09a27601439b90a8daf263120561c
+      inventory: {}
+      deleted: []
+      payload: .commits/#00000
+    - author: warloc
+      artifactName: DocumentLaunch
+      id: 56be1190-9ab7-47f0-9e96-587c33923e63:00001
+      parents:
+        - 56be1190-9ab7-47f0-9e96-587c33923e63:00000
+      kind: commit
+      message: DL1 document context, preflight and atomic native launch target
+      recordedAt: "2026-11-17T18:29:26.711965715Z"
+      sourceDigest: cafb7c44c6de8f844e4fb0a6a87335ea42b0d63614f947bc5240366543af9191
+      inventory:
+        System.design: b898028d1ec9fe20872f24baae8b7f3c9d7761f4abbdcf09ac7ce3a2011e6da5
+      deleted: []
+      payload: .commits/#00001
+    - author: warloc
+      artifactName: DocumentLaunch
+      id: 56be1190-9ab7-47f0-9e96-587c33923e63:00002
+      parents:
+        - 56be1190-9ab7-47f0-9e96-587c33923e63:00001
+      kind: commit
+      message: DL2 verified standard document launch and guarded reload
+      recordedAt: "2026-11-17T18:46:22.836038843Z"
+      sourceDigest: d05187fd76ae67af9ed37d5dffb39e46cd866c3eb86c80b6dae0a20c52ed8a15
+      inventory:
+        System.design: 5c71eacc4bb12fd856e6bc1cdb26a90fd3f6eecfd0e16da87ea16736b9e30bc7
+      deleted: []
+      payload: .commits/#00002

@@ -1,0 +1,12 @@
+schemaVersion: '1.0'
+releaseId: REL-2.4.0
+version: 2.4.0
+state: released
+releaseNotesPath: RELEASE-NOTES.md
+includedCapabilities: [sdp.install.v1]
+verificationRecords: [SDPTOOL-VER-R240]
+reviewRecords: [REV-SDPTOOL-R240]
+migrationRecord: SDP/Maintenance/R240/Plan.md
+releasePreparationCommit: 52888aaf96c657c0d6656b104c9594e06f99d46f
+gitTag: v2.4.0
+githubReleaseUrl: https://github.com/Hans-Einar/SDP/releases/tag/v2.4.0

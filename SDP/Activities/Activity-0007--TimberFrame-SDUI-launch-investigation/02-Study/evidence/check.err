@@ -1,0 +1,1 @@
+{"error":{"code":"io","message":"unsupported-pane: standalone prototype has no native pane adapter: capability: host tabs/1 at CaseParameters/settings (164:2)"},"schema":"sdptool/0.2"}

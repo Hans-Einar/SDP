@@ -1,0 +1,15 @@
+go: creating new go.mod: module timberframe-sdui-preview
+go: to add module requirements and sums:
+	go mod tidy
+go: downloading github.com/fyne-io/gl-js v0.2.1-0.20260315212741-029c47fd27e8
+go: downloading github.com/hack-pad/go-indexeddb v0.3.2
+go: downloading github.com/fyne-io/glfw-js v0.4.0
+go: downloading github.com/go-gl/glfw/v3.4/glfw v0.1.0-pre.1.0.20260707082822-2a407d02d01a
+go: downloading github.com/hack-pad/safejs v0.1.0
+go: downloading github.com/go-text/typesetting-utils v0.0.0-20260223113751-2d88ac90dae3
+go: downloading gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f
+go: downloading github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e
+go: downloading github.com/kr/text v0.2.0
+READY native window
+PASS native pane transitions: 6
+PASS native split resize/restore: 3

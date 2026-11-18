@@ -7,16 +7,20 @@ import (
 )
 
 type sduiSourceParameters struct {
-	Source   string `json:"source"`
-	Entry    string `json:"entry"`
-	Revision string `json:"revision,omitempty"`
-	Output   string `json:"output,omitempty"`
+	Source          string `json:"source"`
+	Entry           string `json:"entry"`
+	Revision        string `json:"revision,omitempty"`
+	Output          string `json:"output,omitempty"`
+	Context         string `json:"context,omitempty"`
+	ContextRevision string `json:"contextRevision,omitempty"`
 }
 type sduiRunParameters struct {
-	Source   string `json:"source"`
-	Entry    string `json:"entry"`
-	Revision string `json:"revision,omitempty"`
-	Watch    *bool  `json:"watch,omitempty"`
+	Source          string `json:"source"`
+	Entry           string `json:"entry"`
+	Revision        string `json:"revision,omitempty"`
+	Watch           *bool  `json:"watch,omitempty"`
+	Context         string `json:"context,omitempty"`
+	ContextRevision string `json:"contextRevision,omitempty"`
 }
 
 func runtimeActions() []actionSpec {
@@ -45,11 +49,11 @@ func performSource(ctx context.Context, p sduiSourceParameters, check bool) (any
 	if check && p.Output != "" {
 		return nil, 0, fmt.Errorf("check does not accept an output directory")
 	}
-	result, err := preview.Generate(preview.Options{Source: p.Source, Entry: p.Entry, Revision: p.Revision, Output: p.Output, Check: check})
+	result, err := preview.Generate(preview.Options{Source: p.Source, Entry: p.Entry, Revision: p.Revision, Output: p.Output, Check: check, Context: p.Context, ContextRevision: p.ContextRevision})
 	return result, 0, err
 }
 func performSduiRun(ctx context.Context, _ actionContext, p sduiRunParameters) (any, int, error) {
-	args := []string{"-entry", p.Entry, "-revision", p.Revision}
+	args := []string{"-entry", p.Entry, "-revision", p.Revision, "-context", p.Context, "-context-revision", p.ContextRevision}
 	watch := true
 	if p.Watch != nil {
 		watch = *p.Watch

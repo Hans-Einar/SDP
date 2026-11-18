@@ -8,6 +8,7 @@ import (
 	"github.com/Hans-Einar/SDP/SDUI/go/parser"
 	"github.com/Hans-Einar/SDP/SDUI/go/presentation"
 	"github.com/Hans-Einar/SDP/SDUI/go/prototype"
+	"github.com/Hans-Einar/SDP/SDUI/go/reload"
 	"github.com/Hans-Einar/SDP/SDUI/go/sourcewatch"
 	"os"
 	"path/filepath"
@@ -15,13 +16,34 @@ import (
 
 type Options struct {
 	Source, Entry, Revision, Output string
+	Context, ContextRevision        string
 	Check                           bool
 }
 
 // Generate is the shared typed service for source preview/readiness. Callers own
 // command parsing and output presentation; this service never parses CLI tokens.
 func Generate(options Options) (any, error) {
+	if !options.Check && (options.Context != "" || options.ContextRevision != "") {
+		return nil, fmt.Errorf("static preview does not accept launch context")
+	}
+	if options.ContextRevision != "" && options.Context == "" {
+		return nil, fmt.Errorf("context-revision requires context")
+	}
 	if options.Check {
+		candidate := reload.Read(options.Source, options.Entry, 1, nil)
+		if candidate.Err != nil {
+			return nil, candidate.Err
+		}
+		if options.Context != "" || candidate.Document.Profile == "sdui/0.3" {
+			r, err := prototype.CheckDocument(options.Source, options.Entry, options.Revision, options.Context)
+			if err != nil {
+				return nil, err
+			}
+			if options.ContextRevision != "" && options.ContextRevision != r.ContextRevision {
+				return nil, fmt.Errorf("stale: prototype context or resources changed")
+			}
+			return r, nil
+		}
 		_, r, e := prototype.Check(options.Source, options.Entry, options.Revision)
 		if e != nil {
 			return nil, e

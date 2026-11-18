@@ -1,0 +1,20 @@
+# Document launch independent review
+
+Reviewer role: SDP Reviewer; read-only repository inspection, no subagents.
+Authority: owner-authorized PLAN-SDP-0030, root/SDUI agent instructions, prototype-context contract and LaunchWorkflow model. No publication or merge approval is implied.
+
+## Current disposition
+
+Integrated product outcome approved with no material findings on exact candidate `735c865` (DL1 `2db8ab1`, baseline `672fcb094cc1df06fce74a48a3e305757283f8fc`). Final model and durable-record closeout inspected and approved in this same reviewer context.
+
+Inspected explicit strict context decoding (including duplicate/unknown keys and null handling), bounded context/SVG bytes and os.Root containment, exact hidden-descendant choice paths, immutable resource association, source/context/resource identities, DocumentHost route selection, semantic preflight reporting, legacy 0.2 route preservation, facade CLI/action forwarding and output-argument handling. Native guards compare observed generations without disk I/O; watcher errors advance generation and failed adoption retains the published bundle. Existing DocumentHost owns native preparation, atomic commit and compatible state carryover. The native loader now explicitly rejects hidden tree/list controls without application providers, closing the previously identified collection-provider gap.
+
+Changed test expectations preserve the prior obligations while updating the deliberately selected 0.3 host: successful check is `preflight`/`document`/`pending`, not native geometry acceptance. Native test-driver harness evidence is not treated as desktop backend evidence. No broad tests were repeated by this reviewer. Reviewed passing prototype race, desktop launcher non-race, facade/preview and host/reload race logs. Desktop launcher tests are not claimed as race tests.
+
+## Residual verification boundary
+
+Reviewed startup correction in `735c865`: light native theme, empty host mounting/window sizing before initial adoption, and stderr readiness/reload/rejection diagnostics. Actual packaged TimberFrame Analysis launch observed its native window and completed source/resource reloads and invalid-source rejection/recovery, then closed successfully via the window protocol. `native.log` includes ready, resource generations 2/3, syntax rejection, and recovery generation 5; no pane-minimum diagnostic. Initial screenshot visibly contains native controls, panes and supplied SVG. ImageMagick AE comparison is zero for initial versus recovered, and zero for initial versus rejected over the 1680×1150 document-content rectangle; rejection changes the separate diagnostic status row. This supports visible last-valid preservation and recovery, with detailed state assertions supplied by the host/watcher tests. Process survival alone was insufficient evidence and the earlier smoke result was superseded.
+
+Final administrative spot-check found no material inconsistencies: Plan0030 DL1/DL2, Session0026 and completed card065 align with the packaged evidence and scope; management and traceability additions distinguish completion from publication. LaunchWorkflow RELEASE--V0.1.0 identity `cfe4d94b-96b8-45f8-85ba-ab2fef185a1a:00000` inherits canonical WORK00003 and records the verified executable digest and verification reference. Its implemented model outcome matches the selected launcher delivery. Package manifest identifies full candidate `735c865fdd9cc318fef251ce1935d0f7b4ede83e`; executable SHA256 matches `4648402d5a399d5afd64300a9366b0a2f1e76c64e800c8eb87e81e54fb3455ba`. No product diff follows the reviewed candidate. Historical pending checkpoints are explicitly superseded by the final outcome. No public binary release, main merge, installed-extension replacement or consumer edit is claimed.
+
+Final disposition: approved for the selected PLAN-SDP-0030 integrated implementation and administrative closeout, with no material findings. No owner subjective acceptance or product publication is established by this review.

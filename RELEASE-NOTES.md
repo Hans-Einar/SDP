@@ -4,6 +4,60 @@
 
 Release-Date: unreleased
 
+## [2.4.0] - 2026-11-18
+
+### Added
+
+- [PLAN-SDP-0030] Standard SDUI prototype launch uses DocumentHost for 0.3 and
+ explicit-context runs. Supply choice data and local SVG resources with --context;
+ source/context/resource reload retains the last valid view on invalid changes.
+- [MAINT-SDP-0023] Publish the same signed engine through gh-sdp and preserve all
+ supported upgrade predecessors, including the original signed 2.3.2 descriptor.
+
+### Migration
+
+- [PLAN-SDP-0030] Headless DocumentHost checks return preflight/document with
+ nativeLayout pending; actual launch validates native layout. Legacy 0.2 without
+ context retains its existing route. Context is explicit, never auto-discovered;
+ callbacks and domain actions remain unbound. See SDUI/docs/prototype-context.md.
+- [MAINT-SDP-0023] Run `gh extension upgrade sdp`. Existing setup registration
+ follows the upgraded engine. Project Framework upgrades remain separate explicit
+ preview/apply operations. No XFMD context-selection UI is included.
+
+## [2.3.2] - 2026-11-17
+
+### Fixed
+
+- [MAINT-SDP-0021] Raise generated preview and source-reading bundle limits from
+ 128 files / 32 MiB to 512 files / 128 MiB. Count retained sources and metadata
+ consistently; overflow errors now report actual usage.
+- [MAINT-SDP-0022] Preserve signed predecessor support, adding2.3.1, and distribute
+ the corrected canonical engine unchanged through gh-sdp2.3.2.
+
+### Migration
+
+- [MAINT-SDP-0022] Run `gh extension upgrade sdp`. Existing shared-engine setup
+ continues to point to the upgraded executable; no XFMD rebuild is needed.
+ Project Framework upgrades remain separate explicit preview/apply operations.
+
+## [2.3.1] - 2026-11-14
+
+### Fixed
+
+- [MAINT-SDP-0020] Publish the integrated main source with the shared-runtime
+  documentation and validated preliminary SDL handoff correction. Runtime APIs,
+  wire schemas and the one-engine distribution contract remain unchanged.
+- [ACTIVITY-SDP-0005] Accept the original signed2.3.0 descriptor as an upgrade
+  predecessor while preserving all seven previously supported releases. Default
+  Framework selection is2.3.1; owner project files remain installer-preserved.
+
+### Migration
+
+- [MAINT-SDP-0020] Update the gh extension for the shared2.3.1 engine. Project
+  Framework upgrades remain explicit preview/apply operations; HEOS is the first
+  selected rollout. Installing Activity records does not automatically adopt
+  project-governance execution admission or migrate existing Sessions.
+
 ## [2.3.0] - 2026-11-13
 
 ### Added

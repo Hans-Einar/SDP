@@ -1,0 +1,54 @@
+[
+  {
+    "schema": "sdptool/0.2",
+    "operation": "sdui-check",
+    "status": "preflight",
+    "revision": "d261086dd2d3c171ef41b784dd972d55b2aa562f73f25ea79b903fccd73e1efe",
+    "entry": "Analysis",
+    "source": "/tmp/sdp-document-launch/timberframe/TimberFrame.sdui",
+    "diagnostic": "Headless DocumentHost preflight only; native resource and layout admission pending; no SDL execution",
+    "profile": "sdui/0.3",
+    "host": "document",
+    "contextRevision": "cca9284bb3eeb6cb092e161d7249efe5498dbcd8bde85da72f9d95cbcf1fd783",
+    "nativeLayout": "pending"
+  },
+  {
+    "schema": "sdptool/0.2",
+    "operation": "sdui-check",
+    "status": "preflight",
+    "revision": "d261086dd2d3c171ef41b784dd972d55b2aa562f73f25ea79b903fccd73e1efe",
+    "entry": "Framing",
+    "source": "/tmp/sdp-document-launch/timberframe/TimberFrame.sdui",
+    "diagnostic": "Headless DocumentHost preflight only; native resource and layout admission pending; no SDL execution",
+    "profile": "sdui/0.3",
+    "host": "document",
+    "contextRevision": "870fab76ace6f1e93ddca0a60f994ea24117b6b101d02e089afcfb7b496621dc",
+    "nativeLayout": "pending"
+  },
+  {
+    "schema": "sdptool/0.2",
+    "operation": "sdui-check",
+    "status": "preflight",
+    "revision": "d261086dd2d3c171ef41b784dd972d55b2aa562f73f25ea79b903fccd73e1efe",
+    "entry": "Joinery",
+    "source": "/tmp/sdp-document-launch/timberframe/TimberFrame.sdui",
+    "diagnostic": "Headless DocumentHost preflight only; native resource and layout admission pending; no SDL execution",
+    "profile": "sdui/0.3",
+    "host": "document",
+    "contextRevision": "473ace2856ecff866b0bb8d2fa8d5fb0c14cbbb95fc5cc0f3c253c762294b789",
+    "nativeLayout": "pending"
+  },
+  {
+    "schema": "sdptool/0.2",
+    "operation": "sdui-check",
+    "status": "preflight",
+    "revision": "d261086dd2d3c171ef41b784dd972d55b2aa562f73f25ea79b903fccd73e1efe",
+    "entry": "CaseParameters",
+    "source": "/tmp/sdp-document-launch/timberframe/TimberFrame.sdui",
+    "diagnostic": "Headless DocumentHost preflight only; native resource and layout admission pending; no SDL execution",
+    "profile": "sdui/0.3",
+    "host": "document",
+    "contextRevision": "0ba75ffb500030c2a8810943c8f60a2f3e6e7afbe22e2b4d519e1904906ad9be",
+    "nativeLayout": "pending"
+  }
+]

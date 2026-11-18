@@ -1,0 +1,13 @@
+{
+  "baseline": "23c5193c91200bc78078af460046b4b94d3583bb",
+  "changedFiles": {
+    "SDPTool/preview_capacity.go": "c4fa5fce205cc28bec012ee561294ef00485013883c586888076570d409518e3",
+    "SDPTool/preview_capacity_test.go": "278b71c513bc9c028ddfcb928671791a9dedc49ca3f5a90985d4c70352f9f8b4",
+    "SDPTool/preview.go": "1ce64d271bcd085dc7b3742932d7cbf9c529c4c5316a519025dbfe77e6b145c2",
+    "SDPTool/source_reading.go": "341de3ed05e061d0553b8e43f19f16f978b601608d3ce45ee1273cf2dd5b4850",
+    "SDPTool/Contract.md": "6a4161efd68887ccf96876922754b0563fae86565fcdf6ef50663c7878e0d1e9"
+  },
+  "toolchain": "Go1.27.1 linux/amd64, GOTOOLCHAIN=local and existing isolated caches",
+  "tests": "Targeted root-package preview, reading, freshness/preservation and capacity cases; all pass",
+  "logSHA256": "f5085a92b12197b19f8b0e0cc44c30ff056488efaebc604cd98f0ea99f1656bf"
+}

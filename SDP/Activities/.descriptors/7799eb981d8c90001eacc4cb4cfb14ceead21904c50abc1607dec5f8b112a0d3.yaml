@@ -1,0 +1,13 @@
+schema: sdp-activity/0.2
+id: ACTIVITY-SDP-0007
+projectId: SDP
+title: TimberFrame SDUI launch investigation
+owner: project-owner
+mandate: 01-Mandate/Mandate.md
+sourceCards: []
+systems:
+    - SDUI
+    - SDPTOOL
+references: []
+scope:
+    - SDP

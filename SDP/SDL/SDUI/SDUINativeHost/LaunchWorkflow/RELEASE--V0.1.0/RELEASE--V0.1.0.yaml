@@ -1,0 +1,83 @@
+acceptedBy: warloc
+schema: sdp-model/0.1
+id: cfe4d94b-96b8-45f8-85ba-ab2fef185a1a
+kind: release
+name: 0.1.0
+head: cfe4d94b-96b8-45f8-85ba-ab2fef185a1a:00000
+sequence: 0
+sourceDigest: e25068bed99da37b9be97f944364a0918c592d34c80bb2fa58a29c0c0ac1762a
+metadataDigest: 2b0f22b90d85b8b2140714ff7a9e9932a1db650d66065987a00bf9c95be8bca0
+ledger:
+    - author: warloc
+      artifactName: DocumentLaunch
+      id: 56be1190-9ab7-47f0-9e96-587c33923e63:00000
+      parents: []
+      kind: baseline
+      message: WORK baseline
+      recordedAt: "2026-11-17T18:27:36.194643432Z"
+      sourceDigest: 4585f3ebe7e43550a374592cb06f5148d1d09a27601439b90a8daf263120561c
+      inventory: {}
+      deleted: []
+    - author: warloc
+      artifactName: DocumentLaunch
+      id: 56be1190-9ab7-47f0-9e96-587c33923e63:00001
+      parents:
+        - 56be1190-9ab7-47f0-9e96-587c33923e63:00000
+      kind: commit
+      message: DL1 document context, preflight and atomic native launch target
+      recordedAt: "2026-11-17T18:29:26.711965715Z"
+      sourceDigest: cafb7c44c6de8f844e4fb0a6a87335ea42b0d63614f947bc5240366543af9191
+      inventory:
+        System.design: b898028d1ec9fe20872f24baae8b7f3c9d7761f4abbdcf09ac7ce3a2011e6da5
+      deleted: []
+    - author: warloc
+      artifactName: DocumentLaunch
+      id: 56be1190-9ab7-47f0-9e96-587c33923e63:00002
+      parents:
+        - 56be1190-9ab7-47f0-9e96-587c33923e63:00001
+      kind: commit
+      message: DL2 verified standard document launch and guarded reload
+      recordedAt: "2026-11-17T18:46:22.836038843Z"
+      sourceDigest: d05187fd76ae67af9ed37d5dffb39e46cd866c3eb86c80b6dae0a20c52ed8a15
+      inventory:
+        System.design: 5c71eacc4bb12fd856e6bc1cdb26a90fd3f6eecfd0e16da87ea16736b9e30bc7
+      deleted: []
+    - author: warloc
+      artifactName: DocumentLaunch
+      id: 56be1190-9ab7-47f0-9e96-587c33923e63:00003
+      parents:
+        - 56be1190-9ab7-47f0-9e96-587c33923e63:00002
+      kind: commit
+      message: DL2 canonical verified model for release admission
+      recordedAt: "2026-11-17T18:48:51.569153588Z"
+      sourceDigest: e25068bed99da37b9be97f944364a0918c592d34c80bb2fa58a29c0c0ac1762a
+      inventory:
+        System.design: 7ed459ea386010f73b5d7118e3bdd2d33aa0aae18780ca5dcd533004be4d6185
+      deleted: []
+    - author: warloc
+      artifactName: DocumentLaunch
+      id: 784653f9-72f4-43c0-bc61-1e43b4763178:00000
+      parents:
+        - 56be1190-9ab7-47f0-9e96-587c33923e63:00003
+      kind: candidate
+      message: create candidate
+      recordedAt: "2026-11-17T18:48:51.596206349Z"
+      sourceDigest: e25068bed99da37b9be97f944364a0918c592d34c80bb2fa58a29c0c0ac1762a
+      inventory:
+        System.design: 7ed459ea386010f73b5d7118e3bdd2d33aa0aae18780ca5dcd533004be4d6185
+      deleted: []
+    - author: warloc
+      artifactName: 0.1.0
+      id: cfe4d94b-96b8-45f8-85ba-ab2fef185a1a:00000
+      parents:
+        - 784653f9-72f4-43c0-bc61-1e43b4763178:00000
+      kind: release
+      message: create release
+      recordedAt: "2026-11-17T18:48:58.60165987Z"
+      sourceDigest: e25068bed99da37b9be97f944364a0918c592d34c80bb2fa58a29c0c0ac1762a
+      inventory:
+        System.design: 7ed459ea386010f73b5d7118e3bdd2d33aa0aae18780ca5dcd533004be4d6185
+      deleted: []
+validationTargets:
+    - System.design
+evidence: verified:4648402d5a399d5afd64300a9366b0a2f1e76c64e800c8eb87e81e54fb3455ba:SDP/05--Implementation/SDUI/DocumentLaunch/Verification.md

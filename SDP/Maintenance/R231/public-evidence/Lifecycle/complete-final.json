@@ -1,0 +1,28 @@
+{
+  "operationId": "7dfb7412-a2dc-443c-893c-36578699260d",
+  "expectedHistoryRevision": "e656987c627069d70b50ea5f75ff85d836bd8cd0080786191eaf4bf8985d9d72",
+  "activityId": "ACTIVITY-SDP-0005",
+  "expectedActivityEventId": "EVT-ACTIVITY-SDP-4C495AF5ECD8436DA5A4672DFE0742E4",
+  "expectedDescriptorRevision": "d1bb8d1a15bf5b31103340e2987cf29d9a6f98ee44888d206a78f25d5a857ffe",
+  "reason": "All release and first-consumer obligations fulfilled",
+  "outcome": "Signed public SDPTool/gh-sdp2.3.1 and actual HEOS2.2.0-to2.3.1 upgrade verified, with exact owner-approved historical correction archived and other owner work preserved",
+  "evidence": [
+    {
+      "role": "verification",
+      "id": "SDPTOOL-VER-R231",
+      "path": "Maintenance/R231/Verification.md"
+    }
+  ],
+  "contributionDispositions": [
+    {
+      "referenceId": "MAINT-SDP-0020",
+      "disposition": "completed",
+      "outcome": "Both qualified release and actual first-consumer rollout complete"
+    },
+    {
+      "referenceId": "SESSION-SDP-0022",
+      "disposition": "completed",
+      "outcome": "Release/rollout goal delivered; no selected step remains"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "command": [
+    "./tools/preview_gui.sh",
+    "-entry",
+    "Analysis",
+    "-smoke",
+    "-inspect",
+    "/tmp/sdui-timberframe-repro/analysis-inspection.json"
+  ],
+  "exitCode": 0,
+  "isolatedDisplay": true
+}
