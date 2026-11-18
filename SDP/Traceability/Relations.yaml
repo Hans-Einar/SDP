@@ -161,6 +161,11 @@ slices:
     verification: [VER-SDP-005-001, VER-SDP-005-002, VER-SDP-005-003]
 fixes: {}
 reviews:
+  REV-SDPTOOL-R240:
+    status: approved
+    path: Maintenance/R240/IndependentReview.md
+    commit: 52888aaf96c657c0d6656b104c9594e06f99d46f
+    release: REL-2.4.0
   REV-SDPTOOL-R232:
     status: approved
     path: Maintenance/R232/IndependentReview.md
@@ -282,6 +287,11 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-R240:
+    status: passed
+    path: Maintenance/R240/Verification.md
+    managementId: MAINT-SDP-0023
+    release: REL-2.4.0
   SDUI-VER-DOCUMENT-LAUNCH:
     status: passed
     path: 05--Implementation/SDUI/DocumentLaunch/Verification.md
@@ -737,15 +747,15 @@ migrations: {}
 releases:
   REL-2.4.0:
     version: 2.4.0
-    state: prerelease
+    state: released
     releaseNotes: RELEASE-NOTES.md
     manifest: SDP.manifest.yaml
     releaseRecord: SDP/Releases/REL-2.4.0.yaml
-    verification: []
-    reviews: []
-    releaseCommit: null
-    gitTag: null
-    githubRelease: null
+    verification: [SDPTOOL-VER-R240]
+    reviews: [REV-SDPTOOL-R240]
+    releaseCommit: 52888aaf96c657c0d6656b104c9594e06f99d46f
+    gitTag: v2.4.0
+    githubRelease: https://github.com/Hans-Einar/SDP/releases/tag/v2.4.0
   REL-2.3.2:
     version: 2.3.2
     state: released

@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0027 |
-| Status | active |
+| Status | completed |
 | Activity | ACTIVITY-SDP-0007 |
 | Phase | 06-Verification |
 | Phase contributions | 06-Verification |
@@ -28,7 +28,32 @@ are selected. One extension worker and one consolidated review conserve quota.
 
 | State | Step | Outcome |
 | --- | --- | --- |
-| on-going | R240-M1 | Build/sign and qualify exact release candidate |
-| planned | R240-M2 | Publish, verify public upgrade, reconcile records |
+| completed | R240-M1 | Signed candidate, exact CI and independent review pass |
+| completed | R240-M2 | Both public releases and isolated upgrade verified |
 
 Next: exact signed package, tests/CI, review, authorized publication and closeout.
+
+## T001 qualification checkpoint
+
+Signed clean candidate52888aa and same-engine extensionf7763ac are prepared.
+All ten supported predecessor rehearsals, source archive, focused profile/install,
+bootstrap,90Toolkit and actual signed-child checks pass. Older superseded CI run
+was canceled to avoid duplicate testing. Exact final CI44287504558 and final native
+package observation are pending. Same review context will cover publication receipts.
+
+## T001 publication — current work summary
+
+The authorized SDPTool/gh-sdp2.4.0 is published and all downloaded assets verified.
+Exact CI and consolidated review pass. All ten signed predecessor upgrades and
+actual isolated public extension upgrade/fresh install/default Framework checks
+pass. The signed native package opens TimberFrame and preserves/reloads its view.
+No live extension, real consumer Framework or main merge was performed. Release,
+Versioning, Planning and SDP routines governed this delivery; Reviewer was loaded
+by the independent reviewer. Both roadmap steps are completed. Activity0007's
+completed implementation remains intact and its release contribution is complete.
+Next: owner may run `gh extension upgrade sdp`; no selected release work remains.
+This is a work summary, not a captured final response.
+
+Closeout changes only records/evidence. Toolkit and management validators pass;
+the closeout commit skips a duplicate full CI run. Exact published candidate
+52888aa retains successful CI44287504558 and all production package evidence.

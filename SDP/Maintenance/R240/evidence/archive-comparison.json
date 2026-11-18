@@ -1,0 +1,7 @@
+{
+  "sourceCommit": "52888aaf96c657c0d6656b104c9594e06f99d46f",
+  "differingKeys": [
+    "release"
+  ],
+  "note": "Unsigned extracted-source descriptor differs only in intentional development release identity; production signing uses clean exact checkout."
+}

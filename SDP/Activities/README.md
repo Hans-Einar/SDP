@@ -75,5 +75,5 @@ extension and real project Frameworks remain for the owner to upgrade explicitly
 
 Activity0007 completed the reproduction (Session0025) and standard DocumentHost
 implementation (PLAN-SDP-0030, KB-SDP-065, Session0026). The owner subsequently
-selected [R240](../Maintenance/R240/Plan.md) for publication. Activity0007 is active
-for the release continuation; the earlier implementation remains completed.
+selected [R240](../Maintenance/R240/Plan.md) for publication. Activity0007 is completed: signed public2.4.0 and isolated extension upgrade
+are verified in Session0027. The earlier implementation remains completed.

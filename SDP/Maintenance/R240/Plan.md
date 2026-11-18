@@ -4,7 +4,7 @@
 | --- | --- |
 | id | MAINT-SDP-0023 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | MaintenancePlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -26,10 +26,12 @@ remote writers remain outside observation coverage. Green for these writes.
 
 | Milestone | State | Acceptance |
 | --- | --- | --- |
-| R240-M1 | active | Exact clean signed candidate, changed profile tests, source archive and supported predecessor upgrades, native package check, CI and one combined review |
-| R240-M2 | planned | Both public releases downloaded and verified; isolated ordinary extension upgrade and default Framework install pass |
+| R240-M1 | completed | Exact clean signed candidate, changed profile tests, source archive and supported predecessor upgrades, native package check, CI and one combined review |
+| R240-M2 | completed | Both public releases downloaded and verified; isolated ordinary extension upgrade and default Framework install pass |
 
 Reuse exact implemented source and native behavior evidence from DocumentLaunch;
 qualify packaging and the new signed artifact. Retain original signed predecessors
 and add 2.3.2. Preserve release history. One bounded extension worker and one
 consolidated release review; no repeated implementation review or broad agent tests.
+
+Both milestones are complete; see Verification.md and IndependentReview.md.

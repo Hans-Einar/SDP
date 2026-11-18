@@ -24,3 +24,7 @@ launch and guarded reload verified using actual packaged TimberFrame Analysis.
 [independent review](../../05--Implementation/SDUI/DocumentLaunch/IndependentReview.md).
 LaunchWorkflow model 0.1.0 released. No remaining selected implementation work;
 binary publication and XFMD context-selection UI are separate scope.
+
+2026-11-18: owner-authorized publication completed under
+[MAINT-SDP-0023](../../Maintenance/R240/Plan.md). Signed SDPTool/gh-sdp2.4.0 public
+assets and isolated ordinary extension upgrade verified; no remaining release work.
