@@ -46,4 +46,3 @@ for version in ['0.2.0','0.2.1','1.0.0','2.0.0','2.1.0','2.2.0','2.2.1','2.3.0',
  results.append({'predecessor':version,'target':'2.4.0','provenance':receipt['provenance'],'descriptorDigest':receipt['descriptorDigest'],'actions':len(plan['actions']),'preserved':True,'conflictRefused':True,'repeatNoChange':True})
  (base/'signed-upgrade-results.json').write_text(json.dumps(results,indent=2)+'\n')
  print(version,'signed upgrade/preservation/conflict/no-op passed',flush=True)
-
