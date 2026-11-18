@@ -737,7 +737,7 @@ migrations: {}
 releases:
   REL-2.4.0:
     version: 2.4.0
-    state: unreleased
+    state: prerelease
     releaseNotes: RELEASE-NOTES.md
     manifest: SDP.manifest.yaml
     releaseRecord: SDP/Releases/REL-2.4.0.yaml
