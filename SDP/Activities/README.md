@@ -71,14 +71,9 @@ SESSION-SDP-0024: signed public SDPTool and gh-sdp 2.3.2, verified downloaded as
 and isolated ordinary extension upgrade. Activity0006 is completed. The live local
 extension and real project Frameworks remain for the owner to upgrade explicitly.
 
-## TimberFrame SDUI launch investigation
+## TimberFrame SDUI launch
 
-[Activity0007](Activity-0007--TimberFrame-SDUI-launch-investigation/02-Study/Launch-readiness.md)
-completed the owner-requested reproduction. Standard standalone launch rejects
-CaseParameters tabs, while the existing consumer DocumentHost launcher passes its
-Analysis native smoke. KB-SDUI-007 and SESSION-SDP-0025 retain the result; a general
-launcher improvement is proposed, not selected or implemented.
-
-The owner subsequently selected PLAN-SDP-0030 / KB-SDP-065 to implement the shared
-DocumentHost launch path. Activity0007 is reopened and active for Session0026;
-the earlier study remains completed evidence.
+Activity0007 completed the reproduction (Session0025) and standard DocumentHost
+implementation (PLAN-SDP-0030, KB-SDP-065, Session0026). The owner subsequently
+selected [R240](../Maintenance/R240/Plan.md) for publication. Activity0007 is active
+for the release continuation; the earlier implementation remains completed.

@@ -18,7 +18,19 @@ references:
       role: session
       id: SESSION-SDP-0026
       path: Activities/Activity-0007--TimberFrame-SDUI-launch-investigation/Sessions/session-#0026--Implement-DocumentHost-prototype-launch.md
+    - membership: whole-scope
+      role: plan
+      id: MAINT-SDP-0023
+      path: Maintenance/R240/Plan.md
+    - membership: whole-scope
+      role: session
+      id: SESSION-SDP-0027
+      path: Activities/Activity-0007--TimberFrame-SDUI-launch-investigation/Sessions/session-#0027--Publish-DocumentHost-launch.md
 scope:
-    - SDUI
     - SDPTool
     - SDP
+    - Toolkit
+    - SDP.manifest.yaml
+    - RELEASE-NOTES.md
+    - Releases
+    - examples

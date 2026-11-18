@@ -1,0 +1,12 @@
+schemaVersion: '1.0'
+releaseId: REL-2.4.0
+version: 2.4.0
+state: unreleased
+releaseNotesPath: RELEASE-NOTES.md
+includedCapabilities: [sdp.install.v1]
+verificationRecords: []
+reviewRecords: []
+migrationRecord: SDP/Maintenance/R240/Plan.md
+releasePreparationCommit: null
+gitTag: null
+githubReleaseUrl: null

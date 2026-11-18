@@ -60,6 +60,7 @@ func TestProfileRetainsExplicitReleasePredecessor(t *testing.T) {
 		"11e76cffd507e06aa36e07d56f3cf4f121c47393bf8383786c47ccbd202b5ea1", // published 2.2.1
 		"c7ef11e749eb2186ca6fee32e8dba1d96d160095f9e0221e1b70d4bd1b3b50b4", // published 2.3.0
 		"9c83225b3a5eae1762e5609965378b8c14d89fa676ae242856b323c1dd9facf6", // published 2.3.1
+		"34e2fa36ad45047ca398612cbc99f0a30430c44250a5990e98bbaed2f13efac8", // published 2.3.2
 	}
 	if len(descriptor.UpgradesFrom) != len(want) {
 		t.Fatalf("unexpected predecessor inventory: %v", descriptor.UpgradesFrom)
